@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>الاختبار | الخوارزمي</title>
+
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Cairo", Arial, sans-serif;
+}
+
+:root {
+    --bg: #06060a;
+    --card: rgba(18,18,27,.88);
+    --border: rgba(255,255,255,.08);
+    --text: #fff;
+    --muted: #9c9cab;
+    --primary: #7657ff;
+    --primary-dark: #4d35d9;
+    --danger: #ff6078;
+    --success: #35d39a;
+}
+
+body {
+
+    min-height: 100vh;
+
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 15% 0%,
+            rgba(118,87,255,.16),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(70,45,190,.12),
+            transparent 30%
+        ),
+        var(--bg);
+
+    padding-bottom: 60px;
+}
+
+
+/* ================= HEADER ================= */
+
+header {
+
+    height: 74px;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 5%;
+
+    background:
+        rgba(6,6,10,.88);
+
+    backdrop-filter:
+        blur(18px);
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+
+.logo-area {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.logo {
+
+    width: 43px;
+
+    height: 43px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #a796ff
+        );
+
+    font-size: 20px;
+
+    font-weight: 900;
+}
+
+
+.logo-text strong {
+
+    display: block;
+
+    font-size: 17px;
+}
+
+
+.logo-text span {
+
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+
+.exit-btn {
+
+    height: 40px;
+
+    padding: 0 14px;
+
+    border-radius: 10px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.04);
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+/* ================= MAIN ================= */
+
+main {
+
+    width:
+        min(950px, 94%);
+
+    margin: auto;
+
+    padding-top: 28px;
+}
+
+
+/* ================= TOP ================= */
+
+.exam-top {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+
+    border-radius: 18px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--card);
+}
+
+
+.exam-title {
+
+    font-size:
+        clamp(19px, 4vw, 27px);
+
+    font-weight: 900;
+}
+
+
+.exam-subtitle {
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    margin-top: 4px;
+}
+
+
+.timer {
+
+    min-width: 125px;
+
+    padding: 12px;
+
+    border-radius: 14px;
+
+    text-align: center;
+
+    background:
+        rgba(118,87,255,.09);
+
+    border:
+        1px solid
+        rgba(118,87,255,.18);
+}
+
+
+.timer-label {
+
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    margin-bottom: 2px;
+}
+
+
+#timer {
+
+    font-size: 22px;
+
+    font-weight: 900;
+
+    direction: ltr;
+}
+
+
+.timer.warning {
+
+    background:
+        rgba(255,96,120,.09);
+
+    border-color:
+        rgba(255,96,120,.25);
+
+    color:
+        #ff8497;
+}
+
+
+/* ================= PROGRESS ================= */
+
+.progress-box {
+
+    margin-bottom: 20px;
+}
+
+
+.progress-info {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    margin-bottom: 7px;
+}
+
+
+.progress-bar {
+
+    height: 7px;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    background:
+        rgba(255,255,255,.07);
+}
+
+
+.progress-fill {
+
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary-dark),
+            #9c86ff
+        );
+
+    transition: .3s;
+}
+
+
+/* ================= QUESTIONS ================= */
+
+.questions {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+
+.question-card {
+
+    padding: 22px;
+
+    border-radius: 18px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--card);
+}
+
+
+.question-number {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 32px;
+
+    height: 28px;
+
+    padding: 0 8px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(118,87,255,.11);
+
+    color:
+        #b7aaff;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    margin-bottom: 12px;
+}
+
+
+.question-text {
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    line-height: 1.9;
+
+    margin-bottom: 17px;
+}
+
+
+/* ================= OPTIONS ================= */
+
+.options {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.option {
+
+    position: relative;
+
+    cursor: pointer;
+}
+
+
+.option input {
+
+    position: absolute;
+
+    opacity: 0;
+
+}
+
+
+.option-content {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-height: 52px;
+
+    padding: 10px 13px;
+
+    border-radius: 12px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition: .2s;
+}
+
+
+.option:hover .option-content {
+
+    border-color:
+        rgba(118,87,255,.3);
+
+    background:
+        rgba(118,87,255,.06);
+}
+
+
+.option-letter {
+
+    width: 32px;
+
+    height: 32px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 9px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    color:
+        #c7c7d0;
+
+    font-size: 11px;
+
+    font-weight: 800;
+}
+
+
+.option-text {
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+.option input:checked
+~ .option-content {
+
+    border-color:
+        var(--primary);
+
+    background:
+        rgba(118,87,255,.10);
+
+    box-shadow:
+        0 0 0 1px
+        rgba(118,87,255,.12);
+}
+
+
+.option input:checked
+~ .option-content
+.option-letter {
+
+    background:
+        var(--primary);
+
+    color: white;
+}
+
+
+/* ================= TEXT ANSWER ================= */
+
+textarea {
+
+    width: 100%;
+
+    min-height: 130px;
+
+    resize: vertical;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.025);
+
+    color: white;
+
+    outline: none;
+
+    font-size: 12px;
+}
+
+
+textarea:focus {
+
+    border-color:
+        rgba(118,87,255,.5);
+}
+
+
+/* ================= SUBMIT ================= */
+
+.submit-box {
+
+    margin-top: 22px;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--card);
+
+    text-align: center;
+}
+
+
+.submit-info {
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    margin-bottom: 14px;
+}
+
+
+.submit-btn {
+
+    width: 100%;
+
+    min-height: 52px;
+
+    border: 0;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-dark)
+        );
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+
+.submit-btn:hover {
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(118,87,255,.22);
+}
+
+
+.submit-btn:disabled {
+
+    opacity: .55;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* ================= LOADING ================= */
+
+.loading {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #06060a;
+}
+
+
+.loader {
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 50%;
+
+    border:
+        3px solid
+        rgba(118,87,255,.15);
+
+    border-top-color:
+        var(--primary);
+
+    animation:
+        spin .8s linear infinite;
+}
+
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* ================= EMPTY ================= */
+
+.empty {
+
+    display: none;
+
+    text-align: center;
+
+    padding: 70px 20px;
+
+    border-radius: 20px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--card);
+}
+
+
+.empty-icon {
+
+    font-size: 42px;
+
+    margin-bottom: 12px;
+}
+
+
+.empty h2 {
+
+    font-size: 18px;
+
+    margin-bottom: 5px;
+}
+
+
+.empty p {
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 650px) {
+
+    header {
+
+        padding: 0 4%;
+
+    }
+
+
+    .logo-text span {
+
+        display: none;
+
+    }
+
+
+    main {
+
+        width: 94%;
+
+    }
+
+
+    .exam-top {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+
+    .timer {
+
+        width: 100%;
+
+    }
+
+
+    .question-card {
+
+        padding: 17px;
+
+    }
+
+
+    .question-text {
+
+        font-size: 14px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- LOADING -->
+
+<div
+    class="loading"
+    id="loading"
+>
+
+    <div class="loader"></div>
+
+</div>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo-area">
+
+        <div class="logo">
+            خ
+        </div>
+
+        <div class="logo-text">
+
+            <strong>
+                الخوارزمي
+            </strong>
+
+            <span>
+                منصة التعليم
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="exit-btn"
+        onclick="exitExam()"
+    >
+        خروج من الاختبار
+    </button>
+
+</header>
+
+
+<main>
+
+
+    <!-- EXAM TOP -->
+
+    <section class="exam-top">
+
+        <div>
+
+            <h1
+                class="exam-title"
+                id="examTitle"
+            >
+                جاري تحميل الاختبار...
+            </h1>
+
+            <p
+                class="exam-subtitle"
+                id="examSubtitle"
+            >
+                يرجى الانتظار
+            </p>
+
+        </div>
+
+
+        <div
+            class="timer"
+            id="timerBox"
+        >
+
+            <span class="timer-label">
+                الوقت المتبقي
+            </span>
+
+            <strong id="timer">
+                00:00
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROGRESS -->
+
+    <div class="progress-box">
+
+        <div class="progress-info">
+
+            <span>
+                تقدم الإجابة
+            </span>
+
+            <span id="progressText">
+                0 / 0
+            </span>
+
+        </div>
+
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                id="progressFill"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- QUESTIONS -->
+
+    <section
+        class="questions"
+        id="questions"
+    ></section>
+
+
+    <!-- EMPTY -->
+
+    <div
+        class="empty"
+        id="empty"
+    >
+
+        <div class="empty-icon">
+            📝
+        </div>
+
+        <h2>
+            لا توجد أسئلة
+        </h2>
+
+        <p>
+            لم تتم إضافة أسئلة لهذا الاختبار حتى الآن.
+        </p>
+
+    </div>
+
+
+    <!-- SUBMIT -->
+
+    <section
+        class="submit-box"
+        id="submitBox"
+    >
+
+        <p class="submit-info">
+            تأكد من مراجعة إجاباتك قبل تسليم الاختبار.
+        </p>
+
+        <button
+            class="submit-btn"
+            id="submitBtn"
+        >
+            تسليم الاختبار
+        </button>
+
+    </section>
+
+
+</main>
+
+
+<script>
+
+/*
+============================================================
+    EXAM PAGE
+============================================================
+
+    الرابط:
+
+    exam.html?id=EXAM_ID
+
+    البيانات لاحقًا من Supabase:
+
+    exams
+      ↓
+    questions
+      ↓
+    choices
+
+============================================================
+*/
+
+
+/* ================= PARAMS ================= */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const examId =
+    params.get("id");
+
+
+/* ================= ELEMENTS ================= */
+
+const loading =
+    document.getElementById("loading");
+
+const examTitle =
+    document.getElementById("examTitle");
+
+const examSubtitle =
+    document.getElementById("examSubtitle");
+
+const questionsContainer =
+    document.getElementById("questions");
+
+const empty =
+    document.getElementById("empty");
+
+const submitBox =
+    document.getElementById("submitBox");
+
+const submitBtn =
+    document.getElementById("submitBtn");
+
+const timer =
+    document.getElementById("timer");
+
+const timerBox =
+    document.getElementById("timerBox");
+
+const progressText =
+    document.getElementById("progressText");
+
+const progressFill =
+    document.getElementById("progressFill");
+
+
+/* ================= DEMO DATA ================= */
+
+const demoExam = {
+
+    id: "demo",
+
+    title:
+        "اختبار الوحدة الأولى",
+
+    description:
+        "اختبار قصير على الدروس التي تمت دراستها.",
+
+    duration:
+        20,
+
+    questions: [
+
+        {
+
+            id: "q1",
+
+            type: "mcq",
+
+            question:
+                "ما ناتج 2 + 2 ؟",
+
+            options: [
+
+                {
+                    id: "a",
+                    text: "3"
+                },
+
+                {
+                    id: "b",
+                    text: "4"
+                },
+
+                {
+                    id: "c",
+                    text: "5"
+                },
+
+                {
+                    id: "d",
+                    text: "6"
+                }
+
+            ]
+
+        },
+
+
+        {
+
+            id: "q2",
+
+            type: "mcq",
+
+            question:
+                "ما ناتج 5 × 3 ؟",
+
+            options: [
+
+                {
+                    id: "a",
+                    text: "10"
+                },
+
+                {
+                    id: "b",
+                    text: "12"
+                },
+
+                {
+                    id: "c",
+                    text: "15"
+                },
+
+                {
+                    id: "d",
+                    text: "20"
+                }
+
+            ]
+
+        },
+
+
+        {
+
+            id: "q3",
+
+            type: "essay",
+
+            question:
+                "اشرح باختصار مفهوم الدالة الرياضية."
+
+        }
+
+    ]
+
+};
+
+
+/* ================= TIMER ================= */
+
+let remainingSeconds = 0;
+
+let timerInterval = null;
+
+
+/* ================= LOAD EXAM ================= */
+
+async function loadExam() {
+
+    loading.style.display =
+        "flex";
+
+
+    try {
+
+        if (!examId) {
+
+            throw new Error(
+                "Missing exam ID"
+            );
+
+        }
+
+
+        /*
+        ========================================================
+            SUPABASE
+
+            لاحقًا:
+
+            const { data, error } =
+                await supabase
+                    .from("exams")
+                    .select(`
+                        id,
+                        title,
+                        description,
+                        duration,
+                        questions (
+                            id,
+                            question,
+                            type,
+                            options
+                        )
+                    `)
+                    .eq("id", examId)
+                    .single();
+
+        ========================================================
+        */
+
+
+        await new Promise(
+            resolve =>
+                setTimeout(
+                    resolve,
+                    500
+                )
+        );
+
+
+        const data =
+            demoExam;
+
+
+        examTitle.textContent =
+            data.title;
+
+
+        examSubtitle.textContent =
+            data.description;
+
+
+        remainingSeconds =
+            Number(data.duration) * 60;
+
+
+        renderQuestions(
+            data.questions
+        );
+
+
+        startTimer();
+
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        questionsContainer.innerHTML = "";
+
+        empty.style.display =
+            "block";
+
+        submitBox.style.display =
+            "none";
+
+    }
+
+    finally {
+
+        loading.style.display =
+            "none";
+
+    }
+
+}
+
+
+/* ================= RENDER ================= */
+
+function renderQuestions(
+    questions
+) {
+
+    questionsContainer.innerHTML =
+        "";
+
+
+    if (
+        !questions ||
+        questions.length === 0
+    ) {
+
+        empty.style.display =
+            "block";
+
+        submitBox.style.display =
+            "none";
+
+        return;
+
+    }
+
+
+    empty.style.display =
+        "none";
+
+
+    questions.forEach(
+        (question, index) => {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+            card.className =
+                "question-card";
+
+
+            let content = `
+
+                <div class="question-number">
+                    السؤال ${index + 1}
+                </div>
+
+                <div class="question-text">
+                    ${escapeHTML(question.question)}
+                </div>
+
+            `;
+
+
+            /* MCQ */
+
+            if (
+                question.type === "mcq"
+            ) {
+
+                content += `
+                    <div class="options">
+                `;
+
+
+                const letters =
+                    ["أ", "ب", "ج", "د", "هـ"];
+
+
+                question.options.forEach(
+                    (option, optionIndex) => {
+
+                        content += `
+
+                            <label class="option">
+
+                                <input
+                                    type="radio"
+                                    name="question_${question.id}"
+                                    value="${escapeHTML(option.id)}"
+                                    onchange="updateProgress()"
+                                >
+
+                                <div class="option-content">
+
+                                    <span class="option-letter">
+                                        ${letters[optionIndex] || optionIndex + 1}
+                                    </span>
+
+                                    <span class="option-text">
+                                        ${escapeHTML(option.text)}
+                                    </span>
+
+                                </div>
+
+                            </label>
+
+                        `;
+
+                    }
+                );
+
+
+                content += `
+                    </div>
+                `;
+
+            }
+
+
+            /* ESSAY */
+
+            else {
+
+                content += `
+
+                    <textarea
+                        name="question_${question.id}"
+                        placeholder="اكتب إجابتك هنا..."
+                        oninput="updateProgress()"
+                    ></textarea>
+
+                `;
+
+            }
+
+
+            card.innerHTML =
+                content;
+
+
+            questionsContainer.appendChild(
+                card
+            );
+
+        }
+    );
+
+
+    updateProgress();
+
+}
+
+
+/* ================= PROGRESS ================= */
+
+function updateProgress() {
+
+    const inputs =
+        document.querySelectorAll(
+            "#questions input[type='radio']:checked, #questions textarea"
+        );
+
+
+    let answered = 0;
+
+
+    inputs.forEach(
+        input => {
+
+            if (
+                input.type === "radio"
+                &&
+                input.checked
+            ) {
+
+                answered++;
+
+            }
+
+            else if (
+                input.tagName === "TEXTAREA"
+                &&
+                input.value.trim()
+            ) {
+
+                answered++;
+
+            }
+
+        }
+    );
+
+
+    const total =
+        document.querySelectorAll(
+            ".question-card"
+        ).length;
+
+
+    progressText.textContent =
+        answered +
+        " / " +
+        total;
+
+
+    const percentage =
+        total
+            ? (answered / total) * 100
+            : 0;
+
+
+    progressFill.style.width =
+        percentage + "%";
+
+}
+
+
+/* ================= TIMER ================= */
+
+function startTimer() {
+
+    updateTimer();
+
+
+    timerInterval =
+        setInterval(
+            () => {
+
+                remainingSeconds--;
+
+
+                updateTimer();
+
+
+                if (
+                    remainingSeconds <= 0
+                ) {
+
+                    clearInterval(
+                        timerInterval
+                    );
+
+
+                    alert(
+                        "انتهى وقت الاختبار وسيتم تسليم إجاباتك."
+                    );
+
+
+                    submitExam();
+
+                }
+
+            },
+            1000
+        );
+
+}
+
+
+/* ================= TIMER UI ================= */
+
+function updateTimer() {
+
+    const minutes =
+        Math.floor(
+            remainingSeconds / 60
+        );
+
+
+    const seconds =
+        remainingSeconds % 60;
+
+
+    timer.textContent =
+        String(minutes).padStart(
+            2,
+            "0"
+        )
+        +
+        ":"
+        +
+        String(seconds).padStart(
+            2,
+            "0"
+        );
+
+
+    if (
+        remainingSeconds <= 60
+    ) {
+
+        timerBox.classList.add(
+            "warning"
+        );
+
+    }
+
+}
+
+
+/* ================= SUBMIT ================= */
+
+submitBtn.addEventListener(
+    "click",
+    submitExam
+);
+
+
+async function submitExam() {
+
+    if (
+        submitBtn.disabled
+    ) {
+
+        return;
+
+    }
+
+
+    const questions =
+        document.querySelectorAll(
+            ".question-card"
+        );
+
+
+    const answers = {};
+
+
+    questions.forEach(
+        (card, index) => {
+
+            const radio =
+                card.querySelector(
+                    "input[type='radio']:checked"
+                );
+
+
+            const textarea =
+                card.querySelector(
+                    "textarea"
+                );
+
+
+            if (radio) {
+
+                answers[index] =
+                    radio.value;
+
+            }
+
+            else if (textarea) {
+
+                answers[index] =
+                    textarea.value.trim();
+
+            }
+
+        }
+    );
+
+
+    const answered =
+        Object.keys(
+            answers
+        ).length;
+
+
+    const total =
+        questions.length;
+
+
+    if (
+        answered < total
+    ) {
+
+        const confirmSubmit =
+            confirm(
+                `أجبت على ${answered} من ${total} سؤال. هل تريد تسليم الاختبار؟`
+            );
+
+
+        if (!confirmSubmit) {
+
+            return;
+
+        }
+
+    }
+
+
+    submitBtn.disabled =
+        true;
+
+
+    submitBtn.textContent =
+        "جاري تسليم الاختبار...";
+
+
+    clearInterval(
+        timerInterval
+    );
+
+
+    /*
+    ========================================================
+        SUPABASE
+
+        هنا سيتم لاحقًا حفظ:
+
+        student_id
+        exam_id
+        answers
+        score
+        submitted_at
+
+        ثم حساب النتيجة.
+
+    ========================================================
+    */
+
+
+    localStorage.setItem(
+        "last_exam_answers",
+        JSON.stringify(answers)
+    );
+
+
+    /*
+        مؤقتًا ننتقل للنتيجة.
+    */
+
+    setTimeout(
+        () => {
+
+            window.location.href =
+                "result.html?exam_id="
+                +
+                encodeURIComponent(
+                    examId
+                );
+
+        },
+        700
+    );
+
+}
+
+
+/* ================= EXIT ================= */
+
+function exitExam() {
+
+    const leave =
+        confirm(
+            "هل أنت متأكد أنك تريد الخروج؟ سيتم فقدان الإجابات غير المحفوظة."
+        );
+
+
+    if (leave) {
+
+        history.back();
+
+    }
+
+}
+
+
+/* ================= SECURITY ================= */
+
+function escapeHTML(value) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* ================= START ================= */
+
+loadExam();
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+
+</body>
+
+</html>

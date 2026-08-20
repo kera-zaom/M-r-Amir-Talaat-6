@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>ملف PDF | الخوارزمي</title>
+
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Cairo", Arial, sans-serif;
+}
+
+:root {
+    --bg: #06060a;
+    --card: rgba(18,18,27,.85);
+    --border: rgba(255,255,255,.08);
+    --text: #fff;
+    --muted: #9999a8;
+    --primary: #7657ff;
+    --primary2: #4d35d9;
+}
+
+body {
+    min-height: 100vh;
+
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 15% 0%,
+            rgba(118,87,255,.16),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(70,45,190,.12),
+            transparent 30%
+        ),
+        var(--bg);
+
+    padding-bottom: 50px;
+}
+
+
+/* ================= HEADER ================= */
+
+header {
+
+    height: 74px;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 5%;
+
+    background:
+        rgba(6,6,10,.86);
+
+    backdrop-filter:
+        blur(18px);
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+
+.logo-area {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.logo {
+
+    width: 43px;
+
+    height: 43px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #a796ff
+        );
+
+    font-size: 20px;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 0 30px
+        rgba(118,87,255,.25);
+}
+
+
+.logo-text strong {
+
+    display: block;
+
+    font-size: 17px;
+}
+
+
+.logo-text span {
+
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+
+.back-btn {
+
+    height: 42px;
+
+    padding: 0 16px;
+
+    border-radius: 12px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.04);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+
+.back-btn:hover {
+
+    background:
+        rgba(118,87,255,.12);
+
+}
+
+
+/* ================= MAIN ================= */
+
+main {
+
+    width:
+        min(1200px, 94%);
+
+    margin: auto;
+
+    padding-top: 28px;
+}
+
+
+/* ================= TITLE ================= */
+
+.top-section {
+
+    margin-bottom: 20px;
+}
+
+
+.badge {
+
+    display: inline-flex;
+
+    padding:
+        6px 11px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(118,87,255,.10);
+
+    border:
+        1px solid
+        rgba(118,87,255,.20);
+
+    color:
+        #b7aaff;
+
+    font-size: 10px;
+
+    margin-bottom: 9px;
+}
+
+
+.title {
+
+    font-size:
+        clamp(20px, 4vw, 30px);
+
+    line-height: 1.5;
+
+    margin-bottom: 5px;
+}
+
+
+.description {
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+
+/* ================= PDF CONTAINER ================= */
+
+.pdf-card {
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        #101016;
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,.35);
+}
+
+
+/* ================= TOOLBAR ================= */
+
+.toolbar {
+
+    min-height: 62px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding:
+        10px 15px;
+
+    background:
+        rgba(20,20,29,.95);
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+
+.file-info {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+}
+
+
+.pdf-icon {
+
+    width: 38px;
+
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,70,70,.10);
+
+    color:
+        #ff7777;
+
+    font-size: 18px;
+}
+
+
+.file-name {
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+.file-meta {
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    margin-top: 2px;
+}
+
+
+.toolbar-actions {
+
+    display: flex;
+
+    gap: 7px;
+
+    flex-shrink: 0;
+}
+
+
+.tool-btn {
+
+    height: 38px;
+
+    padding:
+        0 12px;
+
+    border-radius: 10px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.04);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 10px;
+
+    transition: .25s;
+}
+
+
+.tool-btn:hover {
+
+    background:
+        rgba(118,87,255,.12);
+
+    border-color:
+        rgba(118,87,255,.25);
+}
+
+
+.primary-btn {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary2)
+        );
+
+    border: 0;
+
+    font-weight: 700;
+}
+
+
+.primary-btn:hover {
+
+    filter: brightness(1.1);
+
+}
+
+
+/* ================= PDF VIEWER ================= */
+
+.viewer {
+
+    width: 100%;
+
+    height:
+        calc(100vh - 250px);
+
+    min-height: 550px;
+
+    background:
+        #25252b;
+
+    position: relative;
+}
+
+
+.viewer iframe {
+
+    width: 100%;
+
+    height: 100%;
+
+    border: 0;
+
+    display: block;
+
+}
+
+
+/* ================= PLACEHOLDER ================= */
+
+.placeholder {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    text-align: center;
+
+    background:
+        #111117;
+}
+
+
+.placeholder-icon {
+
+    width: 70px;
+
+    height: 70px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(118,87,255,.10);
+
+    color:
+        #a796ff;
+
+    font-size: 28px;
+
+    margin-bottom: 15px;
+}
+
+
+.placeholder h2 {
+
+    font-size: 17px;
+
+    margin-bottom: 6px;
+}
+
+
+.placeholder p {
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    max-width: 300px;
+
+    line-height: 1.8;
+}
+
+
+/* ================= INFO ================= */
+
+.info-card {
+
+    margin-top: 20px;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--card);
+}
+
+
+.info-title {
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    margin-bottom: 10px;
+}
+
+
+.info-text {
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 2;
+}
+
+
+/* ================= LOADING ================= */
+
+.loading {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #06060a;
+}
+
+
+.loader {
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 50%;
+
+    border:
+        3px solid
+        rgba(118,87,255,.15);
+
+    border-top-color:
+        var(--primary);
+
+    animation:
+        spin .8s linear infinite;
+}
+
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* ================= ERROR ================= */
+
+.error {
+
+    display: none;
+
+    text-align: center;
+
+    padding: 60px 20px;
+
+    border-radius: 20px;
+
+    border:
+        1px solid
+        rgba(255,96,118,.15);
+
+    background:
+        rgba(255,96,118,.04);
+}
+
+
+.error-icon {
+
+    font-size: 35px;
+
+    margin-bottom: 10px;
+}
+
+
+.error h2 {
+
+    font-size: 18px;
+
+    margin-bottom: 5px;
+}
+
+
+.error p {
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 650px) {
+
+    header {
+
+        padding: 0 4%;
+
+    }
+
+
+    .logo-text span {
+
+        display: none;
+
+    }
+
+
+    main {
+
+        width: 94%;
+
+        padding-top: 20px;
+
+    }
+
+
+    .toolbar {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+
+    .toolbar-actions {
+
+        width: 100%;
+
+    }
+
+
+    .tool-btn {
+
+        flex: 1;
+
+    }
+
+
+    .viewer {
+
+        height:
+            calc(100vh - 310px);
+
+        min-height: 450px;
+
+    }
+
+
+    .pdf-card {
+
+        border-radius: 14px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- LOADING -->
+
+<div
+    class="loading"
+    id="loading"
+>
+
+    <div class="loader"></div>
+
+</div>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo-area">
+
+        <div class="logo">
+            خ
+        </div>
+
+        <div class="logo-text">
+
+            <strong>
+                الخوارزمي
+            </strong>
+
+            <span>
+                منصة التعليم
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="back-btn"
+        onclick="goBack()"
+    >
+        ← العودة للدرس
+    </button>
+
+</header>
+
+
+<main>
+
+
+    <!-- TITLE -->
+
+    <section class="top-section">
+
+        <div class="badge">
+            📄 ملف PDF
+        </div>
+
+        <h1
+            class="title"
+            id="pdfTitle"
+        >
+            جاري تحميل الملف...
+        </h1>
+
+        <p
+            class="description"
+            id="pdfDescription"
+        >
+            يرجى الانتظار...
+        </p>
+
+    </section>
+
+
+    <!-- ERROR -->
+
+    <div
+        class="error"
+        id="errorBox"
+    >
+
+        <div class="error-icon">
+            ⚠️
+        </div>
+
+        <h2>
+            لم يتم العثور على الملف
+        </h2>
+
+        <p>
+            تأكد من أن رابط الملف صحيح.
+        </p>
+
+    </div>
+
+
+    <!-- PDF -->
+
+    <section
+        class="pdf-card"
+        id="pdfCard"
+    >
+
+
+        <!-- TOOLBAR -->
+
+        <div class="toolbar">
+
+
+            <div class="file-info">
+
+                <div class="pdf-icon">
+                    📄
+                </div>
+
+                <div>
+
+                    <div
+                        class="file-name"
+                        id="fileName"
+                    >
+                        ملف PDF
+                    </div>
+
+                    <div
+                        class="file-meta"
+                        id="fileMeta"
+                    >
+                        ملف تعليمي
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="toolbar-actions">
+
+                <button
+                    class="tool-btn"
+                    onclick="goBack()"
+                >
+                    ← رجوع
+                </button>
+
+                <button
+                    class="tool-btn primary-btn"
+                    id="downloadBtn"
+                >
+                    ⬇ تحميل
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- VIEWER -->
+
+        <div class="viewer">
+
+
+            <div
+                class="placeholder"
+                id="placeholder"
+            >
+
+                <div class="placeholder-icon">
+                    📄
+                </div>
+
+                <h2>
+                    جاري تحميل ملف PDF
+                </h2>
+
+                <p>
+                    لحظات وسيظهر الملف داخل الصفحة.
+                </p>
+
+            </div>
+
+
+            <iframe
+                id="pdfViewer"
+                style="display:none;"
+                title="عرض ملف PDF"
+            ></iframe>
+
+
+        </div>
+
+
+    </section>
+
+
+    <!-- INFO -->
+
+    <section class="info-card">
+
+        <div class="info-title">
+            📚 عن الملف
+        </div>
+
+        <p
+            class="info-text"
+            id="infoText"
+        >
+            لا يوجد وصف لهذا الملف.
+        </p>
+
+    </section>
+
+
+</main>
+
+
+<script>
+
+/*
+============================================================
+    PDF PAGE
+============================================================
+
+    الرابط:
+
+    pdf.html?id=PDF_ID
+
+    مثال:
+
+    pdf.html?id=123456
+
+    قاعدة البيانات لاحقًا:
+
+    files
+       ↓
+    id
+    title
+    description
+    file_url
+    course_id
+    lesson_id
+    file_type
+============================================================
+*/
+
+
+/* ================= PARAMS ================= */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const pdfId =
+    params.get("id");
+
+
+/* ================= ELEMENTS ================= */
+
+const loading =
+    document.getElementById(
+        "loading"
+    );
+
+const errorBox =
+    document.getElementById(
+        "errorBox"
+    );
+
+const pdfCard =
+    document.getElementById(
+        "pdfCard"
+    );
+
+const pdfViewer =
+    document.getElementById(
+        "pdfViewer"
+    );
+
+const placeholder =
+    document.getElementById(
+        "placeholder"
+    );
+
+const pdfTitle =
+    document.getElementById(
+        "pdfTitle"
+    );
+
+const pdfDescription =
+    document.getElementById(
+        "pdfDescription"
+    );
+
+const fileName =
+    document.getElementById(
+        "fileName"
+    );
+
+const fileMeta =
+    document.getElementById(
+        "fileMeta"
+    );
+
+const infoText =
+    document.getElementById(
+        "infoText"
+    );
+
+const downloadBtn =
+    document.getElementById(
+        "downloadBtn"
+    );
+
+
+/* ================= DEMO DATA ================= */
+
+/*
+    بيانات مؤقتة للواجهة فقط.
+
+    بعد ربط Supabase يتم استبدالها
+    بالبيانات القادمة من جدول files.
+*/
+
+const demoPDF = {
+
+    id: "demo",
+
+    title:
+        "ملخص الدرس الأول",
+
+    description:
+        "ملف PDF يحتوي على أهم النقاط والقوانين التي تم شرحها في الدرس.",
+
+    file_url:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+
+    file_name:
+        "ملخص الدرس الأول.pdf",
+
+    file_size:
+        "ملف PDF",
+
+    course_id:
+        "course-demo",
+
+    lesson_id:
+        "lesson-demo"
+
+};
+
+
+/* ================= LOAD ================= */
+
+async function loadPDF() {
+
+    loading.style.display =
+        "flex";
+
+
+    try {
+
+
+        if (!pdfId) {
+
+            throw new Error(
+                "Missing PDF ID"
+            );
+
+        }
+
+
+        /*
+        ========================================================
+            SUPABASE
+
+            لاحقًا:
+
+            const { data, error } =
+                await supabase
+                    .from("files")
+                    .select("*")
+                    .eq("id", pdfId)
+                    .single();
+
+        ========================================================
+        */
+
+
+        await new Promise(
+            resolve =>
+                setTimeout(
+                    resolve,
+                    500
+                )
+        );
+
+
+        const data =
+            demoPDF;
+
+
+        /* ================= DATA ================= */
+
+        pdfTitle.textContent =
+            data.title;
+
+
+        pdfDescription.textContent =
+            data.description ||
+            "ملف PDF تعليمي";
+
+
+        fileName.textContent =
+            data.file_name ||
+            data.title;
+
+
+        fileMeta.textContent =
+            data.file_size ||
+            "ملف PDF";
+
+
+        infoText.textContent =
+            data.description ||
+            "لا يوجد وصف لهذا الملف.";
+
+
+        /* ================= VIEW ================= */
+
+        pdfViewer.src =
+            data.file_url;
+
+
+        pdfViewer.style.display =
+            "block";
+
+
+        placeholder.style.display =
+            "none";
+
+
+        /* ================= DOWNLOAD ================= */
+
+        downloadBtn.onclick =
+            function () {
+
+                window.open(
+                    data.file_url,
+                    "_blank"
+                );
+
+            };
+
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        pdfCard.style.display =
+            "none";
+
+        errorBox.style.display =
+            "block";
+
+    }
+
+    finally {
+
+        loading.style.display =
+            "none";
+
+    }
+
+}
+
+
+/* ================= BACK ================= */
+
+function goBack() {
+
+    history.back();
+
+}
+
+
+/* ================= START ================= */
+
+loadPDF();
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+
+</body>
+
+</html>

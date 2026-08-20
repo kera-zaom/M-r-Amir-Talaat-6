@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>نتيجة الاختبار | الخوارزمي</title>
+
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Cairo", Arial, sans-serif;
+}
+
+:root {
+    --bg: #06060a;
+    --card: rgba(18,18,27,.88);
+    --border: rgba(255,255,255,.08);
+    --text: #fff;
+    --muted: #9999a8;
+    --primary: #7657ff;
+    --primary-dark: #4d35d9;
+    --success: #35d39a;
+    --danger: #ff6078;
+    --warning: #ffbd55;
+}
+
+body {
+
+    min-height: 100vh;
+
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 15% 0%,
+            rgba(118,87,255,.17),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(70,45,190,.12),
+            transparent 30%
+        ),
+        var(--bg);
+
+    padding-bottom: 60px;
+}
+
+
+/* ================= HEADER ================= */
+
+header {
+
+    height: 74px;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 5%;
+
+    background:
+        rgba(6,6,10,.88);
+
+    backdrop-filter:
+        blur(18px);
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+
+.logo-area {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.logo {
+
+    width: 43px;
+
+    height: 43px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #a796ff
+        );
+
+    font-size: 20px;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 0 30px
+        rgba(118,87,255,.25);
+}
+
+
+.logo-text strong {
+
+    display: block;
+
+    font-size: 17px;
+}
+
+
+.logo-text span {
+
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+
+.back-btn {
+
+    height: 40px;
+
+    padding: 0 15px;
+
+    border-radius: 10px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.04);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+
+.back-btn:hover {
+
+    background:
+        rgba(118,87,255,.12);
+
+}
+
+
+/* ================= MAIN ================= */
+
+main {
+
+    width:
+        min(850px, 94%);
+
+    margin: auto;
+
+    padding-top: 35px;
+}
+
+
+/* ================= HERO ================= */
+
+.result-hero {
+
+    text-align: center;
+
+    padding: 35px 20px 28px;
+
+    border-radius: 22px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--card);
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,.25);
+
+    margin-bottom: 18px;
+}
+
+
+.success-icon {
+
+    width: 72px;
+
+    height: 72px;
+
+    display: grid;
+
+    place-items: center;
+
+    margin:
+        0 auto 15px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(53,211,154,.10);
+
+    border:
+        1px solid
+        rgba(53,211,154,.22);
+
+    color:
+        var(--success);
+
+    font-size: 31px;
+}
+
+
+.result-hero.failed
+.success-icon {
+
+    background:
+        rgba(255,96,120,.10);
+
+    border-color:
+        rgba(255,96,120,.22);
+
+    color:
+        var(--danger);
+}
+
+
+.result-title {
+
+    font-size:
+        clamp(22px, 5vw, 32px);
+
+    font-weight: 900;
+
+    margin-bottom: 5px;
+}
+
+
+.result-subtitle {
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+
+/* ================= SCORE ================= */
+
+.score-circle {
+
+    width: 175px;
+
+    height: 175px;
+
+    margin: 28px auto;
+
+    position: relative;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            var(--primary) 0deg,
+            var(--primary) 0deg,
+            rgba(255,255,255,.07) 0deg
+        );
+}
+
+
+.score-circle::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 143px;
+
+    height: 143px;
+
+    border-radius: 50%;
+
+    background:
+        #101017;
+
+    border:
+        1px solid var(--border);
+}
+
+
+.score-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+}
+
+
+.score-number {
+
+    font-size: 38px;
+
+    font-weight: 900;
+
+    line-height: 1;
+}
+
+
+.score-label {
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    margin-top: 7px;
+}
+
+
+/* ================= STATS ================= */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-top: 15px;
+}
+
+
+.stat {
+
+    padding: 17px 10px;
+
+    border-radius: 14px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.stat-value {
+
+    font-size: 22px;
+
+    font-weight: 900;
+}
+
+
+.stat-label {
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    margin-top: 3px;
+}
+
+
+.stat.correct
+.stat-value {
+
+    color:
+        var(--success);
+}
+
+
+.stat.wrong
+.stat-value {
+
+    color:
+        var(--danger);
+}
+
+
+.stat.skipped
+.stat-value {
+
+    color:
+        var(--warning);
+}
+
+
+/* ================= EXAM INFO ================= */
+
+.info-card {
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--card);
+
+    margin-bottom: 18px;
+}
+
+
+.info-title {
+
+    font-size: 15px;
+
+    font-weight: 900;
+
+    margin-bottom: 14px;
+}
+
+
+.info-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 10px;
+}
+
+
+.info-item {
+
+    padding: 12px;
+
+    border-radius: 11px;
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.info-item span {
+
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    margin-bottom: 4px;
+}
+
+
+.info-item strong {
+
+    font-size: 11px;
+}
+
+
+/* ================= ACTIONS ================= */
+
+.actions {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+}
+
+
+.action-btn {
+
+    min-height: 48px;
+
+    border-radius: 12px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.04);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: 800;
+
+    transition: .25s;
+}
+
+
+.action-btn:hover {
+
+    background:
+        rgba(118,87,255,.10);
+
+}
+
+
+.action-primary {
+
+    border: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-dark)
+        );
+}
+
+
+/* ================= ANSWERS ================= */
+
+.answers-card {
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--card);
+}
+
+
+.answer-item {
+
+    padding: 15px;
+
+    border-radius: 13px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.02);
+
+    margin-top: 10px;
+}
+
+
+.answer-head {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 8px;
+}
+
+
+.answer-number {
+
+    font-size: 11px;
+
+    font-weight: 900;
+}
+
+
+.answer-status {
+
+    padding:
+        4px 8px;
+
+    border-radius: 7px;
+
+    font-size: 8px;
+
+    font-weight: 800;
+}
+
+
+.answer-status.correct {
+
+    color:
+        #67e4b4;
+
+    background:
+        rgba(53,211,154,.09);
+}
+
+
+.answer-status.wrong {
+
+    color:
+        #ff8798;
+
+    background:
+        rgba(255,96,120,.09);
+}
+
+
+.answer-status.skipped {
+
+    color:
+        #ffd27e;
+
+    background:
+        rgba(255,189,85,.09);
+}
+
+
+.answer-question {
+
+    font-size: 12px;
+
+    line-height: 1.8;
+
+    margin-bottom: 8px;
+}
+
+
+.answer-value {
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    line-height: 1.8;
+}
+
+
+.answer-correct {
+
+    color:
+        var(--success);
+
+    font-size: 10px;
+
+    margin-top: 5px;
+}
+
+
+/* ================= LOADING ================= */
+
+.loading {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #06060a;
+}
+
+
+.loader {
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 50%;
+
+    border:
+        3px solid
+        rgba(118,87,255,.15);
+
+    border-top-color:
+        var(--primary);
+
+    animation:
+        spin .8s linear infinite;
+}
+
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 600px) {
+
+    header {
+
+        padding: 0 4%;
+
+    }
+
+
+    .logo-text span {
+
+        display: none;
+
+    }
+
+
+    main {
+
+        width: 94%;
+
+        padding-top: 20px;
+
+    }
+
+
+    .stats {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+    }
+
+
+    .stat-value {
+
+        font-size: 18px;
+
+    }
+
+
+    .info-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .actions {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .score-circle {
+
+        width: 155px;
+
+        height: 155px;
+
+    }
+
+
+    .score-circle::before {
+
+        width: 127px;
+
+        height: 127px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- LOADING -->
+
+<div
+    class="loading"
+    id="loading"
+>
+
+    <div class="loader"></div>
+
+</div>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo-area">
+
+        <div class="logo">
+            خ
+        </div>
+
+        <div class="logo-text">
+
+            <strong>
+                الخوارزمي
+            </strong>
+
+            <span>
+                منصة التعليم
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="back-btn"
+        onclick="goCourses()"
+    >
+        الكورسات
+    </button>
+
+</header>
+
+
+<main>
+
+
+    <!-- RESULT HERO -->
+
+    <section
+        class="result-hero"
+        id="resultHero"
+    >
+
+        <div
+            class="success-icon"
+            id="resultIcon"
+        >
+            ✓
+        </div>
+
+
+        <h1
+            class="result-title"
+            id="resultTitle"
+        >
+            جاري تحميل النتيجة...
+        </h1>
+
+
+        <p
+            class="result-subtitle"
+            id="resultSubtitle"
+        >
+            يرجى الانتظار...
+        </p>
+
+
+        <!-- SCORE -->
+
+        <div
+            class="score-circle"
+            id="scoreCircle"
+        >
+
+            <div class="score-content">
+
+                <div
+                    class="score-number"
+                    id="scoreNumber"
+                >
+                    0%
+                </div>
+
+                <div class="score-label">
+                    النتيجة
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATS -->
+
+        <div class="stats">
+
+
+            <div class="stat correct">
+
+                <div
+                    class="stat-value"
+                    id="correctCount"
+                >
+                    0
+                </div>
+
+                <div class="stat-label">
+                    إجابات صحيحة
+                </div>
+
+            </div>
+
+
+            <div class="stat wrong">
+
+                <div
+                    class="stat-value"
+                    id="wrongCount"
+                >
+                    0
+                </div>
+
+                <div class="stat-label">
+                    إجابات خاطئة
+                </div>
+
+            </div>
+
+
+            <div class="stat skipped">
+
+                <div
+                    class="stat-value"
+                    id="skippedCount"
+                >
+                    0
+                </div>
+
+                <div class="stat-label">
+                    بدون إجابة
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- EXAM INFO -->
+
+    <section class="info-card">
+
+        <div class="info-title">
+            📋 تفاصيل الاختبار
+        </div>
+
+
+        <div class="info-grid">
+
+
+            <div class="info-item">
+
+                <span>
+                    اسم الاختبار
+                </span>
+
+                <strong id="examName">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <span>
+                    الطالب
+                </span>
+
+                <strong id="studentName">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <span>
+                    الدرجة
+                </span>
+
+                <strong id="scoreDetails">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <span>
+                    تاريخ التسليم
+                </span>
+
+                <strong id="submitDate">
+                    —
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ACTIONS -->
+
+    <section class="actions">
+
+        <button
+            class="action-btn action-primary"
+            onclick="goCourses()"
+        >
+            📚 العودة للكورسات
+        </button>
+
+
+        <button
+            class="action-btn"
+            onclick="goProfile()"
+        >
+            👤 حسابي
+        </button>
+
+    </section>
+
+
+    <!-- ANSWERS -->
+
+    <section class="answers-card">
+
+        <div class="info-title">
+            📝 مراجعة الإجابات
+        </div>
+
+
+        <div id="answersContainer"></div>
+
+    </section>
+
+
+</main>
+
+
+<script>
+
+/*
+============================================================
+    RESULT PAGE
+============================================================
+
+    الرابط:
+
+    result.html?exam_id=EXAM_ID
+
+    لاحقًا سيتم جلب النتيجة من Supabase.
+
+    جدول النتائج:
+
+    exam_results
+
+    مثال:
+
+    id
+    exam_id
+    student_id
+    score
+    total_score
+    percentage
+    correct_answers
+    wrong_answers
+    skipped_answers
+    submitted_at
+
+============================================================
+*/
+
+
+/* ================= PARAMS ================= */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+
+const examId =
+    params.get("exam_id");
+
+
+/* ================= ELEMENTS ================= */
+
+const loading =
+    document.getElementById(
+        "loading"
+    );
+
+const resultHero =
+    document.getElementById(
+        "resultHero"
+    );
+
+const resultIcon =
+    document.getElementById(
+        "resultIcon"
+    );
+
+const resultTitle =
+    document.getElementById(
+        "resultTitle"
+    );
+
+const resultSubtitle =
+    document.getElementById(
+        "resultSubtitle"
+    );
+
+const scoreCircle =
+    document.getElementById(
+        "scoreCircle"
+    );
+
+const scoreNumber =
+    document.getElementById(
+        "scoreNumber"
+    );
+
+const correctCount =
+    document.getElementById(
+        "correctCount"
+    );
+
+const wrongCount =
+    document.getElementById(
+        "wrongCount"
+    );
+
+const skippedCount =
+    document.getElementById(
+        "skippedCount"
+    );
+
+const examName =
+    document.getElementById(
+        "examName"
+    );
+
+const studentName =
+    document.getElementById(
+        "studentName"
+    );
+
+const scoreDetails =
+    document.getElementById(
+        "scoreDetails"
+    );
+
+const submitDate =
+    document.getElementById(
+        "submitDate"
+    );
+
+const answersContainer =
+    document.getElementById(
+        "answersContainer"
+    );
+
+
+/* ================= DEMO DATA ================= */
+
+/*
+    مؤقتًا فقط.
+
+    بعد ربط Supabase سيتم جلب
+    البيانات الحقيقية من قاعدة البيانات.
+*/
+
+const demoResult = {
+
+    exam_name:
+        "اختبار الوحدة الأولى",
+
+    student_name:
+        "اسم الطالب",
+
+    score:
+        8,
+
+    total_score:
+        10,
+
+    percentage:
+        80,
+
+    correct_answers:
+        8,
+
+    wrong_answers:
+        2,
+
+    skipped_answers:
+        0,
+
+    submitted_at:
+        new Date(),
+
+    answers: [
+
+        {
+
+            number: 1,
+
+            question:
+                "ما ناتج 2 + 2 ؟",
+
+            answer:
+                "4",
+
+            correct_answer:
+                "4",
+
+            status:
+                "correct"
+
+        },
+
+
+        {
+
+            number: 2,
+
+            question:
+                "ما ناتج 5 × 3 ؟",
+
+            answer:
+                "12",
+
+            correct_answer:
+                "15",
+
+            status:
+                "wrong"
+
+        }
+
+    ]
+
+};
+
+
+/* ================= LOAD RESULT ================= */
+
+async function loadResult() {
+
+    loading.style.display =
+        "flex";
+
+
+    try {
+
+        if (!examId) {
+
+            throw new Error(
+                "Missing exam ID"
+            );
+
+        }
+
+
+        /*
+        ========================================================
+            SUPABASE
+
+            لاحقًا:
+
+            const { data, error } =
+                await supabase
+                    .from("exam_results")
+                    .select(`
+                        *,
+                        exams (
+                            title
+                        )
+                    `)
+                    .eq("exam_id", examId)
+                    .eq("student_id", user.id)
+                    .single();
+
+        ========================================================
+        */
+
+
+        await new Promise(
+            resolve =>
+                setTimeout(
+                    resolve,
+                    500
+                )
+        );
+
+
+        const data =
+            demoResult;
+
+
+        renderResult(
+            data
+        );
+
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        resultTitle.textContent =
+            "تعذر تحميل النتيجة";
+
+        resultSubtitle.textContent =
+            "حدث خطأ أثناء تحميل بيانات الاختبار.";
+
+    }
+
+    finally {
+
+        loading.style.display =
+            "none";
+
+    }
+
+}
+
+
+/* ================= RENDER ================= */
+
+function renderResult(data) {
+
+    const percentage =
+        Number(
+            data.percentage || 0
+        );
+
+
+    /* ================= SCORE ================= */
+
+    scoreNumber.textContent =
+        percentage + "%";
+
+
+    correctCount.textContent =
+        data.correct_answers || 0;
+
+
+    wrongCount.textContent =
+        data.wrong_answers || 0;
+
+
+    skippedCount.textContent =
+        data.skipped_answers || 0;
+
+
+    /* ================= CIRCLE ================= */
+
+    const degrees =
+        Math.max(
+            0,
+            Math.min(
+                100,
+                percentage
+            )
+        ) * 3.6;
+
+
+    scoreCircle.style.background = `
+        conic-gradient(
+            var(--primary) ${degrees}deg,
+            rgba(255,255,255,.07) ${degrees}deg
+        )
+    `;
+
+
+    /* ================= STATUS ================= */
+
+    if (
+        percentage >= 50
+    ) {
+
+        resultIcon.textContent =
+            "✓";
+
+        resultTitle.textContent =
+            "أحسنت! 🎉";
+
+        resultSubtitle.textContent =
+            "لقد اجتزت الاختبار بنجاح.";
+
+    }
+
+    else {
+
+        resultHero.classList.add(
+            "failed"
+        );
+
+        resultIcon.textContent =
+            "×";
+
+        resultTitle.textContent =
+            "حاول مرة أخرى 💪";
+
+        resultSubtitle.textContent =
+            "يمكنك مراجعة الدروس والمحاولة من جديد.";
+
+    }
+
+
+    /* ================= INFO ================= */
+
+    examName.textContent =
+        data.exam_name || "—";
+
+
+    studentName.textContent =
+        data.student_name || "—";
+
+
+    scoreDetails.textContent =
+        `${data.score || 0} / ${data.total_score || 0}`;
+
+
+    submitDate.textContent =
+        formatDate(
+            data.submitted_at
+        );
+
+
+    /* ================= ANSWERS ================= */
+
+    renderAnswers(
+        data.answers || []
+    );
+
+}
+
+
+/* ================= ANSWERS ================= */
+
+function renderAnswers(answers) {
+
+    answersContainer.innerHTML =
+        "";
+
+
+    if (
+        answers.length === 0
+    ) {
+
+        answersContainer.innerHTML = `
+
+            <div
+                style="
+                    text-align:center;
+                    color:#9999a8;
+                    font-size:11px;
+                    padding:25px;
+                "
+            >
+                لا توجد تفاصيل للإجابات حاليًا.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    answers.forEach(
+        answer => {
+
+            let statusText =
+                "بدون إجابة";
+
+
+            if (
+                answer.status ===
+                "correct"
+            ) {
+
+                statusText =
+                    "إجابة صحيحة";
+
+            }
+
+            else if (
+                answer.status ===
+                "wrong"
+            ) {
+
+                statusText =
+                    "إجابة خاطئة";
+
+            }
+
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                "answer-item";
+
+
+            item.innerHTML = `
+
+                <div class="answer-head">
+
+                    <span class="answer-number">
+                        السؤال ${answer.number}
+                    </span>
+
+                    <span
+                        class="
+                            answer-status
+                            ${answer.status}
+                        "
+                    >
+                        ${statusText}
+                    </span>
+
+                </div>
+
+
+                <div class="answer-question">
+                    ${escapeHTML(
+                        answer.question
+                    )}
+                </div>
+
+
+                <div class="answer-value">
+                    إجابتك:
+                    ${escapeHTML(
+                        answer.answer ||
+                        "بدون إجابة"
+                    )}
+                </div>
+
+
+                ${
+                    answer.status === "wrong"
+                    ?
+                    `
+                        <div class="answer-correct">
+                            الإجابة الصحيحة:
+                            ${escapeHTML(
+                                answer.correct_answer
+                            )}
+                        </div>
+                    `
+                    :
+                    ""
+                }
+
+            `;
+
+
+            answersContainer.appendChild(
+                item
+            );
+
+        }
+    );
+
+}
+
+
+/* ================= DATE ================= */
+
+function formatDate(date) {
+
+    if (!date) {
+
+        return "—";
+
+    }
+
+
+    const d =
+        new Date(date);
+
+
+    if (
+        Number.isNaN(
+            d.getTime()
+        )
+    ) {
+
+        return "—";
+
+    }
+
+
+    return d.toLocaleDateString(
+        "ar-EG",
+        {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        }
+    );
+
+}
+
+
+/* ================= NAVIGATION ================= */
+
+function goCourses() {
+
+    window.location.href =
+        "courses.html";
+
+}
+
+
+function goProfile() {
+
+    window.location.href =
+        "profile.html";
+
+}
+
+
+/* ================= SECURITY ================= */
+
+function escapeHTML(value) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* ================= START ================= */
+
+loadResult();
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>اختبار Supabase</title>
+
+</head>
+
+<body>
+
+<h1 id="status">
+جاري الاتصال...
+</h1>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+    "https://fdqolsygigqukejlwcon.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_fO1Xb-dtqq8rnGuvXcPahg_zz9WeW9x";
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+async function testConnection(){
+
+    const {
+        data,
+        error
+    } = await supabaseClient
+        .from("site_settings")
+        .select("*")
+        .limit(1);
+
+
+    if(error){
+
+        console.error(error);
+
+        document.getElementById("status")
+            .textContent =
+            "❌ حصل خطأ: " + error.message;
+
+        return;
+    }
+
+
+    document.getElementById("status")
+        .textContent =
+        "✅ Supabase متصل ويعمل بنجاح";
+
+}
+
+
+testConnection();
+
+</script>
+
+</body>
+
+</html>

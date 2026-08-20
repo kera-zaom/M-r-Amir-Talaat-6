@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>إضافة كورس | الخوارزمي</title>
+
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Cairo", Arial, sans-serif;
+}
+
+:root {
+    --bg: #07070b;
+    --card: rgba(20,20,30,.78);
+    --border: rgba(255,255,255,.08);
+    --text: #fff;
+    --muted: #9999a8;
+    --primary: #7657ff;
+    --primary2: #4d35d9;
+    --success: #35d39a;
+    --danger: #ff6076;
+}
+
+body {
+    min-height: 100vh;
+
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 15% 5%,
+            rgba(118,87,255,.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(75,45,190,.12),
+            transparent 30%
+        ),
+        var(--bg);
+
+    padding-bottom: 70px;
+}
+
+/* HEADER */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    background: rgba(7,7,11,.84);
+
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 44px;
+    height: 44px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 14px;
+
+    font-size: 21px;
+    font-weight: 900;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #a68dff
+        );
+
+    box-shadow:
+        0 0 30px rgba(118,87,255,.3);
+}
+
+.brand strong {
+    display: block;
+    font-size: 18px;
+}
+
+.brand span {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.back-btn {
+    height: 42px;
+
+    padding: 0 16px;
+
+    border-radius: 12px;
+
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,.04);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+.back-btn:hover {
+    background: rgba(118,87,255,.12);
+}
+
+/* MAIN */
+
+main {
+    width: min(1050px, 92%);
+    margin: auto;
+
+    padding-top: 45px;
+}
+
+.page-title {
+    margin-bottom: 25px;
+}
+
+.badge {
+    display: inline-flex;
+
+    padding: 7px 13px;
+
+    border-radius: 30px;
+
+    background: rgba(118,87,255,.09);
+
+    border: 1px solid rgba(118,87,255,.22);
+
+    color: #b7aaff;
+
+    font-size: 12px;
+
+    margin-bottom: 12px;
+}
+
+.page-title h1 {
+    font-size: clamp(27px,4vw,38px);
+
+    margin-bottom: 8px;
+}
+
+.page-title p {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+/* LAYOUT */
+
+.layout {
+    display: grid;
+
+    grid-template-columns: 1fr 370px;
+
+    gap: 22px;
+
+    align-items: start;
+}
+
+/* CARD */
+
+.card {
+    padding: 24px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 22px;
+
+    background: var(--card);
+
+    backdrop-filter: blur(15px);
+}
+
+.card-title {
+    font-size: 18px;
+
+    font-weight: 800;
+
+    margin-bottom: 22px;
+}
+
+/* FORM */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 12px;
+
+    color: #d2d2dc;
+
+    font-weight: 700;
+}
+
+.required {
+    color: var(--danger);
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+
+    border: 1px solid var(--border);
+
+    outline: none;
+
+    border-radius: 13px;
+
+    background: rgba(255,255,255,.045);
+
+    color: white;
+
+    transition: .25s;
+}
+
+input,
+select {
+    height: 50px;
+
+    padding: 0 15px;
+}
+
+textarea {
+    min-height: 120px;
+
+    resize: vertical;
+
+    padding: 13px 15px;
+
+    line-height: 1.8;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #696976;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: rgba(118,87,255,.65);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(118,87,255,.08);
+}
+
+select {
+    appearance: none;
+
+    cursor: pointer;
+}
+
+select option {
+    background: #16151f;
+    color: white;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper::after {
+    content: "⌄";
+
+    position: absolute;
+
+    left: 16px;
+
+    top: 50%;
+
+    transform: translateY(-55%);
+
+    color: #aaa;
+
+    pointer-events: none;
+}
+
+.row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+/* IMAGE */
+
+.image-upload {
+    position: relative;
+
+    width: 100%;
+
+    height: 190px;
+
+    overflow: hidden;
+
+    border: 1px dashed rgba(118,87,255,.35);
+
+    border-radius: 16px;
+
+    background:
+        rgba(118,87,255,.035);
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+.image-upload:hover {
+    border-color: var(--primary);
+
+    background:
+        rgba(118,87,255,.07);
+}
+
+.image-upload input {
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0;
+
+    cursor: pointer;
+
+    width: 100%;
+    height: 100%;
+}
+
+.upload-placeholder {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    color: var(--muted);
+}
+
+.upload-icon {
+    width: 55px;
+    height: 55px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 16px;
+
+    background: rgba(118,87,255,.1);
+
+    color: #a796ff;
+
+    font-size: 25px;
+
+    margin-bottom: 10px;
+}
+
+.upload-placeholder strong {
+    color: white;
+
+    font-size: 13px;
+
+    margin-bottom: 4px;
+}
+
+.upload-placeholder span {
+    font-size: 10px;
+}
+
+.image-preview {
+    display: none;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+/* BUTTON */
+
+.publish-btn {
+    width: 100%;
+
+    height: 51px;
+
+    border: 0;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary2)
+        );
+
+    color: white;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+    margin-top: 5px;
+}
+
+.publish-btn:hover {
+    transform: translateY(-1px);
+
+    filter: brightness(1.12);
+
+    box-shadow:
+        0 12px 30px
+        rgba(118,87,255,.2);
+}
+
+.publish-btn:disabled {
+    opacity: .6;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+/* PREVIEW */
+
+.preview {
+    position: sticky;
+    top: 100px;
+}
+
+.course-preview {
+    overflow: hidden;
+
+    border-radius: 17px;
+
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,.025);
+}
+
+.preview-image {
+    width: 100%;
+    height: 190px;
+
+    object-fit: cover;
+
+    display: block;
+
+    background:
+        linear-gradient(
+            135deg,
+            #171421,
+            #282043
+        );
+}
+
+.preview-body {
+    padding: 18px;
+}
+
+.preview-grade {
+    display: inline-block;
+
+    padding: 5px 9px;
+
+    border-radius: 8px;
+
+    background: rgba(118,87,255,.12);
+
+    color: #b7aaff;
+
+    font-size: 10px;
+
+    margin-bottom: 9px;
+}
+
+.preview-title {
+    font-size: 18px;
+
+    font-weight: 800;
+
+    margin-bottom: 8px;
+
+    word-break: break-word;
+}
+
+.preview-description {
+    color: var(--muted);
+
+    font-size: 11px;
+
+    line-height: 1.8;
+
+    min-height: 40px;
+}
+
+.preview-stats {
+    display: flex;
+
+    gap: 8px;
+
+    margin-top: 15px;
+}
+
+.preview-stat {
+    padding: 8px 10px;
+
+    border-radius: 9px;
+
+    background: rgba(255,255,255,.045);
+
+    color: #aaa;
+
+    font-size: 10px;
+}
+
+/* ALERT */
+
+.alert {
+    display: none;
+
+    padding: 13px 15px;
+
+    border-radius: 12px;
+
+    font-size: 12px;
+
+    margin-bottom: 18px;
+}
+
+.alert.success {
+    background: rgba(53,211,154,.08);
+
+    border: 1px solid rgba(53,211,154,.2);
+
+    color: #72e8bd;
+}
+
+.alert.error {
+    background: rgba(255,96,118,.08);
+
+    border: 1px solid rgba(255,96,118,.2);
+
+    color: #ff9baa;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .preview {
+        position: static;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 0 5%;
+    }
+
+    .brand span {
+        display: none;
+    }
+
+    main {
+        width: 92%;
+
+        padding-top: 30px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .row {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="brand">
+
+        <div class="logo">
+            خ
+        </div>
+
+        <div>
+
+            <strong>
+                الخوارزمي
+            </strong>
+
+            <span>
+                لوحة تحكم الأدمن
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="back-btn"
+        onclick="goAdmin()"
+    >
+        ← لوحة التحكم
+    </button>
+
+</header>
+
+
+<main>
+
+
+<div class="page-title">
+
+    <div class="badge">
+        ⚙️ إدارة المنصة
+    </div>
+
+    <h1>
+        إضافة كورس جديد
+    </h1>
+
+    <p>
+        أضف بيانات الكورس والصورة والصف الدراسي،
+        وبعد النشر سيظهر الكورس للطلاب تلقائيًا.
+    </p>
+
+</div>
+
+
+<div class="layout">
+
+
+<!-- FORM -->
+
+<div class="card">
+
+    <div class="card-title">
+        📚 بيانات الكورس
+    </div>
+
+
+    <div
+        class="alert"
+        id="alert"
+    ></div>
+
+
+    <form
+        id="courseForm"
+    >
+
+
+        <!-- TITLE -->
+
+        <div class="form-group">
+
+            <label>
+                اسم الكورس
+                <span>*</span>
+            </label>
+
+            <input
+                type="text"
+                id="title"
+                placeholder="مثال: التفاضل والتكامل"
+                maxlength="150"
+                required
+            >
+
+        </div>
+
+
+        <!-- GRADE + DURATION -->
+
+        <div class="row">
+
+
+            <div class="form-group">
+
+                <label>
+                    الصف الدراسي
+                    <span>*</span>
+                </label>
+
+                <div class="select-wrapper">
+
+                    <select
+                        id="grade"
+                        required
+                    >
+
+                        <option value="">
+                            اختر الصف
+                        </option>
+
+                        <option value="اولى اعدادي">
+                            أولى إعدادي
+                        </option>
+
+                        <option value="ثانية اعدادي">
+                            ثانية إعدادي
+                        </option>
+
+                        <option value="ثالثة اعدادي">
+                            ثالثة إعدادي
+                        </option>
+
+                        <option value="اولى ثانوي">
+                            أولى ثانوي
+                        </option>
+
+                        <option value="ثانية ثانوي">
+                            ثانية ثانوي
+                        </option>
+
+                        <option value="ثالثة ثانوي">
+                            ثالثة ثانوي
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    مدة الكورس
+                </label>
+
+                <input
+                    type="text"
+                    id="duration"
+                    placeholder="مثال: 12 ساعة"
+                    maxlength="50"
+                >
+
+            </div>
+
+
+        </div>
+
+
+        <!-- DESCRIPTION -->
+
+        <div class="form-group">
+
+            <label>
+                وصف الكورس
+            </label>
+
+            <textarea
+                id="description"
+                placeholder="اكتب وصفًا مختصرًا عن الكورس..."
+                maxlength="1000"
+            ></textarea>
+
+        </div>
+
+
+        <!-- LESSON COUNT -->
+
+        <div class="form-group">
+
+            <label>
+                عدد الدروس المتوقع
+            </label>
+
+            <input
+                type="number"
+                id="lessonsCount"
+                placeholder="مثال: 20"
+                min="0"
+                max="10000"
+            >
+
+        </div>
+
+
+        <!-- IMAGE -->
+
+        <div class="form-group">
+
+            <label>
+                صورة الكورس
+                <span>*</span>
+            </label>
+
+            <div class="image-upload">
+
+                <input
+                    type="file"
+                    id="courseImage"
+                    accept="image/png,image/jpeg,image/webp"
+                    required
+                >
+
+                <div
+                    class="upload-placeholder"
+                    id="uploadPlaceholder"
+                >
+
+                    <div class="upload-icon">
+                        🖼️
+                    </div>
+
+                    <strong>
+                        اضغط لاختيار صورة الكورس
+                    </strong>
+
+                    <span>
+                        PNG / JPG / WEBP — يفضل صورة 16:9
+                    </span>
+
+                </div>
+
+
+                <img
+                    class="image-preview"
+                    id="imagePreview"
+                    alt="معاينة صورة الكورس"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- PUBLISH -->
+
+        <button
+            class="publish-btn"
+            id="publishBtn"
+            type="submit"
+        >
+            🚀 نشر الكورس
+        </button>
+
+
+    </form>
+
+</div>
+
+
+<!-- PREVIEW -->
+
+<div class="card preview">
+
+    <div class="card-title">
+        👁️ معاينة الكورس
+    </div>
+
+
+    <div class="course-preview">
+
+
+        <img
+            src="https://placehold.co/800x450/171421/ffffff?text=Course"
+            class="preview-image"
+            id="previewImage"
+            alt="معاينة"
+        >
+
+
+        <div class="preview-body">
+
+            <div
+                class="preview-grade"
+                id="previewGrade"
+            >
+                اختر الصف
+            </div>
+
+
+            <div
+                class="preview-title"
+                id="previewTitle"
+            >
+                اسم الكورس
+            </div>
+
+
+            <div
+                class="preview-description"
+                id="previewDescription"
+            >
+                وصف الكورس سيظهر هنا...
+            </div>
+
+
+            <div class="preview-stats">
+
+                <div class="preview-stat">
+                    📚
+                    <span id="previewLessons">
+                        0 درس
+                    </span>
+                </div>
+
+                <div class="preview-stat">
+                    ⏱️
+                    <span id="previewDuration">
+                        —
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+</main>
+
+
+<script>
+
+/*
+============================================================
+    ADD COURSE
+    واجهة جاهزة للربط مع Supabase
+
+    عند الربط الحقيقي:
+
+    1. الصورة:
+       Supabase Storage
+
+    2. بيانات الكورس:
+       courses table
+
+    3. بعد النجاح:
+       يظهر في courses.html
+============================================================
+*/
+
+
+const form =
+    document.getElementById("courseForm");
+
+const titleInput =
+    document.getElementById("title");
+
+const gradeInput =
+    document.getElementById("grade");
+
+const durationInput =
+    document.getElementById("duration");
+
+const descriptionInput =
+    document.getElementById("description");
+
+const lessonsInput =
+    document.getElementById("lessonsCount");
+
+const imageInput =
+    document.getElementById("courseImage");
+
+const imagePreview =
+    document.getElementById("imagePreview");
+
+const uploadPlaceholder =
+    document.getElementById("uploadPlaceholder");
+
+const previewImage =
+    document.getElementById("previewImage");
+
+const previewTitle =
+    document.getElementById("previewTitle");
+
+const previewGrade =
+    document.getElementById("previewGrade");
+
+const previewDescription =
+    document.getElementById("previewDescription");
+
+const previewLessons =
+    document.getElementById("previewLessons");
+
+const previewDuration =
+    document.getElementById("previewDuration");
+
+const publishBtn =
+    document.getElementById("publishBtn");
+
+const alertBox =
+    document.getElementById("alert");
+
+
+/* ================= NAVIGATION ================= */
+
+function goAdmin() {
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+/* ================= ALERT ================= */
+
+function showAlert(message, type) {
+
+    alertBox.textContent =
+        message;
+
+    alertBox.className =
+        "alert " + type;
+
+    alertBox.style.display =
+        "block";
+
+}
+
+
+function hideAlert() {
+
+    alertBox.style.display =
+        "none";
+
+}
+
+
+/* ================= LIVE PREVIEW ================= */
+
+titleInput.addEventListener(
+    "input",
+    function () {
+
+        previewTitle.textContent =
+            this.value.trim() ||
+            "اسم الكورس";
+
+    }
+);
+
+
+gradeInput.addEventListener(
+    "change",
+    function () {
+
+        previewGrade.textContent =
+            this.value ||
+            "اختر الصف";
+
+    }
+);
+
+
+durationInput.addEventListener(
+    "input",
+    function () {
+
+        previewDuration.textContent =
+            this.value.trim() ||
+            "—";
+
+    }
+);
+
+
+descriptionInput.addEventListener(
+    "input",
+    function () {
+
+        previewDescription.textContent =
+            this.value.trim() ||
+            "وصف الكورس سيظهر هنا...";
+
+    }
+);
+
+
+lessonsInput.addEventListener(
+    "input",
+    function () {
+
+        previewLessons.textContent =
+            (
+                Number(this.value) || 0
+            ) + " درس";
+
+    }
+);
+
+
+/* ================= IMAGE PREVIEW ================= */
+
+imageInput.addEventListener(
+    "change",
+    function () {
+
+        const file =
+            this.files[0];
+
+        if (!file) {
+
+            imagePreview.style.display =
+                "none";
+
+            uploadPlaceholder.style.display =
+                "flex";
+
+            return;
+
+        }
+
+
+        if (
+            !file.type.startsWith(
+                "image/"
+            )
+        ) {
+
+            showAlert(
+                "من فضلك اختر ملف صورة صحيح.",
+                "error"
+            );
+
+            this.value = "";
+
+            return;
+
+        }
+
+
+        const maxSize =
+            5 * 1024 * 1024;
+
+
+        if (file.size > maxSize) {
+
+            showAlert(
+                "حجم الصورة يجب ألا يتجاوز 5MB.",
+                "error"
+            );
+
+            this.value = "";
+
+            return;
+
+        }
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function (event) {
+
+                const src =
+                    event.target.result;
+
+
+                imagePreview.src =
+                    src;
+
+
+                previewImage.src =
+                    src;
+
+
+                imagePreview.style.display =
+                    "block";
+
+
+                uploadPlaceholder.style.display =
+                    "none";
+
+            };
+
+
+        reader.readAsDataURL(file);
+
+    }
+);
+
+
+/* ================= SUBMIT ================= */
+
+form.addEventListener(
+    "submit",
+    async function (event) {
+
+        event.preventDefault();
+
+        hideAlert();
+
+
+        const title =
+            titleInput.value.trim();
+
+        const grade =
+            gradeInput.value;
+
+        const duration =
+            durationInput.value.trim();
+
+        const description =
+            descriptionInput.value.trim();
+
+        const lessonsCount =
+            Number(
+                lessonsInput.value || 0
+            );
+
+        const image =
+            imageInput.files[0];
+
+
+        if (!title) {
+
+            showAlert(
+                "اكتب اسم الكورس.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        if (!grade) {
+
+            showAlert(
+                "اختار الصف الدراسي.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        if (!image) {
+
+            showAlert(
+                "اختار صورة للكورس.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        publishBtn.disabled =
+            true;
+
+        publishBtn.textContent =
+            "⏳ جاري النشر...";
+
+
+        try {
+
+
+            /*
+            ====================================================
+                هنا مكان Supabase
+
+                أولاً رفع الصورة:
+
+                const fileName =
+                    `${crypto.randomUUID()}-${image.name}`;
+
+                const { error: uploadError } =
+                    await supabase.storage
+                        .from("course-images")
+                        .upload(
+                            fileName,
+                            image
+                        );
+
+
+                ثم الحصول على الرابط:
+
+                const { data: imageData } =
+                    supabase.storage
+                        .from("course-images")
+                        .getPublicUrl(
+                            fileName
+                        );
+
+
+                ثم إضافة الكورس:
+
+                const { data, error } =
+                    await supabase
+                        .from("courses")
+                        .insert({
+                            title,
+                            description,
+                            image_url:
+                                imageData.publicUrl,
+                            grade,
+                            duration,
+                            lessons_count:
+                                lessonsCount,
+                            published: true
+                        })
+                        .select()
+                        .single();
+
+            ====================================================
+            */
+
+
+            /*
+                لا يوجد اتصال بقاعدة البيانات
+                حتى الآن، لذلك لن ندعي أن
+                الكورس تم حفظه.
+            */
+
+
+            await new Promise(
+                resolve =>
+                    setTimeout(
+                        resolve,
+                        700
+                    )
+            );
+
+
+            showAlert(
+                "الواجهة جاهزة. عند ربط Supabase سيتم رفع الصورة وحفظ الكورس تلقائيًا.",
+                "success"
+            );
+
+
+        }
+
+        catch (error) {
+
+            console.error(error);
+
+            showAlert(
+                "حدث خطأ أثناء إضافة الكورس.",
+                "error"
+            );
+
+        }
+
+        finally {
+
+            publishBtn.disabled =
+                false;
+
+            publishBtn.textContent =
+                "🚀 نشر الكورس";
+
+        }
+
+    }
+);
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+
+</body>
+
+</html>
