@@ -1767,6 +1767,25 @@ function(event){
     */
 
 
+    if (data.user && !error) {
+  const { error: profileError } = await supabase
+    .from('profiles')
+    .insert([
+      {
+        id: data.user.id,
+        full_name: name,
+        phone: phone,
+        parent_phone: parentPhone,
+        grade: grade,
+        role: 'student'
+      }
+    ]);
+
+  if (profileError) {
+    console.error('Error inserting profile:', profileError.message);
+  }
+    }
+    
     showMessage(
         message,
         "الحساب جاهز للربط بقاعدة البيانات.",
