@@ -2,8 +2,13 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>الخوارزمي | تسجيل الدخول</title>
 
@@ -20,6 +25,7 @@ html{
 }
 
 body{
+
     min-height:100vh;
 
     font-family:
@@ -33,6 +39,7 @@ body{
     background:#07070d;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
@@ -47,6 +54,7 @@ body{
 ========================= */
 
 body::before{
+
     content:"";
 
     position:fixed;
@@ -72,6 +80,7 @@ body::before{
 }
 
 body::after{
+
     content:"";
 
     position:fixed;
@@ -144,18 +153,25 @@ body::after{
 @keyframes pageShow{
 
     from{
+
         opacity:0;
+
         transform:
             translateY(25px)
             scale(.98);
+
     }
 
     to{
+
         opacity:1;
+
         transform:
             translateY(0)
             scale(1);
+
     }
+
 }
 
 
@@ -213,18 +229,27 @@ body::after{
 @keyframes visualGlow{
 
     0%,100%{
+
         transform:scale(1);
+
         opacity:.7;
+
     }
 
     50%{
+
         transform:scale(1.15);
+
         opacity:1;
+
     }
+
 }
 
 
-/* RING */
+/* =========================
+   RING
+========================= */
 
 .ring{
 
@@ -273,10 +298,13 @@ body::after{
     to{
         transform:rotate(360deg);
     }
+
 }
 
 
-/* LOGO AREA */
+/* =========================
+   LOGO
+========================= */
 
 .visual-content{
 
@@ -294,7 +322,8 @@ body::after{
     width:105px;
     height:105px;
 
-    margin:0 auto 25px;
+    margin:
+        0 auto 25px;
 
     display:grid;
 
@@ -324,12 +353,17 @@ body::after{
 @keyframes floating{
 
     0%,100%{
+
         transform:translateY(0);
+
     }
 
     50%{
+
         transform:translateY(-10px);
+
     }
+
 }
 
 .visual-content h1{
@@ -364,8 +398,7 @@ body::after{
 
 .form-area{
 
-    padding:
-        45px;
+    padding:45px;
 
     display:flex;
 
@@ -375,6 +408,9 @@ body::after{
 
     position:relative;
 }
+
+
+/* BACK */
 
 .back{
 
@@ -388,14 +424,20 @@ body::after{
     font-size:11px;
 
     transition:.25s;
+
+    text-decoration:none;
 }
 
 .back:hover{
+
     color:#fff;
+
 }
 
 
-/* TITLE */
+/* =========================
+   HEADER
+========================= */
 
 .form-header{
 
@@ -492,7 +534,7 @@ body::after{
 
 
 /* =========================
-   FORM
+   FORMS
 ========================= */
 
 .form{
@@ -504,22 +546,37 @@ body::after{
 }
 
 .form.active{
+
     display:block;
+
 }
 
 @keyframes formShow{
 
     from{
+
         opacity:0;
-        transform:translateY(10px);
+
+        transform:
+            translateY(10px);
+
     }
 
     to{
+
         opacity:1;
-        transform:translateY(0);
+
+        transform:
+            translateY(0);
+
     }
+
 }
 
+
+/* =========================
+   FIELD
+========================= */
 
 .field{
 
@@ -538,6 +595,7 @@ body::after{
 }
 
 .input-wrap{
+
     position:relative;
 }
 
@@ -546,6 +604,7 @@ body::after{
     position:absolute;
 
     right:14px;
+
     top:50%;
 
     transform:
@@ -556,6 +615,7 @@ body::after{
     font-size:14px;
 
     pointer-events:none;
+
 }
 
 input,
@@ -590,7 +650,9 @@ select{
 }
 
 input::placeholder{
+
     color:#555561;
+
 }
 
 input:focus,
@@ -608,17 +670,22 @@ select:focus{
 }
 
 select{
+
     appearance:auto;
+
 }
 
 
-/* PASSWORD */
+/* =========================
+   PASSWORD
+========================= */
 
 .password-toggle{
 
     position:absolute;
 
     left:13px;
+
     top:50%;
 
     transform:
@@ -636,7 +703,9 @@ select{
 }
 
 
-/* REMEMBER */
+/* =========================
+   REMEMBER
+========================= */
 
 .remember{
 
@@ -676,7 +745,9 @@ select{
 }
 
 
-/* BUTTON */
+/* =========================
+   BUTTON
+========================= */
 
 .submit{
 
@@ -727,17 +798,29 @@ select{
 }
 
 .submit:active{
-    transform:translateY(0);
+
+    transform:
+        translateY(0);
+
+}
+
+.submit:disabled{
+
+    cursor:not-allowed;
+
 }
 
 
-/* LOADING */
+/* =========================
+   LOADING
+========================= */
 
 .submit.loading{
 
     pointer-events:none;
 
     opacity:.7;
+
 }
 
 .submit.loading::after{
@@ -758,6 +841,7 @@ select{
     border-radius:50%;
 
     left:50%;
+
     top:50%;
 
     transform:
@@ -770,14 +854,19 @@ select{
 @keyframes spin{
 
     to{
+
         transform:
             translate(-50%,-50%)
             rotate(360deg);
+
     }
+
 }
 
 
-/* MESSAGE */
+/* =========================
+   MESSAGE
+========================= */
 
 .message{
 
@@ -797,7 +886,9 @@ select{
 }
 
 .message.show{
+
     display:block;
+
 }
 
 .message.error{
@@ -825,7 +916,9 @@ select{
 }
 
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 .form-footer{
 
@@ -848,7 +941,9 @@ select{
 @media(max-width:800px){
 
     body{
+
         padding:20px 0;
+
     }
 
     .page{
@@ -861,6 +956,7 @@ select{
             calc(100% - 22px);
 
         border-radius:23px;
+
     }
 
     .visual{
@@ -868,12 +964,14 @@ select{
         min-height:270px;
 
         padding:20px;
+
     }
 
     .ring{
 
         width:250px;
         height:250px;
+
     }
 
     .big-logo{
@@ -886,73 +984,104 @@ select{
         font-size:40px;
 
         margin-bottom:15px;
+
     }
 
     .visual-content h1{
+
         font-size:26px;
+
     }
 
     .visual-content p{
+
         font-size:9px;
+
     }
 
     .form-area{
-        padding:30px 22px 35px;
+
+        padding:
+            30px 22px 35px;
+
     }
 
     .back{
+
         top:20px;
         right:22px;
+
     }
+
 }
 
 
 @media(max-width:430px){
 
     body{
+
         align-items:flex-start;
 
         padding:
             12px 0;
+
     }
 
     .page{
+
         width:
             calc(100% - 16px);
+
     }
 
     .visual{
+
         min-height:235px;
+
     }
 
     .visual-content{
+
         padding:15px;
+
     }
 
     .visual-content h1{
+
         font-size:23px;
+
     }
 
     .visual-content p{
+
         font-size:8px;
+
     }
 
     .form-area{
+
         padding:
             28px 17px 25px;
+
     }
 
     .form-header h2{
+
         font-size:25px;
+
     }
 
     input,
     select{
+
         height:46px;
+
     }
+
 }
 
 </style>
+
 </head>
 
 
@@ -962,9 +1091,9 @@ select{
 <div class="page">
 
 
-<!-- =================================
-     VISUAL SIDE
-================================= -->
+<!-- =========================
+     VISUAL
+========================= -->
 
 <section class="visual">
 
@@ -977,14 +1106,23 @@ select{
 </div>
 
 <h1>
+
 الخوارزمي
-<span>معاك</span>
+
+<span>
+معاك
+</span>
+
 </h1>
 
 <p>
+
 منصة المستر أمير لتعليم الرياضيات.
+
 <br>
+
 افهم، اتدرب، وطور مستواك خطوة بخطوة.
+
 </p>
 
 </div>
@@ -992,9 +1130,9 @@ select{
 </section>
 
 
-<!-- =================================
-     FORM SIDE
-================================= -->
+<!-- =========================
+     FORM AREA
+========================= -->
 
 <section class="form-area">
 
@@ -1024,7 +1162,9 @@ class="back"
 </div>
 
 
-<!-- TABS -->
+<!-- =========================
+     TABS
+========================= -->
 
 <div class="tabs">
 
@@ -1033,23 +1173,28 @@ class="tab active"
 id="loginTab"
 type="button"
 >
+
 تسجيل الدخول
+
 </button>
+
 
 <button
 class="tab"
 id="registerTab"
 type="button"
 >
+
 إنشاء حساب
+
 </button>
 
 </div>
 
 
-<!-- =================================
-     LOGIN FORM
-================================= -->
+<!-- =========================
+     LOGIN
+========================= -->
 
 <form
 class="form active"
@@ -1134,7 +1279,9 @@ id="rememberMe"
 class="submit"
 type="submit"
 >
+
 دخول إلى المنصة
+
 </button>
 
 
@@ -1146,14 +1293,15 @@ id="loginMessage"
 </form>
 
 
-<!-- =================================
-     REGISTER FORM
-================================= -->
+<!-- =========================
+     REGISTER
+========================= -->
 
 <form
 class="form"
 id="registerForm"
 >
+
 
 <div class="field">
 
@@ -1379,7 +1527,9 @@ data-target="confirmPassword"
 class="submit"
 type="submit"
 >
+
 إنشاء الحساب
+
 </button>
 
 
@@ -1397,15 +1547,27 @@ id="registerMessage"
 
 <br>
 
-© <span id="year"></span> الخوارزمي
+©
+
+<span id="year"></span>
+
+الخوارزمي
 
 </div>
 
 
 </section>
 
-
 </div>
+
+
+<!-- =========================
+     SUPABASE
+========================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="supabase.js"></script>
 
 
 <script>
@@ -1415,24 +1577,16 @@ id="registerMessage"
 ================================= */
 
 const loginTab =
-document.getElementById(
-    "loginTab"
-);
+document.getElementById("loginTab");
 
 const registerTab =
-document.getElementById(
-    "registerTab"
-);
+document.getElementById("registerTab");
 
 const loginForm =
-document.getElementById(
-    "loginForm"
-);
+document.getElementById("loginForm");
 
 const registerForm =
-document.getElementById(
-    "registerForm"
-);
+document.getElementById("registerForm");
 
 
 /* =================================
@@ -1478,38 +1632,35 @@ document
 .forEach(function(button){
 
     button.addEventListener(
-        "click",
-        function(){
+    "click",
+    function(){
 
-            const input =
-            document.getElementById(
-                button.dataset.target
-            );
+        const input =
+        document.getElementById(
+            button.dataset.target
+        );
 
-            if(
-                input.type === "password"
-            ){
+        if(input.type === "password"){
 
-                input.type = "text";
+            input.type = "text";
 
-                button.textContent = "🙈";
+            button.textContent = "🙈";
 
-            }else{
+        }else{
 
-                input.type = "password";
+            input.type = "password";
 
-                button.textContent = "👁";
-
-            }
+            button.textContent = "👁";
 
         }
-    );
+
+    });
 
 });
 
 
 /* =================================
-   EGYPTIAN PHONE
+   EGYPT PHONE
 ================================= */
 
 function validEgyptPhone(phone){
@@ -1545,24 +1696,34 @@ function showMessage(
 
 loginForm.addEventListener(
 "submit",
-function(event){
+async function(event){
 
     event.preventDefault();
+
 
     const email =
     document.getElementById(
         "loginEmail"
     ).value.trim();
 
+
     const password =
     document.getElementById(
         "loginPassword"
     ).value;
 
+
     const message =
     document.getElementById(
         "loginMessage"
     );
+
+
+    const button =
+    loginForm.querySelector(
+        ".submit"
+    );
+
 
     if(!email || !password){
 
@@ -1573,34 +1734,146 @@ function(event){
         );
 
         return;
+
     }
 
 
-    /*
-        =====================================
-        هنا سيتم ربط تسجيل الدخول بـ Supabase
-        =====================================
+    button.classList.add("loading");
 
-        مثال بعد إضافة مكتبة Supabase:
+    button.disabled = true;
 
-        const { data, error } =
+
+    try{
+
+
+        /* =========================
+           LOGIN
+        ========================= */
+
+        const {
+            data,
+            error
+        } =
         await supabase.auth.signInWithPassword({
-            email: email,
-            password: password
+
+            email:email,
+
+            password:password
+
         });
 
-        وبعد نجاح الدخول:
 
-        window.location.href =
-            "profile.html";
-    */
+        if(error){
+
+            throw error;
+
+        }
 
 
-    showMessage(
-        message,
-        "صفحة الدخول جاهزة للربط بقاعدة البيانات.",
-        "success"
-    );
+        if(!data.user){
+
+            throw new Error(
+                "لم يتم العثور على الحساب."
+            );
+
+        }
+
+
+        /* =========================
+           GET ROLE
+        ========================= */
+
+        const {
+            data:profile,
+            error:profileError
+        } =
+        await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id",data.user.id)
+        .maybeSingle();
+
+
+        if(profileError){
+
+            throw profileError;
+
+        }
+
+
+        showMessage(
+            message,
+            "تم تسجيل الدخول بنجاح...",
+            "success"
+        );
+
+
+        /* =========================
+           REDIRECT
+        ========================= */
+
+        setTimeout(
+        function(){
+
+            if(
+                profile &&
+                profile.role === "admin"
+            ){
+
+                window.location.href =
+                    "admin/index.html";
+
+            }else{
+
+                window.location.href =
+                    "home.html";
+
+            }
+
+        },
+        500
+        );
+
+
+    }catch(error){
+
+        console.error(
+            "LOGIN ERROR:",
+            error
+        );
+
+
+        let text =
+            error.message ||
+            "البريد الإلكتروني أو كلمة المرور غير صحيحة.";
+
+
+        if(
+            text
+            .toLowerCase()
+            .includes("invalid login credentials")
+        ){
+
+            text =
+                "البريد الإلكتروني أو كلمة المرور غير صحيحة.";
+
+        }
+
+
+        showMessage(
+            message,
+            text,
+            "error"
+        );
+
+
+        button.classList.remove(
+            "loading"
+        );
+
+        button.disabled = false;
+
+    }
 
 });
 
@@ -1611,7 +1884,7 @@ function(event){
 
 registerForm.addEventListener(
 "submit",
-function(event){
+async function(event){
 
     event.preventDefault();
 
@@ -1621,35 +1894,42 @@ function(event){
         "registerName"
     ).value.trim();
 
+
     const email =
     document.getElementById(
         "registerEmail"
     ).value.trim();
+
 
     const phone =
     document.getElementById(
         "registerPhone"
     ).value.trim();
 
+
     const parentPhone =
     document.getElementById(
         "parentPhone"
     ).value.trim();
+
 
     const grade =
     document.getElementById(
         "registerGrade"
     ).value;
 
+
     const password =
     document.getElementById(
         "registerPassword"
     ).value;
 
+
     const confirmPassword =
     document.getElementById(
         "confirmPassword"
     ).value;
+
 
     const message =
     document.getElementById(
@@ -1657,7 +1937,15 @@ function(event){
     );
 
 
-    /* NAME */
+    const button =
+    registerForm.querySelector(
+        ".submit"
+    );
+
+
+    /* =========================
+       VALIDATION
+    ========================= */
 
     if(name.length < 3){
 
@@ -1668,10 +1956,9 @@ function(event){
         );
 
         return;
+
     }
 
-
-    /* PHONE */
 
     if(!validEgyptPhone(phone)){
 
@@ -1682,10 +1969,9 @@ function(event){
         );
 
         return;
+
     }
 
-
-    /* PARENT PHONE */
 
     if(!validEgyptPhone(parentPhone)){
 
@@ -1696,10 +1982,9 @@ function(event){
         );
 
         return;
+
     }
 
-
-    /* GRADE */
 
     if(!grade){
 
@@ -1710,10 +1995,9 @@ function(event){
         );
 
         return;
+
     }
 
-
-    /* PASSWORD */
 
     if(password.length < 6){
 
@@ -1724,10 +2008,9 @@ function(event){
         );
 
         return;
+
     }
 
-
-    /* CONFIRM */
 
     if(password !== confirmPassword){
 
@@ -1738,59 +2021,200 @@ function(event){
         );
 
         return;
+
     }
 
 
-    /*
-        =====================================
-        SUPABASE REGISTER
-        =====================================
+    button.classList.add(
+        "loading"
+    );
 
-        بعد ربط Supabase:
+    button.disabled = true;
 
-        const { data, error } =
+
+    try{
+
+
+        /* =========================
+           CREATE AUTH USER
+        ========================= */
+
+        const {
+            data,
+            error
+        } =
         await supabase.auth.signUp({
-            email: email,
-            password: password,
+
+            email:email,
+
+            password:password,
+
             options:{
+
                 data:{
-                    full_name: name,
-                    phone: phone,
-                    parent_phone: parentPhone,
-                    grade: grade
+
+                    full_name:name,
+
+                    phone:phone,
+
+                    parent_phone:parentPhone,
+
+                    grade:grade
+
                 }
+
             }
+
         });
 
-        ثم نحفظ البيانات في جدول profiles
-        أو students.
-    */
+
+        if(error){
+
+            throw error;
+
+        }
 
 
-    if (data.user && !error) {
-  const { error: profileError } = await supabase
-    .from('profiles')
-    .insert([
-      {
-        id: data.user.id,
-        full_name: name,
-        phone: phone,
-        parent_phone: parentPhone,
-        grade: grade,
-        role: 'student'
-      }
-    ]);
+        if(!data.user){
 
-  if (profileError) {
-    console.error('Error inserting profile:', profileError.message);
-  }
+            throw new Error(
+                "لم يتم إنشاء الحساب."
+            );
+
+        }
+
+
+        /* =========================
+           SAVE PROFILE
+        ========================= */
+
+        const {
+            error:profileError
+        } =
+        await supabase
+        .from("profiles")
+        .upsert(
+        [
+
+            {
+
+                id:data.user.id,
+
+                full_name:name,
+
+                phone:phone,
+
+                parent_phone:parentPhone,
+
+                grade:grade,
+
+                role:"student"
+
+            }
+
+        ],
+        {
+
+            onConflict:"id"
+
+        });
+
+
+        if(profileError){
+
+            console.error(
+                "PROFILE ERROR:",
+                profileError
+            );
+
+            throw profileError;
+
+        }
+
+
+        /* =========================
+           SUCCESS
+        ========================= */
+
+        if(data.session){
+
+            showMessage(
+                message,
+                "تم إنشاء الحساب بنجاح، جاري الدخول...",
+                "success"
+            );
+
+
+            setTimeout(
+            function(){
+
+                window.location.href =
+                    "home.html";
+
+            },
+            700
+            );
+
+
+        }else{
+
+            showMessage(
+                message,
+                "تم إنشاء الحساب. افتح بريدك الإلكتروني لتأكيد الحساب ثم سجل الدخول.",
+                "success"
+            );
+
+
+            button.classList.remove(
+                "loading"
+            );
+
+            button.disabled = false;
+
+        }
+
+
+    }catch(error){
+
+        console.error(
+            "REGISTER ERROR:",
+            error
+        );
+
+
+        let text =
+            error.message ||
+            "حدث خطأ أثناء إنشاء الحساب.";
+
+
+        if(
+            text
+            .toLowerCase()
+            .includes(
+                "user already registered"
+            )
+        ){
+
+            text =
+                "هذا البريد الإلكتروني مسجل بالفعل.";
+
+        }
+
+
+        showMessage(
+            message,
+            text,
+            "error"
+        );
+
+
+        button.classList.remove(
+            "loading"
+        );
+
+        button.disabled = false;
+
     }
-    
-    showMessage(
-        message,
-        "الحساب جاهز للربط بقاعدة البيانات.",
-        "success"
-    );
 
 });
 
@@ -1806,7 +2230,7 @@ new Date().getFullYear();
 
 
 /* =================================
-   ONLY NUMBERS FOR PHONES
+   PHONE NUMBERS ONLY
 ================================= */
 
 document
@@ -1816,28 +2240,23 @@ document
 .forEach(function(input){
 
     input.addEventListener(
-        "input",
-        function(){
+    "input",
+    function(){
 
-            input.value =
-                input.value
-                .replace(
-                    /[^0-9]/g,
-                    ""
-                )
-                .slice(0,11);
+        input.value =
+            input.value
+            .replace(
+                /[^0-9]/g,
+                ""
+            )
+            .slice(0,11);
 
-        }
-    );
+    });
 
 });
 
-
 </script>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase.js"></script>
 
 </body>
 
-</html>
+    </html>
