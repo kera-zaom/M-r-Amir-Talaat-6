@@ -25,174 +25,92 @@ html{
 }
 
 body{
-
     min-height:100vh;
-
     font-family:
         "Cairo",
         "Tajawal",
         Arial,
         sans-serif;
-
     color:#fff;
-
     background:#07070d;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     overflow-x:hidden;
-
     position:relative;
 }
 
-
-/* =========================
-   BACKGROUND
-========================= */
-
 body::before{
-
     content:"";
-
     position:fixed;
-
     width:650px;
     height:650px;
-
     top:-300px;
     right:-200px;
-
     border-radius:50%;
-
     background:
         radial-gradient(
             circle,
             rgba(113,73,245,.24),
             transparent 68%
         );
-
     filter:blur(30px);
-
     pointer-events:none;
 }
 
 body::after{
-
     content:"";
-
     position:fixed;
-
     width:600px;
     height:600px;
-
     bottom:-300px;
     left:-250px;
-
     border-radius:50%;
-
     background:
         radial-gradient(
             circle,
             rgba(44,82,225,.18),
             transparent 68%
         );
-
     filter:blur(30px);
-
     pointer-events:none;
 }
 
-
-/* =========================
-   PAGE
-========================= */
-
 .page{
-
-    width:min(
-        1050px,
-        calc(100% - 28px)
-    );
-
+    width:min(1050px,calc(100% - 28px));
     min-height:650px;
-
     display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
+    grid-template-columns:1fr 1fr;
     border-radius:30px;
-
     overflow:hidden;
-
-    background:
-        rgba(14,14,23,.86);
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
+    background:rgba(14,14,23,.86);
+    border:1px solid rgba(255,255,255,.08);
     box-shadow:
-        0 40px 120px
-        rgba(0,0,0,.65);
-
-    backdrop-filter:
-        blur(25px);
-
+        0 40px 120px rgba(0,0,0,.65);
+    backdrop-filter:blur(25px);
     position:relative;
-
     z-index:2;
-
-    animation:
-        pageShow .7s ease;
+    animation:pageShow .7s ease;
 }
 
 @keyframes pageShow{
-
     from{
-
         opacity:0;
-
-        transform:
-            translateY(25px)
-            scale(.98);
-
+        transform:translateY(25px) scale(.98);
     }
-
     to{
-
         opacity:1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
+        transform:translateY(0) scale(1);
     }
-
 }
 
-
-/* =========================
-   LEFT
-========================= */
-
 .visual{
-
     min-height:650px;
-
     position:relative;
-
     overflow:hidden;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     background:
         linear-gradient(
             145deg,
@@ -203,879 +121,489 @@ body::after{
 }
 
 .visual::before{
-
     content:"";
-
     position:absolute;
-
     width:420px;
     height:420px;
-
     border-radius:50%;
-
     background:
         radial-gradient(
             circle,
             rgba(125,82,255,.35),
             transparent 68%
         );
-
     filter:blur(20px);
-
-    animation:
-        visualGlow 5s ease-in-out infinite;
+    animation:visualGlow 5s ease-in-out infinite;
 }
 
 @keyframes visualGlow{
-
     0%,100%{
-
         transform:scale(1);
-
         opacity:.7;
-
     }
-
     50%{
-
         transform:scale(1.15);
-
         opacity:1;
-
     }
-
 }
 
-
-/* =========================
-   RING
-========================= */
-
 .ring{
-
     position:absolute;
-
     width:410px;
     height:410px;
-
     border-radius:50%;
-
-    border:
-        1px solid
-        rgba(145,112,255,.25);
-
-    animation:
-        rotate 18s linear infinite;
+    border:1px solid rgba(145,112,255,.25);
+    animation:rotate 18s linear infinite;
 }
 
 .ring::before{
-
     content:"";
-
     position:absolute;
-
     width:9px;
     height:9px;
-
     top:8%;
     right:12%;
-
     border-radius:50%;
-
     background:#a78aff;
-
-    box-shadow:
-        0 0 25px
-        #a78aff;
+    box-shadow:0 0 25px #a78aff;
 }
 
 @keyframes rotate{
-
     from{
         transform:rotate(0deg);
     }
-
     to{
         transform:rotate(360deg);
     }
-
 }
 
-
-/* =========================
-   LOGO
-========================= */
-
 .visual-content{
-
     position:relative;
-
     z-index:3;
-
     text-align:center;
-
     padding:30px;
 }
 
 .big-logo{
-
     width:105px;
     height:105px;
-
-    margin:
-        0 auto 25px;
-
+    margin:0 auto 25px;
     display:grid;
-
     place-items:center;
-
     border-radius:30px;
-
     font-size:58px;
-
     font-weight:900;
-
     background:
         linear-gradient(
             135deg,
             #895aff,
             #3159e8
         );
-
     box-shadow:
-        0 25px 70px
-        rgba(92,65,230,.4);
-
-    animation:
-        floating 4s ease-in-out infinite;
+        0 25px 70px rgba(92,65,230,.4);
+    animation:floating 4s ease-in-out infinite;
 }
 
 @keyframes floating{
-
     0%,100%{
-
         transform:translateY(0);
-
     }
-
     50%{
-
         transform:translateY(-10px);
-
     }
-
 }
 
 .visual-content h1{
-
     font-size:35px;
-
     margin-bottom:10px;
 }
 
 .visual-content h1 span{
-
     color:#a58aff;
 }
 
 .visual-content p{
-
     color:#858592;
-
     font-size:12px;
-
     line-height:2;
-
     max-width:350px;
-
     margin:auto;
 }
 
-
-/* =========================
-   FORM AREA
-========================= */
-
 .form-area{
-
     padding:45px;
-
     display:flex;
-
     flex-direction:column;
-
     justify-content:center;
-
     position:relative;
 }
 
-
-/* BACK */
-
 .back{
-
     position:absolute;
-
     top:25px;
     right:30px;
-
     color:#777783;
-
     font-size:11px;
-
     transition:.25s;
-
     text-decoration:none;
 }
 
 .back:hover{
-
     color:#fff;
-
 }
 
-
-/* =========================
-   HEADER
-========================= */
-
 .form-header{
-
     margin-bottom:25px;
 }
 
 .form-header small{
-
     color:#9170ff;
-
     font-size:10px;
 }
 
 .form-header h2{
-
     font-size:30px;
-
     margin-top:7px;
 }
 
 .form-header p{
-
     color:#777783;
-
     font-size:10px;
-
     margin-top:7px;
-
     line-height:1.8;
 }
 
-
-/* =========================
-   TABS
-========================= */
-
 .tabs{
-
     display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
+    grid-template-columns:1fr 1fr;
     padding:4px;
-
     margin-bottom:23px;
-
     border-radius:13px;
-
-    background:
-        rgba(255,255,255,.04);
-
-    border:
-        1px solid
-        rgba(255,255,255,.06);
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.06);
 }
 
 .tab{
-
     border:0;
-
     padding:11px;
-
     border-radius:10px;
-
     background:transparent;
-
     color:#777783;
-
     font-family:inherit;
-
     font-size:10px;
-
     cursor:pointer;
-
     transition:.3s;
 }
 
 .tab.active{
-
     color:#fff;
-
     background:
         linear-gradient(
             135deg,
             rgba(124,82,245,.8),
             rgba(49,87,220,.8)
         );
-
     box-shadow:
-        0 8px 25px
-        rgba(78,60,200,.25);
+        0 8px 25px rgba(78,60,200,.25);
 }
 
-
-/* =========================
-   FORMS
-========================= */
-
 .form{
-
     display:none;
-
-    animation:
-        formShow .35s ease;
+    animation:formShow .35s ease;
 }
 
 .form.active{
-
     display:block;
-
 }
 
 @keyframes formShow{
-
     from{
-
         opacity:0;
-
-        transform:
-            translateY(10px);
-
+        transform:translateY(10px);
     }
-
     to{
-
         opacity:1;
-
-        transform:
-            translateY(0);
-
+        transform:translateY(0);
     }
-
 }
 
-
-/* =========================
-   FIELD
-========================= */
-
 .field{
-
     margin-bottom:14px;
 }
 
 .field label{
-
     display:block;
-
     color:#aaaab5;
-
     font-size:10px;
-
     margin-bottom:7px;
 }
 
 .input-wrap{
-
     position:relative;
 }
 
 .input-wrap span{
-
     position:absolute;
-
     right:14px;
-
     top:50%;
-
-    transform:
-        translateY(-50%);
-
+    transform:translateY(-50%);
     color:#666673;
-
     font-size:14px;
-
     pointer-events:none;
-
 }
 
 input,
 select{
-
     width:100%;
-
     height:48px;
-
-    padding:
-        0 42px
-        0 14px;
-
+    padding:0 42px 0 14px;
     border-radius:12px;
-
     outline:none;
-
     color:#fff;
-
     font-family:inherit;
-
     font-size:11px;
-
-    background:
-        rgba(255,255,255,.035);
-
-    border:
-        1px solid
-        rgba(255,255,255,.075);
-
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.075);
     transition:.25s;
 }
 
 input::placeholder{
-
     color:#555561;
-
 }
 
 input:focus,
 select:focus{
-
-    border-color:
-        rgba(135,99,255,.6);
-
-    background:
-        rgba(255,255,255,.055);
-
+    border-color:rgba(135,99,255,.6);
+    background:rgba(255,255,255,.055);
     box-shadow:
-        0 0 0 3px
-        rgba(120,80,245,.08);
+        0 0 0 3px rgba(120,80,245,.08);
 }
 
 select{
-
     appearance:auto;
-
 }
 
-
-/* =========================
-   PASSWORD
-========================= */
-
 .password-toggle{
-
     position:absolute;
-
     left:13px;
-
     top:50%;
-
-    transform:
-        translateY(-50%);
-
+    transform:translateY(-50%);
     border:0;
-
     background:transparent;
-
     color:#777783;
-
     cursor:pointer;
-
     font-size:13px;
 }
 
-
-/* =========================
-   REMEMBER
-========================= */
-
 .remember{
-
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
     gap:10px;
-
-    margin:
-        4px 0 17px;
+    margin:4px 0 17px;
 }
 
 .check{
-
     display:flex;
-
     align-items:center;
-
     gap:7px;
-
     color:#777783;
-
     font-size:9px;
 }
 
 .check input{
-
     width:15px;
     height:15px;
-
     padding:0;
-
     accent-color:#7651ef;
 }
 
-
-/* =========================
-   BUTTON
-========================= */
-
 .submit{
-
     width:100%;
-
     height:50px;
-
     border:0;
-
     border-radius:13px;
-
     color:#fff;
-
     font-family:inherit;
-
     font-size:11px;
-
     font-weight:800;
-
     cursor:pointer;
-
     background:
         linear-gradient(
             135deg,
             #8558f6,
             #315be9
         );
-
     box-shadow:
-        0 15px 35px
-        rgba(76,60,205,.25);
-
+        0 15px 35px rgba(76,60,205,.25);
     transition:.3s;
-
     position:relative;
-
     overflow:hidden;
 }
 
 .submit:hover{
-
-    transform:
-        translateY(-3px);
-
+    transform:translateY(-3px);
     box-shadow:
-        0 20px 45px
-        rgba(76,60,205,.4);
+        0 20px 45px rgba(76,60,205,.4);
 }
 
 .submit:active{
-
-    transform:
-        translateY(0);
-
+    transform:translateY(0);
 }
 
 .submit:disabled{
-
     cursor:not-allowed;
-
 }
 
-
-/* =========================
-   LOADING
-========================= */
-
 .submit.loading{
-
     pointer-events:none;
-
     opacity:.7;
-
 }
 
 .submit.loading::after{
-
     content:"";
-
     position:absolute;
-
     width:18px;
     height:18px;
-
-    border:
-        2px solid
-        rgba(255,255,255,.3);
-
+    border:2px solid rgba(255,255,255,.3);
     border-top-color:#fff;
-
     border-radius:50%;
-
     left:50%;
-
     top:50%;
-
-    transform:
-        translate(-50%,-50%);
-
-    animation:
-        spin .7s linear infinite;
+    transform:translate(-50%,-50%);
+    animation:spin .7s linear infinite;
 }
 
 @keyframes spin{
-
     to{
-
         transform:
             translate(-50%,-50%)
             rotate(360deg);
-
     }
-
 }
 
-
-/* =========================
-   MESSAGE
-========================= */
-
 .message{
-
     display:none;
-
     margin-top:13px;
-
     padding:11px;
-
     border-radius:10px;
-
     text-align:center;
-
     font-size:9px;
-
     line-height:1.7;
 }
 
 .message.show{
-
     display:block;
-
 }
 
 .message.error{
-
     color:#ff9eaa;
-
-    background:
-        rgba(255,70,90,.08);
-
-    border:
-        1px solid
-        rgba(255,70,90,.13);
+    background:rgba(255,70,90,.08);
+    border:1px solid rgba(255,70,90,.13);
 }
 
 .message.success{
-
     color:#9ff0bd;
-
-    background:
-        rgba(50,210,110,.08);
-
-    border:
-        1px solid
-        rgba(50,210,110,.13);
+    background:rgba(50,210,110,.08);
+    border:1px solid rgba(50,210,110,.13);
 }
-
-
-/* =========================
-   FOOTER
-========================= */
 
 .form-footer{
-
     margin-top:22px;
-
     text-align:center;
-
     color:#555561;
-
     font-size:8px;
-
     line-height:1.8;
 }
-
-
-/* =========================
-   RESPONSIVE
-========================= */
 
 @media(max-width:800px){
 
     body{
-
         padding:20px 0;
-
     }
 
     .page{
-
         grid-template-columns:1fr;
-
         min-height:auto;
-
-        width:
-            calc(100% - 22px);
-
+        width:calc(100% - 22px);
         border-radius:23px;
-
     }
 
     .visual{
-
         min-height:270px;
-
         padding:20px;
-
     }
 
     .ring{
-
         width:250px;
         height:250px;
-
     }
 
     .big-logo{
-
         width:75px;
         height:75px;
-
         border-radius:22px;
-
         font-size:40px;
-
         margin-bottom:15px;
-
     }
 
     .visual-content h1{
-
         font-size:26px;
-
     }
 
     .visual-content p{
-
         font-size:9px;
-
     }
 
     .form-area{
-
-        padding:
-            30px 22px 35px;
-
+        padding:30px 22px 35px;
     }
 
     .back{
-
         top:20px;
         right:22px;
-
     }
 
 }
 
-
 @media(max-width:430px){
 
     body{
-
         align-items:flex-start;
-
-        padding:
-            12px 0;
-
+        padding:12px 0;
     }
 
     .page{
-
-        width:
-            calc(100% - 16px);
-
+        width:calc(100% - 16px);
     }
 
     .visual{
-
         min-height:235px;
-
     }
 
     .visual-content{
-
         padding:15px;
-
     }
 
     .visual-content h1{
-
         font-size:23px;
-
     }
 
     .visual-content p{
-
         font-size:8px;
-
     }
 
     .form-area{
-
-        padding:
-            28px 17px 25px;
-
+        padding:28px 17px 25px;
     }
 
     .form-header h2{
-
         font-size:25px;
-
     }
 
     input,
     select{
-
         height:46px;
-
     }
 
 }
@@ -1084,16 +612,9 @@ select{
 
 </head>
 
-
 <body>
 
-
 <div class="page">
-
-
-<!-- =========================
-     VISUAL
-========================= -->
 
 <section class="visual">
 
@@ -1106,23 +627,14 @@ select{
 </div>
 
 <h1>
-
 الخوارزمي
-
-<span>
-معاك
-</span>
-
+<span>معاك</span>
 </h1>
 
 <p>
-
 منصة المستر أمير لتعليم الرياضيات.
-
 <br>
-
 افهم، اتدرب، وطور مستواك خطوة بخطوة.
-
 </p>
 
 </div>
@@ -1130,12 +642,7 @@ select{
 </section>
 
 
-<!-- =========================
-     FORM AREA
-========================= -->
-
 <section class="form-area">
-
 
 <a
 href="index.html"
@@ -1143,7 +650,6 @@ class="back"
 >
 ← الرئيسية
 </a>
-
 
 <div class="form-header">
 
@@ -1162,10 +668,6 @@ class="back"
 </div>
 
 
-<!-- =========================
-     TABS
-========================= -->
-
 <div class="tabs">
 
 <button
@@ -1173,20 +675,15 @@ class="tab active"
 id="loginTab"
 type="button"
 >
-
 تسجيل الدخول
-
 </button>
-
 
 <button
 class="tab"
 id="registerTab"
 type="button"
 >
-
 إنشاء حساب
-
 </button>
 
 </div>
@@ -1209,9 +706,7 @@ id="loginForm"
 
 <div class="input-wrap">
 
-<span>
-✉
-</span>
+<span>✉</span>
 
 <input
 type="email"
@@ -1234,9 +729,7 @@ required
 
 <div class="input-wrap">
 
-<span>
-🔒
-</span>
+<span>🔒</span>
 
 <input
 type="password"
@@ -1279,11 +772,8 @@ id="rememberMe"
 class="submit"
 type="submit"
 >
-
 دخول إلى المنصة
-
 </button>
-
 
 <div
 class="message"
@@ -1302,7 +792,6 @@ class="form"
 id="registerForm"
 >
 
-
 <div class="field">
 
 <label>
@@ -1311,9 +800,7 @@ id="registerForm"
 
 <div class="input-wrap">
 
-<span>
-👤
-</span>
+<span>👤</span>
 
 <input
 type="text"
@@ -1336,9 +823,7 @@ required
 
 <div class="input-wrap">
 
-<span>
-✉
-</span>
+<span>✉</span>
 
 <input
 type="email"
@@ -1361,9 +846,7 @@ required
 
 <div class="input-wrap">
 
-<span>
-📱
-</span>
+<span>📱</span>
 
 <input
 type="tel"
@@ -1387,9 +870,7 @@ required
 
 <div class="input-wrap">
 
-<span>
-📞
-</span>
+<span>📞</span>
 
 <input
 type="tel"
@@ -1413,9 +894,7 @@ required
 
 <div class="input-wrap">
 
-<span>
-🎓
-</span>
+<span>🎓</span>
 
 <select
 id="registerGrade"
@@ -1465,9 +944,7 @@ required
 
 <div class="input-wrap">
 
-<span>
-🔒
-</span>
+<span>🔒</span>
 
 <input
 type="password"
@@ -1498,9 +975,7 @@ data-target="registerPassword"
 
 <div class="input-wrap">
 
-<span>
-🔐
-</span>
+<span>🔐</span>
 
 <input
 type="password"
@@ -1527,11 +1002,8 @@ data-target="confirmPassword"
 class="submit"
 type="submit"
 >
-
 إنشاء الحساب
-
 </button>
-
 
 <div
 class="message"
@@ -1547,14 +1019,9 @@ id="registerMessage"
 
 <br>
 
-©
-
-<span id="year"></span>
-
-الخوارزمي
+© <span id="year"></span> الخوارزمي
 
 </div>
-
 
 </section>
 
@@ -1562,16 +1029,16 @@ id="registerMessage"
 
 
 <!-- =========================
-     SUPABASE
+     SUPABASE LIBRARY
 ========================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script src="supabase.js"></script>
+<!-- =========================
+     YOUR SUPABASE CLIENT
+========================= -->
 
-    <script>
-console.log("SUPABASE:", supabase);
-    </script>
+<script src="supabase.js"></script>
 
 
 <script>
@@ -1664,7 +1131,7 @@ document
 
 
 /* =================================
-   EGYPT PHONE
+   EGYPTIAN PHONE
 ================================= */
 
 function validEgyptPhone(phone){
@@ -1704,24 +1171,20 @@ async function(event){
 
     event.preventDefault();
 
-
     const email =
     document.getElementById(
         "loginEmail"
     ).value.trim();
-
 
     const password =
     document.getElementById(
         "loginPassword"
     ).value;
 
-
     const message =
     document.getElementById(
         "loginMessage"
     );
-
 
     const button =
     loginForm.querySelector(
@@ -1749,16 +1212,15 @@ async function(event){
 
     try{
 
-
         /* =========================
-           LOGIN
+           SUPABASE LOGIN
         ========================= */
 
         const {
             data,
             error
         } =
-        await supabase.auth.signInWithPassword({
+        await supabaseClient.auth.signInWithPassword({
 
             email:email,
 
@@ -1784,14 +1246,14 @@ async function(event){
 
 
         /* =========================
-           GET ROLE
+           GET PROFILE
         ========================= */
 
         const {
             data:profile,
             error:profileError
         } =
-        await supabase
+        await supabaseClient
         .from("profiles")
         .select("role")
         .eq("id",data.user.id)
@@ -1811,10 +1273,6 @@ async function(event){
             "success"
         );
 
-
-        /* =========================
-           REDIRECT
-        ========================= */
 
         setTimeout(
         function(){
@@ -2038,16 +1496,15 @@ async function(event){
 
     try{
 
-
         /* =========================
-           CREATE AUTH USER
+           CREATE AUTH ACCOUNT
         ========================= */
 
         const {
             data,
             error
         } =
-        await supabase.auth.signUp({
+        await supabaseClient.auth.signUp({
 
             email:email,
 
@@ -2089,13 +1546,13 @@ async function(event){
 
 
         /* =========================
-           SAVE PROFILE
+           SAVE STUDENT
         ========================= */
 
         const {
             error:profileError
         } =
-        await supabase
+        await supabaseClient
         .from("profiles")
         .upsert(
         [
@@ -2126,11 +1583,6 @@ async function(event){
 
         if(profileError){
 
-            console.error(
-                "PROFILE ERROR:",
-                profileError
-            );
-
             throw profileError;
 
         }
@@ -2158,7 +1610,6 @@ async function(event){
             },
             700
             );
-
 
         }else{
 
@@ -2263,4 +1714,4 @@ document
 
 </body>
 
-    </html>
+</html>
