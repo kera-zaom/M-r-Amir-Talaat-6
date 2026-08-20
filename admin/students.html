@@ -1,0 +1,3377 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>إدارة الطلاب | الخوارزمي</title>
+
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+>
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Cairo",Arial,sans-serif;
+}
+
+:root{
+
+    --bg:#050507;
+    --card:#111118;
+    --card2:#15151e;
+    --border:rgba(255,255,255,.08);
+
+    --text:#fff;
+    --muted:#9696a5;
+
+    --primary:#7657ff;
+    --primary-dark:#4d35d9;
+
+    --green:#35d39a;
+    --blue:#4da3ff;
+    --orange:#ffad45;
+    --red:#ff6078;
+
+}
+
+body{
+
+    min-height:100vh;
+
+    color:var(--text);
+
+    background:
+
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(118,87,255,.15),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(67,45,190,.10),
+            transparent 30%
+        ),
+
+        var(--bg);
+
+}
+
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+
+    position:fixed;
+
+    right:0;
+    top:0;
+
+    width:255px;
+    height:100vh;
+
+    padding:20px 15px;
+
+    background:
+        rgba(9,9,14,.97);
+
+    border-left:
+        1px solid var(--border);
+
+    z-index:1000;
+
+    transition:.3s;
+
+}
+
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:
+        8px 10px 25px;
+
+    border-bottom:
+        1px solid var(--border);
+
+    margin-bottom:18px;
+
+}
+
+
+.brand-logo{
+
+    width:44px;
+    height:44px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-dark)
+        );
+
+    font-size:20px;
+
+    font-weight:900;
+
+    box-shadow:
+        0 0 25px
+        rgba(118,87,255,.25);
+
+}
+
+
+.brand-text strong{
+
+    display:block;
+
+    font-size:16px;
+
+}
+
+
+.brand-text span{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:8px;
+
+}
+
+
+.menu-title{
+
+    color:#666675;
+
+    font-size:8px;
+
+    padding:
+        0 10px 8px;
+
+}
+
+
+.menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:5px;
+
+}
+
+
+.menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    height:44px;
+
+    padding:0 12px;
+
+    color:#b7b7c2;
+
+    text-decoration:none;
+
+    border-radius:11px;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    transition:.2s;
+
+}
+
+
+.menu a:hover{
+
+    color:#fff;
+
+    background:
+        rgba(118,87,255,.08);
+
+}
+
+
+.menu a.active{
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(118,87,255,.22),
+            rgba(118,87,255,.08)
+        );
+
+    border:
+        1px solid
+        rgba(118,87,255,.16);
+
+}
+
+
+.menu-icon{
+
+    width:27px;
+    height:27px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:8px;
+
+    background:
+        rgba(255,255,255,.04);
+
+}
+
+
+.logout{
+
+    position:absolute;
+
+    bottom:20px;
+
+    right:15px;
+    left:15px;
+
+}
+
+
+.logout button{
+
+    width:100%;
+
+    height:43px;
+
+    border:
+        1px solid
+        rgba(255,96,120,.12);
+
+    border-radius:11px;
+
+    color:#ff8496;
+
+    background:
+        rgba(255,96,120,.05);
+
+    cursor:pointer;
+
+    font-size:10px;
+
+    font-weight:800;
+
+}
+
+
+/* ================= MAIN ================= */
+
+.main{
+
+    margin-right:255px;
+
+    min-height:100vh;
+
+    padding:
+        25px 30px 50px;
+
+}
+
+
+.topbar{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:25px;
+
+}
+
+
+.mobile-menu{
+
+    display:none;
+
+    width:42px;
+    height:42px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.04);
+
+    color:white;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+}
+
+
+.admin-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+.admin-avatar{
+
+    width:42px;
+    height:42px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #a18fff
+        );
+
+    font-weight:900;
+
+}
+
+
+.admin-info strong{
+
+    display:block;
+
+    font-size:10px;
+
+}
+
+
+.admin-info span{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:8px;
+
+}
+
+
+/* ================= PAGE HEADER ================= */
+
+.page-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    margin-bottom:20px;
+
+}
+
+
+.page-title h1{
+
+    font-size:
+        clamp(22px,4vw,30px);
+
+    font-weight:900;
+
+}
+
+
+.page-title p{
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    margin-top:3px;
+
+}
+
+
+.refresh-btn{
+
+    height:42px;
+
+    padding:
+        0 16px;
+
+    border:
+        1px solid
+        rgba(118,87,255,.20);
+
+    border-radius:11px;
+
+    color:white;
+
+    background:
+        rgba(118,87,255,.08);
+
+    cursor:pointer;
+
+    font-size:9px;
+
+    font-weight:800;
+
+}
+
+
+.refresh-btn:hover{
+
+    background:
+        rgba(118,87,255,.15);
+
+}
+
+
+/* ================= STATS ================= */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:13px;
+
+    margin-bottom:18px;
+
+}
+
+
+.stat{
+
+    padding:17px;
+
+    border-radius:16px;
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
+
+}
+
+
+.stat-top{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:10px;
+
+}
+
+
+.stat small{
+
+    color:var(--muted);
+
+    font-size:8px;
+
+}
+
+
+.stat-icon{
+
+    width:36px;
+    height:36px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:10px;
+
+    background:
+        rgba(118,87,255,.10);
+
+}
+
+
+.stat h2{
+
+    font-size:24px;
+
+    font-weight:900;
+
+}
+
+
+/* ================= CARD ================= */
+
+.card{
+
+    padding:19px;
+
+    border-radius:18px;
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
+
+}
+
+
+/* ================= SEARCH ================= */
+
+.filters{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 190px;
+
+    gap:10px;
+
+    margin-bottom:18px;
+
+}
+
+
+.search-box{
+
+    position:relative;
+
+}
+
+
+.search-box input{
+
+    width:100%;
+
+    height:47px;
+
+    padding:
+        0 43px 0 13px;
+
+    color:#fff;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:11px;
+
+    outline:none;
+
+    font-size:10px;
+
+}
+
+
+.search-box span{
+
+    position:absolute;
+
+    right:13px;
+
+    top:50%;
+
+    transform:
+        translateY(-50%);
+
+    color:#777784;
+
+}
+
+
+select{
+
+    width:100%;
+
+    height:47px;
+
+    padding:
+        0 12px;
+
+    color:#fff;
+
+    background:#15151e;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:11px;
+
+    outline:none;
+
+    font-size:10px;
+
+}
+
+
+select option{
+
+    background:#15151e;
+
+    color:#fff;
+
+}
+
+
+/* ================= TABLE ================= */
+
+.table-wrapper{
+
+    width:100%;
+
+    overflow-x:auto;
+
+}
+
+
+table{
+
+    width:100%;
+
+    min-width:800px;
+
+    border-collapse:collapse;
+
+}
+
+
+thead{
+
+    background:
+        rgba(255,255,255,.025);
+
+}
+
+
+th{
+
+    padding:
+        13px 10px;
+
+    text-align:right;
+
+    color:#858593;
+
+    font-size:8px;
+
+    font-weight:800;
+
+    white-space:nowrap;
+
+}
+
+
+td{
+
+    padding:
+        13px 10px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.045);
+
+    font-size:9px;
+
+    white-space:nowrap;
+
+}
+
+
+tr:hover td{
+
+    background:
+        rgba(118,87,255,.025);
+
+}
+
+
+/* ================= STUDENT ================= */
+
+.student{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+}
+
+
+.avatar{
+
+    width:37px;
+    height:37px;
+
+    flex-shrink:0;
+
+    display:grid;
+
+    place-items:center;
+
+    overflow:hidden;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #a18fff
+        );
+
+    font-size:12px;
+
+    font-weight:900;
+
+}
+
+
+.avatar img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+
+.student-name strong{
+
+    display:block;
+
+    font-size:9px;
+
+}
+
+
+.student-name span{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:7px;
+
+    margin-top:2px;
+
+}
+
+
+/* ================= BADGES ================= */
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:
+        5px 9px;
+
+    border-radius:7px;
+
+    font-size:7px;
+
+    font-weight:800;
+
+}
+
+
+.badge.active{
+
+    color:#73e5b7;
+
+    background:
+        rgba(53,211,154,.08);
+
+}
+
+
+.badge.blocked{
+
+    color:#ff8799;
+
+    background:
+        rgba(255,96,120,.08);
+
+}
+
+
+.badge.grade{
+
+    color:#b7aaff;
+
+    background:
+        rgba(118,87,255,.09);
+
+}
+
+
+/* ================= ACTIONS ================= */
+
+.actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:5px;
+
+}
+
+
+.action-btn{
+
+    width:32px;
+    height:32px;
+
+    border:0;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    background:
+        rgba(255,255,255,.04);
+
+    color:#ccc;
+
+    transition:.2s;
+
+}
+
+
+.action-btn:hover{
+
+    transform:translateY(-1px);
+
+}
+
+
+.action-btn.view:hover{
+
+    color:#7fbaff;
+
+    background:
+        rgba(77,163,255,.10);
+
+}
+
+
+.action-btn.delete:hover{
+
+    color:#ff8092;
+
+    background:
+        rgba(255,96,120,.10);
+
+}
+
+
+/* ================= EMPTY ================= */
+
+.empty{
+
+    text-align:center;
+
+    padding:60px 20px;
+
+    color:#777784;
+
+}
+
+
+.empty-icon{
+
+    font-size:40px;
+
+    margin-bottom:10px;
+
+}
+
+
+.empty h3{
+
+    font-size:13px;
+
+    color:#aaaab7;
+
+}
+
+
+.empty p{
+
+    font-size:8px;
+
+    margin-top:4px;
+
+}
+
+
+/* ================= PAGINATION ================= */
+
+.pagination{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:6px;
+
+    margin-top:18px;
+
+}
+
+
+.page-btn{
+
+    min-width:34px;
+
+    height:34px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.03);
+
+    color:#aaa;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:8px;
+
+}
+
+
+.page-btn.active{
+
+    color:white;
+
+    background:
+        var(--primary);
+
+    border-color:
+        var(--primary);
+
+}
+
+
+.page-btn:disabled{
+
+    opacity:.35;
+
+    cursor:not-allowed;
+
+}
+
+
+/* ================= MODAL ================= */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:1500;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    background:
+        rgba(0,0,0,.72);
+
+    backdrop-filter:blur(7px);
+
+}
+
+
+.modal.show{
+
+    display:flex;
+
+}
+
+
+.modal-box{
+
+    width:min(520px,100%);
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    padding:23px;
+
+    border-radius:20px;
+
+    background:
+        #111118;
+
+    border:
+        1px solid var(--border);
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.5);
+
+}
+
+
+.modal-head{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:18px;
+
+}
+
+
+.modal-head h3{
+
+    font-size:14px;
+
+}
+
+
+.close-btn{
+
+    width:32px;
+    height:32px;
+
+    border:0;
+
+    border-radius:8px;
+
+    color:#aaa;
+
+    background:
+        rgba(255,255,255,.05);
+
+    cursor:pointer;
+
+}
+
+
+.details{
+
+    display:grid;
+
+    gap:9px;
+
+}
+
+
+.detail{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:11px;
+
+    border-radius:10px;
+
+    background:
+        rgba(255,255,255,.025);
+
+}
+
+
+.detail span{
+
+    color:var(--muted);
+
+    font-size:8px;
+
+}
+
+
+.detail strong{
+
+    font-size:9px;
+
+    text-align:left;
+
+}
+
+
+/* ================= LOADING ================= */
+
+.loading{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:3000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#050507;
+
+}
+
+
+.spinner{
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    border:
+        3px solid
+        rgba(118,87,255,.15);
+
+    border-top-color:
+        var(--primary);
+
+    animation:
+        spin .8s linear infinite;
+
+}
+
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* ================= TOAST ================= */
+
+.toast{
+
+    position:fixed;
+
+    left:20px;
+
+    bottom:20px;
+
+    z-index:4000;
+
+    max-width:330px;
+
+    padding:12px 16px;
+
+    border-radius:11px;
+
+    background:#191922;
+
+    border:
+        1px solid var(--border);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.3);
+
+    color:#fff;
+
+    font-size:9px;
+
+    transform:
+        translateY(30px);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+}
+
+
+.toast.show{
+
+    transform:
+        translateY(0);
+
+    opacity:1;
+
+}
+
+
+.toast.success{
+
+    border-color:
+        rgba(53,211,154,.25);
+
+}
+
+
+.toast.error{
+
+    border-color:
+        rgba(255,96,120,.25);
+
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1050px){
+
+    .stats{
+
+        grid-template-columns:
+            repeat(3,1fr);
+
+    }
+
+}
+
+
+@media(max-width:800px){
+
+    .sidebar{
+
+        transform:
+            translateX(100%);
+
+    }
+
+    .sidebar.open{
+
+        transform:
+            translateX(0);
+
+    }
+
+    .main{
+
+        margin-right:0;
+
+        padding:
+            18px 15px 40px;
+
+    }
+
+    .mobile-menu{
+
+        display:block;
+
+    }
+
+}
+
+
+@media(max-width:650px){
+
+    .stats{
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+    .filters{
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside
+    class="sidebar"
+    id="sidebar"
+>
+
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            خ
+        </div>
+
+        <div class="brand-text">
+
+            <strong>
+                الخوارزمي
+            </strong>
+
+            <span>
+                لوحة الإدارة
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="menu-title">
+        الإدارة
+    </div>
+
+
+    <nav class="menu">
+
+
+        <a href="index.html">
+
+            <div class="menu-icon">
+                🏠
+            </div>
+
+            الرئيسية
+
+        </a>
+
+
+        <a
+            href="students.html"
+            class="active"
+        >
+
+            <div class="menu-icon">
+                👨‍🎓
+            </div>
+
+            الطلاب
+
+        </a>
+
+
+        <a href="courses.html">
+
+            <div class="menu-icon">
+                📚
+            </div>
+
+            الكورسات
+
+        </a>
+
+
+        <a href="lessons.html">
+
+            <div class="menu-icon">
+                🎥
+            </div>
+
+            الدروس والفيديوهات
+
+        </a>
+
+
+        <a href="exams.html">
+
+            <div class="menu-icon">
+                📝
+            </div>
+
+            الاختبارات
+
+        </a>
+
+
+        <a href="results.html">
+
+            <div class="menu-icon">
+                📊
+            </div>
+
+            النتائج
+
+        </a>
+
+
+        <a href="files.html">
+
+            <div class="menu-icon">
+                📁
+            </div>
+
+            الملفات و PDF
+
+        </a>
+
+
+        <a href="payments.html">
+
+            <div class="menu-icon">
+                💳
+            </div>
+
+            المدفوعات
+
+        </a>
+
+
+        <a href="settings.html">
+
+            <div class="menu-icon">
+                ⚙️
+            </div>
+
+            الإعدادات
+
+        </a>
+
+
+    </nav>
+
+
+    <div class="logout">
+
+        <button onclick="logout()">
+            🚪 تسجيل الخروج
+        </button>
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main">
+
+
+    <div class="topbar">
+
+
+        <button
+            class="mobile-menu"
+            onclick="toggleSidebar()"
+        >
+            ☰
+        </button>
+
+
+        <div></div>
+
+
+        <div class="admin-box">
+
+
+            <div class="admin-avatar">
+                أ
+            </div>
+
+
+            <div class="admin-info">
+
+                <strong id="adminName">
+                    جاري التحميل...
+                </strong>
+
+                <span>
+                    مدير المنصة
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ================= PAGE HEADER ================= -->
+
+    <section class="page-header">
+
+
+        <div class="page-title">
+
+            <h1>
+                👨‍🎓 إدارة الطلاب
+            </h1>
+
+            <p>
+                مشاهدة وإدارة جميع الطلاب المسجلين في منصة الخوارزمي.
+            </p>
+
+        </div>
+
+
+        <button
+            class="refresh-btn"
+            onclick="loadStudents()"
+        >
+            🔄 تحديث
+        </button>
+
+
+    </section>
+
+
+
+    <!-- ================= STATS ================= -->
+
+    <section class="stats">
+
+
+        <div class="stat">
+
+            <div class="stat-top">
+
+                <small>
+                    إجمالي الطلاب
+                </small>
+
+                <div class="stat-icon">
+                    👨‍🎓
+                </div>
+
+            </div>
+
+            <h2 id="totalCount">
+                —
+            </h2>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-top">
+
+                <small>
+                    الطلاب النشطون
+                </small>
+
+                <div class="stat-icon">
+                    🟢
+                </div>
+
+            </div>
+
+            <h2 id="activeCount">
+                —
+            </h2>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-top">
+
+                <small>
+                    نتائج البحث
+                </small>
+
+                <div class="stat-icon">
+                    🔎
+                </div>
+
+            </div>
+
+            <h2 id="visibleCount">
+                0
+            </h2>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ================= STUDENTS CARD ================= -->
+
+    <section class="card">
+
+
+        <!-- FILTERS -->
+
+        <div class="filters">
+
+
+            <div class="search-box">
+
+                <span>
+                    🔎
+                </span>
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="ابحث بالاسم أو البريد أو الهاتف..."
+                >
+
+            </div>
+
+
+            <select
+                id="gradeFilter"
+            >
+
+                <option value="">
+                    كل الصفوف
+                </option>
+
+                <option value="أولى إعدادي">
+                    أولى إعدادي
+                </option>
+
+                <option value="ثانية إعدادي">
+                    ثانية إعدادي
+                </option>
+
+                <option value="ثالثة إعدادي">
+                    ثالثة إعدادي
+                </option>
+
+                <option value="أولى ثانوي">
+                    أولى ثانوي
+                </option>
+
+                <option value="ثانية ثانوي">
+                    ثانية ثانوي
+                </option>
+
+                <option value="ثالثة ثانوي">
+                    ثالثة ثانوي
+                </option>
+
+            </select>
+
+
+        </div>
+
+
+
+        <!-- TABLE -->
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            الطالب
+                        </th>
+
+                        <th>
+                            الهاتف
+                        </th>
+
+                        <th>
+                            الصف
+                        </th>
+
+                        <th>
+                            المدرسة
+                        </th>
+
+                        <th>
+                            الحالة
+                        </th>
+
+                        <th>
+                            تاريخ التسجيل
+                        </th>
+
+                        <th>
+                            الإجراءات
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="studentsBody">
+
+                    <tr>
+
+                        <td colspan="7">
+
+                            <div class="empty">
+
+                                <div class="empty-icon">
+                                    ⏳
+                                </div>
+
+                                <h3>
+                                    جاري تحميل الطلاب...
+                                </h3>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+
+        <!-- PAGINATION -->
+
+        <div
+            class="pagination"
+            id="pagination"
+        ></div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- ================= STUDENT MODAL ================= -->
+
+<div
+    class="modal"
+    id="studentModal"
+>
+
+
+    <div class="modal-box">
+
+
+        <div class="modal-head">
+
+            <h3>
+                👨‍🎓 بيانات الطالب
+            </h3>
+
+            <button
+                class="close-btn"
+                onclick="closeModal()"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div
+            class="details"
+            id="studentDetails"
+        ></div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= LOADING ================= -->
+
+<div
+    class="loading"
+    id="loading"
+>
+
+    <div class="spinner"></div>
+
+</div>
+
+
+
+<!-- ================= TOAST ================= -->
+
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
+
+<script>
+
+/*
+============================================================
+    🔥 SUPABASE CONFIGURATION
+============================================================
+
+    ضع بيانات مشروعك هنا.
+
+    Supabase Dashboard
+        ↓
+    Project Settings
+        ↓
+    API
+
+    استخدم:
+
+    Project URL
+    Publishable Key / anon key
+
+    ❌ ممنوع service_role key داخل الموقع.
+============================================================
+*/
+
+
+const SUPABASE_URL =
+    "ضع_رابط_مشروعك_هنا";
+
+
+const SUPABASE_KEY =
+    "ضع_publishable_او_anon_key_هنا";
+
+
+let supabaseClient = null;
+
+
+if(
+    SUPABASE_URL.startsWith("http") &&
+    !SUPABASE_URL.includes("ضع_")
+){
+
+    supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+}
+
+
+/*
+============================================================
+    VARIABLES
+============================================================
+*/
+
+
+let allStudents = [];
+
+let filteredStudents = [];
+
+let currentPage = 1;
+
+const pageSize = 10;
+
+
+/*
+============================================================
+    ELEMENTS
+============================================================
+*/
+
+
+const studentsBody =
+    document.getElementById(
+        "studentsBody"
+    );
+
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+
+const gradeFilter =
+    document.getElementById(
+        "gradeFilter"
+    );
+
+
+const pagination =
+    document.getElementById(
+        "pagination"
+    );
+
+
+const loading =
+    document.getElementById(
+        "loading"
+    );
+
+
+const modal =
+    document.getElementById(
+        "studentModal"
+    );
+
+
+const details =
+    document.getElementById(
+        "studentDetails"
+    );
+
+
+const toast =
+    document.getElementById(
+        "toast"
+    );
+
+
+/*
+============================================================
+    SIDEBAR
+============================================================
+*/
+
+
+function toggleSidebar(){
+
+    document
+        .getElementById("sidebar")
+        .classList
+        .toggle("open");
+
+}
+
+
+/*
+============================================================
+    TOAST
+============================================================
+*/
+
+
+function showToast(
+    text,
+    type="success"
+){
+
+    toast.textContent =
+        text;
+
+    toast.className =
+        "toast " +
+        type +
+        " show";
+
+
+    setTimeout(
+        function(){
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },
+        3000
+    );
+
+}
+
+
+/*
+============================================================
+    LOADING
+============================================================
+*/
+
+
+function setLoading(
+    state
+){
+
+    loading.style.display =
+        state
+        ? "flex"
+        : "none";
+
+}
+
+
+/*
+============================================================
+    ADMIN AUTH
+============================================================
+*/
+
+
+async function checkAdmin(){
+
+    if(!supabaseClient){
+
+        showToast(
+            "بيانات Supabase غير موجودة.",
+            "error"
+        );
+
+        return false;
+
+    }
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .auth
+            .getSession();
+
+
+    if(
+        error ||
+        !data ||
+        !data.session
+    ){
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
+    const user =
+        data.session.user;
+
+
+    const {
+        data: profile,
+        error: profileError
+    } =
+        await supabaseClient
+
+            .from("profiles")
+
+            .select(
+                "id, full_name, role"
+            )
+
+            .eq(
+                "id",
+                user.id
+            )
+
+            .maybeSingle();
+
+
+    if(
+        profileError ||
+        !profile ||
+        profile.role !== "admin"
+    ){
+
+        await supabaseClient
+            .auth
+            .signOut();
+
+
+        window.location.href =
+            "login.html";
+
+
+        return false;
+
+    }
+
+
+    document
+        .getElementById(
+            "adminName"
+        )
+        .textContent =
+            profile.full_name ||
+            user.email ||
+            "الأدمن";
+
+
+    return true;
+
+}
+
+
+/*
+============================================================
+    LOAD STUDENTS
+============================================================
+*/
+
+
+async function loadStudents(){
+
+    if(!supabaseClient){
+
+        return;
+
+    }
+
+
+    setLoading(true);
+
+
+    try{
+
+
+        /*
+        ====================================================
+            جدول الطلاب المتوقع:
+
+            students
+
+            id
+            user_id
+            full_name
+            email
+            phone
+            parent_phone
+            grade
+            school
+            city
+            governorate
+            avatar_url
+            status
+            created_at
+        ====================================================
+        */
+
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+
+                .from("students")
+
+                .select("*")
+
+                .order(
+                    "created_at",
+                    {
+                        ascending:false
+                    }
+                );
+
+
+        if(error){
+
+            throw error;
+
+        }
+
+
+        allStudents =
+            data || [];
+
+
+        updateStats();
+
+        applyFilters();
+
+
+    }catch(error){
+
+        console.error(
+            "LOAD STUDENTS ERROR:",
+            error
+        );
+
+
+        studentsBody.innerHTML = `
+
+            <tr>
+
+                <td colspan="7">
+
+                    <div class="empty">
+
+                        <div class="empty-icon">
+                            ⚠️
+                        </div>
+
+                        <h3>
+                            تعذر تحميل الطلاب
+                        </h3>
+
+                        <p>
+                            ${escapeHTML(
+                                error.message ||
+                                "حدث خطأ غير معروف"
+                            )}
+                        </p>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        `;
+
+    }finally{
+
+        setLoading(false);
+
+    }
+
+}
+
+
+/*
+============================================================
+    STATS
+============================================================
+*/
+
+
+function updateStats(){
+
+    const total =
+        allStudents.length;
+
+
+    const active =
+        allStudents.filter(
+            student =>
+                !student.status ||
+                student.status ===
+                "active"
+        ).length;
+
+
+    document
+        .getElementById(
+            "totalCount"
+        )
+        .textContent =
+            total;
+
+
+    document
+        .getElementById(
+            "activeCount"
+        )
+        .textContent =
+            active;
+
+}
+
+
+/*
+============================================================
+    FILTER
+============================================================
+*/
+
+
+function applyFilters(){
+
+    const search =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+
+    const grade =
+        gradeFilter.value;
+
+
+    filteredStudents =
+        allStudents.filter(
+            student => {
+
+
+                const name =
+                    String(
+                        student.full_name ||
+                        ""
+                    ).toLowerCase();
+
+
+                const email =
+                    String(
+                        student.email ||
+                        ""
+                    ).toLowerCase();
+
+
+                const phone =
+                    String(
+                        student.phone ||
+                        ""
+                    ).toLowerCase();
+
+
+                const matchesSearch =
+                    !search ||
+                    name.includes(search) ||
+                    email.includes(search) ||
+                    phone.includes(search);
+
+
+                const matchesGrade =
+                    !grade ||
+                    student.grade === grade;
+
+
+                return(
+                    matchesSearch &&
+                    matchesGrade
+                );
+
+            }
+        );
+
+
+    currentPage = 1;
+
+
+    document
+        .getElementById(
+            "visibleCount"
+        )
+        .textContent =
+            filteredStudents.length;
+
+
+    renderStudents();
+
+}
+
+
+/*
+============================================================
+    RENDER STUDENTS
+============================================================
+*/
+
+
+function renderStudents(){
+
+    if(
+        filteredStudents.length === 0
+    ){
+
+        studentsBody.innerHTML = `
+
+            <tr>
+
+                <td colspan="7">
+
+                    <div class="empty">
+
+                        <div class="empty-icon">
+                            📭
+                        </div>
+
+                        <h3>
+                            مفيش طلاب
+                        </h3>
+
+                        <p>
+                            لم يتم العثور على طلاب مطابقين للبحث.
+                        </p>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        `;
+
+
+        pagination.innerHTML =
+            "";
+
+
+        return;
+
+    }
+
+
+    const start =
+        (
+            currentPage - 1
+        ) * pageSize;
+
+
+    const end =
+        start + pageSize;
+
+
+    const pageStudents =
+        filteredStudents.slice(
+            start,
+            end
+        );
+
+
+    studentsBody.innerHTML =
+        pageStudents
+            .map(
+                student =>
+                    createStudentRow(
+                        student
+                    )
+            )
+            .join("");
+
+
+    renderPagination();
+
+}
+
+
+/*
+============================================================
+    CREATE ROW
+============================================================
+*/
+
+
+function createStudentRow(
+    student
+){
+
+    const name =
+        student.full_name ||
+        "بدون اسم";
+
+
+    const email =
+        student.email ||
+        "—";
+
+
+    const phone =
+        student.phone ||
+        "—";
+
+
+    const grade =
+        student.grade ||
+        "غير محدد";
+
+
+    const school =
+        student.school ||
+        "—";
+
+
+    const status =
+        student.status ||
+        "active";
+
+
+    const statusHTML =
+        status === "active"
+
+        ?
+
+        `
+        <span class="badge active">
+            نشط
+        </span>
+        `
+
+        :
+
+        `
+        <span class="badge blocked">
+            غير نشط
+        </span>
+        `;
+
+
+    const avatar =
+        student.avatar_url
+
+        ?
+
+        `
+        <div class="avatar">
+            <img
+                src="${escapeAttribute(
+                    student.avatar_url
+                )}"
+                alt=""
+            >
+        </div>
+        `
+
+        :
+
+        `
+        <div class="avatar">
+            ${escapeHTML(
+                getInitial(name)
+            )}
+        </div>
+        `;
+
+
+    const createdAt =
+        formatDate(
+            student.created_at
+        );
+
+
+    return `
+
+        <tr>
+
+            <td>
+
+                <div class="student">
+
+                    ${avatar}
+
+                    <div class="student-name">
+
+                        <strong>
+                            ${escapeHTML(name)}
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(email)}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </td>
+
+
+            <td>
+                ${escapeHTML(phone)}
+            </td>
+
+
+            <td>
+
+                <span class="badge grade">
+
+                    ${escapeHTML(grade)}
+
+                </span>
+
+            </td>
+
+
+            <td>
+                ${escapeHTML(school)}
+            </td>
+
+
+            <td>
+                ${statusHTML}
+            </td>
+
+
+            <td>
+                ${createdAt}
+            </td>
+
+
+            <td>
+
+                <div class="actions">
+
+                    <button
+                        class="action-btn view"
+                        title="عرض البيانات"
+                        onclick="viewStudent('${escapeAttribute(
+                            student.id
+                        )}')"
+                    >
+                        👁
+                    </button>
+
+
+                    <button
+                        class="action-btn delete"
+                        title="حذف الطالب"
+                        onclick="deleteStudent('${escapeAttribute(
+                            student.id
+                        )}')"
+                    >
+                        🗑️
+                    </button>
+
+                </div>
+
+            </td>
+
+        </tr>
+
+    `;
+
+}
+
+
+/*
+============================================================
+    VIEW STUDENT
+============================================================
+*/
+
+
+function viewStudent(
+    id
+){
+
+    const student =
+        allStudents.find(
+            item =>
+                String(item.id) ===
+                String(id)
+        );
+
+
+    if(!student){
+
+        return;
+
+    }
+
+
+    details.innerHTML = `
+
+        <div class="detail">
+
+            <span>
+                الاسم
+            </span>
+
+            <strong>
+                ${escapeHTML(
+                    student.full_name ||
+                    "—"
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="detail">
+
+            <span>
+                البريد الإلكتروني
+            </span>
+
+            <strong>
+                ${escapeHTML(
+                    student.email ||
+                    "—"
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="detail">
+
+            <span>
+                الهاتف
+            </span>
+
+            <strong>
+                ${escapeHTML(
+                    student.phone ||
+                    "—"
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="detail">
+
+            <span>
+                هاتف ولي الأمر
+            </span>
+
+            <strong>
+                ${escapeHTML(
+                    student.parent_phone ||
+                    "—"
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="detail">
+
+            <span>
+                الصف
+            </span>
+
+            <strong>
+                ${escapeHTML(
+                    student.grade ||
+                    "—"
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="detail">
+
+            <span>
+                المدرسة
+            </span>
+
+            <strong>
+                ${escapeHTML(
+                    student.school ||
+                    "—"
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="detail">
+
+            <span>
+                المحافظة
+            </span>
+
+            <strong>
+                ${escapeHTML(
+                    student.governorate ||
+                    "—"
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="detail">
+
+            <span>
+                المدينة
+            </span>
+
+            <strong>
+                ${escapeHTML(
+                    student.city ||
+                    "—"
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="detail">
+
+            <span>
+                تاريخ التسجيل
+            </span>
+
+            <strong>
+                ${formatDate(
+                    student.created_at
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="detail">
+
+            <span>
+                الحالة
+            </span>
+
+            <strong>
+                ${
+                    student.status ===
+                    "blocked"
+                    ?
+                    "غير نشط"
+                    :
+                    "نشط"
+                }
+            </strong>
+
+        </div>
+
+    `;
+
+
+    modal.classList.add(
+        "show"
+    );
+
+}
+
+
+/*
+============================================================
+    CLOSE MODAL
+============================================================
+*/
+
+
+function closeModal(){
+
+    modal.classList.remove(
+        "show"
+    );
+
+}
+
+
+modal.addEventListener(
+    "click",
+    function(event){
+
+        if(
+            event.target === modal
+        ){
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+/*
+============================================================
+    DELETE STUDENT
+============================================================
+
+    مهم:
+
+    هذا يحذف سجل الطالب من students.
+
+    حذف حساب Supabase Auth نفسه
+    يحتاج Edge Function آمنة.
+
+============================================================
+*/
+
+
+async function deleteStudent(
+    id
+){
+
+    const student =
+        allStudents.find(
+            item =>
+                String(item.id) ===
+                String(id)
+        );
+
+
+    if(!student){
+
+        return;
+
+    }
+
+
+    const name =
+        student.full_name ||
+        "هذا الطالب";
+
+
+    const confirmed =
+        confirm(
+            `هل أنت متأكد من حذف الطالب "${name}"؟\n\nسيتم حذف بياناته من جدول الطلاب.`
+        );
+
+
+    if(!confirmed){
+
+        return;
+
+    }
+
+
+    setLoading(true);
+
+
+    try{
+
+
+        const {
+            error
+        } =
+            await supabaseClient
+
+                .from("students")
+
+                .delete()
+
+                .eq(
+                    "id",
+                    id
+                );
+
+
+        if(error){
+
+            throw error;
+
+        }
+
+
+        showToast(
+            "تم حذف الطالب بنجاح."
+        );
+
+
+        await loadStudents();
+
+
+    }catch(error){
+
+        console.error(
+            "DELETE STUDENT ERROR:",
+            error
+        );
+
+
+        showToast(
+            error.message ||
+            "تعذر حذف الطالب.",
+            "error"
+        );
+
+    }finally{
+
+        setLoading(false);
+
+    }
+
+}
+
+
+/*
+============================================================
+    PAGINATION
+============================================================
+*/
+
+
+function renderPagination(){
+
+    const totalPages =
+        Math.ceil(
+            filteredStudents.length /
+            pageSize
+        );
+
+
+    if(totalPages <= 1){
+
+        pagination.innerHTML =
+            "";
+
+        return;
+
+    }
+
+
+    let html = "";
+
+
+    html += `
+
+        <button
+            class="page-btn"
+            ${currentPage === 1 ? "disabled" : ""}
+            onclick="changePage(${currentPage - 1})"
+        >
+            ←
+        </button>
+
+    `;
+
+
+    for(
+        let i = 1;
+        i <= totalPages;
+        i++
+    ){
+
+        html += `
+
+            <button
+                class="page-btn
+                    ${
+                        currentPage === i
+                        ? "active"
+                        : ""
+                    }"
+                onclick="changePage(${i})"
+            >
+                ${i}
+            </button>
+
+        `;
+
+    }
+
+
+    html += `
+
+        <button
+            class="page-btn"
+            ${
+                currentPage === totalPages
+                ? "disabled"
+                : ""
+            }
+            onclick="changePage(${currentPage + 1})"
+        >
+            →
+        </button>
+
+    `;
+
+
+    pagination.innerHTML =
+        html;
+
+}
+
+
+/*
+============================================================
+    CHANGE PAGE
+============================================================
+*/
+
+
+function changePage(
+    page
+){
+
+    const totalPages =
+        Math.ceil(
+            filteredStudents.length /
+            pageSize
+        );
+
+
+    if(
+        page < 1 ||
+        page > totalPages
+    ){
+
+        return;
+
+    }
+
+
+    currentPage =
+        page;
+
+
+    renderStudents();
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/*
+============================================================
+    SEARCH EVENTS
+============================================================
+*/
+
+
+searchInput.addEventListener(
+    "input",
+    applyFilters
+);
+
+
+gradeFilter.addEventListener(
+    "change",
+    applyFilters
+);
+
+
+/*
+============================================================
+    HELPERS
+============================================================
+*/
+
+
+function getInitial(
+    name
+){
+
+    return (
+        String(name)
+            .trim()
+            .charAt(0)
+            .toUpperCase()
+    ) || "ط";
+
+}
+
+
+function formatDate(
+    date
+){
+
+    if(!date){
+
+        return "—";
+
+    }
+
+
+    try{
+
+        return new Date(
+            date
+        ).toLocaleDateString(
+            "ar-EG",
+            {
+                year:"numeric",
+                month:"short",
+                day:"numeric"
+            }
+        );
+
+    }catch{
+
+        return "—";
+
+    }
+
+}
+
+
+/*
+    منع إدخال HTML داخل الصفحة
+*/
+
+function escapeHTML(
+    value
+){
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+function escapeAttribute(
+    value
+){
+
+    return escapeHTML(
+        value
+    )
+    .replace(
+        /`/g,
+        "&#096;"
+    );
+
+}
+
+
+/*
+============================================================
+    LOGOUT
+============================================================
+*/
+
+
+async function logout(){
+
+    if(
+        supabaseClient
+    ){
+
+        await supabaseClient
+            .auth
+            .signOut();
+
+    }
+
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+/*
+============================================================
+    START
+============================================================
+*/
+
+
+async function init(){
+
+    const isAdmin =
+        await checkAdmin();
+
+
+    if(!isAdmin){
+
+        return;
+
+    }
+
+
+    await loadStudents();
+
+}
+
+
+init();
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../supabase.js"></script>
+
+</body>
+
+</html>

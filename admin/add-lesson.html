@@ -1,0 +1,2388 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>إضافة درس | الخوارزمي</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Cairo",Arial,sans-serif;
+}
+
+:root{
+    --bg:#050507;
+    --card:#111118;
+    --card2:#171720;
+    --border:rgba(255,255,255,.08);
+    --text:#fff;
+    --muted:#92929f;
+    --primary:#7657ff;
+    --primary2:#5137d9;
+    --green:#35d39a;
+    --red:#ff6078;
+}
+
+body{
+    min-height:100vh;
+    color:var(--text);
+
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(118,87,255,.14),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(70,45,200,.10),
+            transparent 30%
+        ),
+        var(--bg);
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    position:fixed;
+    right:0;
+    top:0;
+
+    width:255px;
+    height:100vh;
+
+    padding:20px 15px;
+
+    background:rgba(9,9,14,.97);
+
+    border-left:1px solid var(--border);
+
+    z-index:1000;
+
+    transition:.3s;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    padding:8px 10px 25px;
+
+    border-bottom:1px solid var(--border);
+
+    margin-bottom:18px;
+}
+
+.logo{
+    width:44px;
+    height:44px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary2)
+        );
+
+    font-size:20px;
+    font-weight:900;
+
+    box-shadow:
+        0 0 25px
+        rgba(118,87,255,.25);
+}
+
+.brand strong{
+    display:block;
+    font-size:16px;
+}
+
+.brand span{
+    display:block;
+    color:var(--muted);
+    font-size:8px;
+}
+
+.menu-title{
+    color:#666675;
+    font-size:8px;
+    padding:0 10px 8px;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+
+.menu a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    height:44px;
+
+    padding:0 12px;
+
+    color:#b7b7c2;
+
+    text-decoration:none;
+
+    border-radius:11px;
+
+    font-size:10px;
+    font-weight:700;
+
+    transition:.2s;
+}
+
+.menu a:hover{
+    color:#fff;
+    background:rgba(118,87,255,.08);
+}
+
+.menu a.active{
+    color:#fff;
+    background:rgba(118,87,255,.15);
+
+    border:1px solid
+    rgba(118,87,255,.15);
+}
+
+.menu-icon{
+    width:27px;
+    height:27px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:8px;
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+.logout{
+    position:absolute;
+
+    bottom:20px;
+    right:15px;
+    left:15px;
+}
+
+.logout button{
+    width:100%;
+    height:43px;
+
+    border:1px solid
+        rgba(255,96,120,.12);
+
+    border-radius:11px;
+
+    color:#ff8496;
+
+    background:
+        rgba(255,96,120,.05);
+
+    cursor:pointer;
+
+    font-size:10px;
+    font-weight:800;
+}
+
+/* MAIN */
+
+.main{
+    margin-right:255px;
+
+    min-height:100vh;
+
+    padding:25px 30px 60px;
+}
+
+.topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:25px;
+}
+
+.mobile-menu{
+    display:none;
+
+    width:42px;
+    height:42px;
+
+    border:1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.04);
+
+    color:#fff;
+
+    border-radius:10px;
+
+    cursor:pointer;
+}
+
+.admin-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.admin-avatar{
+    width:42px;
+    height:42px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #a18fff
+        );
+
+    font-weight:900;
+}
+
+.admin-info strong{
+    display:block;
+    font-size:10px;
+}
+
+.admin-info span{
+    display:block;
+    color:var(--muted);
+    font-size:8px;
+}
+
+/* HEADER */
+
+.page-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:22px;
+}
+
+.page-header h1{
+    font-size:29px;
+    font-weight:900;
+}
+
+.page-header p{
+    color:var(--muted);
+    font-size:9px;
+    margin-top:3px;
+}
+
+.back-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    height:43px;
+
+    padding:0 15px;
+
+    color:#c9c9d3;
+
+    text-decoration:none;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    font-size:9px;
+    font-weight:800;
+}
+
+/* FORM */
+
+.form-layout{
+    display:grid;
+
+    grid-template-columns:
+        minmax(0,1fr)
+        320px;
+
+    gap:18px;
+}
+
+.card{
+    padding:20px;
+
+    border-radius:17px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+}
+
+.card-title{
+    margin-bottom:18px;
+
+    padding-bottom:14px;
+
+    border-bottom:1px solid var(--border);
+}
+
+.card-title h2{
+    font-size:12px;
+}
+
+.card-title p{
+    color:var(--muted);
+    font-size:8px;
+    margin-top:3px;
+}
+
+.field{
+    margin-bottom:16px;
+}
+
+.field:last-child{
+    margin-bottom:0;
+}
+
+.field label{
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#d5d5de;
+
+    font-size:9px;
+    font-weight:800;
+}
+
+.required{
+    color:#ff7186;
+}
+
+.input,
+.textarea,
+.select{
+    width:100%;
+
+    color:#fff;
+
+    outline:none;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    font-size:9px;
+
+    transition:.2s;
+}
+
+.input,
+.select{
+    height:46px;
+
+    padding:0 12px;
+}
+
+.textarea{
+    min-height:120px;
+
+    padding:12px;
+
+    resize:vertical;
+
+    line-height:1.8;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus{
+    border-color:
+        rgba(118,87,255,.5);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(118,87,255,.07);
+}
+
+.select option{
+    background:#15151e;
+    color:#fff;
+}
+
+.help{
+    margin-top:6px;
+
+    color:#666673;
+
+    font-size:7px;
+
+    line-height:1.7;
+}
+
+/* YOUTUBE */
+
+.youtube-box{
+    padding:15px;
+
+    border-radius:13px;
+
+    background:
+        rgba(255,0,0,.035);
+
+    border:
+        1px solid
+        rgba(255,80,80,.09);
+}
+
+.youtube-title{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    margin-bottom:11px;
+}
+
+.youtube-icon{
+    width:32px;
+    height:32px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:9px;
+
+    background:
+        rgba(255,0,0,.10);
+
+    font-size:14px;
+}
+
+.youtube-title strong{
+    display:block;
+    font-size:9px;
+}
+
+.youtube-title span{
+    display:block;
+    color:var(--muted);
+    font-size:7px;
+}
+
+/* PREVIEW */
+
+.preview{
+    overflow:hidden;
+
+    border-radius:13px;
+
+    background:#08080c;
+
+    border:1px solid var(--border);
+}
+
+.video-preview{
+    position:relative;
+
+    width:100%;
+
+    aspect-ratio:16/9;
+
+    display:grid;
+    place-items:center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(118,87,255,.12),
+            transparent 60%
+        );
+}
+
+.video-preview iframe{
+    width:100%;
+    height:100%;
+
+    border:0;
+
+    display:none;
+}
+
+.preview-placeholder{
+    text-align:center;
+    padding:20px;
+}
+
+.preview-placeholder .big{
+    font-size:32px;
+    margin-bottom:7px;
+}
+
+.preview-placeholder p{
+    color:#777783;
+    font-size:8px;
+}
+
+/* PUBLISH */
+
+.publish-box{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:13px;
+
+    border-radius:11px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    border:1px solid var(--border);
+}
+
+.publish-info strong{
+    display:block;
+    font-size:9px;
+}
+
+.publish-info span{
+    display:block;
+    color:var(--muted);
+    font-size:7px;
+    margin-top:3px;
+}
+
+/* SWITCH */
+
+.switch{
+    position:relative;
+
+    width:45px;
+    height:25px;
+
+    flex-shrink:0;
+}
+
+.switch input{
+    opacity:0;
+    width:0;
+    height:0;
+}
+
+.slider{
+    position:absolute;
+    inset:0;
+
+    cursor:pointer;
+
+    border-radius:30px;
+
+    background:#292931;
+
+    transition:.2s;
+}
+
+.slider:before{
+    content:"";
+
+    position:absolute;
+
+    width:19px;
+    height:19px;
+
+    right:3px;
+    top:3px;
+
+    border-radius:50%;
+
+    background:#858590;
+
+    transition:.2s;
+}
+
+.switch input:checked + .slider{
+    background:
+        rgba(53,211,154,.3);
+}
+
+.switch input:checked + .slider:before{
+    transform:translateX(-20px);
+
+    background:var(--green);
+}
+
+/* BUTTONS */
+
+.form-actions{
+    display:flex;
+
+    gap:10px;
+
+    margin-top:18px;
+}
+
+.save-btn,
+.cancel-btn{
+    height:46px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:9px;
+    font-weight:900;
+}
+
+.save-btn{
+    flex:1;
+
+    color:#fff;
+
+    border:0;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary2)
+        );
+}
+
+.cancel-btn{
+    padding:0 20px;
+
+    color:#aaaab6;
+
+    border:1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.035);
+}
+
+/* INFO */
+
+.info-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.info-item{
+    display:flex;
+    align-items:flex-start;
+
+    gap:10px;
+
+    padding:11px;
+
+    border-radius:10px;
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+.info-icon{
+    width:32px;
+    height:32px;
+
+    flex-shrink:0;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:8px;
+
+    background:
+        rgba(118,87,255,.08);
+}
+
+.info-item strong{
+    display:block;
+    font-size:8px;
+}
+
+.info-item p{
+    color:var(--muted);
+    font-size:7px;
+    line-height:1.7;
+    margin-top:2px;
+}
+
+/* LOADING */
+
+.loading{
+    position:fixed;
+
+    inset:0;
+
+    z-index:5000;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:#050507;
+}
+
+.spinner{
+    width:45px;
+    height:45px;
+
+    border:3px solid
+        rgba(118,87,255,.15);
+
+    border-top-color:
+        var(--primary);
+
+    border-radius:50%;
+
+    animation:
+        spin .8s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+
+    left:20px;
+    bottom:20px;
+
+    z-index:6000;
+
+    max-width:350px;
+
+    padding:12px 16px;
+
+    border-radius:11px;
+
+    background:#191922;
+
+    border:1px solid var(--border);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.4);
+
+    font-size:9px;
+
+    transform:translateY(30px);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+}
+
+.toast.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.toast.error{
+    color:#ff9aaa;
+
+    border-color:
+        rgba(255,96,120,.25);
+}
+
+.toast.success{
+    color:#7be6bd;
+
+    border-color:
+        rgba(53,211,154,.25);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:950px){
+
+    .form-layout{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:800px){
+
+    .sidebar{
+        transform:translateX(100%);
+    }
+
+    .sidebar.open{
+        transform:translateX(0);
+    }
+
+    .main{
+        margin-right:0;
+        padding:18px 15px 40px;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .page-header{
+        align-items:flex-start;
+        gap:12px;
+        flex-direction:column;
+    }
+
+    .back-btn{
+        width:100%;
+    }
+
+    .form-actions{
+        flex-direction:column;
+    }
+
+    .cancel-btn{
+        width:100%;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+
+        <div class="logo">
+            خ
+        </div>
+
+        <div>
+
+            <strong>
+                الخوارزمي
+            </strong>
+
+            <span>
+                لوحة الإدارة
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="menu-title">
+        الإدارة
+    </div>
+
+
+    <nav class="menu">
+
+        <a href="index.html">
+            <div class="menu-icon">🏠</div>
+            الرئيسية
+        </a>
+
+        <a href="students.html">
+            <div class="menu-icon">👨‍🎓</div>
+            الطلاب
+        </a>
+
+        <a href="courses.html">
+            <div class="menu-icon">📚</div>
+            الكورسات
+        </a>
+
+        <a href="lessons.html" class="active">
+            <div class="menu-icon">🎥</div>
+            الدروس والفيديوهات
+        </a>
+
+        <a href="exams.html">
+            <div class="menu-icon">📝</div>
+            الاختبارات
+        </a>
+
+        <a href="results.html">
+            <div class="menu-icon">📊</div>
+            النتائج
+        </a>
+
+        <a href="files.html">
+            <div class="menu-icon">📁</div>
+            الملفات و PDF
+        </a>
+
+        <a href="payments.html">
+            <div class="menu-icon">💳</div>
+            المدفوعات
+        </a>
+
+        <a href="settings.html">
+            <div class="menu-icon">⚙️</div>
+            الإعدادات
+        </a>
+
+    </nav>
+
+
+    <div class="logout">
+
+        <button onclick="logout()">
+            🚪 تسجيل الخروج
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+
+    <div class="topbar">
+
+        <button
+            class="mobile-menu"
+            onclick="toggleSidebar()"
+        >
+            ☰
+        </button>
+
+        <div></div>
+
+        <div class="admin-box">
+
+            <div class="admin-avatar">
+                أ
+            </div>
+
+            <div class="admin-info">
+
+                <strong id="adminName">
+                    الأدمن
+                </strong>
+
+                <span>
+                    مدير المنصة
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- HEADER -->
+
+    <section class="page-header">
+
+        <div>
+
+            <h1 id="pageTitle">
+                إضافة درس جديد
+            </h1>
+
+            <p id="pageDescription">
+                أضف فيديو YouTube إلى أحد الكورسات.
+            </p>
+
+        </div>
+
+
+        <a
+            href="lessons.html"
+            class="back-btn"
+        >
+            ← العودة للدروس
+        </a>
+
+    </section>
+
+
+    <!-- FORM -->
+
+    <form id="lessonForm">
+
+        <div class="form-layout">
+
+
+            <!-- RIGHT / MAIN -->
+
+            <div>
+
+
+                <section class="card">
+
+                    <div class="card-title">
+
+                        <h2>
+                            بيانات الدرس
+                        </h2>
+
+                        <p>
+                            البيانات التي سيشاهدها الطالب داخل الكورس.
+                        </p>
+
+                    </div>
+
+
+                    <!-- TITLE -->
+
+                    <div class="field">
+
+                        <label>
+                            اسم الدرس
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            class="input"
+                            id="title"
+                            type="text"
+                            placeholder="مثال: شرح الدرس الأول - المعادلات"
+                            required
+                            maxlength="200"
+                        >
+
+                    </div>
+
+
+                    <!-- COURSE -->
+
+                    <div class="field">
+
+                        <label>
+                            الكورس
+                            <span class="required">*</span>
+                        </label>
+
+                        <select
+                            class="select"
+                            id="courseId"
+                            required
+                        >
+
+                            <option value="">
+                                جاري تحميل الكورسات...
+                            </option>
+
+                        </select>
+
+                        <div class="help">
+                            اختر الكورس الذي سيظهر بداخله الفيديو.
+                        </div>
+
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="field">
+
+                        <label>
+                            وصف الدرس
+                        </label>
+
+                        <textarea
+                            class="textarea"
+                            id="description"
+                            placeholder="اكتب وصفًا مختصرًا للدرس..."
+                            maxlength="1000"
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- YOUTUBE -->
+
+                    <div class="field">
+
+                        <div class="youtube-box">
+
+                            <div class="youtube-title">
+
+                                <div class="youtube-icon">
+                                    ▶
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        فيديو YouTube
+                                    </strong>
+
+                                    <span>
+                                        لن يتم تخزين الفيديو داخل قاعدة البيانات.
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <input
+                                class="input"
+                                id="youtubeUrl"
+                                type="url"
+                                placeholder="https://www.youtube.com/watch?v=..."
+                                required
+                            >
+
+
+                            <div class="help">
+                                ضع رابط فيديو YouTube فقط. سيتم حفظ الرابط في قاعدة البيانات، والفيديو نفسه سيبقى على YouTube.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PUBLISH -->
+
+                    <div class="field">
+
+                        <div class="publish-box">
+
+                            <div class="publish-info">
+
+                                <strong>
+                                    نشر الدرس
+                                </strong>
+
+                                <span id="publishText">
+                                    الدرس سيظهر للطلاب.
+                                </span>
+
+                            </div>
+
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    id="published"
+                                    checked
+                                >
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ACTIONS -->
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            class="save-btn"
+                            id="saveBtn"
+                        >
+                            💾 حفظ الدرس
+                        </button>
+
+                        <a
+                            href="lessons.html"
+                            class="cancel-btn"
+                            style="
+                                display:flex;
+                                align-items:center;
+                                justify-content:center;
+                                text-decoration:none;
+                            "
+                        >
+                            إلغاء
+                        </a>
+
+                    </div>
+
+                </section>
+
+
+                <!-- VIDEO PREVIEW -->
+
+                <section
+                    class="card"
+                    style="margin-top:18px;"
+                >
+
+                    <div class="card-title">
+
+                        <h2>
+                            معاينة الفيديو
+                        </h2>
+
+                        <p>
+                            تأكد من أن رابط YouTube صحيح قبل الحفظ.
+                        </p>
+
+                    </div>
+
+
+                    <div class="preview">
+
+                        <div class="video-preview">
+
+                            <iframe
+                                id="youtubePreview"
+                                allowfullscreen
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            ></iframe>
+
+
+                            <div
+                                class="preview-placeholder"
+                                id="previewPlaceholder"
+                            >
+
+                                <div class="big">
+                                    ▶️
+                                </div>
+
+                                <p>
+                                    ضع رابط YouTube لمشاهدة المعاينة هنا
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <!-- LEFT / INFO -->
+
+            <aside>
+
+
+                <section class="card">
+
+                    <div class="card-title">
+
+                        <h2>
+                            💡 طريقة الإضافة
+                        </h2>
+
+                        <p>
+                            خطوات إضافة الفيديو
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-list">
+
+
+                        <div class="info-item">
+
+                            <div class="info-icon">
+                                1
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    اكتب اسم الدرس
+                                </strong>
+
+                                <p>
+                                    مثال: شرح المعادلات الخطية.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="info-item">
+
+                            <div class="info-icon">
+                                2
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    اختر الكورس
+                                </strong>
+
+                                <p>
+                                    الفيديو سيظهر تلقائيًا داخل هذا الكورس.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="info-item">
+
+                            <div class="info-icon">
+                                3
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    ضع رابط YouTube
+                                </strong>
+
+                                <p>
+                                    الفيديو نفسه لن يتم تخزينه في Supabase.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="info-item">
+
+                            <div class="info-icon">
+                                4
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    اضغط حفظ
+                                </strong>
+
+                                <p>
+                                    سيظهر الدرس للطلاب إذا كان منشورًا.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+
+                <section
+                    class="card"
+                    style="margin-top:18px;"
+                >
+
+                    <div class="card-title">
+
+                        <h2>
+                            🎥 YouTube
+                        </h2>
+
+                    </div>
+
+                    <p
+                        style="
+                            color:#858592;
+                            font-size:8px;
+                            line-height:2;
+                        "
+                    >
+                        استخدام YouTube يوفر مساحة كبيرة في قاعدة البيانات والتخزين، لأننا نحفظ رابط الفيديو فقط بدل رفع ملف الفيديو نفسه.
+                    </p>
+
+                </section>
+
+
+            </aside>
+
+
+        </div>
+
+    </form>
+
+
+</main>
+
+
+<!-- LOADING -->
+
+<div
+    class="loading"
+    id="loading"
+>
+
+    <div class="spinner"></div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
+<script>
+
+/*
+=========================================================
+ SUPABASE
+=========================================================
+*/
+
+const SUPABASE_URL =
+    "ضع_رابط_مشروعك_هنا";
+
+const SUPABASE_KEY =
+    "ضع_publishable_او_anon_key_هنا";
+
+
+let supabaseClient = null;
+
+if(
+    SUPABASE_URL.startsWith("http") &&
+    !SUPABASE_URL.includes("ضع_")
+){
+
+    supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+}
+
+
+/*
+=========================================================
+ VARIABLES
+=========================================================
+*/
+
+let editId = null;
+
+
+/*
+=========================================================
+ ELEMENTS
+=========================================================
+*/
+
+const loading =
+    document.getElementById("loading");
+
+const toast =
+    document.getElementById("toast");
+
+const form =
+    document.getElementById("lessonForm");
+
+const titleInput =
+    document.getElementById("title");
+
+const courseSelect =
+    document.getElementById("courseId");
+
+const descriptionInput =
+    document.getElementById("description");
+
+const youtubeInput =
+    document.getElementById("youtubeUrl");
+
+const publishedInput =
+    document.getElementById("published");
+
+const preview =
+    document.getElementById("youtubePreview");
+
+const placeholder =
+    document.getElementById("previewPlaceholder");
+
+const publishText =
+    document.getElementById("publishText");
+
+const saveBtn =
+    document.getElementById("saveBtn");
+
+
+/*
+=========================================================
+ LOADING
+=========================================================
+*/
+
+function setLoading(state){
+
+    loading.style.display =
+        state
+        ? "flex"
+        : "none";
+
+}
+
+
+/*
+=========================================================
+ TOAST
+=========================================================
+*/
+
+function showToast(message,type=""){
+
+    toast.textContent =
+        message;
+
+    toast.className =
+        "toast " +
+        type +
+        " show";
+
+    setTimeout(() => {
+
+        toast.classList.remove(
+            "show"
+        );
+
+    },3500);
+
+}
+
+
+/*
+=========================================================
+ SIDEBAR
+=========================================================
+*/
+
+function toggleSidebar(){
+
+    document
+        .getElementById("sidebar")
+        .classList
+        .toggle("open");
+
+}
+
+
+/*
+=========================================================
+ CHECK ADMIN
+=========================================================
+*/
+
+async function checkAdmin(){
+
+    if(!supabaseClient){
+
+        setLoading(false);
+
+        showToast(
+            "ضع بيانات Supabase أولًا.",
+            "error"
+        );
+
+        return false;
+
+    }
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .auth
+            .getSession();
+
+
+    if(
+        error ||
+        !data ||
+        !data.session
+    ){
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
+    const user =
+        data.session.user;
+
+
+    const {
+        data:profile,
+        error:profileError
+    } =
+        await supabaseClient
+
+            .from("profiles")
+
+            .select(
+                "id,full_name,role"
+            )
+
+            .eq(
+                "id",
+                user.id
+            )
+
+            .maybeSingle();
+
+
+    if(
+        profileError ||
+        !profile ||
+        profile.role !== "admin"
+    ){
+
+        await supabaseClient
+            .auth
+            .signOut();
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
+    document
+        .getElementById("adminName")
+        .textContent =
+            profile.full_name ||
+            user.email ||
+            "الأدمن";
+
+
+    return true;
+
+}
+
+
+/*
+=========================================================
+ LOAD COURSES
+=========================================================
+*/
+
+async function loadCourses(){
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+
+            .from("courses")
+
+            .select(
+                "id,title"
+            )
+
+            .order(
+                "title",
+                {
+                    ascending:true
+                }
+            );
+
+
+    if(error)
+        throw error;
+
+
+    courseSelect.innerHTML =
+        `
+        <option value="">
+            اختر الكورس
+        </option>
+        `;
+
+
+    if(!data || !data.length){
+
+        courseSelect.innerHTML =
+            `
+            <option value="">
+                لا توجد كورسات
+            </option>
+            `;
+
+        return;
+
+    }
+
+
+    data.forEach(course => {
+
+        const option =
+            document.createElement("option");
+
+        option.value =
+            course.id;
+
+        option.textContent =
+            course.title;
+
+        courseSelect.appendChild(
+            option
+        );
+
+    });
+
+}
+
+
+/*
+=========================================================
+ GET EDIT ID
+=========================================================
+*/
+
+function getEditId(){
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    return params.get("id");
+
+}
+
+
+/*
+=========================================================
+ LOAD LESSON FOR EDIT
+=========================================================
+*/
+
+async function loadLesson(){
+
+    editId =
+        getEditId();
+
+
+    if(!editId)
+        return;
+
+
+    document
+        .getElementById("pageTitle")
+        .textContent =
+            "تعديل الدرس";
+
+
+    document
+        .getElementById("pageDescription")
+        .textContent =
+            "قم بتعديل بيانات الدرس والفيديو.";
+
+
+    saveBtn.textContent =
+        "💾 حفظ التعديلات";
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+
+            .from("lessons")
+
+            .select(`
+                id,
+                course_id,
+                title,
+                description,
+                youtube_url,
+                published
+            `)
+
+            .eq(
+                "id",
+                editId
+            )
+
+            .maybeSingle();
+
+
+    if(error)
+        throw error;
+
+
+    if(!data){
+
+        showToast(
+            "الدرس غير موجود.",
+            "error"
+        );
+
+        setTimeout(() => {
+
+            window.location.href =
+                "lessons.html";
+
+        },1200);
+
+        return;
+
+    }
+
+
+    titleInput.value =
+        data.title || "";
+
+
+    courseSelect.value =
+        data.course_id || "";
+
+
+    descriptionInput.value =
+        data.description || "";
+
+
+    youtubeInput.value =
+        data.youtube_url || "";
+
+
+    publishedInput.checked =
+        data.published !== false;
+
+
+    updatePublishText();
+
+    updatePreview();
+
+}
+
+
+/*
+=========================================================
+ YOUTUBE ID
+=========================================================
+*/
+
+function getYouTubeId(url){
+
+    if(!url)
+        return null;
+
+
+    try{
+
+        const parsed =
+            new URL(url);
+
+
+        /*
+        youtube.com/watch?v=ID
+        */
+
+        if(
+            parsed.hostname.includes(
+                "youtube.com"
+            ) &&
+            parsed.searchParams.get("v")
+        ){
+
+            return parsed.searchParams.get(
+                "v"
+            );
+
+        }
+
+
+        /*
+        youtu.be/ID
+        */
+
+        if(
+            parsed.hostname.includes(
+                "youtu.be"
+            )
+        ){
+
+            return parsed.pathname
+                .replace("/","")
+                .split("/")[0];
+
+        }
+
+
+        /*
+        youtube.com/shorts/ID
+        */
+
+        if(
+            parsed.pathname.startsWith(
+                "/shorts/"
+            )
+        ){
+
+            return parsed.pathname
+                .split("/")[2];
+
+        }
+
+
+        /*
+        youtube.com/embed/ID
+        */
+
+        if(
+            parsed.pathname.startsWith(
+                "/embed/"
+            )
+        ){
+
+            return parsed.pathname
+                .split("/")[2];
+
+        }
+
+
+    }catch(error){
+
+        return null;
+
+    }
+
+
+    return null;
+
+}
+
+
+/*
+=========================================================
+ PREVIEW
+=========================================================
+*/
+
+function updatePreview(){
+
+    const url =
+        youtubeInput.value.trim();
+
+
+    const videoId =
+        getYouTubeId(url);
+
+
+    if(videoId){
+
+        preview.src =
+            "https://www.youtube.com/embed/" +
+            encodeURIComponent(videoId);
+
+
+        preview.style.display =
+            "block";
+
+
+        placeholder.style.display =
+            "none";
+
+    }else{
+
+        preview.src =
+            "";
+
+
+        preview.style.display =
+            "none";
+
+
+        placeholder.style.display =
+            "block";
+
+    }
+
+}
+
+
+/*
+=========================================================
+ PUBLISH TEXT
+=========================================================
+*/
+
+function updatePublishText(){
+
+    publishText.textContent =
+        publishedInput.checked
+        ? "الدرس سيظهر للطلاب."
+        : "الدرس محفوظ لكنه مخفي عن الطلاب.";
+
+}
+
+
+/*
+=========================================================
+ YOUTUBE INPUT
+=========================================================
+*/
+
+youtubeInput.addEventListener(
+    "input",
+    updatePreview
+);
+
+
+publishedInput.addEventListener(
+    "change",
+    updatePublishText
+);
+
+
+/*
+=========================================================
+ SUBMIT
+=========================================================
+*/
+
+form.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+
+        const title =
+            titleInput.value.trim();
+
+
+        const courseId =
+            courseSelect.value;
+
+
+        const description =
+            descriptionInput.value.trim();
+
+
+        const youtubeUrl =
+            youtubeInput.value.trim();
+
+
+        const published =
+            publishedInput.checked;
+
+
+        if(!title){
+
+            showToast(
+                "اكتب اسم الدرس.",
+                "error"
+            );
+
+            titleInput.focus();
+
+            return;
+
+        }
+
+
+        if(!courseId){
+
+            showToast(
+                "اختر الكورس أولًا.",
+                "error"
+            );
+
+            courseSelect.focus();
+
+            return;
+
+        }
+
+
+        if(!youtubeUrl){
+
+            showToast(
+                "ضع رابط فيديو YouTube.",
+                "error"
+            );
+
+            youtubeInput.focus();
+
+            return;
+
+        }
+
+
+        const videoId =
+            getYouTubeId(
+                youtubeUrl
+            );
+
+
+        if(!videoId){
+
+            showToast(
+                "رابط YouTube غير صحيح.",
+                "error"
+            );
+
+            youtubeInput.focus();
+
+            return;
+
+        }
+
+
+        setLoading(true);
+
+        saveBtn.disabled =
+            true;
+
+
+        try{
+
+            const lessonData = {
+
+                course_id:
+                    courseId,
+
+                title:
+                    title,
+
+                description:
+                    description || null,
+
+                youtube_url:
+                    youtubeUrl,
+
+                published:
+                    published
+
+            };
+
+
+            let result;
+
+
+            if(editId){
+
+                result =
+                    await supabaseClient
+
+                        .from("lessons")
+
+                        .update(
+                            lessonData
+                        )
+
+                        .eq(
+                            "id",
+                            editId
+                        )
+
+                        .select()
+                        .single();
+
+            }else{
+
+                result =
+                    await supabaseClient
+
+                        .from("lessons")
+
+                        .insert(
+                            lessonData
+                        )
+
+                        .select()
+                        .single();
+
+            }
+
+
+            if(result.error)
+                throw result.error;
+
+
+            showToast(
+                editId
+                ? "تم تحديث الدرس بنجاح ✅"
+                : "تم إضافة الدرس بنجاح ✅",
+                "success"
+            );
+
+
+            setTimeout(() => {
+
+                window.location.href =
+                    "lessons.html";
+
+            },1000);
+
+
+        }catch(error){
+
+            console.error(error);
+
+            showToast(
+                error.message ||
+                "حدث خطأ أثناء حفظ الدرس.",
+                "error"
+            );
+
+        }finally{
+
+            setLoading(false);
+
+            saveBtn.disabled =
+                false;
+
+        }
+
+    }
+);
+
+
+/*
+=========================================================
+ LOGOUT
+=========================================================
+*/
+
+async function logout(){
+
+    if(supabaseClient){
+
+        await supabaseClient
+            .auth
+            .signOut();
+
+    }
+
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+/*
+=========================================================
+ INIT
+=========================================================
+*/
+
+async function init(){
+
+    setLoading(true);
+
+
+    try{
+
+        const isAdmin =
+            await checkAdmin();
+
+
+        if(!isAdmin)
+            return;
+
+
+        await loadCourses();
+
+        await loadLesson();
+
+        updatePublishText();
+
+        updatePreview();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        showToast(
+            error.message ||
+            "حدث خطأ أثناء تحميل الصفحة.",
+            "error"
+        );
+
+    }finally{
+
+        setLoading(false);
+
+    }
+
+}
+
+
+init();
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../supabase.js"></script>
+
+</body>
+</html>

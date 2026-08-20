@@ -1,0 +1,2230 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>إدارة الكورسات | الخوارزمي</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Cairo",Arial,sans-serif;
+}
+
+:root{
+    --bg:#050507;
+    --card:#111118;
+    --card2:#171720;
+    --border:rgba(255,255,255,.08);
+    --text:#fff;
+    --muted:#9696a5;
+    --primary:#7657ff;
+    --primary2:#5137d9;
+    --green:#35d39a;
+    --red:#ff6078;
+    --blue:#4da3ff;
+}
+
+body{
+    min-height:100vh;
+    color:var(--text);
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(118,87,255,.14),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(70,45,200,.10),
+            transparent 30%
+        ),
+        var(--bg);
+}
+
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+    position:fixed;
+    right:0;
+    top:0;
+    width:255px;
+    height:100vh;
+    padding:20px 15px;
+    background:rgba(9,9,14,.97);
+    border-left:1px solid var(--border);
+    z-index:1000;
+    transition:.3s;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:8px 10px 25px;
+    border-bottom:1px solid var(--border);
+    margin-bottom:18px;
+}
+
+.logo{
+    width:44px;
+    height:44px;
+    display:grid;
+    place-items:center;
+    border-radius:14px;
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary2)
+    );
+    font-size:20px;
+    font-weight:900;
+    box-shadow:0 0 25px rgba(118,87,255,.25);
+}
+
+.brand strong{
+    display:block;
+    font-size:16px;
+}
+
+.brand span{
+    display:block;
+    color:var(--muted);
+    font-size:8px;
+}
+
+.menu-title{
+    color:#666675;
+    font-size:8px;
+    padding:0 10px 8px;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+
+.menu a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    height:44px;
+    padding:0 12px;
+    color:#b7b7c2;
+    text-decoration:none;
+    border-radius:11px;
+    font-size:10px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.menu a:hover{
+    color:#fff;
+    background:rgba(118,87,255,.08);
+}
+
+.menu a.active{
+    color:#fff;
+    background:rgba(118,87,255,.15);
+    border:1px solid rgba(118,87,255,.15);
+}
+
+.menu-icon{
+    width:27px;
+    height:27px;
+    display:grid;
+    place-items:center;
+    border-radius:8px;
+    background:rgba(255,255,255,.04);
+}
+
+.logout{
+    position:absolute;
+    bottom:20px;
+    right:15px;
+    left:15px;
+}
+
+.logout button{
+    width:100%;
+    height:43px;
+    border:1px solid rgba(255,96,120,.12);
+    border-radius:11px;
+    color:#ff8496;
+    background:rgba(255,96,120,.05);
+    cursor:pointer;
+    font-size:10px;
+    font-weight:800;
+}
+
+
+/* ================= MAIN ================= */
+
+.main{
+    margin-right:255px;
+    min-height:100vh;
+    padding:25px 30px 50px;
+}
+
+.topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:25px;
+}
+
+.mobile-menu{
+    display:none;
+    width:42px;
+    height:42px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.04);
+    color:#fff;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.admin-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.admin-avatar{
+    width:42px;
+    height:42px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        #a18fff
+    );
+    font-weight:900;
+}
+
+.admin-info strong{
+    display:block;
+    font-size:10px;
+}
+
+.admin-info span{
+    display:block;
+    color:var(--muted);
+    font-size:8px;
+}
+
+
+/* ================= HEADER ================= */
+
+.page-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.page-title h1{
+    font-size:30px;
+    font-weight:900;
+}
+
+.page-title p{
+    color:var(--muted);
+    font-size:9px;
+    margin-top:3px;
+}
+
+.add-btn{
+    height:45px;
+    padding:0 18px;
+    border:0;
+    border-radius:12px;
+    color:#fff;
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary2)
+    );
+    cursor:pointer;
+    font-size:9px;
+    font-weight:900;
+    box-shadow:0 10px 30px rgba(118,87,255,.18);
+}
+
+
+/* ================= STATS ================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:13px;
+    margin-bottom:18px;
+}
+
+.stat{
+    padding:17px;
+    border-radius:16px;
+    background:var(--card);
+    border:1px solid var(--border);
+}
+
+.stat-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:8px;
+}
+
+.stat small{
+    color:var(--muted);
+    font-size:8px;
+}
+
+.stat-icon{
+    width:35px;
+    height:35px;
+    display:grid;
+    place-items:center;
+    border-radius:10px;
+    background:rgba(118,87,255,.09);
+}
+
+.stat h2{
+    font-size:24px;
+    font-weight:900;
+}
+
+
+/* ================= CARD ================= */
+
+.card{
+    padding:18px;
+    border-radius:18px;
+    background:var(--card);
+    border:1px solid var(--border);
+}
+
+
+/* ================= FILTERS ================= */
+
+.filters{
+    display:grid;
+    grid-template-columns:1fr 190px;
+    gap:10px;
+    margin-bottom:18px;
+}
+
+.search{
+    position:relative;
+}
+
+.search input{
+    width:100%;
+    height:46px;
+    padding:0 42px 0 13px;
+    border:1px solid var(--border);
+    border-radius:11px;
+    outline:none;
+    color:#fff;
+    background:rgba(255,255,255,.035);
+    font-size:10px;
+}
+
+.search span{
+    position:absolute;
+    right:13px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#777784;
+}
+
+select{
+    width:100%;
+    height:46px;
+    padding:0 12px;
+    border:1px solid var(--border);
+    border-radius:11px;
+    outline:none;
+    color:#fff;
+    background:#15151e;
+    font-size:10px;
+}
+
+select option{
+    color:#fff;
+    background:#15151e;
+}
+
+
+/* ================= COURSES GRID ================= */
+
+.courses{
+    display:grid;
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+    gap:15px;
+}
+
+.course{
+    overflow:hidden;
+    border-radius:16px;
+    background:var(--card2);
+    border:1px solid var(--border);
+    transition:.25s;
+}
+
+.course:hover{
+    transform:translateY(-3px);
+    border-color:rgba(118,87,255,.25);
+}
+
+.course-image{
+    position:relative;
+    height:165px;
+    background:#1a1a23;
+    overflow:hidden;
+}
+
+.course-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.no-image{
+    width:100%;
+    height:100%;
+    display:grid;
+    place-items:center;
+    color:#777784;
+    font-size:35px;
+}
+
+.status{
+    position:absolute;
+    top:10px;
+    right:10px;
+    padding:5px 9px;
+    border-radius:7px;
+    font-size:7px;
+    font-weight:800;
+    backdrop-filter:blur(8px);
+}
+
+.status.published{
+    color:#73e5b7;
+    background:rgba(53,211,154,.12);
+}
+
+.status.hidden{
+    color:#ff8799;
+    background:rgba(255,96,120,.12);
+}
+
+.course-body{
+    padding:14px;
+}
+
+.grade{
+    display:inline-block;
+    padding:4px 8px;
+    border-radius:6px;
+    color:#b9adff;
+    background:rgba(118,87,255,.09);
+    font-size:7px;
+    font-weight:800;
+    margin-bottom:8px;
+}
+
+.course-title{
+    font-size:13px;
+    font-weight:900;
+    margin-bottom:6px;
+}
+
+.course-description{
+    color:var(--muted);
+    font-size:8px;
+    line-height:1.8;
+    min-height:30px;
+}
+
+.course-info{
+    display:flex;
+    gap:12px;
+    margin-top:12px;
+    padding-top:10px;
+    border-top:1px solid rgba(255,255,255,.05);
+}
+
+.info-item{
+    color:#8f8f9c;
+    font-size:7px;
+}
+
+.info-item strong{
+    color:#fff;
+    font-size:8px;
+}
+
+.course-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:5px;
+    margin-top:12px;
+}
+
+.course-actions button{
+    height:34px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    cursor:pointer;
+    color:#ccc;
+    background:rgba(255,255,255,.035);
+    font-size:8px;
+    font-weight:800;
+}
+
+.course-actions button:hover{
+    background:rgba(118,87,255,.09);
+    color:#fff;
+}
+
+.course-actions .delete:hover{
+    color:#ff8092;
+    background:rgba(255,96,120,.08);
+}
+
+
+/* ================= EMPTY ================= */
+
+.empty{
+    grid-column:1/-1;
+    padding:70px 20px;
+    text-align:center;
+    color:#777784;
+}
+
+.empty-icon{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.empty h3{
+    color:#aaaab7;
+    font-size:13px;
+}
+
+.empty p{
+    font-size:8px;
+    margin-top:4px;
+}
+
+
+/* ================= MODAL ================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:2000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(8px);
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:min(550px,100%);
+    max-height:90vh;
+    overflow-y:auto;
+    padding:22px;
+    border-radius:20px;
+    background:#111118;
+    border:1px solid var(--border);
+}
+
+.modal-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:15px;
+}
+
+.modal-head h3{
+    font-size:14px;
+}
+
+.close{
+    width:32px;
+    height:32px;
+    border:0;
+    border-radius:8px;
+    color:#aaa;
+    background:rgba(255,255,255,.05);
+    cursor:pointer;
+}
+
+.preview-image{
+    width:100%;
+    height:210px;
+    object-fit:cover;
+    border-radius:12px;
+    margin-bottom:15px;
+}
+
+.details{
+    display:grid;
+    gap:8px;
+}
+
+.detail{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:10px;
+    border-radius:9px;
+    background:rgba(255,255,255,.025);
+}
+
+.detail span{
+    color:var(--muted);
+    font-size:8px;
+}
+
+.detail strong{
+    font-size:9px;
+    text-align:left;
+}
+
+
+/* ================= LOADING ================= */
+
+.loading{
+    position:fixed;
+    inset:0;
+    z-index:5000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#050507;
+}
+
+.spinner{
+    width:45px;
+    height:45px;
+    border:3px solid rgba(118,87,255,.15);
+    border-top-color:var(--primary);
+    border-radius:50%;
+    animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+
+/* ================= TOAST ================= */
+
+.toast{
+    position:fixed;
+    left:20px;
+    bottom:20px;
+    z-index:6000;
+    padding:12px 16px;
+    border-radius:11px;
+    background:#191922;
+    border:1px solid var(--border);
+    box-shadow:0 15px 40px rgba(0,0,0,.4);
+    font-size:9px;
+    transform:translateY(30px);
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+}
+
+.toast.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.toast.error{
+    border-color:rgba(255,96,120,.25);
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1100px){
+
+    .courses{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:800px){
+
+    .sidebar{
+        transform:translateX(100%);
+    }
+
+    .sidebar.open{
+        transform:translateX(0);
+    }
+
+    .main{
+        margin-right:0;
+        padding:18px 15px 40px;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+}
+
+@media(max-width:650px){
+
+    .page-header{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .filters{
+        grid-template-columns:1fr;
+    }
+
+    .courses{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+
+        <div class="logo">
+            خ
+        </div>
+
+        <div>
+            <strong>الخوارزمي</strong>
+            <span>لوحة الإدارة</span>
+        </div>
+
+    </div>
+
+
+    <div class="menu-title">
+        الإدارة
+    </div>
+
+
+    <nav class="menu">
+
+        <a href="index.html">
+            <div class="menu-icon">🏠</div>
+            الرئيسية
+        </a>
+
+        <a href="students.html">
+            <div class="menu-icon">👨‍🎓</div>
+            الطلاب
+        </a>
+
+        <a href="courses.html" class="active">
+            <div class="menu-icon">📚</div>
+            الكورسات
+        </a>
+
+        <a href="lessons.html">
+            <div class="menu-icon">🎥</div>
+            الدروس والفيديوهات
+        </a>
+
+        <a href="exams.html">
+            <div class="menu-icon">📝</div>
+            الاختبارات
+        </a>
+
+        <a href="results.html">
+            <div class="menu-icon">📊</div>
+            النتائج
+        </a>
+
+        <a href="files.html">
+            <div class="menu-icon">📁</div>
+            الملفات و PDF
+        </a>
+
+        <a href="payments.html">
+            <div class="menu-icon">💳</div>
+            المدفوعات
+        </a>
+
+        <a href="settings.html">
+            <div class="menu-icon">⚙️</div>
+            الإعدادات
+        </a>
+
+    </nav>
+
+
+    <div class="logout">
+
+        <button onclick="logout()">
+            🚪 تسجيل الخروج
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+
+    <div class="topbar">
+
+        <button
+            class="mobile-menu"
+            onclick="toggleSidebar()"
+        >
+            ☰
+        </button>
+
+        <div></div>
+
+        <div class="admin-box">
+
+            <div class="admin-avatar">
+                أ
+            </div>
+
+            <div class="admin-info">
+
+                <strong id="adminName">
+                    جاري التحميل...
+                </strong>
+
+                <span>
+                    مدير المنصة
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- HEADER -->
+
+    <section class="page-header">
+
+        <div class="page-title">
+
+            <h1>
+                📚 إدارة الكورسات
+            </h1>
+
+            <p>
+                أضف وعدّل وانشر كورسات منصة الخوارزمي.
+            </p>
+
+        </div>
+
+
+        <button
+            class="add-btn"
+            onclick="goAddCourse()"
+        >
+            ＋ إضافة كورس جديد
+        </button>
+
+    </section>
+
+
+    <!-- STATS -->
+
+    <section class="stats">
+
+        <div class="stat">
+
+            <div class="stat-top">
+
+                <small>
+                    إجمالي الكورسات
+                </small>
+
+                <div class="stat-icon">
+                    📚
+                </div>
+
+            </div>
+
+            <h2 id="totalCourses">
+                —
+            </h2>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-top">
+
+                <small>
+                    المنشورة
+                </small>
+
+                <div class="stat-icon">
+                    🟢
+                </div>
+
+            </div>
+
+            <h2 id="publishedCourses">
+                —
+            </h2>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-top">
+
+                <small>
+                    نتائج البحث
+                </small>
+
+                <div class="stat-icon">
+                    🔎
+                </div>
+
+            </div>
+
+            <h2 id="visibleCourses">
+                0
+            </h2>
+
+        </div>
+
+    </section>
+
+
+    <!-- COURSES -->
+
+    <section class="card">
+
+
+        <div class="filters">
+
+            <div class="search">
+
+                <span>
+                    🔎
+                </span>
+
+                <input
+                    id="searchInput"
+                    type="search"
+                    placeholder="ابحث باسم الكورس أو الوصف..."
+                >
+
+            </div>
+
+
+            <select id="gradeFilter">
+
+                <option value="">
+                    كل الصفوف
+                </option>
+
+                <option value="أولى إعدادي">
+                    أولى إعدادي
+                </option>
+
+                <option value="ثانية إعدادي">
+                    ثانية إعدادي
+                </option>
+
+                <option value="ثالثة إعدادي">
+                    ثالثة إعدادي
+                </option>
+
+                <option value="أولى ثانوي">
+                    أولى ثانوي
+                </option>
+
+                <option value="ثانية ثانوي">
+                    ثانية ثانوي
+                </option>
+
+                <option value="ثالثة ثانوي">
+                    ثالثة ثانوي
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div
+            class="courses"
+            id="coursesContainer"
+        >
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    ⏳
+                </div>
+
+                <h3>
+                    جاري تحميل الكورسات...
+                </h3>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- VIEW MODAL -->
+
+<div class="modal" id="courseModal">
+
+    <div class="modal-box">
+
+        <div class="modal-head">
+
+            <h3>
+                📚 تفاصيل الكورس
+            </h3>
+
+            <button
+                class="close"
+                onclick="closeModal()"
+            >
+                ✕
+            </button>
+
+        </div>
+
+        <div id="courseDetails"></div>
+
+    </div>
+
+</div>
+
+
+<!-- LOADING -->
+
+<div class="loading" id="loading">
+
+    <div class="spinner"></div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+
+/*
+=========================================================
+ SUPABASE
+=========================================================
+
+ضع بيانات مشروعك من:
+
+Supabase
+→ Project Settings
+→ API
+
+❌ لا تضع service_role هنا.
+*/
+
+const SUPABASE_URL =
+    "ضع_رابط_مشروعك_هنا";
+
+const SUPABASE_KEY =
+    "ضع_publishable_او_anon_key_هنا";
+
+
+let supabaseClient = null;
+
+
+if(
+    SUPABASE_URL.startsWith("http") &&
+    !SUPABASE_URL.includes("ضع_")
+){
+
+    supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+}
+
+
+/*
+=========================================================
+ VARIABLES
+=========================================================
+*/
+
+let allCourses = [];
+
+let filteredCourses = [];
+
+
+/*
+=========================================================
+ ELEMENTS
+=========================================================
+*/
+
+const container =
+    document.getElementById(
+        "coursesContainer"
+    );
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+const gradeFilter =
+    document.getElementById(
+        "gradeFilter"
+    );
+
+const loading =
+    document.getElementById(
+        "loading"
+    );
+
+const modal =
+    document.getElementById(
+        "courseModal"
+    );
+
+const details =
+    document.getElementById(
+        "courseDetails"
+    );
+
+const toast =
+    document.getElementById(
+        "toast"
+    );
+
+
+/*
+=========================================================
+ SIDEBAR
+=========================================================
+*/
+
+function toggleSidebar(){
+
+    document
+        .getElementById("sidebar")
+        .classList
+        .toggle("open");
+
+}
+
+
+/*
+=========================================================
+ TOAST
+=========================================================
+*/
+
+function showToast(
+    message,
+    type=""
+){
+
+    toast.textContent =
+        message;
+
+    toast.className =
+        "toast " +
+        type +
+        " show";
+
+
+    setTimeout(
+        () => {
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },
+        3000
+    );
+
+}
+
+
+/*
+=========================================================
+ LOADING
+=========================================================
+*/
+
+function setLoading(
+    value
+){
+
+    loading.style.display =
+        value
+        ? "flex"
+        : "none";
+
+}
+
+
+/*
+=========================================================
+ CHECK ADMIN
+=========================================================
+*/
+
+async function checkAdmin(){
+
+    if(!supabaseClient){
+
+        setLoading(false);
+
+        showToast(
+            "ضع بيانات Supabase أولاً.",
+            "error"
+        );
+
+        return false;
+
+    }
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .auth
+            .getSession();
+
+
+    if(
+        error ||
+        !data ||
+        !data.session
+    ){
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
+    const user =
+        data.session.user;
+
+
+    /*
+        المفروض جدول profiles
+        يحتوي role = admin
+    */
+
+    const {
+        data: profile,
+        error: profileError
+    } =
+        await supabaseClient
+
+            .from("profiles")
+
+            .select(
+                "id,full_name,role"
+            )
+
+            .eq(
+                "id",
+                user.id
+            )
+
+            .maybeSingle();
+
+
+    if(
+        profileError ||
+        !profile ||
+        profile.role !== "admin"
+    ){
+
+        await supabaseClient
+            .auth
+            .signOut();
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
+    document
+        .getElementById("adminName")
+        .textContent =
+            profile.full_name ||
+            user.email ||
+            "الأدمن";
+
+
+    return true;
+
+}
+
+
+/*
+=========================================================
+ LOAD COURSES
+=========================================================
+*/
+
+async function loadCourses(){
+
+    if(!supabaseClient)
+        return;
+
+
+    setLoading(true);
+
+
+    try{
+
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+
+                .from("courses")
+
+                .select("*")
+
+                .order(
+                    "created_at",
+                    {
+                        ascending:false
+                    }
+                );
+
+
+        if(error){
+
+            throw error;
+
+        }
+
+
+        allCourses =
+            data || [];
+
+
+        updateStats();
+
+        applyFilters();
+
+
+    }catch(error){
+
+        console.error(error);
+
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    ⚠️
+                </div>
+
+                <h3>
+                    تعذر تحميل الكورسات
+                </h3>
+
+                <p>
+                    ${escapeHTML(
+                        error.message
+                    )}
+                </p>
+
+            </div>
+
+        `;
+
+
+    }finally{
+
+        setLoading(false);
+
+    }
+
+}
+
+
+/*
+=========================================================
+ STATS
+=========================================================
+*/
+
+function updateStats(){
+
+    const total =
+        allCourses.length;
+
+
+    const published =
+        allCourses.filter(
+            course =>
+                course.published === true
+        ).length;
+
+
+    document
+        .getElementById(
+            "totalCourses"
+        )
+        .textContent =
+            total;
+
+
+    document
+        .getElementById(
+            "publishedCourses"
+        )
+        .textContent =
+            published;
+
+}
+
+
+/*
+=========================================================
+ FILTER
+=========================================================
+*/
+
+function applyFilters(){
+
+    const search =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+
+    const grade =
+        gradeFilter.value;
+
+
+    filteredCourses =
+        allCourses.filter(
+            course => {
+
+
+                const title =
+                    String(
+                        course.title || ""
+                    ).toLowerCase();
+
+
+                const description =
+                    String(
+                        course.description || ""
+                    ).toLowerCase();
+
+
+                const matchesSearch =
+                    !search ||
+                    title.includes(search) ||
+                    description.includes(search);
+
+
+                const matchesGrade =
+                    !grade ||
+                    course.grade === grade;
+
+
+                return(
+                    matchesSearch &&
+                    matchesGrade
+                );
+
+            }
+        );
+
+
+    document
+        .getElementById(
+            "visibleCourses"
+        )
+        .textContent =
+            filteredCourses.length;
+
+
+    renderCourses();
+
+}
+
+
+/*
+=========================================================
+ RENDER
+=========================================================
+*/
+
+function renderCourses(){
+
+    if(
+        filteredCourses.length === 0
+    ){
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    📭
+                </div>
+
+                <h3>
+                    مفيش كورسات
+                </h3>
+
+                <p>
+                    لم يتم العثور على كورسات مطابقة.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        filteredCourses
+            .map(
+                course =>
+                    courseCard(course)
+            )
+            .join("");
+
+}
+
+
+/*
+=========================================================
+ COURSE CARD
+=========================================================
+*/
+
+function courseCard(
+    course
+){
+
+    const image =
+        course.image_url;
+
+
+    const published =
+        course.published === true;
+
+
+    const title =
+        course.title ||
+        "بدون اسم";
+
+
+    const description =
+        course.description ||
+        "لا يوجد وصف لهذا الكورس.";
+
+
+    const grade =
+        course.grade ||
+        "غير محدد";
+
+
+    return `
+
+        <article class="course">
+
+
+            <div class="course-image">
+
+                ${
+                    image
+
+                    ?
+
+                    `
+                    <img
+                        src="${escapeAttribute(image)}"
+                        alt="${escapeAttribute(title)}"
+                    >
+                    `
+
+                    :
+
+                    `
+                    <div class="no-image">
+                        📚
+                    </div>
+                    `
+                }
+
+
+                <div
+                    class="status ${
+                        published
+                        ? "published"
+                        : "hidden"
+                    }"
+                >
+
+                    ${
+                        published
+                        ? "منشور"
+                        : "مخفي"
+                    }
+
+                </div>
+
+
+            </div>
+
+
+            <div class="course-body">
+
+
+                <div class="grade">
+
+                    ${escapeHTML(grade)}
+
+                </div>
+
+
+                <h2 class="course-title">
+
+                    ${escapeHTML(title)}
+
+                </h2>
+
+
+                <p class="course-description">
+
+                    ${escapeHTML(
+                        description
+                    )}
+
+                </p>
+
+
+                <div class="course-info">
+
+                    <div class="info-item">
+
+                        الدروس
+
+                        <strong>
+                            ${course.lessons_count ?? 0}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        الطلاب
+
+                        <strong>
+                            ${course.students_count ?? 0}
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="course-actions">
+
+
+                    <button
+                        onclick="viewCourse('${escapeAttribute(course.id)}')"
+                    >
+                        👁 عرض
+                    </button>
+
+
+                    <button
+                        onclick="editCourse('${escapeAttribute(course.id)}')"
+                    >
+                        ✏️ تعديل
+                    </button>
+
+
+                    <button
+                        class="delete"
+                        onclick="deleteCourse('${escapeAttribute(course.id)}')"
+                    >
+                        🗑 حذف
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+        </article>
+
+    `;
+
+}
+
+
+/*
+=========================================================
+ VIEW COURSE
+=========================================================
+*/
+
+function viewCourse(
+    id
+){
+
+    const course =
+        allCourses.find(
+            item =>
+                String(item.id) ===
+                String(id)
+        );
+
+
+    if(!course)
+        return;
+
+
+    const title =
+        course.title ||
+        "بدون اسم";
+
+
+    details.innerHTML = `
+
+        ${
+            course.image_url
+
+            ?
+
+            `
+            <img
+                class="preview-image"
+                src="${escapeAttribute(course.image_url)}"
+                alt=""
+            >
+            `
+
+            :
+
+            ""
+        }
+
+
+        <div class="details">
+
+
+            <div class="detail">
+
+                <span>
+                    اسم الكورس
+                </span>
+
+                <strong>
+                    ${escapeHTML(title)}
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <span>
+                    الصف
+                </span>
+
+                <strong>
+                    ${escapeHTML(
+                        course.grade ||
+                        "—"
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <span>
+                    الوصف
+                </span>
+
+                <strong>
+                    ${escapeHTML(
+                        course.description ||
+                        "—"
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <span>
+                    عدد الدروس
+                </span>
+
+                <strong>
+                    ${course.lessons_count ?? 0}
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <span>
+                    الحالة
+                </span>
+
+                <strong>
+                    ${
+                        course.published === true
+                        ? "منشور"
+                        : "مخفي"
+                    }
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <span>
+                    تاريخ الإضافة
+                </span>
+
+                <strong>
+                    ${formatDate(
+                        course.created_at
+                    )}
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    `;
+
+
+    modal.classList.add(
+        "show"
+    );
+
+}
+
+
+/*
+=========================================================
+ CLOSE MODAL
+=========================================================
+*/
+
+function closeModal(){
+
+    modal.classList.remove(
+        "show"
+    );
+
+}
+
+
+modal.addEventListener(
+    "click",
+    event => {
+
+        if(
+            event.target === modal
+        ){
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+/*
+=========================================================
+ ADD COURSE
+=========================================================
+*/
+
+function goAddCourse(){
+
+    window.location.href =
+        "add-course.html";
+
+}
+
+
+/*
+=========================================================
+ EDIT COURSE
+=========================================================
+*/
+
+function editCourse(
+    id
+){
+
+    window.location.href =
+        "add-course.html?id=" +
+        encodeURIComponent(id);
+
+}
+
+
+/*
+=========================================================
+ DELETE COURSE
+=========================================================
+*/
+
+async function deleteCourse(
+    id
+){
+
+    const course =
+        allCourses.find(
+            item =>
+                String(item.id) ===
+                String(id)
+        );
+
+
+    if(!course)
+        return;
+
+
+    const title =
+        course.title ||
+        "هذا الكورس";
+
+
+    const confirmed =
+        confirm(
+            `هل أنت متأكد من حذف "${title}"؟\n\nسيتم حذف سجل الكورس من قاعدة البيانات.`
+        );
+
+
+    if(!confirmed)
+        return;
+
+
+    setLoading(true);
+
+
+    try{
+
+
+        const {
+            error
+        } =
+            await supabaseClient
+
+                .from("courses")
+
+                .delete()
+
+                .eq(
+                    "id",
+                    id
+                );
+
+
+        if(error){
+
+            throw error;
+
+        }
+
+
+        showToast(
+            "تم حذف الكورس بنجاح."
+        );
+
+
+        await loadCourses();
+
+
+    }catch(error){
+
+        console.error(error);
+
+
+        showToast(
+            error.message ||
+            "تعذر حذف الكورس.",
+            "error"
+        );
+
+
+    }finally{
+
+        setLoading(false);
+
+    }
+
+}
+
+
+/*
+=========================================================
+ SEARCH
+=========================================================
+*/
+
+searchInput.addEventListener(
+    "input",
+    applyFilters
+);
+
+
+gradeFilter.addEventListener(
+    "change",
+    applyFilters
+);
+
+
+/*
+=========================================================
+ HELPERS
+=========================================================
+*/
+
+function formatDate(
+    date
+){
+
+    if(!date)
+        return "—";
+
+
+    try{
+
+        return new Date(
+            date
+        ).toLocaleDateString(
+            "ar-EG",
+            {
+                year:"numeric",
+                month:"short",
+                day:"numeric"
+            }
+        );
+
+    }catch{
+
+        return "—";
+
+    }
+
+}
+
+
+function escapeHTML(
+    value
+){
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+function escapeAttribute(
+    value
+){
+
+    return escapeHTML(
+        value
+    );
+
+}
+
+
+/*
+=========================================================
+ LOGOUT
+=========================================================
+*/
+
+async function logout(){
+
+    if(
+        supabaseClient
+    ){
+
+        await supabaseClient
+            .auth
+            .signOut();
+
+    }
+
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+/*
+=========================================================
+ INIT
+=========================================================
+*/
+
+async function init(){
+
+    const isAdmin =
+        await checkAdmin();
+
+
+    if(!isAdmin)
+        return;
+
+
+    await loadCourses();
+
+}
+
+
+init();
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../supabase.js"></script>
+
+</body>
+</html>

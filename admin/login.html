@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>دخول الإدارة | الخوارزمي</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:"Cairo",Arial,sans-serif;
+        }
+
+
+        :root{
+
+            --bg:#050507;
+
+            --card:rgba(18,18,27,.90);
+
+            --border:rgba(255,255,255,.08);
+
+            --text:#ffffff;
+
+            --muted:#9999a8;
+
+            --primary:#7657ff;
+
+            --primary-dark:#4d35d9;
+
+            --danger:#ff6078;
+
+        }
+
+
+        body{
+
+            min-height:100vh;
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:center;
+
+            padding:25px;
+
+            color:var(--text);
+
+            background:
+
+                radial-gradient(
+                    circle at 20% 10%,
+                    rgba(118,87,255,.20),
+                    transparent 32%
+                ),
+
+                radial-gradient(
+                    circle at 90% 90%,
+                    rgba(70,45,190,.15),
+                    transparent 32%
+                ),
+
+                #050507;
+
+        }
+
+
+        .container{
+
+            width:min(430px,100%);
+
+        }
+
+
+        .brand{
+
+            text-align:center;
+
+            margin-bottom:20px;
+
+        }
+
+
+        .logo{
+
+            width:70px;
+
+            height:70px;
+
+            margin:0 auto 12px;
+
+            display:grid;
+
+            place-items:center;
+
+            border-radius:22px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--primary-dark)
+                );
+
+            font-size:32px;
+
+            font-weight:900;
+
+            box-shadow:
+
+                0 0 40px
+                rgba(118,87,255,.25);
+
+        }
+
+
+        .brand h1{
+
+            font-size:25px;
+
+            font-weight:900;
+
+        }
+
+
+        .brand p{
+
+            color:var(--muted);
+
+            font-size:10px;
+
+            margin-top:4px;
+
+        }
+
+
+        .card{
+
+            padding:27px;
+
+            border-radius:23px;
+
+            border:
+                1px solid var(--border);
+
+            background:var(--card);
+
+            box-shadow:
+
+                0 30px 100px
+                rgba(0,0,0,.35);
+
+            backdrop-filter:blur(18px);
+
+        }
+
+
+        .card-title{
+
+            font-size:17px;
+
+            font-weight:900;
+
+            margin-bottom:18px;
+
+        }
+
+
+        .form-group{
+
+            margin-bottom:15px;
+
+        }
+
+
+        label{
+
+            display:block;
+
+            color:#c4c4ce;
+
+            font-size:10px;
+
+            font-weight:700;
+
+            margin-bottom:7px;
+
+        }
+
+
+        .input-wrap{
+
+            position:relative;
+
+        }
+
+
+        input{
+
+            width:100%;
+
+            height:50px;
+
+            padding:
+                0 13px;
+
+            color:#fff;
+
+            outline:none;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:12px;
+
+            background:
+                rgba(255,255,255,.035);
+
+            font-size:11px;
+
+            transition:.25s;
+
+        }
+
+
+        input:focus{
+
+            border-color:
+                rgba(118,87,255,.50);
+
+            background:
+                rgba(118,87,255,.05);
+
+            box-shadow:
+
+                0 0 0 3px
+                rgba(118,87,255,.06);
+
+        }
+
+
+        .password-toggle{
+
+            position:absolute;
+
+            left:10px;
+
+            top:50%;
+
+            transform:translateY(-50%);
+
+            border:0;
+
+            background:transparent;
+
+            color:#999;
+
+            cursor:pointer;
+
+            font-size:16px;
+
+        }
+
+
+        .login-btn{
+
+            width:100%;
+
+            height:51px;
+
+            border:0;
+
+            border-radius:13px;
+
+            color:#fff;
+
+            cursor:pointer;
+
+            font-size:11px;
+
+            font-weight:900;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--primary-dark)
+                );
+
+            transition:.25s;
+
+            box-shadow:
+
+                0 12px 30px
+                rgba(118,87,255,.18);
+
+        }
+
+
+        .login-btn:hover{
+
+            transform:translateY(-2px);
+
+            box-shadow:
+
+                0 16px 38px
+                rgba(118,87,255,.28);
+
+        }
+
+
+        .login-btn:disabled{
+
+            opacity:.55;
+
+            cursor:not-allowed;
+
+            transform:none;
+
+        }
+
+
+        .message{
+
+            display:none;
+
+            margin-bottom:14px;
+
+            padding:11px;
+
+            border-radius:10px;
+
+            font-size:9px;
+
+            line-height:1.8;
+
+            text-align:center;
+
+        }
+
+
+        .message.error{
+
+            display:block;
+
+            color:#ff9aaa;
+
+            background:
+                rgba(255,96,120,.07);
+
+            border:
+                1px solid
+                rgba(255,96,120,.15);
+
+        }
+
+
+        .message.success{
+
+            display:block;
+
+            color:#8ce6bf;
+
+            background:
+                rgba(53,211,154,.07);
+
+            border:
+                1px solid
+                rgba(53,211,154,.15);
+
+        }
+
+
+        .footer{
+
+            text-align:center;
+
+            margin-top:18px;
+
+            color:#666673;
+
+            font-size:8px;
+
+        }
+
+
+        .loading{
+
+            position:fixed;
+
+            inset:0;
+
+            z-index:999;
+
+            display:none;
+
+            align-items:center;
+
+            justify-content:center;
+
+            background:#050507;
+
+        }
+
+
+        .spinner{
+
+            width:42px;
+
+            height:42px;
+
+            border-radius:50%;
+
+            border:
+
+                3px solid
+                rgba(118,87,255,.15);
+
+            border-top-color:
+                var(--primary);
+
+            animation:
+                spin .8s linear infinite;
+
+        }
+
+
+        @keyframes spin{
+
+            to{
+                transform:rotate(360deg);
+            }
+
+        }
+
+
+        @media(max-width:500px){
+
+            body{
+
+                padding:15px;
+
+            }
+
+            .card{
+
+                padding:21px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div
+    class="loading"
+    id="loading"
+>
+
+    <div class="spinner"></div>
+
+</div>
+
+
+<div class="container">
+
+
+    <div class="brand">
+
+        <div class="logo">
+            خ
+        </div>
+
+        <h1>
+            الخوارزمي
+        </h1>
+
+        <p>
+            لوحة تحكم الإدارة
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-title">
+            🔐 تسجيل دخول الأدمن
+        </div>
+
+
+        <div
+            id="message"
+            class="message"
+        ></div>
+
+
+        <form
+            id="loginForm"
+        >
+
+
+            <div class="form-group">
+
+                <label>
+                    البريد الإلكتروني
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="admin@example.com"
+                    autocomplete="username"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    كلمة المرور
+                </label>
+
+                <div class="input-wrap">
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="••••••••"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        onclick="togglePassword()"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="login-btn"
+                id="loginBtn"
+            >
+                دخول لوحة التحكم
+            </button>
+
+
+        </form>
+
+    </div>
+
+
+    <div class="footer">
+        الخوارزمي © جميع الحقوق محفوظة
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+/*
+===========================================================
+    🔥 SUPABASE CONFIGURATION
+===========================================================
+
+    هنا تحط بيانات مشروع Supabase الخاص بك.
+
+    من:
+
+    Supabase Dashboard
+        ↓
+    Project Settings
+        ↓
+    API
+
+    هات:
+
+    1. Project URL
+    2. Publishable key
+       أو anon key في المشاريع القديمة.
+
+===========================================================
+*/
+
+
+const SUPABASE_URL =
+    "ضع_رابط_مشروعك_هنا";
+
+
+const SUPABASE_KEY =
+    "ضع_publishable_او_anon_key_هنا";
+
+
+/*
+===========================================================
+    إنشاء اتصال Supabase
+===========================================================
+*/
+
+let supabaseClient = null;
+
+
+if(
+    SUPABASE_URL.startsWith("http") &&
+    !SUPABASE_URL.includes("ضع_")
+){
+
+    supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+}
+
+
+/*
+===========================================================
+    ELEMENTS
+===========================================================
+*/
+
+const loginForm =
+    document.getElementById(
+        "loginForm"
+    );
+
+
+const emailInput =
+    document.getElementById(
+        "email"
+    );
+
+
+const passwordInput =
+    document.getElementById(
+        "password"
+    );
+
+
+const loginBtn =
+    document.getElementById(
+        "loginBtn"
+    );
+
+
+const message =
+    document.getElementById(
+        "message"
+    );
+
+
+const loading =
+    document.getElementById(
+        "loading"
+    );
+
+
+/*
+===========================================================
+    MESSAGE
+===========================================================
+*/
+
+function showMessage(
+    text,
+    type="error"
+){
+
+    message.textContent =
+        text;
+
+    message.className =
+        "message " +
+        type;
+
+}
+
+
+/*
+===========================================================
+    LOADING
+===========================================================
+*/
+
+function setLoading(
+    state
+){
+
+    loading.style.display =
+        state
+        ? "flex"
+        : "none";
+
+    loginBtn.disabled =
+        state;
+
+    loginBtn.textContent =
+        state
+        ? "جاري تسجيل الدخول..."
+        : "دخول لوحة التحكم";
+
+}
+
+
+/*
+===========================================================
+    PASSWORD
+===========================================================
+*/
+
+function togglePassword(){
+
+    if(
+        passwordInput.type ===
+        "password"
+    ){
+
+        passwordInput.type =
+            "text";
+
+    }else{
+
+        passwordInput.type =
+            "password";
+
+    }
+
+}
+
+
+/*
+===========================================================
+    ADMIN LOGIN
+===========================================================
+*/
+
+loginForm.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+
+        showMessage(
+            "",
+            "error"
+        );
+
+        message.className =
+            "message";
+
+
+        const email =
+            emailInput.value.trim();
+
+
+        const password =
+            passwordInput.value;
+
+
+        if(
+            !email ||
+            !password
+        ){
+
+            showMessage(
+                "من فضلك اكتب البريد الإلكتروني وكلمة المرور."
+            );
+
+            return;
+
+        }
+
+
+        /*
+        ====================================================
+            تأكد إن Supabase متوصل
+        ====================================================
+        */
+
+        if(
+            !supabaseClient
+        ){
+
+            showMessage(
+                "لم يتم وضع بيانات Supabase بعد. ضع Project URL و Publishable/Anon Key في الكود."
+            );
+
+            return;
+
+        }
+
+
+        setLoading(true);
+
+
+        try{
+
+
+            /*
+            =================================================
+                تسجيل الدخول باستخدام Supabase Auth
+            =================================================
+            */
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient.auth.signInWithPassword({
+
+                    email:
+                        email,
+
+                    password:
+                        password
+
+                });
+
+
+            if(error){
+
+                throw error;
+
+            }
+
+
+            if(
+                !data ||
+                !data.user
+            ){
+
+                throw new Error(
+                    "تعذر الحصول على بيانات المستخدم."
+                );
+
+            }
+
+
+            /*
+            =================================================
+                🔐 التحقق من أن الحساب Admin
+            =================================================
+
+                مهم جدًا:
+
+                مجرد نجاح تسجيل الدخول لا يعني
+                أن المستخدم أدمن.
+
+                لازم يكون عندنا جدول profiles
+                فيه role.
+
+            =================================================
+            */
+
+
+            const {
+                data: profile,
+                error: profileError
+            } =
+                await supabaseClient
+
+                    .from("profiles")
+
+                    .select("id, role, full_name")
+
+                    .eq(
+                        "id",
+                        data.user.id
+                    )
+
+                    .maybeSingle();
+
+
+            if(profileError){
+
+                console.error(
+                    profileError
+                );
+
+                /*
+                    تسجيل الخروج لأننا
+                    لم نستطع التحقق من الصلاحية.
+                */
+
+                await supabaseClient.auth.signOut();
+
+                throw new Error(
+                    "تعذر التحقق من صلاحيات الحساب."
+                );
+
+            }
+
+
+            if(
+                !profile ||
+                profile.role !==
+                "admin"
+            ){
+
+                await supabaseClient.auth.signOut();
+
+                throw new Error(
+                    "هذا الحساب ليس لديه صلاحية دخول لوحة الإدارة."
+                );
+
+            }
+
+
+            /*
+            =================================================
+                تم تسجيل الدخول بنجاح
+            =================================================
+            */
+
+            showMessage(
+                "تم تسجيل الدخول بنجاح، جاري فتح لوحة التحكم...",
+                "success"
+            );
+
+
+            setTimeout(
+                function(){
+
+                    window.location.href =
+                        "index.html";
+
+                },
+                700
+            );
+
+
+        }catch(error){
+
+            console.error(
+                "ADMIN LOGIN ERROR:",
+                error
+            );
+
+
+            let errorMessage =
+                "حدث خطأ أثناء تسجيل الدخول.";
+
+
+            if(
+                error.message
+                ===
+                "Invalid login credentials"
+            ){
+
+                errorMessage =
+                    "البريد الإلكتروني أو كلمة المرور غير صحيحة.";
+
+            }
+
+
+            if(
+                error.message &&
+                error.message.includes(
+                    "Email not confirmed"
+                )
+            ){
+
+                errorMessage =
+                    "يجب تأكيد البريد الإلكتروني أولًا.";
+
+            }
+
+
+            if(
+                error.message &&
+                error.message.includes(
+                    "rate limit"
+                )
+            ){
+
+                errorMessage =
+                    "تم تجاوز عدد محاولات الدخول مؤقتًا. حاول مرة أخرى لاحقًا.";
+
+            }
+
+
+            if(
+                error.message &&
+                error.message !==
+                "Invalid login credentials"
+            ){
+
+                /*
+                    نستخدم رسالة Supabase
+                    في الحالات الأخرى.
+                */
+
+                if(
+                    error.message.length < 180
+                ){
+
+                    errorMessage =
+                        error.message;
+
+                }
+
+            }
+
+
+            showMessage(
+                errorMessage
+            );
+
+
+        }finally{
+
+            setLoading(false);
+
+        }
+
+    }
+);
+
+
+/*
+===========================================================
+    CHECK EXISTING SESSION
+===========================================================
+
+    لو الأدمن مسجل دخول بالفعل،
+    لا داعي لإظهار صفحة تسجيل الدخول.
+===========================================================
+*/
+
+async function checkExistingSession(){
+
+    if(
+        !supabaseClient
+    ){
+
+        return;
+
+    }
+
+
+    try{
+
+        const {
+            data
+        } =
+            await supabaseClient
+                .auth
+                .getSession();
+
+
+        if(
+            data &&
+            data.session &&
+            data.session.user
+        ){
+
+            /*
+                نتحقق من role مرة أخرى.
+            */
+
+            const {
+                data: profile
+            } =
+                await supabaseClient
+
+                    .from("profiles")
+
+                    .select("role")
+
+                    .eq(
+                        "id",
+                        data.session.user.id
+                    )
+
+                    .maybeSingle();
+
+
+            if(
+                profile &&
+                profile.role ===
+                "admin"
+            ){
+
+                window.location.href =
+                    "index.html";
+
+            }
+
+        }
+
+    }catch(error){
+
+        console.error(
+            error
+        );
+
+    }
+
+}
+
+
+/*
+===========================================================
+    START
+===========================================================
+*/
+
+checkExistingSession();
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../supabase.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1937 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>لوحة التحكم | الخوارزمي</title>
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet">
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Cairo",Arial,sans-serif;
+}
+
+:root{
+
+    --bg:#050507;
+
+    --card:#111118;
+
+    --card2:#15151e;
+
+    --border:rgba(255,255,255,.08);
+
+    --text:#fff;
+
+    --muted:#9696a5;
+
+    --primary:#7657ff;
+
+    --primary-dark:#4d35d9;
+
+    --green:#35d39a;
+
+    --orange:#ffad45;
+
+    --blue:#4da3ff;
+
+    --red:#ff6078;
+
+}
+
+body{
+
+    min-height:100vh;
+
+    color:var(--text);
+
+    background:
+
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(118,87,255,.15),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(67,45,190,.10),
+            transparent 30%
+        ),
+
+        var(--bg);
+
+}
+
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+
+    position:fixed;
+
+    right:0;
+
+    top:0;
+
+    width:255px;
+
+    height:100vh;
+
+    padding:20px 15px;
+
+    background:
+        rgba(9,9,14,.96);
+
+    border-left:
+        1px solid var(--border);
+
+    z-index:1000;
+
+    transition:.3s;
+
+}
+
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:8px 10px 25px;
+
+    border-bottom:
+        1px solid var(--border);
+
+    margin-bottom:18px;
+
+}
+
+
+.brand-logo{
+
+    width:44px;
+
+    height:44px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-dark)
+        );
+
+    font-size:20px;
+
+    font-weight:900;
+
+    box-shadow:
+        0 0 25px
+        rgba(118,87,255,.25);
+
+}
+
+
+.brand-text strong{
+
+    display:block;
+
+    font-size:16px;
+
+}
+
+
+.brand-text span{
+
+    color:var(--muted);
+
+    font-size:8px;
+
+}
+
+
+.menu-title{
+
+    color:#666675;
+
+    font-size:8px;
+
+    padding:
+        0 10px 8px;
+
+}
+
+
+.menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:5px;
+
+}
+
+
+.menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    height:44px;
+
+    padding:0 12px;
+
+    color:#b7b7c2;
+
+    text-decoration:none;
+
+    border-radius:11px;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    transition:.2s;
+
+}
+
+
+.menu a:hover{
+
+    color:#fff;
+
+    background:
+        rgba(118,87,255,.08);
+
+}
+
+
+.menu a.active{
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(118,87,255,.22),
+            rgba(118,87,255,.08)
+        );
+
+    border:
+        1px solid
+        rgba(118,87,255,.16);
+
+}
+
+
+.menu-icon{
+
+    width:27px;
+
+    height:27px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:8px;
+
+    background:
+        rgba(255,255,255,.04);
+
+}
+
+
+/* ================= LOGOUT ================= */
+
+.logout{
+
+    position:absolute;
+
+    bottom:20px;
+
+    right:15px;
+
+    left:15px;
+
+}
+
+
+.logout button{
+
+    width:100%;
+
+    height:43px;
+
+    border:1px solid
+        rgba(255,96,120,.12);
+
+    border-radius:11px;
+
+    color:#ff8496;
+
+    background:
+        rgba(255,96,120,.05);
+
+    cursor:pointer;
+
+    font-size:10px;
+
+    font-weight:800;
+
+}
+
+
+/* ================= MAIN ================= */
+
+.main{
+
+    margin-right:255px;
+
+    min-height:100vh;
+
+    padding:25px 30px 50px;
+
+}
+
+
+/* ================= TOP ================= */
+
+.topbar{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    margin-bottom:25px;
+
+}
+
+
+.mobile-menu{
+
+    display:none;
+
+    width:42px;
+
+    height:42px;
+
+    border:1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.04);
+
+    color:white;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+}
+
+
+.admin-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+.admin-avatar{
+
+    width:42px;
+
+    height:42px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #a18fff
+        );
+
+    font-weight:900;
+
+}
+
+
+.admin-info strong{
+
+    display:block;
+
+    font-size:10px;
+
+}
+
+
+.admin-info span{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:8px;
+
+}
+
+
+/* ================= HERO ================= */
+
+.hero{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:28px;
+
+    margin-bottom:20px;
+
+    border-radius:22px;
+
+    border:
+        1px solid
+        rgba(118,87,255,.14);
+
+    background:
+
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(118,87,255,.22),
+            transparent 38%
+        ),
+
+        linear-gradient(
+            135deg,
+            rgba(118,87,255,.10),
+            rgba(255,255,255,.025)
+        );
+
+}
+
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+
+    height:180px;
+
+    left:-60px;
+
+    bottom:-100px;
+
+    border-radius:50%;
+
+    background:
+        rgba(118,87,255,.12);
+
+    filter:blur(20px);
+
+}
+
+
+.hero h1{
+
+    font-size:
+        clamp(22px,4vw,31px);
+
+    font-weight:900;
+
+    margin-bottom:5px;
+
+}
+
+
+.hero h1 span{
+
+    color:#a99cff;
+
+}
+
+
+.hero p{
+
+    color:#aaaab7;
+
+    font-size:10px;
+
+    line-height:1.9;
+
+}
+
+
+/* ================= STATS ================= */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:14px;
+
+    margin-bottom:20px;
+
+}
+
+
+.stat{
+
+    padding:18px;
+
+    border-radius:17px;
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
+
+    transition:.25s;
+
+}
+
+
+.stat:hover{
+
+    transform:translateY(-3px);
+
+    border-color:
+        rgba(118,87,255,.18);
+
+}
+
+
+.stat-top{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:12px;
+
+}
+
+
+.stat-icon{
+
+    width:38px;
+
+    height:38px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:11px;
+
+    background:
+        rgba(118,87,255,.10);
+
+}
+
+
+.stat small{
+
+    color:var(--muted);
+
+    font-size:8px;
+
+}
+
+
+.stat h2{
+
+    font-size:25px;
+
+    font-weight:900;
+
+}
+
+
+.stat:nth-child(2)
+.stat-icon{
+
+    background:
+        rgba(53,211,154,.10);
+
+}
+
+
+.stat:nth-child(3)
+.stat-icon{
+
+    background:
+        rgba(77,163,255,.10);
+
+}
+
+
+.stat:nth-child(4)
+.stat-icon{
+
+    background:
+        rgba(255,173,69,.10);
+
+}
+
+
+/* ================= CONTENT GRID ================= */
+
+.content-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        1.4fr .8fr;
+
+    gap:18px;
+
+}
+
+
+/* ================= CARD ================= */
+
+.card{
+
+    padding:20px;
+
+    border-radius:18px;
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
+
+}
+
+
+.card-head{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:17px;
+
+}
+
+
+.card-head h3{
+
+    font-size:13px;
+
+    font-weight:900;
+
+}
+
+
+.card-head a{
+
+    color:#a99cff;
+
+    text-decoration:none;
+
+    font-size:8px;
+
+}
+
+
+/* ================= QUICK ACTIONS ================= */
+
+.actions{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:10px;
+
+}
+
+
+.action{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    min-height:70px;
+
+    padding:12px;
+
+    text-decoration:none;
+
+    color:white;
+
+    border-radius:13px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    border:
+        1px solid
+        rgba(255,255,255,.055);
+
+    transition:.25s;
+
+}
+
+
+.action:hover{
+
+    transform:translateY(-2px);
+
+    border-color:
+        rgba(118,87,255,.25);
+
+    background:
+        rgba(118,87,255,.06);
+
+}
+
+
+.action-icon{
+
+    width:38px;
+
+    height:38px;
+
+    flex-shrink:0;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:10px;
+
+    background:
+        rgba(118,87,255,.10);
+
+}
+
+
+.action strong{
+
+    display:block;
+
+    font-size:9px;
+
+}
+
+
+.action span{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:7px;
+
+    margin-top:2px;
+
+}
+
+
+/* ================= ACTIVITY ================= */
+
+.activity{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:9px;
+
+}
+
+
+.activity-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:10px;
+
+    border-radius:11px;
+
+    background:
+        rgba(255,255,255,.025);
+
+}
+
+
+.activity-icon{
+
+    width:32px;
+
+    height:32px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:9px;
+
+    background:
+        rgba(118,87,255,.08);
+
+}
+
+
+.activity-text{
+
+    flex:1;
+
+}
+
+
+.activity-text strong{
+
+    display:block;
+
+    font-size:8px;
+
+}
+
+
+.activity-text span{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:7px;
+
+    margin-top:2px;
+
+}
+
+
+.empty{
+
+    text-align:center;
+
+    padding:25px 10px;
+
+    color:#686876;
+
+    font-size:9px;
+
+}
+
+
+/* ================= LOADING ================= */
+
+.loading{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:2000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#050507;
+
+}
+
+
+.spinner{
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+    border:
+        3px solid
+        rgba(118,87,255,.15);
+
+    border-top-color:
+        var(--primary);
+
+    animation:
+        spin .8s linear infinite;
+
+}
+
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1050px){
+
+    .stats{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+    .content-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+
+@media(max-width:800px){
+
+    .sidebar{
+
+        transform:
+            translateX(100%);
+
+    }
+
+    .sidebar.open{
+
+        transform:
+            translateX(0);
+
+    }
+
+    .main{
+
+        margin-right:0;
+
+        padding:
+            18px 15px 40px;
+
+    }
+
+    .mobile-menu{
+
+        display:block;
+
+    }
+
+}
+
+
+@media(max-width:550px){
+
+    .stats{
+
+        grid-template-columns:1fr 1fr;
+
+        gap:9px;
+
+    }
+
+    .stat{
+
+        padding:13px;
+
+    }
+
+    .stat h2{
+
+        font-size:21px;
+
+    }
+
+    .actions{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .hero{
+
+        padding:21px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside
+    class="sidebar"
+    id="sidebar"
+>
+
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            خ
+        </div>
+
+        <div class="brand-text">
+
+            <strong>
+                الخوارزمي
+            </strong>
+
+            <span>
+                لوحة الإدارة
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="menu-title">
+        الإدارة
+    </div>
+
+
+    <nav class="menu">
+
+
+        <a
+            href="index.html"
+            class="active"
+        >
+
+            <div class="menu-icon">
+                🏠
+            </div>
+
+            الرئيسية
+
+        </a>
+
+
+        <a href="students.html">
+
+            <div class="menu-icon">
+                👨‍🎓
+            </div>
+
+            الطلاب
+
+        </a>
+
+
+        <a href="courses.html">
+
+            <div class="menu-icon">
+                📚
+            </div>
+
+            الكورسات
+
+        </a>
+
+
+        <a href="lessons.html">
+
+            <div class="menu-icon">
+                🎥
+            </div>
+
+            الدروس والفيديوهات
+
+        </a>
+
+
+        <a href="exams.html">
+
+            <div class="menu-icon">
+                📝
+            </div>
+
+            الاختبارات
+
+        </a>
+
+
+        <a href="results.html">
+
+            <div class="menu-icon">
+                📊
+            </div>
+
+            النتائج
+
+        </a>
+
+
+        <a href="files.html">
+
+            <div class="menu-icon">
+                📁
+            </div>
+
+            الملفات و PDF
+
+        </a>
+
+
+        <a href="payments.html">
+
+            <div class="menu-icon">
+                💳
+            </div>
+
+            المدفوعات
+
+        </a>
+
+
+        <a href="settings.html">
+
+            <div class="menu-icon">
+                ⚙️
+            </div>
+
+            الإعدادات
+
+        </a>
+
+
+    </nav>
+
+
+    <div class="logout">
+
+        <button
+            onclick="logout()"
+        >
+            🚪 تسجيل الخروج
+        </button>
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main">
+
+
+    <div class="topbar">
+
+
+        <button
+            class="mobile-menu"
+            onclick="toggleSidebar()"
+        >
+            ☰
+        </button>
+
+
+        <div></div>
+
+
+        <div class="admin-box">
+
+
+            <div class="admin-avatar">
+                أ
+            </div>
+
+
+            <div class="admin-info">
+
+                <strong id="adminName">
+                    جاري التحميل...
+                </strong>
+
+                <span>
+                    مدير المنصة
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <h1>
+
+            أهلًا يا
+            <span>
+                أسطورة الرياضيات 👑
+            </span>
+
+        </h1>
+
+        <p>
+
+            مرحبًا بك في لوحة تحكم
+            <strong>
+                الخوارزمي
+            </strong>.
+
+            من هنا تقدر تتحكم في الطلاب والكورسات
+            والدروس والاختبارات والنتائج وكل شيء في المنصة.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- ================= STATS ================= -->
+
+    <section class="stats">
+
+
+        <div class="stat">
+
+            <div class="stat-top">
+
+                <small>
+                    إجمالي الطلاب
+                </small>
+
+                <div class="stat-icon">
+                    👨‍🎓
+                </div>
+
+            </div>
+
+            <h2 id="studentsCount">
+                —
+            </h2>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-top">
+
+                <small>
+                    الكورسات
+                </small>
+
+                <div class="stat-icon">
+                    📚
+                </div>
+
+            </div>
+
+            <h2 id="coursesCount">
+                —
+            </h2>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-top">
+
+                <small>
+                    الدروس
+                </small>
+
+                <div class="stat-icon">
+                    🎥
+                </div>
+
+            </div>
+
+            <h2 id="lessonsCount">
+                —
+            </h2>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-top">
+
+                <small>
+                    الاختبارات
+                </small>
+
+                <div class="stat-icon">
+                    📝
+                </div>
+
+            </div>
+
+            <h2 id="examsCount">
+                —
+            </h2>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ================= CONTENT ================= -->
+
+    <section class="content-grid">
+
+
+        <!-- QUICK ACTIONS -->
+
+        <div class="card">
+
+
+            <div class="card-head">
+
+                <h3>
+                    ⚡ إجراءات سريعة
+                </h3>
+
+            </div>
+
+
+            <div class="actions">
+
+
+                <a
+                    href="add-course.html"
+                    class="action"
+                >
+
+                    <div class="action-icon">
+                        📚
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            إضافة كورس
+                        </strong>
+
+                        <span>
+                            إنشاء كورس جديد
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="add-lesson.html"
+                    class="action"
+                >
+
+                    <div class="action-icon">
+                        🎥
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            إضافة درس
+                        </strong>
+
+                        <span>
+                            إضافة فيديو YouTube
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="exams.html"
+                    class="action"
+                >
+
+                    <div class="action-icon">
+                        📝
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            إنشاء اختبار
+                        </strong>
+
+                        <span>
+                            إضافة اختبار للكورس
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="students.html"
+                    class="action"
+                >
+
+                    <div class="action-icon">
+                        👨‍🎓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            إدارة الطلاب
+                        </strong>
+
+                        <span>
+                            مشاهدة حسابات الطلاب
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ACTIVITY -->
+
+        <div class="card">
+
+
+            <div class="card-head">
+
+                <h3>
+                    🕐 آخر النشاطات
+                </h3>
+
+                <a href="#">
+                    عرض الكل
+                </a>
+
+            </div>
+
+
+            <div
+                class="activity"
+                id="activity"
+            >
+
+                <div class="empty">
+                    جاري تحميل النشاطات...
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+/*
+============================================================
+    🔥 SUPABASE CONFIGURATION
+============================================================
+
+    ضع بيانات Supabase هنا:
+
+    Supabase Dashboard
+        ↓
+    Project Settings
+        ↓
+    API
+
+    استخدم:
+
+    Project URL
+    Publishable Key / anon key
+
+    ❌ ممنوع service_role key
+============================================================
+*/
+
+
+const SUPABASE_URL =
+    "ضع_رابط_مشروعك_هنا";
+
+
+const SUPABASE_KEY =
+    "ضع_publishable_او_anon_key_هنا";
+
+
+let supabaseClient = null;
+
+
+if(
+    SUPABASE_URL.startsWith("http") &&
+    !SUPABASE_URL.includes("ضع_")
+){
+
+    supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+}
+
+
+/* ================= ELEMENTS ================= */
+
+const loading =
+    document.getElementById(
+        "loading"
+    );
+
+
+/* ================= SIDEBAR ================= */
+
+function toggleSidebar(){
+
+    document
+        .getElementById("sidebar")
+        .classList
+        .toggle("open");
+
+}
+
+
+/* ================= AUTH ================= */
+
+async function checkAdmin(){
+
+    if(!supabaseClient){
+
+        console.error(
+            "Supabase غير متصل."
+        );
+
+        return false;
+
+    }
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .auth
+            .getSession();
+
+
+    if(
+        error ||
+        !data ||
+        !data.session
+    ){
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
+    const user =
+        data.session.user;
+
+
+    /*
+    ========================================================
+        التحقق من role
+    ========================================================
+    */
+
+    const {
+        data: profile,
+        error: profileError
+    } =
+        await supabaseClient
+
+            .from("profiles")
+
+            .select(
+                "id, full_name, role"
+            )
+
+            .eq(
+                "id",
+                user.id
+            )
+
+            .maybeSingle();
+
+
+    if(
+        profileError ||
+        !profile ||
+        profile.role !== "admin"
+    ){
+
+        await supabaseClient
+            .auth
+            .signOut();
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
+    /*
+    ========================================================
+        اسم الأدمن
+    ========================================================
+    */
+
+    const name =
+        profile.full_name ||
+        user.email ||
+        "الأدمن";
+
+
+    document
+        .getElementById(
+            "adminName"
+        )
+        .textContent =
+            name;
+
+
+    return true;
+
+}
+
+
+/* ================= COUNT ================= */
+
+async function getCount(
+    table
+){
+
+    const {
+        count,
+        error
+    } =
+        await supabaseClient
+
+            .from(table)
+
+            .select(
+                "*",
+                {
+                    count:"exact",
+                    head:true
+                }
+            );
+
+
+    if(error){
+
+        console.error(
+            table,
+            error
+        );
+
+        return 0;
+
+    }
+
+
+    return count || 0;
+
+}
+
+
+/* ================= LOAD STATS ================= */
+
+async function loadStats(){
+
+    /*
+    ========================================================
+        أسماء الجداول المتوقعة:
+
+        students
+        courses
+        lessons
+        exams
+    ========================================================
+    */
+
+
+    const [
+        students,
+        courses,
+        lessons,
+        exams
+    ] =
+        await Promise.all([
+
+            getCount("students"),
+
+            getCount("courses"),
+
+            getCount("lessons"),
+
+            getCount("exams")
+
+        ]);
+
+
+    document
+        .getElementById(
+            "studentsCount"
+        )
+        .textContent =
+            students;
+
+
+    document
+        .getElementById(
+            "coursesCount"
+        )
+        .textContent =
+            courses;
+
+
+    document
+        .getElementById(
+            "lessonsCount"
+        )
+        .textContent =
+            lessons;
+
+
+    document
+        .getElementById(
+            "examsCount"
+        )
+        .textContent =
+            exams;
+
+}
+
+
+/* ================= ACTIVITY ================= */
+
+async function loadActivity(){
+
+    const container =
+        document.getElementById(
+            "activity"
+        );
+
+
+    /*
+    ========================================================
+        لاحقًا ممكن نعمل جدول:
+
+        admin_activity
+
+        لتسجيل:
+
+        إضافة كورس
+        إضافة درس
+        حذف طالب
+        إنشاء اختبار
+        إلخ.
+    ========================================================
+    */
+
+
+    container.innerHTML = `
+
+        <div class="empty">
+
+            لا توجد نشاطات مسجلة حاليًا.
+
+        </div>
+
+    `;
+
+}
+
+
+/* ================= LOGOUT ================= */
+
+async function logout(){
+
+    if(!supabaseClient){
+
+        window.location.href =
+            "login.html";
+
+        return;
+
+    }
+
+
+    await supabaseClient
+        .auth
+        .signOut();
+
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+/* ================= START ================= */
+
+async function init(){
+
+    /*
+    ========================================================
+        حماية الصفحة
+    ========================================================
+    */
+
+    const isAdmin =
+        await checkAdmin();
+
+
+    if(!isAdmin){
+
+        return;
+
+    }
+
+
+    /*
+    ========================================================
+        تحميل الإحصائيات
+    ========================================================
+    */
+
+    await loadStats();
+
+
+    /*
+    ========================================================
+        تحميل النشاطات
+    ========================================================
+    */
+
+    await loadActivity();
+
+}
+
+
+/* START */
+
+init();
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../supabase.js"></script>
+
+</body>
+
+</html>

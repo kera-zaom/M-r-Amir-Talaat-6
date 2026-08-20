@@ -1,0 +1,2775 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>إدارة الملفات | الخوارزمي</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="stylesheet"
+href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Cairo",Arial,sans-serif;
+}
+
+:root{
+    --bg:#050507;
+    --card:#111118;
+    --card2:#171720;
+    --border:rgba(255,255,255,.08);
+    --text:#fff;
+    --muted:#92929f;
+    --primary:#7657ff;
+    --primary2:#5137d9;
+    --green:#35d39a;
+    --red:#ff6078;
+    --yellow:#f4c95d;
+}
+
+body{
+
+    min-height:100vh;
+
+    color:var(--text);
+
+    background:
+    radial-gradient(
+        circle at 10% 0%,
+        rgba(118,87,255,.14),
+        transparent 30%
+    ),
+    radial-gradient(
+        circle at 90% 90%,
+        rgba(70,45,200,.10),
+        transparent 30%
+    ),
+    var(--bg);
+
+}
+
+
+/* SIDEBAR */
+
+.sidebar{
+
+    position:fixed;
+
+    right:0;
+    top:0;
+
+    width:255px;
+    height:100vh;
+
+    padding:20px 15px;
+
+    background:#09090e;
+
+    border-left:1px solid var(--border);
+
+    z-index:1000;
+
+}
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:8px 10px 25px;
+
+    border-bottom:1px solid var(--border);
+
+    margin-bottom:18px;
+
+}
+
+.logo{
+
+    width:44px;
+    height:44px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:14px;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary2)
+    );
+
+    font-size:20px;
+
+    font-weight:900;
+
+}
+
+.brand strong{
+
+    display:block;
+
+    font-size:16px;
+
+}
+
+.brand span{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:8px;
+
+}
+
+.menu-title{
+
+    color:#666675;
+
+    font-size:8px;
+
+    padding:0 10px 8px;
+
+}
+
+.menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:5px;
+
+}
+
+.menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    height:44px;
+
+    padding:0 12px;
+
+    color:#b7b7c2;
+
+    text-decoration:none;
+
+    border-radius:11px;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    transition:.2s;
+
+}
+
+.menu a:hover{
+
+    color:#fff;
+
+    background:
+    rgba(118,87,255,.08);
+
+}
+
+.menu a.active{
+
+    color:#fff;
+
+    background:
+    rgba(118,87,255,.15);
+
+    border:
+    1px solid
+    rgba(118,87,255,.15);
+
+}
+
+.menu-icon{
+
+    width:27px;
+    height:27px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:8px;
+
+    background:
+    rgba(255,255,255,.04);
+
+}
+
+.logout{
+
+    position:absolute;
+
+    bottom:20px;
+
+    right:15px;
+    left:15px;
+
+}
+
+.logout button{
+
+    width:100%;
+
+    height:43px;
+
+    border:
+    1px solid
+    rgba(255,96,120,.12);
+
+    border-radius:11px;
+
+    color:#ff8496;
+
+    background:
+    rgba(255,96,120,.05);
+
+    cursor:pointer;
+
+    font-size:10px;
+
+    font-weight:800;
+
+}
+
+
+/* MAIN */
+
+.main{
+
+    margin-right:255px;
+
+    min-height:100vh;
+
+    padding:25px 30px 60px;
+
+}
+
+.topbar{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:25px;
+
+}
+
+.mobile-menu{
+
+    display:none;
+
+    width:42px;
+    height:42px;
+
+    border:1px solid var(--border);
+
+    background:
+    rgba(255,255,255,.04);
+
+    color:#fff;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+}
+
+.admin-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.admin-avatar{
+
+    width:42px;
+    height:42px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--primary),
+        #a18fff
+    );
+
+    font-weight:900;
+
+}
+
+.admin-info strong{
+
+    display:block;
+
+    font-size:10px;
+
+}
+
+.admin-info span{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:8px;
+
+}
+
+
+/* HEADER */
+
+.page-header{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    margin-bottom:20px;
+
+}
+
+.page-header h1{
+
+    font-size:27px;
+
+    font-weight:900;
+
+}
+
+.page-header p{
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    margin-top:4px;
+
+}
+
+.back-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    height:42px;
+
+    padding:0 15px;
+
+    color:#ddd;
+
+    text-decoration:none;
+
+    border:1px solid var(--border);
+
+    background:
+    rgba(255,255,255,.035);
+
+    border-radius:10px;
+
+    font-size:9px;
+
+    font-weight:800;
+
+}
+
+
+/* FILTER */
+
+.filter-box{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr 1fr auto;
+
+    gap:10px;
+
+    padding:16px;
+
+    margin-bottom:18px;
+
+    border-radius:15px;
+
+    background:
+    rgba(17,17,24,.9);
+
+    border:1px solid var(--border);
+
+}
+
+.input,
+.select{
+
+    width:100%;
+
+    height:44px;
+
+    padding:0 12px;
+
+    color:#fff;
+
+    outline:none;
+
+    background:
+    rgba(255,255,255,.035);
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    font-size:9px;
+
+}
+
+.input:focus,
+.select:focus{
+
+    border-color:
+    rgba(118,87,255,.5);
+
+}
+
+.select option{
+
+    background:#15151e;
+
+}
+
+.search-btn{
+
+    height:44px;
+
+    padding:0 18px;
+
+    border:0;
+
+    border-radius:10px;
+
+    color:#fff;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary2)
+    );
+
+    cursor:pointer;
+
+    font-size:9px;
+
+    font-weight:900;
+
+}
+
+
+/* FILES */
+
+.files{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:13px;
+
+}
+
+.file-card{
+
+    padding:16px;
+
+    border-radius:16px;
+
+    background:
+    rgba(17,17,24,.92);
+
+    border:1px solid var(--border);
+
+    transition:.2s;
+
+}
+
+.file-card:hover{
+
+    transform:translateY(-2px);
+
+    border-color:
+    rgba(118,87,255,.25);
+
+}
+
+.file-icon{
+
+    width:55px;
+    height:55px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:14px;
+
+    background:
+    rgba(118,87,255,.10);
+
+    font-size:25px;
+
+    margin-bottom:13px;
+
+}
+
+.file-card h3{
+
+    font-size:11px;
+
+    margin-bottom:5px;
+
+}
+
+.file-card p{
+
+    color:var(--muted);
+
+    font-size:8px;
+
+    line-height:1.7;
+
+}
+
+.file-meta{
+
+    display:flex;
+
+    gap:6px;
+
+    flex-wrap:wrap;
+
+    margin-top:12px;
+
+}
+
+.badge{
+
+    padding:5px 8px;
+
+    border-radius:20px;
+
+    background:
+    rgba(255,255,255,.04);
+
+    color:#aaa;
+
+    font-size:7px;
+
+}
+
+.badge.green{
+
+    color:#6ee4b3;
+
+    background:
+    rgba(53,211,154,.07);
+
+}
+
+.actions{
+
+    display:flex;
+
+    gap:6px;
+
+    margin-top:14px;
+
+    padding-top:12px;
+
+    border-top:
+    1px solid
+    rgba(255,255,255,.05);
+
+}
+
+.action{
+
+    flex:1;
+
+    height:34px;
+
+    border-radius:8px;
+
+    border:1px solid var(--border);
+
+    background:
+    rgba(255,255,255,.035);
+
+    color:#bbb;
+
+    cursor:pointer;
+
+    font-size:8px;
+
+    font-weight:700;
+
+}
+
+.action:hover{
+
+    color:#fff;
+
+    border-color:
+    rgba(118,87,255,.35);
+
+}
+
+.action.delete:hover{
+
+    color:#ff7287;
+
+    border-color:
+    rgba(255,96,120,.3);
+
+}
+
+
+/* EMPTY */
+
+.empty{
+
+    text-align:center;
+
+    padding:70px 20px;
+
+    border-radius:17px;
+
+    background:
+    rgba(17,17,24,.9);
+
+    border:1px solid var(--border);
+
+}
+
+.empty-icon{
+
+    font-size:45px;
+
+    margin-bottom:10px;
+
+}
+
+.empty h3{
+
+    font-size:13px;
+
+    margin-bottom:5px;
+
+}
+
+.empty p{
+
+    color:var(--muted);
+
+    font-size:8px;
+
+}
+
+
+/* MODAL */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:3000;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:15px;
+
+    background:
+    rgba(0,0,0,.75);
+
+    backdrop-filter:blur(8px);
+
+}
+
+.modal.show{
+
+    display:flex;
+
+}
+
+.modal-box{
+
+    width:100%;
+
+    max-width:620px;
+
+    max-height:92vh;
+
+    overflow-y:auto;
+
+    padding:22px;
+
+    border-radius:18px;
+
+    background:#101017;
+
+    border:1px solid var(--border);
+
+}
+
+.modal-head{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:20px;
+
+}
+
+.modal-head h2{
+
+    font-size:15px;
+
+}
+
+.close{
+
+    width:35px;
+    height:35px;
+
+    border:1px solid var(--border);
+
+    background:
+    rgba(255,255,255,.04);
+
+    color:#aaa;
+
+    border-radius:9px;
+
+    cursor:pointer;
+
+}
+
+
+/* FORM */
+
+.form-group{
+
+    margin-bottom:14px;
+
+}
+
+.form-group label{
+
+    display:block;
+
+    margin-bottom:6px;
+
+    color:#aaa;
+
+    font-size:8px;
+
+    font-weight:700;
+
+}
+
+.file-input{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:11px;
+
+    border:1px dashed
+    rgba(118,87,255,.35);
+
+    background:
+    rgba(118,87,255,.04);
+
+    color:#aaa;
+
+    font-size:8px;
+
+}
+
+.file-input input{
+
+    width:100%;
+
+    margin-top:8px;
+
+    color:#aaa;
+
+}
+
+.modal-footer{
+
+    display:flex;
+
+    gap:8px;
+
+    margin-top:20px;
+
+}
+
+.save-btn{
+
+    flex:1;
+
+    height:44px;
+
+    border:0;
+
+    border-radius:10px;
+
+    color:#fff;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary2)
+    );
+
+    cursor:pointer;
+
+    font-size:9px;
+
+    font-weight:900;
+
+}
+
+.cancel-btn{
+
+    width:120px;
+
+    height:44px;
+
+    border-radius:10px;
+
+    color:#aaa;
+
+    background:
+    rgba(255,255,255,.04);
+
+    border:1px solid var(--border);
+
+    cursor:pointer;
+
+    font-size:9px;
+
+}
+
+
+/* LOADING */
+
+.loading{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:5000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#050507;
+
+}
+
+.spinner{
+
+    width:45px;
+    height:45px;
+
+    border:3px solid
+    rgba(118,87,255,.15);
+
+    border-top-color:
+    var(--primary);
+
+    border-radius:50%;
+
+    animation:
+    spin .8s linear infinite;
+
+}
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* TOAST */
+
+.toast{
+
+    position:fixed;
+
+    left:20px;
+
+    bottom:20px;
+
+    z-index:6000;
+
+    max-width:350px;
+
+    padding:12px 16px;
+
+    border-radius:11px;
+
+    background:#191922;
+
+    border:1px solid var(--border);
+
+    font-size:9px;
+
+    transform:translateY(30px);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+}
+
+.toast.show{
+
+    transform:translateY(0);
+
+    opacity:1;
+
+}
+
+.toast.error{
+
+    color:#ff9aaa;
+
+}
+
+.toast.success{
+
+    color:#7be6bd;
+
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:1000px){
+
+    .files{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+    }
+
+    .filter-box{
+
+        grid-template-columns:
+        1fr 1fr;
+
+    }
+
+}
+
+@media(max-width:800px){
+
+    .sidebar{
+
+        transform:translateX(100%);
+
+        transition:.3s;
+
+    }
+
+    .sidebar.open{
+
+        transform:translateX(0);
+
+    }
+
+    .main{
+
+        margin-right:0;
+
+        padding:18px 15px 40px;
+
+    }
+
+    .mobile-menu{
+
+        display:block;
+
+    }
+
+}
+
+@media(max-width:650px){
+
+    .page-header{
+
+        flex-direction:column;
+
+    }
+
+    .back-btn{
+
+        width:100%;
+
+    }
+
+    .filter-box{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .files{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar" id="sidebar">
+
+<div class="brand">
+
+<div class="logo">
+خ
+</div>
+
+<div>
+
+<strong>
+الخوارزمي
+</strong>
+
+<span>
+لوحة الإدارة
+</span>
+
+</div>
+
+</div>
+
+
+<div class="menu-title">
+الإدارة
+</div>
+
+
+<nav class="menu">
+
+<a href="index.html">
+<div class="menu-icon">🏠</div>
+الرئيسية
+</a>
+
+<a href="students.html">
+<div class="menu-icon">👨‍🎓</div>
+الطلاب
+</a>
+
+<a href="courses.html">
+<div class="menu-icon">📚</div>
+الكورسات
+</a>
+
+<a href="lessons.html">
+<div class="menu-icon">🎥</div>
+الدروس والفيديوهات
+</a>
+
+<a href="exams.html">
+<div class="menu-icon">📝</div>
+الاختبارات
+</a>
+
+<a href="questions.html">
+<div class="menu-icon">❓</div>
+الأسئلة
+</a>
+
+<a href="results.html">
+<div class="menu-icon">📊</div>
+النتائج
+</a>
+
+<a href="files.html" class="active">
+<div class="menu-icon">📁</div>
+الملفات و PDF
+</a>
+
+<a href="payments.html">
+<div class="menu-icon">💳</div>
+المدفوعات
+</a>
+
+<a href="settings.html">
+<div class="menu-icon">⚙️</div>
+الإعدادات
+</a>
+
+</nav>
+
+
+<div class="logout">
+
+<button onclick="logout()">
+🚪 تسجيل الخروج
+</button>
+
+</div>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+
+<div class="topbar">
+
+<button
+class="mobile-menu"
+onclick="toggleSidebar()">
+☰
+</button>
+
+<div></div>
+
+<div class="admin-box">
+
+<div class="admin-avatar">
+أ
+</div>
+
+<div class="admin-info">
+
+<strong id="adminName">
+الأدمن
+</strong>
+
+<span>
+مدير المنصة
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<section class="page-header">
+
+<div>
+
+<h1>
+الملفات و PDF
+</h1>
+
+<p>
+إدارة ملفات الكورسات والدروس من لوحة التحكم.
+</p>
+
+</div>
+
+
+<a
+href="index.html"
+class="back-btn">
+
+← لوحة التحكم
+
+</a>
+
+</section>
+
+
+<!-- FILTER -->
+
+<section class="filter-box">
+
+<input
+class="input"
+id="searchInput"
+placeholder="🔎 ابحث عن ملف..."
+>
+
+<select
+class="select"
+id="courseFilter">
+
+<option value="">
+كل الكورسات
+</option>
+
+</select>
+
+
+<select
+class="select"
+id="typeFilter">
+
+<option value="">
+كل الملفات
+</option>
+
+<option value="pdf">
+PDF
+</option>
+
+<option value="file">
+ملفات أخرى
+</option>
+
+</select>
+
+
+<button
+class="search-btn"
+onclick="renderFiles()">
+
+بحث
+
+</button>
+
+</section>
+
+
+<!-- FILES -->
+
+<section
+class="files"
+id="filesContainer">
+</section>
+
+
+<section
+class="empty"
+id="emptyState"
+style="display:none;">
+
+<div class="empty-icon">
+📭
+</div>
+
+<h3>
+لا توجد ملفات
+</h3>
+
+<p>
+لم يتم رفع أي ملفات حتى الآن.
+</p>
+
+</section>
+
+
+</main>
+
+
+<!-- MODAL -->
+
+<div
+class="modal"
+id="fileModal">
+
+<div class="modal-box">
+
+
+<div class="modal-head">
+
+<h2>
+إضافة ملف
+</h2>
+
+<button
+class="close"
+onclick="closeModal()">
+✕
+</button>
+
+</div>
+
+
+<form id="fileForm">
+
+
+<div class="form-group">
+
+<label>
+اسم الملف *
+</label>
+
+<input
+class="input"
+id="fileTitle"
+required
+placeholder="مثال: مراجعة الوحدة الأولى"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+الكورس *
+</label>
+
+<select
+class="select"
+id="courseId"
+required>
+
+<option value="">
+اختر الكورس
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+الدرس — اختياري
+</label>
+
+<select
+class="select"
+id="lessonId">
+
+<option value="">
+بدون ربط بدرس
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+نوع الملف
+</label>
+
+<select
+class="select"
+id="fileType">
+
+<option value="pdf">
+PDF
+</option>
+
+<option value="file">
+ملف آخر
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<div class="file-input">
+
+📁 اختر الملف من جهازك
+
+<input
+type="file"
+id="fileUpload"
+accept=".pdf,.doc,.docx,.ppt,.pptx,.zip"
+required
+>
+
+</div>
+
+</div>
+
+
+<div class="modal-footer">
+
+<button
+type="button"
+class="cancel-btn"
+onclick="closeModal()">
+
+إلغاء
+
+</button>
+
+
+<button
+type="submit"
+class="save-btn">
+
+💾 رفع وحفظ الملف
+
+</button>
+
+</div>
+
+
+</form>
+
+</div>
+
+</div>
+
+
+<!-- LOADING -->
+
+<div
+class="loading"
+id="loading">
+
+<div class="spinner"></div>
+
+</div>
+
+
+<div
+class="toast"
+id="toast">
+</div>
+
+
+<script>
+
+/* =====================================================
+   SUPABASE
+===================================================== */
+
+const SUPABASE_URL =
+"ضع_رابط_مشروعك_هنا";
+
+const SUPABASE_KEY =
+"ضع_publishable_او_anon_key_هنا";
+
+let supabaseClient = null;
+
+if(
+SUPABASE_URL.startsWith("http") &&
+!SUPABASE_URL.includes("ضع_")
+){
+
+supabaseClient =
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+}
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+let allFiles = [];
+
+let courses = [];
+
+let lessons = [];
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const loading =
+document.getElementById("loading");
+
+const toast =
+document.getElementById("toast");
+
+const modal =
+document.getElementById("fileModal");
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+function setLoading(state){
+
+loading.style.display =
+state ? "flex" : "none";
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(
+message,
+type=""
+){
+
+toast.textContent =
+message;
+
+toast.className =
+"toast " +
+type +
+" show";
+
+setTimeout(
+()=>{
+toast.classList.remove("show");
+},
+3500
+);
+
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+function toggleSidebar(){
+
+document
+.getElementById("sidebar")
+.classList
+.toggle("open");
+
+}
+
+
+/* =====================================================
+   ADMIN
+===================================================== */
+
+async function checkAdmin(){
+
+if(!supabaseClient){
+
+showToast(
+"ضع بيانات Supabase أولاً.",
+"error"
+);
+
+return false;
+
+}
+
+
+const {
+data,
+error
+} =
+await supabaseClient
+.auth
+.getSession();
+
+
+if(
+error ||
+!data.session
+){
+
+window.location.href =
+"login.html";
+
+return false;
+
+}
+
+
+const user =
+data.session.user;
+
+
+const {
+data:profile
+} =
+await supabaseClient
+
+.from("profiles")
+
+.select(
+"id,full_name,role"
+)
+
+.eq(
+"id",
+user.id
+)
+
+.maybeSingle();
+
+
+if(
+!profile ||
+profile.role !== "admin"
+){
+
+await supabaseClient
+.auth
+.signOut();
+
+window.location.href =
+"login.html";
+
+return false;
+
+}
+
+
+document
+.getElementById("adminName")
+.textContent =
+profile.full_name ||
+user.email ||
+"الأدمن";
+
+
+return true;
+
+}
+
+
+/* =====================================================
+   LOAD COURSES
+===================================================== */
+
+async function loadCourses(){
+
+const {
+data,
+error
+} =
+await supabaseClient
+
+.from("courses")
+
+.select(`
+id,
+title
+`)
+
+.order(
+"created_at",
+{
+ascending:false
+}
+);
+
+
+if(error)
+throw error;
+
+
+courses =
+data || [];
+
+
+const selects = [
+
+document.getElementById("courseFilter"),
+
+document.getElementById("courseId")
+
+];
+
+
+selects.forEach(
+select => {
+
+const first =
+select.innerHTML;
+
+select.innerHTML =
+first;
+
+
+courses.forEach(
+course => {
+
+const option =
+document.createElement(
+"option"
+);
+
+option.value =
+course.id;
+
+option.textContent =
+course.title;
+
+select.appendChild(
+option
+);
+
+});
+
+});
+
+}
+
+
+/* =====================================================
+   LOAD LESSONS
+===================================================== */
+
+async function loadLessons(){
+
+const {
+data,
+error
+} =
+await supabaseClient
+
+.from("lessons")
+
+.select(`
+id,
+title,
+course_id
+`)
+
+.order(
+"created_at",
+{
+ascending:false
+}
+);
+
+
+if(error)
+throw error;
+
+
+lessons =
+data || [];
+
+
+updateLessonSelect();
+
+}
+
+
+/* =====================================================
+   UPDATE LESSONS
+===================================================== */
+
+function updateLessonSelect(){
+
+const courseId =
+document
+.getElementById("courseId")
+.value;
+
+
+const select =
+document
+.getElementById("lessonId");
+
+
+select.innerHTML = `
+
+<option value="">
+بدون ربط بدرس
+</option>
+
+`;
+
+
+if(!courseId)
+return;
+
+
+lessons
+
+.filter(
+lesson =>
+String(
+lesson.course_id
+) ===
+String(courseId)
+)
+
+.forEach(
+lesson => {
+
+const option =
+document.createElement(
+"option"
+);
+
+option.value =
+lesson.id;
+
+option.textContent =
+lesson.title;
+
+select.appendChild(
+option
+);
+
+});
+
+}
+
+
+/* =====================================================
+   LOAD FILES
+===================================================== */
+
+async function loadFiles(){
+
+const {
+data,
+error
+} =
+await supabaseClient
+
+.from("course_files")
+
+.select(`
+id,
+title,
+file_type,
+file_url,
+course_id,
+lesson_id,
+file_name,
+file_size,
+created_at
+`)
+
+.order(
+"created_at",
+{
+ascending:false
+}
+);
+
+
+if(error)
+throw error;
+
+
+allFiles =
+data || [];
+
+
+renderFiles();
+
+}
+
+
+/* =====================================================
+   RENDER
+===================================================== */
+
+function renderFiles(){
+
+const container =
+document
+.getElementById(
+"filesContainer"
+);
+
+const empty =
+document
+.getElementById(
+"emptyState"
+);
+
+
+const search =
+document
+.getElementById(
+"searchInput"
+)
+.value
+.trim()
+.toLowerCase();
+
+
+const course =
+document
+.getElementById(
+"courseFilter"
+)
+.value;
+
+
+const type =
+document
+.getElementById(
+"typeFilter"
+)
+.value;
+
+
+const filtered =
+allFiles.filter(
+file => {
+
+const title =
+(file.title || "")
+.toLowerCase();
+
+const matchesSearch =
+!search ||
+title.includes(search);
+
+
+const matchesCourse =
+!course ||
+String(
+file.course_id
+) ===
+String(course);
+
+
+const matchesType =
+!type ||
+file.file_type === type;
+
+
+return (
+matchesSearch &&
+matchesCourse &&
+matchesType
+);
+
+});
+
+
+container.innerHTML =
+"";
+
+
+if(!filtered.length){
+
+container.style.display =
+"none";
+
+empty.style.display =
+"block";
+
+return;
+
+}
+
+
+container.style.display =
+"grid";
+
+empty.style.display =
+"none";
+
+
+filtered.forEach(
+file => {
+
+const courseName =
+getCourseName(
+file.course_id
+);
+
+
+const lessonName =
+getLessonName(
+file.lesson_id
+);
+
+
+const icon =
+file.file_type === "pdf"
+? "📕"
+: "📄";
+
+
+const card =
+document.createElement(
+"article"
+);
+
+card.className =
+"file-card";
+
+
+card.innerHTML = `
+
+<div class="file-icon">
+${icon}
+</div>
+
+<h3>
+${escapeHTML(
+file.title || "ملف بدون اسم"
+)}
+</h3>
+
+<p>
+${escapeHTML(
+file.file_name || ""
+)}
+</p>
+
+<div class="file-meta">
+
+<span class="badge">
+📚 ${escapeHTML(courseName)}
+</span>
+
+${
+lessonName
+?
+`
+<span class="badge">
+🎥 ${escapeHTML(lessonName)}
+</span>
+`
+:
+""
+}
+
+<span class="badge green">
+${file.file_type === "pdf"
+? "PDF"
+: "ملف"}
+</span>
+
+</div>
+
+
+<div class="actions">
+
+<button
+class="action"
+onclick="openFile('${file.file_url}')">
+
+👁️ فتح
+
+</button>
+
+<button
+class="action delete"
+onclick="deleteFile('${file.id}')">
+
+🗑️ حذف
+
+</button>
+
+</div>
+
+`;
+
+
+container.appendChild(
+card
+);
+
+});
+
+}
+
+
+/* =====================================================
+   COURSE NAME
+===================================================== */
+
+function getCourseName(id){
+
+const course =
+courses.find(
+item =>
+String(item.id) ===
+String(id)
+);
+
+return course
+? course.title
+: "غير محدد";
+
+}
+
+
+/* =====================================================
+   LESSON NAME
+===================================================== */
+
+function getLessonName(id){
+
+const lesson =
+lessons.find(
+item =>
+String(item.id) ===
+String(id)
+);
+
+return lesson
+? lesson.title
+: "";
+
+}
+
+
+/* =====================================================
+   OPEN FILE
+===================================================== */
+
+function openFile(url){
+
+if(!url){
+
+showToast(
+"رابط الملف غير موجود.",
+"error"
+);
+
+return;
+
+}
+
+
+window.open(
+url,
+"_blank"
+);
+
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+function openModal(){
+
+document
+.getElementById("fileForm")
+.reset();
+
+
+document
+.getElementById("lessonId")
+.innerHTML = `
+
+<option value="">
+بدون ربط بدرس
+</option>
+
+`;
+
+
+modal.classList.add(
+"show"
+);
+
+}
+
+
+function closeModal(){
+
+modal.classList.remove(
+"show"
+);
+
+}
+
+
+/* =====================================================
+   COURSE CHANGE
+===================================================== */
+
+document
+.getElementById("courseId")
+.addEventListener(
+"change",
+updateLessonSelect
+);
+
+
+/* =====================================================
+   UPLOAD
+===================================================== */
+
+document
+.getElementById("fileForm")
+.addEventListener(
+"submit",
+async function(event){
+
+event.preventDefault();
+
+
+const title =
+document
+.getElementById("fileTitle")
+.value
+.trim();
+
+
+const courseId =
+document
+.getElementById("courseId")
+.value;
+
+
+const lessonId =
+document
+.getElementById("lessonId")
+.value ||
+null;
+
+
+const fileType =
+document
+.getElementById("fileType")
+.value;
+
+
+const file =
+document
+.getElementById("fileUpload")
+.files[0];
+
+
+if(!title){
+
+showToast(
+"اكتب اسم الملف.",
+"error"
+);
+
+return;
+
+}
+
+
+if(!courseId){
+
+showToast(
+"اختر الكورس.",
+"error"
+);
+
+return;
+
+}
+
+
+if(!file){
+
+showToast(
+"اختر الملف.",
+"error"
+);
+
+return;
+
+}
+
+
+/*
+   مهم:
+   bucket اسمه:
+   course-files
+*/
+
+try{
+
+setLoading(true);
+
+
+/* FILE SIZE */
+
+const maxSize =
+50 * 1024 * 1024;
+
+
+if(file.size > maxSize){
+
+throw new Error(
+"حجم الملف أكبر من 50MB."
+);
+
+}
+
+
+/* FILE NAME */
+
+const safeName =
+file.name
+.replace(
+/[^a-zA-Z0-9._-]/g,
+"_"
+);
+
+
+const uniqueName =
+`${crypto.randomUUID()}_${safeName}`;
+
+
+const storagePath =
+`${courseId}/${uniqueName}`;
+
+
+/* UPLOAD */
+
+const {
+error:uploadError
+} =
+await supabaseClient
+
+.storage
+
+.from(
+"course-files"
+)
+
+.upload(
+storagePath,
+file,
+{
+upsert:false,
+contentType:
+file.type ||
+"application/octet-stream"
+}
+);
+
+
+if(uploadError)
+throw uploadError;
+
+
+/* PUBLIC URL */
+
+const {
+data:urlData
+} =
+supabaseClient
+
+.storage
+
+.from(
+"course-files"
+)
+
+.getPublicUrl(
+storagePath
+);
+
+
+const fileUrl =
+urlData.publicUrl;
+
+
+/* DATABASE */
+
+const {
+error:dbError
+} =
+await supabaseClient
+
+.from("course_files")
+
+.insert({
+
+title:title,
+
+course_id:courseId,
+
+lesson_id:lessonId,
+
+file_type:fileType,
+
+file_url:fileUrl,
+
+file_name:file.name,
+
+file_size:file.size,
+
+storage_path:storagePath
+
+});
+
+
+if(dbError){
+
+/*
+   لو حفظ قاعدة البيانات فشل،
+   نحاول حذف الملف من Storage
+*/
+
+await supabaseClient
+.storage
+.from("course-files")
+.remove([
+storagePath
+]);
+
+throw dbError;
+
+}
+
+
+showToast(
+"تم رفع الملف وحفظه بنجاح.",
+"success"
+);
+
+
+closeModal();
+
+await loadFiles();
+
+
+}catch(error){
+
+console.error(error);
+
+showToast(
+error.message ||
+"حدث خطأ أثناء رفع الملف.",
+"error"
+);
+
+}finally{
+
+setLoading(false);
+
+}
+
+});
+
+
+/* =====================================================
+   DELETE
+===================================================== */
+
+async function deleteFile(id){
+
+const confirmed =
+confirm(
+"هل تريد حذف هذا الملف نهائيًا؟"
+);
+
+
+if(!confirmed)
+return;
+
+
+try{
+
+setLoading(true);
+
+
+const file =
+allFiles.find(
+item =>
+String(item.id) ===
+String(id)
+);
+
+
+if(!file)
+throw new Error(
+"الملف غير موجود."
+);
+
+
+/* DELETE STORAGE */
+
+if(file.storage_path){
+
+await supabaseClient
+
+.storage
+
+.from("course-files")
+
+.remove([
+file.storage_path
+]);
+
+}
+
+
+/* DELETE DB */
+
+const {
+error
+} =
+await supabaseClient
+
+.from("course_files")
+
+.delete()
+
+.eq(
+"id",
+id
+);
+
+
+if(error)
+throw error;
+
+
+showToast(
+"تم حذف الملف.",
+"success"
+);
+
+
+await loadFiles();
+
+
+}catch(error){
+
+console.error(error);
+
+showToast(
+error.message ||
+"تعذر حذف الملف.",
+"error"
+);
+
+}finally{
+
+setLoading(false);
+
+}
+
+}
+
+
+/* =====================================================
+   ESCAPE
+===================================================== */
+
+function escapeHTML(value){
+
+return String(value)
+
+.replace(
+/&/g,
+"&amp;"
+)
+
+.replace(
+/</g,
+"&lt;"
+)
+
+.replace(
+/>/g,
+"&gt;"
+)
+
+.replace(
+/"/g,
+"&quot;"
+)
+
+.replace(
+/'/g,
+"&#039;"
+);
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+async function logout(){
+
+if(supabaseClient){
+
+await supabaseClient
+.auth
+.signOut();
+
+}
+
+window.location.href =
+"login.html";
+
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+document
+.getElementById("searchInput")
+.addEventListener(
+"input",
+renderFiles
+);
+
+document
+.getElementById("courseFilter")
+.addEventListener(
+"change",
+renderFiles
+);
+
+document
+.getElementById("typeFilter")
+.addEventListener(
+"change",
+renderFiles
+);
+
+
+/* =====================================================
+   INIT
+===================================================== */
+
+async function init(){
+
+setLoading(true);
+
+try{
+
+const admin =
+await checkAdmin();
+
+if(!admin)
+return;
+
+
+await loadCourses();
+
+await loadLessons();
+
+await loadFiles();
+
+
+}catch(error){
+
+console.error(error);
+
+showToast(
+error.message ||
+"حدث خطأ أثناء تحميل الملفات.",
+"error"
+);
+
+}finally{
+
+setLoading(false);
+
+}
+
+}
+
+
+init();
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../supabase.js"></script>
+
+</body>
+
+</html>

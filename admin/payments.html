@@ -1,0 +1,2206 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>المدفوعات | الخوارزمي</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Cairo",Arial,sans-serif;
+}
+
+:root{
+    --bg:#050507;
+    --card:#111118;
+    --border:rgba(255,255,255,.08);
+    --text:#fff;
+    --muted:#92929f;
+    --primary:#7657ff;
+    --primary2:#5137d9;
+    --green:#35d39a;
+    --red:#ff6078;
+    --yellow:#f4c95d;
+}
+
+body{
+
+    min-height:100vh;
+
+    color:var(--text);
+
+    background:
+    radial-gradient(
+        circle at 10% 0%,
+        rgba(118,87,255,.14),
+        transparent 30%
+    ),
+    radial-gradient(
+        circle at 90% 90%,
+        rgba(70,45,200,.10),
+        transparent 30%
+    ),
+    var(--bg);
+
+}
+
+
+/* SIDEBAR */
+
+.sidebar{
+
+    position:fixed;
+
+    right:0;
+    top:0;
+
+    width:255px;
+    height:100vh;
+
+    padding:20px 15px;
+
+    background:#09090e;
+
+    border-left:1px solid var(--border);
+
+    z-index:1000;
+
+}
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:8px 10px 25px;
+
+    border-bottom:1px solid var(--border);
+
+    margin-bottom:18px;
+
+}
+
+.logo{
+
+    width:44px;
+    height:44px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:14px;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary2)
+    );
+
+    font-size:20px;
+
+    font-weight:900;
+
+}
+
+.brand strong{
+    display:block;
+    font-size:16px;
+}
+
+.brand span{
+    display:block;
+    color:var(--muted);
+    font-size:8px;
+}
+
+.menu-title{
+
+    color:#666675;
+
+    font-size:8px;
+
+    padding:0 10px 8px;
+
+}
+
+.menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:5px;
+
+}
+
+.menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    height:44px;
+
+    padding:0 12px;
+
+    color:#b7b7c2;
+
+    text-decoration:none;
+
+    border-radius:11px;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    transition:.2s;
+
+}
+
+.menu a:hover{
+
+    color:#fff;
+
+    background:
+    rgba(118,87,255,.08);
+
+}
+
+.menu a.active{
+
+    color:#fff;
+
+    background:
+    rgba(118,87,255,.15);
+
+}
+
+.menu-icon{
+
+    width:27px;
+    height:27px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:8px;
+
+    background:
+    rgba(255,255,255,.04);
+
+}
+
+.logout{
+
+    position:absolute;
+
+    bottom:20px;
+
+    right:15px;
+    left:15px;
+
+}
+
+.logout button{
+
+    width:100%;
+
+    height:43px;
+
+    border:
+    1px solid
+    rgba(255,96,120,.12);
+
+    border-radius:11px;
+
+    color:#ff8496;
+
+    background:
+    rgba(255,96,120,.05);
+
+    cursor:pointer;
+
+    font-size:10px;
+
+    font-weight:800;
+
+}
+
+
+/* MAIN */
+
+.main{
+
+    margin-right:255px;
+
+    min-height:100vh;
+
+    padding:25px 30px 60px;
+
+}
+
+.topbar{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:25px;
+
+}
+
+.mobile-menu{
+
+    display:none;
+
+    width:42px;
+    height:42px;
+
+    border:1px solid var(--border);
+
+    background:
+    rgba(255,255,255,.04);
+
+    color:#fff;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+}
+
+.admin-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.admin-avatar{
+
+    width:42px;
+    height:42px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--primary),
+        #a18fff
+    );
+
+    font-weight:900;
+
+}
+
+.admin-info strong{
+    display:block;
+    font-size:10px;
+}
+
+.admin-info span{
+    display:block;
+    color:var(--muted);
+    font-size:8px;
+}
+
+
+/* HEADER */
+
+.page-header{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    margin-bottom:20px;
+
+}
+
+.page-header h1{
+
+    font-size:27px;
+
+    font-weight:900;
+
+}
+
+.page-header p{
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    margin-top:4px;
+
+}
+
+.back-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    height:42px;
+
+    padding:0 15px;
+
+    color:#ddd;
+
+    text-decoration:none;
+
+    border:1px solid var(--border);
+
+    background:
+    rgba(255,255,255,.035);
+
+    border-radius:10px;
+
+    font-size:9px;
+
+    font-weight:800;
+
+}
+
+
+/* STATS */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:12px;
+
+    margin-bottom:20px;
+
+}
+
+.stat{
+
+    padding:18px;
+
+    border-radius:15px;
+
+    background:
+    rgba(17,17,24,.9);
+
+    border:1px solid var(--border);
+
+}
+
+.stat-icon{
+
+    width:40px;
+    height:40px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:11px;
+
+    background:
+    rgba(118,87,255,.10);
+
+    margin-bottom:10px;
+
+}
+
+.stat strong{
+
+    display:block;
+
+    font-size:20px;
+
+}
+
+.stat span{
+
+    color:var(--muted);
+
+    font-size:8px;
+
+}
+
+
+/* FILTER */
+
+.filter{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 180px 180px auto;
+
+    gap:10px;
+
+    padding:15px;
+
+    margin-bottom:15px;
+
+    border-radius:15px;
+
+    background:
+    rgba(17,17,24,.9);
+
+    border:1px solid var(--border);
+
+}
+
+.input,
+.select{
+
+    width:100%;
+
+    height:43px;
+
+    padding:0 12px;
+
+    outline:none;
+
+    color:#fff;
+
+    background:
+    rgba(255,255,255,.035);
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    font-size:9px;
+
+}
+
+.select option{
+    background:#15151e;
+}
+
+.input:focus,
+.select:focus{
+
+    border-color:
+    rgba(118,87,255,.5);
+
+}
+
+.search-btn{
+
+    height:43px;
+
+    padding:0 18px;
+
+    border:0;
+
+    border-radius:10px;
+
+    color:#fff;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary2)
+    );
+
+    cursor:pointer;
+
+    font-size:9px;
+
+    font-weight:900;
+
+}
+
+
+/* TABLE */
+
+.table-wrap{
+
+    overflow-x:auto;
+
+    border-radius:15px;
+
+    background:
+    rgba(17,17,24,.92);
+
+    border:1px solid var(--border);
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    min-width:850px;
+
+}
+
+th{
+
+    padding:15px 12px;
+
+    color:#8f8f9d;
+
+    text-align:right;
+
+    font-size:8px;
+
+    font-weight:800;
+
+    background:
+    rgba(255,255,255,.025);
+
+    border-bottom:1px solid var(--border);
+
+}
+
+td{
+
+    padding:14px 12px;
+
+    font-size:9px;
+
+    border-bottom:
+    1px solid
+    rgba(255,255,255,.045);
+
+}
+
+tr:last-child td{
+    border-bottom:0;
+}
+
+.student{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+}
+
+.avatar{
+
+    width:35px;
+    height:35px;
+
+    display:grid;
+    place-items:center;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+        135deg,
+        #7657ff,
+        #35218f
+    );
+
+    font-size:10px;
+
+    font-weight:900;
+
+}
+
+.student-info strong{
+
+    display:block;
+
+    font-size:9px;
+
+}
+
+.student-info span{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:7px;
+
+}
+
+.amount{
+
+    font-weight:900;
+
+    direction:rtl;
+
+}
+
+.status{
+
+    display:inline-flex;
+
+    padding:5px 9px;
+
+    border-radius:20px;
+
+    font-size:7px;
+
+    font-weight:800;
+
+}
+
+.status.paid{
+
+    color:#6ee4b3;
+
+    background:
+    rgba(53,211,154,.08);
+
+}
+
+.status.pending{
+
+    color:#f6d879;
+
+    background:
+    rgba(244,201,93,.08);
+
+}
+
+.status.failed{
+
+    color:#ff8294;
+
+    background:
+    rgba(255,96,120,.08);
+
+}
+
+.action{
+
+    height:31px;
+
+    padding:0 10px;
+
+    border-radius:8px;
+
+    color:#bbb;
+
+    background:
+    rgba(255,255,255,.035);
+
+    border:1px solid var(--border);
+
+    cursor:pointer;
+
+    font-size:7px;
+
+}
+
+.action:hover{
+
+    color:#fff;
+
+    border-color:
+    rgba(118,87,255,.4);
+
+}
+
+
+/* EMPTY */
+
+.empty{
+
+    text-align:center;
+
+    padding:70px 20px;
+
+    display:none;
+
+}
+
+.empty-icon{
+
+    font-size:42px;
+
+    margin-bottom:10px;
+
+}
+
+.empty h3{
+
+    font-size:13px;
+
+}
+
+.empty p{
+
+    color:var(--muted);
+
+    font-size:8px;
+
+    margin-top:5px;
+
+}
+
+
+/* LOADING */
+
+.loading{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:5000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#050507;
+
+}
+
+.spinner{
+
+    width:45px;
+    height:45px;
+
+    border:3px solid
+    rgba(118,87,255,.15);
+
+    border-top-color:
+    var(--primary);
+
+    border-radius:50%;
+
+    animation:spin .8s linear infinite;
+
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+
+/* TOAST */
+
+.toast{
+
+    position:fixed;
+
+    left:20px;
+    bottom:20px;
+
+    z-index:6000;
+
+    padding:12px 16px;
+
+    border-radius:11px;
+
+    background:#191922;
+
+    border:1px solid var(--border);
+
+    font-size:9px;
+
+    transform:translateY(30px);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+}
+
+.toast.show{
+
+    transform:translateY(0);
+
+    opacity:1;
+
+}
+
+.toast.error{
+    color:#ff9aaa;
+}
+
+.toast.success{
+    color:#7be6bd;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+
+    .stats{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+    }
+
+    .filter{
+
+        grid-template-columns:
+        1fr 1fr;
+
+    }
+
+}
+
+@media(max-width:800px){
+
+    .sidebar{
+
+        transform:translateX(100%);
+
+        transition:.3s;
+
+    }
+
+    .sidebar.open{
+
+        transform:translateX(0);
+
+    }
+
+    .main{
+
+        margin-right:0;
+
+        padding:18px 15px 40px;
+
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .page-header{
+        flex-direction:column;
+    }
+
+    .back-btn{
+        width:100%;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .filter{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar" id="sidebar">
+
+<div class="brand">
+
+<div class="logo">خ</div>
+
+<div>
+
+<strong>الخوارزمي</strong>
+
+<span>لوحة الإدارة</span>
+
+</div>
+
+</div>
+
+
+<div class="menu-title">
+الإدارة
+</div>
+
+
+<nav class="menu">
+
+<a href="index.html">
+<div class="menu-icon">🏠</div>
+الرئيسية
+</a>
+
+<a href="students.html">
+<div class="menu-icon">👨‍🎓</div>
+الطلاب
+</a>
+
+<a href="courses.html">
+<div class="menu-icon">📚</div>
+الكورسات
+</a>
+
+<a href="lessons.html">
+<div class="menu-icon">🎥</div>
+الدروس والفيديوهات
+</a>
+
+<a href="exams.html">
+<div class="menu-icon">📝</div>
+الاختبارات
+</a>
+
+<a href="questions.html">
+<div class="menu-icon">❓</div>
+الأسئلة
+</a>
+
+<a href="results.html">
+<div class="menu-icon">📊</div>
+النتائج
+</a>
+
+<a href="files.html">
+<div class="menu-icon">📁</div>
+الملفات و PDF
+</a>
+
+<a href="payments.html" class="active">
+<div class="menu-icon">💳</div>
+المدفوعات
+</a>
+
+<a href="settings.html">
+<div class="menu-icon">⚙️</div>
+الإعدادات
+</a>
+
+</nav>
+
+
+<div class="logout">
+
+<button onclick="logout()">
+🚪 تسجيل الخروج
+</button>
+
+</div>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+
+<div class="topbar">
+
+<button
+class="mobile-menu"
+onclick="toggleSidebar()">
+
+☰
+
+</button>
+
+<div></div>
+
+<div class="admin-box">
+
+<div class="admin-avatar">
+أ
+</div>
+
+<div class="admin-info">
+
+<strong id="adminName">
+الأدمن
+</strong>
+
+<span>
+مدير المنصة
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<section class="page-header">
+
+<div>
+
+<h1>
+المدفوعات والاشتراكات
+</h1>
+
+<p>
+متابعة اشتراكات الطلاب وحالة المدفوعات.
+</p>
+
+</div>
+
+
+<a
+href="index.html"
+class="back-btn">
+
+← لوحة التحكم
+
+</a>
+
+</section>
+
+
+<!-- STATS -->
+
+<section class="stats">
+
+<div class="stat">
+
+<div class="stat-icon">
+💰
+</div>
+
+<strong id="totalRevenue">
+0 ج.م
+</strong>
+
+<span>
+إجمالي المدفوعات
+</span>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-icon">
+✅
+</div>
+
+<strong id="paidCount">
+0
+</strong>
+
+<span>
+مدفوعات مكتملة
+</span>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-icon">
+⏳
+</div>
+
+<strong id="pendingCount">
+0
+</strong>
+
+<span>
+قيد الانتظار
+</span>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-icon">
+❌
+</div>
+
+<strong id="failedCount">
+0
+</strong>
+
+<span>
+مدفوعات فاشلة
+</span>
+
+</div>
+
+</section>
+
+
+<!-- FILTER -->
+
+<section class="filter">
+
+<input
+class="input"
+id="searchInput"
+placeholder="🔎 ابحث باسم الطالب أو البريد..."
+>
+
+<select
+class="select"
+id="statusFilter">
+
+<option value="">
+كل الحالات
+</option>
+
+<option value="paid">
+مدفوع
+</option>
+
+<option value="pending">
+قيد الانتظار
+</option>
+
+<option value="failed">
+فشل
+</option>
+
+</select>
+
+
+<select
+class="select"
+id="courseFilter">
+
+<option value="">
+كل الكورسات
+</option>
+
+</select>
+
+
+<button
+class="search-btn"
+onclick="renderPayments()">
+
+بحث
+
+</button>
+
+</section>
+
+
+<!-- TABLE -->
+
+<section class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+الطالب
+</th>
+
+<th>
+الكورس
+</th>
+
+<th>
+المبلغ
+</th>
+
+<th>
+الحالة
+</th>
+
+<th>
+التاريخ
+</th>
+
+<th>
+الإجراء
+</th>
+
+</tr>
+
+</thead>
+
+<tbody id="paymentsBody">
+</tbody>
+
+</table>
+
+
+<div class="empty" id="emptyState">
+
+<div class="empty-icon">
+💳
+</div>
+
+<h3>
+لا توجد مدفوعات
+</h3>
+
+<p>
+لم يتم تسجيل أي مدفوعات حتى الآن.
+</p>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<!-- LOADING -->
+
+<div
+class="loading"
+id="loading">
+
+<div class="spinner"></div>
+
+</div>
+
+
+<div
+class="toast"
+id="toast">
+</div>
+
+
+<script>
+
+/* =====================================================
+   SUPABASE
+===================================================== */
+
+const SUPABASE_URL =
+"ضع_رابط_مشروعك_هنا";
+
+const SUPABASE_KEY =
+"ضع_publishable_او_anon_key_هنا";
+
+let supabaseClient = null;
+
+if(
+SUPABASE_URL.startsWith("http") &&
+!SUPABASE_URL.includes("ضع_")
+){
+
+supabaseClient =
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+}
+
+
+let payments = [];
+
+let courses = [];
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const loading =
+document.getElementById("loading");
+
+const toast =
+document.getElementById("toast");
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+function setLoading(state){
+
+loading.style.display =
+state ? "flex" : "none";
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(
+message,
+type=""
+){
+
+toast.textContent =
+message;
+
+toast.className =
+"toast " +
+type +
+" show";
+
+setTimeout(
+()=>{
+toast.classList.remove("show");
+},
+3500
+);
+
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+function toggleSidebar(){
+
+document
+.getElementById("sidebar")
+.classList
+.toggle("open");
+
+}
+
+
+/* =====================================================
+   ADMIN CHECK
+===================================================== */
+
+async function checkAdmin(){
+
+if(!supabaseClient){
+
+showToast(
+"ضع بيانات Supabase أولاً.",
+"error"
+);
+
+return false;
+
+}
+
+
+const {
+data,
+error
+} =
+await supabaseClient
+.auth
+.getSession();
+
+
+if(
+error ||
+!data.session
+){
+
+window.location.href =
+"login.html";
+
+return false;
+
+}
+
+
+const user =
+data.session.user;
+
+
+const {
+data:profile
+} =
+await supabaseClient
+
+.from("profiles")
+
+.select(
+"id,full_name,role"
+)
+
+.eq(
+"id",
+user.id
+)
+
+.maybeSingle();
+
+
+if(
+!profile ||
+profile.role !== "admin"
+){
+
+await supabaseClient
+.auth
+.signOut();
+
+window.location.href =
+"login.html";
+
+return false;
+
+}
+
+
+document
+.getElementById("adminName")
+.textContent =
+profile.full_name ||
+user.email ||
+"الأدمن";
+
+
+return true;
+
+}
+
+
+/* =====================================================
+   LOAD COURSES
+===================================================== */
+
+async function loadCourses(){
+
+const {
+data,
+error
+} =
+await supabaseClient
+
+.from("courses")
+
+.select(
+"id,title"
+)
+
+.order(
+"created_at",
+{
+ascending:false
+}
+);
+
+
+if(error)
+throw error;
+
+
+courses =
+data || [];
+
+
+const select =
+document.getElementById(
+"courseFilter"
+);
+
+
+courses.forEach(
+course => {
+
+const option =
+document.createElement(
+"option"
+);
+
+option.value =
+course.id;
+
+option.textContent =
+course.title;
+
+select.appendChild(
+option
+);
+
+});
+
+}
+
+
+/* =====================================================
+   LOAD PAYMENTS
+===================================================== */
+
+async function loadPayments(){
+
+/*
+   الجدول المتوقع:
+
+   payments
+
+   id
+   student_id
+   course_id
+   amount
+   status
+   created_at
+*/
+
+const {
+data,
+error
+} =
+await supabaseClient
+
+.from("payments")
+
+.select(`
+id,
+student_id,
+course_id,
+amount,
+status,
+created_at,
+
+profiles:student_id(
+    id,
+    full_name,
+    email
+),
+
+courses:course_id(
+    id,
+    title
+)
+`)
+
+.order(
+"created_at",
+{
+ascending:false
+}
+);
+
+
+if(error)
+throw error;
+
+
+payments =
+data || [];
+
+
+updateStats();
+
+renderPayments();
+
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
+function updateStats(){
+
+let revenue = 0;
+
+let paid = 0;
+
+let pending = 0;
+
+let failed = 0;
+
+
+payments.forEach(
+payment => {
+
+const amount =
+Number(
+payment.amount
+) || 0;
+
+
+if(payment.status === "paid"){
+
+revenue += amount;
+
+paid++;
+
+}
+
+else if(
+payment.status === "pending"
+){
+
+pending++;
+
+}
+
+else if(
+payment.status === "failed"
+){
+
+failed++;
+
+}
+
+});
+
+
+document
+.getElementById("totalRevenue")
+.textContent =
+formatMoney(revenue);
+
+
+document
+.getElementById("paidCount")
+.textContent =
+paid;
+
+
+document
+.getElementById("pendingCount")
+.textContent =
+pending;
+
+
+document
+.getElementById("failedCount")
+.textContent =
+failed;
+
+}
+
+
+/* =====================================================
+   RENDER
+===================================================== */
+
+function renderPayments(){
+
+const body =
+document
+.getElementById(
+"paymentsBody"
+);
+
+const empty =
+document
+.getElementById(
+"emptyState"
+);
+
+
+const search =
+document
+.getElementById(
+"searchInput"
+)
+.value
+.trim()
+.toLowerCase();
+
+
+const status =
+document
+.getElementById(
+"statusFilter"
+)
+.value;
+
+
+const course =
+document
+.getElementById(
+"courseFilter"
+)
+.value;
+
+
+const filtered =
+payments.filter(
+payment => {
+
+const profile =
+payment.profiles || {};
+
+
+const name =
+(profile.full_name || "")
+.toLowerCase();
+
+
+const email =
+(profile.email || "")
+.toLowerCase();
+
+
+const matchesSearch =
+!search ||
+name.includes(search) ||
+email.includes(search);
+
+
+const matchesStatus =
+!status ||
+payment.status === status;
+
+
+const matchesCourse =
+!course ||
+String(
+payment.course_id
+) ===
+String(course);
+
+
+return (
+matchesSearch &&
+matchesStatus &&
+matchesCourse
+);
+
+});
+
+
+body.innerHTML = "";
+
+
+if(!filtered.length){
+
+empty.style.display =
+"block";
+
+return;
+
+}
+
+
+empty.style.display =
+"none";
+
+
+filtered.forEach(
+payment => {
+
+const profile =
+payment.profiles || {};
+
+const courseData =
+payment.courses || {};
+
+
+const studentName =
+profile.full_name ||
+"طالب";
+
+const email =
+profile.email ||
+"";
+
+
+const firstLetter =
+studentName
+.trim()
+.charAt(0) ||
+"ط";
+
+
+const statusData =
+getStatus(
+payment.status
+);
+
+
+const tr =
+document.createElement(
+"tr"
+);
+
+
+tr.innerHTML = `
+
+<td>
+
+<div class="student">
+
+<div class="avatar">
+${escapeHTML(firstLetter)}
+</div>
+
+<div class="student-info">
+
+<strong>
+${escapeHTML(studentName)}
+</strong>
+
+<span>
+${escapeHTML(email)}
+</span>
+
+</div>
+
+</div>
+
+</td>
+
+
+<td>
+
+${escapeHTML(
+courseData.title ||
+"غير محدد"
+)}
+
+</td>
+
+
+<td>
+
+<span class="amount">
+
+${formatMoney(
+payment.amount
+)}
+
+</span>
+
+</td>
+
+
+<td>
+
+<span class="status ${statusData.class}">
+
+${statusData.icon}
+${statusData.text}
+
+</span>
+
+</td>
+
+
+<td>
+
+${formatDate(
+payment.created_at
+)}
+
+</td>
+
+
+<td>
+
+<button
+class="action"
+onclick="viewPayment('${payment.id}')">
+
+👁️ عرض
+
+</button>
+
+</td>
+
+`;
+
+
+body.appendChild(tr);
+
+});
+
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+function getStatus(status){
+
+if(status === "paid"){
+
+return {
+text:"مدفوع",
+class:"paid",
+icon:"✓"
+};
+
+}
+
+if(status === "pending"){
+
+return {
+text:"قيد الانتظار",
+class:"pending",
+icon:"⏳"
+};
+
+}
+
+return {
+
+text:"فشل",
+class:"failed",
+icon:"✕"
+
+};
+
+}
+
+
+/* =====================================================
+   VIEW PAYMENT
+===================================================== */
+
+function viewPayment(id){
+
+const payment =
+payments.find(
+item =>
+String(item.id) ===
+String(id)
+);
+
+
+if(!payment)
+return;
+
+
+const profile =
+payment.profiles || {};
+
+const course =
+payment.courses || {};
+
+
+const message =
+
+`بيانات الدفع
+
+الطالب:
+${profile.full_name || "غير معروف"}
+
+البريد:
+${profile.email || "غير موجود"}
+
+الكورس:
+${course.title || "غير محدد"}
+
+المبلغ:
+${formatMoney(payment.amount)}
+
+الحالة:
+${getStatus(payment.status).text}
+
+التاريخ:
+${formatDate(payment.created_at)}
+`;
+
+
+alert(message);
+
+}
+
+
+/* =====================================================
+   FORMAT MONEY
+===================================================== */
+
+function formatMoney(amount){
+
+return (
+Number(amount || 0)
+.toLocaleString("ar-EG")
++
+" ج.م"
+);
+
+}
+
+
+/* =====================================================
+   FORMAT DATE
+===================================================== */
+
+function formatDate(date){
+
+if(!date)
+return "—";
+
+
+return new Date(date)
+.toLocaleDateString(
+"ar-EG",
+{
+year:"numeric",
+month:"long",
+day:"numeric"
+}
+);
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value){
+
+return String(value)
+
+.replace(/&/g,"&amp;")
+
+.replace(/</g,"&lt;")
+
+.replace(/>/g,"&gt;")
+
+.replace(/"/g,"&quot;")
+
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+async function logout(){
+
+if(supabaseClient){
+
+await supabaseClient
+.auth
+.signOut();
+
+}
+
+window.location.href =
+"login.html";
+
+}
+
+
+/* =====================================================
+   FILTER EVENTS
+===================================================== */
+
+document
+.getElementById("searchInput")
+.addEventListener(
+"input",
+renderPayments
+);
+
+document
+.getElementById("statusFilter")
+.addEventListener(
+"change",
+renderPayments
+);
+
+document
+.getElementById("courseFilter")
+.addEventListener(
+"change",
+renderPayments
+);
+
+
+/* =====================================================
+   INIT
+===================================================== */
+
+async function init(){
+
+setLoading(true);
+
+try{
+
+const admin =
+await checkAdmin();
+
+if(!admin)
+return;
+
+
+await loadCourses();
+
+await loadPayments();
+
+
+}catch(error){
+
+console.error(error);
+
+showToast(
+error.message ||
+"حدث خطأ أثناء تحميل المدفوعات.",
+"error"
+);
+
+}finally{
+
+setLoading(false);
+
+}
+
+}
+
+
+init();
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../supabase.js"></script>
+
+</body>
+
+</html>

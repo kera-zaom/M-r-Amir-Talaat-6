@@ -1,0 +1,2270 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>الإعدادات | الخوارزمي</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link
+href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Cairo",Arial,sans-serif;
+}
+
+:root{
+    --bg:#050507;
+    --card:#111118;
+    --border:rgba(255,255,255,.08);
+    --text:#fff;
+    --muted:#92929f;
+    --primary:#7657ff;
+    --primary2:#5137d9;
+    --green:#35d39a;
+    --red:#ff6078;
+}
+
+body{
+
+    min-height:100vh;
+
+    color:var(--text);
+
+    background:
+    radial-gradient(
+        circle at 10% 0%,
+        rgba(118,87,255,.14),
+        transparent 30%
+    ),
+    radial-gradient(
+        circle at 90% 90%,
+        rgba(70,45,200,.10),
+        transparent 30%
+    ),
+    var(--bg);
+
+}
+
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+
+    position:fixed;
+
+    right:0;
+    top:0;
+
+    width:255px;
+    height:100vh;
+
+    padding:20px 15px;
+
+    background:#09090e;
+
+    border-left:1px solid var(--border);
+
+    z-index:1000;
+
+}
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:8px 10px 25px;
+
+    border-bottom:1px solid var(--border);
+
+    margin-bottom:18px;
+
+}
+
+.logo{
+
+    width:44px;
+    height:44px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:14px;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary2)
+    );
+
+    font-size:20px;
+
+    font-weight:900;
+
+}
+
+.brand strong{
+    display:block;
+    font-size:16px;
+}
+
+.brand span{
+    display:block;
+    color:var(--muted);
+    font-size:8px;
+}
+
+.menu-title{
+
+    color:#666675;
+
+    font-size:8px;
+
+    padding:0 10px 8px;
+
+}
+
+.menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:5px;
+
+}
+
+.menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    height:44px;
+
+    padding:0 12px;
+
+    color:#b7b7c2;
+
+    text-decoration:none;
+
+    border-radius:11px;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    transition:.2s;
+
+}
+
+.menu a:hover{
+
+    color:#fff;
+
+    background:
+    rgba(118,87,255,.08);
+
+}
+
+.menu a.active{
+
+    color:#fff;
+
+    background:
+    rgba(118,87,255,.15);
+
+}
+
+.menu-icon{
+
+    width:27px;
+    height:27px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:8px;
+
+    background:
+    rgba(255,255,255,.04);
+
+}
+
+.logout{
+
+    position:absolute;
+
+    bottom:20px;
+
+    right:15px;
+    left:15px;
+
+}
+
+.logout button{
+
+    width:100%;
+
+    height:43px;
+
+    border:
+    1px solid
+    rgba(255,96,120,.12);
+
+    border-radius:11px;
+
+    color:#ff8496;
+
+    background:
+    rgba(255,96,120,.05);
+
+    cursor:pointer;
+
+    font-size:10px;
+
+    font-weight:800;
+
+}
+
+
+/* ================= MAIN ================= */
+
+.main{
+
+    margin-right:255px;
+
+    min-height:100vh;
+
+    padding:25px 30px 60px;
+
+}
+
+.topbar{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:25px;
+
+}
+
+.mobile-menu{
+
+    display:none;
+
+    width:42px;
+    height:42px;
+
+    border:1px solid var(--border);
+
+    background:
+    rgba(255,255,255,.04);
+
+    color:#fff;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+}
+
+.admin-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.admin-avatar{
+
+    width:42px;
+    height:42px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--primary),
+        #a18fff
+    );
+
+    font-weight:900;
+
+}
+
+.admin-info strong{
+    display:block;
+    font-size:10px;
+}
+
+.admin-info span{
+    display:block;
+    color:var(--muted);
+    font-size:8px;
+}
+
+
+/* ================= HEADER ================= */
+
+.page-header{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    margin-bottom:20px;
+
+}
+
+.page-header h1{
+
+    font-size:27px;
+
+    font-weight:900;
+
+}
+
+.page-header p{
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    margin-top:4px;
+
+}
+
+.back-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    height:42px;
+
+    padding:0 15px;
+
+    color:#ddd;
+
+    text-decoration:none;
+
+    border:1px solid var(--border);
+
+    background:
+    rgba(255,255,255,.035);
+
+    border-radius:10px;
+
+    font-size:9px;
+
+    font-weight:800;
+
+}
+
+
+/* ================= GRID ================= */
+
+.settings-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:15px;
+
+}
+
+.card{
+
+    padding:20px;
+
+    border-radius:16px;
+
+    background:
+    rgba(17,17,24,.92);
+
+    border:1px solid var(--border);
+
+}
+
+.card.full{
+
+    grid-column:
+    1 / -1;
+
+}
+
+.card-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:18px;
+
+}
+
+.card-title-icon{
+
+    width:38px;
+    height:38px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:10px;
+
+    background:
+    rgba(118,87,255,.10);
+
+}
+
+.card-title h2{
+
+    font-size:13px;
+
+}
+
+.card-title p{
+
+    color:var(--muted);
+
+    font-size:7px;
+
+    margin-top:2px;
+
+}
+
+
+/* ================= FORM ================= */
+
+.form-group{
+
+    margin-bottom:14px;
+
+}
+
+.form-group:last-child{
+
+    margin-bottom:0;
+
+}
+
+label{
+
+    display:block;
+
+    margin-bottom:6px;
+
+    color:#cfcfd7;
+
+    font-size:8px;
+
+    font-weight:700;
+
+}
+
+.input,
+.textarea{
+
+    width:100%;
+
+    color:#fff;
+
+    outline:none;
+
+    background:
+    rgba(255,255,255,.035);
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    font-size:9px;
+
+    transition:.2s;
+
+}
+
+.input{
+
+    height:44px;
+
+    padding:0 12px;
+
+}
+
+.textarea{
+
+    min-height:105px;
+
+    resize:vertical;
+
+    padding:11px 12px;
+
+    line-height:1.8;
+
+}
+
+.input:focus,
+.textarea:focus{
+
+    border-color:
+    rgba(118,87,255,.55);
+
+    background:
+    rgba(118,87,255,.035);
+
+}
+
+.hint{
+
+    color:#686875;
+
+    font-size:7px;
+
+    margin-top:5px;
+
+}
+
+
+/* ================= IMAGE ================= */
+
+.image-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:13px;
+
+    border-radius:12px;
+
+    background:
+    rgba(255,255,255,.025);
+
+    border:1px solid var(--border);
+
+}
+
+.preview{
+
+    width:70px;
+    height:70px;
+
+    flex-shrink:0;
+
+    display:grid;
+
+    place-items:center;
+
+    overflow:hidden;
+
+    border-radius:15px;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary2)
+    );
+
+    font-size:25px;
+
+    font-weight:900;
+
+}
+
+.preview img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.image-info{
+
+    flex:1;
+
+}
+
+.image-info strong{
+
+    display:block;
+
+    font-size:9px;
+
+    margin-bottom:4px;
+
+}
+
+.image-info span{
+
+    color:var(--muted);
+
+    font-size:7px;
+
+}
+
+
+/* ================= SWITCH ================= */
+
+.switch-row{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:13px 0;
+
+    border-bottom:
+    1px solid
+    rgba(255,255,255,.05);
+
+}
+
+.switch-row:last-child{
+
+    border-bottom:0;
+
+}
+
+.switch-info strong{
+
+    display:block;
+
+    font-size:9px;
+
+}
+
+.switch-info span{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:7px;
+
+    margin-top:3px;
+
+}
+
+.switch{
+
+    position:relative;
+
+    width:46px;
+    height:25px;
+
+    flex-shrink:0;
+
+}
+
+.switch input{
+
+    display:none;
+
+}
+
+.slider{
+
+    position:absolute;
+
+    inset:0;
+
+    cursor:pointer;
+
+    border-radius:30px;
+
+    background:#292933;
+
+    transition:.25s;
+
+}
+
+.slider:before{
+
+    content:"";
+
+    position:absolute;
+
+    width:19px;
+    height:19px;
+
+    top:3px;
+    right:3px;
+
+    border-radius:50%;
+
+    background:#aaa;
+
+    transition:.25s;
+
+}
+
+.switch input:checked + .slider{
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary2)
+    );
+
+}
+
+.switch input:checked + .slider:before{
+
+    transform:
+    translateX(-21px);
+
+    background:#fff;
+
+}
+
+
+/* ================= SAVE ================= */
+
+.actions{
+
+    display:flex;
+
+    justify-content:flex-start;
+
+    gap:10px;
+
+    margin-top:18px;
+
+}
+
+.save-btn{
+
+    height:44px;
+
+    padding:0 24px;
+
+    border:0;
+
+    border-radius:11px;
+
+    color:#fff;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary2)
+    );
+
+    cursor:pointer;
+
+    font-size:9px;
+
+    font-weight:900;
+
+}
+
+.reset-btn{
+
+    height:44px;
+
+    padding:0 20px;
+
+    border:1px solid var(--border);
+
+    border-radius:11px;
+
+    color:#aaa;
+
+    background:
+    rgba(255,255,255,.035);
+
+    cursor:pointer;
+
+    font-size:9px;
+
+    font-weight:800;
+
+}
+
+
+/* ================= LOADING ================= */
+
+.loading{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:5000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#050507;
+
+}
+
+.spinner{
+
+    width:45px;
+    height:45px;
+
+    border:3px solid
+    rgba(118,87,255,.15);
+
+    border-top-color:
+    var(--primary);
+
+    border-radius:50%;
+
+    animation:
+    spin .8s linear infinite;
+
+}
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* ================= TOAST ================= */
+
+.toast{
+
+    position:fixed;
+
+    left:20px;
+    bottom:20px;
+
+    z-index:6000;
+
+    padding:12px 16px;
+
+    border-radius:11px;
+
+    background:#191922;
+
+    border:1px solid var(--border);
+
+    font-size:9px;
+
+    transform:
+    translateY(30px);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+}
+
+.toast.show{
+
+    transform:
+    translateY(0);
+
+    opacity:1;
+
+}
+
+.toast.success{
+
+    color:#7be6bd;
+
+}
+
+.toast.error{
+
+    color:#ff9aaa;
+
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    .settings-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .card.full{
+
+        grid-column:auto;
+
+    }
+
+}
+
+@media(max-width:800px){
+
+    .sidebar{
+
+        transform:
+        translateX(100%);
+
+        transition:.3s;
+
+    }
+
+    .sidebar.open{
+
+        transform:
+        translateX(0);
+
+    }
+
+    .main{
+
+        margin-right:0;
+
+        padding:
+        18px 15px 40px;
+
+    }
+
+    .mobile-menu{
+
+        display:block;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .page-header{
+
+        flex-direction:column;
+
+    }
+
+    .back-btn{
+
+        width:100%;
+
+    }
+
+    .actions{
+
+        flex-direction:column;
+
+    }
+
+    .save-btn,
+    .reset-btn{
+
+        width:100%;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar" id="sidebar">
+
+<div class="brand">
+
+<div class="logo">
+خ
+</div>
+
+<div>
+
+<strong>
+الخوارزمي
+</strong>
+
+<span>
+لوحة الإدارة
+</span>
+
+</div>
+
+</div>
+
+
+<div class="menu-title">
+الإدارة
+</div>
+
+
+<nav class="menu">
+
+<a href="index.html">
+<div class="menu-icon">🏠</div>
+الرئيسية
+</a>
+
+<a href="students.html">
+<div class="menu-icon">👨‍🎓</div>
+الطلاب
+</a>
+
+<a href="courses.html">
+<div class="menu-icon">📚</div>
+الكورسات
+</a>
+
+<a href="lessons.html">
+<div class="menu-icon">🎥</div>
+الدروس والفيديوهات
+</a>
+
+<a href="exams.html">
+<div class="menu-icon">📝</div>
+الاختبارات
+</a>
+
+<a href="questions.html">
+<div class="menu-icon">❓</div>
+الأسئلة
+</a>
+
+<a href="results.html">
+<div class="menu-icon">📊</div>
+النتائج
+</a>
+
+<a href="files.html">
+<div class="menu-icon">📁</div>
+الملفات و PDF
+</a>
+
+<a href="payments.html">
+<div class="menu-icon">💳</div>
+المدفوعات
+</a>
+
+<a href="settings.html"
+class="active">
+
+<div class="menu-icon">
+⚙️
+</div>
+
+الإعدادات
+
+</a>
+
+</nav>
+
+
+<div class="logout">
+
+<button onclick="logout()">
+🚪 تسجيل الخروج
+</button>
+
+</div>
+
+</aside>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main">
+
+
+<div class="topbar">
+
+<button
+class="mobile-menu"
+onclick="toggleSidebar()">
+
+☰
+
+</button>
+
+<div></div>
+
+
+<div class="admin-box">
+
+<div class="admin-avatar">
+أ
+</div>
+
+<div class="admin-info">
+
+<strong id="adminName">
+الأدمن
+</strong>
+
+<span>
+مدير المنصة
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<section class="page-header">
+
+<div>
+
+<h1>
+إعدادات المنصة
+</h1>
+
+<p>
+تحكم في المعلومات العامة وإعدادات الخوارزمي.
+</p>
+
+</div>
+
+
+<a
+href="index.html"
+class="back-btn">
+
+← لوحة التحكم
+
+</a>
+
+</section>
+
+
+<!-- ================= SETTINGS ================= -->
+
+<section class="settings-grid">
+
+
+<!-- GENERAL -->
+
+<div class="card">
+
+<div class="card-title">
+
+<div class="card-title-icon">
+🏫
+</div>
+
+<div>
+
+<h2>
+معلومات المنصة
+</h2>
+
+<p>
+البيانات التي تظهر للطلاب.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+اسم المنصة
+</label>
+
+<input
+class="input"
+id="platformName"
+placeholder="الخوارزمي">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+اسم المدرس
+</label>
+
+<input
+class="input"
+id="teacherName"
+placeholder="أمير طلعت">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+وصف المنصة
+</label>
+
+<textarea
+class="textarea"
+id="platformDescription"
+placeholder="منصة الخوارزمي التعليمية..."></textarea>
+
+</div>
+
+</div>
+
+
+<!-- CONTACT -->
+
+<div class="card">
+
+<div class="card-title">
+
+<div class="card-title-icon">
+📞
+</div>
+
+<div>
+
+<h2>
+بيانات التواصل
+</h2>
+
+<p>
+بيانات التواصل التي تظهر للطلاب.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+رقم الهاتف
+</label>
+
+<input
+class="input"
+id="phone"
+type="tel"
+placeholder="01212101614">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+رقم واتساب
+</label>
+
+<input
+class="input"
+id="whatsapp"
+type="tel"
+placeholder="01212101614">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+البريد الإلكتروني
+</label>
+
+<input
+class="input"
+id="contactEmail"
+type="email"
+placeholder="example@email.com">
+
+</div>
+
+</div>
+
+
+<!-- WELCOME -->
+
+<div class="card">
+
+<div class="card-title">
+
+<div class="card-title-icon">
+👋
+</div>
+
+<div>
+
+<h2>
+رسالة الترحيب
+</h2>
+
+<p>
+الرسالة التي تظهر في الصفحة الرئيسية.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+العنوان
+</label>
+
+<input
+class="input"
+id="welcomeTitle"
+placeholder="الخوارزمي أهلاً يا أسطورة الرياضة">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+الرسالة
+</label>
+
+<textarea
+class="textarea"
+id="welcomeMessage"
+placeholder="مع الخوارزمي أنت بأمان..."></textarea>
+
+</div>
+
+</div>
+
+
+<!-- LOGO -->
+
+<div class="card">
+
+<div class="card-title">
+
+<div class="card-title-icon">
+🖼️
+</div>
+
+<div>
+
+<h2>
+شعار المنصة
+</h2>
+
+<p>
+رابط صورة الشعار المخزن في Supabase Storage.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="image-box">
+
+<div
+class="preview"
+id="logoPreview">
+
+خ
+
+</div>
+
+
+<div class="image-info">
+
+<strong>
+رابط شعار المنصة
+</strong>
+
+<span>
+يمكنك وضع رابط الصورة هنا حاليًا.
+</span>
+
+</div>
+
+</div>
+
+
+<div
+class="form-group"
+style="margin-top:12px;">
+
+<input
+class="input"
+id="logoUrl"
+placeholder="https://...">
+
+</div>
+
+</div>
+
+
+<!-- OPTIONS -->
+
+<div class="card full">
+
+<div class="card-title">
+
+<div class="card-title-icon">
+⚡
+</div>
+
+<div>
+
+<h2>
+إعدادات عامة
+</h2>
+
+<p>
+التحكم في حالة المنصة وبعض الخصائص.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="switch-row">
+
+<div class="switch-info">
+
+<strong>
+المنصة متاحة
+</strong>
+
+<span>
+إذا تم إيقافها يمكن منع الطلاب من الدخول.
+</span>
+
+</div>
+
+
+<label class="switch">
+
+<input
+type="checkbox"
+id="platformActive"
+checked>
+
+<span class="slider"></span>
+
+</label>
+
+</div>
+
+
+<div class="switch-row">
+
+<div class="switch-info">
+
+<strong>
+إظهار رقم التواصل
+</strong>
+
+<span>
+إظهار رقم الهاتف في صفحات الطلاب.
+</span>
+
+</div>
+
+
+<label class="switch">
+
+<input
+type="checkbox"
+id="showPhone"
+checked>
+
+<span class="slider"></span>
+
+</label>
+
+</div>
+
+
+<div class="switch-row">
+
+<div class="switch-info">
+
+<strong>
+إظهار واتساب
+</strong>
+
+<span>
+إظهار زر التواصل عبر واتساب.
+</span>
+
+</div>
+
+
+<label class="switch">
+
+<input
+type="checkbox"
+id="showWhatsapp"
+checked>
+
+<span class="slider"></span>
+
+</label>
+
+</div>
+
+
+<div class="actions">
+
+<button
+class="save-btn"
+onclick="saveSettings()">
+
+💾 حفظ الإعدادات
+
+</button>
+
+
+<button
+class="reset-btn"
+onclick="loadSettings()">
+
+↻ إعادة تحميل
+
+</button>
+
+</div>
+
+</div>
+
+
+</section>
+
+
+</main>
+
+
+<!-- LOADING -->
+
+<div
+class="loading"
+id="loading">
+
+<div class="spinner"></div>
+
+</div>
+
+
+<div
+class="toast"
+id="toast">
+</div>
+
+
+<script>
+
+/* =====================================================
+   SUPABASE
+===================================================== */
+
+const SUPABASE_URL =
+"ضع_رابط_مشروعك_هنا";
+
+const SUPABASE_KEY =
+"ضع_publishable_او_anon_key_هنا";
+
+
+let supabaseClient = null;
+
+
+if(
+SUPABASE_URL.startsWith("http") &&
+!SUPABASE_URL.includes("ضع_")
+){
+
+supabaseClient =
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+}
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const loading =
+document.getElementById("loading");
+
+const toast =
+document.getElementById("toast");
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+function setLoading(state){
+
+loading.style.display =
+state ? "flex" : "none";
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(
+message,
+type=""
+){
+
+toast.textContent =
+message;
+
+toast.className =
+"toast " +
+type +
+" show";
+
+setTimeout(
+()=>{
+toast.classList.remove("show");
+},
+3500
+);
+
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+function toggleSidebar(){
+
+document
+.getElementById("sidebar")
+.classList
+.toggle("open");
+
+}
+
+
+/* =====================================================
+   ADMIN CHECK
+===================================================== */
+
+async function checkAdmin(){
+
+if(!supabaseClient){
+
+showToast(
+"ضع بيانات Supabase أولاً.",
+"error"
+);
+
+return false;
+
+}
+
+
+const {
+data,
+error
+} =
+await supabaseClient
+.auth
+.getSession();
+
+
+if(
+error ||
+!data.session
+){
+
+window.location.href =
+"login.html";
+
+return false;
+
+}
+
+
+const user =
+data.session.user;
+
+
+const {
+data:profile,
+error:profileError
+} =
+await supabaseClient
+
+.from("profiles")
+
+.select(
+"id,full_name,role"
+)
+
+.eq(
+"id",
+user.id
+)
+
+.maybeSingle();
+
+
+if(
+profileError ||
+!profile ||
+profile.role !== "admin"
+){
+
+await supabaseClient
+.auth
+.signOut();
+
+window.location.href =
+"login.html";
+
+return false;
+
+}
+
+
+document
+.getElementById("adminName")
+.textContent =
+profile.full_name ||
+user.email ||
+"الأدمن";
+
+
+return true;
+
+}
+
+
+/* =====================================================
+   LOAD SETTINGS
+===================================================== */
+
+async function loadSettings(){
+
+if(!supabaseClient)
+return;
+
+
+setLoading(true);
+
+
+try{
+
+const {
+data,
+error
+} =
+await supabaseClient
+
+.from("site_settings")
+
+.select("*")
+
+.eq(
+"id",
+1
+)
+
+.maybeSingle();
+
+
+if(error)
+throw error;
+
+
+if(!data){
+
+setLoading(false);
+
+return;
+
+}
+
+
+/* GENERAL */
+
+document
+.getElementById("platformName")
+.value =
+data.platform_name || "";
+
+
+document
+.getElementById("teacherName")
+.value =
+data.teacher_name || "";
+
+
+document
+.getElementById("platformDescription")
+.value =
+data.platform_description || "";
+
+
+/* CONTACT */
+
+document
+.getElementById("phone")
+.value =
+data.phone || "";
+
+
+document
+.getElementById("whatsapp")
+.value =
+data.whatsapp || "";
+
+
+document
+.getElementById("contactEmail")
+.value =
+data.contact_email || "";
+
+
+/* WELCOME */
+
+document
+.getElementById("welcomeTitle")
+.value =
+data.welcome_title || "";
+
+
+document
+.getElementById("welcomeMessage")
+.value =
+data.welcome_message || "";
+
+
+/* LOGO */
+
+document
+.getElementById("logoUrl")
+.value =
+data.logo_url || "";
+
+
+updateLogoPreview(
+data.logo_url
+);
+
+
+/* SWITCHES */
+
+document
+.getElementById("platformActive")
+.checked =
+data.platform_active !== false;
+
+
+document
+.getElementById("showPhone")
+.checked =
+data.show_phone !== false;
+
+
+document
+.getElementById("showWhatsapp")
+.checked =
+data.show_whatsapp !== false;
+
+
+}catch(error){
+
+console.error(error);
+
+showToast(
+error.message ||
+"حدث خطأ أثناء تحميل الإعدادات.",
+"error"
+);
+
+}finally{
+
+setLoading(false);
+
+}
+
+}
+
+
+/* =====================================================
+   LOGO PREVIEW
+===================================================== */
+
+function updateLogoPreview(url){
+
+const preview =
+document.getElementById(
+"logoPreview"
+);
+
+
+if(!url){
+
+preview.innerHTML =
+"خ";
+
+return;
+
+}
+
+
+preview.innerHTML = `
+
+<img
+src="${escapeHTML(url)}"
+alt="شعار المنصة"
+onerror="this.parentElement.innerHTML='خ';">
+
+`;
+
+}
+
+
+document
+.getElementById("logoUrl")
+.addEventListener(
+"input",
+function(){
+
+updateLogoPreview(
+this.value.trim()
+);
+
+}
+);
+
+
+/* =====================================================
+   SAVE SETTINGS
+===================================================== */
+
+async function saveSettings(){
+
+if(!supabaseClient){
+
+showToast(
+"بيانات Supabase غير موجودة.",
+"error"
+);
+
+return;
+
+}
+
+
+const settings = {
+
+id:1,
+
+platform_name:
+document
+.getElementById("platformName")
+.value
+.trim(),
+
+teacher_name:
+document
+.getElementById("teacherName")
+.value
+.trim(),
+
+platform_description:
+document
+.getElementById("platformDescription")
+.value
+.trim(),
+
+phone:
+document
+.getElementById("phone")
+.value
+.trim(),
+
+whatsapp:
+document
+.getElementById("whatsapp")
+.value
+.trim(),
+
+contact_email:
+document
+.getElementById("contactEmail")
+.value
+.trim(),
+
+welcome_title:
+document
+.getElementById("welcomeTitle")
+.value
+.trim(),
+
+welcome_message:
+document
+.getElementById("welcomeMessage")
+.value
+.trim(),
+
+logo_url:
+document
+.getElementById("logoUrl")
+.value
+.trim(),
+
+platform_active:
+document
+.getElementById("platformActive")
+.checked,
+
+show_phone:
+document
+.getElementById("showPhone")
+.checked,
+
+show_whatsapp:
+document
+.getElementById("showWhatsapp")
+.checked,
+
+updated_at:
+new Date().toISOString()
+
+};
+
+
+setLoading(true);
+
+
+try{
+
+const {
+error
+} =
+await supabaseClient
+
+.from("site_settings")
+
+.upsert(
+settings,
+{
+onConflict:"id"
+}
+);
+
+
+if(error)
+throw error;
+
+
+showToast(
+"تم حفظ إعدادات المنصة بنجاح ✅",
+"success"
+);
+
+
+}catch(error){
+
+console.error(error);
+
+showToast(
+error.message ||
+"حدث خطأ أثناء حفظ الإعدادات.",
+"error"
+);
+
+}finally{
+
+setLoading(false);
+
+}
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value){
+
+return String(value)
+
+.replace(
+/&/g,
+"&amp;"
+)
+
+.replace(
+/</g,
+"&lt;"
+)
+
+.replace(
+/>/g,
+"&gt;"
+)
+
+.replace(
+/"/g,
+"&quot;"
+)
+
+.replace(
+/'/g,
+"&#039;"
+);
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+async function logout(){
+
+if(supabaseClient){
+
+await supabaseClient
+.auth
+.signOut();
+
+}
+
+window.location.href =
+"login.html";
+
+}
+
+
+/* =====================================================
+   INIT
+===================================================== */
+
+async function init(){
+
+setLoading(true);
+
+
+try{
+
+const admin =
+await checkAdmin();
+
+
+if(!admin)
+return;
+
+
+await loadSettings();
+
+
+}catch(error){
+
+console.error(error);
+
+showToast(
+error.message ||
+"حدث خطأ.",
+"error"
+);
+
+}finally{
+
+setLoading(false);
+
+}
+
+}
+
+
+init();
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../supabase.js"></script>
+
+</body>
+
+</html>
