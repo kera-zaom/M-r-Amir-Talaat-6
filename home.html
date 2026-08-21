@@ -12,6 +12,15 @@
 
 <title>الخوارزمي | الرئيسية</title>
 
+<!-- =====================================================
+     SUPABASE LIBRARY
+===================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="./supabase.js"></script>
+
+
 <style>
 
 /* =====================================================
@@ -29,22 +38,93 @@ html{
 }
 
 body{
+
     min-height:100vh;
-    font-family:"Cairo","Tajawal",Arial,sans-serif;
+
+    font-family:
+        "Cairo",
+        "Tajawal",
+        Arial,
+        sans-serif;
+
+    color:#fff;
+
     background:
         radial-gradient(
-            circle at 85% 10%,
-            rgba(105,70,230,.18),
-            transparent 35%
+            circle at 80% 10%,
+            rgba(116,72,232,.18),
+            transparent 30%
         ),
         radial-gradient(
             circle at 10% 80%,
-            rgba(40,70,200,.12),
-            transparent 35%
+            rgba(49,84,223,.13),
+            transparent 30%
         ),
         #080711;
-    color:#fff;
+
     overflow-x:hidden;
+}
+
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    width:500px;
+    height:500px;
+
+    top:-250px;
+    right:-200px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(124,82,245,.25),
+            transparent 68%
+        );
+
+    filter:blur(35px);
+
+    pointer-events:none;
+
+    z-index:0;
+}
+
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    width:450px;
+    height:450px;
+
+    bottom:-250px;
+    left:-200px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(49,84,223,.18),
+            transparent 68%
+        );
+
+    filter:blur(35px);
+
+    pointer-events:none;
+
+    z-index:0;
 }
 
 
@@ -53,6 +133,10 @@ body{
 ===================================================== */
 
 .header{
+
+    position:relative;
+
+    z-index:10;
 
     width:100%;
 
@@ -64,76 +148,79 @@ body{
 
     justify-content:space-between;
 
-    padding:12px 5%;
+    padding:
+        12px
+        clamp(15px,4vw,50px);
 
-    background:rgba(10,9,20,.82);
+    background:
+        rgba(8,7,17,.88);
 
     border-bottom:
         1px solid
-        rgba(255,255,255,.07);
+        rgba(255,255,255,.06);
 
     backdrop-filter:blur(18px);
 
-    position:sticky;
-
-    top:0;
-
-    z-index:100;
 }
 
 
-.logo-area{
+.brand{
 
     display:flex;
 
     align-items:center;
 
     gap:12px;
+
 }
 
 
 .logo{
 
-    width:52px;
-
-    height:52px;
+    width:48px;
+    height:48px;
 
     display:grid;
 
     place-items:center;
 
-    border-radius:17px;
+    border-radius:15px;
 
-    font-size:28px;
+    font-size:27px;
 
     font-weight:900;
 
     background:
         linear-gradient(
             135deg,
-            #8958ff,
+            #8b5cf6,
             #315be9
         );
 
     box-shadow:
-        0 10px 35px
-        rgba(100,70,240,.35);
+        0 10px 30px
+        rgba(99,70,230,.35);
+
 }
 
 
-.logo-text h2{
+.brand-text h1{
 
     font-size:18px;
 
     line-height:1.2;
+
 }
 
 
-.logo-text span{
+.brand-text p{
 
-    color:#77738a;
+    color:#77758a;
 
     font-size:9px;
+
+    margin-top:3px;
+
 }
 
 
@@ -143,13 +230,14 @@ body{
         rgba(255,255,255,.08);
 
     background:
-        rgba(255,255,255,.035);
+        rgba(255,255,255,.04);
 
     color:#fff;
 
-    padding:11px 20px;
+    padding:
+        10px 18px;
 
-    border-radius:13px;
+    border-radius:12px;
 
     font-family:inherit;
 
@@ -158,6 +246,7 @@ body{
     cursor:pointer;
 
     transition:.25s;
+
 }
 
 
@@ -167,7 +256,17 @@ body{
         rgba(255,70,90,.12);
 
     border-color:
-        rgba(255,70,90,.25);
+        rgba(255,100,120,.25);
+
+}
+
+
+.logout:disabled{
+
+    opacity:.55;
+
+    cursor:not-allowed;
+
 }
 
 
@@ -177,12 +276,19 @@ body{
 
 .container{
 
-    width:min(
-        1150px,
-        calc(100% - 30px)
-    );
+    position:relative;
 
-    margin:35px auto 70px;
+    z-index:2;
+
+    width:
+        min(
+            1100px,
+            calc(100% - 28px)
+        );
+
+    margin:
+        35px auto 60px;
+
 }
 
 
@@ -196,24 +302,26 @@ body{
 
     overflow:hidden;
 
-    padding:45px;
+    padding:
+        clamp(28px,5vw,55px);
 
-    border-radius:30px;
+    border-radius:28px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(48,31,105,.72),
-            rgba(25,20,55,.72)
+            rgba(44,30,92,.88),
+            rgba(22,20,53,.90)
         );
 
     border:
         1px solid
-        rgba(157,125,255,.15);
+        rgba(145,112,255,.15);
 
     box-shadow:
-        0 25px 80px
+        0 30px 80px
         rgba(0,0,0,.35);
+
 }
 
 
@@ -223,75 +331,66 @@ body{
 
     position:absolute;
 
-    width:420px;
+    width:300px;
+    height:300px;
 
-    height:420px;
+    top:-160px;
+    left:-100px;
 
     border-radius:50%;
-
-    top:-240px;
-
-    left:-150px;
 
     background:
         radial-gradient(
             circle,
-            rgba(130,85,255,.22),
+            rgba(135,93,255,.20),
             transparent 70%
         );
 
     pointer-events:none;
+
 }
 
 
-.hero-content{
+.hero-small{
 
-    position:relative;
+    color:#9d83ff;
 
-    z-index:2;
+    font-size:10px;
+
+    margin-bottom:10px;
+
 }
 
 
-.welcome-small{
+.hero h2{
 
-    color:#9c7dff;
+    font-size:
+        clamp(30px,5vw,45px);
 
-    font-size:11px;
-
-    margin-bottom:12px;
-}
-
-
-.hero h1{
-
-    font-size:40px;
+    line-height:1.3;
 
     margin-bottom:12px;
 
-    background:
-        linear-gradient(
-            90deg,
-            #fff,
-            #a58aff
-        );
+}
 
-    -webkit-background-clip:text;
 
-    background-clip:text;
+.hero h2 span{
 
-    color:transparent;
+    color:#a98dff;
+
 }
 
 
 .hero-description{
 
-    color:#92909f;
+    color:#8c899c;
 
-    font-size:12px;
+    font-size:11px;
 
     line-height:2;
 
-    margin-bottom:30px;
+    max-width:650px;
+
 }
 
 
@@ -299,20 +398,23 @@ body{
    PROFILE INFO
 ===================================================== */
 
-.profile-grid{
+.profile-card{
+
+    margin-top:22px;
 
     display:grid;
 
     grid-template-columns:
         repeat(3,1fr);
 
-    gap:15px;
+    gap:14px;
+
 }
 
 
-.profile-card{
+.info-box{
 
-    min-height:85px;
+    min-height:90px;
 
     padding:18px;
 
@@ -324,128 +426,203 @@ body{
     border:
         1px solid
         rgba(255,255,255,.06);
+
 }
 
 
-.profile-card span{
+.info-label{
 
     display:block;
 
-    color:#777384;
+    color:#686579;
 
     font-size:9px;
 
-    margin-bottom:10px;
+    margin-bottom:8px;
+
 }
 
 
-.profile-card strong{
+.info-value{
 
     display:block;
 
-    color:#fff;
+    color:#eee;
 
     font-size:12px;
 
-    word-break:break-word;
+    font-weight:700;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
+
 }
 
 
 /* =====================================================
-   SECTION
+   TESTS SECTION
 ===================================================== */
 
 .section{
 
     margin-top:45px;
+
 }
 
 
 .section-head{
 
     margin-bottom:20px;
+
 }
 
 
-.section-head small{
+.section-small{
 
-    display:block;
+    color:#8e6cff;
 
-    color:#8969f5;
+    font-size:9px;
 
-    font-size:10px;
+    margin-bottom:5px;
 
-    margin-bottom:6px;
 }
 
 
-.section-head h2{
+.section-title{
 
-    font-size:28px;
+    font-size:
+        clamp(24px,4vw,32px);
+
 }
 
 
 /* =====================================================
-   EXAMS
+   LOADING
 ===================================================== */
 
-.exams{
+.loading{
+
+    min-height:230px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#777489;
+
+    font-size:11px;
+
+}
+
+
+.spinner{
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    border:
+        3px solid
+        rgba(255,255,255,.07);
+
+    border-top-color:#8558f6;
+
+    animation:
+        spin .8s linear infinite;
+
+    margin-bottom:18px;
+
+}
+
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* =====================================================
+   TEST GRID
+===================================================== */
+
+.tests-grid{
 
     display:grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(
+            auto-fit,
+            minmax(250px,1fr)
+        );
 
     gap:18px;
+
 }
 
 
-.exam-card{
+.test-card{
+
+    position:relative;
+
+    overflow:hidden;
 
     padding:22px;
+
+    min-height:235px;
+
+    display:flex;
+
+    flex-direction:column;
 
     border-radius:22px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(35,29,70,.92),
-            rgba(19,17,37,.92)
+            rgba(35,28,73,.90),
+            rgba(18,17,35,.94)
         );
 
     border:
         1px solid
         rgba(255,255,255,.07);
 
-    transition:.25s;
+    transition:
+        transform .25s,
+        border-color .25s,
+        box-shadow .25s;
 
-    min-height:200px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:space-between;
 }
 
 
-.exam-card:hover{
+.test-card:hover{
 
-    transform:translateY(-5px);
+    transform:translateY(-4px);
 
     border-color:
-        rgba(130,90,255,.3);
+        rgba(139,92,246,.30);
 
     box-shadow:
-        0 20px 50px
-        rgba(0,0,0,.3);
+        0 20px 45px
+        rgba(0,0,0,.25);
+
 }
 
 
-.exam-icon{
+.test-icon{
 
     width:48px;
-
     height:48px;
 
     display:grid;
@@ -455,41 +632,80 @@ body{
     border-radius:15px;
 
     background:
-        rgba(126,82,255,.15);
-
-    color:#a58aff;
+        linear-gradient(
+            135deg,
+            #8558f6,
+            #315be9
+        );
 
     font-size:22px;
 
-    margin-bottom:16px;
+    margin-bottom:18px;
+
 }
 
 
-.exam-title{
+.test-name{
 
-    font-size:16px;
+    font-size:17px;
 
-    margin-bottom:8px;
+    margin-bottom:9px;
+
 }
 
 
-.exam-info{
+.test-description{
 
-    color:#777584;
+    color:#797587;
 
-    font-size:9px;
+    font-size:10px;
 
-    line-height:2;
+    line-height:1.9;
 
-    margin-bottom:15px;
+    min-height:38px;
+
 }
 
 
-.start-btn{
+.test-meta{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+    margin-top:16px;
+
+}
+
+
+.meta{
+
+    padding:
+        6px 9px;
+
+    border-radius:8px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    color:#8d899d;
+
+    font-size:8px;
+
+}
+
+
+.start-test{
 
     width:100%;
 
-    height:43px;
+    height:44px;
+
+    margin-top:auto;
+
+    padding-top:12px;
 
     border:0;
 
@@ -513,24 +729,24 @@ body{
         );
 
     transition:.25s;
+
 }
 
 
-.start-btn:hover{
+.start-test:hover{
 
     transform:translateY(-2px);
+
 }
 
 
 /* =====================================================
-   EMPTY / LOADING
+   EMPTY
 ===================================================== */
 
-.status-box{
+.empty{
 
-    width:100%;
-
-    min-height:180px;
+    min-height:240px;
 
     display:flex;
 
@@ -550,46 +766,40 @@ body{
     border:
         1px dashed
         rgba(255,255,255,.08);
-}
 
-
-.loader{
-
-    width:42px;
-
-    height:42px;
-
-    border-radius:50%;
-
-    border:
-        3px solid
-        rgba(255,255,255,.08);
-
-    border-top-color:#8c62ff;
-
-    animation:
-        spin .8s linear infinite;
-
-    margin-bottom:15px;
-}
-
-
-@keyframes spin{
-
-    to{
-        transform:rotate(360deg);
-    }
+    padding:30px;
 
 }
 
 
-.status-box p{
+.empty-icon{
 
-    color:#777584;
+    font-size:40px;
 
-    font-size:11px;
+    margin-bottom:12px;
 
-    line-height:2;
+    opacity:.75;
+
+}
+
+
+.empty h3{
+
+    font-size:17px;
+
+    margin-bottom:8px;
+
+}
+
+
+.empty p{
+
+    color:#6f6b7d;
+
+    font-size:10px;
+
+    line-height:1.8;
+
 }
 
 
@@ -599,13 +809,32 @@ body{
 
 .error-box{
 
-    color:#ffabb5;
+    display:none;
+
+    padding:18px;
+
+    border-radius:16px;
 
     background:
-        rgba(255,60,80,.06);
+        rgba(255,70,90,.07);
 
-    border-color:
-        rgba(255,60,80,.15);
+    border:
+        1px solid
+        rgba(255,70,90,.15);
+
+    color:#ff9faa;
+
+    font-size:10px;
+
+    line-height:1.8;
+
+}
+
+
+.error-box.show{
+
+    display:block;
+
 }
 
 
@@ -615,59 +844,65 @@ body{
 
 .footer{
 
+    position:relative;
+
+    z-index:2;
+
+    padding:
+        30px 20px;
+
     text-align:center;
 
-    padding:25px 15px;
+    color:#454252;
 
     border-top:
         1px solid
         rgba(255,255,255,.05);
 
-    color:#555362;
+    font-size:8px;
 
-    font-size:9px;
 }
 
 
 /* =====================================================
-   RESPONSIVE
+   MOBILE
 ===================================================== */
 
-@media(max-width:900px){
-
-    .exams{
-
-        grid-template-columns:
-            repeat(2,1fr);
-
-    }
-
-}
-
-
-@media(max-width:650px){
+@media(max-width:700px){
 
     .header{
 
-        padding:10px 15px;
+        min-height:68px;
+
+        padding:
+            10px 14px;
 
     }
 
 
     .logo{
 
-        width:46px;
-
-        height:46px;
+        width:43px;
+        height:43px;
 
         font-size:24px;
 
     }
 
 
-    .logo-text h2{
+    .brand-text h1{
 
         font-size:15px;
+
+    }
+
+
+    .logout{
+
+        padding:
+            9px 13px;
+
+        font-size:9px;
 
     }
 
@@ -686,37 +921,49 @@ body{
 
         padding:25px 18px;
 
-        border-radius:23px;
+        border-radius:22px;
 
     }
 
 
-    .hero h1{
-
-        font-size:31px;
-
-    }
-
-
-    .profile-grid{
+    .profile-card{
 
         grid-template-columns:1fr;
 
     }
 
 
-    .exams{
+    .info-box{
+
+        min-height:75px;
+
+    }
+
+
+    .tests-grid{
 
         grid-template-columns:1fr;
 
     }
 
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media(max-width:380px){
+
+    .brand-text{
+
+        display:none;
+
+    }
 
     .logout{
 
-        padding:9px 13px;
-
-        font-size:9px;
+        font-size:8px;
 
     }
 
@@ -736,21 +983,21 @@ body{
 
 <header class="header">
 
-    <div class="logo-area">
+    <div class="brand">
 
         <div class="logo">
             ∑
         </div>
 
-        <div class="logo-text">
+        <div class="brand-text">
 
-            <h2>
+            <h1>
                 الخوارزمي
-            </h2>
+            </h1>
 
-            <span>
+            <p>
                 منصة المستر أمير
-            </span>
+            </p>
 
         </div>
 
@@ -758,9 +1005,9 @@ body{
 
 
     <button
+        type="button"
         class="logout"
         id="logoutButton"
-        type="button"
     >
         تسجيل الخروج
     </button>
@@ -776,73 +1023,85 @@ body{
 <main class="container">
 
 
-    <!-- HERO -->
+    <!-- =================================================
+         HERO
+    ================================================== -->
 
     <section class="hero">
 
-        <div class="hero-content">
+        <div class="hero-small">
+            👋 أهلاً بيك في منصة الخوارزمي
+        </div>
 
-            <div class="welcome-small">
-                👋 أهلاً بيك في منصة الخوارزمي
+
+        <h2>
+            أهلاً يا
+            <span id="studentName">
+                الطالب
+            </span>
+        </h2>
+
+
+        <p class="hero-description">
+            من هنا تقدر تشوف الاختبارات المتاحة ليك،
+            وتبدأ التحدي وتطور مستواك في الرياضيات.
+        </p>
+
+
+        <!-- =============================================
+             PROFILE
+        ============================================== -->
+
+        <div class="profile-card">
+
+
+            <div class="info-box">
+
+                <span class="info-label">
+                    الاسم
+                </span>
+
+                <span
+                    class="info-value"
+                    id="profileName"
+                >
+                    جاري التحميل...
+                </span>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <span class="info-label">
+                    البريد الإلكتروني
+                </span>
+
+                <span
+                    class="info-value"
+                    id="profileEmail"
+                >
+                    جاري التحميل...
+                </span>
+
             </div>
 
 
-            <h1>
-                أهلاً يا طالب
-            </h1>
+            <div class="info-box">
 
+                <span class="info-label">
+                    رقم الموبايل
+                </span>
 
-            <p class="hero-description">
-
-                من هنا تقدر تشوف الاختبارات المتاحة ليك،
-                وتبدأ التحدي وتطور مستواك في الرياضيات.
-
-            </p>
-
-
-            <div class="profile-grid">
-
-
-                <div class="profile-card">
-
-                    <span>
-                        الاسم
-                    </span>
-
-                    <strong id="studentName">
-                        جاري التحميل...
-                    </strong>
-
-                </div>
-
-
-                <div class="profile-card">
-
-                    <span>
-                        الصف الدراسي
-                    </span>
-
-                    <strong id="studentGrade">
-                        جاري التحميل...
-                    </strong>
-
-                </div>
-
-
-                <div class="profile-card">
-
-                    <span>
-                        رقم الموبايل
-                    </span>
-
-                    <strong id="studentPhone">
-                        جاري التحميل...
-                    </strong>
-
-                </div>
-
+                <span
+                    class="info-value"
+                    id="profilePhone"
+                >
+                    جاري التحميل...
+                </span>
 
             </div>
+
 
         </div>
 
@@ -850,42 +1109,82 @@ body{
 
 
 
-    <!-- EXAMS -->
+    <!-- =================================================
+         TESTS
+    ================================================== -->
 
     <section class="section">
 
+
         <div class="section-head">
 
-            <small>
+            <div class="section-small">
                 الاختبارات
-            </small>
+            </div>
 
-            <h2>
+            <h2 class="section-title">
                 الاختبارات المتاحة
             </h2>
 
         </div>
 
 
+        <!-- ERROR -->
+
         <div
-            id="examContainer"
-            class="exams"
+            class="error-box"
+            id="errorBox"
+        ></div>
+
+
+        <!-- LOADING -->
+
+        <div
+            class="loading"
+            id="testsLoading"
         >
 
-            <div
-                class="status-box"
-                id="loadingBox"
-            >
+            <div class="spinner"></div>
 
-                <div class="loader"></div>
-
-                <p>
-                    جاري تحميل الاختبارات...
-                </p>
-
+            <div>
+                جاري تحميل الاختبارات...
             </div>
 
         </div>
+
+
+        <!-- TESTS -->
+
+        <div
+            class="tests-grid"
+            id="testsGrid"
+            style="display:none;"
+        ></div>
+
+
+        <!-- EMPTY -->
+
+        <div
+            class="empty"
+            id="emptyTests"
+            style="display:none;"
+        >
+
+            <div class="empty-icon">
+                📝
+            </div>
+
+            <h3>
+                لا توجد اختبارات حالياً
+            </h3>
+
+            <p>
+                عندما يقوم الأدمن بإضافة اختبار مناسب
+                ليك، هيظهر هنا تلقائياً.
+            </p>
+
+        </div>
+
 
     </section>
 
@@ -902,19 +1201,10 @@ body{
 
     ©
     <span id="year"></span>
-    الخوارزمي — جميع الحقوق محفوظة
+    الخوارزمي —
+    جميع الحقوق محفوظة
 
 </footer>
-
-
-
-<!-- =====================================================
-     SUPABASE
-===================================================== -->
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script src="./supabase.js"></script>
 
 
 
@@ -924,10 +1214,12 @@ body{
 
 
 /* =====================================================
-   GLOBAL
+   GLOBALS
 ===================================================== */
 
-let supabaseClient = null;
+let currentUser = null;
+
+let currentProfile = null;
 
 
 /* =====================================================
@@ -935,39 +1227,76 @@ let supabaseClient = null;
 ===================================================== */
 
 const studentName =
-    document.getElementById(
-        "studentName"
-    );
+    document.getElementById("studentName");
 
-const studentGrade =
-    document.getElementById(
-        "studentGrade"
-    );
+const profileName =
+    document.getElementById("profileName");
 
-const studentPhone =
-    document.getElementById(
-        "studentPhone"
-    );
+const profileEmail =
+    document.getElementById("profileEmail");
 
-const examContainer =
-    document.getElementById(
-        "examContainer"
-    );
+const profilePhone =
+    document.getElementById("profilePhone");
+
+const testsLoading =
+    document.getElementById("testsLoading");
+
+const testsGrid =
+    document.getElementById("testsGrid");
+
+const emptyTests =
+    document.getElementById("emptyTests");
+
+const errorBox =
+    document.getElementById("errorBox");
 
 const logoutButton =
-    document.getElementById(
-        "logoutButton"
-    );
+    document.getElementById("logoutButton");
 
 
 /* =====================================================
    YEAR
 ===================================================== */
 
-document.getElementById(
-    "year"
-).textContent =
+document.getElementById("year").textContent =
     new Date().getFullYear();
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+function showError(text){
+
+    errorBox.textContent = text;
+
+    errorBox.classList.add("show");
+
+}
+
+
+/* =====================================================
+   HIDE ERROR
+===================================================== */
+
+function hideError(){
+
+    errorBox.textContent = "";
+
+    errorBox.classList.remove("show");
+
+}
+
+
+/* =====================================================
+   FINISH LOADING
+===================================================== */
+
+function finishTestsLoading(){
+
+    testsLoading.style.display = "none";
+
+}
 
 
 /* =====================================================
@@ -976,79 +1305,65 @@ document.getElementById(
 
 function getClient(){
 
-    if(
-        window.supabaseClient
-    ){
+    if(!window.supabaseClient){
 
-        return window.supabaseClient;
+        throw new Error(
+            "Supabase غير متصل. تأكد من تحميل supabase.js."
+        );
 
     }
 
-
-    throw new Error(
-        "Supabase غير متصل. تأكد من supabase.js"
-    );
+    return window.supabaseClient;
 
 }
 
 
 /* =====================================================
-   SAFE TEXT
+   LOAD USER
 ===================================================== */
 
-function safeValue(
-    value,
-    fallback="غير متوفر"
-){
+async function loadUser(){
 
-    if(
-        value === null ||
-        value === undefined ||
-        String(value).trim() === ""
-    ){
+    const supabase =
+        getClient();
 
-        return fallback;
+
+    /*
+     * نستخدم getSession أولاً.
+     * لا نعتمد على user_id مكتوب يدويًا.
+     */
+
+    const sessionResult =
+        await supabase.auth.getSession();
+
+
+    if(sessionResult.error){
+
+        throw sessionResult.error;
 
     }
 
-    return String(value);
 
-}
+    const session =
+        sessionResult.data?.session;
 
 
-/* =====================================================
-   SHOW EXAM STATUS
-===================================================== */
+    if(!session || !session.user){
 
-function showStatus(
-    text,
-    isError=false
-){
-
-    examContainer.innerHTML = "";
-
-    const box =
-        document.createElement(
-            "div"
+        window.location.replace(
+            "auth.html"
         );
 
-    box.className =
-        "status-box" +
-        (isError
-            ? " error-box"
-            : "");
+        return null;
 
-    const p =
-        document.createElement(
-            "p"
-        );
+    }
 
-    p.textContent =
-        text;
 
-    box.appendChild(p);
+    currentUser =
+        session.user;
 
-    examContainer.appendChild(box);
+
+    return currentUser;
 
 }
 
@@ -1057,162 +1372,194 @@ function showStatus(
    LOAD PROFILE
 ===================================================== */
 
-async function loadProfile(
-    supabase,
-    user
-){
+async function loadProfile(user){
+
+    const supabase =
+        getClient();
+
 
     /*
-     * لا نستخدم user_id وهمي.
-     * نستخدم auth user id الحقيقي.
+     * profiles.id يجب أن يكون نفس
+     * auth.users.id
      */
 
     const result =
         await supabase
-        .from("profiles")
-        .select("*")
-        .eq(
-            "id",
-            user.id
-        )
-        .maybeSingle();
+            .from("profiles")
+            .select(
+                "id,full_name,email,phone,grade,role"
+            )
+            .eq(
+                "id",
+                user.id
+            )
+            .maybeSingle();
 
 
     if(result.error){
 
-        console.error(
-            "PROFILE ERROR:",
-            result.error
-        );
+        throw result.error;
 
-        /*
-         * حتى لو profiles فيه مشكلة،
-         * نستخدم بيانات Auth الموجودة.
-         */
-
-        const meta =
-            user.user_metadata || {};
-
-        studentName.textContent =
-            safeValue(
-                meta.full_name,
-                "الطالب"
-            );
-
-        studentGrade.textContent =
-            safeValue(
-                meta.grade
-            );
-
-        studentPhone.textContent =
-            safeValue(
-                meta.phone
-            );
-
-        return null;
     }
 
+
+    /*
+     * لو الـ profile غير موجود
+     * نعرض بيانات Auth بدون إنشاء
+     * user_id وهمي.
+     */
 
     if(!result.data){
 
-        const meta =
-            user.user_metadata || {};
+        currentProfile = {
 
-        studentName.textContent =
-            safeValue(
-                meta.full_name,
-                "الطالب"
-            );
+            id:user.id,
 
-        studentGrade.textContent =
-            safeValue(
-                meta.grade
-            );
+            full_name:
+                user.user_metadata?.full_name ||
+                "الطالب",
 
-        studentPhone.textContent =
-            safeValue(
-                meta.phone
-            );
+            email:
+                user.email || "",
 
-        return null;
+            phone:
+                user.user_metadata?.phone ||
+                "",
+
+            grade:
+                user.user_metadata?.grade ||
+                "",
+
+            role:"student"
+
+        };
+
+    }else{
+
+        currentProfile =
+            result.data;
+
     }
 
 
-    const profile =
-        result.data;
+    /*
+     * منع حساب الأدمن من دخول صفحة الطالب
+     */
 
+    if(
+        currentProfile.role === "admin"
+    ){
 
-    studentName.textContent =
-        safeValue(
-            profile.full_name ||
-            profile.name ||
-            user.user_metadata?.full_name,
-            "الطالب"
+        window.location.replace(
+            "admin/index.html"
         );
 
+        return null;
 
-    studentGrade.textContent =
-        safeValue(
-            profile.grade ||
-            profile.class_name ||
-            user.user_metadata?.grade
-        );
+    }
 
 
-    studentPhone.textContent =
-        safeValue(
-            profile.phone ||
-            user.user_metadata?.phone
-        );
+    updateProfileUI();
 
-
-    return profile;
+    return currentProfile;
 
 }
 
 
 /* =====================================================
-   LOAD EXAMS
+   UPDATE PROFILE UI
 ===================================================== */
 
-async function loadExams(
-    supabase,
-    user
-){
+function updateProfileUI(){
 
-    /*
-     * مهم:
-     * لو جدول exams غير موجود أو RLS مانع القراءة،
-     * لن تظل الصفحة معلقة.
-     */
+    const name =
+        currentProfile?.full_name ||
+        "الطالب";
+
+
+    studentName.textContent =
+        name;
+
+
+    profileName.textContent =
+        name;
+
+
+    profileEmail.textContent =
+        currentProfile?.email ||
+        currentUser?.email ||
+        "غير متوفر";
+
+
+    profilePhone.textContent =
+        currentProfile?.phone ||
+        currentUser?.user_metadata?.phone ||
+        "غير متوفر";
+
+}
+
+
+/* =====================================================
+   LOAD TESTS
+===================================================== */
+
+async function loadTests(){
+
+    hideError();
+
+    testsGrid.innerHTML = "";
+
+    testsGrid.style.display = "none";
+
+    emptyTests.style.display = "none";
+
+    testsLoading.style.display = "flex";
+
 
     try{
 
-        const result =
-            await supabase
-            .from("exams")
-            .select("*")
-            .order(
-                "created_at",
-                {
-                    ascending:false
-                }
-            );
+        const supabase =
+            getClient();
 
+
+        /*
+         * الجدول الأساسي المتوقع:
+         *
+         * exams
+         *
+         * ونستخدم الأعمدة الشائعة:
+         * id
+         * title / name
+         * description
+         * duration
+         * grade
+         * status
+         *
+         * لو جدولك يستخدم status = published
+         * سيتم عرض الاختبارات المنشورة.
+         */
+
+
+        let result =
+            await supabase
+                .from("exams")
+                .select("*")
+                .order(
+                    "created_at",
+                    {
+                        ascending:false
+                    }
+                );
+
+
+        /*
+         * لو جدول exams غير موجود
+         * نعرض رسالة واضحة بدل التعليق.
+         */
 
         if(result.error){
 
-            console.error(
-                "EXAMS ERROR:",
-                result.error
-            );
-
-            showStatus(
-                "لا توجد اختبارات متاحة حالياً.",
-                false
-            );
-
-            return;
+            throw result.error;
 
         }
 
@@ -1223,33 +1570,111 @@ async function loadExams(
                 : [];
 
 
+        /*
+         * فلترة الاختبارات حسب الصف
+         */
+
+        const studentGrade =
+            currentProfile?.grade;
+
+
+        const availableExams =
+            exams.filter(function(exam){
+
+                /*
+                 * الاختبار غير المنشور
+                 * لا يظهر.
+                 */
+
+                if(
+                    exam.status &&
+                    ![
+                        "active",
+                        "published",
+                        "available"
+                    ].includes(
+                        String(
+                            exam.status
+                        ).toLowerCase()
+                    )
+                ){
+
+                    return false;
+
+                }
+
+
+                /*
+                 * لو الاختبار بدون grade
+                 * نسمح بعرضه.
+                 */
+
+                if(
+                    !exam.grade ||
+                    !studentGrade
+                ){
+
+                    return true;
+
+                }
+
+
+                return String(
+                    exam.grade
+                ) === String(
+                    studentGrade
+                );
+
+            });
+
+
+        finishTestsLoading();
+
+
         if(
-            exams.length === 0
+            availableExams.length === 0
         ){
 
-            showStatus(
-                "لا توجد اختبارات متاحة حالياً."
-            );
+            emptyTests.style.display =
+                "flex";
 
             return;
 
         }
 
 
-        renderExams(
-            exams
+        availableExams.forEach(
+            function(exam){
+
+                testsGrid.appendChild(
+                    createExamCard(exam)
+                );
+
+            }
         );
+
+
+        testsGrid.style.display =
+            "grid";
 
 
     }catch(error){
 
         console.error(
-            "LOAD EXAMS ERROR:",
+            "LOAD TESTS ERROR:",
             error
         );
 
-        showStatus(
-            "تعذر تحميل الاختبارات حالياً."
+
+        finishTestsLoading();
+
+
+        /*
+         * لا نخلي الصفحة معلقة.
+         */
+
+        showError(
+            "تعذر تحميل الاختبارات. تأكد أن جدول exams موجود وأن صلاحيات القراءة في Supabase مفعلة."
         );
 
     }
@@ -1258,340 +1683,184 @@ async function loadExams(
 
 
 /* =====================================================
-   RENDER EXAMS
+   CREATE EXAM CARD
 ===================================================== */
 
-function renderExams(
-    exams
-){
+function createExamCard(exam){
 
-    examContainer.innerHTML = "";
+    const card =
+        document.createElement("article");
 
+    card.className =
+        "test-card";
 
-    exams.forEach(
-        function(exam){
 
-            const card =
-                document.createElement(
-                    "div"
-                );
+    const icon =
+        document.createElement("div");
 
-            card.className =
-                "exam-card";
+    icon.className =
+        "test-icon";
 
+    icon.textContent =
+        "📝";
 
-            const title =
-                safeValue(
-                    exam.title ||
-                    exam.name ||
-                    exam.exam_name,
-                    "اختبار رياضيات"
-                );
 
+    const title =
+        document.createElement("h3");
 
-            const duration =
-                exam.duration ||
-                exam.duration_minutes ||
-                exam.time;
+    title.className =
+        "test-name";
 
 
-            const grade =
-                exam.grade ||
-                exam.class_name;
+    /*
+     * دعم أكثر من اسم للعنوان.
+     */
 
+    title.textContent =
+        exam.title ||
+        exam.name ||
+        exam.exam_name ||
+        "اختبار رياضيات";
 
-            const icon =
-                document.createElement(
-                    "div"
-                );
 
-            icon.className =
-                "exam-icon";
+    const description =
+        document.createElement("p");
 
-            icon.textContent =
-                "∑";
+    description.className =
+        "test-description";
 
+    description.textContent =
+        exam.description ||
+        "اختبار متاح لك على منصة الخوارزمي.";
 
-            const middle =
-                document.createElement(
-                    "div"
-                );
 
+    const meta =
+        document.createElement("div");
 
-            const heading =
-                document.createElement(
-                    "h3"
-                );
+    meta.className =
+        "test-meta";
 
-            heading.className =
-                "exam-title";
 
-            heading.textContent =
-                title;
+    /*
+     * المدة
+     */
 
+    if(
+        exam.duration !== undefined &&
+        exam.duration !== null
+    ){
 
-            const info =
-                document.createElement(
-                    "div"
-                );
+        const duration =
+            document.createElement("span");
 
-            info.className =
-                "exam-info";
+        duration.className =
+            "meta";
 
+        duration.textContent =
+            "⏱ " +
+            exam.duration +
+            " دقيقة";
 
-            let infoText = "";
+        meta.appendChild(
+            duration
+        );
 
+    }
 
-            if(grade){
 
-                infoText +=
-                    "الصف: " +
-                    grade;
+    /*
+     * الصف
+     */
 
-            }
+    if(exam.grade){
 
+        const grade =
+            document.createElement("span");
 
-            if(duration){
+        grade.className =
+            "meta";
 
-                if(infoText){
+        grade.textContent =
+            "🎓 " +
+            exam.grade;
 
-                    infoText +=
-                        " • ";
+        meta.appendChild(
+            grade
+        );
 
-                }
+    }
 
-                infoText +=
-                    "المدة: " +
-                    duration +
-                    " دقيقة";
 
-            }
+    const button =
+        document.createElement("button");
 
+    button.type =
+        "button";
 
-            if(!infoText){
+    button.className =
+        "start-test";
 
-                infoText =
-                    "اختبار رياضيات";
+    button.textContent =
+        "ابدأ الاختبار";
 
-            }
 
+    button.addEventListener(
+        "click",
+        function(){
 
-            info.textContent =
-                infoText;
-
-
-            middle.appendChild(
-                heading
-            );
-
-            middle.appendChild(
-                info
-            );
-
-
-            const button =
-                document.createElement(
-                    "button"
-                );
-
-            button.type =
-                "button";
-
-            button.className =
-                "start-btn";
-
-            button.textContent =
-                "بدء الاختبار";
-
-
-            button.addEventListener(
-                "click",
-                function(){
-
-                    /*
-                     * نرسل ID الحقيقي للاختبار.
-                     */
-
-                    if(
-                        exam.id
-                    ){
-
-                        window.location.href =
-                            "exam.html?id=" +
-                            encodeURIComponent(
-                                exam.id
-                            );
-
-                    }else{
-
-                        alert(
-                            "هذا الاختبار لا يحتوي على رقم تعريف صحيح."
-                        );
-
-                    }
-
-                }
-            );
-
-
-            card.appendChild(
-                icon
-            );
-
-            card.appendChild(
-                middle
-            );
-
-            card.appendChild(
-                button
-            );
-
-
-            examContainer.appendChild(
-                card
-            );
+            startExam(exam);
 
         }
     );
 
+
+    card.appendChild(icon);
+
+    card.appendChild(title);
+
+    card.appendChild(description);
+
+    card.appendChild(meta);
+
+    card.appendChild(button);
+
+
+    return card;
+
 }
 
 
 /* =====================================================
-   CHECK ROLE
+   START EXAM
 ===================================================== */
 
-async function checkUser(){
+function startExam(exam){
 
-    try{
+    if(!exam || !exam.id){
 
-        supabaseClient =
-            getClient();
-
-
-        /*
-         * getUser يتحقق من المستخدم الحقيقي
-         * الموجود في Supabase Auth.
-         */
-
-        const result =
-            await supabaseClient
-            .auth
-            .getUser();
-
-
-        if(result.error){
-
-            throw result.error;
-
-        }
-
-
-        const user =
-            result.data?.user;
-
-
-        if(!user){
-
-            window.location.replace(
-                "auth.html"
-            );
-
-            return;
-
-        }
-
-
-        /*
-         * قراءة role من profiles.
-         */
-
-        const profileResult =
-            await supabaseClient
-            .from("profiles")
-            .select("role")
-            .eq(
-                "id",
-                user.id
-            )
-            .maybeSingle();
-
-
-        if(
-            profileResult.data?.role ===
-            "admin"
-        ){
-
-            /*
-             * الأدمن لا يدخل home.
-             */
-
-            window.location.replace(
-                "admin/index.html"
-            );
-
-            return;
-
-        }
-
-
-        /*
-         * المستخدم Student.
-         */
-
-        await loadProfile(
-            supabaseClient,
-            user
+        showError(
+            "هذا الاختبار لا يحتوي على رقم تعريف صحيح."
         );
 
-
-        await loadExams(
-            supabaseClient,
-            user
-        );
-
-
-    }catch(error){
-
-        console.error(
-            "AUTH CHECK ERROR:",
-            error
-        );
-
-
-        studentName.textContent =
-            "تعذر تحميل البيانات";
-
-
-        studentGrade.textContent =
-            "—";
-
-
-        studentPhone.textContent =
-            "—";
-
-
-        showStatus(
-            "انتهت الجلسة أو تعذر الاتصال. سيتم الرجوع لتسجيل الدخول."
-        );
-
-
-        /*
-         * منع تعليق الصفحة.
-         */
-
-        setTimeout(
-            function(){
-
-                window.location.replace(
-                    "auth.html"
-                );
-
-            },
-            1800
-        );
+        return;
 
     }
+
+
+    /*
+     * نرسل id فقط.
+     * exam.html يقرأه من الرابط.
+     */
+
+    const examId =
+        encodeURIComponent(
+            String(exam.id)
+        );
+
+
+    window.location.href =
+        "exam.html?id=" +
+        examId;
 
 }
 
@@ -1600,9 +1869,9 @@ async function checkUser(){
    LOGOUT
 ===================================================== */
 
-logoutButton.addEventListener(
-    "click",
-    async function(){
+async function logoutStudent(){
+
+    if(logoutButton){
 
         logoutButton.disabled =
             true;
@@ -1610,32 +1879,37 @@ logoutButton.addEventListener(
         logoutButton.textContent =
             "جاري الخروج...";
 
+    }
+
+
+    /*
+     * التحويل مضمون حتى لو Supabase
+     * اتأخر أو حصل خطأ بالشبكة.
+     */
+
+    let redirected = false;
+
+
+    function redirectToAuth(){
+
+        if(redirected){
+
+            return;
+
+        }
+
+        redirected = true;
+
 
         try{
 
-            const supabase =
-                getClient();
-
-
-            const result =
-                await supabase
-                .auth
-                .signOut();
-
-
-            if(result.error){
-
-                throw result.error;
-
-            }
-
+            localStorage.removeItem(
+                "al-khwarizmi-auth"
+            );
 
         }catch(error){
 
-            console.error(
-                "LOGOUT ERROR:",
-                error
-            );
+            console.warn(error);
 
         }
 
@@ -1645,21 +1919,249 @@ logoutButton.addEventListener(
         );
 
     }
+
+
+    try{
+
+        const supabase =
+            window.supabaseClient;
+
+
+        if(supabase){
+
+            /*
+             * تسجيل خروج محلي.
+             * لا ننتظر السيرفر وقت طويل.
+             */
+
+            await Promise.race([
+
+                supabase.auth.signOut({
+                    scope:"local"
+                }),
+
+                new Promise(
+                    function(resolve){
+
+                        setTimeout(
+                            resolve,
+                            1200
+                        );
+
+                    }
+                )
+
+            ]);
+
+        }
+
+    }catch(error){
+
+        console.warn(
+            "Logout warning:",
+            error
+        );
+
+    }
+
+
+    /*
+     * التحويل فورًا.
+     */
+
+    redirectToAuth();
+
+}
+
+
+/* =====================================================
+   LOGOUT BUTTON
+===================================================== */
+
+logoutButton.addEventListener(
+    "click",
+    function(event){
+
+        event.preventDefault();
+
+        logoutStudent();
+
+    }
 );
+
+
+/* =====================================================
+   AUTH CHECK
+===================================================== */
+
+async function initializeHome(){
+
+    try{
+
+        /*
+         * نوقف أي تحميل قديم.
+         */
+
+        testsLoading.style.display =
+            "flex";
+
+
+        const user =
+            await loadUser();
+
+
+        if(!user){
+
+            return;
+
+        }
+
+
+        const profile =
+            await loadProfile(user);
+
+
+        if(!profile){
+
+            return;
+
+        }
+
+
+        /*
+         * تحميل الاختبارات.
+         */
+
+        await loadTests();
+
+
+    }catch(error){
+
+        console.error(
+            "HOME INITIALIZATION ERROR:",
+            error
+        );
+
+
+        /*
+         * مهم:
+         * الصفحة لا تظل معلقة.
+         */
+
+        finishTestsLoading();
+
+
+        showError(
+            "حدث خطأ أثناء تحميل بيانات الحساب. حاول تسجيل الدخول مرة أخرى."
+        );
+
+
+        /*
+         * لو الجلسة غير موجودة
+         * نرجع لتسجيل الدخول.
+         */
+
+        setTimeout(
+            async function(){
+
+                try{
+
+                    const supabase =
+                        window.supabaseClient;
+
+                    if(!supabase){
+
+                        return;
+
+                    }
+
+
+                    const result =
+                        await supabase.auth.getSession();
+
+
+                    if(
+                        !result.data?.session
+                    ){
+
+                        window.location.replace(
+                            "auth.html"
+                        );
+
+                    }
+
+                }catch(e){
+
+                    console.warn(e);
+
+                }
+
+            },
+            1000
+        );
+
+    }
+
+}
 
 
 /* =====================================================
    START
 ===================================================== */
 
-window.addEventListener(
-    "DOMContentLoaded",
-    function(){
+if(
+    document.readyState ===
+    "loading"
+){
 
-        checkUser();
+    document.addEventListener(
+        "DOMContentLoaded",
+        initializeHome
+    );
 
-    }
-);
+}else{
+
+    initializeHome();
+
+}
+
+
+/* =====================================================
+   AUTH STATE
+===================================================== */
+
+if(window.supabaseClient){
+
+    window.supabaseClient.auth.onAuthStateChange(
+        function(event, session){
+
+            /*
+             * لو المستخدم خرج من مكان آخر
+             * نرجعه لتسجيل الدخول.
+             */
+
+            if(
+                event === "SIGNED_OUT" ||
+                !session
+            ){
+
+                if(
+                    !window.location.pathname
+                        .endsWith("auth.html")
+                ){
+
+                    window.location.replace(
+                        "auth.html"
+                    );
+
+                }
+
+            }
+
+        }
+    );
+
+}
 
 </script>
 
