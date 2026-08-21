@@ -2,19 +2,25 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>إدارة الأسئلة | الخوارزمي</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 
-<link
-href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
-rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet">
 
+<!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- اتصال المشروع -->
+<script src="../supabase.js"></script>
 
 <style>
 
@@ -58,7 +64,7 @@ body{
 }
 
 
-/* SIDEBAR */
+/* ================= SIDEBAR ================= */
 
 .sidebar{
     position:fixed;
@@ -216,7 +222,7 @@ body{
 }
 
 
-/* MAIN */
+/* ================= MAIN ================= */
 
 .main{
     margin-right:255px;
@@ -289,7 +295,7 @@ body{
 }
 
 
-/* HEADER */
+/* ================= HEADER ================= */
 
 .page-header{
     display:flex;
@@ -337,7 +343,7 @@ body{
 }
 
 
-/* EXAM INFO */
+/* ================= EXAM INFO ================= */
 
 .exam-info{
     display:flex;
@@ -384,7 +390,7 @@ body{
 }
 
 
-/* TOOLBAR */
+/* ================= TOOLBAR ================= */
 
 .toolbar{
     display:flex;
@@ -454,7 +460,7 @@ body{
 }
 
 
-/* QUESTIONS */
+/* ================= QUESTIONS ================= */
 
 .questions{
     display:flex;
@@ -655,7 +661,7 @@ body{
 }
 
 
-/* EMPTY */
+/* ================= EMPTY ================= */
 
 .empty{
     text-align:center;
@@ -690,7 +696,7 @@ body{
 }
 
 
-/* MODAL */
+/* ================= MODAL ================= */
 
 .modal{
     position:fixed;
@@ -765,7 +771,7 @@ body{
 }
 
 
-/* FORM */
+/* ================= FORM ================= */
 
 .form-group{
     margin-bottom:14px;
@@ -976,7 +982,7 @@ body{
 }
 
 
-/* LOADING */
+/* ================= LOADING ================= */
 
 .loading{
     position:fixed;
@@ -1016,7 +1022,7 @@ body{
 }
 
 
-/* TOAST */
+/* ================= TOAST ================= */
 
 .toast{
     position:fixed;
@@ -1061,7 +1067,7 @@ body{
 }
 
 
-/* RESPONSIVE */
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:800px){
 
@@ -1119,13 +1125,13 @@ body{
 }
 
 </style>
-</head>
 
+</head>
 
 <body>
 
 
-<!-- SIDEBAR -->
+<!-- ================= SIDEBAR ================= -->
 
 <aside class="sidebar" id="sidebar">
 
@@ -1221,7 +1227,7 @@ body{
 </aside>
 
 
-<!-- MAIN -->
+<!-- ================= MAIN ================= -->
 
 <main class="main">
 
@@ -1229,9 +1235,10 @@ body{
 
         <button
             class="mobile-menu"
-            onclick="toggleSidebar()"
-        >
+            onclick="toggleSidebar()">
+
             ☰
+
         </button>
 
         <div></div>
@@ -1276,15 +1283,16 @@ body{
 
         <a
             href="exams.html"
-            class="back-btn"
-        >
+            class="back-btn">
+
             ← العودة للاختبارات
+
         </a>
 
     </section>
 
 
-    <!-- EXAM INFO -->
+    <!-- ================= EXAM INFO ================= -->
 
     <section class="exam-info">
 
@@ -1307,7 +1315,7 @@ body{
     </section>
 
 
-    <!-- TOOLBAR -->
+    <!-- ================= TOOLBAR ================= -->
 
     <section class="toolbar">
 
@@ -1315,35 +1323,34 @@ body{
             type="search"
             class="search"
             id="searchInput"
-            placeholder="🔎 ابحث داخل الأسئلة..."
-        >
-
+            placeholder="🔎 ابحث داخل الأسئلة...">
 
         <button
             class="add-btn"
-            onclick="openAddModal()"
-        >
+            onclick="openAddModal()">
+
             ＋ إضافة سؤال
+
         </button>
 
     </section>
 
 
-    <!-- QUESTIONS -->
+    <!-- ================= QUESTIONS ================= -->
 
     <section
         class="questions"
-        id="questionsContainer"
-    ></section>
+        id="questionsContainer">
+
+    </section>
 
 
-    <!-- EMPTY -->
+    <!-- ================= EMPTY ================= -->
 
     <section
         class="empty"
         id="emptyState"
-        style="display:none;"
-    >
+        style="display:none;">
 
         <div class="empty-icon">
             ❓
@@ -1359,9 +1366,10 @@ body{
 
         <button
             class="add-btn"
-            onclick="openAddModal()"
-        >
+            onclick="openAddModal()">
+
             ＋ إضافة أول سؤال
+
         </button>
 
     </section>
@@ -1369,12 +1377,11 @@ body{
 </main>
 
 
-<!-- MODAL -->
+<!-- ================= MODAL ================= -->
 
 <div
     class="modal"
-    id="questionModal"
->
+    id="questionModal">
 
     <div class="modal-box">
 
@@ -1386,9 +1393,10 @@ body{
 
             <button
                 class="close"
-                onclick="closeModal()"
-            >
+                onclick="closeModal()">
+
                 ✕
+
             </button>
 
         </div>
@@ -1406,8 +1414,7 @@ body{
                     class="textarea"
                     id="questionText"
                     placeholder="اكتب السؤال هنا..."
-                    required
-                ></textarea>
+                    required></textarea>
 
             </div>
 
@@ -1424,18 +1431,20 @@ body{
                         type="button"
                         class="type-btn active"
                         id="mcqBtn"
-                        onclick="setQuestionType('mcq')"
-                    >
+                        onclick="setQuestionType('mcq')">
+
                         🔘 اختيار من متعدد
+
                     </button>
 
                     <button
                         type="button"
                         class="type-btn"
                         id="trueFalseBtn"
-                        onclick="setQuestionType('true_false')"
-                    >
+                        onclick="setQuestionType('true_false')">
+
                         ✔️ صح أو خطأ
+
                     </button>
 
                 </div>
@@ -1443,9 +1452,9 @@ body{
             </div>
 
 
-            <div
-                id="mcqOptions"
-            >
+            <!-- MCQ -->
+
+            <div id="mcqOptions">
 
                 <div class="form-group">
 
@@ -1463,8 +1472,7 @@ body{
                         <input
                             class="input"
                             id="optionA"
-                            placeholder="الاختيار الأول"
-                        >
+                            placeholder="الاختيار الأول">
 
                     </div>
 
@@ -1478,8 +1486,7 @@ body{
                         <input
                             class="input"
                             id="optionB"
-                            placeholder="الاختيار الثاني"
-                        >
+                            placeholder="الاختيار الثاني">
 
                     </div>
 
@@ -1493,8 +1500,7 @@ body{
                         <input
                             class="input"
                             id="optionC"
-                            placeholder="الاختيار الثالث"
-                        >
+                            placeholder="الاختيار الثالث">
 
                     </div>
 
@@ -1508,8 +1514,7 @@ body{
                         <input
                             class="input"
                             id="optionD"
-                            placeholder="الاختيار الرابع"
-                        >
+                            placeholder="الاختيار الرابع">
 
                     </div>
 
@@ -1520,24 +1525,12 @@ body{
 
                     <select
                         class="correct-select"
-                        id="correctAnswer"
-                    >
+                        id="correctAnswer">
 
-                        <option value="A">
-                            A
-                        </option>
-
-                        <option value="B">
-                            B
-                        </option>
-
-                        <option value="C">
-                            C
-                        </option>
-
-                        <option value="D">
-                            D
-                        </option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
 
                     </select>
 
@@ -1546,10 +1539,11 @@ body{
             </div>
 
 
+            <!-- TRUE FALSE -->
+
             <div
                 id="trueFalseOptions"
-                style="display:none;"
-            >
+                style="display:none;">
 
                 <div class="form-group">
 
@@ -1559,8 +1553,7 @@ body{
 
                     <select
                         class="correct-select"
-                        id="trueFalseAnswer"
-                    >
+                        id="trueFalseAnswer">
 
                         <option value="true">
                             صح
@@ -1577,6 +1570,8 @@ body{
             </div>
 
 
+            <!-- ORDER / POINTS -->
+
             <div class="row">
 
                 <div class="form-group">
@@ -1590,8 +1585,7 @@ body{
                         class="input"
                         id="sortOrder"
                         min="1"
-                        value="1"
-                    >
+                        value="1">
 
                 </div>
 
@@ -1608,8 +1602,7 @@ body{
                         id="points"
                         min="1"
                         value="1"
-                        required
-                    >
+                        required>
 
                 </div>
 
@@ -1621,16 +1614,18 @@ body{
                 <button
                     type="button"
                     class="cancel-btn"
-                    onclick="closeModal()"
-                >
+                    onclick="closeModal()">
+
                     إلغاء
+
                 </button>
 
                 <button
                     type="submit"
-                    class="save-btn"
-                >
+                    class="save-btn">
+
                     💾 حفظ السؤال
+
                 </button>
 
             </div>
@@ -1642,53 +1637,37 @@ body{
 </div>
 
 
-<!-- LOADING -->
+<!-- ================= LOADING ================= -->
 
 <div
     class="loading"
-    id="loading"
->
+    id="loading">
 
     <div class="spinner"></div>
 
 </div>
 
 
-<!-- TOAST -->
+<!-- ================= TOAST ================= -->
 
 <div
     class="toast"
-    id="toast"
-></div>
+    id="toast">
+
+</div>
 
 
 <script>
 
 /* =====================================================
-   SUPABASE
+   SUPABASE CLIENT
+   يعتمد على ../supabase.js
 ===================================================== */
 
-const SUPABASE_URL =
-    "ضع_رابط_مشروعك_هنا";
-
-const SUPABASE_KEY =
-    "ضع_publishable_او_anon_key_هنا";
-
-
-let supabaseClient = null;
-
-if(
-    SUPABASE_URL.startsWith("http") &&
-    !SUPABASE_URL.includes("ضع_")
-){
-
-    supabaseClient =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
-
-}
+const db =
+    window.supabaseClient ||
+    window.sb ||
+    window.supabaseDB;
 
 
 /* =====================================================
@@ -1742,9 +1721,7 @@ const searchInput =
 function setLoading(state){
 
     loading.style.display =
-        state
-        ? "flex"
-        : "none";
+        state ? "flex" : "none";
 
 }
 
@@ -1753,10 +1730,7 @@ function setLoading(state){
    TOAST
 ===================================================== */
 
-function showToast(
-    message,
-    type=""
-){
+function showToast(message,type=""){
 
     toast.textContent =
         message;
@@ -1797,12 +1771,10 @@ function toggleSidebar(){
 
 async function checkAdmin(){
 
-    if(!supabaseClient){
-
-        setLoading(false);
+    if(!db){
 
         showToast(
-            "ضع بيانات Supabase داخل الكود أولًا.",
+            "ملف supabase.js غير متصل بشكل صحيح.",
             "error"
         );
 
@@ -1815,16 +1787,24 @@ async function checkAdmin(){
         data,
         error
     } =
-        await supabaseClient
-            .auth
-            .getSession();
+        await db.auth.getSession();
 
 
-    if(
-        error ||
-        !data ||
-        !data.session
-    ){
+    if(error){
+
+        console.error(error);
+
+        showToast(
+            "تعذر التحقق من تسجيل الدخول.",
+            "error"
+        );
+
+        return false;
+
+    }
+
+
+    if(!data || !data.session){
 
         window.location.href =
             "login.html";
@@ -1842,31 +1822,40 @@ async function checkAdmin(){
         data:profile,
         error:profileError
     } =
-        await supabaseClient
-
+        await db
             .from("profiles")
-
             .select(
                 "id,full_name,role"
             )
-
             .eq(
                 "id",
                 user.id
             )
-
             .maybeSingle();
 
 
+    if(profileError){
+
+        console.error(
+            profileError
+        );
+
+        showToast(
+            "تعذر قراءة بيانات الأدمن.",
+            "error"
+        );
+
+        return false;
+
+    }
+
+
     if(
-        profileError ||
         !profile ||
         profile.role !== "admin"
     ){
 
-        await supabaseClient
-            .auth
-            .signOut();
+        await db.auth.signOut();
 
         window.location.href =
             "login.html";
@@ -1900,7 +1889,6 @@ function getExamId(){
             window.location.search
         );
 
-
     return params.get(
         "exam_id"
     );
@@ -1921,12 +1909,10 @@ async function loadExam(){
             .textContent =
                 "لم يتم تحديد اختبار";
 
-
         document
             .getElementById("examDescription")
             .textContent =
-                "افتح الصفحة من زر الأسئلة داخل إدارة الاختبارات.";
-
+                "افتح الصفحة من زر الأسئلة الموجود بجانب الاختبار.";
 
         return;
 
@@ -1937,22 +1923,18 @@ async function loadExam(){
         data,
         error
     } =
-        await supabaseClient
-
+        await db
             .from("exams")
-
             .select(`
                 id,
                 title,
                 description,
                 duration_minutes
             `)
-
             .eq(
                 "id",
                 examId
             )
-
             .maybeSingle();
 
 
@@ -2005,10 +1987,8 @@ async function loadQuestions(){
         data,
         error
     } =
-        await supabaseClient
-
+        await db
             .from("questions")
-
             .select(`
                 id,
                 exam_id,
@@ -2023,12 +2003,10 @@ async function loadQuestions(){
                 sort_order,
                 created_at
             `)
-
             .eq(
                 "exam_id",
                 examId
             )
-
             .order(
                 "sort_order",
                 {
@@ -2070,7 +2048,7 @@ function getFilteredQuestions(){
     return allQuestions.filter(
         question => {
 
-            return (
+            return String(
                 question.question_text ||
                 ""
             )
@@ -2084,7 +2062,7 @@ function getFilteredQuestions(){
 
 
 /* =====================================================
-   RENDER
+   RENDER QUESTIONS
 ===================================================== */
 
 function renderQuestions(){
@@ -2143,6 +2121,8 @@ function renderQuestions(){
             let optionsHTML = "";
 
 
+            /* ===== TRUE / FALSE ===== */
+
             if(
                 question.question_type ===
                 "true_false"
@@ -2197,13 +2177,22 @@ function renderQuestions(){
 
                 `;
 
-            }else{
+            }
+
+            /* ===== MCQ ===== */
+
+            else{
 
                 const options = [
+
                     ["A",question.option_a],
+
                     ["B",question.option_b],
+
                     ["C",question.option_c],
+
                     ["D",question.option_d]
+
                 ];
 
 
@@ -2291,12 +2280,14 @@ function renderQuestions(){
                                 color:#777;
                                 font-size:7px;
                             ">
+
                                 ${
                                     question.question_type ===
                                     "true_false"
                                     ? "صح أو خطأ"
                                     : "اختيار من متعدد"
                                 }
+
                             </div>
 
                         </div>
@@ -2318,21 +2309,19 @@ function renderQuestions(){
 
                     <button
                         class="action"
-                        onclick="editQuestion(
-                            '${question.id}'
-                        )"
-                    >
+                        onclick="editQuestion('${question.id}')">
+
                         ✏️ تعديل
+
                     </button>
 
 
                     <button
                         class="action delete"
-                        onclick="deleteQuestion(
-                            '${question.id}'
-                        )"
-                    >
+                        onclick="deleteQuestion('${question.id}')">
+
                         🗑️ حذف
+
                     </button>
 
                 </div>
@@ -2351,28 +2340,33 @@ function renderQuestions(){
 
 
 /* =====================================================
-   ESCAPE
+   ESCAPE HTML
 ===================================================== */
 
 function escapeHTML(value){
 
     return String(value)
+
         .replace(
             /&/g,
             "&amp;"
         )
+
         .replace(
             /</g,
             "&lt;"
         )
+
         .replace(
             />/g,
             "&gt;"
         )
+
         .replace(
             /"/g,
             "&quot;"
         )
+
         .replace(
             /'/g,
             "&#039;"
@@ -2401,7 +2395,6 @@ function setQuestionType(type){
             "trueFalseOptions"
         );
 
-
     const mcqBtn =
         document.getElementById(
             "mcqBtn"
@@ -2429,7 +2422,9 @@ function setQuestionType(type){
             "active"
         );
 
-    }else{
+    }
+
+    else{
 
         mcq.style.display =
             "none";
@@ -2451,7 +2446,7 @@ function setQuestionType(type){
 
 
 /* =====================================================
-   OPEN ADD
+   OPEN ADD MODAL
 ===================================================== */
 
 function openAddModal(){
@@ -2496,7 +2491,7 @@ function openAddModal(){
 
 
 /* =====================================================
-   CLOSE
+   CLOSE MODAL
 ===================================================== */
 
 function closeModal(){
@@ -2509,7 +2504,7 @@ function closeModal(){
 
 
 /* =====================================================
-   EDIT
+   EDIT QUESTION
 ===================================================== */
 
 function editQuestion(id){
@@ -2614,7 +2609,7 @@ function editQuestion(id){
 
 
 /* =====================================================
-   SAVE
+   SAVE QUESTION
 ===================================================== */
 
 document
@@ -2679,10 +2674,22 @@ document
             }
 
 
-            if(!points || points < 1){
+            if(!Number.isInteger(points) || points < 1){
 
                 showToast(
                     "الدرجة يجب أن تكون 1 أو أكثر.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            if(!Number.isInteger(sortOrder) || sortOrder < 1){
+
+                showToast(
+                    "ترتيب السؤال غير صحيح.",
                     "error"
                 );
 
@@ -2726,6 +2733,8 @@ document
             };
 
 
+            /* ===== MCQ ===== */
+
             if(questionType === "mcq"){
 
                 const a =
@@ -2759,7 +2768,6 @@ document
                         )
                         .value
                         .trim();
-
 
                 const correct =
                     document
@@ -2801,7 +2809,12 @@ document
                 payload.correct_answer =
                     correct;
 
-            }else{
+            }
+
+
+            /* ===== TRUE / FALSE ===== */
+
+            else{
 
                 payload.correct_answer =
                     document
@@ -2818,49 +2831,39 @@ document
                 setLoading(true);
 
 
-                let error = null;
+                let result;
 
+
+                /* ===== UPDATE ===== */
 
                 if(editingQuestionId){
 
-                    const result =
-                        await supabaseClient
-
+                    result =
+                        await db
                             .from("questions")
-
-                            .update(
-                                payload
-                            )
-
+                            .update(payload)
                             .eq(
                                 "id",
                                 editingQuestionId
                             );
 
+                }
 
-                    error =
-                        result.error;
 
-                }else{
+                /* ===== INSERT ===== */
 
-                    const result =
-                        await supabaseClient
+                else{
 
+                    result =
+                        await db
                             .from("questions")
-
-                            .insert(
-                                payload
-                            );
-
-
-                    error =
-                        result.error;
+                            .insert(payload);
 
                 }
 
 
-                if(error)
-                    throw error;
+                if(result.error)
+                    throw result.error;
 
 
                 showToast(
@@ -2873,12 +2876,19 @@ document
 
                 closeModal();
 
+
                 await loadQuestions();
 
 
-            }catch(error){
+            }
 
-                console.error(error);
+            catch(error){
+
+                console.error(
+                    "QUESTION SAVE ERROR:",
+                    error
+                );
+
 
                 showToast(
                     error.message ||
@@ -2886,7 +2896,9 @@ document
                     "error"
                 );
 
-            }finally{
+            }
+
+            finally{
 
                 setLoading(false);
 
@@ -2897,7 +2909,7 @@ document
 
 
 /* =====================================================
-   DELETE
+   DELETE QUESTION
 ===================================================== */
 
 async function deleteQuestion(id){
@@ -2920,12 +2932,9 @@ async function deleteQuestion(id){
         const {
             error
         } =
-            await supabaseClient
-
+            await db
                 .from("questions")
-
                 .delete()
-
                 .eq(
                     "id",
                     id
@@ -2937,17 +2946,22 @@ async function deleteQuestion(id){
 
 
         showToast(
-            "تم حذف السؤال.",
+            "تم حذف السؤال بنجاح.",
             "success"
         );
 
 
         await loadQuestions();
 
+    }
 
-    }catch(error){
+    catch(error){
 
-        console.error(error);
+        console.error(
+            "QUESTION DELETE ERROR:",
+            error
+        );
+
 
         showToast(
             error.message ||
@@ -2955,7 +2969,9 @@ async function deleteQuestion(id){
             "error"
         );
 
-    }finally{
+    }
+
+    finally{
 
         setLoading(false);
 
@@ -2975,22 +2991,67 @@ searchInput.addEventListener(
 
 
 /* =====================================================
+   CLOSE MODAL OUTSIDE
+===================================================== */
+
+modal.addEventListener(
+    "click",
+    function(event){
+
+        if(
+            event.target === modal
+        ){
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   ESC KEY
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Escape"
+        ){
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
    LOGOUT
 ===================================================== */
 
 async function logout(){
 
-    if(supabaseClient){
+    try{
 
-        await supabaseClient
-            .auth
-            .signOut();
+        if(db){
+
+            await db.auth.signOut();
+
+        }
 
     }
 
+    finally{
 
-    window.location.href =
-        "login.html";
+        window.location.href =
+            "login.html";
+
+    }
 
 }
 
@@ -3020,8 +3081,6 @@ async function init(){
 
         if(!examId){
 
-            setLoading(false);
-
             showToast(
                 "افتح الأسئلة من زر ❓ الموجود بجانب الاختبار.",
                 "error"
@@ -3036,10 +3095,15 @@ async function init(){
 
         await loadQuestions();
 
+    }
 
-    }catch(error){
+    catch(error){
 
-        console.error(error);
+        console.error(
+            "INIT ERROR:",
+            error
+        );
+
 
         showToast(
             error.message ||
@@ -3047,7 +3111,9 @@ async function init(){
             "error"
         );
 
-    }finally{
+    }
+
+    finally{
 
         setLoading(false);
 
@@ -3060,8 +3126,6 @@ init();
 
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="../supabase.js"></script>
-
 </body>
-</html>
+    
+   </html>
