@@ -9,94 +9,115 @@
 
     <style>
 
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Tahoma, sans-serif;
         }
 
-        body{
-            min-height:100vh;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-
-            font-family:
-                "Cairo",
-                "Tajawal",
-                Arial,
-                sans-serif;
-
-            color:#fff;
-
-            background:
-                radial-gradient(
-                    circle at 85% 10%,
-                    rgba(118,78,255,.20),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 10% 90%,
-                    rgba(45,82,230,.14),
-                    transparent 30%
-                ),
-                #07070d;
-
-            padding:20px;
+        body {
+            min-height: 100vh;
+            background: #07070d;
+            color: #fff;
+            overflow-x: hidden;
         }
 
-        .page{
-            width:min(1000px,100%);
-            min-height:650px;
+        /* ================= BACKGROUND ================= */
 
-            display:grid;
-            grid-template-columns:1fr 1fr;
+        body::before {
+            content: "";
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            top: -250px;
+            right: -180px;
 
-            overflow:hidden;
+            background: radial-gradient(
+                circle,
+                rgba(125, 82, 255, .18),
+                transparent 68%
+            );
 
-            border-radius:28px;
+            filter: blur(30px);
+            pointer-events: none;
+        }
 
-            background:rgba(255,255,255,.025);
+        body::after {
+            content: "";
+            position: fixed;
+            width: 550px;
+            height: 550px;
+            bottom: -250px;
+            left: -180px;
 
-            border:1px solid rgba(255,255,255,.08);
+            background: radial-gradient(
+                circle,
+                rgba(49, 89, 232, .16),
+                transparent 68%
+            );
+
+            filter: blur(30px);
+            pointer-events: none;
+        }
+
+        /* ================= MAIN ================= */
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .auth-box {
+            width: 100%;
+            max-width: 1080px;
+            min-height: 650px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            background: rgba(12, 12, 20, .94);
+
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 30px;
+
+            overflow: hidden;
 
             box-shadow:
-                0 35px 100px rgba(0,0,0,.45);
+                0 40px 120px rgba(0,0,0,.65);
 
-            backdrop-filter:blur(20px);
+            position: relative;
         }
 
-        /* ================================
-           VISUAL
-        ================================= */
+        /* ================= VISUAL AREA ================= */
 
-        .visual{
-            position:relative;
-            overflow:hidden;
+        .visual-area {
+            position: relative;
+            overflow: hidden;
 
-            display:flex;
-            align-items:center;
-            justify-content:center;
-
-            min-height:650px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             background:
                 radial-gradient(
                     circle at center,
-                    rgba(122,78,255,.16),
-                    transparent 60%
-                );
+                    rgba(92,65,230,.12),
+                    transparent 55%
+                ),
+                #090911;
         }
 
-        .visual::before{
-            content:"";
+        .glow {
+            position: absolute;
 
-            position:absolute;
+            width: 340px;
+            height: 340px;
 
-            width:420px;
-            height:420px;
-
-            border-radius:50%;
+            border-radius: 50%;
 
             background:
                 radial-gradient(
@@ -104,6 +125,1711 @@
                     rgba(125,82,255,.35),
                     transparent 68%
                 );
+
+            filter: blur(20px);
+
+            animation:
+                glow 5s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+
+            0%, 100% {
+                transform: scale(1);
+                opacity: .7;
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+
+        }
+
+        .ring {
+            position: absolute;
+
+            width: 410px;
+            height: 410px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(145,112,255,.25);
+
+            animation:
+                rotate 18s linear infinite;
+        }
+
+        .ring::before {
+            content: "";
+
+            position: absolute;
+
+            width: 9px;
+            height: 9px;
+
+            top: 8%;
+            right: 12%;
+
+            border-radius: 50%;
+
+            background: #a78aff;
+
+            box-shadow:
+                0 0 15px #a78aff,
+                0 0 30px rgba(167,138,255,.7);
+        }
+
+        .ring-two {
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(49,89,232,.18);
+
+            animation:
+                rotateReverse 14s linear infinite;
+        }
+
+        @keyframes rotate {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+        @keyframes rotateReverse {
+
+            from {
+                transform: rotate(360deg);
+            }
+
+            to {
+                transform: rotate(0deg);
+            }
+
+        }
+
+        .visual-content {
+            position: relative;
+            z-index: 3;
+
+            text-align: center;
+
+            padding: 30px;
+        }
+
+        .big-logo {
+            width: 105px;
+            height: 105px;
+
+            margin:
+                0 auto 25px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 30px;
+
+            font-size: 58px;
+            font-weight: 900;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #895aff,
+                    #3159e8
+                );
+
+            box-shadow:
+                0 25px 70px
+                rgba(92,65,230,.4);
+
+            animation:
+                floating 4s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+
+            0%, 100% {
+                transform: translateY(-10px);
+            }
+
+            50% {
+                transform: translateY(5px);
+            }
+
+        }
+
+        .visual-content h1 {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .visual-content h1 span {
+            color: #a58aff;
+        }
+
+        .visual-content p {
+            color: #858592;
+            font-size: 13px;
+            line-height: 2;
+
+            max-width: 350px;
+            margin: auto;
+        }
+
+        .badge {
+            display: inline-block;
+
+            margin-top: 22px;
+
+            padding: 8px 15px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(125,82,255,.08);
+
+            border:
+                1px solid
+                rgba(145,112,255,.16);
+
+            color: #a58aff;
+
+            font-size: 11px;
+        }
+
+        /* ================= FORM AREA ================= */
+
+        .form-area {
+            padding: 45px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            position: relative;
+        }
+
+        .back {
+            position: absolute;
+
+            top: 25px;
+            right: 30px;
+
+            color: #777783;
+
+            font-size: 11px;
+
+            text-decoration: none;
+
+            transition: .25s;
+        }
+
+        .back:hover {
+            color: #fff;
+        }
+
+        .form-header {
+            margin-bottom: 25px;
+        }
+
+        .form-header small {
+            color: #9170ff;
+            font-size: 10px;
+        }
+
+        .form-header h2 {
+            font-size: 30px;
+            margin-top: 7px;
+        }
+
+        .form-header p {
+            color: #777783;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        /* ================= TABS ================= */
+
+        .tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            padding: 4px;
+            margin-bottom: 23px;
+
+            border-radius: 13px;
+
+            background:
+                rgba(255,255,255,.04);
+
+            border:
+                1px solid
+                rgba(255,255,255,.06);
+        }
+
+        .tab {
+            border: 0;
+
+            padding: 11px;
+
+            border-radius: 10px;
+
+            background: transparent;
+
+            color: #777783;
+
+            font-size: 11px;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .tab.active {
+            color: #fff;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(124,82,245,.85),
+                    rgba(49,87,220,.85)
+                );
+
+            box-shadow:
+                0 8px 20px
+                rgba(82,65,220,.18);
+        }
+
+        /* ================= FORMS ================= */
+
+        .form {
+            display: none;
+        }
+
+        .form.active {
+            display: block;
+        }
+
+        .field {
+            margin-bottom: 14px;
+        }
+
+        .field label {
+            display: block;
+
+            color: #b9b9c4;
+
+            font-size: 11px;
+
+            margin-bottom: 7px;
+        }
+
+        .field input,
+        .field select {
+            width: 100%;
+            height: 46px;
+
+            padding: 0 13px;
+
+            color: #fff;
+
+            background:
+                rgba(255,255,255,.035);
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            border-radius: 11px;
+
+            outline: none;
+
+            font-size: 12px;
+
+            transition: .25s;
+        }
+
+        .field input:focus,
+        .field select:focus {
+            border-color: #7956ec;
+
+            background:
+                rgba(125,82,255,.05);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(125,82,255,.08);
+        }
+
+        .field input::placeholder {
+            color: #555563;
+        }
+
+        select option {
+            background: #10101a;
+            color: #fff;
+        }
+
+        /* ================= BUTTON ================= */
+
+        .submit-btn {
+            width: 100%;
+            height: 48px;
+
+            border: 0;
+            border-radius: 12px;
+
+            color: #fff;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #895aff,
+                    #3159e8
+                );
+
+            font-size: 12px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            margin-top: 6px;
+
+            box-shadow:
+                0 15px 35px
+                rgba(75,62,210,.22);
+
+            transition: .25s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 18px 40px
+                rgba(75,62,210,.35);
+        }
+
+        .submit-btn:disabled {
+            opacity: .55;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ================= MESSAGE ================= */
+
+        .message {
+            display: none;
+
+            padding: 11px 13px;
+
+            margin-bottom: 15px;
+
+            border-radius: 10px;
+
+            font-size: 11px;
+
+            line-height: 1.7;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        .message.error {
+            color: #ff8f9e;
+
+            background:
+                rgba(220,50,70,.08);
+
+            border:
+                1px solid
+                rgba(220,50,70,.2);
+        }
+
+        .message.success {
+            color: #6ee7b7;
+
+            background:
+                rgba(35,190,120,.08);
+
+            border:
+                1px solid
+                rgba(35,190,120,.2);
+        }
+
+        /* ================= LOADING ================= */
+
+        .loading {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .loading.active {
+            display: flex;
+        }
+
+        .normal-text.hidden {
+            display: none;
+        }
+
+        .spinner {
+            width: 15px;
+            height: 15px;
+
+            border:
+                2px solid
+                rgba(255,255,255,.3);
+
+            border-top-color: #fff;
+
+            border-radius: 50%;
+
+            animation:
+                spin .7s linear infinite;
+        }
+
+        @keyframes spin {
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+        .footer {
+            text-align: center;
+
+            margin-top: 22px;
+
+            color: #4f4f5c;
+
+            font-size: 10px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 800px) {
+
+            .page {
+                padding: 15px;
+            }
+
+            .auth-box {
+                max-width: 480px;
+
+                grid-template-columns: 1fr;
+
+                min-height: auto;
+            }
+
+            .visual-area {
+                min-height: 300px;
+            }
+
+            .ring {
+                width: 280px;
+                height: 280px;
+            }
+
+            .ring-two {
+                width: 210px;
+                height: 210px;
+            }
+
+            .big-logo {
+                width: 80px;
+                height: 80px;
+
+                border-radius: 23px;
+
+                font-size: 42px;
+
+                margin-bottom: 15px;
+            }
+
+            .visual-content h1 {
+                font-size: 27px;
+            }
+
+            .visual-content p {
+                font-size: 11px;
+            }
+
+            .form-area {
+                padding: 30px 22px;
+            }
+
+        }
+
+        @media (max-width: 450px) {
+
+            .visual-area {
+                min-height: 270px;
+            }
+
+            .form-area {
+                padding: 25px 18px;
+            }
+
+            .form-header h2 {
+                font-size: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="auth-box">
+
+        <!-- =================================================
+             VISUAL
+        ================================================== -->
+
+        <section class="visual-area">
+
+            <div class="glow"></div>
+
+            <div class="ring"></div>
+
+            <div class="ring-two"></div>
+
+            <div class="visual-content">
+
+                <div class="big-logo">
+                    خ
+                </div>
+
+                <h1>
+                    <span>الخوارزمي</span>
+                </h1>
+
+                <p>
+                    منصة الاختبارات التعليمية
+                    <br>
+                    اختبر نفسك، طوّر مستواك، وحقق أفضل نتيجة.
+                </p>
+
+                <div class="badge">
+                    منصة تعليمية ذكية
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FORM
+        ================================================== -->
+
+        <section class="form-area">
+
+            <a href="index.html" class="back">
+                العودة للرئيسية
+            </a>
+
+
+            <div class="form-header">
+
+                <small>
+                    AL-KHWARIZMI
+                </small>
+
+                <h2>
+                    أهلاً بك 👋
+                </h2>
+
+                <p>
+                    سجل دخولك أو أنشئ حسابك للمتابعة
+                </p>
+
+            </div>
+
+
+            <!-- TABS -->
+
+            <div class="tabs">
+
+                <button
+                    type="button"
+                    class="tab active"
+                    id="loginTab"
+                >
+                    تسجيل الدخول
+                </button>
+
+                <button
+                    type="button"
+                    class="tab"
+                    id="registerTab"
+                >
+                    إنشاء حساب
+                </button>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <div
+                id="message"
+                class="message"
+            ></div>
+
+
+            <!-- =================================================
+                 LOGIN FORM
+            ================================================== -->
+
+            <form
+                id="loginForm"
+                class="form active"
+            >
+
+                <div class="field">
+
+                    <label>
+                        البريد الإلكتروني
+                    </label>
+
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        placeholder="example@email.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        كلمة المرور
+                    </label>
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="أدخل كلمة المرور"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                    id="loginBtn"
+                >
+
+                    <span
+                        class="normal-text"
+                        id="loginText"
+                    >
+                        تسجيل الدخول
+                    </span>
+
+                    <span
+                        class="loading"
+                        id="loginLoading"
+                    >
+                        <span class="spinner"></span>
+                        جاري تسجيل الدخول...
+                    </span>
+
+                </button>
+
+            </form>
+
+
+            <!-- =================================================
+                 REGISTER FORM
+            ================================================== -->
+
+            <form
+                id="registerForm"
+                class="form"
+            >
+
+                <div class="field">
+
+                    <label>
+                        الاسم بالكامل
+                    </label>
+
+                    <input
+                        type="text"
+                        id="registerName"
+                        placeholder="اكتب اسمك بالكامل"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        البريد الإلكتروني
+                    </label>
+
+                    <input
+                        type="email"
+                        id="registerEmail"
+                        placeholder="example@email.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        رقم الهاتف
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="registerPhone"
+                        placeholder="01012345678"
+                        inputmode="numeric"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        رقم ولي الأمر
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="parentPhone"
+                        placeholder="01012345678"
+                        inputmode="numeric"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        الصف الدراسي
+                    </label>
+
+                    <select
+                        id="grade"
+                        required
+                    >
+
+                        <option value="">
+                            اختر الصف الدراسي
+                        </option>
+
+                        <option value="أولى إعدادي">
+                            أولى إعدادي
+                        </option>
+
+                        <option value="ثانية إعدادي">
+                            ثانية إعدادي
+                        </option>
+
+                        <option value="ثالثة إعدادي">
+                            ثالثة إعدادي
+                        </option>
+
+                        <option value="أولى ثانوي">
+                            أولى ثانوي
+                        </option>
+
+                        <option value="ثانية ثانوي">
+                            ثانية ثانوي
+                        </option>
+
+                        <option value="ثالثة ثانوي">
+                            ثالثة ثانوي
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        كلمة المرور
+                    </label>
+
+                    <input
+                        type="password"
+                        id="registerPassword"
+                        placeholder="6 أحرف على الأقل"
+                        autocomplete="new-password"
+                        minlength="6"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        تأكيد كلمة المرور
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="أعد كتابة كلمة المرور"
+                        autocomplete="new-password"
+                        minlength="6"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                    id="registerBtn"
+                >
+
+                    <span
+                        class="normal-text"
+                        id="registerText"
+                    >
+                        إنشاء الحساب
+                    </span>
+
+                    <span
+                        class="loading"
+                        id="registerLoading"
+                    >
+                        <span class="spinner"></span>
+                        جاري إنشاء الحساب...
+                    </span>
+
+                </button>
+
+            </form>
+
+
+            <div class="footer">
+                منصة الخوارزمي للاختبارات
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SUPABASE
+====================================================== -->
+
+<script src="supabase.js"></script>
+
+
+<script>
+
+"use strict";
+
+
+/* =====================================================
+   SUPABASE CHECK
+====================================================== */
+
+if (
+    !window.supabaseClient
+) {
+
+    document.body.innerHTML = `
+        <div style="
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:#07070d;
+            color:#fff;
+            text-align:center;
+            font-family:Arial;
+            padding:20px;
+        ">
+            <div>
+                <h2>خطأ في الاتصال</h2>
+
+                <p style="
+                    color:#888;
+                    margin-top:10px;
+                ">
+                    ملف supabase.js غير متصل بشكل صحيح.
+                </p>
+            </div>
+        </div>
+    `;
+
+    throw new Error(
+        "window.supabaseClient غير موجود"
+    );
+
+}
+
+
+const supabase =
+    window.supabaseClient;
+
+
+/* =====================================================
+   ELEMENTS
+====================================================== */
+
+const loginTab =
+    document.getElementById("loginTab");
+
+const registerTab =
+    document.getElementById("registerTab");
+
+const loginForm =
+    document.getElementById("loginForm");
+
+const registerForm =
+    document.getElementById("registerForm");
+
+const message =
+    document.getElementById("message");
+
+const loginBtn =
+    document.getElementById("loginBtn");
+
+const registerBtn =
+    document.getElementById("registerBtn");
+
+
+/* =====================================================
+   MESSAGE
+====================================================== */
+
+function showMessage(
+    text,
+    type = "error"
+) {
+
+    message.textContent = text;
+
+    message.className =
+        "message show " + type;
+
+}
+
+
+function clearMessage() {
+
+    message.textContent = "";
+
+    message.className =
+        "message";
+
+}
+
+
+/* =====================================================
+   TAB SWITCH
+====================================================== */
+
+loginTab.addEventListener(
+    "click",
+    function () {
+
+        loginTab.classList.add("active");
+        registerTab.classList.remove("active");
+
+        loginForm.classList.add("active");
+        registerForm.classList.remove("active");
+
+        clearMessage();
+
+    }
+);
+
+
+registerTab.addEventListener(
+    "click",
+    function () {
+
+        registerTab.classList.add("active");
+        loginTab.classList.remove("active");
+
+        registerForm.classList.add("active");
+        loginForm.classList.remove("active");
+
+        clearMessage();
+
+    }
+);
+
+
+/* =====================================================
+   LOADING
+====================================================== */
+
+function setLoading(
+    button,
+    text,
+    loading,
+    state
+) {
+
+    button.disabled = state;
+
+    text.classList.toggle(
+        "hidden",
+        state
+    );
+
+    loading.classList.toggle(
+        "active",
+        state
+    );
+
+}
+
+
+/* =====================================================
+   PHONE VALIDATION
+====================================================== */
+
+function validEgyptianPhone(phone) {
+
+    return /^01[0125][0-9]{8}$/.test(
+        phone
+    );
+
+}
+
+
+/* =====================================================
+   GET ROLE
+====================================================== */
+
+async function getRole(userId) {
+
+    const {
+        data,
+        error
+    } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", userId)
+        .maybeSingle();
+
+
+    if (error) {
+
+        console.error(
+            "Profile role error:",
+            error
+        );
+
+        return "student";
+
+    }
+
+
+    return data?.role || "student";
+
+}
+
+
+/* =====================================================
+   REDIRECT
+====================================================== */
+
+async function redirectUser(user) {
+
+    if (!user) {
+
+        window.location.replace(
+            "auth.html"
+        );
+
+        return;
+
+    }
+
+
+    const role =
+        await getRole(user.id);
+
+
+    if (
+        role === "admin" ||
+        role === "administrator"
+    ) {
+
+        window.location.replace(
+            "admin/index.html"
+        );
+
+    } else {
+
+        window.location.replace(
+            "home.html"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   CHECK SESSION
+====================================================== */
+
+async function checkSession() {
+
+    try {
+
+        const {
+            data,
+            error
+        } = await supabase.auth.getSession();
+
+
+        if (error) {
+
+            console.error(
+                "Session error:",
+                error
+            );
+
+            return;
+
+        }
+
+
+        if (
+            data &&
+            data.session &&
+            data.session.user
+        ) {
+
+            await redirectUser(
+                data.session.user
+            );
+
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+}
+
+
+checkSession();
+
+
+/* =====================================================
+   LOGIN
+====================================================== */
+
+loginForm.addEventListener(
+    "submit",
+    async function (event) {
+
+        event.preventDefault();
+
+        clearMessage();
+
+
+        const email =
+            document
+                .getElementById("loginEmail")
+                .value
+                .trim()
+                .toLowerCase();
+
+
+        const password =
+            document
+                .getElementById("loginPassword")
+                .value;
+
+
+        if (!email || !password) {
+
+            showMessage(
+                "اكتب البريد الإلكتروني وكلمة المرور."
+            );
+
+            return;
+
+        }
+
+
+        setLoading(
+            loginBtn,
+            document.getElementById("loginText"),
+            document.getElementById("loginLoading"),
+            true
+        );
+
+
+        try {
+
+            const {
+                data,
+                error
+            } =
+                await supabase.auth.signInWithPassword({
+
+                    email: email,
+
+                    password: password
+
+                });
+
+
+            if (error) {
+
+                console.error(
+                    "Login error:",
+                    error
+                );
+
+
+                let errorText =
+                    "البريد الإلكتروني أو كلمة المرور غير صحيحة.";
+
+
+                if (
+                    error.message &&
+                    error.message
+                        .toLowerCase()
+                        .includes(
+                            "email not confirmed"
+                        )
+                ) {
+
+                    errorText =
+                        "يجب تأكيد البريد الإلكتروني أولاً.";
+
+                }
+
+
+                showMessage(
+                    errorText
+                );
+
+                return;
+
+            }
+
+
+            if (
+                !data ||
+                !data.user
+            ) {
+
+                showMessage(
+                    "حدث خطأ أثناء تسجيل الدخول."
+                );
+
+                return;
+
+            }
+
+
+            showMessage(
+                "تم تسجيل الدخول بنجاح، جاري تحويلك...",
+                "success"
+            );
+
+
+            await redirectUser(
+                data.user
+            );
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            showMessage(
+                "حدث خطأ في الاتصال. حاول مرة أخرى."
+            );
+
+        } finally {
+
+            setLoading(
+                loginBtn,
+                document.getElementById("loginText"),
+                document.getElementById("loginLoading"),
+                false
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   REGISTER
+====================================================== */
+
+registerForm.addEventListener(
+    "submit",
+    async function (event) {
+
+        event.preventDefault();
+
+        clearMessage();
+
+
+        const name =
+            document
+                .getElementById("registerName")
+                .value
+                .trim();
+
+
+        const email =
+            document
+                .getElementById("registerEmail")
+                .value
+                .trim()
+                .toLowerCase();
+
+
+        const phone =
+            document
+                .getElementById("registerPhone")
+                .value
+                .trim();
+
+
+        const parentPhone =
+            document
+                .getElementById("parentPhone")
+                .value
+                .trim();
+
+
+        const grade =
+            document
+                .getElementById("grade")
+                .value;
+
+
+        const password =
+            document
+                .getElementById("registerPassword")
+                .value;
+
+
+        const confirmPassword =
+            document
+                .getElementById("confirmPassword")
+                .value;
+
+
+        /* ================= VALIDATION ================= */
+
+        if (name.length < 3) {
+
+            showMessage(
+                "اكتب الاسم بالكامل."
+            );
+
+            return;
+
+        }
+
+
+        if (!validEgyptianPhone(phone)) {
+
+            showMessage(
+                "رقم الهاتف غير صحيح."
+            );
+
+            return;
+
+        }
+
+
+        if (!validEgyptianPhone(parentPhone)) {
+
+            showMessage(
+                "رقم ولي الأمر غير صحيح."
+            );
+
+            return;
+
+        }
+
+
+        if (!grade) {
+
+            showMessage(
+                "اختر الصف الدراسي."
+            );
+
+            return;
+
+        }
+
+
+        if (password.length < 6) {
+
+            showMessage(
+                "كلمة المرور يجب أن تكون 6 أحرف على الأقل."
+            );
+
+            return;
+
+        }
+
+
+        if (password !== confirmPassword) {
+
+            showMessage(
+                "كلمتا المرور غير متطابقتين."
+            );
+
+            return;
+
+        }
+
+
+        setLoading(
+            registerBtn,
+            document.getElementById("registerText"),
+            document.getElementById("registerLoading"),
+            true
+        );
+
+
+        try {
+
+            /*
+             * إنشاء الحساب في Supabase Auth
+             */
+
+            const {
+                data,
+                error
+            } =
+                await supabase.auth.signUp({
+
+                    email: email,
+
+                    password: password,
+
+                    options: {
+
+                        data: {
+
+                            full_name: name,
+
+                            phone: phone,
+
+                            parent_phone: parentPhone,
+
+                            grade: grade,
+
+                            role: "student"
+
+                        }
+
+                    }
+
+                });
+
+
+            if (error) {
+
+                console.error(
+                    "Register error:",
+                    error
+                );
+
+
+                const errorMessage =
+                    (
+                        error.message || ""
+                    ).toLowerCase();
+
+
+                if (
+                    errorMessage.includes(
+                        "already registered"
+                    ) ||
+                    errorMessage.includes(
+                        "already exists"
+                    )
+                ) {
+
+                    showMessage(
+                        "هذا البريد الإلكتروني مسجل بالفعل."
+                    );
+
+                } else {
+
+                    showMessage(
+                        error.message ||
+                        "تعذر إنشاء الحساب."
+                    );
+
+                }
+
+                return;
+
+            }
+
+
+            if (
+                data &&
+                data.user
+            ) {
+
+                /*
+                 * إذا كان تأكيد البريد الإلكتروني
+                 * غير مطلوب، يوجد Session مباشرة.
+                 */
+
+                if (data.session) {
+
+                    showMessage(
+                        "تم إنشاء الحساب بنجاح، جاري تحويلك...",
+                        "success"
+                    );
+
+
+                    await redirectUser(
+                        data.user
+                    );
+
+                } else {
+
+                    /*
+                     * إذا كان تأكيد البريد الإلكتروني مطلوباً.
+                     */
+
+                    showMessage(
+                        "تم إنشاء الحساب. افتح بريدك الإلكتروني لتأكيد الحساب ثم سجل الدخول.",
+                        "success"
+                    );
+
+
+                    registerForm.reset();
+
+
+                    setTimeout(
+                        function () {
+
+                            loginTab.click();
+
+                            document
+                                .getElementById(
+                                    "loginEmail"
+                                )
+                                .value = email;
+
+                        },
+                        2500
+                    );
+
+                }
+
+            }
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            showMessage(
+                "حدث خطأ أثناء إنشاء الحساب."
+            );
+
+        } finally {
+
+            setLoading(
+                registerBtn,
+                document.getElementById("registerText"),
+                document.getElementById("registerLoading"),
+                false
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   AUTH STATE
+====================================================== */
+
+supabase.auth.onAuthStateChange(
+    function (event, session) {
+
+        console.log(
+            "Supabase Auth:",
+            event
+        );
+
+    }
+);
+
+</script>
+
+</body>
+</html>
 
             filter:blur(20px);
 
