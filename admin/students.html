@@ -5,32 +5,20 @@
 
 <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>إدارة الطلاب | الخوارزمي</title>
+<title>الإعدادات | الخوارزمي</title>
 
-<link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
->
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
-<link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-    crossorigin
->
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
 
-<link
-    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
->
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script src="../supabase.js"></script>
 
 <style>
 
@@ -45,6 +33,7 @@
 
     --bg:#050507;
     --card:#111118;
+    --card2:#15151e;
     --border:rgba(255,255,255,.08);
 
     --text:#fff;
@@ -55,6 +44,7 @@
 
     --green:#35d39a;
     --red:#ff6078;
+    --blue:#4da3ff;
 
 }
 
@@ -83,7 +73,7 @@ body{
 }
 
 
-/* SIDEBAR */
+/* ================= SIDEBAR ================= */
 
 .sidebar{
 
@@ -110,7 +100,9 @@ body{
 .brand{
 
     display:flex;
+
     align-items:center;
+
     gap:10px;
 
     padding:8px 10px 25px;
@@ -139,13 +131,19 @@ body{
         );
 
     font-size:20px;
+
     font-weight:900;
+
+    box-shadow:
+        0 0 25px
+        rgba(118,87,255,.25);
 
 }
 
 .brand-text strong{
 
     display:block;
+
     font-size:16px;
 
 }
@@ -153,7 +151,9 @@ body{
 .brand-text span{
 
     display:block;
+
     color:var(--muted);
+
     font-size:8px;
 
 }
@@ -161,7 +161,9 @@ body{
 .menu-title{
 
     color:#666675;
+
     font-size:8px;
+
     padding:0 10px 8px;
 
 }
@@ -169,7 +171,9 @@ body{
 .menu{
 
     display:flex;
+
     flex-direction:column;
+
     gap:5px;
 
 }
@@ -177,7 +181,9 @@ body{
 .menu a{
 
     display:flex;
+
     align-items:center;
+
     gap:10px;
 
     height:44px;
@@ -191,6 +197,7 @@ body{
     border-radius:11px;
 
     font-size:10px;
+
     font-weight:700;
 
     transition:.2s;
@@ -200,6 +207,7 @@ body{
 .menu a:hover{
 
     color:#fff;
+
     background:rgba(118,87,255,.08);
 
 }
@@ -214,6 +222,10 @@ body{
             rgba(118,87,255,.22),
             rgba(118,87,255,.08)
         );
+
+    border:
+        1px solid
+        rgba(118,87,255,.16);
 
 }
 
@@ -245,25 +257,30 @@ body{
 .logout button{
 
     width:100%;
+
     height:43px;
 
-    border:1px solid rgba(255,96,120,.12);
+    border:
+        1px solid
+        rgba(255,96,120,.12);
 
     border-radius:11px;
 
     color:#ff8496;
 
-    background:rgba(255,96,120,.05);
+    background:
+        rgba(255,96,120,.05);
 
     cursor:pointer;
 
     font-size:10px;
+
     font-weight:800;
 
 }
 
 
-/* MAIN */
+/* ================= MAIN ================= */
 
 .main{
 
@@ -278,7 +295,9 @@ body{
 .topbar{
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     margin-bottom:25px;
@@ -307,7 +326,9 @@ body{
 .admin-box{
 
     display:flex;
+
     align-items:center;
+
     gap:10px;
 
 }
@@ -318,6 +339,7 @@ body{
     height:42px;
 
     display:grid;
+
     place-items:center;
 
     border-radius:50%;
@@ -336,6 +358,7 @@ body{
 .admin-info strong{
 
     display:block;
+
     font-size:10px;
 
 }
@@ -343,84 +366,60 @@ body{
 .admin-info span{
 
     display:block;
+
     color:var(--muted);
+
     font-size:8px;
 
 }
 
 
-/* HEADER */
+/* ================= HEADER ================= */
 
 .page-header{
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    gap:15px;
 
     margin-bottom:20px;
 
 }
 
-.page-title h1{
+.page-header h1{
 
-    font-size:30px;
+    font-size:
+        clamp(22px,4vw,30px);
+
     font-weight:900;
 
 }
 
-.page-title p{
+.page-header p{
 
     color:var(--muted);
-    font-size:9px;
-
-    margin-top:3px;
-
-}
-
-.refresh-btn{
-
-    height:42px;
-
-    padding:0 16px;
-
-    border:1px solid rgba(118,87,255,.20);
-
-    border-radius:11px;
-
-    color:white;
-
-    background:rgba(118,87,255,.08);
-
-    cursor:pointer;
 
     font-size:9px;
-    font-weight:800;
+
+    margin-top:4px;
 
 }
 
 
-/* STATS */
+/* ================= GRID ================= */
 
-.stats{
+.settings-grid{
 
     display:grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        1fr 1fr;
 
-    gap:13px;
-
-    margin-bottom:18px;
+    gap:15px;
 
 }
 
-.stat{
+.card{
 
-    padding:17px;
+    padding:20px;
 
-    border-radius:16px;
+    border-radius:18px;
 
     background:var(--card);
 
@@ -428,29 +427,32 @@ body{
 
 }
 
-.stat-top{
+.card.full{
+
+    grid-column:1 / -1;
+
+}
+
+.card-title{
 
     display:flex;
 
     align-items:center;
 
-    justify-content:space-between;
+    gap:10px;
 
-    margin-bottom:10px;
+    margin-bottom:18px;
 
-}
+    padding-bottom:13px;
 
-.stat small{
-
-    color:var(--muted);
-    font-size:8px;
+    border-bottom:1px solid var(--border);
 
 }
 
-.stat-icon{
+.card-title-icon{
 
-    width:36px;
-    height:36px;
+    width:38px;
+    height:38px;
 
     display:grid;
     place-items:center;
@@ -461,215 +463,148 @@ body{
 
 }
 
-.stat h2{
+.card-title h2{
 
-    font-size:24px;
-    font-weight:900;
+    font-size:13px;
+
+}
+
+.card-title p{
+
+    color:var(--muted);
+
+    font-size:8px;
 
 }
 
 
-/* CARD */
+/* ================= FORM ================= */
 
-.card{
+.form-group{
 
-    padding:19px;
-
-    border-radius:18px;
-
-    background:var(--card);
-
-    border:1px solid var(--border);
+    margin-bottom:14px;
 
 }
 
+.form-group label{
 
-/* FILTERS */
+    display:block;
 
-.filters{
+    color:#bdbdc8;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    margin-bottom:7px;
+
+}
+
+.form-group input,
+.form-group textarea{
+
+    width:100%;
+
+    color:#fff;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:11px;
+
+    outline:none;
+
+    font-size:10px;
+
+    transition:.2s;
+
+}
+
+.form-group input{
+
+    height:45px;
+
+    padding:0 13px;
+
+}
+
+.form-group textarea{
+
+    min-height:110px;
+
+    resize:vertical;
+
+    padding:12px 13px;
+
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+
+    border-color:
+        rgba(118,87,255,.55);
+
+    background:
+        rgba(118,87,255,.04);
+
+}
+
+.form-row{
 
     display:grid;
 
     grid-template-columns:
-        1fr 190px;
+        1fr 1fr;
 
-    gap:10px;
-
-    margin-bottom:18px;
-
-}
-
-.search-box{
-
-    position:relative;
-
-}
-
-.search-box input{
-
-    width:100%;
-
-    height:47px;
-
-    padding:0 43px 0 13px;
-
-    color:#fff;
-
-    background:rgba(255,255,255,.035);
-
-    border:1px solid var(--border);
-
-    border-radius:11px;
-
-    outline:none;
-
-    font-size:10px;
-
-}
-
-.search-box span{
-
-    position:absolute;
-
-    right:13px;
-
-    top:50%;
-
-    transform:translateY(-50%);
-
-    color:#777784;
-
-}
-
-select{
-
-    width:100%;
-
-    height:47px;
-
-    padding:0 12px;
-
-    color:#fff;
-
-    background:#15151e;
-
-    border:1px solid var(--border);
-
-    border-radius:11px;
-
-    outline:none;
-
-    font-size:10px;
-
-}
-
-select option{
-
-    background:#15151e;
-    color:#fff;
+    gap:12px;
 
 }
 
 
-/* TABLE */
+/* ================= IMAGE ================= */
 
-.table-wrapper{
-
-    width:100%;
-    overflow-x:auto;
-
-}
-
-table{
-
-    width:100%;
-
-    min-width:800px;
-
-    border-collapse:collapse;
-
-}
-
-thead{
-
-    background:rgba(255,255,255,.025);
-
-}
-
-th{
-
-    padding:13px 10px;
-
-    text-align:right;
-
-    color:#858593;
-
-    font-size:8px;
-
-    font-weight:800;
-
-    white-space:nowrap;
-
-}
-
-td{
-
-    padding:13px 10px;
-
-    border-top:1px solid rgba(255,255,255,.045);
-
-    font-size:9px;
-
-    white-space:nowrap;
-
-}
-
-tr:hover td{
-
-    background:rgba(118,87,255,.025);
-
-}
-
-
-/* STUDENT */
-
-.student{
+.image-area{
 
     display:flex;
 
     align-items:center;
 
-    gap:9px;
+    gap:18px;
+
+    flex-wrap:wrap;
 
 }
 
-.avatar{
+.image-preview{
 
-    width:37px;
-    height:37px;
-
-    flex-shrink:0;
-
-    display:grid;
-    place-items:center;
+    width:115px;
+    height:115px;
 
     overflow:hidden;
 
-    border-radius:50%;
+    border-radius:20px;
+
+    border:
+        1px solid
+        rgba(118,87,255,.25);
 
     background:
         linear-gradient(
             135deg,
-            var(--primary),
-            #a18fff
+            rgba(118,87,255,.15),
+            rgba(255,255,255,.03)
         );
 
-    font-size:12px;
-    font-weight:900;
+    display:grid;
+
+    place-items:center;
 
 }
 
-.avatar img{
+.image-preview img{
 
     width:100%;
     height:100%;
@@ -678,323 +613,331 @@ tr:hover td{
 
 }
 
-.student-name strong{
+.image-placeholder{
 
-    display:block;
-    font-size:9px;
+    font-size:35px;
 
 }
 
-.student-name span{
+.image-info{
 
-    display:block;
+    flex:1;
+
+    min-width:200px;
+
+}
+
+.image-info h3{
+
+    font-size:12px;
+
+    margin-bottom:4px;
+
+}
+
+.image-info p{
 
     color:var(--muted);
 
-    font-size:7px;
+    font-size:8px;
 
-    margin-top:2px;
+    line-height:1.8;
 
 }
 
-
-/* BADGES */
-
-.badge{
+.file-label{
 
     display:inline-flex;
 
     align-items:center;
 
-    padding:5px 9px;
+    justify-content:center;
 
-    border-radius:7px;
+    height:40px;
 
-    font-size:7px;
+    padding:0 14px;
+
+    margin-top:10px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    background:
+        rgba(118,87,255,.10);
+
+    border:
+        1px solid
+        rgba(118,87,255,.22);
+
+    font-size:9px;
 
     font-weight:800;
 
 }
 
-.badge.active{
+.file-label:hover{
 
-    color:#73e5b7;
-
-    background:rgba(53,211,154,.08);
-
-}
-
-.badge.blocked{
-
-    color:#ff8799;
-
-    background:rgba(255,96,120,.08);
+    background:
+        rgba(118,87,255,.17);
 
 }
 
-.badge.grade{
-
-    color:#b7aaff;
-
-    background:rgba(118,87,255,.09);
-
-}
-
-
-/* ACTIONS */
-
-.actions{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:5px;
-
-}
-
-.action-btn{
-
-    width:32px;
-    height:32px;
-
-    border:0;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
-    background:rgba(255,255,255,.04);
-
-    color:#ccc;
-
-}
-
-.action-btn.view:hover{
-
-    color:#7fbaff;
-
-    background:rgba(77,163,255,.10);
-
-}
-
-.action-btn.delete:hover{
-
-    color:#ff8092;
-
-    background:rgba(255,96,120,.10);
-
-}
-
-
-/* EMPTY */
-
-.empty{
-
-    text-align:center;
-
-    padding:60px 20px;
-
-    color:#777784;
-
-}
-
-.empty-icon{
-
-    font-size:40px;
-
-    margin-bottom:10px;
-
-}
-
-.empty h3{
-
-    font-size:13px;
-    color:#aaaab7;
-
-}
-
-.empty p{
-
-    font-size:8px;
-    margin-top:4px;
-
-}
-
-
-/* PAGINATION */
-
-.pagination{
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    gap:6px;
-
-    margin-top:18px;
-
-}
-
-.page-btn{
-
-    min-width:34px;
-    height:34px;
-
-    border:1px solid var(--border);
-
-    background:rgba(255,255,255,.03);
-
-    color:#aaa;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
-    font-size:8px;
-
-}
-
-.page-btn.active{
-
-    color:white;
-
-    background:var(--primary);
-
-    border-color:var(--primary);
-
-}
-
-.page-btn:disabled{
-
-    opacity:.35;
-    cursor:not-allowed;
-
-}
-
-
-/* MODAL */
-
-.modal{
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:1500;
+#imageInput{
 
     display:none;
 
-    align-items:center;
-    justify-content:center;
-
-    padding:20px;
-
-    background:rgba(0,0,0,.72);
-
-    backdrop-filter:blur(7px);
-
 }
 
-.modal.show{
 
-    display:flex;
+/* ================= SWITCH ================= */
 
-}
-
-.modal-box{
-
-    width:min(520px,100%);
-
-    max-height:90vh;
-
-    overflow-y:auto;
-
-    padding:23px;
-
-    border-radius:20px;
-
-    background:#111118;
-
-    border:1px solid var(--border);
-
-}
-
-.modal-head{
+.switch-row{
 
     display:flex;
 
     align-items:center;
-    justify-content:space-between;
-
-    margin-bottom:18px;
-
-}
-
-.modal-head h3{
-
-    font-size:14px;
-
-}
-
-.close-btn{
-
-    width:32px;
-    height:32px;
-
-    border:0;
-
-    border-radius:8px;
-
-    color:#aaa;
-
-    background:rgba(255,255,255,.05);
-
-    cursor:pointer;
-
-}
-
-.details{
-
-    display:grid;
-
-    gap:9px;
-
-}
-
-.detail{
-
-    display:flex;
 
     justify-content:space-between;
 
     gap:15px;
 
-    padding:11px;
+    padding:13px;
 
-    border-radius:10px;
+    margin-bottom:9px;
 
-    background:rgba(255,255,255,.025);
+    border-radius:11px;
+
+    background:
+        rgba(255,255,255,.025);
 
 }
 
-.detail span{
+.switch-info strong{
+
+    display:block;
+
+    font-size:10px;
+
+}
+
+.switch-info span{
+
+    display:block;
 
     color:var(--muted);
-    font-size:8px;
+
+    font-size:7px;
+
+    margin-top:3px;
 
 }
 
-.detail strong{
+.switch{
+
+    position:relative;
+
+    width:45px;
+    height:24px;
+
+    flex-shrink:0;
+
+}
+
+.switch input{
+
+    opacity:0;
+
+    width:0;
+    height:0;
+
+}
+
+.slider{
+
+    position:absolute;
+
+    inset:0;
+
+    cursor:pointer;
+
+    border-radius:30px;
+
+    background:#292933;
+
+    transition:.2s;
+
+}
+
+.slider:before{
+
+    content:"";
+
+    position:absolute;
+
+    width:18px;
+    height:18px;
+
+    right:3px;
+    top:3px;
+
+    border-radius:50%;
+
+    background:#aaa;
+
+    transition:.2s;
+
+}
+
+.switch input:checked + .slider{
+
+    background:var(--primary);
+
+}
+
+.switch input:checked + .slider:before{
+
+    transform:translateX(-21px);
+
+    background:#fff;
+
+}
+
+
+/* ================= BUTTONS ================= */
+
+.actions{
+
+    display:flex;
+
+    justify-content:flex-start;
+
+    gap:9px;
+
+    margin-top:18px;
+
+}
+
+.save-btn{
+
+    min-width:150px;
+
+    height:45px;
+
+    border:0;
+
+    border-radius:11px;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-dark)
+        );
+
+    cursor:pointer;
+
+    font-size:10px;
+
+    font-weight:900;
+
+    box-shadow:
+        0 8px 25px
+        rgba(118,87,255,.20);
+
+}
+
+.save-btn:hover{
+
+    transform:translateY(-1px);
+
+}
+
+.save-btn:disabled{
+
+    opacity:.5;
+
+    cursor:not-allowed;
+
+}
+
+.reset-btn{
+
+    height:45px;
+
+    padding:0 16px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:11px;
+
+    color:#aaa;
+
+    background:
+        rgba(255,255,255,.03);
+
+    cursor:pointer;
 
     font-size:9px;
-    text-align:left;
+
+    font-weight:800;
 
 }
 
 
-/* LOADING */
+/* ================= STATUS ================= */
+
+.status-box{
+
+    padding:13px;
+
+    border-radius:11px;
+
+    margin-bottom:15px;
+
+    font-size:9px;
+
+    display:none;
+
+}
+
+.status-box.show{
+
+    display:block;
+
+}
+
+.status-box.success{
+
+    color:#73e5b7;
+
+    background:
+        rgba(53,211,154,.07);
+
+    border:
+        1px solid
+        rgba(53,211,154,.15);
+
+}
+
+.status-box.error{
+
+    color:#ff8799;
+
+    background:
+        rgba(255,96,120,.07);
+
+    border:
+        1px solid
+        rgba(255,96,120,.15);
+
+}
+
+
+/* ================= LOADING ================= */
 
 .loading{
 
@@ -1007,6 +950,7 @@ tr:hover td{
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
     background:#050507;
@@ -1020,11 +964,15 @@ tr:hover td{
 
     border-radius:50%;
 
-    border:3px solid rgba(118,87,255,.15);
+    border:
+        3px solid
+        rgba(118,87,255,.15);
 
-    border-top-color:var(--primary);
+    border-top-color:
+        var(--primary);
 
-    animation:spin .8s linear infinite;
+    animation:
+        spin .8s linear infinite;
 
 }
 
@@ -1037,20 +985,21 @@ tr:hover td{
 }
 
 
-/* TOAST */
+/* ================= TOAST ================= */
 
 .toast{
 
     position:fixed;
 
     left:20px;
+
     bottom:20px;
 
     z-index:4000;
 
-    max-width:330px;
+    max-width:350px;
 
-    padding:12px 16px;
+    padding:13px 17px;
 
     border-radius:11px;
 
@@ -1058,11 +1007,16 @@ tr:hover td{
 
     border:1px solid var(--border);
 
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.3);
+
     color:#fff;
 
     font-size:9px;
 
-    transform:translateY(30px);
+    transform:
+        translateY(30px);
 
     opacity:0;
 
@@ -1074,26 +1028,45 @@ tr:hover td{
 
 .toast.show{
 
-    transform:translateY(0);
+    transform:
+        translateY(0);
 
     opacity:1;
 
 }
 
 
-/* RESPONSIVE */
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    .settings-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .card.full{
+
+        grid-column:auto;
+
+    }
+
+}
 
 @media(max-width:800px){
 
     .sidebar{
 
-        transform:translateX(100%);
+        transform:
+            translateX(100%);
 
     }
 
     .sidebar.open{
 
-        transform:translateX(0);
+        transform:
+            translateX(0);
 
     }
 
@@ -1101,7 +1074,8 @@ tr:hover td{
 
         margin-right:0;
 
-        padding:18px 15px 40px;
+        padding:
+            18px 15px 40px;
 
     }
 
@@ -1113,17 +1087,19 @@ tr:hover td{
 
 }
 
-@media(max-width:650px){
+@media(max-width:600px){
 
-    .stats{
+    .form-row{
 
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:1fr;
 
     }
 
-    .filters{
+    .image-area{
 
-        grid-template-columns:1fr;
+        flex-direction:column;
+
+        align-items:flex-start;
 
     }
 
@@ -1133,10 +1109,11 @@ tr:hover td{
 
 </head>
 
+
 <body>
 
 
-<!-- SIDEBAR -->
+<!-- ================= SIDEBAR ================= -->
 
 <aside class="sidebar" id="sidebar">
 
@@ -1173,7 +1150,7 @@ tr:hover td{
             الرئيسية
         </a>
 
-        <a href="students.html" class="active">
+        <a href="students.html">
             <div class="menu-icon">👨‍🎓</div>
             الطلاب
         </a>
@@ -1208,7 +1185,7 @@ tr:hover td{
             المدفوعات
         </a>
 
-        <a href="settings.html">
+        <a href="settings.html" class="active">
             <div class="menu-icon">⚙️</div>
             الإعدادات
         </a>
@@ -1227,9 +1204,10 @@ tr:hover td{
 </aside>
 
 
-<!-- MAIN -->
+<!-- ================= MAIN ================= -->
 
 <main class="main">
+
 
     <div class="topbar">
 
@@ -1265,258 +1243,449 @@ tr:hover td{
     </div>
 
 
+    <!-- ================= HEADER ================= -->
+
     <section class="page-header">
 
-        <div class="page-title">
+        <h1>
+            ⚙️ إعدادات المنصة
+        </h1>
 
-            <h1>
-                👨‍🎓 إدارة الطلاب
-            </h1>
-
-            <p>
-                مشاهدة وإدارة جميع الطلاب المسجلين في منصة الخوارزمي.
-            </p>
-
-        </div>
-
-
-        <button
-            class="refresh-btn"
-            onclick="loadStudents()"
-        >
-            🔄 تحديث
-        </button>
+        <p>
+            تحكم في بيانات ومظهر منصة الخوارزمي من هنا.
+        </p>
 
     </section>
 
 
-    <!-- STATS -->
+    <div
+        id="statusBox"
+        class="status-box"
+    ></div>
 
-    <section class="stats">
 
-        <div class="stat">
+    <div class="settings-grid">
 
-            <div class="stat-top">
 
-                <small>
-                    إجمالي الطلاب
-                </small>
+        <!-- ================= PLATFORM ================= -->
 
-                <div class="stat-icon">
-                    👨‍🎓
+        <section class="card">
+
+            <div class="card-title">
+
+                <div class="card-title-icon">
+                    🏫
+                </div>
+
+                <div>
+
+                    <h2>
+                        بيانات المنصة
+                    </h2>
+
+                    <p>
+                        المعلومات الأساسية التي تظهر للطلاب.
+                    </p>
+
                 </div>
 
             </div>
 
-            <h2 id="totalCount">
-                —
-            </h2>
 
-        </div>
+            <div class="form-group">
 
-
-        <div class="stat">
-
-            <div class="stat-top">
-
-                <small>
-                    الطلاب النشطون
-                </small>
-
-                <div class="stat-icon">
-                    🟢
-                </div>
-
-            </div>
-
-            <h2 id="activeCount">
-                —
-            </h2>
-
-        </div>
-
-
-        <div class="stat">
-
-            <div class="stat-top">
-
-                <small>
-                    نتائج البحث
-                </small>
-
-                <div class="stat-icon">
-                    🔎
-                </div>
-
-            </div>
-
-            <h2 id="visibleCount">
-                0
-            </h2>
-
-        </div>
-
-    </section>
-
-
-    <!-- STUDENTS -->
-
-    <section class="card">
-
-        <div class="filters">
-
-            <div class="search-box">
-
-                <span>
-                    🔎
-                </span>
+                <label>
+                    اسم المنصة
+                </label>
 
                 <input
-                    type="search"
-                    id="searchInput"
-                    placeholder="ابحث بالاسم أو البريد أو الهاتف..."
+                    id="platformName"
+                    type="text"
+                    placeholder="الخوارزمي"
                 >
 
             </div>
 
 
-            <select id="gradeFilter">
+            <div class="form-group">
 
-                <option value="">
-                    كل الصفوف
-                </option>
+                <label>
+                    اسم المستر
+                </label>
 
-                <option value="أولى إعدادي">
-                    أولى إعدادي
-                </option>
+                <input
+                    id="teacherName"
+                    type="text"
+                    placeholder="أمير طلعت"
+                >
 
-                <option value="ثانية إعدادي">
-                    ثانية إعدادي
-                </option>
-
-                <option value="ثالثة إعدادي">
-                    ثالثة إعدادي
-                </option>
-
-                <option value="أولى ثانوي">
-                    أولى ثانوي
-                </option>
-
-                <option value="ثانية ثانوي">
-                    ثانية ثانوي
-                </option>
-
-                <option value="ثالثة ثانوي">
-                    ثالثة ثانوي
-                </option>
-
-            </select>
-
-        </div>
+            </div>
 
 
-        <div class="table-wrapper">
+            <div class="form-group">
 
-            <table>
+                <label>
+                    وصف المنصة
+                </label>
 
-                <thead>
+                <textarea
+                    id="platformDescription"
+                    placeholder="وصف منصة الخوارزمي..."
+                ></textarea>
 
-                    <tr>
+            </div>
 
-                        <th>الطالب</th>
-
-                        <th>الهاتف</th>
-
-                        <th>الصف</th>
-
-                        <th>المدرسة</th>
-
-                        <th>الحالة</th>
-
-                        <th>تاريخ التسجيل</th>
-
-                        <th>الإجراءات</th>
-
-                    </tr>
-
-                </thead>
+        </section>
 
 
-                <tbody id="studentsBody">
+        <!-- ================= CONTACT ================= -->
 
-                    <tr>
+        <section class="card">
 
-                        <td colspan="7">
+            <div class="card-title">
 
-                            <div class="empty">
+                <div class="card-title-icon">
+                    📞
+                </div>
 
-                                <div class="empty-icon">
-                                    ⏳
-                                </div>
+                <div>
 
-                                <h3>
-                                    جاري تحميل الطلاب...
-                                </h3>
+                    <h2>
+                        بيانات التواصل
+                    </h2>
 
-                            </div>
+                    <p>
+                        بيانات التواصل التي تظهر في المنصة.
+                    </p>
 
-                        </td>
+                </div>
 
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
+            </div>
 
 
-        <div
-            class="pagination"
-            id="pagination"
-        ></div>
+            <div class="form-group">
 
-    </section>
+                <label>
+                    رقم الهاتف
+                </label>
+
+                <input
+                    id="phone"
+                    type="text"
+                    placeholder="01xxxxxxxxx"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    رقم واتساب
+                </label>
+
+                <input
+                    id="whatsapp"
+                    type="text"
+                    placeholder="01xxxxxxxxx"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    البريد الإلكتروني
+                </label>
+
+                <input
+                    id="contactEmail"
+                    type="email"
+                    placeholder="example@email.com"
+                >
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= WELCOME ================= -->
+
+        <section class="card">
+
+            <div class="card-title">
+
+                <div class="card-title-icon">
+                    👋
+                </div>
+
+                <div>
+
+                    <h2>
+                        شاشة الترحيب
+                    </h2>
+
+                    <p>
+                        النصوص التي تظهر للطلاب في الصفحة الرئيسية.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    عنوان الترحيب
+                </label>
+
+                <input
+                    id="welcomeTitle"
+                    type="text"
+                    placeholder="مرحبًا بك في الخوارزمي"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    رسالة الترحيب
+                </label>
+
+                <textarea
+                    id="welcomeMessage"
+                    placeholder="مع الخوارزمي أنت بأمان..."
+                ></textarea>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= IMAGE ================= -->
+
+        <section class="card">
+
+            <div class="card-title">
+
+                <div class="card-title-icon">
+                    🖼️
+                </div>
+
+                <div>
+
+                    <h2>
+                        صورة المستر أمير
+                    </h2>
+
+                    <p>
+                        رفع وتغيير صورة المستر من لوحة الإدارة.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="image-area">
+
+                <div class="image-preview">
+
+                    <img
+                        id="teacherImage"
+                        src=""
+                        alt=""
+                        style="display:none"
+                    >
+
+                    <div
+                        id="imagePlaceholder"
+                        class="image-placeholder"
+                    >
+                        👨‍🏫
+                    </div>
+
+                </div>
+
+
+                <div class="image-info">
+
+                    <h3>
+                        صورة المستر أمير
+                    </h3>
+
+                    <p>
+                        اختر صورة من هاتفك.
+                        يفضل أن تكون الصورة واضحة وبجودة جيدة.
+                    </p>
+
+                    <label
+                        class="file-label"
+                        for="imageInput"
+                    >
+                        📷 اختيار صورة
+                    </label>
+
+                    <input
+                        id="imageInput"
+                        type="file"
+                        accept="image/png,image/jpeg,image/webp"
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= OPTIONS ================= -->
+
+        <section class="card full">
+
+            <div class="card-title">
+
+                <div class="card-title-icon">
+                    🔧
+                </div>
+
+                <div>
+
+                    <h2>
+                        إعدادات العرض
+                    </h2>
+
+                    <p>
+                        التحكم في حالة المنصة وبيانات التواصل.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="switch-row">
+
+                <div class="switch-info">
+
+                    <strong>
+                        تشغيل المنصة
+                    </strong>
+
+                    <span>
+                        السماح للطلاب باستخدام المنصة.
+                    </span>
+
+                </div>
+
+
+                <label class="switch">
+
+                    <input
+                        id="platformActive"
+                        type="checkbox"
+                        checked
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <div class="switch-row">
+
+                <div class="switch-info">
+
+                    <strong>
+                        إظهار الهاتف
+                    </strong>
+
+                    <span>
+                        عرض رقم الهاتف للطلاب.
+                    </span>
+
+                </div>
+
+
+                <label class="switch">
+
+                    <input
+                        id="showPhone"
+                        type="checkbox"
+                        checked
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <div class="switch-row">
+
+                <div class="switch-info">
+
+                    <strong>
+                        إظهار واتساب
+                    </strong>
+
+                    <span>
+                        عرض رقم واتساب للطلاب.
+                    </span>
+
+                </div>
+
+
+                <label class="switch">
+
+                    <input
+                        id="showWhatsapp"
+                        type="checkbox"
+                        checked
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <div class="actions">
+
+                <button
+                    id="saveBtn"
+                    class="save-btn"
+                    onclick="saveSettings()"
+                >
+                    💾 حفظ جميع الإعدادات
+                </button>
+
+                <button
+                    class="reset-btn"
+                    onclick="loadSettings()"
+                >
+                    ↻ إعادة تحميل
+                </button>
+
+            </div>
+
+        </section>
+
+
+    </div>
 
 </main>
 
 
-<!-- MODAL -->
-
-<div
-    class="modal"
-    id="studentModal"
->
-
-    <div class="modal-box">
-
-        <div class="modal-head">
-
-            <h3>
-                👨‍🎓 بيانات الطالب
-            </h3>
-
-            <button
-                class="close-btn"
-                onclick="closeModal()"
-            >
-                ✕
-            </button>
-
-        </div>
-
-
-        <div
-            class="details"
-            id="studentDetails"
-        ></div>
-
-    </div>
-
-</div>
-
-
-<!-- LOADING -->
+<!-- ================= LOADING ================= -->
 
 <div
     class="loading"
@@ -1528,7 +1697,7 @@ tr:hover td{
 </div>
 
 
-<!-- TOAST -->
+<!-- ================= TOAST ================= -->
 
 <div
     class="toast"
@@ -1538,73 +1707,142 @@ tr:hover td{
 
 <script>
 
-/*
-==========================================================
-    المتغيرات
-==========================================================
-*/
+/* =========================================================
+   SUPABASE
+========================================================= */
 
-let allStudents = [];
+const SUPABASE_URL =
+    "https://fdqolsygigqukejlwcon.supabase.co";
 
-let filteredStudents = [];
-
-let currentPage = 1;
-
-const pageSize = 10;
+const SUPABASE_KEY =
+    "ضع_هنا_PUBLISHABLE_KEY";
 
 
-/*
-==========================================================
-    العناصر
-==========================================================
-*/
+let supabaseClient = null;
 
-const studentsBody =
-    document.getElementById(
-        "studentsBody"
-    );
+try {
 
-const searchInput =
-    document.getElementById(
-        "searchInput"
-    );
+    if (
+        !window.supabase
+    ) {
 
-const gradeFilter =
-    document.getElementById(
-        "gradeFilter"
-    );
+        throw new Error(
+            "مكتبة Supabase لم يتم تحميلها."
+        );
 
-const pagination =
-    document.getElementById(
-        "pagination"
-    );
+    }
+
+    supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+} catch(error) {
+
+    console.error(error);
+
+}
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
 
 const loading =
-    document.getElementById(
-        "loading"
-    );
-
-const modal =
-    document.getElementById(
-        "studentModal"
-    );
-
-const details =
-    document.getElementById(
-        "studentDetails"
-    );
+    document.getElementById("loading");
 
 const toast =
-    document.getElementById(
-        "toast"
+    document.getElementById("toast");
+
+const statusBox =
+    document.getElementById("statusBox");
+
+const imageInput =
+    document.getElementById("imageInput");
+
+const teacherImage =
+    document.getElementById("teacherImage");
+
+const imagePlaceholder =
+    document.getElementById("imagePlaceholder");
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+function setLoading(state){
+
+    loading.style.display =
+        state ? "flex" : "none";
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function showToast(
+    message,
+    type="success"
+){
+
+    toast.textContent =
+        message;
+
+    toast.className =
+        "toast show";
+
+    if(type === "error"){
+
+        toast.style.borderColor =
+            "rgba(255,96,120,.3)";
+
+    }else{
+
+        toast.style.borderColor =
+            "rgba(53,211,154,.3)";
+
+    }
+
+    setTimeout(
+        () => {
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },
+        3500
     );
 
+}
 
-/*
-==========================================================
-    SIDEBAR
-==========================================================
-*/
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+function showStatus(
+    message,
+    type="success"
+){
+
+    statusBox.textContent =
+        message;
+
+    statusBox.className =
+        "status-box show " +
+        type;
+
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
 
 function toggleSidebar(){
 
@@ -1616,70 +1854,16 @@ function toggleSidebar(){
 }
 
 
-/*
-==========================================================
-    LOADING
-==========================================================
-*/
-
-function setLoading(state){
-
-    loading.style.display =
-        state
-        ? "flex"
-        : "none";
-
-}
-
-
-/*
-==========================================================
-    TOAST
-==========================================================
-*/
-
-function showToast(
-    text,
-    type="success"
-){
-
-    toast.textContent =
-        text;
-
-    toast.className =
-        "toast " +
-        type +
-        " show";
-
-    setTimeout(
-        () => {
-
-            toast.classList.remove(
-                "show"
-            );
-
-        },
-        3000
-    );
-
-}
-
-
-/*
-==========================================================
-    ADMIN CHECK
-==========================================================
-*/
+/* =========================================================
+   ADMIN CHECK
+========================================================= */
 
 async function checkAdmin(){
 
-    if(
-        !window.supabase ||
-        !window.supabaseClient
-    ){
+    if(!supabaseClient){
 
-        showToast(
-            "ملف supabase.js غير متصل.",
+        showStatus(
+            "Supabase غير متصل. تأكد من مفتاح Supabase داخل settings.html.",
             "error"
         );
 
@@ -1697,8 +1881,19 @@ async function checkAdmin(){
             .getSession();
 
 
+    if(error){
+
+        console.error(error);
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
     if(
-        error ||
         !data ||
         !data.session
     ){
@@ -1715,28 +1910,47 @@ async function checkAdmin(){
         data.session.user;
 
 
+    /*
+       نبحث في profiles
+       باستخدام id لأن جدول profiles عندك
+       يستخدم id كـ UUID.
+    */
+
     const {
-        data:profile,
-        error:profileError
+        data: profile,
+        error: profileError
     } =
         await supabaseClient
-
             .from("profiles")
-
             .select(
-                "id, full_name, role"
+                "id, full_name, email, role"
             )
-
             .eq(
                 "id",
                 user.id
             )
-
             .maybeSingle();
 
 
+    if(profileError){
+
+        console.error(
+            "PROFILE ERROR:",
+            profileError
+        );
+
+        showStatus(
+            "تعذر قراءة بيانات الأدمن: " +
+            profileError.message,
+            "error"
+        );
+
+        return false;
+
+    }
+
+
     if(
-        profileError ||
         !profile ||
         profile.role !== "admin"
     ){
@@ -1754,11 +1968,10 @@ async function checkAdmin(){
 
 
     document
-        .getElementById(
-            "adminName"
-        )
+        .getElementById("adminName")
         .textContent =
             profile.full_name ||
+            profile.email ||
             user.email ||
             "الأدمن";
 
@@ -1768,15 +1981,18 @@ async function checkAdmin(){
 }
 
 
-/*
-==========================================================
-    LOAD STUDENTS
-==========================================================
-*/
+/* =========================================================
+   LOAD SETTINGS
+========================================================= */
 
-async function loadStudents(){
+async function loadSettings(){
 
-    if(!window.supabaseClient){
+    if(!supabaseClient){
+
+        showStatus(
+            "Supabase غير متصل.",
+            "error"
+        );
 
         return;
 
@@ -1792,18 +2008,17 @@ async function loadStudents(){
             data,
             error
         } =
-            await supabaseClient
-
-                .from("students")
-
-                .select("*")
-
-                .order(
-                    "created_at",
-                    {
-                        ascending:false
-                    }
-                );
+        await supabaseClient
+            .from("site_settings")
+            .select("*")
+            .order(
+                "id",
+                {
+                    ascending:true
+                }
+            )
+            .limit(1)
+            .maybeSingle();
 
 
         if(error){
@@ -1813,56 +2028,89 @@ async function loadStudents(){
         }
 
 
-        allStudents =
-            data || [];
+        /*
+           لو الجدول فاضي
+           ننشئ أول إعدادات.
+        */
+
+        if(!data){
+
+            const {
+                data: created,
+                error: createError
+            } =
+            await supabaseClient
+                .from("site_settings")
+                .insert({
+
+                    platform_name:
+                        "الخوارزمي",
+
+                    teacher_name:
+                        "أمير طلعت",
+
+                    platform_description:
+                        "منصة الخوارزمي للاختبارات التعليمية.",
+
+                    phone:"",
+                    whatsapp:"",
+                    contact_email:"",
+
+                    welcome_title:
+                        "مرحبًا بك في الخوارزمي",
+
+                    welcome_message:
+                        "مع الخوارزمي أنت بأمان.",
+
+                    logo_url:"",
+
+                    platform_active:true,
+
+                    show_phone:true,
+
+                    show_whatsapp:true
+
+                })
+                .select("*")
+                .single();
 
 
-        updateStats();
+            if(createError){
 
-        applyFilters();
+                throw createError;
+
+            }
+
+
+            fillSettings(
+                created
+            );
+
+        }else{
+
+            fillSettings(
+                data
+            );
+
+        }
+
+
+        showStatus(
+            "تم تحميل إعدادات المنصة بنجاح.",
+            "success"
+        );
 
 
     }catch(error){
 
         console.error(
+            "LOAD SETTINGS ERROR:",
             error
         );
 
-
-        studentsBody.innerHTML = `
-
-            <tr>
-
-                <td colspan="7">
-
-                    <div class="empty">
-
-                        <div class="empty-icon">
-                            ⚠️
-                        </div>
-
-                        <h3>
-                            تعذر تحميل الطلاب
-                        </h3>
-
-                        <p>
-                            ${escapeHTML(
-                                error.message ||
-                                "حدث خطأ"
-                            )}
-                        </p>
-
-                    </div>
-
-                </td>
-
-            </tr>
-
-        `;
-
-        showToast(
-            error.message ||
-            "تعذر تحميل الطلاب.",
+        showStatus(
+            "تعذر تحميل الإعدادات: " +
+            error.message,
             "error"
         );
 
@@ -1875,568 +2123,297 @@ async function loadStudents(){
 }
 
 
-/*
-==========================================================
-    STATS
-==========================================================
-*/
+/* =========================================================
+   FILL SETTINGS
+========================================================= */
 
-function updateStats(){
+function fillSettings(data){
 
-    const total =
-        allStudents.length;
-
-
-    const active =
-        allStudents.filter(
-            student =>
-                student.status !== "blocked"
-        ).length;
+    document
+        .getElementById("platformName")
+        .value =
+            data.platform_name || "";
 
 
     document
-        .getElementById(
-            "totalCount"
-        )
-        .textContent =
-            total;
+        .getElementById("teacherName")
+        .value =
+            data.teacher_name || "";
 
 
     document
-        .getElementById(
-            "activeCount"
-        )
-        .textContent =
-            active;
-
-}
-
-
-/*
-==========================================================
-    FILTERS
-==========================================================
-*/
-
-function applyFilters(){
-
-    const search =
-        searchInput.value
-            .trim()
-            .toLowerCase();
-
-
-    const grade =
-        gradeFilter.value;
-
-
-    filteredStudents =
-        allStudents.filter(
-            student => {
-
-                const name =
-                    String(
-                        student.full_name || ""
-                    )
-                    .toLowerCase();
-
-
-                const email =
-                    String(
-                        student.email || ""
-                    )
-                    .toLowerCase();
-
-
-                const phone =
-                    String(
-                        student.phone || ""
-                    )
-                    .toLowerCase();
-
-
-                const matchesSearch =
-                    !search ||
-                    name.includes(search) ||
-                    email.includes(search) ||
-                    phone.includes(search);
-
-
-                const matchesGrade =
-                    !grade ||
-                    student.grade === grade;
-
-
-                return(
-                    matchesSearch &&
-                    matchesGrade
-                );
-
-            }
-        );
-
-
-    currentPage = 1;
+        .getElementById("platformDescription")
+        .value =
+            data.platform_description || "";
 
 
     document
-        .getElementById(
-            "visibleCount"
-        )
-        .textContent =
-            filteredStudents.length;
+        .getElementById("phone")
+        .value =
+            data.phone || "";
 
 
-    renderStudents();
-
-}
-
-
-/*
-==========================================================
-    RENDER
-==========================================================
-*/
-
-function renderStudents(){
-
-    if(
-        filteredStudents.length === 0
-    ){
-
-        studentsBody.innerHTML = `
-
-            <tr>
-
-                <td colspan="7">
-
-                    <div class="empty">
-
-                        <div class="empty-icon">
-                            📭
-                        </div>
-
-                        <h3>
-                            لا يوجد طلاب
-                        </h3>
-
-                        <p>
-                            لا توجد نتائج مطابقة للبحث.
-                        </p>
-
-                    </div>
-
-                </td>
-
-            </tr>
-
-        `;
+    document
+        .getElementById("whatsapp")
+        .value =
+            data.whatsapp || "";
 
 
-        pagination.innerHTML =
-            "";
+    document
+        .getElementById("contactEmail")
+        .value =
+            data.contact_email || "";
 
-        return;
+
+    document
+        .getElementById("welcomeTitle")
+        .value =
+            data.welcome_title || "";
+
+
+    document
+        .getElementById("welcomeMessage")
+        .value =
+            data.welcome_message || "";
+
+
+    document
+        .getElementById("platformActive")
+        .checked =
+            data.platform_active !== false;
+
+
+    document
+        .getElementById("showPhone")
+        .checked =
+            data.show_phone !== false;
+
+
+    document
+        .getElementById("showWhatsapp")
+        .checked =
+            data.show_whatsapp !== false;
+
+
+    if(data.logo_url){
+
+        teacherImage.src =
+            data.logo_url;
+
+        teacherImage.style.display =
+            "block";
+
+        imagePlaceholder.style.display =
+            "none";
+
+    }else{
+
+        teacherImage.style.display =
+            "none";
+
+        imagePlaceholder.style.display =
+            "block";
 
     }
 
-
-    const start =
-        (currentPage - 1) *
-        pageSize;
-
-
-    const end =
-        start + pageSize;
-
-
-    const pageStudents =
-        filteredStudents.slice(
-            start,
-            end
-        );
-
-
-    studentsBody.innerHTML =
-        pageStudents
-            .map(
-                createStudentRow
-            )
-            .join("");
-
-
-    renderPagination();
-
 }
 
 
-/*
-==========================================================
-    ROW
-==========================================================
-*/
+/* =========================================================
+   IMAGE PREVIEW
+========================================================= */
 
-function createStudentRow(
-    student
-){
+imageInput.addEventListener(
+    "change",
+    function(){
 
-    const name =
-        student.full_name ||
-        "بدون اسم";
+        const file =
+            this.files[0];
 
+        if(!file){
 
-    const email =
-        student.email ||
-        "—";
-
-
-    const phone =
-        student.phone ||
-        "—";
-
-
-    const grade =
-        student.grade ||
-        "غير محدد";
-
-
-    const school =
-        student.school ||
-        "—";
-
-
-    const status =
-        student.status ||
-        "active";
-
-
-    const avatar =
-        student.avatar_url
-
-        ?
-
-        `
-        <div class="avatar">
-
-            <img
-                src="${escapeAttribute(
-                    student.avatar_url
-                )}"
-                alt=""
-            >
-
-        </div>
-        `
-
-        :
-
-        `
-        <div class="avatar">
-            ${escapeHTML(
-                getInitial(name)
-            )}
-        </div>
-        `;
-
-
-    const statusHTML =
-        status === "blocked"
-
-        ?
-
-        `
-        <span class="badge blocked">
-            غير نشط
-        </span>
-        `
-
-        :
-
-        `
-        <span class="badge active">
-            نشط
-        </span>
-        `;
-
-
-    return `
-
-        <tr>
-
-            <td>
-
-                <div class="student">
-
-                    ${avatar}
-
-                    <div class="student-name">
-
-                        <strong>
-                            ${escapeHTML(name)}
-                        </strong>
-
-                        <span>
-                            ${escapeHTML(email)}
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </td>
-
-
-            <td>
-                ${escapeHTML(phone)}
-            </td>
-
-
-            <td>
-
-                <span class="badge grade">
-
-                    ${escapeHTML(grade)}
-
-                </span>
-
-            </td>
-
-
-            <td>
-                ${escapeHTML(school)}
-            </td>
-
-
-            <td>
-                ${statusHTML}
-            </td>
-
-
-            <td>
-                ${formatDate(
-                    student.created_at
-                )}
-            </td>
-
-
-            <td>
-
-                <div class="actions">
-
-                    <button
-                        class="action-btn view"
-                        title="عرض"
-                        onclick="viewStudent('${escapeAttribute(
-                            student.id
-                        )}')"
-                    >
-                        👁
-                    </button>
-
-
-                    <button
-                        class="action-btn delete"
-                        title="حذف"
-                        onclick="deleteStudent('${escapeAttribute(
-                            student.id
-                        )}')"
-                    >
-                        🗑️
-                    </button>
-
-                </div>
-
-            </td>
-
-        </tr>
-
-    `;
-
-}
-
-
-/*
-==========================================================
-    VIEW
-==========================================================
-*/
-
-function viewStudent(id){
-
-    const student =
-        allStudents.find(
-            item =>
-                String(item.id) ===
-                String(id)
-        );
-
-
-    if(!student)
-        return;
-
-
-    details.innerHTML = `
-
-        ${detailRow(
-            "الاسم",
-            student.full_name
-        )}
-
-        ${detailRow(
-            "البريد الإلكتروني",
-            student.email
-        )}
-
-        ${detailRow(
-            "الهاتف",
-            student.phone
-        )}
-
-        ${detailRow(
-            "هاتف ولي الأمر",
-            student.parent_phone
-        )}
-
-        ${detailRow(
-            "الصف",
-            student.grade
-        )}
-
-        ${detailRow(
-            "المدرسة",
-            student.school
-        )}
-
-        ${detailRow(
-            "المحافظة",
-            student.governorate
-        )}
-
-        ${detailRow(
-            "المدينة",
-            student.city
-        )}
-
-        ${detailRow(
-            "تاريخ التسجيل",
-            formatDate(
-                student.created_at
-            )
-        )}
-
-        ${detailRow(
-            "الحالة",
-            student.status === "blocked"
-            ? "غير نشط"
-            : "نشط"
-        )}
-
-    `;
-
-
-    modal.classList.add(
-        "show"
-    );
-
-}
-
-
-/*
-==========================================================
-    DETAIL ROW
-==========================================================
-*/
-
-function detailRow(
-    title,
-    value
-){
-
-    return `
-
-        <div class="detail">
-
-            <span>
-                ${escapeHTML(title)}
-            </span>
-
-            <strong>
-                ${escapeHTML(
-                    value || "—"
-                )}
-            </strong>
-
-        </div>
-
-    `;
-
-}
-
-
-/*
-==========================================================
-    CLOSE MODAL
-==========================================================
-*/
-
-function closeModal(){
-
-    modal.classList.remove(
-        "show"
-    );
-
-}
-
-
-modal.addEventListener(
-    "click",
-    event => {
-
-        if(
-            event.target === modal
-        ){
-
-            closeModal();
+            return;
 
         }
+
+
+        if(
+            !file.type.startsWith("image/")
+        ){
+
+            showToast(
+                "اختر ملف صورة فقط.",
+                "error"
+            );
+
+            this.value = "";
+
+            return;
+
+        }
+
+
+        const maxSize =
+            5 * 1024 * 1024;
+
+
+        if(
+            file.size > maxSize
+        ){
+
+            showToast(
+                "حجم الصورة يجب ألا يتجاوز 5 ميجابايت.",
+                "error"
+            );
+
+            this.value = "";
+
+            return;
+
+        }
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function(event){
+
+                teacherImage.src =
+                    event.target.result;
+
+                teacherImage.style.display =
+                    "block";
+
+                imagePlaceholder.style.display =
+                    "none";
+
+            };
+
+
+        reader.readAsDataURL(
+            file
+        );
 
     }
 );
 
 
-/*
-==========================================================
-    DELETE STUDENT
-==========================================================
-*/
+/* =========================================================
+   UPLOAD IMAGE
+========================================================= */
 
-async function deleteStudent(id){
+async function uploadTeacherImage(){
 
-    const student =
-        allStudents.find(
-            item =>
-                String(item.id) ===
-                String(id)
+    const file =
+        imageInput.files[0];
+
+
+    if(!file){
+
+        return null;
+
+    }
+
+
+    /*
+       اسم الـ bucket:
+
+       site-assets
+
+       لازم يكون موجود في:
+       Supabase Storage
+    */
+
+    const extension =
+        file.name
+            .split(".")
+            .pop()
+            .toLowerCase();
+
+
+    const fileName =
+        "teacher-amir-" +
+        Date.now() +
+        "." +
+        extension;
+
+
+    const filePath =
+        "teachers/" +
+        fileName;
+
+
+    const {
+        error: uploadError
+    } =
+    await supabaseClient
+        .storage
+        .from("site-assets")
+        .upload(
+            filePath,
+            file,
+            {
+                cacheControl:"3600",
+                upsert:true,
+                contentType:file.type
+            }
         );
 
 
-    if(!student)
-        return;
+    if(uploadError){
+
+        throw uploadError;
+
+    }
 
 
-    const name =
-        student.full_name ||
-        "هذا الطالب";
-
-
-    const confirmed =
-        confirm(
-            `هل أنت متأكد من حذف الطالب "${name}"؟\n\nسيتم حذف سجل الطالب من قاعدة البيانات.`
+    const {
+        data
+    } =
+    supabaseClient
+        .storage
+        .from("site-assets")
+        .getPublicUrl(
+            filePath
         );
 
 
-    if(!confirmed)
+    return data.publicUrl;
+
+}
+
+
+/* =========================================================
+   SAVE SETTINGS
+========================================================= */
+
+async function saveSettings(){
+
+    if(!supabaseClient){
+
+        showToast(
+            "Supabase غير متصل.",
+            "error"
+        );
+
         return;
+
+    }
+
+
+    const saveBtn =
+        document.getElementById(
+            "saveBtn"
+        );
+
+
+    saveBtn.disabled =
+        true;
+
+    saveBtn.textContent =
+        "⏳ جاري الحفظ...";
 
 
     setLoading(true);
@@ -2444,46 +2421,262 @@ async function deleteStudent(id){
 
     try{
 
-        const {
-            error
-        } =
-            await supabaseClient
 
-                .from("students")
+        /*
+           نتأكد أن المستخدم Admin
+        */
 
-                .delete()
-
-                .eq(
-                    "id",
-                    id
-                );
+        const isAdmin =
+            await checkAdmin();
 
 
-        if(error){
+        if(!isAdmin){
 
-            throw error;
+            throw new Error(
+                "غير مصرح لك بتعديل إعدادات المنصة."
+            );
 
         }
 
 
-        showToast(
-            "تم حذف بيانات الطالب بنجاح ✅"
+        /*
+           نقرأ أول سجل
+        */
+
+        const {
+            data: current,
+            error: currentError
+        } =
+        await supabaseClient
+            .from("site_settings")
+            .select("id, logo_url")
+            .order(
+                "id",
+                {
+                    ascending:true
+                }
+            )
+            .limit(1)
+            .maybeSingle();
+
+
+        if(currentError){
+
+            throw currentError;
+
+        }
+
+
+        let logoUrl =
+            current?.logo_url ||
+            "";
+
+
+        /*
+           لو اختار صورة جديدة
+        */
+
+        if(
+            imageInput.files.length > 0
+        ){
+
+            const uploadedUrl =
+                await uploadTeacherImage();
+
+
+            if(uploadedUrl){
+
+                logoUrl =
+                    uploadedUrl;
+
+            }
+
+        }
+
+
+        const settingsData = {
+
+            platform_name:
+                document
+                    .getElementById(
+                        "platformName"
+                    )
+                    .value
+                    .trim(),
+
+            teacher_name:
+                document
+                    .getElementById(
+                        "teacherName"
+                    )
+                    .value
+                    .trim(),
+
+            platform_description:
+                document
+                    .getElementById(
+                        "platformDescription"
+                    )
+                    .value
+                    .trim(),
+
+            phone:
+                document
+                    .getElementById(
+                        "phone"
+                    )
+                    .value
+                    .trim(),
+
+            whatsapp:
+                document
+                    .getElementById(
+                        "whatsapp"
+                    )
+                    .value
+                    .trim(),
+
+            contact_email:
+                document
+                    .getElementById(
+                        "contactEmail"
+                    )
+                    .value
+                    .trim(),
+
+            welcome_title:
+                document
+                    .getElementById(
+                        "welcomeTitle"
+                    )
+                    .value
+                    .trim(),
+
+            welcome_message:
+                document
+                    .getElementById(
+                        "welcomeMessage"
+                    )
+                    .value
+                    .trim(),
+
+            logo_url:
+                logoUrl,
+
+            platform_active:
+                document
+                    .getElementById(
+                        "platformActive"
+                    )
+                    .checked,
+
+            show_phone:
+                document
+                    .getElementById(
+                        "showPhone"
+                    )
+                    .checked,
+
+            show_whatsapp:
+                document
+                    .getElementById(
+                        "showWhatsapp"
+                    )
+                    .checked,
+
+            updated_at:
+                new Date().toISOString()
+
+        };
+
+
+        /*
+           UPDATE
+        */
+
+        if(current?.id){
+
+            const {
+                error
+            } =
+            await supabaseClient
+                .from("site_settings")
+                .update(
+                    settingsData
+                )
+                .eq(
+                    "id",
+                    current.id
+                );
+
+
+            if(error){
+
+                throw error;
+
+            }
+
+        }else{
+
+            const {
+                error
+            } =
+            await supabaseClient
+                .from("site_settings")
+                .insert(
+                    settingsData
+                );
+
+
+            if(error){
+
+                throw error;
+
+            }
+
+        }
+
+
+        /*
+           تنظيف اختيار الصورة
+        */
+
+        imageInput.value =
+            "";
+
+
+        showStatus(
+            "✅ تم حفظ جميع إعدادات المنصة بنجاح.",
+            "success"
         );
 
 
-        await loadStudents();
+        showToast(
+            "تم حفظ الإعدادات بنجاح."
+        );
+
+
+        await loadSettings();
 
 
     }catch(error){
 
         console.error(
+            "SAVE SETTINGS ERROR:",
             error
+        );
+
+
+        showStatus(
+            "❌ تعذر حفظ الإعدادات:\n" +
+            error.message,
+            "error"
         );
 
 
         showToast(
             error.message ||
-            "تعذر حذف الطالب.",
+            "حدث خطأ أثناء الحفظ.",
             "error"
         );
 
@@ -2491,252 +2684,24 @@ async function deleteStudent(id){
 
         setLoading(false);
 
-    }
+        saveBtn.disabled =
+            false;
 
-}
-
-
-/*
-==========================================================
-    PAGINATION
-==========================================================
-*/
-
-function renderPagination(){
-
-    const totalPages =
-        Math.ceil(
-            filteredStudents.length /
-            pageSize
-        );
-
-
-    if(totalPages <= 1){
-
-        pagination.innerHTML =
-            "";
-
-        return;
-
-    }
-
-
-    let html = "";
-
-
-    html += `
-
-        <button
-            class="page-btn"
-            ${currentPage === 1 ? "disabled" : ""}
-            onclick="changePage(${currentPage - 1})"
-        >
-            ←
-        </button>
-
-    `;
-
-
-    for(
-        let i = 1;
-        i <= totalPages;
-        i++
-    ){
-
-        html += `
-
-            <button
-                class="page-btn ${
-                    currentPage === i
-                    ? "active"
-                    : ""
-                }"
-                onclick="changePage(${i})"
-            >
-                ${i}
-            </button>
-
-        `;
-
-    }
-
-
-    html += `
-
-        <button
-            class="page-btn"
-            ${
-                currentPage === totalPages
-                ? "disabled"
-                : ""
-            }
-            onclick="changePage(${currentPage + 1})"
-        >
-            →
-        </button>
-
-    `;
-
-
-    pagination.innerHTML =
-        html;
-
-}
-
-
-/*
-==========================================================
-    CHANGE PAGE
-==========================================================
-*/
-
-function changePage(page){
-
-    const totalPages =
-        Math.ceil(
-            filteredStudents.length /
-            pageSize
-        );
-
-
-    if(
-        page < 1 ||
-        page > totalPages
-    ){
-
-        return;
-
-    }
-
-
-    currentPage =
-        page;
-
-
-    renderStudents();
-
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-/*
-==========================================================
-    SEARCH
-==========================================================
-*/
-
-searchInput.addEventListener(
-    "input",
-    applyFilters
-);
-
-
-gradeFilter.addEventListener(
-    "change",
-    applyFilters
-);
-
-
-/*
-==========================================================
-    HELPERS
-==========================================================
-*/
-
-function getInitial(name){
-
-    return(
-        String(name)
-            .trim()
-            .charAt(0)
-            .toUpperCase()
-    ) || "ط";
-
-}
-
-
-function formatDate(date){
-
-    if(!date)
-        return "—";
-
-
-    try{
-
-        return new Date(
-            date
-        ).toLocaleDateString(
-            "ar-EG",
-            {
-                year:"numeric",
-                month:"short",
-                day:"numeric"
-            }
-        );
-
-    }catch{
-
-        return "—";
+        saveBtn.textContent =
+            "💾 حفظ جميع الإعدادات";
 
     }
 
 }
 
 
-function escapeHTML(value){
-
-    return String(
-        value ?? ""
-    )
-    .replace(
-        /&/g,
-        "&amp;"
-    )
-    .replace(
-        /</g,
-        "&lt;"
-    )
-    .replace(
-        />/g,
-        "&gt;"
-    )
-    .replace(
-        /"/g,
-        "&quot;"
-    )
-    .replace(
-        /'/g,
-        "&#039;"
-    );
-
-}
-
-
-function escapeAttribute(value){
-
-    return escapeHTML(value)
-        .replace(
-            /`/g,
-            "&#096;"
-        );
-
-}
-
-
-/*
-==========================================================
-    LOGOUT
-==========================================================
-*/
+/* =========================================================
+   LOGOUT
+========================================================= */
 
 async function logout(){
 
-    if(window.supabaseClient){
+    if(supabaseClient){
 
         await supabaseClient
             .auth
@@ -2744,23 +2709,19 @@ async function logout(){
 
     }
 
-
     window.location.href =
         "login.html";
 
 }
 
 
-/*
-==========================================================
-    INIT
-==========================================================
-*/
+/* =========================================================
+   START
+========================================================= */
 
 async function init(){
 
     setLoading(true);
-
 
     try{
 
@@ -2768,24 +2729,14 @@ async function init(){
             await checkAdmin();
 
 
-        if(!isAdmin)
+        if(!isAdmin){
+
             return;
 
+        }
 
-        await loadStudents();
 
-
-    }catch(error){
-
-        console.error(
-            error
-        );
-
-        showToast(
-            error.message ||
-            "حدث خطأ.",
-            "error"
-        );
+        await loadSettings();
 
     }finally{
 
