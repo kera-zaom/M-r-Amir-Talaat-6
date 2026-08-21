@@ -14,13 +14,16 @@
       href="https://fonts.googleapis.com">
 
 <link rel="preconnect"
-      href="https://fonts.gstatic.com"
+      href="https://fonts.googleapis.com"
       crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- supabase.js موجود في المجلد الرئيسي -->
+<script src="../supabase.js"></script>
 
 <style>
 
@@ -1267,34 +1270,15 @@ body{
 
 <script>
 
+"use strict";
+
+
 /* =========================================================
    SUPABASE
 ========================================================= */
 
-const SUPABASE_URL =
-    "ضع_رابط_مشروعك_هنا";
-
-const SUPABASE_KEY =
-    "ضع_publishable_او_anon_key_هنا";
-
-
-let supabaseClient = null;
-
-
-if(
-    SUPABASE_URL.startsWith("http") &&
-    SUPABASE_KEY &&
-    !SUPABASE_URL.includes("ضع_") &&
-    !SUPABASE_KEY.includes("ضع_")
-){
-
-    supabaseClient =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
-
-}
+const supabaseClient =
+    window.supabaseClient;
 
 
 /* =========================================================
@@ -1369,7 +1353,7 @@ async function checkAdmin(){
     if(!supabaseClient){
 
         showToast(
-            "بيانات Supabase غير موجودة.",
+            "Supabase غير متصل. تأكد من supabase.js.",
             "error"
         );
 
@@ -1412,18 +1396,14 @@ async function checkAdmin(){
         error: profileError
     } =
         await supabaseClient
-
             .from("profiles")
-
             .select(
                 "id, full_name, role"
             )
-
             .eq(
                 "id",
                 user.id
             )
-
             .maybeSingle();
 
 
@@ -1454,7 +1434,7 @@ async function checkAdmin(){
             .signOut();
 
         window.location.href =
-            "login.html";
+            "../auth.html";
 
         return false;
 
@@ -1536,6 +1516,48 @@ async function getCount(table){
 
 
 /* =========================================================
+   STUDENTS COUNT
+========================================================= */
+
+async function getStudentsCount(){
+
+    const {
+        count,
+        error
+    } =
+        await supabaseClient
+            .from("profiles")
+            .select(
+                "id",
+                {
+                    count:"exact",
+                    head:true
+                }
+            )
+            .eq(
+                "role",
+                "student"
+            );
+
+
+    if(error){
+
+        console.error(
+            "STUDENTS COUNT ERROR:",
+            error
+        );
+
+        return 0;
+
+    }
+
+
+    return count || 0;
+
+}
+
+
+/* =========================================================
    LOAD STATISTICS
 ========================================================= */
 
@@ -1544,7 +1566,7 @@ async function loadStats(){
     const results =
         await Promise.allSettled([
 
-            getCount("students"),
+            getStudentsCount(),
 
             getCount("courses"),
 
@@ -1618,21 +1640,21 @@ async function loadActivity(){
     container.innerHTML = "";
 
 
-    /*
-       نعرض أحدث الطلاب المسجلين
-       كآخر نشاط فعلي من قاعدة البيانات.
-    */
-
     const {
         data,
         error
     } =
         await supabaseClient
 
-            .from("students")
+            .from("profiles")
 
             .select(
                 "id, full_name, created_at"
+            )
+
+            .eq(
+                "role",
+                "student"
             )
 
             .order(
@@ -1898,4 +1920,4 @@ init();
 
 </body>
 
-      </html>
+                      </html>
