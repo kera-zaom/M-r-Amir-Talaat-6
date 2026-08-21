@@ -19,7 +19,7 @@
 
 <link
     rel="preconnect"
-    href="https://fonts.gstatic.com"
+    href="https://fonts.googleapis.com"
     crossorigin
 >
 
@@ -43,8 +43,10 @@
     --border: rgba(255,255,255,.08);
     --text: #fff;
     --muted: #9999a8;
+
     --primary: #7657ff;
     --primary-dark: #4d35d9;
+
     --success: #35d39a;
     --danger: #ff6078;
     --warning: #ffbd55;
@@ -204,7 +206,122 @@ main {
 }
 
 
-/* ================= HERO ================= */
+/* ================= LOADING ================= */
+
+.loading {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #06060a;
+}
+
+
+.loader {
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 50%;
+
+    border:
+        3px solid
+        rgba(118,87,255,.15);
+
+    border-top-color:
+        var(--primary);
+
+    animation:
+        spin .8s linear infinite;
+}
+
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* ================= ERROR ================= */
+
+.error-box {
+
+    display: none;
+
+    text-align: center;
+
+    padding: 45px 20px;
+
+    border-radius: 20px;
+
+    border:
+        1px solid
+        rgba(255,96,120,.15);
+
+    background:
+        rgba(255,96,120,.04);
+
+    margin-bottom: 20px;
+}
+
+
+.error-icon {
+
+    width: 65px;
+
+    height: 65px;
+
+    display: grid;
+
+    place-items: center;
+
+    margin:
+        0 auto 15px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,96,120,.10);
+
+    color:
+        var(--danger);
+
+    font-size: 28px;
+}
+
+
+.error-box h2 {
+
+    font-size: 18px;
+
+    margin-bottom: 6px;
+}
+
+
+.error-box p {
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    line-height: 1.8;
+}
+
+
+/* ================= RESULT HERO ================= */
 
 .result-hero {
 
@@ -313,7 +430,6 @@ main {
     background:
         conic-gradient(
             var(--primary) 0deg,
-            var(--primary) 0deg,
             rgba(255,255,255,.07) 0deg
         );
 }
@@ -395,6 +511,8 @@ main {
 
     background:
         rgba(255,255,255,.025);
+
+    text-align: center;
 }
 
 
@@ -416,31 +534,28 @@ main {
 }
 
 
-.stat.correct
-.stat-value {
+.stat.correct .stat-value {
 
     color:
         var(--success);
 }
 
 
-.stat.wrong
-.stat-value {
+.stat.wrong .stat-value {
 
     color:
         var(--danger);
 }
 
 
-.stat.skipped
-.stat-value {
+.stat.skipped .stat-value {
 
     color:
         var(--warning);
 }
 
 
-/* ================= EXAM INFO ================= */
+/* ================= INFO ================= */
 
 .info-card {
 
@@ -505,6 +620,8 @@ main {
 .info-item strong {
 
     font-size: 11px;
+
+    word-break: break-word;
 }
 
 
@@ -694,52 +811,17 @@ main {
 }
 
 
-/* ================= LOADING ================= */
+/* ================= EMPTY ================= */
 
-.loading {
+.empty-answers {
 
-    position: fixed;
+    text-align: center;
 
-    inset: 0;
+    color: var(--muted);
 
-    z-index: 999;
+    font-size: 11px;
 
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: #06060a;
-}
-
-
-.loader {
-
-    width: 45px;
-
-    height: 45px;
-
-    border-radius: 50%;
-
-    border:
-        3px solid
-        rgba(118,87,255,.15);
-
-    border-top-color:
-        var(--primary);
-
-    animation:
-        spin .8s linear infinite;
-}
-
-
-@keyframes spin {
-
-    to {
-        transform: rotate(360deg);
-    }
-
+    padding: 25px;
 }
 
 
@@ -826,7 +908,7 @@ main {
 <body>
 
 
-<!-- LOADING -->
+<!-- ================= LOADING ================= -->
 
 <div
     class="loading"
@@ -838,7 +920,7 @@ main {
 </div>
 
 
-<!-- HEADER -->
+<!-- ================= HEADER ================= -->
 
 <header>
 
@@ -867,7 +949,7 @@ main {
         class="back-btn"
         onclick="goCourses()"
     >
-        الكورسات
+        📚 الكورسات
     </button>
 
 </header>
@@ -876,11 +958,34 @@ main {
 <main>
 
 
-    <!-- RESULT HERO -->
+    <!-- ================= ERROR ================= -->
+
+    <div
+        class="error-box"
+        id="errorBox"
+    >
+
+        <div class="error-icon">
+            ⚠️
+        </div>
+
+        <h2 id="errorTitle">
+            لم يتم العثور على النتيجة
+        </h2>
+
+        <p id="errorMessage">
+            لا توجد نتيجة متاحة لهذا الاختبار.
+        </p>
+
+    </div>
+
+
+    <!-- ================= RESULT ================= -->
 
     <section
         class="result-hero"
         id="resultHero"
+        style="display:none;"
     >
 
         <div
@@ -895,7 +1000,7 @@ main {
             class="result-title"
             id="resultTitle"
         >
-            جاري تحميل النتيجة...
+            —
         </h1>
 
 
@@ -903,7 +1008,7 @@ main {
             class="result-subtitle"
             id="resultSubtitle"
         >
-            يرجى الانتظار...
+            —
         </p>
 
 
@@ -990,9 +1095,13 @@ main {
     </section>
 
 
-    <!-- EXAM INFO -->
+    <!-- ================= EXAM INFO ================= -->
 
-    <section class="info-card">
+    <section
+        class="info-card"
+        id="infoCard"
+        style="display:none;"
+    >
 
         <div class="info-title">
             📋 تفاصيل الاختبار
@@ -1059,9 +1168,13 @@ main {
     </section>
 
 
-    <!-- ACTIONS -->
+    <!-- ================= ACTIONS ================= -->
 
-    <section class="actions">
+    <section
+        class="actions"
+        id="actions"
+        style="display:none;"
+    >
 
         <button
             class="action-btn action-primary"
@@ -1081,9 +1194,13 @@ main {
     </section>
 
 
-    <!-- ANSWERS -->
+    <!-- ================= ANSWERS ================= -->
 
-    <section class="answers-card">
+    <section
+        class="answers-card"
+        id="answersCard"
+        style="display:none;"
+    >
 
         <div class="info-title">
             📝 مراجعة الإجابات
@@ -1098,41 +1215,42 @@ main {
 </main>
 
 
+<!-- =========================================================
+     SUPABASE
+========================================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="supabase.js"></script>
+
+
 <script>
 
 /*
 ============================================================
     RESULT PAGE
+    الطالب فقط
 ============================================================
 
     الرابط:
 
     result.html?exam_id=EXAM_ID
 
-    لاحقًا سيتم جلب النتيجة من Supabase.
-
-    جدول النتائج:
-
-    exam_results
-
     مثال:
 
-    id
-    exam_id
-    student_id
-    score
-    total_score
-    percentage
-    correct_answers
-    wrong_answers
-    skipped_answers
-    submitted_at
+    result.html?exam_id=123
+
+    الصفحة لا تعتمد على Demo Data.
+
+    البيانات تأتي من Supabase.
 
 ============================================================
 */
 
 
-/* ================= PARAMS ================= */
+/* =========================================================
+   PARAMETERS
+========================================================= */
 
 const params =
     new URLSearchParams(
@@ -1144,77 +1262,133 @@ const examId =
     params.get("exam_id");
 
 
-/* ================= ELEMENTS ================= */
+const resultId =
+    params.get("result_id");
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
 
 const loading =
     document.getElementById(
         "loading"
     );
 
+
+const errorBox =
+    document.getElementById(
+        "errorBox"
+    );
+
+
+const errorTitle =
+    document.getElementById(
+        "errorTitle"
+    );
+
+
+const errorMessage =
+    document.getElementById(
+        "errorMessage"
+    );
+
+
 const resultHero =
     document.getElementById(
         "resultHero"
     );
+
+
+const infoCard =
+    document.getElementById(
+        "infoCard"
+    );
+
+
+const actions =
+    document.getElementById(
+        "actions"
+    );
+
+
+const answersCard =
+    document.getElementById(
+        "answersCard"
+    );
+
 
 const resultIcon =
     document.getElementById(
         "resultIcon"
     );
 
+
 const resultTitle =
     document.getElementById(
         "resultTitle"
     );
+
 
 const resultSubtitle =
     document.getElementById(
         "resultSubtitle"
     );
 
+
 const scoreCircle =
     document.getElementById(
         "scoreCircle"
     );
+
 
 const scoreNumber =
     document.getElementById(
         "scoreNumber"
     );
 
+
 const correctCount =
     document.getElementById(
         "correctCount"
     );
+
 
 const wrongCount =
     document.getElementById(
         "wrongCount"
     );
 
+
 const skippedCount =
     document.getElementById(
         "skippedCount"
     );
+
 
 const examName =
     document.getElementById(
         "examName"
     );
 
+
 const studentName =
     document.getElementById(
         "studentName"
     );
+
 
 const scoreDetails =
     document.getElementById(
         "scoreDetails"
     );
 
+
 const submitDate =
     document.getElementById(
         "submitDate"
     );
+
 
 const answersContainer =
     document.getElementById(
@@ -1222,89 +1396,101 @@ const answersContainer =
     );
 
 
-/* ================= DEMO DATA ================= */
+/* =========================================================
+   GET SUPABASE CLIENT
+========================================================= */
 
-/*
-    مؤقتًا فقط.
+function getSupabaseClient() {
 
-    بعد ربط Supabase سيتم جلب
-    البيانات الحقيقية من قاعدة البيانات.
-*/
+    /*
+        supabase.js عندك يجب أن يضع
+        العميل في window.supabaseClient
 
-const demoResult = {
+        مثال supabase.js:
 
-    exam_name:
-        "اختبار الوحدة الأولى",
+        const { createClient } =
+            window.supabase;
 
-    student_name:
-        "اسم الطالب",
+        window.supabaseClient =
+            createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+    */
 
-    score:
-        8,
+    if (
+        window.supabaseClient
+    ) {
 
-    total_score:
-        10,
+        return window.supabaseClient;
 
-    percentage:
-        80,
-
-    correct_answers:
-        8,
-
-    wrong_answers:
-        2,
-
-    skipped_answers:
-        0,
-
-    submitted_at:
-        new Date(),
-
-    answers: [
-
-        {
-
-            number: 1,
-
-            question:
-                "ما ناتج 2 + 2 ؟",
-
-            answer:
-                "4",
-
-            correct_answer:
-                "4",
-
-            status:
-                "correct"
-
-        },
+    }
 
 
-        {
+    /*
+        دعم إضافي لو ملف supabase.js
+        عندك يستخدم اسم supabaseClient
+        بطريقة مختلفة.
+    */
 
-            number: 2,
+    if (
+        window.client
+    ) {
 
-            question:
-                "ما ناتج 5 × 3 ؟",
+        return window.client;
 
-            answer:
-                "12",
-
-            correct_answer:
-                "15",
-
-            status:
-                "wrong"
-
-        }
-
-    ]
-
-};
+    }
 
 
-/* ================= LOAD RESULT ================= */
+    return null;
+
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+function showError(
+    title,
+    message
+) {
+
+    errorTitle.textContent =
+        title ||
+        "حدث خطأ";
+
+
+    errorMessage.textContent =
+        message ||
+        "تعذر تحميل البيانات.";
+
+
+    errorBox.style.display =
+        "block";
+
+
+    resultHero.style.display =
+        "none";
+
+
+    infoCard.style.display =
+        "none";
+
+
+    actions.style.display =
+        "none";
+
+
+    answersCard.style.display =
+        "none";
+
+}
+
+
+/* =========================================================
+   LOAD RESULT
+========================================================= */
 
 async function loadResult() {
 
@@ -1314,53 +1500,277 @@ async function loadResult() {
 
     try {
 
-        if (!examId) {
+
+        /* ================= CHECK ID ================= */
+
+        if (
+            !examId &&
+            !resultId
+        ) {
+
+            showError(
+                "لا يوجد اختبار",
+                "رابط النتيجة غير صحيح."
+            );
+
+            return;
+
+        }
+
+
+        /* ================= SUPABASE ================= */
+
+        const supabase =
+            getSupabaseClient();
+
+
+        if (!supabase) {
 
             throw new Error(
-                "Missing exam ID"
+                "Supabase client not found"
             );
 
         }
 
 
+        /* ================= USER ================= */
+
+        const {
+            data: authData,
+            error: authError
+        } =
+            await supabase.auth.getUser();
+
+
+        if (authError) {
+
+            throw authError;
+
+        }
+
+
+        const user =
+            authData?.user;
+
+
+        if (!user) {
+
+            showError(
+                "يجب تسجيل الدخول",
+                "قم بتسجيل الدخول أولًا لعرض نتيجة الاختبار."
+            );
+
+            return;
+
+        }
+
+
+        /* =================================================
+           GET RESULT
+        ================================================= */
+
+        let query =
+            supabase
+                .from("exam_results")
+                .select("*");
+
+
         /*
-        ========================================================
-            SUPABASE
+            لو الرابط يحتوي result_id
+            نستخدمه مباشرة.
 
-            لاحقًا:
-
-            const { data, error } =
-                await supabase
-                    .from("exam_results")
-                    .select(`
-                        *,
-                        exams (
-                            title
-                        )
-                    `)
-                    .eq("exam_id", examId)
-                    .eq("student_id", user.id)
-                    .single();
-
-        ========================================================
+            وإلا نستخدم exam_id + student_id.
         */
 
+        if (resultId) {
 
-        await new Promise(
-            resolve =>
-                setTimeout(
-                    resolve,
-                    500
-                )
-        );
+            query =
+                query
+                    .eq(
+                        "id",
+                        resultId
+                    )
+                    .eq(
+                        "student_id",
+                        user.id
+                    )
+                    .maybeSingle();
+
+        }
+
+        else {
+
+            query =
+                query
+                    .eq(
+                        "exam_id",
+                        examId
+                    )
+                    .eq(
+                        "student_id",
+                        user.id
+                    )
+                    .order(
+                        "submitted_at",
+                        {
+                            ascending: false
+                        }
+                    )
+                    .limit(1)
+                    .maybeSingle();
+
+        }
 
 
-        const data =
-            demoResult;
+        const {
+            data,
+            error
+        } =
+            await query;
 
+
+        if (error) {
+
+            console.error(
+                "RESULT ERROR:",
+                error
+            );
+
+            throw error;
+
+        }
+
+
+        if (!data) {
+
+            showError(
+                "لم يتم العثور على النتيجة",
+                "لا توجد نتيجة محفوظة لهذا الاختبار على حسابك."
+            );
+
+            return;
+
+        }
+
+
+        /* =================================================
+           GET EXAM NAME
+        ================================================= */
+
+        let examTitle =
+            data.exam_name ||
+            data.title ||
+            "الاختبار";
+
+
+        /*
+            نحاول جلب اسم الاختبار من جدول exams
+            لو exam_results لا يحتوي exam_name.
+        */
+
+        if (
+            data.exam_id &&
+            !data.exam_name
+        ) {
+
+            const {
+                data: examData,
+                error: examError
+            } =
+                await supabase
+                    .from("exams")
+                    .select("title")
+                    .eq(
+                        "id",
+                        data.exam_id
+                    )
+                    .maybeSingle();
+
+
+            if (
+                !examError &&
+                examData
+            ) {
+
+                examTitle =
+                    examData.title ||
+                    examTitle;
+
+            }
+
+        }
+
+
+        /* =================================================
+           GET STUDENT NAME
+        ================================================= */
+
+        let studentFullName =
+            data.student_name ||
+            "الطالب";
+
+
+        /*
+            نحاول جلب الاسم من profiles
+            إذا لم يكن محفوظًا في النتيجة.
+        */
+
+        if (
+            !data.student_name
+        ) {
+
+            const {
+                data: profileData,
+                error: profileError
+            } =
+                await supabase
+                    .from("profiles")
+                    .select("full_name")
+                    .eq(
+                        "id",
+                        user.id
+                    )
+                    .maybeSingle();
+
+
+            if (
+                !profileError &&
+                profileData
+            ) {
+
+                studentFullName =
+                    profileData.full_name ||
+                    "الطالب";
+
+            }
+
+        }
+
+
+        /* =================================================
+           NORMALIZE RESULT
+        ================================================= */
+
+        const result =
+            normalizeResult(
+                data
+            );
+
+
+        result.exam_name =
+            examTitle;
+
+
+        result.student_name =
+            studentFullName;
+
+
+        /* =================================================
+           RENDER
+        ================================================= */
 
         renderResult(
-            data
+            result
         );
 
 
@@ -1368,13 +1778,16 @@ async function loadResult() {
 
     catch (error) {
 
-        console.error(error);
+        console.error(
+            "LOAD RESULT ERROR:",
+            error
+        );
 
-        resultTitle.textContent =
-            "تعذر تحميل النتيجة";
 
-        resultSubtitle.textContent =
-            "حدث خطأ أثناء تحميل بيانات الاختبار.";
+        showError(
+            "تعذر تحميل النتيجة",
+            "حدث خطأ أثناء الاتصال بقاعدة البيانات. حاول مرة أخرى."
+        );
 
     }
 
@@ -1388,9 +1801,268 @@ async function loadResult() {
 }
 
 
-/* ================= RENDER ================= */
+/* =========================================================
+   NORMALIZE RESULT
+========================================================= */
+
+function normalizeResult(data) {
+
+
+    const score =
+        Number(
+            data.score ??
+            data.correct_answers ??
+            0
+        );
+
+
+    const totalScore =
+        Number(
+            data.total_score ??
+            data.total_questions ??
+            0
+        );
+
+
+    let percentage =
+        Number(
+            data.percentage
+        );
+
+
+    /*
+        لو percentage غير موجود
+        نحسبه تلقائيًا.
+    */
+
+    if (
+        !Number.isFinite(
+            percentage
+        )
+    ) {
+
+        if (
+            totalScore > 0
+        ) {
+
+            percentage =
+                (
+                    score /
+                    totalScore
+                ) *
+                100;
+
+        }
+
+        else {
+
+            percentage = 0;
+
+        }
+
+    }
+
+
+    let correct =
+        Number(
+            data.correct_answers ??
+            data.correct ??
+            0
+        );
+
+
+    let wrong =
+        Number(
+            data.wrong_answers ??
+            data.wrong ??
+            0
+        );
+
+
+    let skipped =
+        Number(
+            data.skipped_answers ??
+            data.skipped ??
+            0
+        );
+
+
+    /*
+        لو الإحصائيات غير موجودة
+        نحاول حسابها من إجمالي الأسئلة.
+    */
+
+    if (
+        correct === 0 &&
+        score > 0 &&
+        data.correct_answers === undefined &&
+        data.correct === undefined
+    ) {
+
+        correct =
+            score;
+
+    }
+
+
+    if (
+        skipped === 0 &&
+        data.skipped_answers === undefined &&
+        data.skipped === undefined
+    ) {
+
+        const answered =
+            correct +
+            wrong;
+
+
+        if (
+            totalScore >
+            answered
+        ) {
+
+            skipped =
+                totalScore -
+                answered;
+
+        }
+
+    }
+
+
+    /*
+        لو total_score موجود
+        نمنع الأرقام السالبة.
+    */
+
+    correct =
+        Math.max(
+            0,
+            correct
+        );
+
+
+    wrong =
+        Math.max(
+            0,
+            wrong
+        );
+
+
+    skipped =
+        Math.max(
+            0,
+            skipped
+        );
+
+
+    percentage =
+        Math.max(
+            0,
+            Math.min(
+                100,
+                percentage
+            )
+        );
+
+
+    /* ================= ANSWERS ================= */
+
+    let answers =
+        data.answers ||
+        data.answer_details ||
+        [];
+
+
+    if (
+        typeof answers === "string"
+    ) {
+
+        try {
+
+            answers =
+                JSON.parse(
+                    answers
+                );
+
+        }
+
+        catch {
+
+            answers = [];
+
+        }
+
+    }
+
+
+    if (
+        !Array.isArray(
+            answers
+        )
+    ) {
+
+        answers = [];
+
+    }
+
+
+    return {
+
+        ...data,
+
+        score:
+            score,
+
+        total_score:
+            totalScore,
+
+        percentage:
+            percentage,
+
+        correct_answers:
+            correct,
+
+        wrong_answers:
+            wrong,
+
+        skipped_answers:
+            skipped,
+
+        answers:
+            answers
+
+    };
+
+}
+
+
+/* =========================================================
+   RENDER RESULT
+========================================================= */
 
 function renderResult(data) {
+
+
+    /* ================= SHOW ================= */
+
+    resultHero.style.display =
+        "block";
+
+
+    infoCard.style.display =
+        "block";
+
+
+    actions.style.display =
+        "grid";
+
+
+    answersCard.style.display =
+        "block";
+
+
+    /* ================= VALUES ================= */
 
     const percentage =
         Number(
@@ -1398,10 +2070,10 @@ function renderResult(data) {
         );
 
 
-    /* ================= SCORE ================= */
-
     scoreNumber.textContent =
-        percentage + "%";
+        Math.round(
+            percentage
+        ) + "%";
 
 
     correctCount.textContent =
@@ -1425,7 +2097,8 @@ function renderResult(data) {
                 100,
                 percentage
             )
-        ) * 3.6;
+        ) *
+        3.6;
 
 
     scoreCircle.style.background = `
@@ -1436,17 +2109,24 @@ function renderResult(data) {
     `;
 
 
-    /* ================= STATUS ================= */
+    /* ================= RESULT STATUS ================= */
 
     if (
         percentage >= 50
     ) {
 
+        resultHero.classList.remove(
+            "failed"
+        );
+
+
         resultIcon.textContent =
             "✓";
 
+
         resultTitle.textContent =
             "أحسنت! 🎉";
+
 
         resultSubtitle.textContent =
             "لقد اجتزت الاختبار بنجاح.";
@@ -1459,14 +2139,17 @@ function renderResult(data) {
             "failed"
         );
 
+
         resultIcon.textContent =
             "×";
+
 
         resultTitle.textContent =
             "حاول مرة أخرى 💪";
 
+
         resultSubtitle.textContent =
-            "يمكنك مراجعة الدروس والمحاولة من جديد.";
+            "راجع إجاباتك والدروس ثم حاول مرة أخرى.";
 
     }
 
@@ -1474,11 +2157,13 @@ function renderResult(data) {
     /* ================= INFO ================= */
 
     examName.textContent =
-        data.exam_name || "—";
+        data.exam_name ||
+        "—";
 
 
     studentName.textContent =
-        data.student_name || "—";
+        data.student_name ||
+        "—";
 
 
     scoreDetails.textContent =
@@ -1500,29 +2185,27 @@ function renderResult(data) {
 }
 
 
-/* ================= ANSWERS ================= */
+/* =========================================================
+   RENDER ANSWERS
+========================================================= */
 
-function renderAnswers(answers) {
+function renderAnswers(
+    answers
+) {
 
     answersContainer.innerHTML =
         "";
 
 
     if (
+        !answers ||
         answers.length === 0
     ) {
 
         answersContainer.innerHTML = `
 
-            <div
-                style="
-                    text-align:center;
-                    color:#9999a8;
-                    font-size:11px;
-                    padding:25px;
-                "
-            >
-                لا توجد تفاصيل للإجابات حاليًا.
+            <div class="empty-answers">
+                لا توجد تفاصيل للإجابات محفوظة لهذه النتيجة.
             </div>
 
         `;
@@ -1533,14 +2216,90 @@ function renderAnswers(answers) {
 
 
     answers.forEach(
-        answer => {
+        (
+            answer,
+            index
+        ) => {
+
+
+            const number =
+                answer.number ??
+                answer.question_number ??
+                index + 1;
+
+
+            const question =
+                answer.question ??
+                answer.question_text ??
+                "السؤال";
+
+
+            const studentAnswer =
+                answer.answer ??
+                answer.student_answer ??
+                answer.selected_answer ??
+                "";
+
+
+            const correctAnswer =
+                answer.correct_answer ??
+                answer.right_answer ??
+                "";
+
+
+            let status =
+                answer.status;
+
+
+            /*
+                لو status غير موجود
+                نحاول تحديده.
+            */
+
+            if (
+                !status
+            ) {
+
+                if (
+                    !studentAnswer
+                ) {
+
+                    status =
+                        "skipped";
+
+                }
+
+                else if (
+                    correctAnswer &&
+                    String(
+                        studentAnswer
+                    ).trim() ===
+                    String(
+                        correctAnswer
+                    ).trim()
+                ) {
+
+                    status =
+                        "correct";
+
+                }
+
+                else {
+
+                    status =
+                        "wrong";
+
+                }
+
+            }
+
 
             let statusText =
                 "بدون إجابة";
 
 
             if (
-                answer.status ===
+                status ===
                 "correct"
             ) {
 
@@ -1550,7 +2309,7 @@ function renderAnswers(answers) {
             }
 
             else if (
-                answer.status ===
+                status ===
                 "wrong"
             ) {
 
@@ -1575,47 +2334,69 @@ function renderAnswers(answers) {
                 <div class="answer-head">
 
                     <span class="answer-number">
-                        السؤال ${answer.number}
+
+                        السؤال
+                        ${escapeHTML(number)}
+
                     </span>
+
 
                     <span
                         class="
                             answer-status
-                            ${answer.status}
+                            ${escapeHTML(status)}
                         "
                     >
+
                         ${statusText}
+
                     </span>
 
                 </div>
 
 
                 <div class="answer-question">
+
                     ${escapeHTML(
-                        answer.question
+                        question
                     )}
+
                 </div>
 
 
                 <div class="answer-value">
+
                     إجابتك:
-                    ${escapeHTML(
-                        answer.answer ||
+
+                    ${
+                        studentAnswer
+                        ?
+                        escapeHTML(
+                            studentAnswer
+                        )
+                        :
                         "بدون إجابة"
-                    )}
+                    }
+
                 </div>
 
 
                 ${
-                    answer.status === "wrong"
+                    status === "wrong" &&
+                    correctAnswer
                     ?
                     `
+
                         <div class="answer-correct">
+
                             الإجابة الصحيحة:
+
                             ${escapeHTML(
-                                answer.correct_answer
+                                correctAnswer
                             )}
+
                         </div>
+
                     `
                     :
                     ""
@@ -1634,9 +2415,13 @@ function renderAnswers(answers) {
 }
 
 
-/* ================= DATE ================= */
+/* =========================================================
+   DATE
+========================================================= */
 
-function formatDate(date) {
+function formatDate(
+    date
+) {
 
     if (!date) {
 
@@ -1646,7 +2431,9 @@ function formatDate(date) {
 
 
     const d =
-        new Date(date);
+        new Date(
+            date
+        );
 
 
     if (
@@ -1663,16 +2450,29 @@ function formatDate(date) {
     return d.toLocaleDateString(
         "ar-EG",
         {
-            year: "numeric",
-            month: "long",
-            day: "numeric"
+            year:
+                "numeric",
+
+            month:
+                "long",
+
+            day:
+                "numeric",
+
+            hour:
+                "2-digit",
+
+            minute:
+                "2-digit"
         }
     );
 
 }
 
 
-/* ================= NAVIGATION ================= */
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
 function goCourses() {
 
@@ -1690,9 +2490,13 @@ function goProfile() {
 }
 
 
-/* ================= SECURITY ================= */
+/* =========================================================
+   SECURITY
+========================================================= */
 
-function escapeHTML(value) {
+function escapeHTML(
+    value
+) {
 
     if (
         value === null ||
@@ -1704,7 +2508,9 @@ function escapeHTML(value) {
     }
 
 
-    return String(value)
+    return String(
+        value
+    )
         .replace(
             /&/g,
             "&amp;"
@@ -1729,15 +2535,14 @@ function escapeHTML(value) {
 }
 
 
-/* ================= START ================= */
+/* =========================================================
+   START
+========================================================= */
 
 loadResult();
 
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase.js"></script>
-
 </body>
 
-</html>
+    </html>
