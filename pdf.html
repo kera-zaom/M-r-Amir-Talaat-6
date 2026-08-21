@@ -19,7 +19,7 @@
 
 <link
     rel="preconnect"
-    href="https://fonts.gstatic.com"
+    href="https://fonts.googleapis.com"
     crossorigin
 >
 
@@ -30,27 +30,27 @@
 
 <style>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Cairo", Arial, sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Cairo",Arial,sans-serif;
 }
 
-:root {
-    --bg: #06060a;
-    --card: rgba(18,18,27,.85);
-    --border: rgba(255,255,255,.08);
-    --text: #fff;
-    --muted: #9999a8;
-    --primary: #7657ff;
-    --primary2: #4d35d9;
+:root{
+    --bg:#06060a;
+    --card:rgba(18,18,27,.88);
+    --border:rgba(255,255,255,.08);
+    --text:#fff;
+    --muted:#9999a8;
+    --primary:#7657ff;
+    --primary2:#4d35d9;
+    --danger:#ff6078;
 }
 
-body {
-    min-height: 100vh;
-
-    color: var(--text);
+body{
+    min-height:100vh;
+    color:var(--text);
 
     background:
         radial-gradient(
@@ -65,62 +65,48 @@ body {
         ),
         var(--bg);
 
-    padding-bottom: 50px;
+    padding-bottom:50px;
 }
 
 
 /* ================= HEADER ================= */
 
-header {
+header{
+    height:74px;
 
-    height: 74px;
+    position:sticky;
+    top:0;
+    z-index:100;
 
-    position: sticky;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-    top: 0;
-
-    z-index: 100;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding: 0 5%;
+    padding:0 5%;
 
     background:
-        rgba(6,6,10,.86);
+        rgba(6,6,10,.88);
 
-    backdrop-filter:
-        blur(18px);
+    backdrop-filter:blur(18px);
 
     border-bottom:
         1px solid var(--border);
 }
 
-
-.logo-area {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
+.logo{
+    width:43px;
+    height:43px;
 
-.logo {
+    display:grid;
+    place-items:center;
 
-    width: 43px;
-
-    height: 43px;
-
-    display: grid;
-
-    place-items: center;
-
-    border-radius: 14px;
+    border-radius:14px;
 
     background:
         linear-gradient(
@@ -129,41 +115,31 @@ header {
             #a796ff
         );
 
-    font-size: 20px;
-
-    font-weight: 900;
+    font-size:20px;
+    font-weight:900;
 
     box-shadow:
         0 0 30px
         rgba(118,87,255,.25);
 }
 
-
-.logo-text strong {
-
-    display: block;
-
-    font-size: 17px;
+.logo-text strong{
+    display:block;
+    font-size:17px;
 }
 
-
-.logo-text span {
-
-    display: block;
-
-    color: var(--muted);
-
-    font-size: 10px;
+.logo-text span{
+    display:block;
+    color:var(--muted);
+    font-size:10px;
 }
 
+.back-btn{
+    height:42px;
 
-.back-btn {
+    padding:0 16px;
 
-    height: 42px;
-
-    padding: 0 16px;
-
-    border-radius: 12px;
+    border-radius:12px;
 
     border:
         1px solid var(--border);
@@ -171,51 +147,43 @@ header {
     background:
         rgba(255,255,255,.04);
 
-    color: white;
+    color:white;
 
-    cursor: pointer;
+    cursor:pointer;
 
-    transition: .25s;
+    transition:.25s;
 }
 
-
-.back-btn:hover {
-
+.back-btn:hover{
     background:
         rgba(118,87,255,.12);
 
+    border-color:
+        rgba(118,87,255,.25);
 }
 
 
 /* ================= MAIN ================= */
 
-main {
-
-    width:
-        min(1200px, 94%);
-
-    margin: auto;
-
-    padding-top: 28px;
+main{
+    width:min(1200px,94%);
+    margin:auto;
+    padding-top:28px;
 }
 
 
 /* ================= TITLE ================= */
 
-.top-section {
-
-    margin-bottom: 20px;
+.top-section{
+    margin-bottom:20px;
 }
 
+.badge{
+    display:inline-flex;
 
-.badge {
+    padding:6px 11px;
 
-    display: inline-flex;
-
-    padding:
-        6px 11px;
-
-    border-radius: 30px;
+    border-radius:30px;
 
     background:
         rgba(118,87,255,.10);
@@ -224,49 +192,40 @@ main {
         1px solid
         rgba(118,87,255,.20);
 
-    color:
-        #b7aaff;
+    color:#b7aaff;
 
-    font-size: 10px;
+    font-size:10px;
 
-    margin-bottom: 9px;
+    margin-bottom:9px;
 }
 
-
-.title {
-
+.title{
     font-size:
-        clamp(20px, 4vw, 30px);
+        clamp(20px,4vw,30px);
 
-    line-height: 1.5;
+    line-height:1.5;
 
-    margin-bottom: 5px;
+    margin-bottom:5px;
+}
+
+.description{
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.8;
 }
 
 
-.description {
+/* ================= PDF CARD ================= */
 
-    color: var(--muted);
+.pdf-card{
+    overflow:hidden;
 
-    font-size: 12px;
-
-    line-height: 1.8;
-}
-
-
-/* ================= PDF CONTAINER ================= */
-
-.pdf-card {
-
-    overflow: hidden;
-
-    border-radius: 20px;
+    border-radius:20px;
 
     border:
         1px solid var(--border);
 
-    background:
-        #101016;
+    background:#101016;
 
     box-shadow:
         0 25px 80px
@@ -276,20 +235,16 @@ main {
 
 /* ================= TOOLBAR ================= */
 
-.toolbar {
+.toolbar{
+    min-height:62px;
 
-    min-height: 62px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-    display: flex;
+    gap:12px;
 
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 12px;
-
-    padding:
-        10px 15px;
+    padding:10px 15px;
 
     background:
         rgba(20,20,29,.95);
@@ -298,85 +253,63 @@ main {
         1px solid var(--border);
 }
 
+.file-info{
+    display:flex;
+    align-items:center;
 
-.file-info {
+    gap:10px;
 
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    min-width: 0;
+    min-width:0;
 }
 
+.pdf-icon{
+    width:38px;
+    height:38px;
 
-.pdf-icon {
+    flex-shrink:0;
 
-    width: 38px;
+    display:grid;
+    place-items:center;
 
-    height: 38px;
-
-    flex-shrink: 0;
-
-    display: grid;
-
-    place-items: center;
-
-    border-radius: 10px;
+    border-radius:10px;
 
     background:
         rgba(255,70,70,.10);
 
-    color:
-        #ff7777;
+    color:#ff7777;
 
-    font-size: 18px;
+    font-size:18px;
 }
 
+.file-name{
+    font-size:11px;
+    font-weight:800;
 
-.file-name {
+    white-space:nowrap;
 
-    font-size: 11px;
+    overflow:hidden;
 
-    font-weight: 800;
-
-    white-space: nowrap;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
+    text-overflow:ellipsis;
 }
 
-
-.file-meta {
-
-    color: var(--muted);
-
-    font-size: 9px;
-
-    margin-top: 2px;
+.file-meta{
+    color:var(--muted);
+    font-size:9px;
+    margin-top:2px;
 }
 
-
-.toolbar-actions {
-
-    display: flex;
-
-    gap: 7px;
-
-    flex-shrink: 0;
+.toolbar-actions{
+    display:flex;
+    gap:7px;
+    flex-shrink:0;
 }
 
+.tool-btn{
+    height:38px;
 
-.tool-btn {
+    padding:0 12px;
 
-    height: 38px;
-
-    padding:
-        0 12px;
-
-    border-radius: 10px;
+    border-radius:10px;
 
     border:
         1px solid var(--border);
@@ -384,18 +317,16 @@ main {
     background:
         rgba(255,255,255,.04);
 
-    color: white;
+    color:white;
 
-    cursor: pointer;
+    cursor:pointer;
 
-    font-size: 10px;
+    font-size:10px;
 
-    transition: .25s;
+    transition:.25s;
 }
 
-
-.tool-btn:hover {
-
+.tool-btn:hover{
     background:
         rgba(118,87,255,.12);
 
@@ -403,9 +334,7 @@ main {
         rgba(118,87,255,.25);
 }
 
-
-.primary-btn {
-
+.primary-btn{
     background:
         linear-gradient(
             135deg,
@@ -413,182 +342,176 @@ main {
             var(--primary2)
         );
 
-    border: 0;
+    border:0;
 
-    font-weight: 700;
+    font-weight:700;
+}
+
+.primary-btn:hover{
+    filter:brightness(1.1);
 }
 
 
-.primary-btn:hover {
+/* ================= VIEWER ================= */
 
-    filter: brightness(1.1);
-
-}
-
-
-/* ================= PDF VIEWER ================= */
-
-.viewer {
-
-    width: 100%;
+.viewer{
+    width:100%;
 
     height:
         calc(100vh - 250px);
 
-    min-height: 550px;
+    min-height:550px;
 
-    background:
-        #25252b;
+    background:#25252b;
 
-    position: relative;
+    position:relative;
 }
 
+.viewer iframe{
+    width:100%;
+    height:100%;
 
-.viewer iframe {
-
-    width: 100%;
-
-    height: 100%;
-
-    border: 0;
-
-    display: block;
-
+    border:0;
+    display:block;
 }
 
 
 /* ================= PLACEHOLDER ================= */
 
-.placeholder {
+.placeholder{
+    position:absolute;
+    inset:0;
 
-    position: absolute;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    inset: 0;
+    flex-direction:column;
 
-    display: flex;
+    text-align:center;
 
-    align-items: center;
-
-    justify-content: center;
-
-    flex-direction: column;
-
-    text-align: center;
-
-    background:
-        #111117;
+    background:#111117;
 }
 
+.placeholder-icon{
+    width:70px;
+    height:70px;
 
-.placeholder-icon {
+    display:grid;
+    place-items:center;
 
-    width: 70px;
-
-    height: 70px;
-
-    display: grid;
-
-    place-items: center;
-
-    border-radius: 50%;
+    border-radius:50%;
 
     background:
         rgba(118,87,255,.10);
 
-    color:
-        #a796ff;
+    color:#a796ff;
 
-    font-size: 28px;
+    font-size:28px;
 
-    margin-bottom: 15px;
+    margin-bottom:15px;
 }
 
-
-.placeholder h2 {
-
-    font-size: 17px;
-
-    margin-bottom: 6px;
+.placeholder h2{
+    font-size:17px;
+    margin-bottom:6px;
 }
 
+.placeholder p{
+    color:var(--muted);
+    font-size:11px;
 
-.placeholder p {
+    max-width:300px;
 
-    color: var(--muted);
-
-    font-size: 11px;
-
-    max-width: 300px;
-
-    line-height: 1.8;
+    line-height:1.8;
 }
 
 
 /* ================= INFO ================= */
 
-.info-card {
+.info-card{
+    margin-top:20px;
 
-    margin-top: 20px;
+    padding:20px;
 
-    padding: 20px;
-
-    border-radius: 18px;
+    border-radius:18px;
 
     border:
         1px solid var(--border);
 
+    background:var(--card);
+}
+
+.info-title{
+    font-size:15px;
+    font-weight:800;
+    margin-bottom:10px;
+}
+
+.info-text{
+    color:var(--muted);
+
+    font-size:12px;
+
+    line-height:2;
+}
+
+
+/* ================= ERROR ================= */
+
+.error{
+    display:none;
+
+    text-align:center;
+
+    padding:60px 20px;
+
+    border-radius:20px;
+
+    border:
+        1px solid
+        rgba(255,96,118,.15);
+
     background:
-        var(--card);
+        rgba(255,96,118,.04);
 }
 
-
-.info-title {
-
-    font-size: 15px;
-
-    font-weight: 800;
-
-    margin-bottom: 10px;
+.error-icon{
+    font-size:35px;
+    margin-bottom:10px;
 }
 
+.error h2{
+    font-size:18px;
+    margin-bottom:5px;
+}
 
-.info-text {
-
-    color: var(--muted);
-
-    font-size: 12px;
-
-    line-height: 2;
+.error p{
+    color:var(--muted);
+    font-size:11px;
 }
 
 
 /* ================= LOADING ================= */
 
-.loading {
+.loading{
+    position:fixed;
+    inset:0;
 
-    position: fixed;
+    z-index:999;
 
-    inset: 0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    z-index: 999;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: #06060a;
+    background:#06060a;
 }
 
+.loader{
+    width:45px;
+    height:45px;
 
-.loader {
-
-    width: 45px;
-
-    height: 45px;
-
-    border-radius: 50%;
+    border-radius:50%;
 
     border:
         3px solid
@@ -601,125 +524,52 @@ main {
         spin .8s linear infinite;
 }
 
-
-@keyframes spin {
-
-    to {
-        transform: rotate(360deg);
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
     }
-
-}
-
-
-/* ================= ERROR ================= */
-
-.error {
-
-    display: none;
-
-    text-align: center;
-
-    padding: 60px 20px;
-
-    border-radius: 20px;
-
-    border:
-        1px solid
-        rgba(255,96,118,.15);
-
-    background:
-        rgba(255,96,118,.04);
-}
-
-
-.error-icon {
-
-    font-size: 35px;
-
-    margin-bottom: 10px;
-}
-
-
-.error h2 {
-
-    font-size: 18px;
-
-    margin-bottom: 5px;
-}
-
-
-.error p {
-
-    color: var(--muted);
-
-    font-size: 11px;
 }
 
 
 /* ================= RESPONSIVE ================= */
 
-@media (max-width: 650px) {
+@media(max-width:650px){
 
-    header {
-
-        padding: 0 4%;
-
+    header{
+        padding:0 4%;
     }
 
-
-    .logo-text span {
-
-        display: none;
-
+    .logo-text span{
+        display:none;
     }
 
-
-    main {
-
-        width: 94%;
-
-        padding-top: 20px;
-
+    main{
+        width:94%;
+        padding-top:20px;
     }
 
-
-    .toolbar {
-
-        align-items: flex-start;
-
-        flex-direction: column;
-
+    .toolbar{
+        align-items:flex-start;
+        flex-direction:column;
     }
 
-
-    .toolbar-actions {
-
-        width: 100%;
-
+    .toolbar-actions{
+        width:100%;
     }
 
-
-    .tool-btn {
-
-        flex: 1;
-
+    .tool-btn{
+        flex:1;
     }
 
-
-    .viewer {
-
+    .viewer{
         height:
             calc(100vh - 310px);
 
-        min-height: 450px;
-
+        min-height:450px;
     }
 
-
-    .pdf-card {
-
-        border-radius: 14px;
-
+    .pdf-card{
+        border-radius:14px;
     }
 
 }
@@ -732,7 +582,7 @@ main {
 <body>
 
 
-<!-- LOADING -->
+<!-- ================= LOADING ================= -->
 
 <div
     class="loading"
@@ -744,7 +594,7 @@ main {
 </div>
 
 
-<!-- HEADER -->
+<!-- ================= HEADER ================= -->
 
 <header>
 
@@ -778,6 +628,8 @@ main {
 
 </header>
 
+
+<!-- ================= MAIN ================= -->
 
 <main>
 
@@ -822,8 +674,8 @@ main {
             لم يتم العثور على الملف
         </h2>
 
-        <p>
-            تأكد من أن رابط الملف صحيح.
+        <p id="errorText">
+            تأكد من أن الملف موجود في قاعدة البيانات.
         </p>
 
     </div>
@@ -836,11 +688,9 @@ main {
         id="pdfCard"
     >
 
-
         <!-- TOOLBAR -->
 
         <div class="toolbar">
-
 
             <div class="file-info">
 
@@ -887,14 +737,12 @@ main {
 
             </div>
 
-
         </div>
 
 
         <!-- VIEWER -->
 
         <div class="viewer">
-
 
             <div
                 class="placeholder"
@@ -922,9 +770,7 @@ main {
                 title="عرض ملف PDF"
             ></iframe>
 
-
         </div>
-
 
     </section>
 
@@ -941,7 +787,7 @@ main {
             class="info-text"
             id="infoText"
         >
-            لا يوجد وصف لهذا الملف.
+            جاري تحميل وصف الملف...
         </p>
 
     </section>
@@ -950,12 +796,23 @@ main {
 </main>
 
 
+<!-- ================= SUPABASE ================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="supabase.js"></script>
+
+
 <script>
 
 /*
 ============================================================
-    PDF PAGE
+    PDF PAGE - STUDENT
 ============================================================
+
+    هذه الصفحة ليست Admin.
+
+    البيانات تأتي من Supabase مباشرة.
 
     الرابط:
 
@@ -963,24 +820,13 @@ main {
 
     مثال:
 
-    pdf.html?id=123456
+    pdf.html?id=123
 
-    قاعدة البيانات لاحقًا:
-
-    files
-       ↓
-    id
-    title
-    description
-    file_url
-    course_id
-    lesson_id
-    file_type
 ============================================================
 */
 
 
-/* ================= PARAMS ================= */
+/* ================= URL ================= */
 
 const params =
     new URLSearchParams(
@@ -1001,6 +847,11 @@ const loading =
 const errorBox =
     document.getElementById(
         "errorBox"
+    );
+
+const errorText =
+    document.getElementById(
+        "errorText"
     );
 
 const pdfCard =
@@ -1049,58 +900,71 @@ const downloadBtn =
     );
 
 
-/* ================= DEMO DATA ================= */
+/* ================= ESCAPE ================= */
 
-/*
-    بيانات مؤقتة للواجهة فقط.
+function escapeHTML(value){
 
-    بعد ربط Supabase يتم استبدالها
-    بالبيانات القادمة من جدول files.
-*/
+    if(
+        value === null ||
+        value === undefined
+    ){
+        return "";
+    }
 
-const demoPDF = {
-
-    id: "demo",
-
-    title:
-        "ملخص الدرس الأول",
-
-    description:
-        "ملف PDF يحتوي على أهم النقاط والقوانين التي تم شرحها في الدرس.",
-
-    file_url:
-        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-
-    file_name:
-        "ملخص الدرس الأول.pdf",
-
-    file_size:
-        "ملف PDF",
-
-    course_id:
-        "course-demo",
-
-    lesson_id:
-        "lesson-demo"
-
-};
+    return String(value)
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+}
 
 
-/* ================= LOAD ================= */
+/* ================= LOAD PDF ================= */
 
-async function loadPDF() {
+async function loadPDF(){
 
     loading.style.display =
         "flex";
 
 
-    try {
+    try{
 
+        /* ================= CHECK ID ================= */
 
-        if (!pdfId) {
+        if(!pdfId){
 
             throw new Error(
-                "Missing PDF ID"
+                "لم يتم إرسال معرف الملف."
+            );
+
+        }
+
+
+        /* ================= CHECK SUPABASE ================= */
+
+        if(
+            typeof supabase ===
+            "undefined"
+        ){
+
+            throw new Error(
+                "ملف supabase.js غير متصل."
             );
 
         }
@@ -1108,102 +972,202 @@ async function loadPDF() {
 
         /*
         ========================================================
-            SUPABASE
+            GET PDF FROM DATABASE
 
-            لاحقًا:
+            جدول:
 
-            const { data, error } =
-                await supabase
-                    .from("files")
-                    .select("*")
-                    .eq("id", pdfId)
-                    .single();
+            files
+
+            الأعمدة المطلوبة:
+
+            id
+            title
+            description
+            file_url
+            file_name
+            file_size
+            course_id
+            lesson_id
+            file_type
 
         ========================================================
         */
 
+        const {
+            data,
+            error
+        } = await supabase
 
-        await new Promise(
-            resolve =>
-                setTimeout(
-                    resolve,
-                    500
-                )
-        );
+            .from("files")
+
+            .select("*")
+
+            .eq(
+                "id",
+                pdfId
+            )
+
+            .single();
 
 
-        const data =
-            demoPDF;
+        /* ================= DATABASE ERROR ================= */
+
+        if(error){
+
+            console.error(
+                "Supabase Error:",
+                error
+            );
+
+            throw new Error(
+                error.message
+            );
+
+        }
 
 
-        /* ================= DATA ================= */
+        /* ================= NO FILE ================= */
+
+        if(!data){
+
+            throw new Error(
+                "الملف غير موجود."
+            );
+
+        }
+
+
+        /* ================= FILE URL ================= */
+
+        if(
+            !data.file_url
+        ){
+
+            throw new Error(
+                "رابط ملف PDF غير موجود."
+            );
+
+        }
+
+
+        /* ================= TITLE ================= */
 
         pdfTitle.textContent =
-            data.title;
+            data.title ||
+            "ملف PDF";
 
+
+        /* ================= DESCRIPTION ================= */
 
         pdfDescription.textContent =
             data.description ||
             "ملف PDF تعليمي";
 
 
+        /* ================= FILE NAME ================= */
+
         fileName.textContent =
             data.file_name ||
-            data.title;
+            data.title ||
+            "ملف PDF";
 
+
+        /* ================= FILE META ================= */
 
         fileMeta.textContent =
             data.file_size ||
             "ملف PDF";
 
 
+        /* ================= INFO ================= */
+
         infoText.textContent =
             data.description ||
             "لا يوجد وصف لهذا الملف.";
 
 
-        /* ================= VIEW ================= */
+        /* ================= PDF VIEWER ================= */
 
         pdfViewer.src =
             data.file_url;
 
 
+        pdfViewer.onload =
+            function(){
+
+                placeholder.style.display =
+                    "none";
+
+                pdfViewer.style.display =
+                    "block";
+
+            };
+
+
+        /*
+            نظهر الـ iframe مباشرة
+            حتى لو المتصفح لم يطلق onload
+        */
+
         pdfViewer.style.display =
             "block";
-
-
-        placeholder.style.display =
-            "none";
 
 
         /* ================= DOWNLOAD ================= */
 
         downloadBtn.onclick =
-            function () {
+            function(){
 
-                window.open(
-                    data.file_url,
-                    "_blank"
+                const link =
+                    document.createElement(
+                        "a"
+                    );
+
+                link.href =
+                    data.file_url;
+
+                link.target =
+                    "_blank";
+
+                link.rel =
+                    "noopener noreferrer";
+
+                document.body.appendChild(
+                    link
                 );
+
+                link.click();
+
+                link.remove();
 
             };
 
 
     }
 
-    catch (error) {
+    catch(error){
 
-        console.error(error);
+        console.error(
+            "PDF ERROR:",
+            error
+        );
+
 
         pdfCard.style.display =
             "none";
 
+
         errorBox.style.display =
             "block";
 
+
+        errorText.textContent =
+            error.message ||
+            "حدث خطأ أثناء تحميل الملف.";
+
     }
 
-    finally {
+    finally{
 
         loading.style.display =
             "none";
@@ -1215,7 +1179,7 @@ async function loadPDF() {
 
 /* ================= BACK ================= */
 
-function goBack() {
+function goBack(){
 
     history.back();
 
@@ -1227,9 +1191,6 @@ function goBack() {
 loadPDF();
 
 </script>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase.js"></script>
 
 </body>
 
