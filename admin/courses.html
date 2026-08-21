@@ -2,23 +2,16 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>إدارة الكورسات | الخوارزمي</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet">
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+rel="stylesheet">
 
 <style>
 
@@ -40,12 +33,12 @@
     --primary2:#5137d9;
     --green:#35d39a;
     --red:#ff6078;
-    --blue:#4da3ff;
 }
 
 body{
     min-height:100vh;
     color:var(--text);
+
     background:
         radial-gradient(
             circle at 10% 0%,
@@ -60,19 +53,24 @@ body{
         var(--bg);
 }
 
-
 /* ================= SIDEBAR ================= */
 
 .sidebar{
     position:fixed;
     right:0;
     top:0;
+
     width:255px;
     height:100vh;
+
     padding:20px 15px;
+
     background:rgba(9,9,14,.97);
+
     border-left:1px solid var(--border);
+
     z-index:1000;
+
     transition:.3s;
 }
 
@@ -80,25 +78,36 @@ body{
     display:flex;
     align-items:center;
     gap:10px;
+
     padding:8px 10px 25px;
+
     border-bottom:1px solid var(--border);
+
     margin-bottom:18px;
 }
 
 .logo{
     width:44px;
     height:44px;
+
     display:grid;
     place-items:center;
+
     border-radius:14px;
-    background:linear-gradient(
-        135deg,
-        var(--primary),
-        var(--primary2)
-    );
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary2)
+        );
+
     font-size:20px;
     font-weight:900;
-    box-shadow:0 0 25px rgba(118,87,255,.25);
+
+    box-shadow:
+        0 0 25px
+        rgba(118,87,255,.25);
 }
 
 .brand strong{
@@ -128,13 +137,20 @@ body{
     display:flex;
     align-items:center;
     gap:10px;
+
     height:44px;
+
     padding:0 12px;
+
     color:#b7b7c2;
+
     text-decoration:none;
+
     border-radius:11px;
+
     font-size:10px;
     font-weight:700;
+
     transition:.2s;
 }
 
@@ -145,21 +161,30 @@ body{
 
 .menu a.active{
     color:#fff;
-    background:rgba(118,87,255,.15);
-    border:1px solid rgba(118,87,255,.15);
+
+    background:
+        rgba(118,87,255,.15);
+
+    border:1px solid
+        rgba(118,87,255,.15);
 }
 
 .menu-icon{
     width:27px;
     height:27px;
+
     display:grid;
     place-items:center;
+
     border-radius:8px;
-    background:rgba(255,255,255,.04);
+
+    background:
+        rgba(255,255,255,.04);
 }
 
 .logout{
     position:absolute;
+
     bottom:20px;
     right:15px;
     left:15px;
@@ -168,21 +193,30 @@ body{
 .logout button{
     width:100%;
     height:43px;
-    border:1px solid rgba(255,96,120,.12);
+
+    border:1px solid
+        rgba(255,96,120,.12);
+
     border-radius:11px;
+
     color:#ff8496;
-    background:rgba(255,96,120,.05);
+
+    background:
+        rgba(255,96,120,.05);
+
     cursor:pointer;
+
     font-size:10px;
     font-weight:800;
 }
-
 
 /* ================= MAIN ================= */
 
 .main{
     margin-right:255px;
+
     min-height:100vh;
+
     padding:25px 30px 50px;
 }
 
@@ -190,37 +224,51 @@ body{
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     margin-bottom:25px;
 }
 
 .mobile-menu{
     display:none;
+
     width:42px;
     height:42px;
+
     border:1px solid var(--border);
-    background:rgba(255,255,255,.04);
+
+    background:
+        rgba(255,255,255,.04);
+
     color:#fff;
+
     border-radius:10px;
+
     cursor:pointer;
 }
 
 .admin-box{
     display:flex;
     align-items:center;
+
     gap:10px;
 }
 
 .admin-avatar{
     width:42px;
     height:42px;
+
     display:grid;
     place-items:center;
+
     border-radius:50%;
-    background:linear-gradient(
-        135deg,
-        var(--primary),
-        #a18fff
-    );
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #a18fff
+        );
+
     font-weight:900;
 }
 
@@ -235,14 +283,15 @@ body{
     font-size:8px;
 }
 
-
 /* ================= HEADER ================= */
 
 .page-header{
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     gap:15px;
+
     margin-bottom:20px;
 }
 
@@ -259,35 +308,52 @@ body{
 
 .add-btn{
     height:45px;
+
     padding:0 18px;
+
     border:0;
+
     border-radius:12px;
+
     color:#fff;
-    background:linear-gradient(
-        135deg,
-        var(--primary),
-        var(--primary2)
-    );
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary2)
+        );
+
     cursor:pointer;
+
     font-size:9px;
     font-weight:900;
-    box-shadow:0 10px 30px rgba(118,87,255,.18);
-}
 
+    box-shadow:
+        0 10px 30px
+        rgba(118,87,255,.18);
+}
 
 /* ================= STATS ================= */
 
 .stats{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:13px;
+
     margin-bottom:18px;
 }
 
 .stat{
     padding:17px;
+
     border-radius:16px;
+
     background:var(--card);
+
     border:1px solid var(--border);
 }
 
@@ -295,6 +361,7 @@ body{
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     margin-bottom:8px;
 }
 
@@ -306,10 +373,14 @@ body{
 .stat-icon{
     width:35px;
     height:35px;
+
     display:grid;
     place-items:center;
+
     border-radius:10px;
-    background:rgba(118,87,255,.09);
+
+    background:
+        rgba(118,87,255,.09);
 }
 
 .stat h2{
@@ -317,23 +388,28 @@ body{
     font-weight:900;
 }
 
-
 /* ================= CARD ================= */
 
 .card{
     padding:18px;
+
     border-radius:18px;
+
     background:var(--card);
+
     border:1px solid var(--border);
 }
-
 
 /* ================= FILTERS ================= */
 
 .filters{
     display:grid;
-    grid-template-columns:1fr 190px;
+
+    grid-template-columns:
+        1fr 190px;
+
     gap:10px;
+
     margin-bottom:18px;
 }
 
@@ -344,32 +420,61 @@ body{
 .search input{
     width:100%;
     height:46px;
-    padding:0 42px 0 13px;
+
+    padding:
+        0
+        42px
+        0
+        13px;
+
     border:1px solid var(--border);
+
     border-radius:11px;
+
     outline:none;
+
     color:#fff;
-    background:rgba(255,255,255,.035);
+
+    background:
+        rgba(255,255,255,.035);
+
     font-size:10px;
+}
+
+.search input:focus,
+select:focus{
+    border-color:
+        rgba(118,87,255,.5);
 }
 
 .search span{
     position:absolute;
+
     right:13px;
     top:50%;
-    transform:translateY(-50%);
+
+    transform:
+        translateY(-50%);
+
     color:#777784;
 }
 
 select{
     width:100%;
     height:46px;
+
     padding:0 12px;
+
     border:1px solid var(--border);
+
     border-radius:11px;
+
     outline:none;
+
     color:#fff;
+
     background:#15151e;
+
     font-size:10px;
 }
 
@@ -378,60 +483,80 @@ select option{
     background:#15151e;
 }
 
-
-/* ================= COURSES GRID ================= */
+/* ================= COURSES ================= */
 
 .courses{
     display:grid;
+
     grid-template-columns:
         repeat(3,minmax(0,1fr));
+
     gap:15px;
 }
 
 .course{
     overflow:hidden;
+
     border-radius:16px;
+
     background:var(--card2);
+
     border:1px solid var(--border);
+
     transition:.25s;
 }
 
 .course:hover{
     transform:translateY(-3px);
-    border-color:rgba(118,87,255,.25);
+
+    border-color:
+        rgba(118,87,255,.25);
 }
 
 .course-image{
     position:relative;
+
     height:165px;
+
     background:#1a1a23;
+
     overflow:hidden;
 }
 
 .course-image img{
     width:100%;
     height:100%;
+
     object-fit:cover;
+
     display:block;
 }
 
 .no-image{
     width:100%;
     height:100%;
+
     display:grid;
     place-items:center;
+
     color:#777784;
+
     font-size:35px;
 }
 
 .status{
     position:absolute;
+
     top:10px;
     right:10px;
+
     padding:5px 9px;
+
     border-radius:7px;
+
     font-size:7px;
     font-weight:800;
+
     backdrop-filter:blur(8px);
 }
 
@@ -451,34 +576,50 @@ select option{
 
 .grade{
     display:inline-block;
+
     padding:4px 8px;
+
     border-radius:6px;
+
     color:#b9adff;
-    background:rgba(118,87,255,.09);
+
+    background:
+        rgba(118,87,255,.09);
+
     font-size:7px;
     font-weight:800;
+
     margin-bottom:8px;
 }
 
 .course-title{
     font-size:13px;
     font-weight:900;
+
     margin-bottom:6px;
 }
 
 .course-description{
     color:var(--muted);
+
     font-size:8px;
+
     line-height:1.8;
+
     min-height:30px;
 }
 
 .course-info{
     display:flex;
-    gap:12px;
+    gap:15px;
+
     margin-top:12px;
+
     padding-top:10px;
-    border-top:1px solid rgba(255,255,255,.05);
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.05);
 }
 
 .info-item{
@@ -493,69 +634,96 @@ select option{
 
 .course-actions{
     display:grid;
-    grid-template-columns:1fr 1fr 1fr;
+
+    grid-template-columns:
+        1fr 1fr 1fr;
+
     gap:5px;
+
     margin-top:12px;
 }
 
 .course-actions button{
     height:34px;
+
     border:1px solid var(--border);
+
     border-radius:8px;
+
     cursor:pointer;
+
     color:#ccc;
-    background:rgba(255,255,255,.035);
+
+    background:
+        rgba(255,255,255,.035);
+
     font-size:8px;
     font-weight:800;
 }
 
 .course-actions button:hover{
-    background:rgba(118,87,255,.09);
+    background:
+        rgba(118,87,255,.09);
+
     color:#fff;
 }
 
 .course-actions .delete:hover{
     color:#ff8092;
-    background:rgba(255,96,120,.08);
-}
 
+    background:
+        rgba(255,96,120,.08);
+}
 
 /* ================= EMPTY ================= */
 
 .empty{
     grid-column:1/-1;
+
     padding:70px 20px;
+
     text-align:center;
+
     color:#777784;
 }
 
 .empty-icon{
     font-size:42px;
+
     margin-bottom:10px;
 }
 
 .empty h3{
     color:#aaaab7;
+
     font-size:13px;
 }
 
 .empty p{
     font-size:8px;
+
     margin-top:4px;
 }
-
 
 /* ================= MODAL ================= */
 
 .modal{
     position:fixed;
+
     inset:0;
+
     z-index:2000;
+
     display:none;
+
     align-items:center;
     justify-content:center;
+
     padding:20px;
-    background:rgba(0,0,0,.75);
+
+    background:
+        rgba(0,0,0,.75);
+
     backdrop-filter:blur(8px);
 }
 
@@ -565,18 +733,27 @@ select option{
 
 .modal-box{
     width:min(550px,100%);
+
     max-height:90vh;
+
     overflow-y:auto;
+
     padding:22px;
+
     border-radius:20px;
+
     background:#111118;
+
     border:1px solid var(--border);
 }
 
 .modal-head{
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     margin-bottom:15px;
 }
 
@@ -587,18 +764,27 @@ select option{
 .close{
     width:32px;
     height:32px;
+
     border:0;
+
     border-radius:8px;
+
     color:#aaa;
-    background:rgba(255,255,255,.05);
+
+    background:
+        rgba(255,255,255,.05);
+
     cursor:pointer;
 }
 
 .preview-image{
     width:100%;
     height:210px;
+
     object-fit:cover;
+
     border-radius:12px;
+
     margin-bottom:15px;
 }
 
@@ -609,11 +795,17 @@ select option{
 
 .detail{
     display:flex;
+
     justify-content:space-between;
+
     gap:10px;
+
     padding:10px;
+
     border-radius:9px;
-    background:rgba(255,255,255,.025);
+
+    background:
+        rgba(255,255,255,.025);
 }
 
 .detail span{
@@ -626,51 +818,79 @@ select option{
     text-align:left;
 }
 
-
 /* ================= LOADING ================= */
 
 .loading{
     position:fixed;
+
     inset:0;
+
     z-index:5000;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     background:#050507;
 }
 
 .spinner{
     width:45px;
     height:45px;
-    border:3px solid rgba(118,87,255,.15);
-    border-top-color:var(--primary);
+
+    border:3px solid
+        rgba(118,87,255,.15);
+
+    border-top-color:
+        var(--primary);
+
     border-radius:50%;
-    animation:spin .8s linear infinite;
+
+    animation:
+        spin .8s linear infinite;
 }
 
 @keyframes spin{
+
     to{
         transform:rotate(360deg);
     }
-}
 
+}
 
 /* ================= TOAST ================= */
 
 .toast{
     position:fixed;
+
     left:20px;
     bottom:20px;
+
     z-index:6000;
+
+    max-width:400px;
+
     padding:12px 16px;
+
     border-radius:11px;
+
     background:#191922;
+
     border:1px solid var(--border);
-    box-shadow:0 15px 40px rgba(0,0,0,.4);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.4);
+
     font-size:9px;
+
     transform:translateY(30px);
+
     opacity:0;
+
     pointer-events:none;
+
     transition:.3s;
 }
 
@@ -680,16 +900,26 @@ select option{
 }
 
 .toast.error{
-    border-color:rgba(255,96,120,.25);
+    color:#ff9aaa;
+
+    border-color:
+        rgba(255,96,120,.25);
 }
 
+.toast.success{
+    color:#7be6bd;
+
+    border-color:
+        rgba(53,211,154,.25);
+}
 
 /* ================= RESPONSIVE ================= */
 
 @media(max-width:1100px){
 
     .courses{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
 }
@@ -697,16 +927,22 @@ select option{
 @media(max-width:800px){
 
     .sidebar{
-        transform:translateX(100%);
+        transform:
+            translateX(100%);
     }
 
     .sidebar.open{
-        transform:translateX(0);
+        transform:
+            translateX(0);
     }
 
     .main{
         margin-right:0;
-        padding:18px 15px 40px;
+
+        padding:
+            18px
+            15px
+            40px;
     }
 
     .mobile-menu{
@@ -722,8 +958,13 @@ select option{
         flex-direction:column;
     }
 
+    .add-btn{
+        width:100%;
+    }
+
     .stats{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:
+            1fr 1fr;
     }
 
     .filters{
@@ -743,7 +984,7 @@ select option{
 <body>
 
 
-<!-- SIDEBAR -->
+<!-- ================= SIDEBAR ================= -->
 
 <aside class="sidebar" id="sidebar">
 
@@ -827,7 +1068,7 @@ select option{
 </aside>
 
 
-<!-- MAIN -->
+<!-- ================= MAIN ================= -->
 
 <main class="main">
 
@@ -842,6 +1083,7 @@ select option{
         </button>
 
         <div></div>
+
 
         <div class="admin-box">
 
@@ -896,6 +1138,7 @@ select option{
     <!-- STATS -->
 
     <section class="stats">
+
 
         <div class="stat">
 
@@ -1044,9 +1287,12 @@ select option{
 </main>
 
 
-<!-- VIEW MODAL -->
+<!-- ================= MODAL ================= -->
 
-<div class="modal" id="courseModal">
+<div
+    class="modal"
+    id="courseModal"
+>
 
     <div class="modal-box">
 
@@ -1072,77 +1318,50 @@ select option{
 </div>
 
 
-<!-- LOADING -->
+<!-- ================= LOADING ================= -->
 
-<div class="loading" id="loading">
+<div
+    class="loading"
+    id="loading"
+>
 
     <div class="spinner"></div>
 
 </div>
 
 
-<!-- TOAST -->
+<!-- ================= TOAST ================= -->
 
-<div class="toast" id="toast"></div>
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
+<!-- مهم: ملف Supabase يكون قبل كود الصفحة -->
+
+<script src="../supabase.js"></script>
 
 
 <script>
 
-
 /*
 =========================================================
- SUPABASE
+  GLOBAL SUPABASE CLIENT
 =========================================================
 
-ضع بيانات مشروعك من:
+المفروض أن ../supabase.js يحتوي على:
 
-Supabase
-→ Project Settings
-→ API
+window.supabaseClient
 
-❌ لا تضع service_role هنا.
+ولا يحتوي على service_role.
 */
 
-const SUPABASE_URL =
-    "ضع_رابط_مشروعك_هنا";
-
-const SUPABASE_KEY =
-    "ضع_publishable_او_anon_key_هنا";
-
-
-let supabaseClient = null;
-
-
-if(
-    SUPABASE_URL.startsWith("http") &&
-    !SUPABASE_URL.includes("ضع_")
-){
-
-    supabaseClient =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
-
-}
-
-
-/*
-=========================================================
- VARIABLES
-=========================================================
-*/
 
 let allCourses = [];
 
 let filteredCourses = [];
 
-
-/*
-=========================================================
- ELEMENTS
-=========================================================
-*/
 
 const container =
     document.getElementById(
@@ -1198,6 +1417,22 @@ function toggleSidebar(){
 
 /*
 =========================================================
+ LOADING
+=========================================================
+*/
+
+function setLoading(value){
+
+    loading.style.display =
+        value
+        ? "flex"
+        : "none";
+
+}
+
+
+/*
+=========================================================
  TOAST
 =========================================================
 */
@@ -1224,7 +1459,7 @@ function showToast(
             );
 
         },
-        3000
+        3500
     );
 
 }
@@ -1232,18 +1467,26 @@ function showToast(
 
 /*
 =========================================================
- LOADING
+ CHECK SUPABASE
 =========================================================
 */
 
-function setLoading(
-    value
-){
+function getSupabase(){
 
-    loading.style.display =
-        value
-        ? "flex"
-        : "none";
+    if(
+        !window.supabaseClient
+    ){
+
+        showToast(
+            "ملف supabase.js غير متصل أو بيانات Supabase غير صحيحة.",
+            "error"
+        );
+
+        return null;
+    }
+
+
+    return window.supabaseClient;
 
 }
 
@@ -1256,14 +1499,11 @@ function setLoading(
 
 async function checkAdmin(){
 
-    if(!supabaseClient){
+    const client =
+        getSupabase();
 
-        setLoading(false);
 
-        showToast(
-            "ضع بيانات Supabase أولاً.",
-            "error"
-        );
+    if(!client){
 
         return false;
 
@@ -1274,13 +1514,24 @@ async function checkAdmin(){
         data,
         error
     } =
-        await supabaseClient
+        await client
             .auth
             .getSession();
 
 
+    if(error){
+
+        console.error(error);
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
     if(
-        error ||
         !data ||
         !data.session
     ){
@@ -1297,16 +1548,11 @@ async function checkAdmin(){
         data.session.user;
 
 
-    /*
-        المفروض جدول profiles
-        يحتوي role = admin
-    */
-
     const {
-        data: profile,
-        error: profileError
+        data:profile,
+        error:profileError
     } =
-        await supabaseClient
+        await client
 
             .from("profiles")
 
@@ -1322,13 +1568,29 @@ async function checkAdmin(){
             .maybeSingle();
 
 
+    if(profileError){
+
+        console.error(
+            "Profile error:",
+            profileError
+        );
+
+        showToast(
+            "تعذر قراءة بيانات الأدمن من profiles.",
+            "error"
+        );
+
+        return false;
+
+    }
+
+
     if(
-        profileError ||
         !profile ||
         profile.role !== "admin"
     ){
 
-        await supabaseClient
+        await client
             .auth
             .signOut();
 
@@ -1341,7 +1603,9 @@ async function checkAdmin(){
 
 
     document
-        .getElementById("adminName")
+        .getElementById(
+            "adminName"
+        )
         .textContent =
             profile.full_name ||
             user.email ||
@@ -1361,7 +1625,11 @@ async function checkAdmin(){
 
 async function loadCourses(){
 
-    if(!supabaseClient)
+    const client =
+        getSupabase();
+
+
+    if(!client)
         return;
 
 
@@ -1370,16 +1638,27 @@ async function loadCourses(){
 
     try{
 
+        /*
+        نقرأ الكورسات فقط.
+        */
 
         const {
             data,
             error
         } =
-            await supabaseClient
+            await client
 
                 .from("courses")
 
-                .select("*")
+                .select(`
+                    id,
+                    title,
+                    description,
+                    grade,
+                    image_url,
+                    published,
+                    created_at
+                `)
 
                 .order(
                     "created_at",
@@ -1389,15 +1668,19 @@ async function loadCourses(){
                 );
 
 
-        if(error){
-
+        if(error)
             throw error;
-
-        }
 
 
         allCourses =
             data || [];
+
+
+        /*
+        حساب عدد الدروس لكل كورس
+        */
+
+        await loadLessonsCounts();
 
 
         updateStats();
@@ -1407,7 +1690,10 @@ async function loadCourses(){
 
     }catch(error){
 
-        console.error(error);
+        console.error(
+            "LOAD COURSES:",
+            error
+        );
 
 
         container.innerHTML = `
@@ -1424,7 +1710,8 @@ async function loadCourses(){
 
                 <p>
                     ${escapeHTML(
-                        error.message
+                        error.message ||
+                        "حدث خطأ غير معروف"
                     )}
                 </p>
 
@@ -1432,12 +1719,109 @@ async function loadCourses(){
 
         `;
 
-
     }finally{
 
         setLoading(false);
 
     }
+
+}
+
+
+/*
+=========================================================
+ LESSON COUNTS
+=========================================================
+*/
+
+async function loadLessonsCounts(){
+
+    const client =
+        getSupabase();
+
+
+    if(!client)
+        return;
+
+
+    if(!allCourses.length)
+        return;
+
+
+    /*
+    نحاول قراءة كل الدروس مرة واحدة.
+    */
+
+    const {
+        data,
+        error
+    } =
+        await client
+
+            .from("lessons")
+
+            .select(
+                "id,course_id"
+            );
+
+
+    if(error){
+
+        /*
+        لو جدول lessons موجود لكن RLS مانع القراءة،
+        لا نوقف الصفحة بالكامل.
+        */
+
+        console.warn(
+            "LESSONS COUNT ERROR:",
+            error
+        );
+
+        allCourses =
+            allCourses.map(
+                course => ({
+                    ...course,
+                    lessons_count:0
+                })
+            );
+
+        return;
+
+    }
+
+
+    const counts = {};
+
+
+    (data || []).forEach(
+        lesson => {
+
+            const id =
+                String(
+                    lesson.course_id
+                );
+
+
+            counts[id] =
+                (counts[id] || 0) + 1;
+
+        }
+    );
+
+
+    allCourses =
+        allCourses.map(
+            course => ({
+
+                ...course,
+
+                lessons_count:
+                    counts[
+                        String(course.id)
+                    ] || 0
+
+            })
+        );
 
 }
 
@@ -1501,7 +1885,6 @@ function applyFilters(){
         allCourses.filter(
             course => {
 
-
                 const title =
                     String(
                         course.title || ""
@@ -1525,7 +1908,7 @@ function applyFilters(){
                     course.grade === grade;
 
 
-                return(
+                return (
                     matchesSearch &&
                     matchesGrade
                 );
@@ -1568,7 +1951,7 @@ function renderCourses(){
                 </div>
 
                 <h3>
-                    مفيش كورسات
+                    لا توجد كورسات
                 </h3>
 
                 <p>
@@ -1601,9 +1984,7 @@ function renderCourses(){
 =========================================================
 */
 
-function courseCard(
-    course
-){
+function courseCard(course){
 
     const image =
         course.image_url;
@@ -1628,10 +2009,13 @@ function courseCard(
         "غير محدد";
 
 
+    const id =
+        String(course.id);
+
+
     return `
 
         <article class="course">
-
 
             <div class="course-image">
 
@@ -1644,6 +2028,7 @@ function courseCard(
                     <img
                         src="${escapeAttribute(image)}"
                         alt="${escapeAttribute(title)}"
+                        loading="lazy"
                     >
                     `
 
@@ -1673,7 +2058,6 @@ function courseCard(
 
                 </div>
 
-
             </div>
 
 
@@ -1681,25 +2065,17 @@ function courseCard(
 
 
                 <div class="grade">
-
                     ${escapeHTML(grade)}
-
                 </div>
 
 
                 <h2 class="course-title">
-
                     ${escapeHTML(title)}
-
                 </h2>
 
 
                 <p class="course-description">
-
-                    ${escapeHTML(
-                        description
-                    )}
-
+                    ${escapeHTML(description)}
                 </p>
 
 
@@ -1707,25 +2083,13 @@ function courseCard(
 
                     <div class="info-item">
 
-                        الدروس
+                        الدروس:
 
                         <strong>
-                            ${course.lessons_count ?? 0}
+                            ${course.lessons_count || 0}
                         </strong>
 
                     </div>
-
-
-                    <div class="info-item">
-
-                        الطلاب
-
-                        <strong>
-                            ${course.students_count ?? 0}
-                        </strong>
-
-                    </div>
-
 
                 </div>
 
@@ -1734,14 +2098,14 @@ function courseCard(
 
 
                     <button
-                        onclick="viewCourse('${escapeAttribute(course.id)}')"
+                        onclick="viewCourse('${escapeAttribute(id)}')"
                     >
                         👁 عرض
                     </button>
 
 
                     <button
-                        onclick="editCourse('${escapeAttribute(course.id)}')"
+                        onclick="editCourse('${escapeAttribute(id)}')"
                     >
                         ✏️ تعديل
                     </button>
@@ -1749,7 +2113,7 @@ function courseCard(
 
                     <button
                         class="delete"
-                        onclick="deleteCourse('${escapeAttribute(course.id)}')"
+                        onclick="deleteCourse('${escapeAttribute(id)}')"
                     >
                         🗑 حذف
                     </button>
@@ -1759,7 +2123,6 @@ function courseCard(
 
 
             </div>
-
 
         </article>
 
@@ -1774,9 +2137,7 @@ function courseCard(
 =========================================================
 */
 
-function viewCourse(
-    id
-){
+function viewCourse(id){
 
     const course =
         allCourses.find(
@@ -1788,11 +2149,6 @@ function viewCourse(
 
     if(!course)
         return;
-
-
-    const title =
-        course.title ||
-        "بدون اسم";
 
 
     details.innerHTML = `
@@ -1826,7 +2182,10 @@ function viewCourse(
                 </span>
 
                 <strong>
-                    ${escapeHTML(title)}
+                    ${escapeHTML(
+                        course.title ||
+                        "—"
+                    )}
                 </strong>
 
             </div>
@@ -1871,7 +2230,7 @@ function viewCourse(
                 </span>
 
                 <strong>
-                    ${course.lessons_count ?? 0}
+                    ${course.lessons_count || 0}
                 </strong>
 
             </div>
@@ -1938,7 +2297,7 @@ function closeModal(){
 
 modal.addEventListener(
     "click",
-    event => {
+    function(event){
 
         if(
             event.target === modal
@@ -1954,7 +2313,7 @@ modal.addEventListener(
 
 /*
 =========================================================
- ADD COURSE
+ ADD
 =========================================================
 */
 
@@ -1968,13 +2327,11 @@ function goAddCourse(){
 
 /*
 =========================================================
- EDIT COURSE
+ EDIT
 =========================================================
 */
 
-function editCourse(
-    id
-){
+function editCourse(id){
 
     window.location.href =
         "add-course.html?id=" +
@@ -1985,13 +2342,19 @@ function editCourse(
 
 /*
 =========================================================
- DELETE COURSE
+ DELETE
 =========================================================
 */
 
-async function deleteCourse(
-    id
-){
+async function deleteCourse(id){
+
+    const client =
+        getSupabase();
+
+
+    if(!client)
+        return;
+
 
     const course =
         allCourses.find(
@@ -2012,7 +2375,7 @@ async function deleteCourse(
 
     const confirmed =
         confirm(
-            `هل أنت متأكد من حذف "${title}"؟\n\nسيتم حذف سجل الكورس من قاعدة البيانات.`
+            `هل أنت متأكد من حذف "${title}"؟\n\nسيتم حذف الكورس من قاعدة البيانات.`
         );
 
 
@@ -2025,11 +2388,14 @@ async function deleteCourse(
 
     try{
 
+        /*
+        نحذف الكورس.
+        */
 
         const {
             error
         } =
-            await supabaseClient
+            await client
 
                 .from("courses")
 
@@ -2041,15 +2407,13 @@ async function deleteCourse(
                 );
 
 
-        if(error){
-
+        if(error)
             throw error;
-
-        }
 
 
         showToast(
-            "تم حذف الكورس بنجاح."
+            "تم حذف الكورس بنجاح ✅",
+            "success"
         );
 
 
@@ -2058,15 +2422,22 @@ async function deleteCourse(
 
     }catch(error){
 
-        console.error(error);
+        console.error(
+            "DELETE COURSE:",
+            error
+        );
 
+
+        /*
+        لو الكورس مرتبط بدروس أو بيانات أخرى
+        قد يمنع Supabase الحذف بسبب Foreign Key.
+        */
 
         showToast(
             error.message ||
             "تعذر حذف الكورس.",
             "error"
         );
-
 
     }finally{
 
@@ -2097,13 +2468,11 @@ gradeFilter.addEventListener(
 
 /*
 =========================================================
- HELPERS
+ DATE
 =========================================================
 */
 
-function formatDate(
-    date
-){
+function formatDate(date){
 
     if(!date)
         return "—";
@@ -2131,9 +2500,13 @@ function formatDate(
 }
 
 
-function escapeHTML(
-    value
-){
+/*
+=========================================================
+ SECURITY HELPERS
+=========================================================
+*/
+
+function escapeHTML(value){
 
     return String(
         value ?? ""
@@ -2162,13 +2535,9 @@ function escapeHTML(
 }
 
 
-function escapeAttribute(
-    value
-){
+function escapeAttribute(value){
 
-    return escapeHTML(
-        value
-    );
+    return escapeHTML(value);
 
 }
 
@@ -2181,11 +2550,13 @@ function escapeAttribute(
 
 async function logout(){
 
-    if(
-        supabaseClient
-    ){
+    const client =
+        getSupabase();
 
-        await supabaseClient
+
+    if(client){
+
+        await client
             .auth
             .signOut();
 
@@ -2206,15 +2577,37 @@ async function logout(){
 
 async function init(){
 
-    const isAdmin =
-        await checkAdmin();
+    setLoading(true);
 
 
-    if(!isAdmin)
-        return;
+    try{
+
+        const isAdmin =
+            await checkAdmin();
 
 
-    await loadCourses();
+        if(!isAdmin)
+            return;
+
+
+        await loadCourses();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        showToast(
+            error.message ||
+            "حدث خطأ أثناء تشغيل الصفحة.",
+            "error"
+        );
+
+    }finally{
+
+        setLoading(false);
+
+    }
 
 }
 
@@ -2223,8 +2616,5 @@ init();
 
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="../supabase.js"></script>
-
 </body>
-</html>
+      </html>
