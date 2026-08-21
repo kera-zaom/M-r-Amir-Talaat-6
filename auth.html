@@ -422,6 +422,7 @@ body{
     position:absolute;
 
     right:14px;
+
     top:50%;
 
     transform:translateY(-50%);
@@ -484,6 +485,7 @@ select option{
     position:absolute;
 
     left:13px;
+
     top:50%;
 
     transform:translateY(-50%);
@@ -1294,9 +1296,94 @@ loginForm.addEventListener(
             }
 
 
+            /* =========================
+               GET USER ROLE
+            ========================= */
+
+            const {
+                data:profile,
+                error:profileError
+            } =
+                await supabase
+                .from("profiles")
+                .select("role")
+                .eq("id", data.user.id)
+                .maybeSingle();
+
+
+            if(profileError){
+
+                console.error(
+                    "ROLE ERROR:",
+                    profileError
+                );
+
+                throw new Error(
+                    "تم تسجيل الدخول ولكن تعذر قراءة صلاحيات الحساب."
+                );
+
+            }
+
+
+            if(!profile){
+
+                throw new Error(
+                    "لا توجد بيانات لهذا الحساب في profiles."
+                );
+
+            }
+
+
+            const role =
+                String(
+                    profile.role || "student"
+                )
+                .trim()
+                .toLowerCase();
+
+
+            console.log(
+                "USER ROLE:",
+                role
+            );
+
+
+            /* =========================
+               ADMIN
+            ========================= */
+
+            if(role === "admin"){
+
+                showMessage(
+                    loginMessage,
+                    "تم تسجيل دخول الأدمن بنجاح ✅ جاري فتح لوحة التحكم...",
+                    "success"
+                );
+
+
+                setTimeout(
+                    function(){
+
+                        window.location.replace(
+                            "./admin/index.html"
+                        );
+
+                    },
+                    500
+                );
+
+                return;
+
+            }
+
+
+            /* =========================
+               STUDENT
+            ========================= */
+
             showMessage(
                 loginMessage,
-                "تم تسجيل الدخول بنجاح ✅ جاري فتح المنصة...",
+                "تم تسجيل الدخول بنجاح ✅ جاري فتح منصة الطالب...",
                 "success"
             );
 
