@@ -2,583 +2,1066 @@
 <html lang="ar" dir="rtl">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>الكورسات | الخوارزمي</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Cairo", Arial, sans-serif;
-        }
-
-        :root {
-            --bg: #07070b;
-            --bg2: #0d0d14;
-            --card: rgba(20, 20, 30, .72);
-            --border: rgba(255,255,255,.08);
-            --text: #fff;
-            --muted: #9b9baa;
-            --primary: #7657ff;
-            --primary2: #4d35d9;
-            --success: #35d39a;
-            --danger: #ff5d73;
-        }
-
-        body {
-            min-height: 100vh;
-            color: var(--text);
-            background:
-                radial-gradient(circle at 15% 10%, rgba(118,87,255,.18), transparent 28%),
-                radial-gradient(circle at 85% 80%, rgba(70,40,180,.12), transparent 30%),
-                var(--bg);
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background: rgba(118,87,255,.06);
-            filter: blur(100px);
-            top: -250px;
-            right: -180px;
-            pointer-events: none;
-        }
-
-        /* ================= HEADER ================= */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            height: 76px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 6%;
-            background: rgba(7,7,11,.78);
-            backdrop-filter: blur(18px);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-        }
-
-        .logo {
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
-            display: grid;
-            place-items: center;
-            font-size: 21px;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--primary), #a68dff);
-            box-shadow: 0 0 30px rgba(118,87,255,.3);
-        }
-
-        .brand-text strong {
-            display: block;
-            font-size: 18px;
-        }
-
-        .brand-text span {
-            color: var(--muted);
-            font-size: 11px;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .back-btn {
-            border: 1px solid var(--border);
-            background: rgba(255,255,255,.04);
-            color: white;
-            padding: 10px 17px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: .25s;
-        }
-
-        .back-btn:hover {
-            background: rgba(118,87,255,.15);
-            border-color: rgba(118,87,255,.4);
-        }
-
-        /* ================= MAIN ================= */
-
-        main {
-            width: min(1200px, 90%);
-            margin: auto;
-            padding: 55px 0 80px;
-        }
-
-        .hero {
-            text-align: center;
-            margin-bottom: 38px;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 15px;
-            border: 1px solid rgba(118,87,255,.25);
-            background: rgba(118,87,255,.08);
-            border-radius: 30px;
-            color: #b9abff;
-            font-size: 13px;
-            margin-bottom: 18px;
-        }
-
-        .hero h1 {
-            font-size: clamp(30px, 5vw, 48px);
-            line-height: 1.2;
-            font-weight: 900;
-            margin-bottom: 12px;
-        }
-
-        .hero h1 span {
-            color: #8c73ff;
-        }
-
-        .hero p {
-            color: var(--muted);
-            max-width: 650px;
-            margin: auto;
-            font-size: 15px;
-            line-height: 1.9;
-        }
-
-        /* ================= FILTERS ================= */
-
-        .filters {
-            display: grid;
-            grid-template-columns: 1fr 230px;
-            gap: 14px;
-            margin-bottom: 35px;
-        }
-
-        .search-box,
-        .grade-box {
-            position: relative;
-        }
-
-        .search-box input,
-        .grade-box select {
-            width: 100%;
-            height: 54px;
-            border: 1px solid var(--border);
-            outline: none;
-            color: white;
-            background: rgba(255,255,255,.045);
-            border-radius: 15px;
-            transition: .25s;
-        }
-
-        .search-box input {
-            padding: 0 48px 0 18px;
-        }
-
-        .search-box input::placeholder {
-            color: #777786;
-        }
-
-        .search-box input:focus,
-        .grade-box select:focus {
-            border-color: rgba(118,87,255,.65);
-            box-shadow: 0 0 0 4px rgba(118,87,255,.08);
-        }
-
-        .search-icon {
-            position: absolute;
-            right: 17px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #888;
-            font-size: 19px;
-        }
-
-        .grade-box select {
-            padding: 0 16px;
-            appearance: none;
-            cursor: pointer;
-        }
-
-        .grade-box::after {
-            content: "⌄";
-            position: absolute;
-            left: 17px;
-            top: 50%;
-            transform: translateY(-55%);
-            color: #aaa;
-            pointer-events: none;
-        }
-
-        select option {
-            background: #15151e;
-            color: white;
-        }
-
-        /* ================= SECTION TOP ================= */
-
-        .section-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 18px;
-        }
-
-        .section-title {
-            font-size: 21px;
-            font-weight: 800;
-        }
-
-        .course-count {
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        /* ================= COURSES ================= */
-
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .course-card {
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            background: var(--card);
-            border-radius: 22px;
-            backdrop-filter: blur(15px);
-            transition: transform .3s, border-color .3s, box-shadow .3s;
-        }
-
-        .course-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(118,87,255,.35);
-            box-shadow: 0 20px 50px rgba(0,0,0,.3);
-        }
-
-        .course-image {
-            height: 190px;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg,#181523,#272044);
-        }
-
-        .course-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform .5s;
-        }
-
-        .course-card:hover .course-image img {
-            transform: scale(1.06);
-        }
-
-        .course-image::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to top,
-                rgba(0,0,0,.65),
-                transparent 60%
-            );
-            pointer-events: none;
-        }
-
-        .grade-badge {
-            position: absolute;
-            top: 13px;
-            right: 13px;
-            z-index: 2;
-            padding: 6px 11px;
-            border-radius: 10px;
-            font-size: 11px;
-            font-weight: 700;
-            background: rgba(0,0,0,.65);
-            border: 1px solid rgba(255,255,255,.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .course-body {
-            padding: 18px;
-        }
-
-        .course-title {
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .course-description {
-            color: var(--muted);
-            font-size: 12px;
-            line-height: 1.8;
-            min-height: 43px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .course-meta {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin: 15px 0;
-            color: #a9a9b5;
-            font-size: 12px;
-        }
-
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .progress-area {
-            margin-bottom: 15px;
-        }
-
-        .progress-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 7px;
-            font-size: 11px;
-        }
-
-        .progress-info span:first-child {
-            color: #9d9daa;
-        }
-
-        .progress-info span:last-child {
-            color: var(--success);
-            font-weight: 700;
-        }
-
-        .progress-bar {
-            height: 6px;
-            border-radius: 20px;
-            background: rgba(255,255,255,.08);
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            border-radius: inherit;
-            background: linear-gradient(90deg,var(--primary),#9c87ff);
-            transition: width .6s ease;
-        }
-
-        .enter-btn {
-            width: 100%;
-            height: 45px;
-            border: 0;
-            border-radius: 13px;
-            background: linear-gradient(135deg,var(--primary),var(--primary2));
-            color: white;
-            font-weight: 800;
-            cursor: pointer;
-            transition: .25s;
-        }
-
-        .enter-btn:hover {
-            filter: brightness(1.15);
-            transform: translateY(-1px);
-            box-shadow: 0 10px 25px rgba(118,87,255,.2);
-        }
-
-        /* ================= EMPTY ================= */
-
-        .empty-state {
-            display: none;
-            text-align: center;
-            padding: 80px 20px;
-            border: 1px dashed rgba(255,255,255,.1);
-            border-radius: 22px;
-            background: rgba(255,255,255,.02);
-        }
-
-        .empty-icon {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 18px;
-            display: grid;
-            place-items: center;
-            border-radius: 22px;
-            background: rgba(118,87,255,.1);
-            font-size: 30px;
-        }
-
-        .empty-state h2 {
-            font-size: 20px;
-            margin-bottom: 8px;
-        }
-
-        .empty-state p {
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        /* ================= LOADING ================= */
-
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 70px 0;
-        }
-
-        .spinner {
-            width: 42px;
-            height: 42px;
-            border: 3px solid rgba(255,255,255,.08);
-            border-top-color: var(--primary);
-            border-radius: 50%;
-            animation: spin .8s linear infinite;
-            margin: auto auto 15px;
-        }
-
-        .loading p {
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* ================= ERROR ================= */
-
-        .error-box {
-            display: none;
-            padding: 18px;
-            margin-bottom: 20px;
-            border-radius: 14px;
-            background: rgba(255,93,115,.08);
-            border: 1px solid rgba(255,93,115,.2);
-            color: #ff9aaa;
-            font-size: 13px;
-            text-align: center;
-        }
-
-        /* ================= RESPONSIVE ================= */
-
-        @media (max-width: 950px) {
-
-            .courses-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-        }
-
-        @media (max-width: 680px) {
-
-            header {
-                padding: 0 5%;
-                height: 70px;
-            }
-
-            .brand-text span {
-                display: none;
-            }
-
-            .back-btn {
-                padding: 9px 12px;
-                font-size: 12px;
-            }
-
-            main {
-                width: 92%;
-                padding-top: 38px;
-            }
-
-            .filters {
-                grid-template-columns: 1fr;
-            }
-
-            .courses-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .course-image {
-                height: 205px;
-            }
-
-            .hero {
-                margin-bottom: 30px;
-            }
-
-        }
-
-        @media (max-width: 400px) {
-
-            .logo {
-                width: 40px;
-                height: 40px;
-            }
-
-            .brand-text strong {
-                font-size: 16px;
-            }
-
-            .hero h1 {
-                font-size: 28px;
-            }
-
-        }
-
-    </style>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>الكورسات | الخوارزمي</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Cairo",Arial,sans-serif;
+}
+
+:root{
+
+    --bg:#07070b;
+    --card:rgba(20,20,30,.72);
+    --border:rgba(255,255,255,.08);
+
+    --text:#fff;
+    --muted:#9b9baa;
+
+    --primary:#7657ff;
+    --primary2:#4d35d9;
+
+    --success:#35d39a;
+    --danger:#ff5d73;
+}
+
+body{
+
+    min-height:100vh;
+
+    color:var(--text);
+
+    background:
+
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(118,87,255,.18),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(70,40,180,.12),
+            transparent 30%
+        ),
+
+        var(--bg);
+
+    overflow-x:hidden;
+}
+
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    background:
+        rgba(118,87,255,.06);
+
+    filter:blur(100px);
+
+    top:-250px;
+    right:-180px;
+
+    pointer-events:none;
+}
+
+
+/* ================= HEADER ================= */
+
+header{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+    height:76px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 6%;
+
+    background:
+        rgba(7,7,11,.78);
+
+    backdrop-filter:
+        blur(18px);
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    cursor:pointer;
+}
+
+
+.logo{
+
+    width:44px;
+
+    height:44px;
+
+    border-radius:14px;
+
+    display:grid;
+
+    place-items:center;
+
+    font-size:21px;
+
+    font-weight:900;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #a68dff
+        );
+
+    box-shadow:
+        0 0 30px
+        rgba(118,87,255,.3);
+}
+
+
+.brand-text strong{
+
+    display:block;
+
+    font-size:18px;
+}
+
+
+.brand-text span{
+
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+
+.header-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+}
+
+
+.back-btn{
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.04);
+
+    color:white;
+
+    padding:10px 17px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+
+.back-btn:hover{
+
+    background:
+        rgba(118,87,255,.15);
+
+    border-color:
+        rgba(118,87,255,.4);
+}
+
+
+/* ================= MAIN ================= */
+
+main{
+
+    width:min(1200px,90%);
+
+    margin:auto;
+
+    padding:
+        55px 0 80px;
+}
+
+
+/* ================= HERO ================= */
+
+.hero{
+
+    text-align:center;
+
+    margin-bottom:38px;
+}
+
+
+.hero-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:8px 15px;
+
+    border:
+        1px solid
+        rgba(118,87,255,.25);
+
+    background:
+        rgba(118,87,255,.08);
+
+    border-radius:30px;
+
+    color:#b9abff;
+
+    font-size:13px;
+
+    margin-bottom:18px;
+}
+
+
+.hero h1{
+
+    font-size:
+        clamp(30px,5vw,48px);
+
+    line-height:1.2;
+
+    font-weight:900;
+
+    margin-bottom:12px;
+}
+
+
+.hero h1 span{
+
+    color:#8c73ff;
+}
+
+
+.hero p{
+
+    color:var(--muted);
+
+    max-width:650px;
+
+    margin:auto;
+
+    font-size:15px;
+
+    line-height:1.9;
+}
+
+
+/* ================= FILTERS ================= */
+
+.filters{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 230px;
+
+    gap:14px;
+
+    margin-bottom:35px;
+}
+
+
+.search-box,
+.grade-box{
+
+    position:relative;
+}
+
+
+.search-box input,
+.grade-box select{
+
+    width:100%;
+
+    height:54px;
+
+    border:
+        1px solid var(--border);
+
+    outline:none;
+
+    color:white;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border-radius:15px;
+
+    transition:.25s;
+}
+
+
+.search-box input{
+
+    padding:
+        0 48px 0 18px;
+}
+
+
+.search-box input::placeholder{
+
+    color:#777786;
+}
+
+
+.search-box input:focus,
+.grade-box select:focus{
+
+    border-color:
+        rgba(118,87,255,.65);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(118,87,255,.08);
+}
+
+
+.search-icon{
+
+    position:absolute;
+
+    right:17px;
+
+    top:50%;
+
+    transform:
+        translateY(-50%);
+
+    color:#888;
+
+    font-size:19px;
+}
+
+
+.grade-box select{
+
+    padding:0 16px;
+
+    appearance:none;
+
+    cursor:pointer;
+}
+
+
+.grade-box::after{
+
+    content:"⌄";
+
+    position:absolute;
+
+    left:17px;
+
+    top:50%;
+
+    transform:
+        translateY(-55%);
+
+    color:#aaa;
+
+    pointer-events:none;
+}
+
+
+select option{
+
+    background:#15151e;
+
+    color:white;
+}
+
+
+/* ================= SECTION ================= */
+
+.section-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+}
+
+
+.section-title{
+
+    font-size:21px;
+
+    font-weight:800;
+}
+
+
+.course-count{
+
+    color:var(--muted);
+
+    font-size:13px;
+}
+
+
+/* ================= COURSES ================= */
+
+.courses-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
+}
+
+
+.course-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border:
+        1px solid var(--border);
+
+    background:var(--card);
+
+    border-radius:22px;
+
+    backdrop-filter:
+        blur(15px);
+
+    transition:
+        transform .3s,
+        border-color .3s,
+        box-shadow .3s;
+}
+
+
+.course-card:hover{
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(118,87,255,.35);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,.3);
+}
+
+
+/* IMAGE */
+
+.course-image{
+
+    height:190px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #181523,
+            #272044
+        );
+}
+
+
+.course-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:
+        transform .5s;
+}
+
+
+.course-card:hover
+.course-image img{
+
+    transform:
+        scale(1.06);
+}
+
+
+.course-image::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.65),
+            transparent 60%
+        );
+
+    pointer-events:none;
+}
+
+
+.grade-badge{
+
+    position:absolute;
+
+    top:13px;
+
+    right:13px;
+
+    z-index:2;
+
+    padding:6px 11px;
+
+    border-radius:10px;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    background:
+        rgba(0,0,0,.65);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    backdrop-filter:
+        blur(10px);
+}
+
+
+/* BODY */
+
+.course-body{
+
+    padding:18px;
+}
+
+
+.course-title{
+
+    font-size:18px;
+
+    font-weight:800;
+
+    margin-bottom:8px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+
+.course-description{
+
+    color:var(--muted);
+
+    font-size:12px;
+
+    line-height:1.8;
+
+    min-height:43px;
+
+    display:-webkit-box;
+
+    -webkit-line-clamp:2;
+
+    -webkit-box-orient:vertical;
+
+    overflow:hidden;
+}
+
+
+/* META */
+
+.course-meta{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin:15px 0;
+
+    color:#a9a9b5;
+
+    font-size:12px;
+
+    flex-wrap:wrap;
+}
+
+
+.meta-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:5px;
+}
+
+
+/* PROGRESS */
+
+.progress-area{
+
+    margin-bottom:15px;
+}
+
+
+.progress-info{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:7px;
+
+    font-size:11px;
+}
+
+
+.progress-info span:first-child{
+
+    color:#9d9daa;
+}
+
+
+.progress-info span:last-child{
+
+    color:var(--success);
+
+    font-weight:700;
+}
+
+
+.progress-bar{
+
+    height:6px;
+
+    border-radius:20px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    overflow:hidden;
+}
+
+
+.progress-fill{
+
+    height:100%;
+
+    border-radius:inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            #9c87ff
+        );
+
+    transition:
+        width .6s ease;
+}
+
+
+/* BUTTON */
+
+.enter-btn{
+
+    width:100%;
+
+    height:45px;
+
+    border:0;
+
+    border-radius:13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary2)
+        );
+
+    color:white;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+
+.enter-btn:hover{
+
+    filter:brightness(1.15);
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(118,87,255,.2);
+}
+
+
+/* ================= EMPTY ================= */
+
+.empty-state{
+
+    display:none;
+
+    text-align:center;
+
+    padding:80px 20px;
+
+    border:
+        1px dashed
+        rgba(255,255,255,.1);
+
+    border-radius:22px;
+
+    background:
+        rgba(255,255,255,.02);
+}
+
+
+.empty-icon{
+
+    width:70px;
+
+    height:70px;
+
+    margin:
+        0 auto 18px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:22px;
+
+    background:
+        rgba(118,87,255,.1);
+
+    font-size:30px;
+}
+
+
+.empty-state h2{
+
+    font-size:20px;
+
+    margin-bottom:8px;
+}
+
+
+.empty-state p{
+
+    color:var(--muted);
+
+    font-size:13px;
+}
+
+
+/* ================= LOADING ================= */
+
+.loading{
+
+    display:none;
+
+    text-align:center;
+
+    padding:70px 0;
+}
+
+
+.spinner{
+
+    width:42px;
+
+    height:42px;
+
+    border:
+        3px solid
+        rgba(255,255,255,.08);
+
+    border-top-color:
+        var(--primary);
+
+    border-radius:50%;
+
+    animation:
+        spin .8s linear infinite;
+
+    margin:
+        auto auto 15px;
+}
+
+
+.loading p{
+
+    color:var(--muted);
+
+    font-size:13px;
+}
+
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* ================= ERROR ================= */
+
+.error-box{
+
+    display:none;
+
+    padding:18px;
+
+    margin-bottom:20px;
+
+    border-radius:14px;
+
+    background:
+        rgba(255,93,115,.08);
+
+    border:
+        1px solid
+        rgba(255,93,115,.2);
+
+    color:#ff9aaa;
+
+    font-size:13px;
+
+    text-align:center;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:950px){
+
+    .courses-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+}
+
+
+@media(max-width:680px){
+
+    header{
+
+        padding:0 5%;
+
+        height:70px;
+    }
+
+
+    .brand-text span{
+
+        display:none;
+    }
+
+
+    .back-btn{
+
+        padding:9px 12px;
+
+        font-size:12px;
+    }
+
+
+    main{
+
+        width:92%;
+
+        padding-top:38px;
+    }
+
+
+    .filters{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .courses-grid{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .course-image{
+
+        height:205px;
+    }
+
+
+    .hero{
+
+        margin-bottom:30px;
+    }
+
+}
+
+
+@media(max-width:400px){
+
+    .logo{
+
+        width:40px;
+
+        height:40px;
+    }
+
+
+    .brand-text strong{
+
+        font-size:16px;
+    }
+
+
+    .hero h1{
+
+        font-size:28px;
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
+
 <header>
 
-    <div class="brand" onclick="goHome()">
+    <div
+        class="brand"
+        onclick="goHome()"
+    >
 
-        <div class="logo">خ</div>
+        <div class="logo">
+            خ
+        </div>
+
 
         <div class="brand-text">
-            <strong>الخوارزمي</strong>
-            <span>منصة التعليم الإلكتروني</span>
+
+            <strong>
+                الخوارزمي
+            </strong>
+
+            <span>
+                منصة التعليم الإلكتروني
+            </span>
+
         </div>
 
     </div>
 
+
     <div class="header-actions">
 
-        <button class="back-btn" onclick="goHome()">
+        <button
+            class="back-btn"
+            onclick="goHome()"
+        >
             ← الرئيسية
         </button>
 
@@ -589,278 +1072,392 @@
 
 <main>
 
-    <section class="hero">
 
-        <div class="hero-badge">
-            🎓 <span>تعلم بطريقة مختلفة</span>
-        </div>
+<section class="hero">
 
-        <h1>
-            الكورسات <span>المتاحة ليك</span>
-        </h1>
+    <div class="hero-badge">
 
-        <p>
-            اختار الكورس المناسب ليك وابدأ رحلتك التعليمية.
-            كل تقدمك هيتم حفظه تلقائيًا.
-        </p>
+        🎓
 
-    </section>
-
-
-    <div class="filters">
-
-        <div class="search-box">
-
-            <span class="search-icon">⌕</span>
-
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="ابحث عن اسم الكورس..."
-                autocomplete="off"
-            >
-
-        </div>
-
-
-        <div class="grade-box">
-
-            <select id="gradeFilter">
-
-                <option value="all">
-                    كل الصفوف
-                </option>
-
-                <option value="اولى اعدادي">
-                    أولى إعدادي
-                </option>
-
-                <option value="ثانية اعدادي">
-                    ثانية إعدادي
-                </option>
-
-                <option value="ثالثة اعدادي">
-                    ثالثة إعدادي
-                </option>
-
-                <option value="اولى ثانوي">
-                    أولى ثانوي
-                </option>
-
-                <option value="ثانية ثانوي">
-                    ثانية ثانوي
-                </option>
-
-                <option value="ثالثة ثانوي">
-                    ثالثة ثانوي
-                </option>
-
-            </select>
-
-        </div>
+        <span>
+            تعلم بطريقة مختلفة
+        </span>
 
     </div>
 
 
-    <div class="error-box" id="errorBox"></div>
+    <h1>
+
+        الكورسات
+
+        <span>
+            المتاحة ليك
+        </span>
+
+    </h1>
 
 
-    <div class="section-top">
+    <p>
 
-        <div class="section-title">
-            📚 الكورسات
-        </div>
+        اختار الكورس المناسب ليك
+        وابدأ رحلتك التعليمية.
+        كل تقدمك هيتم حفظه تلقائيًا.
 
-        <div class="course-count" id="courseCount">
-            0 كورس
-        </div>
+    </p>
+
+</section>
+
+
+<!-- FILTERS -->
+
+<div class="filters">
+
+
+    <div class="search-box">
+
+        <span class="search-icon">
+            ⌕
+        </span>
+
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="ابحث عن اسم الكورس..."
+            autocomplete="off"
+        >
+
+    </div>
+
+
+    <div class="grade-box">
+
+        <select id="gradeFilter">
+
+            <option value="all">
+                كل الصفوف
+            </option>
+
+
+            <option value="اولى اعدادي">
+                أولى إعدادي
+            </option>
+
+
+            <option value="ثانية اعدادي">
+                ثانية إعدادي
+            </option>
+
+
+            <option value="ثالثة اعدادي">
+                ثالثة إعدادي
+            </option>
+
+
+            <option value="اولى ثانوي">
+                أولى ثانوي
+            </option>
+
+
+            <option value="ثانية ثانوي">
+                ثانية ثانوي
+            </option>
+
+
+            <option value="ثالثة ثانوي">
+                ثالثة ثانوي
+            </option>
+
+        </select>
+
+    </div>
+
+</div>
+
+
+<!-- ERROR -->
+
+<div
+    class="error-box"
+    id="errorBox"
+></div>
+
+
+<!-- SECTION -->
+
+<div class="section-top">
+
+    <div class="section-title">
+
+        📚 الكورسات
 
     </div>
 
 
-    <div class="loading" id="loading">
+    <div
+        class="course-count"
+        id="courseCount"
+    >
+        0 كورس
+    </div>
 
-        <div class="spinner"></div>
+</div>
 
-        <p>جاري تحميل الكورسات...</p>
 
+<!-- LOADING -->
+
+<div
+    class="loading"
+    id="loading"
+>
+
+    <div class="spinner"></div>
+
+
+    <p>
+        جاري تحميل الكورسات...
+    </p>
+
+</div>
+
+
+<!-- COURSES -->
+
+<div
+    class="courses-grid"
+    id="coursesGrid"
+></div>
+
+
+<!-- EMPTY -->
+
+<div
+    class="empty-state"
+    id="emptyState"
+>
+
+    <div class="empty-icon">
+        📭
     </div>
 
 
-    <div class="courses-grid" id="coursesGrid">
-        <!--
-            الكورسات سيتم تحميلها هنا من Supabase
-            لا يوجد كورسات ثابتة داخل الكود
-        -->
-    </div>
+    <h2>
+        مفيش كورسات متاحة ليك حاليًا
+    </h2>
 
 
-    <div class="empty-state" id="emptyState">
+    <p>
+        لما الأدمن ينشر كورسات مناسبة لصفك هتظهر هنا تلقائيًا.
+    </p>
 
-        <div class="empty-icon">
-            📭
-        </div>
+</div>
 
-        <h2>
-            مفيش كورسات متاحة ليك حاليًا
-        </h2>
-
-        <p>
-            لما الأدمن ينشر كورسات مناسبة لصفك هتظهر هنا تلقائيًا.
-        </p>
-
-    </div>
 
 </main>
 
 
+<!-- =====================================================
+     SUPABASE LIBRARY
+===================================================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+
+<!-- =====================================================
+     YOUR SUPABASE CONNECTION
+===================================================== -->
+
+<script src="supabase.js"></script>
+
+
 <script>
 
-    /*
-    ============================================================
-        COURSES PAGE
-        جاهز للربط مع Supabase
-
-        الشكل المتوقع لبيانات الكورس:
-
-        {
-            id: "...",
-            title: "...",
-            description: "...",
-            image_url: "...",
-            grade: "...",
-            lessons_count: 10,
-            published: true
-        }
-
-        والتقدم يتم تحميله لاحقًا من جدول منفصل
-        مثل:
-
-        course_progress
-
-    ============================================================
-    */
+/*
+===========================================================
+    COURSES PAGE
+===========================================================
+*/
 
 
-    let allCourses = [];
+let allCourses = [];
 
 
-    const coursesGrid = document.getElementById("coursesGrid");
-    const emptyState = document.getElementById("emptyState");
-    const loading = document.getElementById("loading");
-    const errorBox = document.getElementById("errorBox");
-    const searchInput = document.getElementById("searchInput");
-    const gradeFilter = document.getElementById("gradeFilter");
-    const courseCount = document.getElementById("courseCount");
+const coursesGrid =
+    document.getElementById(
+        "coursesGrid"
+    );
 
 
-    /*
-    ============================================================
-        NAVIGATION
-    ============================================================
-    */
-
-    function goHome() {
-
-        window.location.href = "index.html";
-
-    }
+const emptyState =
+    document.getElementById(
+        "emptyState"
+    );
 
 
-    function openCourse(courseId) {
-
-        if (!courseId) return;
-
-        window.location.href =
-            "course.html?id=" +
-            encodeURIComponent(courseId);
-
-    }
+const loading =
+    document.getElementById(
+        "loading"
+    );
 
 
-    /*
-    ============================================================
-        LOADING
-    ============================================================
-    */
+const errorBox =
+    document.getElementById(
+        "errorBox"
+    );
 
-    function showLoading() {
 
-        loading.style.display = "block";
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
 
-        coursesGrid.style.display = "none";
 
-        emptyState.style.display = "none";
+const gradeFilter =
+    document.getElementById(
+        "gradeFilter"
+    );
 
-        errorBox.style.display = "none";
+
+const courseCount =
+    document.getElementById(
+        "courseCount"
+    );
+
+
+/* =========================
+   HOME
+========================= */
+
+function goHome(){
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+/* =========================
+   OPEN COURSE
+========================= */
+
+function openCourse(courseId){
+
+    if(!courseId){
+
+        return;
 
     }
 
 
-    function hideLoading() {
+    window.location.href =
+        "course.html?id=" +
+        encodeURIComponent(
+            courseId
+        );
 
-        loading.style.display = "none";
+}
 
-        coursesGrid.style.display = "grid";
+
+/* =========================
+   LOADING
+========================= */
+
+function showLoading(){
+
+    loading.style.display =
+        "block";
+
+    coursesGrid.style.display =
+        "none";
+
+    emptyState.style.display =
+        "none";
+
+    errorBox.style.display =
+        "none";
+
+}
+
+
+function hideLoading(){
+
+    loading.style.display =
+        "none";
+
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+function showError(message){
+
+    errorBox.textContent =
+        message;
+
+    errorBox.style.display =
+        "block";
+
+    loading.style.display =
+        "none";
+
+    coursesGrid.style.display =
+        "none";
+
+}
+
+
+/* =========================
+   RENDER
+========================= */
+
+function renderCourses(
+    courses
+){
+
+    coursesGrid.innerHTML =
+        "";
+
+
+    courseCount.textContent =
+        courses.length +
+        " كورس";
+
+
+    if(!courses.length){
+
+        coursesGrid.style.display =
+            "none";
+
+        emptyState.style.display =
+            "block";
+
+        return;
 
     }
 
 
-    /*
-    ============================================================
-        ERROR
-    ============================================================
-    */
+    emptyState.style.display =
+        "none";
 
-    function showError(message) {
-
-        errorBox.textContent = message;
-
-        errorBox.style.display = "block";
-
-        loading.style.display = "none";
-
-        coursesGrid.style.display = "none";
-
-    }
+    coursesGrid.style.display =
+        "grid";
 
 
-    /*
-    ============================================================
-        RENDER COURSES
-    ============================================================
-    */
-
-    function renderCourses(courses) {
-
-        coursesGrid.innerHTML = "";
-
-        courseCount.textContent =
-            courses.length + " كورس";
-
-
-        if (!courses.length) {
-
-            coursesGrid.style.display = "none";
-
-            emptyState.style.display = "block";
-
-            return;
-
-        }
-
-
-        emptyState.style.display = "none";
-
-        coursesGrid.style.display = "grid";
-
-
-        courses.forEach(course => {
+    courses.forEach(
+        course => {
 
             const card =
-                document.createElement("article");
+                document.createElement(
+                    "article"
+                );
 
-            card.className = "course-card";
+
+            card.className =
+                "course-card";
 
 
             const image =
@@ -890,21 +1487,28 @@
 
 
             const lessons =
-                Number(course.lessons_count || 0);
+                Number(
+                    course.lessons_count ||
+                    0
+                );
 
 
-            /*
-                التقدم مؤقتًا 0%.
-                بعد ربط Supabase يتم استبداله
-                بنسبة الطالب الحقيقية.
-            */
+            const duration =
+                escapeHTML(
+                    course.duration ||
+                    "—"
+                );
+
 
             const progress =
                 Math.min(
                     100,
                     Math.max(
                         0,
-                        Number(course.progress || 0)
+                        Number(
+                            course.progress ||
+                            0
+                        )
                     )
                 );
 
@@ -917,11 +1521,16 @@
                         src="${escapeAttribute(image)}"
                         alt="${escapeAttribute(title)}"
                         loading="lazy"
-                        onerror="this.src='https://placehold.co/800x500/15151e/ffffff?text=Course'"
+                        onerror="
+                            this.src='https://placehold.co/800x500/15151e/ffffff?text=Course'
+                        "
                     >
 
+
                     <div class="grade-badge">
+
                         ${grade}
+
                     </div>
 
                 </div>
@@ -929,46 +1538,74 @@
 
                 <div class="course-body">
 
+
                     <h2 class="course-title">
+
                         ${title}
+
                     </h2>
 
 
                     <p class="course-description">
+
                         ${description}
+
                     </p>
 
 
                     <div class="course-meta">
 
-                        <div class="meta-item">
-                            📚
-                            <span>
-                                ${lessons} درس
-                            </span>
-                        </div>
 
                         <div class="meta-item">
-                            🎓
+
+                            📚
+
                             <span>
-                                ${grade}
+
+                                ${lessons}
+
+                                درس
+
                             </span>
+
                         </div>
+
+
+                        <div class="meta-item">
+
+                            ⏱️
+
+                            <span>
+
+                                ${duration}
+
+                            </span>
+
+                        </div>
+
 
                     </div>
 
 
                     <div class="progress-area">
 
+
                         <div class="progress-info">
 
-                            <span>
-                                تقدمك في الكورس
-                            </span>
 
                             <span>
-                                ${progress}%
+
+                                تقدمك في الكورس
+
                             </span>
+
+
+                            <span>
+
+                                ${progress}%
+
+                            </span>
+
 
                         </div>
 
@@ -982,78 +1619,116 @@
 
                         </div>
 
+
                     </div>
 
 
                     <button
                         class="enter-btn"
-                        onclick="openCourse('${escapeAttribute(course.id)}')"
+                        data-course-id="${escapeAttribute(course.id)}"
                     >
+
                         دخول الكورس
+
                     </button>
+
 
                 </div>
 
             `;
 
 
-            coursesGrid.appendChild(card);
-
-        });
-
-    }
-
-
-    /*
-    ============================================================
-        FILTER
-    ============================================================
-    */
-
-    function filterCourses() {
-
-        const search =
-            searchInput.value
-                .trim()
-                .toLowerCase();
+            const button =
+                card.querySelector(
+                    ".enter-btn"
+                );
 
 
-        const grade =
-            gradeFilter.value
-                .trim()
-                .toLowerCase();
+            button.addEventListener(
+                "click",
+                function(){
+
+                    openCourse(
+                        course.id
+                    );
+
+                }
+            );
 
 
-        const filtered =
-            allCourses.filter(course => {
+            coursesGrid.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================
+   FILTER
+========================= */
+
+function filterCourses(){
+
+    const search =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+
+    const grade =
+        gradeFilter.value
+            .trim()
+            .toLowerCase();
+
+
+    const filtered =
+        allCourses.filter(
+            course => {
 
                 const title =
                     String(
-                        course.title || ""
-                    ).toLowerCase();
+                        course.title ||
+                        ""
+                    )
+                    .toLowerCase();
 
 
                 const description =
                     String(
-                        course.description || ""
-                    ).toLowerCase();
+                        course.description ||
+                        ""
+                    )
+                    .toLowerCase();
 
 
                 const courseGrade =
                     String(
-                        course.grade || ""
-                    ).toLowerCase();
+                        course.grade ||
+                        ""
+                    )
+                    .toLowerCase();
 
 
                 const matchesSearch =
                     !search ||
-                    title.includes(search) ||
-                    description.includes(search);
+
+                    title.includes(
+                        search
+                    ) ||
+
+                    description.includes(
+                        search
+                    );
 
 
                 const matchesGrade =
                     grade === "all" ||
-                    courseGrade === grade;
+
+                    courseGrade ===
+                    grade;
 
 
                 return (
@@ -1061,148 +1736,227 @@
                     matchesGrade
                 );
 
-            });
+            }
+        );
 
 
-        renderCourses(filtered);
-
-    }
-
-
-    searchInput.addEventListener(
-        "input",
-        filterCourses
+    renderCourses(
+        filtered
     );
 
-
-    gradeFilter.addEventListener(
-        "change",
-        filterCourses
-    );
+}
 
 
-    /*
-    ============================================================
-        SUPABASE
-    ============================================================
-
-        المرحلة التالية:
-
-        1. إضافة Supabase JS
-
-        2. وضع:
-           SUPABASE_URL
-           SUPABASE_ANON_KEY
-
-        3. جلب المستخدم الحالي
-
-        4. معرفة صف الطالب
-
-        5. جلب الكورسات المنشورة
-
-        6. جلب تقدم الطالب
-
-        7. دمج البيانات
-
-        مثال الاستعلام:
-
-        supabase
-            .from("courses")
-            .select("*")
-            .eq("published", true)
-
-        وبعدها فلترة الكورس حسب
-        grade الطالب.
-
-    ============================================================
-    */
+searchInput.addEventListener(
+    "input",
+    filterCourses
+);
 
 
-    async function loadCourses() {
-
-        showLoading();
-
-
-        try {
-
-            /*
-                حاليًا لا يوجد اتصال بقاعدة البيانات.
-
-                مهم جدًا:
-                لن نضع كورسات وهمية هنا.
-
-                عند ربط Supabase سيتم استبدال
-                الجزء التالي بالاستعلام الحقيقي.
-            */
+gradeFilter.addEventListener(
+    "change",
+    filterCourses
+);
 
 
-            allCourses = [];
+/* =========================
+   LOAD COURSES
+========================= */
+
+async function loadCourses(){
+
+    showLoading();
 
 
-            hideLoading();
+    try{
 
-            renderCourses(allCourses);
+
+        /*
+        التأكد من وجود اتصال Supabase
+        */
+
+        if(
+            typeof supabaseClient ===
+            "undefined"
+        ){
+
+            throw new Error(
+                "supabaseClient غير موجود. تأكد من supabase.js"
+            );
 
         }
 
-        catch (error) {
+
+        console.log(
+            "Loading courses..."
+        );
+
+
+        /*
+        جلب الكورسات المنشورة
+        */
+
+        const {
+            data,
+            error
+        } = await supabaseClient
+
+            .from(
+                "courses"
+            )
+
+            .select(`
+                id,
+                title,
+                description,
+                image_url,
+                grade,
+                duration,
+                lessons_count,
+                published,
+                created_at
+            `)
+
+            .eq(
+                "published",
+                true
+            )
+
+            .order(
+                "created_at",
+                {
+                    ascending:false
+                }
+            );
+
+
+        /*
+        Supabase Error
+        */
+
+        if(error){
 
             console.error(
-                "Courses loading error:",
+                "Supabase courses error:",
                 error
             );
 
-
-            showError(
-                "حصل خطأ أثناء تحميل الكورسات. حاول مرة أخرى."
-            );
+            throw error;
 
         }
 
-    }
+
+        /*
+        البيانات
+        */
+
+        allCourses =
+            data || [];
 
 
-    /*
-    ============================================================
-        SECURITY HELPERS
-    ============================================================
-    */
-
-    function escapeHTML(value) {
-
-        return String(value)
-            .replaceAll("&", "&amp;")
-            .replaceAll("<", "&lt;")
-            .replaceAll(">", "&gt;")
-            .replaceAll('"', "&quot;")
-            .replaceAll("'", "&#039;");
-
-    }
+        console.log(
+            "Courses:",
+            allCourses
+        );
 
 
-    function escapeAttribute(value) {
+        hideLoading();
 
-        return escapeHTML(value)
-            .replaceAll("`", "&#096;");
+
+        renderCourses(
+            allCourses
+        );
+
 
     }
 
+    catch(error){
 
-    /*
-    ============================================================
-        START
-    ============================================================
-    */
+        console.error(
+            "Loading courses failed:",
+            error
+        );
 
-    document.addEventListener(
-        "DOMContentLoaded",
-        loadCourses
+
+        showError(
+            "حصل خطأ أثناء تحميل الكورسات من قاعدة البيانات."
+        );
+
+    }
+
+}
+
+
+/* =========================
+   SECURITY
+========================= */
+
+function escapeHTML(
+    value
+){
+
+    return String(
+        value
+    )
+
+    .replaceAll(
+        "&",
+        "&amp;"
+    )
+
+    .replaceAll(
+        "<",
+        "&lt;"
+    )
+
+    .replaceAll(
+        ">",
+        "&gt;"
+    )
+
+    .replaceAll(
+        '"',
+        "&quot;"
+    )
+
+    .replaceAll(
+        "'",
+        "&#039;"
     );
+
+}
+
+
+function escapeAttribute(
+    value
+){
+
+    return escapeHTML(
+        value
+    )
+    .replaceAll(
+        "`",
+        "&#096;"
+    );
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        loadCourses();
+
+    }
+);
 
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase.js"></script>
-
 </body>
+
 </html>
