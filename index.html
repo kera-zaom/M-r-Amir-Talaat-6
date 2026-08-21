@@ -2,10 +2,17 @@
 <html lang="ar" dir="rtl">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>الخوارزمي | مع المستر أمير مفيش مستحيل</title>
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    الخوارزمي | مع المستر أمير مفيش مستحيل
+</title>
 
 <style>
 
@@ -20,18 +27,21 @@ html{
 }
 
 body{
+
     font-family:
         Arial,
         Tahoma,
         sans-serif;
 
     background:#07070d;
+
     color:#fff;
 
     overflow-x:hidden;
 }
 
 body::before{
+
     content:"";
 
     position:fixed;
@@ -56,6 +66,7 @@ body::before{
 }
 
 body::after{
+
     content:"";
 
     position:fixed;
@@ -87,11 +98,100 @@ button{
 }
 
 
-/* ==============================
+/* =================================
+   LOADING
+================================= */
+
+.page-loader{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:99999;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#07070d;
+
+    transition:.4s;
+}
+
+.page-loader.hide{
+
+    opacity:0;
+
+    pointer-events:none;
+}
+
+.loader-box{
+
+    text-align:center;
+}
+
+.loader-logo{
+
+    width:65px;
+    height:65px;
+
+    margin:auto;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:20px;
+
+    font-size:30px;
+
+    font-weight:900;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8355ff,
+            #3a5eea
+        );
+
+    box-shadow:
+        0 0 50px
+        rgba(100,70,240,.4);
+
+    animation:
+        loaderPulse 1.3s infinite;
+}
+
+.loader-box p{
+
+    margin-top:14px;
+
+    color:#858591;
+
+    font-size:11px;
+}
+
+@keyframes loaderPulse{
+
+    0%,100%{
+        transform:scale(.95);
+    }
+
+    50%{
+        transform:scale(1.05);
+    }
+}
+
+
+/* =================================
    CONTAINER
-============================== */
+================================= */
 
 .container{
+
     width:min(
         1200px,
         calc(100% - 30px)
@@ -101,9 +201,9 @@ button{
 }
 
 
-/* ==============================
+/* =================================
    HEADER
-============================== */
+================================= */
 
 header{
 
@@ -195,7 +295,6 @@ header.scrolled{
     display:block;
 
     font-size:17px;
-
 }
 
 .brand-text span{
@@ -293,9 +392,9 @@ header.scrolled{
 }
 
 
-/* ==============================
+/* =================================
    HERO
-============================== */
+================================= */
 
 .hero{
 
@@ -362,14 +461,6 @@ header.scrolled{
     pointer-events:none;
 }
 
-
-/* ==============================
-   HERO LAYOUT
-
-   اليمين = الكلام
-   الشمال = الصورة
-============================== */
-
 .hero-layout{
 
     width:100%;
@@ -389,9 +480,7 @@ header.scrolled{
 }
 
 
-/* ==============================
-   TEXT
-============================== */
+/* TEXT */
 
 .hero-content{
 
@@ -406,26 +495,15 @@ header.scrolled{
 @keyframes textIn{
 
     from{
-
         opacity:0;
-
-        transform:
-            translateX(40px);
-
+        transform:translateX(40px);
     }
 
     to{
-
         opacity:1;
-
-        transform:
-            translateX(0);
-
+        transform:translateX(0);
     }
 }
-
-
-/* BADGE */
 
 .badge{
 
@@ -474,22 +552,15 @@ header.scrolled{
 @keyframes pulse{
 
     0%,100%{
-
         transform:scale(.8);
-
         opacity:.6;
     }
 
     50%{
-
         transform:scale(1.2);
-
         opacity:1;
     }
 }
-
-
-/* TITLE */
 
 .hero-content h1{
 
@@ -526,9 +597,6 @@ header.scrolled{
     color:transparent;
 }
 
-
-/* DESCRIPTION */
-
 .hero-description{
 
     color:#9d9da8;
@@ -546,9 +614,6 @@ header.scrolled{
 
     color:#d8d0ff;
 }
-
-
-/* BUTTONS */
 
 .hero-buttons{
 
@@ -647,10 +712,9 @@ header.scrolled{
 }
 
 
-/* ==============================
+/* =================================
    TEACHER IMAGE
-   الشمال
-============================== */
+================================= */
 
 .teacher-area{
 
@@ -671,26 +735,15 @@ header.scrolled{
 @keyframes imageIn{
 
     from{
-
         opacity:0;
-
-        transform:
-            translateX(-50px);
-
+        transform:translateX(-50px);
     }
 
     to{
-
         opacity:1;
-
-        transform:
-            translateX(0);
-
+        transform:translateX(0);
     }
 }
-
-
-/* GLOW */
 
 .teacher-glow{
 
@@ -717,20 +770,13 @@ header.scrolled{
 @keyframes glow{
 
     0%,100%{
-
         transform:scale(1);
-
     }
 
     50%{
-
         transform:scale(1.1);
-
     }
 }
-
-
-/* RING */
 
 .teacher-ring{
 
@@ -781,11 +827,6 @@ header.scrolled{
     }
 }
 
-
-/* ==============================
-   IMAGE
-============================== */
-
 .teacher-image{
 
     width:400px;
@@ -812,7 +853,6 @@ header.scrolled{
         rgba(176,147,255,.34);
 
     box-shadow:
-
         0 35px 100px
         rgba(0,0,0,.65),
 
@@ -830,25 +870,14 @@ header.scrolled{
     transform:
         translateY(-8px)
         scale(1.02);
-
-    box-shadow:
-
-        0 45px 120px
-        rgba(0,0,0,.7),
-
-        0 0 110px
-        rgba(106,71,240,.4);
 }
 
 .teacher-image img{
 
     width:100%;
-
     height:100%;
 
     object-fit:cover;
-
-    object-position:center;
 
     display:block;
 
@@ -861,9 +890,6 @@ header.scrolled{
     transform:
         scale(1.04);
 }
-
-
-/* IMAGE SHINE */
 
 .teacher-image::after{
 
@@ -908,20 +934,18 @@ header.scrolled{
 @keyframes teacherFloat{
 
     0%,100%{
-        transform:
-            translateY(0);
+        transform:translateY(0);
     }
 
     50%{
-        transform:
-            translateY(-12px);
+        transform:translateY(-12px);
     }
 }
 
 
-/* ==============================
-   FEATURES UNDER HERO
-============================== */
+/* =================================
+   FEATURES
+================================= */
 
 .quick-features{
 
@@ -1034,9 +1058,9 @@ header.scrolled{
 }
 
 
-/* ==============================
+/* =================================
    SECTIONS
-============================== */
+================================= */
 
 section{
 
@@ -1079,9 +1103,9 @@ section{
 }
 
 
-/* ==============================
+/* =================================
    COURSES
-============================== */
+================================= */
 
 .courses-grid{
 
@@ -1092,6 +1116,9 @@ section{
 
     gap:18px;
 }
+
+
+/* DATABASE COURSE CARD */
 
 .course-card{
 
@@ -1168,9 +1195,23 @@ section{
     filter:blur(20px);
 }
 
+.course-image img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    position:absolute;
+
+    inset:0;
+}
+
 .formula{
 
     position:relative;
+
+    z-index:1;
 
     font-family:serif;
 
@@ -1209,7 +1250,7 @@ section{
     border-radius:9px;
 
     background:
-        rgba(0,0,0,.4);
+        rgba(0,0,0,.55);
 
     font-size:9px;
 }
@@ -1283,9 +1324,56 @@ section{
 }
 
 
-/* ==============================
+/* EMPTY COURSES */
+
+.empty-courses{
+
+    display:none;
+
+    padding:60px 20px;
+
+    text-align:center;
+
+    border-radius:20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.06);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+.empty-courses.show{
+
+    display:block;
+}
+
+.empty-courses .icon{
+
+    font-size:40px;
+
+    margin-bottom:12px;
+}
+
+.empty-courses h3{
+
+    font-size:18px;
+
+    margin-bottom:7px;
+}
+
+.empty-courses p{
+
+    color:#777782;
+
+    font-size:11px;
+}
+
+
+/* =================================
    MOTIVATION
-============================== */
+================================= */
 
 .motivation{
 
@@ -1392,9 +1480,9 @@ section{
 }
 
 
-/* ==============================
-   TEACHER SECTION
-============================== */
+/* =================================
+   TEACHER
+================================= */
 
 .teacher-section{
 
@@ -1420,7 +1508,6 @@ section{
 .teacher-section-photo img{
 
     width:310px;
-
     height:390px;
 
     object-fit:cover;
@@ -1505,9 +1592,9 @@ section{
 }
 
 
-/* ==============================
+/* =================================
    FOOTER
-============================== */
+================================= */
 
 footer{
 
@@ -1586,19 +1673,17 @@ footer{
 }
 
 
-/* ==============================
+/* =================================
    TABLET
-============================== */
+================================= */
 
 @media(max-width:900px){
 
     .nav-links{
-
         display:none;
     }
 
     .mobile-menu{
-
         display:block;
     }
 
@@ -1621,12 +1706,6 @@ footer{
 
         flex-direction:column;
     }
-
-    /*
-       على التابلت والموبايل:
-       الكلام أولًا
-       الصورة بعده
-    */
 
     .hero-content{
 
@@ -1682,15 +1761,6 @@ footer{
         text-align:center;
     }
 
-    .teacher-text p{
-
-        max-width:650px;
-
-        margin-left:auto;
-
-        margin-right:auto;
-    }
-
     .footer-grid{
 
         grid-template-columns:
@@ -1699,9 +1769,9 @@ footer{
 }
 
 
-/* ==============================
+/* =================================
    MOBILE
-============================== */
+================================= */
 
 @media(max-width:600px){
 
@@ -1712,7 +1782,6 @@ footer{
     }
 
     .nav{
-
         min-height:70px;
     }
 
@@ -1723,7 +1792,6 @@ footer{
     }
 
     .brand-text strong{
-
         font-size:15px;
     }
 
@@ -1743,13 +1811,7 @@ footer{
     }
 
     .hero-layout{
-
         gap:5px;
-    }
-
-    .hero-content{
-
-        width:100%;
     }
 
     .badge{
@@ -1810,14 +1872,12 @@ footer{
     .teacher-image{
 
         width:285px;
-
         height:380px;
 
         border-radius:25px;
     }
 
     .quick-grid{
-
         gap:8px;
     }
 
@@ -1828,110 +1888,76 @@ footer{
         padding:15px 8px;
     }
 
-    .quick-icon{
-
-        width:42px;
-        height:42px;
-
-        font-size:19px;
-    }
-
-    .quick-card h3{
-
-        font-size:11px;
-    }
-
-    .quick-card p{
-
-        font-size:8px;
-    }
-
     section{
-
         padding:70px 0;
     }
 
     .courses-grid{
-
         grid-template-columns:1fr;
     }
 
     .course-image{
-
         height:180px;
     }
 
     .motivation{
-
         padding:32px 20px;
     }
 
     .motivation-content h2{
-
         font-size:27px;
-    }
-
-    .motivation-content p{
-
-        font-size:11px;
     }
 
     .teacher-section-photo img{
 
         width:250px;
-
         height:320px;
     }
 
     .points{
-
         grid-template-columns:1fr;
     }
 
     .footer-grid{
-
         grid-template-columns:1fr;
     }
 }
 
-
-/* ==============================
-   DATABASE AREA
-
-   بعدين هنربط هنا Supabase
-
-   مثال:
-
-   const SUPABASE_URL =
-   "https://YOUR-PROJECT.supabase.co";
-
-   const SUPABASE_ANON_KEY =
-   "YOUR-ANON-KEY";
-
-   ونجيب من قاعدة البيانات:
-
-   - الكورسات
-   - الفيديوهات
-   - PDF
-   - الاختبارات
-   - نتائج الطلاب
-   - صور الطلاب
-   - بيانات الحساب
-   - نسبة المشاهدة
-   - الاشتراكات
-
-============================== */
-
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- ==============================
+<!-- =================================
+     LOADING
+================================= -->
+
+<div
+    class="page-loader"
+    id="pageLoader"
+>
+
+    <div class="loader-box">
+
+        <div class="loader-logo">
+            Σ
+        </div>
+
+        <p>
+            جاري تحميل المنصة...
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =================================
      HEADER
-============================== -->
+================================= -->
 
 <header id="header">
 
@@ -1941,69 +1967,71 @@ footer{
 
 
 <a
-href="#home"
-class="brand"
+    href="#home"
+    class="brand"
 >
 
-<div class="logo">
-Σ
-</div>
+    <div class="logo">
+        Σ
+    </div>
 
-<div class="brand-text">
+    <div class="brand-text">
 
-<strong>
-الخوارزمي
-</strong>
+        <strong>
+            الخوارزمي
+        </strong>
 
-<span>
-منصة تعليم الرياضيات
-</span>
+        <span>
+            منصة تعليم الرياضيات
+        </span>
 
-</div>
+    </div>
 
 </a>
 
 
 <div class="nav-links">
 
-<a href="#home">
-الرئيسية
-</a>
+    <a href="#home">
+        الرئيسية
+    </a>
 
-<a href="#courses">
-الكورسات
-</a>
+    <a href="#courses">
+        الكورسات
+    </a>
 
-<a href="#features">
-مميزات المنصة
-</a>
+    <a href="#features">
+        مميزات المنصة
+    </a>
 
-<a href="#teacher">
-المستر أمير
-</a>
+    <a href="#teacher">
+        المستر أمير
+    </a>
 
 </div>
 
 
-<div style="
-display:flex;
-align-items:center;
-gap:8px;
-">
-
-<a
-href="auth.html"
-class="login-btn"
+<div
+    style="
+    display:flex;
+    align-items:center;
+    gap:8px;
+    "
 >
-تسجيل الدخول
-</a>
 
-<button
-class="mobile-menu"
-id="mobileMenu"
->
-☰
-</button>
+    <a
+        href="auth.html"
+        class="login-btn"
+    >
+        تسجيل الدخول
+    </a>
+
+    <button
+        class="mobile-menu"
+        id="mobileMenu"
+    >
+        ☰
+    </button>
 
 </div>
 
@@ -2015,9 +2043,9 @@ id="mobileMenu"
 </header>
 
 
-<!-- ==============================
+<!-- =================================
      HERO
-============================== -->
+================================= -->
 
 <main id="home">
 
@@ -2027,10 +2055,6 @@ id="mobileMenu"
 
 <div class="hero-layout">
 
-
-<!-- ==========================
-     الكلام ناحية اليمين
-========================== -->
 
 <div class="hero-content">
 
@@ -2077,19 +2101,19 @@ id="mobileMenu"
 <div class="hero-buttons">
 
 <a
-href="#courses"
-class="primary-btn"
+    href="#courses"
+    class="primary-btn"
 >
-استكشف الكورسات
-<span>↓</span>
+    استكشف الكورسات
+    <span>↓</span>
 </a>
 
 
 <a
-href="auth.html"
-class="secondary-btn"
+    href="auth.html"
+    class="secondary-btn"
 >
-ابدأ رحلتك
+    ابدأ رحلتك
 </a>
 
 </div>
@@ -2097,10 +2121,6 @@ class="secondary-btn"
 
 </div>
 
-
-<!-- ==========================
-     الصورة ناحية الشمال
-========================== -->
 
 <div class="teacher-area">
 
@@ -2112,8 +2132,11 @@ class="secondary-btn"
 <div class="teacher-image">
 
 <img
-src="teacher.png"
-alt="المستر أمير"
+    src="teacher.png"
+    alt="المستر أمير"
+    onerror="
+        this.style.display='none';
+    "
 >
 
 </div>
@@ -2128,13 +2151,13 @@ alt="المستر أمير"
 </section>
 
 
-<!-- ==============================
-     الكروت تحت الصورة
-============================== -->
+<!-- =================================
+     FEATURES
+================================= -->
 
 <section
-class="quick-features"
-id="features"
+    class="quick-features"
+    id="features"
 >
 
 <div class="container">
@@ -2145,15 +2168,15 @@ id="features"
 <div class="quick-card">
 
 <div class="quick-icon">
-🎥
+    🎥
 </div>
 
 <h3>
-شرح فيديو خطوة بخطوة
+    شرح فيديو خطوة بخطوة
 </h3>
 
 <p>
-شوف الدرس وقت ما تحب
+    شوف الدرس وقت ما تحب
 </p>
 
 </div>
@@ -2162,15 +2185,15 @@ id="features"
 <div class="quick-card">
 
 <div class="quick-icon">
-📚
+    📚
 </div>
 
 <h3>
-ملازم وملفات PDF
+    ملازم وملفات PDF
 </h3>
 
 <p>
-كل ملفاتك في مكان واحد
+    كل ملفاتك في مكان واحد
 </p>
 
 </div>
@@ -2179,15 +2202,15 @@ id="features"
 <div class="quick-card">
 
 <div class="quick-icon">
-📝
+    📝
 </div>
 
 <h3>
-اختبارات وتدريبات
+    اختبارات وتدريبات
 </h3>
 
 <p>
-اختبر نفسك بعد كل درس
+    اختبر نفسك بعد كل درس
 </p>
 
 </div>
@@ -2196,15 +2219,15 @@ id="features"
 <div class="quick-card">
 
 <div class="quick-icon">
-📊
+    📊
 </div>
 
 <h3>
-تابع مستواك
+    تابع مستواك
 </h3>
 
 <p>
-اعرف تقدمك باستمرار
+    اعرف تقدمك باستمرار
 </p>
 
 </div>
@@ -2217,9 +2240,9 @@ id="features"
 </section>
 
 
-<!-- ==============================
+<!-- =================================
      COURSES
-============================== -->
+================================= -->
 
 <section id="courses">
 
@@ -2229,195 +2252,55 @@ id="features"
 <div class="section-head">
 
 <small>
-اختار طريقك
+    اختار طريقك
 </small>
 
 <h2>
-كورسات الرياضيات
+    كورسات الرياضيات
 </h2>
 
 <p>
-كل اللي محتاجه عشان تطور مستواك في مكان واحد.
+    الكورسات التي يضيفها الأدمن تظهر هنا تلقائيًا.
 </p>
 
 </div>
 
 
-<div class="courses-grid">
-
-
-<div class="course-card">
-
-<div class="course-image">
-
-<span class="course-level">
-إعدادي
-</span>
-
-<div class="formula">
-x² + y²
-</div>
-
-</div>
-
-<div class="course-body">
-
-<h3>
-التأسيس في الرياضيات
-</h3>
-
-<p>
-نبني الأساس صح ونفهم القواعد بدل الحفظ.
-</p>
-
-<div class="course-meta">
-
-<span>🎥 فيديو</span>
-
-<span>📄 PDF</span>
-
-<span>📝 تدريب</span>
-
-</div>
-
-<div class="course-footer">
-
-<span class="course-price">
-متاح قريبًا
-</span>
-
-<a
-href="course.html"
-class="course-link"
+<div
+    class="courses-grid"
+    id="coursesGrid"
 >
-التفاصيل
-</a>
-
-</div>
-
-</div>
-
 </div>
 
 
-<div class="course-card">
-
-<div class="course-image">
-
-<span class="course-level">
-ثانوي
-</span>
-
-<div class="formula">
-∫ f(x)dx
-</div>
-
-</div>
-
-<div class="course-body">
-
-<h3>
-التفاضل والتكامل
-</h3>
-
-<p>
-نفهم الفكرة وبعدها نحل المسائل واحدة واحدة.
-</p>
-
-<div class="course-meta">
-
-<span>🎥 فيديو</span>
-
-<span>📄 PDF</span>
-
-<span>📝 اختبار</span>
-
-</div>
-
-<div class="course-footer">
-
-<span class="course-price">
-متاح قريبًا
-</span>
-
-<a
-href="course.html"
-class="course-link"
+<div
+    class="empty-courses"
+    id="emptyCourses"
 >
-التفاصيل
-</a>
+
+    <div class="icon">
+        📚
+    </div>
+
+    <h3>
+        لا توجد كورسات حاليًا
+    </h3>
+
+    <p>
+        عندما يضيف الأدمن كورسات ستظهر هنا تلقائيًا.
+    </p>
 
 </div>
 
-</div>
-
-</div>
-
-
-<div class="course-card">
-
-<div class="course-image">
-
-<span class="course-level">
-ثانوي
-</span>
-
-<div class="formula">
-Σ aₙ
-</div>
-
-</div>
-
-<div class="course-body">
-
-<h3>
-الجبر والهندسة
-</h3>
-
-<p>
-شرح وتدريب على الأفكار والمسائل المختلفة.
-</p>
-
-<div class="course-meta">
-
-<span>🎥 فيديو</span>
-
-<span>📚 ملفات</span>
-
-<span>📝 اختبارات</span>
-
-</div>
-
-<div class="course-footer">
-
-<span class="course-price">
-متاح قريبًا
-</span>
-
-<a
-href="course.html"
-class="course-link"
->
-التفاصيل
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-
-</div>
 
 </div>
 
 </section>
 
 
-<!-- ==============================
+<!-- =================================
      MOTIVATION
-============================== -->
+================================= -->
 
 <section>
 
@@ -2428,7 +2311,7 @@ class="course-link"
 <div class="motivation-content">
 
 <small>
-كلمة من المستر أمير
+    كلمة من المستر أمير
 </small>
 
 <h2>
@@ -2473,9 +2356,9 @@ class="course-link"
 </section>
 
 
-<!-- ==============================
+<!-- =================================
      TEACHER
-============================== -->
+================================= -->
 
 <section id="teacher">
 
@@ -2487,8 +2370,8 @@ class="course-link"
 <div class="teacher-section-photo">
 
 <img
-src="teacher.png"
-alt="المستر أمير"
+    src="teacher.png"
+    alt="المستر أمير"
 >
 
 </div>
@@ -2497,11 +2380,11 @@ alt="المستر أمير"
 <div class="teacher-text">
 
 <small>
-مدرسك معاك
+    مدرسك معاك
 </small>
 
 <h2>
-مش هتكون لوحدك
+    مش هتكون لوحدك
 </h2>
 
 <p>
@@ -2529,19 +2412,19 @@ alt="المستر أمير"
 <div class="points">
 
 <div class="point">
-✓ شرح بسيط ومباشر
+    ✓ شرح بسيط ومباشر
 </div>
 
 <div class="point">
-✓ تدريب بعد كل فكرة
+    ✓ تدريب بعد كل فكرة
 </div>
 
 <div class="point">
-✓ ملفات ومراجعات
+    ✓ ملفات ومراجعات
 </div>
 
 <div class="point">
-✓ اختبارات تقيس مستواك
+    ✓ اختبارات تقيس مستواك
 </div>
 
 </div>
@@ -2558,9 +2441,9 @@ alt="المستر أمير"
 </main>
 
 
-<!-- ==============================
+<!-- =================================
      FOOTER
-============================== -->
+================================= -->
 
 <footer>
 
@@ -2572,22 +2455,22 @@ alt="المستر أمير"
 <div class="footer-brand">
 
 <a
-href="#home"
-class="brand"
+    href="#home"
+    class="brand"
 >
 
 <div class="logo">
-Σ
+    Σ
 </div>
 
 <div class="brand-text">
 
 <strong>
-الخوارزمي
+    الخوارزمي
 </strong>
 
 <span>
-منصة تعليم الرياضيات
+    منصة تعليم الرياضيات
 </span>
 
 </div>
@@ -2608,19 +2491,19 @@ class="brand"
 <div class="footer-col">
 
 <h4>
-المنصة
+    المنصة
 </h4>
 
 <a href="#home">
-الرئيسية
+    الرئيسية
 </a>
 
 <a href="#courses">
-الكورسات
+    الكورسات
 </a>
 
 <a href="auth.html">
-تسجيل الدخول
+    تسجيل الدخول
 </a>
 
 </div>
@@ -2629,19 +2512,19 @@ class="brand"
 <div class="footer-col">
 
 <h4>
-الطالب
+    الطالب
 </h4>
 
 <a href="profile.html">
-حسابي
+    حسابي
 </a>
 
 <a href="#courses">
-الكورسات
+    الكورسات
 </a>
 
-<a href="#">
-النتائج
+<a href="results.html">
+    النتائج
 </a>
 
 </div>
@@ -2650,19 +2533,19 @@ class="brand"
 <div class="footer-col">
 
 <h4>
-مساعدة
+    مساعدة
 </h4>
 
 <a href="#">
-تواصل معنا
+    تواصل معنا
 </a>
 
 <a href="#">
-الخصوصية
+    الخصوصية
 </a>
 
 <a href="#">
-الشروط والأحكام
+    الشروط والأحكام
 </a>
 
 </div>
@@ -2686,182 +2569,593 @@ class="brand"
 </footer>
 
 
+<!-- =================================
+     SUPABASE
+================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="supabase.js"></script>
+
+
 <script>
 
-/* ==============================
+/* =================================
    HEADER
-============================== */
+================================= */
 
 const header =
-document.getElementById("header");
+    document.getElementById("header");
 
 window.addEventListener(
-"scroll",
-function(){
+    "scroll",
+    function(){
 
-    if(window.scrollY > 30){
+        if(window.scrollY > 30){
 
-        header.classList.add(
-            "scrolled"
-        );
-
-    }else{
-
-        header.classList.remove(
-            "scrolled"
-        );
-
-    }
-
-});
-
-
-/* ==============================
-   MOBILE MENU
-============================== */
-
-const mobileMenu =
-document.getElementById(
-    "mobileMenu"
-);
-
-mobileMenu.addEventListener(
-"click",
-function(){
-
-    const links =
-    document.querySelector(
-        ".nav-links"
-    );
-
-    if(
-        links.style.display ===
-        "flex"
-    ){
-
-        links.style.display =
-            "none";
-
-    }else{
-
-        links.style.display =
-            "flex";
-
-        links.style.position =
-            "fixed";
-
-        links.style.top =
-            "75px";
-
-        links.style.right =
-            "15px";
-
-        links.style.left =
-            "15px";
-
-        links.style.padding =
-            "15px";
-
-        links.style.flexDirection =
-            "column";
-
-        links.style.background =
-            "rgba(10,10,16,.97)";
-
-        links.style.borderRadius =
-            "15px";
-
-        links.style.border =
-            "1px solid rgba(255,255,255,.08)";
-    }
-
-});
-
-
-/* ==============================
-   SCROLL ANIMATION
-============================== */
-
-const cards =
-document.querySelectorAll(
-    ".quick-card, .course-card"
-);
-
-const observer =
-new IntersectionObserver(
-function(entries){
-
-    entries.forEach(
-    function(entry){
-
-        if(
-            entry.isIntersecting
-        ){
-
-            entry.target.classList.add(
-                "show"
+            header.classList.add(
+                "scrolled"
             );
 
-            observer.unobserve(
-                entry.target
+        }else{
+
+            header.classList.remove(
+                "scrolled"
             );
 
         }
 
-    });
+    }
+);
 
-},
-{
-    threshold:.1
-});
+
+/* =================================
+   MOBILE MENU
+================================= */
+
+const mobileMenu =
+    document.getElementById(
+        "mobileMenu"
+    );
+
+mobileMenu.addEventListener(
+    "click",
+    function(){
+
+        const links =
+            document.querySelector(
+                ".nav-links"
+            );
+
+        if(
+            links.style.display ===
+            "flex"
+        ){
+
+            links.style.display =
+                "none";
+
+        }else{
+
+            links.style.display =
+                "flex";
+
+            links.style.position =
+                "fixed";
+
+            links.style.top =
+                "75px";
+
+            links.style.right =
+                "15px";
+
+            links.style.left =
+                "15px";
+
+            links.style.padding =
+                "15px";
+
+            links.style.flexDirection =
+                "column";
+
+            links.style.background =
+                "rgba(10,10,16,.97)";
+
+            links.style.borderRadius =
+                "15px";
+
+            links.style.border =
+                "1px solid rgba(255,255,255,.08)";
+        }
+
+    }
+);
+
+
+/* =================================
+   SCROLL ANIMATION
+================================= */
+
+const cards =
+    document.querySelectorAll(
+        ".quick-card"
+    );
+
+const observer =
+    new IntersectionObserver(
+        function(entries){
+
+            entries.forEach(
+                function(entry){
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        entry.target.classList.add(
+                            "show"
+                        );
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.1
+        }
+    );
 
 
 cards.forEach(
-function(card){
+    function(card){
 
-    observer.observe(card);
+        observer.observe(card);
 
-});
+    }
+);
 
 
-/* ==============================
+/* =================================
    YEAR
-============================== */
+================================= */
 
 document.getElementById(
     "year"
 ).textContent =
-new Date().getFullYear();
+    new Date().getFullYear();
 
 
-/* ==============================
-   DATABASE
+/* =================================
+   ESCAPE HTML
+================================= */
 
-   لاحقًا مكان ربط Supabase:
+function escapeHTML(value){
 
-   const SUPABASE_URL =
-   "https://YOUR-PROJECT.supabase.co";
+    if(
+        value === null ||
+        value === undefined
+    ){
 
-   const SUPABASE_ANON_KEY =
-   "YOUR-ANON-KEY";
+        return "";
 
-   ومن هنا هنجيب:
+    }
 
-   الكورسات
-   الفيديوهات
-   PDF
-   الاختبارات
-   النتائج
-   بيانات الطلاب
-   صور الطلاب
-   نسبة المشاهدة
+    return String(value)
 
-============================== */
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+}
+
+
+/* =================================
+   LOAD COURSES FROM SUPABASE
+================================= */
+
+async function loadCourses(){
+
+    const grid =
+        document.getElementById(
+            "coursesGrid"
+        );
+
+    const empty =
+        document.getElementById(
+            "emptyCourses"
+        );
+
+
+    grid.innerHTML = "";
+
+    empty.classList.remove("show");
+
+
+    try{
+
+        if(
+            typeof supabaseClient ===
+            "undefined"
+        ){
+
+            throw new Error(
+                "Supabase client غير موجود"
+            );
+
+        }
+
+
+        /*
+        =========================================
+        TABLE:
+
+        courses
+
+        الأعمدة المقترحة:
+
+        id
+        title
+        description
+        level
+        image_url
+        price
+        created_at
+        is_active
+
+        =========================================
+        */
+
+
+        const {
+            data,
+            error
+        } = await supabaseClient
+
+            .from("courses")
+
+            .select(`
+                id,
+                title,
+                description,
+                level,
+                image_url,
+                price,
+                is_active,
+                created_at
+            `)
+
+            .eq(
+                "is_active",
+                true
+            )
+
+            .order(
+                "created_at",
+                {
+                    ascending:false
+                }
+            );
+
+
+        if(error){
+
+            console.error(
+                "Courses Error:",
+                error
+            );
+
+            throw error;
+
+        }
+
+
+        if(
+            !data ||
+            data.length === 0
+        ){
+
+            empty.classList.add(
+                "show"
+            );
+
+            return;
+
+        }
+
+
+        data.forEach(
+            function(course){
+
+                createCourseCard(
+                    course
+                );
+
+            }
+        );
+
+
+    }catch(error){
+
+        console.error(
+            "فشل تحميل الكورسات:",
+            error
+        );
+
+
+        /*
+        لا يوجد محتوى وهمي.
+        إذا حدث خطأ، نظهر رسالة للمستخدم.
+        */
+
+        grid.innerHTML = `
+
+            <div
+                style="
+                grid-column:1/-1;
+                padding:40px 20px;
+                text-align:center;
+                border:1px solid rgba(255,255,255,.06);
+                border-radius:20px;
+                background:rgba(255,255,255,.025);
+                "
+            >
+
+                <div
+                    style="
+                    font-size:35px;
+                    margin-bottom:10px;
+                    "
+                >
+                    ⚠️
+                </div>
+
+                <h3
+                    style="
+                    font-size:16px;
+                    margin-bottom:8px;
+                    "
+                >
+                    تعذر تحميل الكورسات
+                </h3>
+
+                <p
+                    style="
+                    color:#777782;
+                    font-size:10px;
+                    "
+                >
+                    تأكد من اتصال قاعدة البيانات.
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =================================
+   CREATE COURSE CARD
+================================= */
+
+function createCourseCard(course){
+
+    const grid =
+        document.getElementById(
+            "coursesGrid"
+        );
+
+
+    const card =
+        document.createElement(
+            "div"
+        );
+
+    card.className =
+        "course-card";
+
+
+    const title =
+        escapeHTML(
+            course.title
+        );
+
+
+    const description =
+        escapeHTML(
+            course.description ||
+            "تعلم الرياضيات بطريقة بسيطة ومختلفة."
+        );
+
+
+    const level =
+        escapeHTML(
+            course.level ||
+            "رياضيات"
+        );
+
+
+    const price =
+        escapeHTML(
+            course.price ||
+            "متاح"
+        );
+
+
+    let imageHTML = "";
+
+
+    if(
+        course.image_url
+    ){
+
+        imageHTML = `
+
+            <img
+                src="${escapeHTML(course.image_url)}"
+                alt="${title}"
+                loading="lazy"
+                onerror="
+                    this.style.display='none';
+                "
+            >
+
+        `;
+
+    }else{
+
+        imageHTML = `
+
+            <div class="formula">
+                ∑
+            </div>
+
+        `;
+
+    }
+
+
+    card.innerHTML = `
+
+        <div class="course-image">
+
+            <span class="course-level">
+                ${level}
+            </span>
+
+            ${imageHTML}
+
+        </div>
+
+
+        <div class="course-body">
+
+            <h3>
+                ${title}
+            </h3>
+
+            <p>
+                ${description}
+            </p>
+
+
+            <div class="course-meta">
+
+                <span>
+                    🎥 فيديو
+                </span>
+
+                <span>
+                    📄 PDF
+                </span>
+
+                <span>
+                    📝 اختبار
+                </span>
+
+            </div>
+
+
+            <div class="course-footer">
+
+                <span class="course-price">
+                    ${price}
+                </span>
+
+                <a
+                    href="course.html?id=${encodeURIComponent(course.id)}"
+                    class="course-link"
+                >
+                    التفاصيل
+                </a>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    grid.appendChild(
+        card
+    );
+
+
+    setTimeout(
+        function(){
+
+            card.classList.add(
+                "show"
+            );
+
+        },
+        50
+    );
+
+}
+
+
+/* =================================
+   START
+================================= */
+
+async function startPage(){
+
+    await loadCourses();
+
+
+    const loader =
+        document.getElementById(
+            "pageLoader"
+        );
+
+
+    setTimeout(
+        function(){
+
+            loader.classList.add(
+                "hide"
+            );
+
+        },
+        300
+    );
+
+}
+
+
+startPage();
 
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase.js"></script>
-
 </body>
-</html>
+
+    </html>
