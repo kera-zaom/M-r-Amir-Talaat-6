@@ -7,7 +7,7 @@
     "use strict";
 
     // =====================================================
-    // SUPABASE CONFIG
+    // CONFIG
     // =====================================================
 
     const SUPABASE_URL =
@@ -18,7 +18,7 @@
 
 
     // =====================================================
-    // CHECK SUPABASE LIBRARY
+    // CHECK LIBRARY
     // =====================================================
 
     if (!window.supabase) {
@@ -34,7 +34,7 @@
 
 
     // =====================================================
-    // CREATE SUPABASE CLIENT
+    // CREATE CLIENT
     // =====================================================
 
     try {
@@ -48,15 +48,9 @@
                         persistSession: true,
                         autoRefreshToken: true,
                         detectSessionInUrl: true,
-
-                        storage:
-                            window.localStorage,
-
-                        storageKey:
-                            "al-khwarizmi-auth",
-
-                        flowType:
-                            "pkce"
+                        storage: window.localStorage,
+                        storageKey: "al-khwarizmi-auth",
+                        flowType: "pkce"
                     }
                 }
             );
@@ -91,7 +85,7 @@
 
 
     // =====================================================
-    // GET CURRENT USER
+    // CURRENT USER
     // =====================================================
 
     window.getCurrentUser = async function () {
@@ -151,129 +145,122 @@
 
 
     // =====================================================
-    // GET CURRENT SESSION
+    // CURRENT SESSION
     // =====================================================
 
-    window.getCurrentSession = async function () {
+    window.getCurrentSession =
+        async function () {
 
-        if (!window.supabaseClient) {
+            if (!window.supabaseClient) {
 
-            return {
+                return {
 
-                session: null,
+                    session: null,
 
-                error: new Error(
-                    "Supabase غير متصل."
-                )
+                    error:
+                        new Error(
+                            "Supabase غير متصل."
+                        )
 
-            };
+                };
 
-        }
-
-
-        try {
-
-            const {
-                data,
-                error
-            } =
-                await window.supabaseClient
-                    .auth
-                    .getSession();
+            }
 
 
-            return {
+            try {
 
-                session:
-                    data?.session || null,
+                const {
+                    data,
+                    error
+                } =
+                    await window.supabaseClient
+                        .auth
+                        .getSession();
 
-                error:
-                    error || null
 
-            };
+                return {
 
+                    session:
+                        data?.session || null,
 
-        } catch (error) {
+                    error:
+                        error || null
 
-            console.error(
-                "❌ Get session error:",
-                error
-            );
+                };
 
-            return {
+            } catch (error) {
 
-                session: null,
+                console.error(
+                    "❌ Get session error:",
+                    error
+                );
 
-                error
+                return {
 
-            };
+                    session: null,
 
-        }
+                    error
 
-    };
+                };
+
+            }
+
+        };
 
 
     // =====================================================
     // LOGOUT
     // =====================================================
 
-    window.logoutUser = async function () {
+    window.logoutUser =
+        async function () {
 
-        if (!window.supabaseClient) {
+            if (!window.supabaseClient) {
 
-            return {
-                error: new Error(
-                    "Supabase غير متصل."
-                )
-            };
+                return {
+                    error: new Error(
+                        "Supabase غير متصل."
+                    )
+                };
 
-        }
-
-
-        try {
-
-            const {
-                error
-            } =
-                await window.supabaseClient
-                    .auth
-                    .signOut();
+            }
 
 
-            if (error) {
+            try {
+
+                const {
+                    error
+                } =
+                    await window.supabaseClient
+                        .auth
+                        .signOut();
+
+
+                return {
+
+                    error:
+                        error || null
+
+                };
+
+            } catch (error) {
 
                 console.error(
                     "❌ Logout error:",
                     error
                 );
 
+                return {
+                    error
+                };
+
             }
 
-
-            return {
-                error:
-                    error || null
-            };
-
-
-        } catch (error) {
-
-            console.error(
-                "❌ Logout error:",
-                error
-            );
-
-            return {
-                error
-            };
-
-        }
-
-    };
+        };
 
 
     // =====================================================
-    // AUTH STATE LISTENER
+    // AUTH STATE
     // =====================================================
 
     if (window.supabaseClient) {
@@ -281,7 +268,10 @@
         window.supabaseClient
             .auth
             .onAuthStateChange(
-                function (event, session) {
+                function (
+                    event,
+                    session
+                ) {
 
                     console.log(
                         "🔐 AUTH:",
@@ -298,7 +288,7 @@
 
 
     // =====================================================
-    // EXPORT CONFIG
+    // EXPORT
     // =====================================================
 
     window.AL_KHAWARIZMI_SUPABASE = {
@@ -314,157 +304,5 @@
             }
 
     };
-
-
-})();
-                    error:
-                        new Error(
-                            "Supabase غير متصل."
-                        )
-                };
-
-            }
-
-            try {
-
-                const {
-                    data,
-                    error
-                } =
-                    await window.supabaseClient
-                        .auth
-                        .getUser();
-
-                return {
-                    user:
-                        data?.user || null,
-                    error
-                };
-
-            } catch (error) {
-
-                return {
-                    user: null,
-                    error
-                };
-
-            }
-
-        };
-
-
-    // =================================================
-    // GET CURRENT SESSION
-    // =================================================
-
-    window.getCurrentSession =
-        async function () {
-
-            if (!window.supabaseClient) {
-
-                return {
-                    session: null,
-                    error:
-                        new Error(
-                            "Supabase غير متصل."
-                        )
-                };
-
-            }
-
-            try {
-
-                const {
-                    data,
-                    error
-                } =
-                    await window.supabaseClient
-                        .auth
-                        .getSession();
-
-                return {
-                    session:
-                        data?.session || null,
-                    error
-                };
-
-            } catch (error) {
-
-                return {
-                    session: null,
-                    error
-                };
-
-            }
-
-        };
-
-
-    // =================================================
-    // LOGOUT
-    // =================================================
-
-    window.logoutUser =
-        async function () {
-
-            if (!window.supabaseClient) {
-                return;
-            }
-
-            try {
-
-                const {
-                    error
-                } =
-                    await window.supabaseClient
-                        .auth
-                        .signOut();
-
-                if (error) {
-                    console.error(
-                        "Logout error:",
-                        error
-                    );
-                }
-
-            } catch (error) {
-
-                console.error(
-                    "Logout error:",
-                    error
-                );
-
-            }
-
-        };
-
-
-    // =================================================
-    // AUTH STATE LISTENER
-    // =================================================
-
-    if (window.supabaseClient) {
-
-        window.supabaseClient
-            .auth
-            .onAuthStateChange(
-                function (
-                    event,
-                    session
-                ) {
-
-                    console.log(
-                        "AUTH:",
-                        event,
-                        session
-                            ? "Session موجودة"
-                            : "No session"
-                    );
-
-                }
-            );
-
-    }
-
 
 })();
