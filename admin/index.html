@@ -20,7 +20,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet">
 
-<!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
@@ -33,113 +32,76 @@
 }
 
 :root{
-
     --bg:#050507;
-
     --card:#111118;
-
     --card2:#15151e;
-
     --border:rgba(255,255,255,.08);
-
     --text:#fff;
-
     --muted:#9696a5;
-
     --primary:#7657ff;
-
     --primary-dark:#4d35d9;
-
     --green:#35d39a;
-
     --orange:#ffad45;
-
     --blue:#4da3ff;
-
     --red:#ff6078;
-
 }
 
 body{
-
     min-height:100vh;
-
     color:var(--text);
 
     background:
-
         radial-gradient(
             circle at 10% 0%,
             rgba(118,87,255,.15),
             transparent 30%
         ),
-
         radial-gradient(
             circle at 90% 90%,
             rgba(67,45,190,.10),
             transparent 30%
         ),
-
         var(--bg);
-
 }
 
-
-/* ================= SIDEBAR ================= */
+/* SIDEBAR */
 
 .sidebar{
-
     position:fixed;
-
     right:0;
-
     top:0;
 
     width:255px;
-
     height:100vh;
 
     padding:20px 15px;
 
-    background:
-        rgba(9,9,14,.96);
+    background:rgba(9,9,14,.96);
 
-    border-left:
-        1px solid var(--border);
+    border-left:1px solid var(--border);
 
     z-index:1000;
 
     transition:.3s;
-
 }
 
-
 .brand{
-
     display:flex;
-
     align-items:center;
-
     gap:10px;
 
     padding:8px 10px 25px;
 
-    border-bottom:
-        1px solid var(--border);
+    border-bottom:1px solid var(--border);
 
     margin-bottom:18px;
-
 }
 
-
 .brand-logo{
-
     width:44px;
-
     height:44px;
 
     display:grid;
-
     place-items:center;
 
     border-radius:14px;
@@ -152,63 +114,40 @@ body{
         );
 
     font-size:20px;
-
     font-weight:900;
 
     box-shadow:
         0 0 25px
         rgba(118,87,255,.25);
-
 }
-
 
 .brand-text strong{
-
     display:block;
-
     font-size:16px;
-
 }
-
 
 .brand-text span{
-
     color:var(--muted);
-
     font-size:8px;
-
 }
 
-
 .menu-title{
-
     color:#666675;
-
     font-size:8px;
 
     padding:
         0 10px 8px;
-
 }
-
 
 .menu{
-
     display:flex;
-
     flex-direction:column;
-
     gap:5px;
-
 }
 
-
 .menu a{
-
     display:flex;
-
     align-items:center;
-
     gap:10px;
 
     height:44px;
@@ -222,26 +161,18 @@ body{
     border-radius:11px;
 
     font-size:10px;
-
     font-weight:700;
 
     transition:.2s;
-
 }
-
 
 .menu a:hover{
-
     color:#fff;
-
     background:
         rgba(118,87,255,.08);
-
 }
 
-
 .menu a.active{
-
     color:#fff;
 
     background:
@@ -254,47 +185,34 @@ body{
     border:
         1px solid
         rgba(118,87,255,.16);
-
 }
 
-
 .menu-icon{
-
     width:27px;
-
     height:27px;
 
     display:grid;
-
     place-items:center;
 
     border-radius:8px;
 
     background:
         rgba(255,255,255,.04);
-
 }
 
-
-/* ================= LOGOUT ================= */
+/* LOGOUT */
 
 .logout{
-
     position:absolute;
 
     bottom:20px;
 
     right:15px;
-
     left:15px;
-
 }
 
-
 .logout button{
-
     width:100%;
-
     height:43px;
 
     border:1px solid
@@ -310,48 +228,37 @@ body{
     cursor:pointer;
 
     font-size:10px;
-
     font-weight:800;
-
 }
 
-
-/* ================= MAIN ================= */
+/* MAIN */
 
 .main{
-
     margin-right:255px;
 
     min-height:100vh;
 
-    padding:25px 30px 50px;
-
+    padding:
+        25px 30px 50px;
 }
 
-
-/* ================= TOP ================= */
+/* TOPBAR */
 
 .topbar{
-
     display:flex;
 
     align-items:center;
-
     justify-content:space-between;
 
     gap:15px;
 
     margin-bottom:25px;
-
 }
 
-
 .mobile-menu{
-
     display:none;
 
     width:42px;
-
     height:42px;
 
     border:1px solid var(--border);
@@ -364,29 +271,21 @@ body{
     border-radius:10px;
 
     cursor:pointer;
-
 }
 
-
 .admin-box{
-
     display:flex;
 
     align-items:center;
 
     gap:10px;
-
 }
 
-
 .admin-avatar{
-
     width:42px;
-
     height:42px;
 
     display:grid;
-
     place-items:center;
 
     border-radius:50%;
@@ -399,34 +298,24 @@ body{
         );
 
     font-weight:900;
-
 }
-
 
 .admin-info strong{
-
     display:block;
-
     font-size:10px;
-
 }
 
-
 .admin-info span{
-
     display:block;
 
     color:var(--muted);
 
     font-size:8px;
-
 }
 
-
-/* ================= HERO ================= */
+/* HERO */
 
 .hero{
-
     position:relative;
 
     overflow:hidden;
@@ -454,22 +343,17 @@ body{
             rgba(118,87,255,.10),
             rgba(255,255,255,.025)
         );
-
 }
 
-
 .hero::after{
-
     content:"";
 
     position:absolute;
 
     width:180px;
-
     height:180px;
 
     left:-60px;
-
     bottom:-100px;
 
     border-radius:50%;
@@ -478,44 +362,32 @@ body{
         rgba(118,87,255,.12);
 
     filter:blur(20px);
-
 }
 
-
 .hero h1{
-
     font-size:
         clamp(22px,4vw,31px);
 
     font-weight:900;
 
     margin-bottom:5px;
-
 }
-
 
 .hero h1 span{
-
     color:#a99cff;
-
 }
 
-
 .hero p{
-
     color:#aaaab7;
 
     font-size:10px;
 
     line-height:1.9;
-
 }
 
-
-/* ================= STATS ================= */
+/* STATS */
 
 .stats{
-
     display:grid;
 
     grid-template-columns:
@@ -524,12 +396,9 @@ body{
     gap:14px;
 
     margin-bottom:20px;
-
 }
 
-
 .stat{
-
     padding:18px;
 
     border-radius:17px;
@@ -541,114 +410,74 @@ body{
         1px solid var(--border);
 
     transition:.25s;
-
 }
 
-
 .stat:hover{
-
     transform:translateY(-3px);
 
     border-color:
         rgba(118,87,255,.18);
-
 }
 
-
 .stat-top{
-
     display:flex;
 
     align-items:center;
-
     justify-content:space-between;
 
     margin-bottom:12px;
-
 }
 
-
 .stat-icon{
-
     width:38px;
-
     height:38px;
 
     display:grid;
-
     place-items:center;
 
     border-radius:11px;
 
     background:
         rgba(118,87,255,.10);
-
 }
-
 
 .stat small{
-
     color:var(--muted);
-
     font-size:8px;
-
 }
-
 
 .stat h2{
-
     font-size:25px;
-
     font-weight:900;
-
 }
 
-
-.stat:nth-child(2)
-.stat-icon{
-
+.stat:nth-child(2) .stat-icon{
     background:
         rgba(53,211,154,.10);
-
 }
 
-
-.stat:nth-child(3)
-.stat-icon{
-
+.stat:nth-child(3) .stat-icon{
     background:
         rgba(77,163,255,.10);
-
 }
 
-
-.stat:nth-child(4)
-.stat-icon{
-
+.stat:nth-child(4) .stat-icon{
     background:
         rgba(255,173,69,.10);
-
 }
 
-
-/* ================= CONTENT GRID ================= */
+/* CONTENT */
 
 .content-grid{
-
     display:grid;
 
     grid-template-columns:
         1.4fr .8fr;
 
     gap:18px;
-
 }
 
-
-/* ================= CARD ================= */
-
 .card{
-
     padding:20px;
 
     border-radius:18px;
@@ -658,59 +487,42 @@ body{
 
     border:
         1px solid var(--border);
-
 }
 
-
 .card-head{
-
     display:flex;
 
     align-items:center;
-
     justify-content:space-between;
 
     margin-bottom:17px;
-
 }
-
 
 .card-head h3{
-
     font-size:13px;
-
     font-weight:900;
-
 }
 
-
 .card-head a{
-
     color:#a99cff;
 
     text-decoration:none;
 
     font-size:8px;
-
 }
 
-
-/* ================= QUICK ACTIONS ================= */
+/* ACTIONS */
 
 .actions{
-
     display:grid;
 
     grid-template-columns:
         repeat(2,1fr);
 
     gap:10px;
-
 }
 
-
 .action{
-
     display:flex;
 
     align-items:center;
@@ -735,12 +547,9 @@ body{
         rgba(255,255,255,.055);
 
     transition:.25s;
-
 }
 
-
 .action:hover{
-
     transform:translateY(-2px);
 
     border-color:
@@ -748,41 +557,29 @@ body{
 
     background:
         rgba(118,87,255,.06);
-
 }
 
-
 .action-icon{
-
     width:38px;
-
     height:38px;
 
     flex-shrink:0;
 
     display:grid;
-
     place-items:center;
 
     border-radius:10px;
 
     background:
         rgba(118,87,255,.10);
-
 }
-
 
 .action strong{
-
     display:block;
-
     font-size:9px;
-
 }
 
-
 .action span{
-
     display:block;
 
     color:var(--muted);
@@ -790,25 +587,19 @@ body{
     font-size:7px;
 
     margin-top:2px;
-
 }
 
-
-/* ================= ACTIVITY ================= */
+/* ACTIVITY */
 
 .activity{
-
     display:flex;
 
     flex-direction:column;
 
     gap:9px;
-
 }
 
-
 .activity-item{
-
     display:flex;
 
     align-items:center;
@@ -821,46 +612,31 @@ body{
 
     background:
         rgba(255,255,255,.025);
-
 }
 
-
 .activity-icon{
-
     width:32px;
-
     height:32px;
 
     display:grid;
-
     place-items:center;
 
     border-radius:9px;
 
     background:
         rgba(118,87,255,.08);
-
 }
-
 
 .activity-text{
-
     flex:1;
-
 }
-
 
 .activity-text strong{
-
     display:block;
-
     font-size:8px;
-
 }
 
-
 .activity-text span{
-
     display:block;
 
     color:var(--muted);
@@ -868,12 +644,9 @@ body{
     font-size:7px;
 
     margin-top:2px;
-
 }
 
-
 .empty{
-
     text-align:center;
 
     padding:25px 10px;
@@ -881,35 +654,27 @@ body{
     color:#686876;
 
     font-size:9px;
-
 }
 
-
-/* ================= LOADING ================= */
+/* LOADING */
 
 .loading{
-
     position:fixed;
 
     inset:0;
 
-    z-index:2000;
+    z-index:5000;
 
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     background:#050507;
-
 }
 
-
 .spinner{
-
     width:45px;
-
     height:45px;
 
     border-radius:50%;
@@ -923,9 +688,7 @@ body{
 
     animation:
         spin .8s linear infinite;
-
 }
-
 
 @keyframes spin{
 
@@ -935,93 +698,119 @@ body{
 
 }
 
+/* TOAST */
 
-/* ================= RESPONSIVE ================= */
+.toast{
+    position:fixed;
+
+    left:20px;
+    bottom:20px;
+
+    z-index:6000;
+
+    padding:12px 16px;
+
+    border-radius:11px;
+
+    background:#191922;
+
+    border:1px solid var(--border);
+
+    color:white;
+
+    font-size:9px;
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+    pointer-events:none;
+
+    transition:.3s;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.toast.error{
+    color:#ff9aaa;
+
+    border-color:
+        rgba(255,96,120,.25);
+}
+
+.toast.success{
+    color:#7be6bd;
+
+    border-color:
+        rgba(53,211,154,.25);
+}
+
+/* RESPONSIVE */
 
 @media(max-width:1050px){
 
     .stats{
-
         grid-template-columns:
             repeat(2,1fr);
-
     }
 
     .content-grid{
-
         grid-template-columns:1fr;
-
     }
 
 }
-
 
 @media(max-width:800px){
 
     .sidebar{
-
         transform:
             translateX(100%);
-
     }
 
     .sidebar.open{
-
         transform:
             translateX(0);
-
     }
 
     .main{
-
         margin-right:0;
 
         padding:
             18px 15px 40px;
-
     }
 
     .mobile-menu{
-
         display:block;
-
     }
 
 }
 
-
 @media(max-width:550px){
 
     .stats{
-
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:
+            1fr 1fr;
 
         gap:9px;
-
     }
 
     .stat{
-
         padding:13px;
-
     }
 
     .stat h2{
-
         font-size:21px;
-
     }
 
     .actions{
-
         grid-template-columns:1fr;
-
     }
 
     .hero{
-
         padding:21px;
-
     }
 
 }
@@ -1030,17 +819,14 @@ body{
 
 </head>
 
-
 <body>
 
-
-<!-- ================= SIDEBAR ================= -->
+<!-- SIDEBAR -->
 
 <aside
     class="sidebar"
     id="sidebar"
 >
-
 
     <div class="brand">
 
@@ -1062,142 +848,96 @@ body{
 
     </div>
 
-
     <div class="menu-title">
         الإدارة
     </div>
 
-
     <nav class="menu">
-
 
         <a
             href="index.html"
             class="active"
         >
-
             <div class="menu-icon">
                 🏠
             </div>
-
             الرئيسية
-
         </a>
 
-
         <a href="students.html">
-
             <div class="menu-icon">
                 👨‍🎓
             </div>
-
             الطلاب
-
         </a>
 
-
         <a href="courses.html">
-
             <div class="menu-icon">
                 📚
             </div>
-
             الكورسات
-
         </a>
 
-
         <a href="lessons.html">
-
             <div class="menu-icon">
                 🎥
             </div>
-
             الدروس والفيديوهات
-
         </a>
 
-
         <a href="exams.html">
-
             <div class="menu-icon">
                 📝
             </div>
-
             الاختبارات
-
         </a>
 
-
         <a href="results.html">
-
             <div class="menu-icon">
                 📊
             </div>
-
             النتائج
-
         </a>
 
-
         <a href="files.html">
-
             <div class="menu-icon">
                 📁
             </div>
-
             الملفات و PDF
-
         </a>
 
-
         <a href="payments.html">
-
             <div class="menu-icon">
                 💳
             </div>
-
             المدفوعات
-
         </a>
 
-
         <a href="settings.html">
-
             <div class="menu-icon">
                 ⚙️
             </div>
-
             الإعدادات
-
         </a>
-
 
     </nav>
 
-
     <div class="logout">
 
-        <button
-            onclick="logout()"
-        >
+        <button onclick="logout()">
             🚪 تسجيل الخروج
         </button>
 
     </div>
 
-
 </aside>
 
 
-
-<!-- ================= MAIN ================= -->
+<!-- MAIN -->
 
 <main class="main">
 
-
     <div class="topbar">
-
 
         <button
             class="mobile-menu"
@@ -1206,17 +946,16 @@ body{
             ☰
         </button>
 
-
         <div></div>
-
 
         <div class="admin-box">
 
-
-            <div class="admin-avatar">
+            <div
+                class="admin-avatar"
+                id="adminAvatar"
+            >
                 أ
             </div>
-
 
             <div class="admin-info">
 
@@ -1230,22 +969,19 @@ body{
 
             </div>
 
-
         </div>
-
 
     </div>
 
 
-
-    <!-- ================= HERO ================= -->
+    <!-- HERO -->
 
     <section class="hero">
 
         <h1>
 
             أهلًا يا
-            <span>
+            <span id="heroName">
                 أسطورة الرياضيات 👑
             </span>
 
@@ -1266,11 +1002,9 @@ body{
     </section>
 
 
-
-    <!-- ================= STATS ================= -->
+    <!-- STATS -->
 
     <section class="stats">
-
 
         <div class="stat">
 
@@ -1355,12 +1089,10 @@ body{
 
         </div>
 
-
     </section>
 
 
-
-    <!-- ================= CONTENT ================= -->
+    <!-- CONTENT -->
 
     <section class="content-grid">
 
@@ -1368,7 +1100,6 @@ body{
         <!-- QUICK ACTIONS -->
 
         <div class="card">
-
 
             <div class="card-head">
 
@@ -1378,9 +1109,7 @@ body{
 
             </div>
 
-
             <div class="actions">
-
 
                 <a
                     href="add-course.html"
@@ -1477,18 +1206,14 @@ body{
 
                 </a>
 
-
             </div>
 
-
         </div>
-
 
 
         <!-- ACTIVITY -->
 
         <div class="card">
-
 
             <div class="card-head">
 
@@ -1496,12 +1221,11 @@ body{
                     🕐 آخر النشاطات
                 </h3>
 
-                <a href="#">
-                    عرض الكل
+                <a href="students.html">
+                    عرض الطلاب
                 </a>
 
             </div>
-
 
             <div
                 class="activity"
@@ -1514,47 +1238,41 @@ body{
 
             </div>
 
-
         </div>
 
-
     </section>
-
 
 </main>
 
 
+<!-- LOADING -->
 
-<!-- ================= JAVASCRIPT ================= -->
+<div
+    class="loading"
+    id="loading"
+>
+
+    <div class="spinner"></div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div
+    class="toast"
+    id="toast"
+></div>
+
 
 <script>
 
-/*
-============================================================
-    🔥 SUPABASE CONFIGURATION
-============================================================
-
-    ضع بيانات Supabase هنا:
-
-    Supabase Dashboard
-        ↓
-    Project Settings
-        ↓
-    API
-
-    استخدم:
-
-    Project URL
-    Publishable Key / anon key
-
-    ❌ ممنوع service_role key
-============================================================
-*/
-
+/* =========================================================
+   SUPABASE
+========================================================= */
 
 const SUPABASE_URL =
     "ضع_رابط_مشروعك_هنا";
-
 
 const SUPABASE_KEY =
     "ضع_publishable_او_anon_key_هنا";
@@ -1565,7 +1283,9 @@ let supabaseClient = null;
 
 if(
     SUPABASE_URL.startsWith("http") &&
-    !SUPABASE_URL.includes("ضع_")
+    SUPABASE_KEY &&
+    !SUPABASE_URL.includes("ضع_") &&
+    !SUPABASE_KEY.includes("ضع_")
 ){
 
     supabaseClient =
@@ -1577,15 +1297,58 @@ if(
 }
 
 
-/* ================= ELEMENTS ================= */
+/* =========================================================
+   ELEMENTS
+========================================================= */
 
 const loading =
-    document.getElementById(
-        "loading"
-    );
+    document.getElementById("loading");
+
+const toast =
+    document.getElementById("toast");
 
 
-/* ================= SIDEBAR ================= */
+/* =========================================================
+   LOADING
+========================================================= */
+
+function setLoading(state){
+
+    loading.style.display =
+        state ? "flex" : "none";
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function showToast(
+    message,
+    type=""
+){
+
+    toast.textContent =
+        message;
+
+    toast.className =
+        "toast " +
+        type +
+        " show";
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    },3500);
+
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
 
 function toggleSidebar(){
 
@@ -1597,15 +1360,20 @@ function toggleSidebar(){
 }
 
 
-/* ================= AUTH ================= */
+/* =========================================================
+   CHECK ADMIN
+========================================================= */
 
 async function checkAdmin(){
 
     if(!supabaseClient){
 
-        console.error(
-            "Supabase غير متصل."
+        showToast(
+            "بيانات Supabase غير موجودة.",
+            "error"
         );
+
+        setLoading(false);
 
         return false;
 
@@ -1639,12 +1407,6 @@ async function checkAdmin(){
         data.session.user;
 
 
-    /*
-    ========================================================
-        التحقق من role
-    ========================================================
-    */
-
     const {
         data: profile,
         error: profileError
@@ -1665,8 +1427,24 @@ async function checkAdmin(){
             .maybeSingle();
 
 
+    if(profileError){
+
+        console.error(
+            "PROFILE ERROR:",
+            profileError
+        );
+
+        showToast(
+            "حدث خطأ أثناء التحقق من حساب الأدمن.",
+            "error"
+        );
+
+        return false;
+
+    }
+
+
     if(
-        profileError ||
         !profile ||
         profile.role !== "admin"
     ){
@@ -1683,12 +1461,6 @@ async function checkAdmin(){
     }
 
 
-    /*
-    ========================================================
-        اسم الأدمن
-    ========================================================
-    */
-
     const name =
         profile.full_name ||
         user.email ||
@@ -1696,11 +1468,25 @@ async function checkAdmin(){
 
 
     document
-        .getElementById(
-            "adminName"
-        )
+        .getElementById("adminName")
         .textContent =
             name;
+
+
+    document
+        .getElementById("heroName")
+        .textContent =
+            name + " 👑";
+
+
+    const firstLetter =
+        name.trim().charAt(0) || "أ";
+
+
+    document
+        .getElementById("adminAvatar")
+        .textContent =
+            firstLetter;
 
 
     return true;
@@ -1708,11 +1494,11 @@ async function checkAdmin(){
 }
 
 
-/* ================= COUNT ================= */
+/* =========================================================
+   GET COUNT
+========================================================= */
 
-async function getCount(
-    table
-){
+async function getCount(table){
 
     const {
         count,
@@ -1734,6 +1520,7 @@ async function getCount(
     if(error){
 
         console.error(
+            "COUNT ERROR:",
             table,
             error
         );
@@ -1748,29 +1535,14 @@ async function getCount(
 }
 
 
-/* ================= LOAD STATS ================= */
+/* =========================================================
+   LOAD STATISTICS
+========================================================= */
 
 async function loadStats(){
 
-    /*
-    ========================================================
-        أسماء الجداول المتوقعة:
-
-        students
-        courses
-        lessons
-        exams
-    ========================================================
-    */
-
-
-    const [
-        students,
-        courses,
-        lessons,
-        exams
-    ] =
-        await Promise.all([
+    const results =
+        await Promise.allSettled([
 
             getCount("students"),
 
@@ -1783,97 +1555,257 @@ async function loadStats(){
         ]);
 
 
+    const students =
+        results[0].status === "fulfilled"
+        ? results[0].value
+        : 0;
+
+
+    const courses =
+        results[1].status === "fulfilled"
+        ? results[1].value
+        : 0;
+
+
+    const lessons =
+        results[2].status === "fulfilled"
+        ? results[2].value
+        : 0;
+
+
+    const exams =
+        results[3].status === "fulfilled"
+        ? results[3].value
+        : 0;
+
+
     document
-        .getElementById(
-            "studentsCount"
-        )
+        .getElementById("studentsCount")
         .textContent =
             students;
 
 
     document
-        .getElementById(
-            "coursesCount"
-        )
+        .getElementById("coursesCount")
         .textContent =
             courses;
 
 
     document
-        .getElementById(
-            "lessonsCount"
-        )
+        .getElementById("lessonsCount")
         .textContent =
             lessons;
 
 
     document
-        .getElementById(
-            "examsCount"
-        )
+        .getElementById("examsCount")
         .textContent =
             exams;
 
 }
 
 
-/* ================= ACTIVITY ================= */
+/* =========================================================
+   LOAD ACTIVITY
+========================================================= */
 
 async function loadActivity(){
 
     const container =
-        document.getElementById(
-            "activity"
-        );
+        document.getElementById("activity");
+
+
+    container.innerHTML = "";
 
 
     /*
-    ========================================================
-        لاحقًا ممكن نعمل جدول:
-
-        admin_activity
-
-        لتسجيل:
-
-        إضافة كورس
-        إضافة درس
-        حذف طالب
-        إنشاء اختبار
-        إلخ.
-    ========================================================
+       نعرض أحدث الطلاب المسجلين
+       كآخر نشاط فعلي من قاعدة البيانات.
     */
 
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
 
-    container.innerHTML = `
+            .from("students")
 
-        <div class="empty">
+            .select(
+                "id, full_name, created_at"
+            )
 
-            لا توجد نشاطات مسجلة حاليًا.
+            .order(
+                "created_at",
+                {
+                    ascending:false
+                }
+            )
 
-        </div>
-
-    `;
-
-}
+            .limit(5);
 
 
-/* ================= LOGOUT ================= */
+    if(error){
 
-async function logout(){
+        console.error(
+            "ACTIVITY ERROR:",
+            error
+        );
 
-    if(!supabaseClient){
+        container.innerHTML = `
 
-        window.location.href =
-            "login.html";
+            <div class="empty">
+
+                تعذر تحميل النشاطات.
+
+            </div>
+
+        `;
 
         return;
 
     }
 
 
-    await supabaseClient
-        .auth
-        .signOut();
+    if(!data || !data.length){
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                لا توجد نشاطات حتى الآن.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    data.forEach(student => {
+
+        const item =
+            document.createElement("div");
+
+
+        item.className =
+            "activity-item";
+
+
+        const name =
+            student.full_name ||
+            "طالب جديد";
+
+
+        const date =
+            formatDate(
+                student.created_at
+            );
+
+
+        item.innerHTML = `
+
+            <div class="activity-icon">
+                👨‍🎓
+            </div>
+
+            <div class="activity-text">
+
+                <strong>
+                    ${escapeHTML(name)}
+                </strong>
+
+                <span>
+                    تم تسجيل طالب جديد
+                    •
+                    ${date}
+                </span>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(item);
+
+    });
+
+}
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+function formatDate(date){
+
+    if(!date)
+        return "—";
+
+
+    const d =
+        new Date(date);
+
+
+    return d.toLocaleDateString(
+        "ar-EG",
+        {
+            year:"numeric",
+            month:"short",
+            day:"numeric"
+        }
+    );
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(value){
+
+    return String(value)
+
+        .replace(
+            /[&<>"']/g,
+            char => ({
+
+                "&":"&amp;",
+                "<":"&lt;",
+                ">":"&gt;",
+                '"':"&quot;",
+                "'":"&#039;"
+
+            }[char])
+        );
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+async function logout(){
+
+    try{
+
+        if(supabaseClient){
+
+            await supabaseClient
+                .auth
+                .signOut();
+
+        }
+
+    }catch(error){
+
+        console.error(error);
+
+    }
 
 
     window.location.href =
@@ -1882,56 +1814,88 @@ async function logout(){
 }
 
 
-/* ================= START ================= */
+/* =========================================================
+   AUTH STATE
+========================================================= */
 
-async function init(){
+if(supabaseClient){
 
-    /*
-    ========================================================
-        حماية الصفحة
-    ========================================================
-    */
+    supabaseClient
+        .auth
+        .onAuthStateChange(
+            (event, session) => {
 
-    const isAdmin =
-        await checkAdmin();
+                if(
+                    event === "SIGNED_OUT" ||
+                    !session
+                ){
 
+                    window.location.href =
+                        "login.html";
 
-    if(!isAdmin){
+                }
 
-        return;
-
-    }
-
-
-    /*
-    ========================================================
-        تحميل الإحصائيات
-    ========================================================
-    */
-
-    await loadStats();
-
-
-    /*
-    ========================================================
-        تحميل النشاطات
-    ========================================================
-    */
-
-    await loadActivity();
+            }
+        );
 
 }
 
 
-/* START */
+/* =========================================================
+   INIT
+========================================================= */
+
+async function init(){
+
+    setLoading(true);
+
+
+    try{
+
+        const isAdmin =
+            await checkAdmin();
+
+
+        if(!isAdmin)
+            return;
+
+
+        await Promise.all([
+
+            loadStats(),
+
+            loadActivity()
+
+        ]);
+
+
+    }catch(error){
+
+        console.error(
+            "INIT ERROR:",
+            error
+        );
+
+        showToast(
+            error.message ||
+            "حدث خطأ أثناء تحميل لوحة التحكم.",
+            "error"
+        );
+
+
+    }finally{
+
+        setLoading(false);
+
+    }
+
+}
+
 
 init();
 
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="../supabase.js"></script>
-
 </body>
 
-</html>
+      </html>
