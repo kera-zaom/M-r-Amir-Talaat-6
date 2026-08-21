@@ -2,1216 +2,105 @@
 <html lang="ar" dir="rtl">
 
 <head>
-    <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
 
-    <title>الخوارزمي | الصفحة الرئيسية</title>
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <style>
+<title>الخوارزمي | تسجيل الدخول</title>
 
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
+<style>
 
-        body{
-            min-height:100vh;
-            font-family:
-                "Cairo",
-                "Tajawal",
-                Arial,
-                sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-            color:#fff;
+body{
 
-            background:
-                radial-gradient(
-                    circle at 85% 10%,
-                    rgba(118,78,255,.20),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 10% 90%,
-                    rgba(45,82,230,.14),
-                    transparent 30%
-                ),
-                #07070d;
-        }
+    min-height:100vh;
 
-        .container{
-            width:min(1150px, calc(100% - 30px));
-            margin:auto;
-        }
+    font-family:
+        Arial,
+        Tahoma,
+        sans-serif;
 
-        /* =========================
-           HEADER
-        ========================= */
+    color:#fff;
 
-        header{
-            position:sticky;
-            top:0;
-            z-index:50;
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(118,78,255,.20),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(45,82,230,.14),
+            transparent 30%
+        ),
+        #07070d;
 
-            background:rgba(7,7,13,.78);
-            backdrop-filter:blur(18px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-            border-bottom:
-                1px solid rgba(255,255,255,.06);
-        }
+    padding:20px;
+}
 
-        .nav{
-            min-height:75px;
+.page{
 
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
+    width:min(1000px,100%);
 
-            gap:20px;
-        }
+    min-height:620px;
 
-        .brand{
-            display:flex;
-            align-items:center;
-            gap:12px;
-        }
+    display:grid;
 
-        .logo{
-            width:48px;
-            height:48px;
+    grid-template-columns:1fr 1fr;
 
-            display:grid;
-            place-items:center;
+    overflow:hidden;
 
-            border-radius:15px;
+    border-radius:28px;
 
-            font-size:25px;
-            font-weight:900;
+    background:
+        rgba(12,12,21,.92);
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #895aff,
-                    #3159e8
-                );
+    border:
+        1px solid rgba(255,255,255,.08);
 
-            box-shadow:
-                0 12px 35px rgba(91,66,225,.30);
-        }
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.45);
 
-        .brand-text h1{
-            font-size:17px;
-        }
+}
 
-        .brand-text span{
-            display:block;
-            margin-top:2px;
+/* =========================
+   VISUAL
+========================= */
 
-            color:#777783;
-            font-size:9px;
-        }
+.visual{
 
-        .logout{
-            border:0;
-            outline:0;
+    position:relative;
 
-            padding:10px 17px;
+    overflow:hidden;
 
-            border-radius:11px;
+    display:flex;
 
-            color:#fff;
-            background:rgba(255,255,255,.06);
+    align-items:center;
+    justify-content:center;
 
-            border:
-                1px solid rgba(255,255,255,.08);
-
-            font-family:inherit;
-            font-size:10px;
-
-            cursor:pointer;
-
-            transition:.25s;
-        }
-
-        .logout:hover{
-            background:rgba(255,70,90,.12);
-            border-color:rgba(255,70,90,.25);
-        }
-
-        /* =========================
-           MAIN
-        ========================= */
-
-        main{
-            padding:50px 0 70px;
-        }
-
-        .welcome{
-            position:relative;
-            overflow:hidden;
-
-            padding:35px;
-
-            border-radius:25px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(126,82,245,.16),
-                    rgba(48,84,226,.08)
-                );
-
-            border:
-                1px solid rgba(255,255,255,.08);
-
-            box-shadow:
-                0 30px 80px rgba(0,0,0,.30);
-        }
-
-        .welcome::before{
-            content:"";
-
-            position:absolute;
-
-            width:300px;
-            height:300px;
-
-            left:-100px;
-            bottom:-180px;
-
-            border-radius:50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(124,82,245,.25),
-                    transparent 70%
-                );
-
-            filter:blur(20px);
-        }
-
-        .welcome small{
-            color:#9b7cff;
-            font-size:11px;
-        }
-
-        .welcome h2{
-            margin-top:10px;
-
-            font-size:
-                clamp(25px,5vw,40px);
-        }
-
-        .welcome h2 span{
-            color:#a88eff;
-        }
-
-        .welcome p{
-            margin-top:10px;
-
-            color:#858592;
-
-            font-size:11px;
-            line-height:2;
-        }
-
-        .student-info{
-            position:relative;
-            z-index:2;
-
-            display:grid;
-
-            grid-template-columns:
-                repeat(3,1fr);
-
-            gap:15px;
-
-            margin-top:25px;
-        }
-
-        .info-card{
-            padding:17px;
-
-            border-radius:16px;
-
-            background:
-                rgba(255,255,255,.035);
-
-            border:
-                1px solid rgba(255,255,255,.06);
-        }
-
-        .info-card small{
-            display:block;
-
-            color:#666673;
-
-            font-size:8px;
-
-            margin-bottom:7px;
-        }
-
-        .info-card strong{
-            font-size:11px;
-            color:#ddd;
-        }
-
-        /* =========================
-           TESTS
-        ========================= */
-
-        .section-title{
-            margin-top:45px;
-            margin-bottom:18px;
-        }
-
-        .section-title small{
-            color:#9170ff;
-            font-size:9px;
-        }
-
-        .section-title h3{
-            margin-top:6px;
-            font-size:22px;
-        }
-
-        .tests{
-            display:grid;
-
-            grid-template-columns:
-                repeat(
-                    auto-fit,
-                    minmax(250px,1fr)
-                );
-
-            gap:17px;
-        }
-
-        .empty{
-            padding:40px 20px;
-
-            text-align:center;
-
-            border-radius:20px;
-
-            color:#777783;
-
-            background:
-                rgba(255,255,255,.025);
-
-            border:
-                1px solid rgba(255,255,255,.06);
-        }
-
-        .empty-icon{
-            font-size:35px;
-            margin-bottom:10px;
-        }
-
-        .empty h4{
-            color:#ddd;
-            margin-bottom:7px;
-        }
-
-        .empty p{
-            font-size:10px;
-        }
-
-        /* =========================
-           LOADING
-        ========================= */
-
-        .loading{
-            min-height:200px;
-
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            flex-direction:column;
-
-            gap:12px;
-
-            color:#777783;
-        }
-
-        .spinner{
-            width:30px;
-            height:30px;
-
-            border-radius:50%;
-
-            border:
-                3px solid rgba(255,255,255,.08);
-
-            border-top-color:#8659f5;
-
-            animation:
-                spin .8s linear infinite;
-        }
-
-        @keyframes spin{
-
-            to{
-                transform:rotate(360deg);
-            }
-
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer{
-            padding:25px 0;
-
-            text-align:center;
-
-            color:#555561;
-
-            font-size:8px;
-
-            border-top:
-                1px solid rgba(255,255,255,.05);
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media(max-width:700px){
-
-            .container{
-                width:calc(100% - 20px);
-            }
-
-            .nav{
-                min-height:65px;
-            }
-
-            .brand-text h1{
-                font-size:15px;
-            }
-
-            .logo{
-                width:42px;
-                height:42px;
-            }
-
-            main{
-                padding:25px 0 50px;
-            }
-
-            .welcome{
-                padding:23px;
-                border-radius:20px;
-            }
-
-            .student-info{
-                grid-template-columns:1fr;
-            }
-
-        }
-
-    </style>
-</head>
-
-
-<body>
-
-
-<!-- =====================================
-     HEADER
-===================================== -->
-
-<header>
-
-    <div class="container nav">
-
-        <div class="brand">
-
-            <div class="logo">
-                ∑
-            </div>
-
-            <div class="brand-text">
-
-                <h1>
-                    الخوارزمي
-                </h1>
-
-                <span>
-                    منصة المستر أمير
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <button
-            class="logout"
-            id="logoutButton"
-            type="button"
-        >
-            تسجيل الخروج
-        </button>
-
-    </div>
-
-</header>
-
-
-
-<!-- =====================================
-     MAIN
-===================================== -->
-
-<main>
-
-    <div class="container">
-
-
-        <!-- ================================
-             WELCOME
-        ================================= -->
-
-        <section class="welcome">
-
-            <small>
-                👋 أهلاً بيك في منصة الخوارزمي
-            </small>
-
-            <h2>
-                أهلاً يا
-                <span id="studentName">
-                    الطالب
-                </span>
-            </h2>
-
-            <p>
-                من هنا تقدر تشوف الاختبارات المتاحة ليك
-                وتبدأ التحدي وتطور مستواك في الرياضيات.
-            </p>
-
-
-            <div class="student-info">
-
-
-                <div class="info-card">
-
-                    <small>
-                        الاسم
-                    </small>
-
-                    <strong id="infoName">
-                        جاري التحميل...
-                    </strong>
-
-                </div>
-
-
-                <div class="info-card">
-
-                    <small>
-                        الصف الدراسي
-                    </small>
-
-                    <strong id="studentGrade">
-                        جاري التحميل...
-                    </strong>
-
-                </div>
-
-
-                <div class="info-card">
-
-                    <small>
-                        رقم الموبايل
-                    </small>
-
-                    <strong id="studentPhone">
-                        جاري التحميل...
-                    </strong>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-
-        <!-- ================================
-             TESTS
-        ================================= -->
-
-        <section>
-
-            <div class="section-title">
-
-                <small>
-                    الاختبارات
-                </small>
-
-                <h3>
-                    الاختبارات المتاحة
-                </h3>
-
-            </div>
-
-
-            <div
-                id="testsContainer"
-                class="tests"
-            >
-
-                <div class="loading">
-
-                    <div class="spinner"></div>
-
-                    <span>
-                        جاري تحميل الاختبارات...
-                    </span>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-    </div>
-
-</main>
-
-
-
-<!-- =====================================
-     FOOTER
-===================================== -->
-
-<footer>
-
-    <div class="container">
-
-        © <span id="year"></span>
-        الخوارزمي — جميع الحقوق محفوظة
-
-    </div>
-
-</footer>
-
-
-
-<!-- =====================================
-     SUPABASE
-===================================== -->
-
-<script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
-</script>
-
-<script src="./supabase.js"></script>
-
-
-
-<script>
-
-"use strict";
-
-
-/* =====================================
-   ELEMENTS
-===================================== */
-
-const studentName =
-    document.getElementById("studentName");
-
-const infoName =
-    document.getElementById("infoName");
-
-const studentGrade =
-    document.getElementById("studentGrade");
-
-const studentPhone =
-    document.getElementById("studentPhone");
-
-const testsContainer =
-    document.getElementById("testsContainer");
-
-const logoutButton =
-    document.getElementById("logoutButton");
-
-
-/* =====================================
-   YEAR
-===================================== */
-
-document.getElementById("year")
-    .textContent =
-    new Date().getFullYear();
-
-
-/* =====================================
-   SUPABASE
-===================================== */
-
-function getSupabase(){
-
-    if(
-        !window.supabaseClient
-    ){
-
-        throw new Error(
-            "Supabase غير متصل."
+    background:
+        linear-gradient(
+            145deg,
+            rgba(126,82,245,.18),
+            rgba(49,87,220,.07)
         );
-
-    }
-
-    return window.supabaseClient;
-
-}
-
-
-/* =====================================
-   LOAD STUDENT
-===================================== */
-
-async function loadStudent(){
-
-    try{
-
-        const supabase =
-            getSupabase();
-
-
-        /* ==============================
-           GET SESSION
-        ============================== */
-
-        const {
-            data:sessionData,
-            error:sessionError
-        } =
-            await supabase
-                .auth
-                .getSession();
-
-
-        if(sessionError){
-
-            console.error(
-                sessionError
-            );
-
-            return;
-
-        }
-
-
-        /*
-         * لو مفيش Session
-         * نرجع لتسجيل الدخول
-         */
-
-        if(
-            !sessionData ||
-            !sessionData.session
-        ){
-
-            window.location.replace(
-                "./auth.html"
-            );
-
-            return;
-
-        }
-
-
-        const user =
-            sessionData.session.user;
-
-
-        /* ==============================
-           GET PROFILE
-        ============================== */
-
-        const {
-            data:profile,
-            error:profileError
-        } =
-            await supabase
-                .from("profiles")
-                .select(
-                    "id,full_name,email,phone,role,grade,avatar_url"
-                )
-                .eq(
-                    "id",
-                    user.id
-                )
-                .maybeSingle();
-
-
-        if(profileError){
-
-            console.error(
-                "PROFILE ERROR:",
-                profileError
-            );
-
-            testsContainer.innerHTML = `
-
-                <div class="empty">
-
-                    <div class="empty-icon">
-                        ⚠️
-                    </div>
-
-                    <h4>
-                        تعذر تحميل بيانات الطالب
-                    </h4>
-
-                    <p>
-                        تأكد من وجود سجل في جدول profiles.
-                    </p>
-
-                </div>
-
-            `;
-
-            return;
-
-        }
-
-
-        if(!profile){
-
-            testsContainer.innerHTML = `
-
-                <div class="empty">
-
-                    <div class="empty-icon">
-                        ⚠️
-                    </div>
-
-                    <h4>
-                        بيانات الحساب غير مكتملة
-                    </h4>
-
-                    <p>
-                        لا يوجد ملف شخصي مرتبط بهذا الحساب.
-                    </p>
-
-                </div>
-
-            `;
-
-            return;
-
-        }
-
-
-        /* ==============================
-           ADMIN PROTECTION
-        ============================== */
-
-        if(
-            profile.role === "admin"
-        ){
-
-            window.location.replace(
-                "./admin/index.html"
-            );
-
-            return;
-
-        }
-
-
-        /* ==============================
-           SHOW DATA
-        ============================== */
-
-        const name =
-            profile.full_name ||
-            user.user_metadata?.full_name ||
-            "الطالب";
-
-
-        studentName.textContent =
-            name;
-
-        infoName.textContent =
-            name;
-
-        studentGrade.textContent =
-            profile.grade ||
-            "غير محدد";
-
-        studentPhone.textContent =
-            profile.phone ||
-            "غير محدد";
-
-
-        /* ==============================
-           LOAD TESTS
-        ============================== */
-
-        await loadTests(
-            supabase,
-            profile.grade
-        );
-
-
-    }catch(error){
-
-        console.error(
-            "HOME ERROR:",
-            error
-        );
-
-        testsContainer.innerHTML = `
-
-            <div class="empty">
-
-                <div class="empty-icon">
-                    ⚠️
-                </div>
-
-                <h4>
-                    حدث خطأ
-                </h4>
-
-                <p>
-                    ${escapeHTML(
-                        error.message ||
-                        "حدث خطأ غير معروف."
-                    )}
-                </p>
-
-            </div>
-
-        `;
-
-    }
-
-}
-
-
-/* =====================================
-   LOAD TESTS
-===================================== */
-
-async function loadTests(
-    supabase,
-    grade
-){
-
-    /*
-     * مهم:
-     * لو جدول الاختبارات لسه مش موجود
-     * لا نكسر الصفحة.
-     */
-
-    try{
-
-        const result =
-            await supabase
-                .from("exams")
-                .select("*")
-                .eq(
-                    "grade",
-                    grade
-                );
-
-
-        if(result.error){
-
-            console.warn(
-                "EXAMS:",
-                result.error
-            );
-
-            showNoTests();
-
-            return;
-
-        }
-
-
-        const exams =
-            result.data || [];
-
-
-        if(
-            exams.length === 0
-        ){
-
-            showNoTests();
-
-            return;
-
-        }
-
-
-        testsContainer.innerHTML =
-            exams.map(
-                function(exam){
-
-                    const title =
-                        exam.title ||
-                        exam.name ||
-                        "اختبار رياضيات";
-
-
-                    return `
-
-                        <div
-                            style="
-                                padding:22px;
-                                border-radius:18px;
-                                background:rgba(255,255,255,.035);
-                                border:1px solid rgba(255,255,255,.07);
-                            "
-                        >
-
-                            <div
-                                style="
-                                    font-size:18px;
-                                    font-weight:800;
-                                    margin-bottom:8px;
-                                "
-                            >
-                                ${escapeHTML(title)}
-                            </div>
-
-                            <div
-                                style="
-                                    color:#777783;
-                                    font-size:9px;
-                                    line-height:2;
-                                    margin-bottom:15px;
-                                "
-                            >
-                                اختبار متاح للصف
-                                ${escapeHTML(
-                                    grade || ""
-                                )}
-                            </div>
-
-                            <button
-                                type="button"
-                                onclick="
-                                    startExam('${escapeAttribute(exam.id)}')
-                                "
-                                style="
-                                    width:100%;
-                                    height:42px;
-                                    border:0;
-                                    border-radius:11px;
-                                    color:#fff;
-                                    background:linear-gradient(135deg,#8558f6,#315be9);
-                                    font-family:inherit;
-                                    cursor:pointer;
-                                "
-                            >
-                                بدء الاختبار
-                            </button>
-
-                        </div>
-
-                    `;
-
-                }
-            )
-            .join("");
-
-
-    }catch(error){
-
-        console.warn(
-            "Could not load exams:",
-            error
-        );
-
-        showNoTests();
-
-    }
-
-}
-
-
-/* =====================================
-   NO TESTS
-===================================== */
-
-function showNoTests(){
-
-    testsContainer.innerHTML = `
-
-        <div class="empty">
-
-            <div class="empty-icon">
-                📝
-            </div>
-
-            <h4>
-                لا توجد اختبارات متاحة حاليًا
-            </h4>
-
-            <p>
-                عندما يضيف المستر اختبارًا للصف الخاص بك
-                سيظهر هنا تلقائيًا.
-            </p>
-
-        </div>
-
-    `;
-
-}
-
-
-/* =====================================
-   START EXAM
-===================================== */
-
-function startExam(id){
-
-    if(!id){
-        return;
-    }
-
-    /*
-     * لو عندك exam.html في نفس المجلد
-     */
-
-    window.location.href =
-        "./exam.html?id=" +
-        encodeURIComponent(id);
-
-}
-
-
-/* =====================================
-   LOGOUT
-===================================== */
-
-logoutButton.addEventListener(
-    "click",
-    async function(){
-
-        logoutButton.disabled =
-            true;
-
-        try{
-
-            const supabase =
-                getSupabase();
-
-            const {
-                error
-            } =
-                await supabase
-                    .auth
-                    .signOut();
-
-            if(error){
-
-                throw error;
-
-            }
-
-            window.location.replace(
-                "./auth.html"
-            );
-
-        }catch(error){
-
-            console.error(
-                "LOGOUT ERROR:",
-                error
-            );
-
-            logoutButton.disabled =
-                false;
-
-        }
-
-    }
-);
-
-
-/* =====================================
-   HTML SAFETY
-===================================== */
-
-function escapeHTML(value){
-
-    return String(
-        value ?? ""
-    )
-    .replace(
-        /&/g,
-        "&amp;"
-    )
-    .replace(
-        /</g,
-        "&lt;"
-    )
-    .replace(
-        />/g,
-        "&gt;"
-    )
-    .replace(
-        /"/g,
-        "&quot;"
-    )
-    .replace(
-        /'/g,
-        "&#039;"
-    );
-
-}
-
-
-function escapeAttribute(value){
-
-    return String(
-        value ?? ""
-    )
-    .replace(
-        /'/g,
-        "\\'"
-    );
-
-}
-
-
-/* =====================================
-   START
-===================================== */
-
-window.addEventListener(
-    "load",
-    function(){
-
-        loadStudent();
-
-    }
-);
-
-</script>
-
-</body>
-</html>
-    );
 }
 
 .visual::before{
+
     content:"";
 
     position:absolute;
@@ -1221,18 +110,20 @@ window.addEventListener(
 
     border-radius:50%;
 
-    background:radial-gradient(
-        circle,
-        rgba(125,82,255,.35),
-        transparent 68%
-    );
+    background:
+        radial-gradient(
+            circle,
+            rgba(125,82,255,.35),
+            transparent 68%
+        );
 
     filter:blur(20px);
 
-    animation:visualGlow 5s ease-in-out infinite;
+    animation:
+        glow 5s ease-in-out infinite;
 }
 
-@keyframes visualGlow{
+@keyframes glow{
 
     0%,100%{
         transform:scale(1);
@@ -1247,6 +138,7 @@ window.addEventListener(
 }
 
 .ring{
+
     position:absolute;
 
     width:410px;
@@ -1254,12 +146,15 @@ window.addEventListener(
 
     border-radius:50%;
 
-    border:1px solid rgba(145,112,255,.25);
+    border:
+        1px solid rgba(145,112,255,.25);
 
-    animation:rotate 18s linear infinite;
+    animation:
+        rotate 18s linear infinite;
 }
 
 .ring::before{
+
     content:"";
 
     position:absolute;
@@ -1291,7 +186,9 @@ window.addEventListener(
 }
 
 .visual-content{
+
     position:relative;
+
     z-index:3;
 
     text-align:center;
@@ -1300,6 +197,7 @@ window.addEventListener(
 }
 
 .big-logo{
+
     width:105px;
     height:105px;
 
@@ -1313,16 +211,18 @@ window.addEventListener(
     font-size:58px;
     font-weight:900;
 
-    background:linear-gradient(
-        135deg,
-        #895aff,
-        #3159e8
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #895aff,
+            #3159e8
+        );
 
     box-shadow:
         0 25px 70px rgba(92,65,230,.4);
 
-    animation:floating 4s ease-in-out infinite;
+    animation:
+        floating 4s ease-in-out infinite;
 }
 
 @keyframes floating{
@@ -1338,17 +238,23 @@ window.addEventListener(
 }
 
 .visual-content h1{
+
     font-size:35px;
+
     margin-bottom:10px;
 }
 
 .visual-content h1 span{
+
     color:#a58aff;
 }
 
 .visual-content p{
+
     color:#858592;
+
     font-size:12px;
+
     line-height:2;
 
     max-width:350px;
@@ -1356,17 +262,25 @@ window.addEventListener(
     margin:auto;
 }
 
+/* =========================
+   FORM AREA
+========================= */
+
 .form-area{
+
     padding:45px;
 
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
 
     position:relative;
 }
 
 .back{
+
     position:absolute;
 
     top:25px;
@@ -1376,9 +290,9 @@ window.addEventListener(
 
     font-size:11px;
 
-    transition:.25s;
-
     text-decoration:none;
+
+    transition:.25s;
 }
 
 .back:hover{
@@ -1386,21 +300,28 @@ window.addEventListener(
 }
 
 .form-header{
+
     margin-bottom:25px;
 }
 
 .form-header small{
+
     color:#9170ff;
+
     font-size:10px;
 }
 
 .form-header h2{
+
     font-size:30px;
+
     margin-top:7px;
 }
 
 .form-header p{
+
     color:#777783;
+
     font-size:10px;
 
     margin-top:7px;
@@ -1408,8 +329,14 @@ window.addEventListener(
     line-height:1.8;
 }
 
+/* =========================
+   TABS
+========================= */
+
 .tabs{
+
     display:grid;
+
     grid-template-columns:1fr 1fr;
 
     padding:4px;
@@ -1418,12 +345,15 @@ window.addEventListener(
 
     border-radius:13px;
 
-    background:rgba(255,255,255,.04);
+    background:
+        rgba(255,255,255,.04);
 
-    border:1px solid rgba(255,255,255,.06);
+    border:
+        1px solid rgba(255,255,255,.06);
 }
 
 .tab{
+
     border:0;
 
     padding:11px;
@@ -1435,6 +365,7 @@ window.addEventListener(
     color:#777783;
 
     font-family:inherit;
+
     font-size:10px;
 
     cursor:pointer;
@@ -1443,33 +374,39 @@ window.addEventListener(
 }
 
 .tab.active{
+
     color:#fff;
 
-    background:linear-gradient(
-        135deg,
-        rgba(124,82,245,.8),
-        rgba(49,87,220,.8)
-    );
-
-    box-shadow:
-        0 8px 25px rgba(78,60,200,.25);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(124,82,245,.8),
+            rgba(49,87,220,.8)
+        );
 }
 
-.form{
-    display:none;
+/* =========================
+   FORM
+========================= */
 
-    animation:formShow .35s ease;
+.form{
+
+    display:none;
 }
 
 .form.active{
+
     display:block;
+
+    animation:
+        showForm .3s ease;
 }
 
-@keyframes formShow{
+@keyframes showForm{
 
     from{
         opacity:0;
-        transform:translateY(10px);
+        transform:translateY(8px);
     }
 
     to{
@@ -1480,10 +417,12 @@ window.addEventListener(
 }
 
 .field{
-    margin-bottom:14px;
+
+    margin-bottom:13px;
 }
 
 .field label{
+
     display:block;
 
     color:#aaaab5;
@@ -1494,20 +433,22 @@ window.addEventListener(
 }
 
 .input-wrap{
+
     position:relative;
 }
 
 .input-wrap > span{
+
     position:absolute;
 
     right:14px;
+
     top:50%;
 
-    transform:translateY(-50%);
+    transform:
+        translateY(-50%);
 
     color:#666673;
-
-    font-size:14px;
 
     pointer-events:none;
 
@@ -1518,11 +459,13 @@ input,
 select{
 
     width:100%;
-    height:48px;
 
-    padding:0 42px 0 45px;
+    height:46px;
 
-    border-radius:12px;
+    padding:
+        0 42px 0 45px;
+
+    border-radius:11px;
 
     outline:none;
 
@@ -1532,14 +475,15 @@ select{
 
     font-size:11px;
 
-    background:rgba(255,255,255,.035);
+    background:
+        rgba(255,255,255,.035);
 
-    border:1px solid rgba(255,255,255,.075);
-
-    transition:.25s;
+    border:
+        1px solid rgba(255,255,255,.075);
 }
 
 input::placeholder{
+
     color:#555561;
 }
 
@@ -1549,20 +493,15 @@ select:focus{
     border-color:
         rgba(135,99,255,.6);
 
-    background:
-        rgba(255,255,255,.055);
-
     box-shadow:
         0 0 0 3px
         rgba(120,80,245,.08);
 }
 
-select{
-    appearance:auto;
-}
-
 select option{
+
     background:#171722;
+
     color:#fff;
 }
 
@@ -1570,10 +509,12 @@ select option{
 
     position:absolute;
 
-    left:13px;
+    left:12px;
+
     top:50%;
 
-    transform:translateY(-50%);
+    transform:
+        translateY(-50%);
 
     border:0;
 
@@ -1583,19 +524,22 @@ select option{
 
     cursor:pointer;
 
-    font-size:13px;
-
     z-index:3;
 }
+
+/* =========================
+   BUTTON
+========================= */
 
 .submit{
 
     width:100%;
-    height:50px;
+
+    height:48px;
 
     border:0;
 
-    border-radius:13px;
+    border-radius:12px;
 
     color:#fff;
 
@@ -1607,42 +551,43 @@ select option{
 
     cursor:pointer;
 
-    background:linear-gradient(
-        135deg,
-        #8558f6,
-        #315be9
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #8558f6,
+            #315be9
+        );
 
-    box-shadow:
-        0 15px 35px
-        rgba(76,60,205,.25);
-
-    transition:.3s;
+    transition:.25s;
 }
 
 .submit:hover{
-    transform:translateY(-2px);
 
-    box-shadow:
-        0 20px 45px
-        rgba(76,60,205,.4);
+    transform:translateY(-2px);
 }
 
 .submit:disabled{
+
     opacity:.6;
+
     cursor:not-allowed;
+
     transform:none;
 }
+
+/* =========================
+   MESSAGE
+========================= */
 
 .message{
 
     display:none;
 
-    margin-top:13px;
+    margin-top:12px;
 
-    padding:11px;
+    padding:10px;
 
-    border-radius:10px;
+    border-radius:9px;
 
     text-align:center;
 
@@ -1663,8 +608,7 @@ select option{
         rgba(255,70,90,.08);
 
     border:
-        1px solid
-        rgba(255,70,90,.13);
+        1px solid rgba(255,70,90,.13);
 }
 
 .message.success{
@@ -1675,27 +619,28 @@ select option{
         rgba(50,210,110,.08);
 
     border:
-        1px solid
-        rgba(50,210,110,.13);
+        1px solid rgba(50,210,110,.13);
 }
 
 .form-footer{
 
-    margin-top:22px;
+    margin-top:20px;
 
     text-align:center;
 
     color:#555561;
 
     font-size:8px;
-
-    line-height:1.8;
 }
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:800px){
 
     body{
-        padding:20px 0;
+        padding:10px;
     }
 
     .page{
@@ -1704,22 +649,18 @@ select option{
 
         min-height:auto;
 
-        width:calc(100% - 22px);
-
-        border-radius:23px;
+        width:100%;
     }
 
     .visual{
 
-        min-height:270px;
-
-        padding:20px;
+        min-height:250px;
     }
 
     .ring{
 
-        width:250px;
-        height:250px;
+        width:240px;
+        height:240px;
     }
 
     .big-logo{
@@ -1727,9 +668,9 @@ select option{
         width:75px;
         height:75px;
 
-        border-radius:22px;
-
         font-size:40px;
+
+        border-radius:22px;
 
         margin-bottom:15px;
     }
@@ -1748,43 +689,6 @@ select option{
 
 }
 
-@media(max-width:430px){
-
-    .page{
-        width:calc(100% - 14px);
-    }
-
-    .visual{
-        min-height:235px;
-    }
-
-    .visual-content{
-        padding:15px;
-    }
-
-    .visual-content h1{
-        font-size:23px;
-    }
-
-    .visual-content p{
-        font-size:8px;
-    }
-
-    .form-area{
-        padding:28px 17px 25px;
-    }
-
-    .form-header h2{
-        font-size:25px;
-    }
-
-    input,
-    select{
-        height:46px;
-    }
-
-}
-
 </style>
 
 </head>
@@ -1793,408 +697,418 @@ select option{
 
 <div class="page">
 
-<section class="visual">
+    <!-- =========================
+         VISUAL
+    ========================== -->
 
-<div class="ring"></div>
+    <section class="visual">
 
-<div class="visual-content">
+        <div class="ring"></div>
 
-<div class="big-logo">
-    ∑
+        <div class="visual-content">
+
+            <div class="big-logo">
+                ∑
+            </div>
+
+            <h1>
+                الخوارزمي
+                <span>معاك</span>
+            </h1>
+
+            <p>
+                منصة المستر أمير لاختبارات الرياضيات.
+                <br>
+                اختبر نفسك وطوّر مستواك خطوة بخطوة.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FORM
+    ========================== -->
+
+    <section class="form-area">
+
+        <a
+            href="./index.html"
+            class="back"
+        >
+            ← الرئيسية
+        </a>
+
+
+        <div class="form-header">
+
+            <small>
+                أهلاً بيك 👋
+            </small>
+
+            <h2>
+                ابدأ رحلتك
+            </h2>
+
+            <p>
+                سجل دخولك أو أنشئ حسابك للوصول إلى الاختبارات.
+            </p>
+
+        </div>
+
+
+        <!-- TABS -->
+
+        <div class="tabs">
+
+            <button
+                class="tab active"
+                id="loginTab"
+                type="button"
+            >
+                تسجيل الدخول
+            </button>
+
+            <button
+                class="tab"
+                id="registerTab"
+                type="button"
+            >
+                إنشاء حساب
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             LOGIN
+        ========================== -->
+
+        <form
+            class="form active"
+            id="loginForm"
+        >
+
+            <div class="field">
+
+                <label>
+                    البريد الإلكتروني أو رقم الموبايل
+                </label>
+
+                <div class="input-wrap">
+
+                    <span>📱</span>
+
+                    <input
+                        type="text"
+                        id="loginIdentifier"
+                        placeholder="example@gmail.com أو 01xxxxxxxxx"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    كلمة المرور
+                </label>
+
+                <div class="input-wrap">
+
+                    <span>🔒</span>
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="كلمة المرور"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        data-target="loginPassword"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="submit"
+                id="loginButton"
+                type="submit"
+            >
+                دخول إلى المنصة
+            </button>
+
+
+            <div
+                class="message"
+                id="loginMessage"
+            ></div>
+
+        </form>
+
+
+        <!-- =========================
+             REGISTER
+        ========================== -->
+
+        <form
+            class="form"
+            id="registerForm"
+        >
+
+            <div class="field">
+
+                <label>
+                    الاسم بالكامل
+                </label>
+
+                <div class="input-wrap">
+
+                    <span>👤</span>
+
+                    <input
+                        type="text"
+                        id="registerName"
+                        placeholder="مثال: أحمد محمد علي"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    البريد الإلكتروني
+                </label>
+
+                <div class="input-wrap">
+
+                    <span>✉️</span>
+
+                    <input
+                        type="email"
+                        id="registerEmail"
+                        placeholder="example@gmail.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    رقم الموبايل
+                </label>
+
+                <div class="input-wrap">
+
+                    <span>📱</span>
+
+                    <input
+                        type="tel"
+                        id="registerPhone"
+                        placeholder="01xxxxxxxxx"
+                        inputmode="numeric"
+                        maxlength="11"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    رقم ولي الأمر
+                </label>
+
+                <div class="input-wrap">
+
+                    <span>📞</span>
+
+                    <input
+                        type="tel"
+                        id="parentPhone"
+                        placeholder="01xxxxxxxxx"
+                        inputmode="numeric"
+                        maxlength="11"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    الصف الدراسي
+                </label>
+
+                <div class="input-wrap">
+
+                    <span>🎓</span>
+
+                    <select
+                        id="registerGrade"
+                        required
+                    >
+
+                        <option value="">
+                            اختر الصف الدراسي
+                        </option>
+
+                        <option value="أولى إعدادي">
+                            أولى إعدادي
+                        </option>
+
+                        <option value="ثانية إعدادي">
+                            ثانية إعدادي
+                        </option>
+
+                        <option value="ثالثة إعدادي">
+                            ثالثة إعدادي
+                        </option>
+
+                        <option value="أولى ثانوي">
+                            أولى ثانوي
+                        </option>
+
+                        <option value="ثانية ثانوي">
+                            ثانية ثانوي
+                        </option>
+
+                        <option value="ثالثة ثانوي">
+                            ثالثة ثانوي
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    كلمة المرور
+                </label>
+
+                <div class="input-wrap">
+
+                    <span>🔒</span>
+
+                    <input
+                        type="password"
+                        id="registerPassword"
+                        placeholder="6 أحرف على الأقل"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        data-target="registerPassword"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    تأكيد كلمة المرور
+                </label>
+
+                <div class="input-wrap">
+
+                    <span>🔐</span>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="كرر كلمة المرور"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        data-target="confirmPassword"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="submit"
+                id="registerButton"
+                type="submit"
+            >
+                إنشاء الحساب
+            </button>
+
+
+            <div
+                class="message"
+                id="registerMessage"
+            ></div>
+
+        </form>
+
+
+        <div class="form-footer">
+
+            ©
+            <span id="year"></span>
+            الخوارزمي
+
+        </div>
+
+    </section>
+
 </div>
 
-<h1>
-    الخوارزمي
-    <span>معاك</span>
-</h1>
 
-<p>
-    منصة المستر أمير لتعليم الرياضيات.
-    <br>
-    افهم، اتدرب، وطور مستواك خطوة بخطوة.
-</p>
-
-</div>
-
-</section>
-
-
-<section class="form-area">
-
-<a
-    href="./index.html"
-    class="back"
->
-    ← الرئيسية
-</a>
-
-
-<div class="form-header">
-
-<small>
-    أهلاً بيك 👋
-</small>
-
-<h2>
-    ابدأ رحلتك
-</h2>
-
-<p>
-    سجل دخولك أو أنشئ حسابك للوصول إلى المنصة.
-</p>
-
-</div>
-
-
-<div class="tabs">
-
-<button
-    class="tab active"
-    id="loginTab"
-    type="button"
->
-    تسجيل الدخول
-</button>
-
-<button
-    class="tab"
-    id="registerTab"
-    type="button"
->
-    إنشاء حساب
-</button>
-
-</div>
-
-
-<!-- =================================================
-     LOGIN
-================================================= -->
-
-<form
-    class="form active"
-    id="loginForm"
->
-
-<div class="field">
-
-<label>
-    البريد الإلكتروني أو رقم الموبايل
-</label>
-
-<div class="input-wrap">
-
-<span>📱</span>
-
-<input
-    type="text"
-    id="loginIdentifier"
-    placeholder="example@gmail.com أو 01xxxxxxxxx"
-    autocomplete="username"
-    required
->
-
-</div>
-
-</div>
-
-
-<div class="field">
-
-<label>
-    كلمة المرور
-</label>
-
-<div class="input-wrap">
-
-<span>🔒</span>
-
-<input
-    type="password"
-    id="loginPassword"
-    placeholder="كلمة المرور"
-    autocomplete="current-password"
-    required
->
-
-<button
-    type="button"
-    class="password-toggle"
-    data-target="loginPassword"
->
-    👁
-</button>
-
-</div>
-
-</div>
-
-
-<button
-    class="submit"
-    id="loginButton"
-    type="submit"
->
-    دخول إلى المنصة
-</button>
-
-
-<div
-    class="message"
-    id="loginMessage"
-></div>
-
-</form>
-
-
-<!-- =================================================
-     REGISTER
-================================================= -->
-
-<form
-    class="form"
-    id="registerForm"
->
-
-<div class="field">
-
-<label>
-    الاسم بالكامل
-</label>
-
-<div class="input-wrap">
-
-<span>👤</span>
-
-<input
-    type="text"
-    id="registerName"
-    placeholder="مثال: أحمد محمد علي"
-    autocomplete="name"
-    required
->
-
-</div>
-
-</div>
-
-
-<div class="field">
-
-<label>
-    البريد الإلكتروني
-</label>
-
-<div class="input-wrap">
-
-<span>✉️</span>
-
-<input
-    type="email"
-    id="registerEmail"
-    placeholder="example@gmail.com"
-    autocomplete="email"
-    required
->
-
-</div>
-
-</div>
-
-
-<div class="field">
-
-<label>
-    رقم الموبايل
-</label>
-
-<div class="input-wrap">
-
-<span>📱</span>
-
-<input
-    type="tel"
-    id="registerPhone"
-    placeholder="01xxxxxxxxx"
-    inputmode="numeric"
-    maxlength="11"
-    autocomplete="tel"
-    required
->
-
-</div>
-
-</div>
-
-
-<div class="field">
-
-<label>
-    رقم ولي الأمر
-</label>
-
-<div class="input-wrap">
-
-<span>📞</span>
-
-<input
-    type="tel"
-    id="parentPhone"
-    placeholder="01xxxxxxxxx"
-    inputmode="numeric"
-    maxlength="11"
-    autocomplete="tel"
-    required
->
-
-</div>
-
-</div>
-
-
-<div class="field">
-
-<label>
-    الصف الدراسي
-</label>
-
-<div class="input-wrap">
-
-<span>🎓</span>
-
-<select
-    id="registerGrade"
-    required
->
-
-<option value="">
-    اختر الصف الدراسي
-</option>
-
-<option value="أولى إعدادي">
-    أولى إعدادي
-</option>
-
-<option value="ثانية إعدادي">
-    ثانية إعدادي
-</option>
-
-<option value="ثالثة إعدادي">
-    ثالثة إعدادي
-</option>
-
-<option value="أولى ثانوي">
-    أولى ثانوي
-</option>
-
-<option value="ثانية ثانوي">
-    ثانية ثانوي
-</option>
-
-<option value="ثالثة ثانوي">
-    ثالثة ثانوي
-</option>
-
-</select>
-
-</div>
-
-</div>
-
-
-<div class="field">
-
-<label>
-    كلمة المرور
-</label>
-
-<div class="input-wrap">
-
-<span>🔒</span>
-
-<input
-    type="password"
-    id="registerPassword"
-    placeholder="6 أحرف على الأقل"
-    autocomplete="new-password"
-    required
->
-
-<button
-    type="button"
-    class="password-toggle"
-    data-target="registerPassword"
->
-    👁
-</button>
-
-</div>
-
-</div>
-
-
-<div class="field">
-
-<label>
-    تأكيد كلمة المرور
-</label>
-
-<div class="input-wrap">
-
-<span>🔐</span>
-
-<input
-    type="password"
-    id="confirmPassword"
-    placeholder="كرر كلمة المرور"
-    autocomplete="new-password"
-    required
->
-
-<button
-    type="button"
-    class="password-toggle"
-    data-target="confirmPassword"
->
-    👁
-</button>
-
-</div>
-
-</div>
-
-
-<button
-    class="submit"
-    id="registerButton"
-    type="submit"
->
-    إنشاء الحساب
-</button>
-
-
-<div
-    class="message"
-    id="registerMessage"
-></div>
-
-</form>
-
-
-<div class="form-footer">
-
-© <span id="year"></span> الخوارزمي
-
-</div>
-
-</section>
-
-</div>
-
-
-<!-- =================================================
+<!-- =========================
      SUPABASE
-================================================= -->
+========================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -2206,9 +1120,9 @@ select option{
 "use strict";
 
 
-/* =====================================================
+/* =========================
    ELEMENTS
-===================================================== */
+========================= */
 
 const loginTab =
     document.getElementById("loginTab");
@@ -2235,29 +1149,37 @@ const registerButton =
     document.getElementById("registerButton");
 
 
-/* =====================================================
+/* =========================
+   YEAR
+========================= */
+
+document.getElementById("year")
+    .textContent =
+    new Date().getFullYear();
+
+
+/* =========================
    SUPABASE
-===================================================== */
+========================= */
 
 function getSupabase(){
 
-    if(
-        !window.supabaseClient
-    ){
+    if(!window.supabaseClient){
 
         throw new Error(
-            "Supabase غير متصل. تأكد من تحميل supabase.js."
+            "Supabase غير متصل."
         );
 
     }
 
     return window.supabaseClient;
+
 }
 
 
-/* =====================================================
+/* =========================
    TABS
-===================================================== */
+========================= */
 
 loginTab.addEventListener(
     "click",
@@ -2271,9 +1193,11 @@ loginTab.addEventListener(
 
         registerForm.classList.remove("active");
 
-        loginMessage.className = "message";
+        loginMessage.className =
+            "message";
 
-        registerMessage.className = "message";
+        registerMessage.className =
+            "message";
 
     }
 );
@@ -2291,17 +1215,19 @@ registerTab.addEventListener(
 
         loginForm.classList.remove("active");
 
-        loginMessage.className = "message";
+        loginMessage.className =
+            "message";
 
-        registerMessage.className = "message";
+        registerMessage.className =
+            "message";
 
     }
 );
 
 
-/* =====================================================
-   PASSWORD SHOW / HIDE
-===================================================== */
+/* =========================
+   PASSWORD TOGGLE
+========================= */
 
 document
     .querySelectorAll(".password-toggle")
@@ -2316,19 +1242,19 @@ document
                         button.dataset.target
                     );
 
-                if(
-                    input.type === "password"
-                ){
+                if(input.type === "password"){
 
                     input.type = "text";
 
-                    button.textContent = "🙈";
+                    button.textContent =
+                        "🙈";
 
                 }else{
 
                     input.type = "password";
 
-                    button.textContent = "👁";
+                    button.textContent =
+                        "👁";
 
                 }
 
@@ -2338,9 +1264,9 @@ document
     });
 
 
-/* =====================================================
-   EGYPT PHONE
-===================================================== */
+/* =========================
+   PHONE
+========================= */
 
 function validEgyptPhone(phone){
 
@@ -2351,9 +1277,9 @@ function validEgyptPhone(phone){
 }
 
 
-/* =====================================================
+/* =========================
    EMAIL
-===================================================== */
+========================= */
 
 function validEmail(email){
 
@@ -2364,9 +1290,9 @@ function validEmail(email){
 }
 
 
-/* =====================================================
+/* =========================
    MESSAGE
-===================================================== */
+========================= */
 
 function showMessage(
     element,
@@ -2374,7 +1300,8 @@ function showMessage(
     type
 ){
 
-    element.textContent = text;
+    element.textContent =
+        text;
 
     element.className =
         "message show " + type;
@@ -2382,9 +1309,9 @@ function showMessage(
 }
 
 
-/* =====================================================
+/* =========================
    LOGIN
-===================================================== */
+========================= */
 
 loginForm.addEventListener(
     "submit",
@@ -2392,7 +1319,8 @@ loginForm.addEventListener(
 
         event.preventDefault();
 
-        loginButton.disabled = true;
+        loginButton.disabled =
+            true;
 
         loginMessage.className =
             "message";
@@ -2414,48 +1342,26 @@ loginForm.addEventListener(
                 .value;
 
 
-        if(
-            !identifier ||
-            !password
-        ){
-
-            showMessage(
-                loginMessage,
-                "اكتب البريد الإلكتروني أو رقم الموبايل وكلمة المرور.",
-                "error"
-            );
-
-            loginButton.disabled = false;
-
-            return;
-
-        }
-
-
         try{
 
             const supabase =
                 getSupabase();
 
 
-            /* =========================================
-               تحديد هل الدخول بالبريد أم بالموبايل
-            ========================================= */
-
             let email =
                 identifier;
 
+
+            /* LOGIN BY PHONE */
 
             if(
                 validEgyptPhone(identifier)
             ){
 
-                /*
-                 * البحث عن البريد المرتبط
-                 * برقم الموبايل داخل profiles
-                 */
-
-                const phoneResult =
+                const {
+                    data,
+                    error
+                } =
                     await supabase
                         .from("profiles")
                         .select("email")
@@ -2466,37 +1372,32 @@ loginForm.addEventListener(
                         .maybeSingle();
 
 
-                if(
-                    phoneResult.error
-                ){
+                if(error){
 
-                    throw phoneResult.error;
+                    throw error;
 
                 }
 
 
                 if(
-                    !phoneResult.data ||
-                    !phoneResult.data.email
+                    !data ||
+                    !data.email
                 ){
 
                     throw new Error(
-                        "رقم الموبايل غير مسجل في المنصة."
+                        "رقم الموبايل غير مسجل."
                     );
 
                 }
 
 
                 email =
-                    phoneResult.data.email;
+                    data.email;
 
             }
 
 
-            /*
-             * لو ليس رقمًا،
-             * نتحقق أنه بريد إلكتروني
-             */
+            /* LOGIN BY EMAIL */
 
             if(
                 !validEgyptPhone(identifier) &&
@@ -2510,35 +1411,32 @@ loginForm.addEventListener(
             }
 
 
-            /* =========================================
-               SUPABASE AUTH
-            ========================================= */
-
-            const loginResult =
+            const {
+                data:loginData,
+                error:loginError
+            } =
                 await supabase
                     .auth
                     .signInWithPassword({
 
-                        email:email,
+                        email:
+                            email,
 
-                        password:password
+                        password:
+                            password
 
                     });
 
 
-            if(
-                loginResult.error
-            ){
+            if(loginError){
 
-                throw loginResult.error;
+                throw loginError;
 
             }
 
 
             const user =
-                loginResult
-                    .data
-                    ?.user;
+                loginData?.user;
 
 
             if(!user){
@@ -2550,11 +1448,12 @@ loginForm.addEventListener(
             }
 
 
-            /* =========================================
-               PROFILE
-            ========================================= */
+            /* GET PROFILE */
 
-            const profileResult =
+            let {
+                data:profile,
+                error:profileError
+            } =
                 await supabase
                     .from("profiles")
                     .select(
@@ -2567,38 +1466,31 @@ loginForm.addEventListener(
                     .maybeSingle();
 
 
-            if(
-                profileResult.error
-            ){
+            if(profileError){
 
-                throw profileResult.error;
+                throw profileError;
 
             }
 
 
             /*
-             * لو profile غير موجود
+             * لو مفيش profile
+             * ننشئه من metadata
              */
 
-            if(
-                !profileResult.data
-            ){
-
-                /*
-                 * نحاول إنشاء profile
-                 * باستخدام بيانات Auth فقط.
-                 */
+            if(!profile){
 
                 const metadata =
                     user.user_metadata || {};
 
 
-                const createProfile =
+                const createResult =
                     await supabase
                         .from("profiles")
                         .insert({
 
-                            id:user.id,
+                            id:
+                                user.id,
 
                             full_name:
                                 metadata.full_name || "",
@@ -2615,70 +1507,47 @@ loginForm.addEventListener(
                             grade:
                                 metadata.grade || null,
 
-                            role:"student"
+                            role:
+                                "student"
 
                         });
 
 
-                if(
-                    createProfile.error
-                ){
+                if(createResult.error){
 
-                    await supabase.auth.signOut();
+                    await supabase
+                        .auth
+                        .signOut();
 
                     throw new Error(
-                        "تم تسجيل الدخول ولكن لم يتم العثور على ملف الحساب في profiles. راجع صلاحيات RLS."
+                        "تم تسجيل الدخول لكن لا يمكن إنشاء ملف الطالب. راجع RLS."
                     );
 
                 }
 
+
+                profile = {
+
+                    role:
+                        "student"
+
+                };
+
             }
 
 
-            /*
-             * إعادة قراءة الـ profile
-             */
-
-            const finalProfile =
-                await supabase
-                    .from("profiles")
-                    .select(
-                        "id,full_name,email,phone,role,grade"
-                    )
-                    .eq(
-                        "id",
-                        user.id
-                    )
-                    .maybeSingle();
-
+            /* ADMIN */
 
             if(
-                finalProfile.error
-            ){
-
-                throw finalProfile.error;
-
-            }
-
-
-            const role =
                 String(
-                    finalProfile.data?.role ||
-                    "student"
-                ).toLowerCase();
-
-
-            /* =========================================
-               ADMIN
-            ========================================= */
-
-            if(
-                role === "admin"
+                    profile.role || "student"
+                ).toLowerCase()
+                === "admin"
             ){
 
                 showMessage(
                     loginMessage,
-                    "تم تسجيل دخول الأدمن بنجاح. جاري فتح لوحة التحكم...",
+                    "تم تسجيل دخول الأدمن. جاري فتح لوحة التحكم...",
                     "success"
                 );
 
@@ -2699,13 +1568,11 @@ loginForm.addEventListener(
             }
 
 
-            /* =========================================
-               STUDENT
-            ========================================= */
+            /* STUDENT */
 
             showMessage(
                 loginMessage,
-                "تم تسجيل الدخول بنجاح. جاري فتح المنصة...",
+                "تم تسجيل الدخول بنجاح. جاري فتح حسابك...",
                 "success"
             );
 
@@ -2713,19 +1580,14 @@ loginForm.addEventListener(
             setTimeout(
                 function(){
 
-                    /*
-                     * مهم:
-                     * لا يوجد home.html في مشروعك.
-                     * لذلك نرجع إلى index.html.
-                     */
-
                     window.location.replace(
-                        "./index.html"
+                        "./home.html"
                     );
 
                 },
                 500
             );
+
 
         }catch(error){
 
@@ -2735,34 +1597,34 @@ loginForm.addEventListener(
             );
 
 
-            let text =
+            let message =
                 error?.message ||
                 "حدث خطأ أثناء تسجيل الدخول.";
 
 
-            const lower =
-                text.toLowerCase();
-
-
             if(
-                lower.includes(
-                    "invalid login credentials"
-                )
+                message
+                    .toLowerCase()
+                    .includes(
+                        "invalid login credentials"
+                    )
             ){
 
-                text =
+                message =
                     "البريد أو رقم الموبايل أو كلمة المرور غير صحيحة.";
 
             }
 
 
             if(
-                lower.includes(
-                    "email not confirmed"
-                )
+                message
+                    .toLowerCase()
+                    .includes(
+                        "email not confirmed"
+                    )
             ){
 
-                text =
+                message =
                     "يجب تأكيد البريد الإلكتروني أولًا.";
 
             }
@@ -2770,12 +1632,13 @@ loginForm.addEventListener(
 
             showMessage(
                 loginMessage,
-                text,
+                message,
                 "error"
             );
 
 
-            loginButton.disabled = false;
+            loginButton.disabled =
+                false;
 
         }
 
@@ -2783,9 +1646,9 @@ loginForm.addEventListener(
 );
 
 
-/* =====================================================
+/* =========================
    REGISTER
-===================================================== */
+========================= */
 
 registerForm.addEventListener(
     "submit",
@@ -2793,7 +1656,8 @@ registerForm.addEventListener(
 
         event.preventDefault();
 
-        registerButton.disabled = true;
+        registerButton.disabled =
+            true;
 
         registerMessage.className =
             "message";
@@ -2807,7 +1671,6 @@ registerForm.addEventListener(
                 .value
                 .trim();
 
-
         const email =
             document
                 .getElementById(
@@ -2817,7 +1680,6 @@ registerForm.addEventListener(
                 .trim()
                 .toLowerCase();
 
-
         const phone =
             document
                 .getElementById(
@@ -2825,7 +1687,6 @@ registerForm.addEventListener(
                 )
                 .value
                 .trim();
-
 
         const parentPhone =
             document
@@ -2835,7 +1696,6 @@ registerForm.addEventListener(
                 .value
                 .trim();
 
-
         const grade =
             document
                 .getElementById(
@@ -2843,14 +1703,12 @@ registerForm.addEventListener(
                 )
                 .value;
 
-
         const password =
             document
                 .getElementById(
                     "registerPassword"
                 )
                 .value;
-
 
         const confirmPassword =
             document
@@ -2860,13 +1718,9 @@ registerForm.addEventListener(
                 .value;
 
 
-        /* =========================================
-           VALIDATION
-        ========================================= */
+        /* VALIDATION */
 
-        if(
-            name.length < 3
-        ){
+        if(name.length < 3){
 
             showMessage(
                 registerMessage,
@@ -2874,16 +1728,15 @@ registerForm.addEventListener(
                 "error"
             );
 
-            registerButton.disabled = false;
+            registerButton.disabled =
+                false;
 
             return;
 
         }
 
 
-        if(
-            !validEmail(email)
-        ){
+        if(!validEmail(email)){
 
             showMessage(
                 registerMessage,
@@ -2891,16 +1744,15 @@ registerForm.addEventListener(
                 "error"
             );
 
-            registerButton.disabled = false;
+            registerButton.disabled =
+                false;
 
             return;
 
         }
 
 
-        if(
-            !validEgyptPhone(phone)
-        ){
+        if(!validEgyptPhone(phone)){
 
             showMessage(
                 registerMessage,
@@ -2908,16 +1760,15 @@ registerForm.addEventListener(
                 "error"
             );
 
-            registerButton.disabled = false;
+            registerButton.disabled =
+                false;
 
             return;
 
         }
 
 
-        if(
-            !validEgyptPhone(parentPhone)
-        ){
+        if(!validEgyptPhone(parentPhone)){
 
             showMessage(
                 registerMessage,
@@ -2925,7 +1776,8 @@ registerForm.addEventListener(
                 "error"
             );
 
-            registerButton.disabled = false;
+            registerButton.disabled =
+                false;
 
             return;
 
@@ -2940,16 +1792,15 @@ registerForm.addEventListener(
                 "error"
             );
 
-            registerButton.disabled = false;
+            registerButton.disabled =
+                false;
 
             return;
 
         }
 
 
-        if(
-            password.length < 6
-        ){
+        if(password.length < 6){
 
             showMessage(
                 registerMessage,
@@ -2957,16 +1808,15 @@ registerForm.addEventListener(
                 "error"
             );
 
-            registerButton.disabled = false;
+            registerButton.disabled =
+                false;
 
             return;
 
         }
 
 
-        if(
-            password !== confirmPassword
-        ){
+        if(password !== confirmPassword){
 
             showMessage(
                 registerMessage,
@@ -2974,7 +1824,8 @@ registerForm.addEventListener(
                 "error"
             );
 
-            registerButton.disabled = false;
+            registerButton.disabled =
+                false;
 
             return;
 
@@ -2987,15 +1838,7 @@ registerForm.addEventListener(
                 getSupabase();
 
 
-            /* =========================================
-               التأكد أن البريد غير مستخدم
-            ========================================= */
-
-            /*
-             * لا نستخدم Auth Admin من المتصفح.
-             * نتحقق من profiles فقط.
-             */
-
+            /* EMAIL CHECK */
 
             const emailCheck =
                 await supabase
@@ -3008,18 +1851,14 @@ registerForm.addEventListener(
                     .maybeSingle();
 
 
-            if(
-                emailCheck.error
-            ){
+            if(emailCheck.error){
 
                 throw emailCheck.error;
 
             }
 
 
-            if(
-                emailCheck.data
-            ){
+            if(emailCheck.data){
 
                 throw new Error(
                     "البريد الإلكتروني مسجل بالفعل."
@@ -3028,9 +1867,7 @@ registerForm.addEventListener(
             }
 
 
-            /* =========================================
-               التأكد أن رقم الموبايل غير مستخدم
-            ========================================= */
+            /* PHONE CHECK */
 
             const phoneCheck =
                 await supabase
@@ -3043,18 +1880,14 @@ registerForm.addEventListener(
                     .maybeSingle();
 
 
-            if(
-                phoneCheck.error
-            ){
+            if(phoneCheck.error){
 
                 throw phoneCheck.error;
 
             }
 
 
-            if(
-                phoneCheck.data
-            ){
+            if(phoneCheck.data){
 
                 throw new Error(
                     "رقم الموبايل مسجل بالفعل."
@@ -3063,18 +1896,21 @@ registerForm.addEventListener(
             }
 
 
-            /* =========================================
-               إنشاء حساب Supabase Auth
-            ========================================= */
+            /* CREATE AUTH */
 
-            const signupResult =
+            const {
+                data,
+                error
+            } =
                 await supabase
                     .auth
                     .signUp({
 
-                        email:email,
+                        email:
+                            email,
 
-                        password:password,
+                        password:
+                            password,
 
                         options:{
 
@@ -3099,19 +1935,15 @@ registerForm.addEventListener(
                     });
 
 
-            if(
-                signupResult.error
-            ){
+            if(error){
 
-                throw signupResult.error;
+                throw error;
 
             }
 
 
             const user =
-                signupResult
-                    .data
-                    ?.user;
+                data?.user;
 
 
             if(!user){
@@ -3123,9 +1955,7 @@ registerForm.addEventListener(
             }
 
 
-            /* =========================================
-               حفظ المستخدم في profiles
-            ========================================= */
+            /* CREATE PROFILE */
 
             const profileResult =
                 await supabase
@@ -3158,24 +1988,13 @@ registerForm.addEventListener(
                     });
 
 
-            if(
-                profileResult.error
-            ){
+            if(profileResult.error){
 
                 console.error(
-                    "PROFILE ERROR:",
                     profileResult.error
                 );
 
-
-                /*
-                 * لا نترك Session معلقة
-                 * لو فشل حفظ الـ profile.
-                 */
-
-                if(
-                    signupResult.data?.session
-                ){
+                if(data?.session){
 
                     await supabase
                         .auth
@@ -3183,25 +2002,20 @@ registerForm.addEventListener(
 
                 }
 
-
                 throw new Error(
-                    "تم إنشاء حساب Auth ولكن لم يتم حفظ بيانات الطالب في profiles. راجع RLS لجدول profiles."
+                    "تم إنشاء الحساب لكن لم يتم حفظ بيانات الطالب. راجع RLS في profiles."
                 );
 
             }
 
 
-            /* =========================================
-               SUCCESS
-            ========================================= */
+            /* SUCCESS */
 
-            if(
-                signupResult.data?.session
-            ){
+            if(data?.session){
 
                 showMessage(
                     registerMessage,
-                    "تم إنشاء الحساب بنجاح. جاري فتح المنصة...",
+                    "تم إنشاء الحساب بنجاح. جاري فتح حسابك...",
                     "success"
                 );
 
@@ -3209,33 +2023,24 @@ registerForm.addEventListener(
                 setTimeout(
                     function(){
 
-                        /*
-                         * الطالب يدخل index.html
-                         */
-
                         window.location.replace(
-                            "./index.html"
+                            "./home.html"
                         );
 
                     },
                     700
                 );
 
-
             }else{
-
-                /*
-                 * إذا كان Email Confirmation مفعلاً
-                 */
 
                 showMessage(
                     registerMessage,
-                    "تم إنشاء الحساب بنجاح. افتح بريدك الإلكتروني لتأكيد الحساب ثم سجل الدخول.",
+                    "تم إنشاء الحساب. افتح بريدك الإلكتروني لتأكيد الحساب ثم سجل الدخول.",
                     "success"
                 );
 
-
-                registerButton.disabled = false;
+                registerButton.disabled =
+                    false;
 
             }
 
@@ -3248,13 +2053,13 @@ registerForm.addEventListener(
             );
 
 
-            let text =
+            let message =
                 error?.message ||
                 "حدث خطأ أثناء إنشاء الحساب.";
 
 
             const lower =
-                text.toLowerCase();
+                message.toLowerCase();
 
 
             if(
@@ -3263,20 +2068,8 @@ registerForm.addEventListener(
                 )
             ){
 
-                text =
-                    "هذا البريد الإلكتروني مسجل بالفعل.";
-
-            }
-
-
-            if(
-                lower.includes(
-                    "duplicate"
-                )
-            ){
-
-                text =
-                    "البريد أو رقم الموبايل مستخدم بالفعل.";
+                message =
+                    "البريد الإلكتروني مسجل بالفعل.";
 
             }
 
@@ -3287,7 +2080,7 @@ registerForm.addEventListener(
                 )
             ){
 
-                text =
+                message =
                     "تم تجاوز حد إرسال البريد مؤقتًا. انتظر قليلًا ثم حاول مرة أخرى.";
 
             }
@@ -3299,20 +2092,21 @@ registerForm.addEventListener(
                 )
             ){
 
-                text =
-                    "تم إنشاء الحساب لكن RLS يمنع حفظ بيانات الطالب في profiles. راجع سياسات RLS.";
+                message =
+                    "RLS يمنع حفظ بيانات الطالب في profiles.";
 
             }
 
 
             showMessage(
                 registerMessage,
-                text,
+                message,
                 "error"
             );
 
 
-            registerButton.disabled = false;
+            registerButton.disabled =
+                false;
 
         }
 
@@ -3320,9 +2114,9 @@ registerForm.addEventListener(
 );
 
 
-/* =====================================================
+/* =========================
    PHONE INPUT
-===================================================== */
+========================= */
 
 document
     .querySelectorAll(
@@ -3353,31 +2147,19 @@ document
     );
 
 
-/* =====================================================
-   YEAR
-===================================================== */
-
-document.getElementById(
-    "year"
-).textContent =
-    new Date().getFullYear();
-
-
-/* =====================================================
+/* =========================
    SUPABASE CHECK
-===================================================== */
+========================= */
 
 window.addEventListener(
     "load",
     function(){
 
-        if(
-            !window.supabaseClient
-        ){
+        if(!window.supabaseClient){
 
             showMessage(
                 loginMessage,
-                "Supabase غير متصل. تأكد من وجود supabase.js بجوار auth.html.",
+                "Supabase غير متصل. تأكد من وجود supabase.js.",
                 "error"
             );
 
@@ -3388,7 +2170,7 @@ window.addEventListener(
         }else{
 
             console.log(
-                "✅ Auth page connected to Supabase."
+                "✅ Auth connected to Supabase."
             );
 
         }
@@ -3399,4 +2181,5 @@ window.addEventListener(
 </script>
 
 </body>
-      </html>
+
+</html>
