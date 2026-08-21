@@ -2,23 +2,17 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>الإشعارات | الخوارزمي</title>
 
-<link rel="preconnect"
-      href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet">
+<link
+href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+rel="stylesheet">
 
 <style>
 
@@ -43,9 +37,7 @@
 }
 
 body{
-
     min-height:100vh;
-
     color:var(--text);
 
     background:
@@ -64,55 +56,37 @@ body{
     padding-bottom:60px;
 }
 
-
-/* ================= HEADER ================= */
+/* HEADER */
 
 header{
-
     height:74px;
-
     position:sticky;
-
     top:0;
-
     z-index:100;
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     padding:0 5%;
 
-    background:
-        rgba(6,6,10,.88);
-
+    background:rgba(6,6,10,.88);
     backdrop-filter:blur(18px);
 
-    border-bottom:
-        1px solid var(--border);
+    border-bottom:1px solid var(--border);
 }
 
-
 .logo-area{
-
     display:flex;
-
     align-items:center;
-
     gap:12px;
 }
 
-
 .logo{
-
     width:43px;
-
     height:43px;
 
     display:grid;
-
     place-items:center;
 
     border-radius:14px;
@@ -125,7 +99,6 @@ header{
         );
 
     font-size:20px;
-
     font-weight:900;
 
     box-shadow:
@@ -133,37 +106,26 @@ header{
         rgba(118,87,255,.25);
 }
 
-
 .logo-text strong{
-
     display:block;
-
     font-size:17px;
 }
 
-
 .logo-text span{
-
     display:block;
-
     color:var(--muted);
-
     font-size:10px;
 }
 
-
 .back-btn{
-
     height:40px;
-
     padding:0 15px;
 
     border-radius:10px;
 
     border:1px solid var(--border);
 
-    background:
-        rgba(255,255,255,.04);
+    background:rgba(255,255,255,.04);
 
     color:white;
 
@@ -172,72 +134,42 @@ header{
     transition:.25s;
 }
 
-
 .back-btn:hover{
-
-    background:
-        rgba(118,87,255,.12);
-
+    background:rgba(118,87,255,.12);
 }
 
-
-/* ================= MAIN ================= */
+/* MAIN */
 
 main{
-
     width:min(850px,94%);
-
     margin:auto;
-
     padding-top:30px;
 }
 
-
-/* ================= TOP ================= */
+/* TOP */
 
 .page-top{
-
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
     gap:15px;
-
     margin-bottom:18px;
 }
 
-
 .page-title{
-
-    font-size:
-        clamp(23px,5vw,31px);
-
+    font-size:clamp(23px,5vw,31px);
     font-weight:900;
 }
 
-
 .page-description{
-
     color:var(--muted);
-
     font-size:10px;
-
     margin-top:4px;
 }
 
-
 .read-all{
-
-    border:0;
-
-    background:
-        rgba(118,87,255,.10);
-
-    border:
-        1px solid
-        rgba(118,87,255,.20);
+    background:rgba(118,87,255,.10);
+    border:1px solid rgba(118,87,255,.20);
 
     color:#c6bcff;
 
@@ -248,55 +180,41 @@ main{
     cursor:pointer;
 
     font-size:9px;
-
     font-weight:800;
 }
 
-
-/* ================= FILTERS ================= */
+/* FILTERS */
 
 .filters{
-
     display:flex;
-
     gap:8px;
-
     overflow-x:auto;
-
     margin-bottom:15px;
-
     padding-bottom:3px;
 }
 
-
 .filter{
-
     flex-shrink:0;
 
     padding:8px 13px;
 
     border-radius:20px;
 
-    border:
-        1px solid var(--border);
+    border:1px solid var(--border);
 
-    background:
-        rgba(255,255,255,.03);
+    background:rgba(255,255,255,.03);
 
     color:var(--muted);
 
     cursor:pointer;
 
     font-size:9px;
-
     font-weight:700;
 
     transition:.2s;
 }
 
-
 .filter.active{
-
     color:white;
 
     border-color:
@@ -306,25 +224,18 @@ main{
         rgba(118,87,255,.15);
 }
 
-
-/* ================= NOTIFICATIONS ================= */
+/* NOTIFICATIONS */
 
 .notifications{
-
     display:flex;
-
     flex-direction:column;
-
     gap:10px;
 }
 
-
 .notification{
-
     position:relative;
 
     display:flex;
-
     align-items:flex-start;
 
     gap:13px;
@@ -333,11 +244,9 @@ main{
 
     border-radius:16px;
 
-    border:
-        1px solid var(--border);
+    border:1px solid var(--border);
 
-    background:
-        var(--card);
+    background:var(--card);
 
     cursor:pointer;
 
@@ -347,9 +256,7 @@ main{
         background .2s;
 }
 
-
 .notification:hover{
-
     transform:translateY(-2px);
 
     border-color:
@@ -359,47 +266,36 @@ main{
         rgba(25,24,36,.95);
 }
 
-
 .notification.unread{
-
     border-color:
         rgba(118,87,255,.20);
 }
 
-
 .notification.unread::before{
-
     content:"";
 
     position:absolute;
 
     right:0;
-
     top:15px;
-
     bottom:15px;
 
     width:3px;
 
     border-radius:5px 0 0 5px;
 
-    background:
-        var(--primary);
+    background:var(--primary);
 }
 
-
-/* ================= ICON ================= */
+/* ICON */
 
 .notification-icon{
-
     width:46px;
-
     height:46px;
 
     flex-shrink:0;
 
     display:grid;
-
     place-items:center;
 
     border-radius:13px;
@@ -414,9 +310,7 @@ main{
     font-size:19px;
 }
 
-
 .notification-icon.exam{
-
     background:
         rgba(255,189,85,.08);
 
@@ -424,9 +318,7 @@ main{
         rgba(255,189,85,.15);
 }
 
-
 .notification-icon.course{
-
     background:
         rgba(53,211,154,.08);
 
@@ -434,30 +326,21 @@ main{
         rgba(53,211,154,.15);
 }
 
-
 .notification-icon.result{
-
     background:
         rgba(118,87,255,.10);
 }
 
-
-/* ================= CONTENT ================= */
+/* CONTENT */
 
 .notification-content{
-
     flex:1;
-
     min-width:0;
 }
 
-
 .notification-head{
-
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     gap:10px;
@@ -465,66 +348,46 @@ main{
     margin-bottom:4px;
 }
 
-
 .notification-title{
-
     font-size:12px;
-
     font-weight:900;
 }
 
-
 .notification-time{
-
     color:var(--muted);
-
     font-size:8px;
-
     white-space:nowrap;
 }
 
-
 .notification-text{
-
     color:#b5b5c2;
-
     font-size:10px;
-
     line-height:1.8;
 }
 
-
-/* ================= EMPTY ================= */
+/* EMPTY */
 
 .empty{
-
     padding:65px 20px;
 
     border-radius:20px;
 
-    border:
-        1px solid var(--border);
+    border:1px solid var(--border);
 
-    background:
-        var(--card);
+    background:var(--card);
 
     text-align:center;
 
     display:none;
 }
 
-
 .empty-icon{
-
     width:70px;
-
     height:70px;
 
-    margin:
-        0 auto 14px;
+    margin:0 auto 14px;
 
     display:grid;
-
     place-items:center;
 
     border-radius:50%;
@@ -535,51 +398,67 @@ main{
     font-size:29px;
 }
 
-
 .empty-title{
-
     font-size:16px;
-
     font-weight:900;
-
     margin-bottom:5px;
 }
 
-
 .empty-text{
-
     color:var(--muted);
-
     font-size:10px;
-
     line-height:1.8;
 }
 
+/* ERROR */
 
-/* ================= LOADING ================= */
+.error-box{
+    display:none;
+
+    padding:50px 20px;
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,96,120,.15);
+
+    background:rgba(255,96,120,.04);
+
+    text-align:center;
+}
+
+.error-icon{
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+.error-box h2{
+    font-size:17px;
+    margin-bottom:7px;
+}
+
+.error-box p{
+    color:var(--muted);
+    font-size:10px;
+    line-height:1.8;
+}
+
+/* LOADING */
 
 .loading{
-
     position:fixed;
-
     inset:0;
 
     z-index:999;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     background:#06060a;
 }
 
-
 .loader{
-
     width:44px;
-
     height:44px;
 
     border-radius:50%;
@@ -595,91 +474,60 @@ main{
         spin .8s linear infinite;
 }
 
-
 @keyframes spin{
-
     to{
         transform:rotate(360deg);
     }
-
 }
 
-
-/* ================= RESPONSIVE ================= */
+/* RESPONSIVE */
 
 @media(max-width:600px){
 
     header{
-
         padding:0 4%;
-
     }
 
     .logo-text span{
-
         display:none;
-
     }
 
     .page-top{
-
         align-items:flex-start;
-
     }
 
     .read-all{
-
         white-space:nowrap;
-
     }
 
     .notification{
-
         padding:14px;
-
     }
 
     .notification-icon{
-
         width:42px;
-
         height:42px;
-
         font-size:17px;
-
     }
 
     .notification-head{
-
         align-items:flex-start;
-
         flex-direction:column;
-
         gap:2px;
-
     }
-
 }
 
 </style>
 
 </head>
 
-
 <body>
-
 
 <!-- LOADING -->
 
-<div
-    class="loading"
-    id="loading"
->
-
+<div class="loading" id="loading">
     <div class="loader"></div>
-
 </div>
-
 
 <!-- HEADER -->
 
@@ -705,7 +553,6 @@ main{
 
     </div>
 
-
     <button
         class="back-btn"
         onclick="goBack()"
@@ -718,8 +565,7 @@ main{
 
 <main>
 
-
-    <!-- TITLE -->
+    <!-- TOP -->
 
     <section class="page-top">
 
@@ -730,11 +576,10 @@ main{
             </h1>
 
             <p class="page-description">
-                تابع آخر أخبار الكورسات والاختبارات الخاصة بك
+                تابع آخر أخبار الكورسات والاختبارات والنتائج
             </p>
 
         </div>
-
 
         <button
             class="read-all"
@@ -752,7 +597,6 @@ main{
 
         <button
             class="filter active"
-            data-filter="all"
             onclick="filterNotifications('all',this)"
         >
             الكل
@@ -760,7 +604,6 @@ main{
 
         <button
             class="filter"
-            data-filter="course"
             onclick="filterNotifications('course',this)"
         >
             📚 الكورسات
@@ -768,7 +611,6 @@ main{
 
         <button
             class="filter"
-            data-filter="exam"
             onclick="filterNotifications('exam',this)"
         >
             📝 الاختبارات
@@ -776,7 +618,6 @@ main{
 
         <button
             class="filter"
-            data-filter="result"
             onclick="filterNotifications('result',this)"
         >
             🏆 النتائج
@@ -815,31 +656,57 @@ main{
     </section>
 
 
+    <!-- ERROR -->
+
+    <section
+        class="error-box"
+        id="errorBox"
+    >
+
+        <div class="error-icon">
+            ⚠️
+        </div>
+
+        <h2>
+            تعذر تحميل الإشعارات
+        </h2>
+
+        <p id="errorText">
+            حدث خطأ أثناء الاتصال بقاعدة البيانات.
+        </p>
+
+    </section>
+
 </main>
+
+
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="supabase.js"></script>
 
 
 <script>
 
 /*
 ============================================================
-    NOTIFICATIONS
+    إشعارات الطالب
 ============================================================
 
-    لاحقًا البيانات هتيجي من Supabase.
+    هذه الصفحة ليست للأدمن.
 
-    جدول مقترح:
+    الطالب يدخل بحسابه في Supabase Auth.
 
-    notifications
+    ثم الصفحة تعرف:
 
-    id
-    title
-    message
-    type
-    student_id
-    course_id
-    exam_id
-    is_read
-    created_at
+        user.id
+
+    وبعدها تجلب:
+
+        notifications
+
+    الخاصة بهذا الطالب فقط.
 
 ============================================================
 */
@@ -848,139 +715,129 @@ main{
 /* ================= ELEMENTS ================= */
 
 const loading =
-    document.getElementById(
-        "loading"
-    );
+    document.getElementById("loading");
 
 const notificationsContainer =
-    document.getElementById(
-        "notifications"
-    );
+    document.getElementById("notifications");
 
 const empty =
-    document.getElementById(
-        "empty"
-    );
+    document.getElementById("empty");
+
+const errorBox =
+    document.getElementById("errorBox");
+
+const errorText =
+    document.getElementById("errorText");
 
 
 /* ================= DATA ================= */
 
-/*
-    بيانات تجريبية للواجهة فقط.
+let allNotifications = [];
 
-    عند الربط الحقيقي سيتم حذفها
-    واستبدالها باستعلام Supabase.
-*/
+let currentFilter = "all";
 
-const demoNotifications = [
-
-    {
-        id:1,
-
-        type:"course",
-
-        title:"كورس جديد متاح",
-
-        message:
-            "تم إضافة كورس جديد إلى صفك الدراسي.",
-
-        created_at:
-            new Date(
-                Date.now() - 1000 * 60 * 20
-            ),
-
-        is_read:false
-    },
+let currentUser = null;
 
 
-    {
-        id:2,
+/* ================= CHECK LOGIN ================= */
 
-        type:"exam",
+async function getCurrentUser(){
 
-        title:"اختبار جديد",
-
-        message:
-            "تم نشر اختبار جديد ويمكنك البدء فيه الآن.",
-
-        created_at:
-            new Date(
-                Date.now() - 1000 * 60 * 90
-            ),
-
-        is_read:false
-    },
+    const {
+        data,
+        error
+    } =
+        await supabaseClient.auth.getUser();
 
 
-    {
-        id:3,
-
-        type:"result",
-
-        title:"ظهرت نتيجة الاختبار",
-
-        message:
-            "تم تصحيح اختبارك ويمكنك مشاهدة النتيجة الآن.",
-
-        created_at:
-            new Date(
-                Date.now() - 1000 * 60 * 60 * 5
-            ),
-
-        is_read:true
+    if(error){
+        throw error;
     }
 
-];
+
+    if(!data.user){
+
+        window.location.href =
+            "auth.html";
+
+        return null;
+    }
 
 
-let allNotifications =
-    [];
-
-let currentFilter =
-    "all";
+    return data.user;
+}
 
 
 /* ================= LOAD ================= */
 
 async function loadNotifications(){
 
-    loading.style.display =
-        "flex";
+    loading.style.display = "flex";
 
+    errorBox.style.display = "none";
 
     try{
 
         /*
-        ======================================================
-            SUPABASE
-
-            بعد الربط:
-
-            const { data, error } =
-                await supabase
-                    .from("notifications")
-                    .select("*")
-                    .eq("student_id", user.id)
-                    .order(
-                        "created_at",
-                        { ascending:false }
-                    );
-
-        ======================================================
+        -----------------------------------------------
+        الطالب الحالي
+        -----------------------------------------------
         */
 
+        currentUser =
+            await getCurrentUser();
 
-        await new Promise(
-            resolve =>
-                setTimeout(
-                    resolve,
-                    400
+
+        if(!currentUser){
+            return;
+        }
+
+
+        /*
+        -----------------------------------------------
+        جلب إشعارات الطالب فقط
+        -----------------------------------------------
+        */
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+
+                .from("notifications")
+
+                .select(`
+                    id,
+                    title,
+                    message,
+                    type,
+                    is_read,
+                    created_at,
+                    course_id,
+                    exam_id
+                `)
+
+                .eq(
+                    "student_id",
+                    currentUser.id
                 )
-        );
+
+                .order(
+                    "created_at",
+                    {
+                        ascending:false
+                    }
+                );
+
+
+        if(error){
+            throw error;
+        }
 
 
         allNotifications =
-            demoNotifications;
+            data || [];
 
 
         renderNotifications();
@@ -988,14 +845,25 @@ async function loadNotifications(){
 
     }catch(error){
 
-        console.error(error);
+        console.error(
+            "Notifications Error:",
+            error
+        );
 
-        showEmpty();
+
+        notificationsContainer.innerHTML = "";
+
+        empty.style.display = "none";
+
+        errorBox.style.display = "block";
+
+        errorText.textContent =
+            error.message ||
+            "حدث خطأ أثناء تحميل الإشعارات.";
 
     }finally{
 
-        loading.style.display =
-            "none";
+        loading.style.display = "none";
 
     }
 
@@ -1006,21 +874,19 @@ async function loadNotifications(){
 
 function renderNotifications(){
 
-    notificationsContainer.innerHTML =
-        "";
+    notificationsContainer.innerHTML = "";
+
+    errorBox.style.display = "none";
 
 
-    let list =
+    const list =
         allNotifications.filter(
             notification => {
 
                 if(
-                    currentFilter ===
-                    "all"
+                    currentFilter === "all"
                 ){
-
                     return true;
-
                 }
 
                 return (
@@ -1037,13 +903,10 @@ function renderNotifications(){
         showEmpty();
 
         return;
-
     }
 
 
-    empty.style.display =
-        "none";
-
+    empty.style.display = "none";
 
     notificationsContainer.style.display =
         "flex";
@@ -1078,43 +941,36 @@ function renderNotifications(){
                 <div
                     class="
                         notification-icon
-                        ${notification.type}
+                        ${escapeHTML(
+                            notification.type
+                        )}
                     "
                 >
                     ${icon}
                 </div>
-
 
                 <div class="notification-content">
 
                     <div class="notification-head">
 
                         <div class="notification-title">
-
                             ${escapeHTML(
                                 notification.title
                             )}
-
                         </div>
 
-
                         <div class="notification-time">
-
                             ${formatTime(
                                 notification.created_at
                             )}
-
                         </div>
 
                     </div>
 
-
                     <div class="notification-text">
-
                         ${escapeHTML(
                             notification.message
                         )}
-
                     </div>
 
                 </div>
@@ -1124,10 +980,13 @@ function renderNotifications(){
 
             item.addEventListener(
                 "click",
-                () =>
+                function(){
+
                     markRead(
                         notification.id
-                    )
+                    );
+
+                }
             );
 
 
@@ -1145,16 +1004,21 @@ function renderNotifications(){
 
 function getIcon(type){
 
-    if(type === "course")
-        return "📚";
+    switch(type){
 
-    if(type === "exam")
-        return "📝";
+        case "course":
+            return "📚";
 
-    if(type === "result")
-        return "🏆";
+        case "exam":
+            return "📝";
 
-    return "🔔";
+        case "result":
+            return "🏆";
+
+        default:
+            return "🔔";
+
+    }
 
 }
 
@@ -1171,9 +1035,7 @@ function filterNotifications(
 
 
     document
-        .querySelectorAll(
-            ".filter"
-        )
+        .querySelectorAll(".filter")
         .forEach(
             btn =>
                 btn.classList.remove(
@@ -1182,9 +1044,7 @@ function filterNotifications(
         );
 
 
-    button.classList.add(
-        "active"
-    );
+    button.classList.add("active");
 
 
     renderNotifications();
@@ -1192,7 +1052,7 @@ function filterNotifications(
 }
 
 
-/* ================= READ ================= */
+/* ================= MARK READ ================= */
 
 async function markRead(id){
 
@@ -1203,27 +1063,57 @@ async function markRead(id){
         );
 
 
-    if(!notification)
+    if(!notification){
         return;
+    }
+
+
+    if(notification.is_read){
+        return;
+    }
+
+
+    /*
+    -----------------------------------------------
+    تحديث الإشعار في قاعدة البيانات
+    -----------------------------------------------
+    */
+
+    const {
+        error
+    } =
+        await supabaseClient
+
+            .from("notifications")
+
+            .update({
+                is_read:true
+            })
+
+            .eq(
+                "id",
+                id
+            )
+
+            .eq(
+                "student_id",
+                currentUser.id
+            );
+
+
+    if(error){
+
+        console.error(
+            "Mark read error:",
+            error
+        );
+
+        return;
+    }
 
 
     notification.is_read =
         true;
-
-
-    /*
-    ======================================================
-        SUPABASE
-
-        await supabase
-            .from("notifications")
-            .update({
-                is_read:true
-            })
-            .eq("id",id);
-
-    ======================================================
-    */
 
 
     renderNotifications();
@@ -1231,33 +1121,68 @@ async function markRead(id){
 }
 
 
-/* ================= READ ALL ================= */
+/* ================= MARK ALL READ ================= */
 
 async function markAllRead(){
 
-    allNotifications.forEach(
-        notification =>
-            notification.is_read =
-                true
-    );
+    if(!currentUser){
+        return;
+    }
 
 
-    /*
-    ======================================================
-        SUPABASE
+    const unread =
+        allNotifications.filter(
+            notification =>
+                !notification.is_read
+        );
 
-        await supabase
+
+    if(!unread.length){
+        return;
+    }
+
+
+    const {
+        error
+    } =
+        await supabaseClient
+
             .from("notifications")
+
             .update({
                 is_read:true
             })
+
             .eq(
                 "student_id",
-                user.id
+                currentUser.id
+            )
+
+            .eq(
+                "is_read",
+                false
             );
 
-    ======================================================
-    */
+
+    if(error){
+
+        console.error(
+            "Mark all read error:",
+            error
+        );
+
+        return;
+    }
+
+
+    allNotifications.forEach(
+        notification => {
+
+            notification.is_read =
+                true;
+
+        }
+    );
 
 
     renderNotifications();
@@ -1269,8 +1194,7 @@ async function markAllRead(){
 
 function showEmpty(){
 
-    notificationsContainer.innerHTML =
-        "";
+    notificationsContainer.innerHTML = "";
 
     notificationsContainer.style.display =
         "none";
@@ -1291,16 +1215,16 @@ function formatTime(date){
     const target =
         new Date(date);
 
+
     const seconds =
         Math.floor(
-            (
-                now - target
-            ) / 1000
+            (now - target) / 1000
         );
 
 
-    if(seconds < 60)
+    if(seconds < 60){
         return "منذ لحظات";
+    }
 
 
     const minutes =
@@ -1309,8 +1233,9 @@ function formatTime(date){
         );
 
 
-    if(minutes < 60)
+    if(minutes < 60){
         return `منذ ${minutes} دقيقة`;
+    }
 
 
     const hours =
@@ -1319,8 +1244,9 @@ function formatTime(date){
         );
 
 
-    if(hours < 24)
+    if(hours < 24){
         return `منذ ${hours} ساعة`;
+    }
 
 
     const days =
@@ -1329,8 +1255,9 @@ function formatTime(date){
         );
 
 
-    if(days < 7)
+    if(days < 7){
         return `منذ ${days} يوم`;
+    }
 
 
     return target.toLocaleDateString(
@@ -1348,9 +1275,7 @@ function escapeHTML(value){
         value === null ||
         value === undefined
     ){
-
         return "";
-
     }
 
 
@@ -1384,7 +1309,7 @@ function escapeHTML(value){
 }
 
 
-/* ================= NAVIGATION ================= */
+/* ================= BACK ================= */
 
 function goBack(){
 
@@ -1399,9 +1324,6 @@ function goBack(){
 loadNotifications();
 
 </script>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase.js"></script>
 
 </body>
 
