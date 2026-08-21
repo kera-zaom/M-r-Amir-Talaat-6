@@ -2,13 +2,8 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>الخوارزمي | تسجيل الدخول</title>
 
@@ -26,11 +21,7 @@ html{
 
 body{
     min-height:100vh;
-    font-family:
-        "Cairo",
-        "Tajawal",
-        Arial,
-        sans-serif;
+    font-family:"Cairo","Tajawal",Arial,sans-serif;
     color:#fff;
     background:#07070d;
     display:flex;
@@ -48,12 +39,11 @@ body::before{
     top:-300px;
     right:-200px;
     border-radius:50%;
-    background:
-        radial-gradient(
-            circle,
-            rgba(113,73,245,.24),
-            transparent 68%
-        );
+    background:radial-gradient(
+        circle,
+        rgba(113,73,245,.24),
+        transparent 68%
+    );
     filter:blur(30px);
     pointer-events:none;
 }
@@ -66,12 +56,11 @@ body::after{
     bottom:-300px;
     left:-250px;
     border-radius:50%;
-    background:
-        radial-gradient(
-            circle,
-            rgba(44,82,225,.18),
-            transparent 68%
-        );
+    background:radial-gradient(
+        circle,
+        rgba(44,82,225,.18),
+        transparent 68%
+    );
     filter:blur(30px);
     pointer-events:none;
 }
@@ -85,8 +74,7 @@ body::after{
     overflow:hidden;
     background:rgba(14,14,23,.86);
     border:1px solid rgba(255,255,255,.08);
-    box-shadow:
-        0 40px 120px rgba(0,0,0,.65);
+    box-shadow:0 40px 120px rgba(0,0,0,.65);
     backdrop-filter:blur(25px);
     position:relative;
     z-index:2;
@@ -111,13 +99,12 @@ body::after{
     display:flex;
     align-items:center;
     justify-content:center;
-    background:
-        linear-gradient(
-            145deg,
-            #11101e,
-            #171333,
-            #0c1020
-        );
+    background:linear-gradient(
+        145deg,
+        #11101e,
+        #171333,
+        #0c1020
+    );
 }
 
 .visual::before{
@@ -126,12 +113,11 @@ body::after{
     width:420px;
     height:420px;
     border-radius:50%;
-    background:
-        radial-gradient(
-            circle,
-            rgba(125,82,255,.35),
-            transparent 68%
-        );
+    background:radial-gradient(
+        circle,
+        rgba(125,82,255,.35),
+        transparent 68%
+    );
     filter:blur(20px);
     animation:visualGlow 5s ease-in-out infinite;
 }
@@ -193,14 +179,12 @@ body::after{
     border-radius:30px;
     font-size:58px;
     font-weight:900;
-    background:
-        linear-gradient(
-            135deg,
-            #895aff,
-            #3159e8
-        );
-    box-shadow:
-        0 25px 70px rgba(92,65,230,.4);
+    background:linear-gradient(
+        135deg,
+        #895aff,
+        #3159e8
+    );
+    box-shadow:0 25px 70px rgba(92,65,230,.4);
     animation:floating 4s ease-in-out infinite;
 }
 
@@ -297,14 +281,12 @@ body::after{
 
 .tab.active{
     color:#fff;
-    background:
-        linear-gradient(
-            135deg,
-            rgba(124,82,245,.8),
-            rgba(49,87,220,.8)
-        );
-    box-shadow:
-        0 8px 25px rgba(78,60,200,.25);
+    background:linear-gradient(
+        135deg,
+        rgba(124,82,245,.8),
+        rgba(49,87,220,.8)
+    );
+    box-shadow:0 8px 25px rgba(78,60,200,.25);
 }
 
 .form{
@@ -375,8 +357,7 @@ input:focus,
 select:focus{
     border-color:rgba(135,99,255,.6);
     background:rgba(255,255,255,.055);
-    box-shadow:
-        0 0 0 3px rgba(120,80,245,.08);
+    box-shadow:0 0 0 3px rgba(120,80,245,.08);
 }
 
 select{
@@ -428,14 +409,12 @@ select{
     font-size:11px;
     font-weight:800;
     cursor:pointer;
-    background:
-        linear-gradient(
-            135deg,
-            #8558f6,
-            #315be9
-        );
-    box-shadow:
-        0 15px 35px rgba(76,60,205,.25);
+    background:linear-gradient(
+        135deg,
+        #8558f6,
+        #315be9
+    );
+    box-shadow:0 15px 35px rgba(76,60,205,.25);
     transition:.3s;
     position:relative;
     overflow:hidden;
@@ -443,8 +422,7 @@ select{
 
 .submit:hover{
     transform:translateY(-3px);
-    box-shadow:
-        0 20px 45px rgba(76,60,205,.4);
+    box-shadow:0 20px 45px rgba(76,60,205,.4);
 }
 
 .submit:active{
@@ -476,9 +454,7 @@ select{
 
 @keyframes spin{
     to{
-        transform:
-            translate(-50%,-50%)
-            rotate(360deg);
+        transform:translate(-50%,-50%) rotate(360deg);
     }
 }
 
@@ -563,7 +539,6 @@ select{
         top:20px;
         right:22px;
     }
-
 }
 
 @media(max-width:430px){
@@ -605,11 +580,9 @@ select{
     select{
         height:46px;
     }
-
 }
 
 </style>
-
 </head>
 
 <body>
@@ -622,9 +595,7 @@ select{
 
 <div class="visual-content">
 
-<div class="big-logo">
-∑
-</div>
+<div class="big-logo">∑</div>
 
 <h1>
 الخوارزمي
@@ -641,32 +612,23 @@ select{
 
 </section>
 
-
 <section class="form-area">
 
-<a
-href="index.html"
-class="back"
->
+<a href="index.html" class="back">
 ← الرئيسية
 </a>
 
 <div class="form-header">
 
-<small>
-أهلاً بيك 👋
-</small>
+<small>أهلاً بيك 👋</small>
 
-<h2>
-ابدأ رحلتك
-</h2>
+<h2>ابدأ رحلتك</h2>
 
 <p>
 سجل دخولك أو اعمل حساب جديد عشان تدخل للمنصة.
 </p>
 
 </div>
-
 
 <div class="tabs">
 
@@ -701,25 +663,24 @@ id="loginForm"
 <div class="field">
 
 <label>
-البريد الإلكتروني
+البريد الإلكتروني أو رقم الموبايل
 </label>
 
 <div class="input-wrap">
 
-<span>✉</span>
+<span>📧</span>
 
 <input
-type="email"
-id="loginEmail"
-placeholder="اكتب البريد الإلكتروني"
-autocomplete="email"
+type="text"
+id="loginIdentifier"
+placeholder="البريد الإلكتروني أو 01xxxxxxxxx"
+autocomplete="username"
 required
 >
 
 </div>
 
 </div>
-
 
 <div class="field">
 
@@ -751,7 +712,6 @@ data-target="loginPassword"
 
 </div>
 
-
 <div class="remember">
 
 <label class="check">
@@ -766,7 +726,6 @@ id="rememberMe"
 </label>
 
 </div>
-
 
 <button
 class="submit"
@@ -794,9 +753,7 @@ id="registerForm"
 
 <div class="field">
 
-<label>
-الاسم بالكامل
-</label>
+<label>الاسم بالكامل</label>
 
 <div class="input-wrap">
 
@@ -814,12 +771,9 @@ required
 
 </div>
 
-
 <div class="field">
 
-<label>
-البريد الإلكتروني
-</label>
+<label>البريد الإلكتروني</label>
 
 <div class="input-wrap">
 
@@ -837,12 +791,9 @@ required
 
 </div>
 
-
 <div class="field">
 
-<label>
-رقم الموبايل
-</label>
+<label>رقم الموبايل</label>
 
 <div class="input-wrap">
 
@@ -861,12 +812,9 @@ required
 
 </div>
 
-
 <div class="field">
 
-<label>
-رقم ولي الأمر
-</label>
+<label>رقم ولي الأمر</label>
 
 <div class="input-wrap">
 
@@ -885,12 +833,9 @@ required
 
 </div>
 
-
 <div class="field">
 
-<label>
-الصف الدراسي
-</label>
+<label>الصف الدراسي</label>
 
 <div class="input-wrap">
 
@@ -935,12 +880,9 @@ required
 
 </div>
 
-
 <div class="field">
 
-<label>
-كلمة المرور
-</label>
+<label>كلمة المرور</label>
 
 <div class="input-wrap">
 
@@ -966,12 +908,9 @@ data-target="registerPassword"
 
 </div>
 
-
 <div class="field">
 
-<label>
-تأكيد كلمة المرور
-</label>
+<label>تأكيد كلمة المرور</label>
 
 <div class="input-wrap">
 
@@ -997,7 +936,6 @@ data-target="confirmPassword"
 
 </div>
 
-
 <button
 class="submit"
 type="submit"
@@ -1011,7 +949,6 @@ id="registerMessage"
 ></div>
 
 </form>
-
 
 <div class="form-footer">
 
@@ -1029,19 +966,28 @@ id="registerMessage"
 
 
 <!-- =========================
-     SUPABASE LIBRARY
+     SUPABASE
 ========================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<!-- =========================
-     YOUR SUPABASE CLIENT
-========================= -->
 
 <script src="supabase.js"></script>
 
 
 <script>
+
+/* =================================
+   CHECK SUPABASE
+================================= */
+
+if(!window.supabaseClient){
+
+    console.error(
+        "supabaseClient غير موجود. تأكد من ملف supabase.js"
+    );
+
+}
+
 
 /* =================================
    ELEMENTS
@@ -1077,7 +1023,6 @@ function(){
     registerForm.classList.remove("active");
 
 });
-
 
 registerTab.addEventListener(
 "click",
@@ -1131,7 +1076,7 @@ document
 
 
 /* =================================
-   EGYPTIAN PHONE
+   EGYPT PHONE
 ================================= */
 
 function validEgyptPhone(phone){
@@ -1171,9 +1116,9 @@ async function(event){
 
     event.preventDefault();
 
-    const email =
+    const identifier =
     document.getElementById(
-        "loginEmail"
+        "loginIdentifier"
     ).value.trim();
 
     const password =
@@ -1187,16 +1132,27 @@ async function(event){
     );
 
     const button =
-    loginForm.querySelector(
-        ".submit"
-    );
+    loginForm.querySelector(".submit");
 
 
-    if(!email || !password){
+    if(!identifier || !password){
 
         showMessage(
             message,
-            "اكتب البريد الإلكتروني وكلمة المرور.",
+            "اكتب البريد الإلكتروني أو رقم الموبايل وكلمة المرور.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    if(!window.supabaseClient){
+
+        showMessage(
+            message,
+            "Supabase غير متصل. تأكد من ملف supabase.js.",
             "error"
         );
 
@@ -1206,21 +1162,65 @@ async function(event){
 
 
     button.classList.add("loading");
-
     button.disabled = true;
 
 
     try{
 
+        let email = identifier;
+
+
         /* =========================
-           SUPABASE LOGIN
+           IF PHONE
+        ========================= */
+
+        if(validEgyptPhone(identifier)){
+
+            const {
+                data:emailData,
+                error:emailError
+            } =
+            await window.supabaseClient
+            .rpc(
+                "get_login_email",
+                {
+                    input_phone:identifier
+                }
+            );
+
+
+            if(emailError){
+
+                throw emailError;
+
+            }
+
+
+            if(!emailData){
+
+                throw new Error(
+                    "رقم الموبايل غير مسجل في المنصة."
+                );
+
+            }
+
+
+            email = emailData;
+
+        }
+
+
+        /* =========================
+           LOGIN
         ========================= */
 
         const {
             data,
             error
         } =
-        await supabaseClient.auth.signInWithPassword({
+        await window.supabaseClient
+        .auth
+        .signInWithPassword({
 
             email:email,
 
@@ -1246,14 +1246,14 @@ async function(event){
 
 
         /* =========================
-           GET PROFILE
+           PROFILE
         ========================= */
 
         const {
             data:profile,
             error:profileError
         } =
-        await supabaseClient
+        await window.supabaseClient
         .from("profiles")
         .select("role")
         .eq("id",data.user.id)
@@ -1293,7 +1293,7 @@ async function(event){
             }
 
         },
-        500
+        600
         );
 
 
@@ -1307,17 +1307,19 @@ async function(event){
 
         let text =
             error.message ||
-            "البريد الإلكتروني أو كلمة المرور غير صحيحة.";
+            "حدث خطأ أثناء تسجيل الدخول.";
 
 
         if(
             text
             .toLowerCase()
-            .includes("invalid login credentials")
+            .includes(
+                "invalid login credentials"
+            )
         ){
 
             text =
-                "البريد الإلكتروني أو كلمة المرور غير صحيحة.";
+                "البريد/الموبايل أو كلمة المرور غير صحيحة.";
 
         }
 
@@ -1329,10 +1331,7 @@ async function(event){
         );
 
 
-        button.classList.remove(
-            "loading"
-        );
-
+        button.classList.remove("loading");
         button.disabled = false;
 
     }
@@ -1356,53 +1355,43 @@ async function(event){
         "registerName"
     ).value.trim();
 
-
     const email =
     document.getElementById(
         "registerEmail"
     ).value.trim();
-
 
     const phone =
     document.getElementById(
         "registerPhone"
     ).value.trim();
 
-
     const parentPhone =
     document.getElementById(
         "parentPhone"
     ).value.trim();
-
 
     const grade =
     document.getElementById(
         "registerGrade"
     ).value;
 
-
     const password =
     document.getElementById(
         "registerPassword"
     ).value;
-
 
     const confirmPassword =
     document.getElementById(
         "confirmPassword"
     ).value;
 
-
     const message =
     document.getElementById(
         "registerMessage"
     );
 
-
     const button =
-    registerForm.querySelector(
-        ".submit"
-    );
+    registerForm.querySelector(".submit");
 
 
     /* =========================
@@ -1487,24 +1476,36 @@ async function(event){
     }
 
 
-    button.classList.add(
-        "loading"
-    );
+    if(!window.supabaseClient){
 
+        showMessage(
+            message,
+            "Supabase غير متصل. تأكد من ملف supabase.js.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    button.classList.add("loading");
     button.disabled = true;
 
 
     try{
 
         /* =========================
-           CREATE AUTH ACCOUNT
+           CREATE AUTH
         ========================= */
 
         const {
             data,
             error
         } =
-        await supabaseClient.auth.signUp({
+        await window.supabaseClient
+        .auth
+        .signUp({
 
             email:email,
 
@@ -1546,13 +1547,13 @@ async function(event){
 
 
         /* =========================
-           SAVE STUDENT
+           PROFILE
         ========================= */
 
         const {
             error:profileError
         } =
-        await supabaseClient
+        await window.supabaseClient
         .from("profiles")
         .upsert(
         [
@@ -1575,9 +1576,7 @@ async function(event){
 
         ],
         {
-
             onConflict:"id"
-
         });
 
 
@@ -1589,7 +1588,7 @@ async function(event){
 
 
         /* =========================
-           SUCCESS
+           SESSION
         ========================= */
 
         if(data.session){
@@ -1620,10 +1619,7 @@ async function(event){
             );
 
 
-            button.classList.remove(
-                "loading"
-            );
-
+            button.classList.remove("loading");
             button.disabled = false;
 
         }
@@ -1656,6 +1652,34 @@ async function(event){
         }
 
 
+        if(
+            text
+            .toLowerCase()
+            .includes(
+                "email rate limit exceeded"
+            )
+        ){
+
+            text =
+                "تم تجاوز حد إرسال البريد مؤقتًا. انتظر قليلًا ثم حاول مرة أخرى.";
+
+        }
+
+
+        if(
+            text
+            .toLowerCase()
+            .includes(
+                "row-level security"
+            )
+        ){
+
+            text =
+                "تم إنشاء الحساب لكن صلاحيات قاعدة البيانات تمنع حفظ بيانات الطالب. راجع سياسات RLS لجدول profiles.";
+
+        }
+
+
         showMessage(
             message,
             text,
@@ -1663,10 +1687,7 @@ async function(event){
         );
 
 
-        button.classList.remove(
-            "loading"
-        );
-
+        button.classList.remove("loading");
         button.disabled = false;
 
     }
@@ -1685,7 +1706,7 @@ new Date().getFullYear();
 
 
 /* =================================
-   PHONE NUMBERS ONLY
+   PHONE ONLY
 ================================= */
 
 document
@@ -1713,5 +1734,4 @@ document
 </script>
 
 </body>
-
 </html>
