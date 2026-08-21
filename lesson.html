@@ -2,55 +2,41 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>مشاهدة الدرس | الخوارزمي</title>
 
-<link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
->
-
-<link
-    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
->
+href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+rel="stylesheet">
 
 <style>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Cairo", Arial, sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Cairo",Arial,sans-serif;
 }
 
-:root {
-    --bg: #06060a;
-    --card: rgba(18,18,27,.82);
-    --border: rgba(255,255,255,.08);
-    --text: #ffffff;
-    --muted: #9b9ba9;
-    --primary: #7657ff;
-    --primary-dark: #4d35d9;
-    --success: #35d39a;
+:root{
+    --bg:#06060a;
+    --card:rgba(18,18,27,.82);
+    --border:rgba(255,255,255,.08);
+    --text:#fff;
+    --muted:#9b9ba9;
+    --primary:#7657ff;
+    --primary-dark:#4d35d9;
+    --success:#35d39a;
 }
 
-body {
-    min-height: 100vh;
-    color: var(--text);
+body{
+    min-height:100vh;
+    color:var(--text);
 
     background:
         radial-gradient(
@@ -65,46 +51,41 @@ body {
         ),
         var(--bg);
 
-    padding-bottom: 60px;
+    padding-bottom:60px;
 }
 
+header{
+    height:74px;
+    position:sticky;
+    top:0;
+    z-index:100;
 
-/* ================= HEADER ================= */
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-header {
-    height: 74px;
+    padding:0 5%;
 
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    background:rgba(6,6,10,.85);
+    backdrop-filter:blur(18px);
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 5%;
-
-    background: rgba(6,6,10,.85);
-
-    backdrop-filter: blur(18px);
-
-    border-bottom: 1px solid var(--border);
+    border-bottom:1px solid var(--border);
 }
 
-.logo-area {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
-.logo {
-    width: 43px;
-    height: 43px;
+.logo{
+    width:43px;
+    height:43px;
 
-    display: grid;
-    place-items: center;
+    display:grid;
+    place-items:center;
 
-    border-radius: 14px;
+    border-radius:14px;
 
     background:
         linear-gradient(
@@ -113,134 +94,116 @@ header {
             #a796ff
         );
 
-    font-size: 20px;
-    font-weight: 900;
+    font-size:20px;
+    font-weight:900;
 
     box-shadow:
         0 0 30px
         rgba(118,87,255,.25);
 }
 
-.logo-text strong {
-    display: block;
-    font-size: 17px;
+.logo-text strong{
+    display:block;
+    font-size:17px;
 }
 
-.logo-text span {
-    display: block;
-
-    color: var(--muted);
-
-    font-size: 10px;
+.logo-text span{
+    display:block;
+    color:var(--muted);
+    font-size:10px;
 }
 
-.back-btn {
-    height: 42px;
+.back-btn{
+    height:42px;
+    padding:0 16px;
 
-    padding: 0 16px;
+    border-radius:12px;
 
-    border-radius: 12px;
+    border:1px solid var(--border);
 
-    border: 1px solid var(--border);
+    background:rgba(255,255,255,.04);
 
-    background: rgba(255,255,255,.04);
+    color:white;
 
-    color: white;
+    cursor:pointer;
 
-    cursor: pointer;
-
-    transition: .25s;
+    transition:.25s;
 }
 
-.back-btn:hover {
-    background: rgba(118,87,255,.12);
+.back-btn:hover{
+    background:rgba(118,87,255,.12);
 }
 
-
-/* ================= MAIN ================= */
-
-main {
-    width: min(1150px, 92%);
-    margin: auto;
-
-    padding-top: 35px;
+main{
+    width:min(1150px,92%);
+    margin:auto;
+    padding-top:35px;
 }
 
+.breadcrumb{
+    display:flex;
+    align-items:center;
+    gap:8px;
 
-/* ================= BREADCRUMB ================= */
+    color:var(--muted);
 
-.breadcrumb {
-    display: flex;
-    align-items: center;
+    font-size:11px;
 
-    gap: 8px;
-
-    color: var(--muted);
-
-    font-size: 11px;
-
-    margin-bottom: 18px;
+    margin-bottom:18px;
 }
 
-.breadcrumb span {
-    color: #777784;
+.breadcrumb span{
+    color:#777784;
 }
 
-.breadcrumb strong {
-    color: #cfcfd8;
+.breadcrumb strong{
+    color:#cfcfd8;
 }
 
+.video-card{
+    overflow:hidden;
 
-/* ================= VIDEO ================= */
+    border-radius:22px;
 
-.video-card {
-    overflow: hidden;
+    border:1px solid var(--border);
 
-    border-radius: 22px;
-
-    border: 1px solid var(--border);
-
-    background: #000;
+    background:#000;
 
     box-shadow:
         0 25px 80px
         rgba(0,0,0,.35);
 }
 
-.video-wrapper {
-    width: 100%;
+.video-wrapper{
+    width:100%;
+    aspect-ratio:16/9;
 
-    aspect-ratio: 16 / 9;
+    position:relative;
 
-    position: relative;
-
-    background: #000;
+    background:#000;
 }
 
-.video-wrapper iframe {
-    position: absolute;
+.video-wrapper iframe{
+    position:absolute;
+    inset:0;
 
-    inset: 0;
+    width:100%;
+    height:100%;
 
-    width: 100%;
-    height: 100%;
-
-    border: 0;
+    border:0;
 }
 
-.video-placeholder {
-    position: absolute;
+.video-placeholder{
+    position:absolute;
+    inset:0;
 
-    inset: 0;
+    display:flex;
+    flex-direction:column;
 
-    display: flex;
+    justify-content:center;
+    align-items:center;
 
-    flex-direction: column;
-
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
+    text-align:center;
 
     background:
         radial-gradient(
@@ -250,144 +213,130 @@ main {
         );
 }
 
-.video-icon {
-    width: 72px;
-    height: 72px;
+.video-icon{
+    width:72px;
+    height:72px;
 
-    display: grid;
-    place-items: center;
+    display:grid;
+    place-items:center;
 
-    border-radius: 50%;
+    border-radius:50%;
 
-    background:
-        rgba(118,87,255,.12);
+    background:rgba(118,87,255,.12);
 
-    color: #a796ff;
+    color:#a796ff;
 
-    font-size: 28px;
+    font-size:28px;
 
-    margin-bottom: 14px;
+    margin-bottom:14px;
 }
 
-.video-placeholder h2 {
-    font-size: 18px;
-
-    margin-bottom: 5px;
+.video-placeholder h2{
+    font-size:18px;
+    margin-bottom:5px;
 }
 
-.video-placeholder p {
-    color: var(--muted);
-
-    font-size: 11px;
+.video-placeholder p{
+    color:var(--muted);
+    font-size:11px;
 }
 
+.content-grid{
+    display:grid;
 
-/* ================= CONTENT ================= */
+    grid-template-columns:1fr 330px;
 
-.content-grid {
-    display: grid;
+    gap:22px;
 
-    grid-template-columns: 1fr 330px;
-
-    gap: 22px;
-
-    margin-top: 22px;
+    margin-top:22px;
 }
 
+.info-card{
+    padding:24px;
 
-/* ================= INFO ================= */
+    border-radius:20px;
 
-.info-card {
-    padding: 24px;
+    border:1px solid var(--border);
 
-    border-radius: 20px;
+    background:var(--card);
 
-    border: 1px solid var(--border);
-
-    background: var(--card);
-
-    backdrop-filter: blur(15px);
+    backdrop-filter:blur(15px);
 }
 
-.lesson-number {
-    display: inline-flex;
+.lesson-number{
+    display:inline-flex;
 
-    padding: 6px 10px;
+    padding:6px 10px;
 
-    border-radius: 8px;
+    border-radius:8px;
 
-    background:
-        rgba(118,87,255,.11);
+    background:rgba(118,87,255,.11);
 
-    color: #b7aaff;
+    color:#b7aaff;
 
-    font-size: 10px;
+    font-size:10px;
 
-    margin-bottom: 10px;
+    margin-bottom:10px;
 }
 
-.lesson-title {
-    font-size: clamp(22px, 4vw, 30px);
+.lesson-title{
+    font-size:clamp(22px,4vw,30px);
 
-    line-height: 1.5;
+    line-height:1.5;
 
-    margin-bottom: 12px;
+    margin-bottom:12px;
 }
 
-.lesson-description {
-    color: var(--muted);
+.lesson-description{
+    color:var(--muted);
 
-    font-size: 13px;
+    font-size:13px;
 
-    line-height: 2;
+    line-height:2;
 }
 
+.progress-box{
+    margin-top:25px;
 
-/* ================= PROGRESS ================= */
+    padding-top:20px;
 
-.progress-box {
-    margin-top: 25px;
-
-    padding-top: 20px;
-
-    border-top: 1px solid var(--border);
+    border-top:1px solid var(--border);
 }
 
-.progress-head {
-    display: flex;
+.progress-head{
+    display:flex;
 
-    align-items: center;
-    justify-content: space-between;
+    align-items:center;
+    justify-content:space-between;
 
-    margin-bottom: 9px;
+    margin-bottom:9px;
 
-    font-size: 11px;
+    font-size:11px;
 }
 
-.progress-head span {
-    color: var(--muted);
+.progress-head span{
+    color:var(--muted);
 }
 
-.progress-percent {
-    color: #b7aaff;
+.progress-percent{
+    color:#b7aaff;
 }
 
-.progress-bar {
-    height: 8px;
+.progress-bar{
+    height:8px;
 
-    border-radius: 20px;
+    border-radius:20px;
 
-    overflow: hidden;
+    overflow:hidden;
 
-    background: rgba(255,255,255,.07);
+    background:rgba(255,255,255,.07);
 }
 
-.progress-fill {
-    width: 0%;
+.progress-fill{
+    width:0%;
+    height:100%;
 
-    height: 100%;
-
-    border-radius: inherit;
+    border-radius:inherit;
 
     background:
         linear-gradient(
@@ -396,89 +345,77 @@ main {
             #9c86ff
         );
 
-    transition: width .5s ease;
+    transition:width .5s ease;
 }
 
-
-/* ================= SIDEBAR ================= */
-
-.sidebar {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 14px;
+.sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
 }
 
-.side-card {
-    padding: 18px;
+.side-card{
+    padding:18px;
 
-    border-radius: 18px;
+    border-radius:18px;
 
-    border: 1px solid var(--border);
+    border:1px solid var(--border);
 
-    background: var(--card);
+    background:var(--card);
 }
 
-.side-title {
-    font-size: 14px;
+.side-title{
+    font-size:14px;
+    font-weight:800;
 
-    font-weight: 800;
-
-    margin-bottom: 15px;
+    margin-bottom:15px;
 }
 
+.course-box{
+    display:flex;
 
-/* COURSE */
+    gap:12px;
 
-.course-box {
-    display: flex;
-
-    gap: 12px;
-
-    align-items: center;
+    align-items:center;
 }
 
-.course-image {
-    width: 62px;
-    height: 62px;
+.course-image{
+    width:62px;
+    height:62px;
 
-    flex-shrink: 0;
+    flex-shrink:0;
 
-    object-fit: cover;
+    object-fit:cover;
 
-    border-radius: 12px;
+    border-radius:12px;
 
-    background: #16151f;
+    background:#16151f;
 }
 
-.course-name {
-    font-size: 12px;
+.course-name{
+    font-size:12px;
 
-    font-weight: 800;
+    font-weight:800;
 
-    line-height: 1.7;
+    line-height:1.7;
 }
 
-.course-grade {
-    color: var(--muted);
+.course-grade{
+    color:var(--muted);
 
-    font-size: 10px;
+    font-size:10px;
 
-    margin-top: 3px;
+    margin-top:3px;
 }
 
+.next-btn{
+    width:100%;
 
-/* NEXT */
+    min-height:48px;
 
-.next-btn {
-    width: 100%;
+    border:0;
 
-    min-height: 48px;
-
-    border: 0;
-
-    border-radius: 12px;
+    border-radius:12px;
 
     background:
         linear-gradient(
@@ -487,211 +424,177 @@ main {
             var(--primary-dark)
         );
 
-    color: white;
+    color:white;
 
-    font-weight: 800;
+    font-weight:800;
 
-    cursor: pointer;
+    cursor:pointer;
 
-    transition: .25s;
+    transition:.25s;
 }
 
-.next-btn:hover {
-    transform: translateY(-1px);
+.next-btn:hover{
+    transform:translateY(-1px);
 
     box-shadow:
         0 10px 25px
         rgba(118,87,255,.2);
 }
 
-.next-btn:disabled {
-    opacity: .45;
-
-    cursor: not-allowed;
-
-    transform: none;
+.next-btn:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+    transform:none;
 }
 
+.complete-btn{
+    width:100%;
 
-/* COMPLETE */
+    min-height:48px;
 
-.complete-btn {
-    width: 100%;
+    border-radius:12px;
 
-    min-height: 48px;
+    border:1px solid rgba(53,211,154,.25);
 
-    border-radius: 12px;
+    background:rgba(53,211,154,.08);
 
-    border: 1px solid
-        rgba(53,211,154,.25);
+    color:#67e4b4;
 
-    background:
-        rgba(53,211,154,.08);
+    font-weight:800;
 
-    color: #67e4b4;
+    cursor:pointer;
 
-    font-weight: 800;
+    margin-top:10px;
 
-    cursor: pointer;
-
-    margin-top: 10px;
-
-    transition: .25s;
+    transition:.25s;
 }
 
-.complete-btn:hover {
-    background:
-        rgba(53,211,154,.13);
+.complete-btn:hover{
+    background:rgba(53,211,154,.13);
 }
 
+.loading{
+    position:fixed;
 
-/* ================= LOADING ================= */
+    inset:0;
 
-.loading {
-    position: fixed;
+    z-index:999;
 
-    inset: 0;
+    display:flex;
 
-    z-index: 999;
+    align-items:center;
+    justify-content:center;
 
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    background: #06060a;
+    background:#06060a;
 }
 
-.loader {
-    width: 45px;
-    height: 45px;
+.loader{
+    width:45px;
+    height:45px;
 
-    border-radius: 50%;
+    border-radius:50%;
 
-    border: 3px solid
-        rgba(118,87,255,.15);
+    border:3px solid rgba(118,87,255,.15);
 
-    border-top-color:
-        var(--primary);
+    border-top-color:var(--primary);
 
-    animation:
-        spin .8s linear infinite;
+    animation:spin .8s linear infinite;
 }
 
-@keyframes spin {
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
 
-    to {
-        transform: rotate(360deg);
+.error-box{
+    display:none;
+
+    padding:35px 20px;
+
+    text-align:center;
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,96,118,.15);
+
+    background:rgba(255,96,118,.04);
+}
+
+.error-icon{
+    font-size:35px;
+    margin-bottom:12px;
+}
+
+.error-box h2{
+    font-size:19px;
+    margin-bottom:6px;
+}
+
+.error-box p{
+    color:var(--muted);
+    font-size:12px;
+}
+
+@media(max-width:850px){
+
+    .content-grid{
+        grid-template-columns:1fr;
     }
 
+    .sidebar{
+        display:grid;
+
+        grid-template-columns:repeat(2,1fr);
+    }
 }
 
+@media(max-width:600px){
 
-/* ================= ERROR ================= */
-
-.error-box {
-    display: none;
-
-    padding: 35px 20px;
-
-    text-align: center;
-
-    border-radius: 20px;
-
-    border: 1px solid
-        rgba(255,96,118,.15);
-
-    background:
-        rgba(255,96,118,.04);
-}
-
-.error-icon {
-    font-size: 35px;
-
-    margin-bottom: 12px;
-}
-
-.error-box h2 {
-    font-size: 19px;
-
-    margin-bottom: 6px;
-}
-
-.error-box p {
-    color: var(--muted);
-
-    font-size: 12px;
-}
-
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 850px) {
-
-    .content-grid {
-        grid-template-columns: 1fr;
+    header{
+        padding:0 4%;
     }
 
-    .sidebar {
-        display: grid;
-
-        grid-template-columns:
-            repeat(2, 1fr);
+    .logo-text span{
+        display:none;
     }
 
-}
-
-@media (max-width: 600px) {
-
-    header {
-        padding: 0 4%;
+    main{
+        width:94%;
+        padding-top:25px;
     }
 
-    .logo-text span {
-        display: none;
+    .video-card{
+        border-radius:15px;
     }
 
-    main {
-        width: 94%;
-
-        padding-top: 25px;
+    .info-card{
+        padding:18px;
     }
 
-    .video-card {
-        border-radius: 15px;
+    .sidebar{
+        display:flex;
     }
 
-    .info-card {
-        padding: 18px;
+    .lesson-title{
+        font-size:21px;
     }
 
-    .sidebar {
-        display: flex;
+    .back-btn{
+        font-size:10px;
+        padding:0 12px;
     }
-
-    .lesson-title {
-        font-size: 21px;
-    }
-
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
 <!-- LOADING -->
 
-<div
-    class="loading"
-    id="loading"
->
-
+<div class="loading" id="loading">
     <div class="loader"></div>
-
 </div>
 
 
@@ -719,7 +622,6 @@ main {
 
     </div>
 
-
     <button
         class="back-btn"
         onclick="goBack()"
@@ -732,7 +634,6 @@ main {
 
 <main>
 
-
     <!-- BREADCRUMB -->
 
     <div class="breadcrumb">
@@ -744,7 +645,7 @@ main {
         <b>←</b>
 
         <span id="breadcrumbCourse">
-            الكورس
+            جاري التحميل...
         </span>
 
         <b>←</b>
@@ -771,7 +672,7 @@ main {
             لم يتم العثور على الدرس
         </h2>
 
-        <p>
+        <p id="errorMessage">
             تأكد من أن رابط الدرس صحيح وحاول مرة أخرى.
         </p>
 
@@ -822,9 +723,6 @@ main {
 
     <div class="content-grid">
 
-
-        <!-- INFO -->
-
         <section class="info-card">
 
             <div
@@ -866,7 +764,6 @@ main {
 
                 </div>
 
-
                 <div class="progress-bar">
 
                     <div
@@ -885,15 +782,11 @@ main {
 
         <aside class="sidebar">
 
-
-            <!-- COURSE -->
-
             <div class="side-card">
 
                 <div class="side-title">
                     📚 الكورس
                 </div>
-
 
                 <div class="course-box">
 
@@ -927,8 +820,6 @@ main {
             </div>
 
 
-            <!-- NEXT -->
-
             <div class="side-card">
 
                 <div class="side-title">
@@ -952,52 +843,27 @@ main {
 
             </div>
 
-
         </aside>
 
-
     </div>
-
 
 </main>
 
 
+<!-- SUPABASE LIBRARY -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- YOUR SUPABASE CONFIG -->
+
+<script src="supabase.js"></script>
+
+
 <script>
 
-/*
-============================================================
-    LESSON PAGE
-============================================================
-
-    الرابط المتوقع:
-
-    lesson.html?id=LESSON_ID
-
-    مثال:
-
-    lesson.html?id=123456
-
-    بعد ربط Supabase:
-
-    lessons
-       ↓
-    course_id
-       ↓
-    courses
-
-    ويتم جلب:
-
-    title
-    description
-    youtube_url
-    lesson_order
-    course_id
-
-============================================================
-*/
-
-
-/* ================= GET LESSON ID ================= */
+/* =========================================
+   LESSON ID
+========================================= */
 
 const params =
     new URLSearchParams(
@@ -1008,7 +874,9 @@ const lessonId =
     params.get("id");
 
 
-/* ================= ELEMENTS ================= */
+/* =========================================
+   ELEMENTS
+========================================= */
 
 const loading =
     document.getElementById("loading");
@@ -1016,199 +884,113 @@ const loading =
 const errorBox =
     document.getElementById("errorBox");
 
+const errorMessage =
+    document.getElementById("errorMessage");
+
 const videoCard =
     document.getElementById("videoCard");
 
 const videoPlaceholder =
-    document.getElementById(
-        "videoPlaceholder"
-    );
+    document.getElementById("videoPlaceholder");
 
 const youtubeFrame =
-    document.getElementById(
-        "youtubeFrame"
-    );
+    document.getElementById("youtubeFrame");
 
 const lessonTitle =
-    document.getElementById(
-        "lessonTitle"
-    );
+    document.getElementById("lessonTitle");
 
 const lessonDescription =
-    document.getElementById(
-        "lessonDescription"
-    );
+    document.getElementById("lessonDescription");
 
 const lessonNumber =
-    document.getElementById(
-        "lessonNumber"
-    );
+    document.getElementById("lessonNumber");
 
 const courseName =
-    document.getElementById(
-        "courseName"
-    );
+    document.getElementById("courseName");
 
 const courseGrade =
-    document.getElementById(
-        "courseGrade"
-    );
+    document.getElementById("courseGrade");
 
 const courseImage =
-    document.getElementById(
-        "courseImage"
-    );
+    document.getElementById("courseImage");
 
 const breadcrumbCourse =
-    document.getElementById(
-        "breadcrumbCourse"
-    );
+    document.getElementById("breadcrumbCourse");
 
 const progressPercent =
-    document.getElementById(
-        "progressPercent"
-    );
+    document.getElementById("progressPercent");
 
 const progressFill =
-    document.getElementById(
-        "progressFill"
-    );
+    document.getElementById("progressFill");
 
 const nextBtn =
-    document.getElementById(
-        "nextBtn"
-    );
+    document.getElementById("nextBtn");
 
 const completeBtn =
-    document.getElementById(
-        "completeBtn"
-    );
+    document.getElementById("completeBtn");
 
 
-/* ================= DEMO DATA ================= */
+/* =========================================
+   YOUTUBE ID
+========================================= */
 
-/*
-    مؤقتًا فقط لتوضيح شكل الصفحة.
+function getYouTubeId(url){
 
-    بعد ربط Supabase يتم حذف
-    هذا الجزء واستبداله بالاستعلام الحقيقي.
-*/
-
-const demoLesson = {
-
-    id: "demo",
-
-    title:
-        "مقدمة في التفاضل والتكامل",
-
-    description:
-        "في هذا الدرس سنتعرف على المفاهيم الأساسية في التفاضل والتكامل بطريقة سهلة ومنظمة.",
-
-    youtube_url:
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-
-    lesson_order: 1,
-
-    course: {
-
-        title:
-            "التفاضل والتكامل",
-
-        grade:
-            "ثالثة ثانوي",
-
-        image_url:
-            "https://placehold.co/800x450/171421/ffffff?text=Course"
-
-    }
-
-};
-
-
-/* ================= YOUTUBE ================= */
-
-function getYouTubeId(url) {
-
-    if (!url) {
+    if(!url){
         return null;
     }
 
-
-    try {
+    try{
 
         const parsed =
             new URL(url);
 
-
-        /* youtube.com/watch?v= */
-
-        if (
-            parsed.hostname.includes(
-                "youtube.com"
-            )
-            &&
+        if(
+            parsed.hostname.includes("youtube.com") &&
             parsed.searchParams.get("v")
-        ) {
+        ){
 
-            return parsed.searchParams.get(
-                "v"
-            );
-
+            return parsed.searchParams.get("v");
         }
 
-
-        /* youtu.be/ */
-
-        if (
-            parsed.hostname.includes(
-                "youtu.be"
-            )
-        ) {
+        if(
+            parsed.hostname.includes("youtu.be")
+        ){
 
             return parsed.pathname
-                .replace("/", "")
+                .replace("/","")
                 .split("?")[0];
-
         }
 
-
-        /* youtube.com/embed/ */
-
-        if (
-            parsed.pathname.includes(
-                "/embed/"
-            )
-        ) {
+        if(
+            parsed.pathname.includes("/embed/")
+        ){
 
             return parsed.pathname
                 .split("/embed/")[1]
                 .split("/")[0];
-
         }
 
+        return null;
+
+    }catch{
 
         return null;
 
     }
-
-    catch {
-
-        return null;
-
-    }
-
 }
 
 
-/* ================= SHOW VIDEO ================= */
+/* =========================================
+   SHOW VIDEO
+========================================= */
 
-function showYouTubeVideo(url) {
+function showYouTubeVideo(url){
 
     const videoId =
         getYouTubeId(url);
 
-
-    if (!videoId) {
+    if(!videoId){
 
         videoPlaceholder.innerHTML = `
 
@@ -1221,185 +1003,32 @@ function showYouTubeVideo(url) {
             </h2>
 
             <p>
-                تأكد من رابط YouTube
+                تأكد من رابط YouTube الموجود في قاعدة البيانات.
             </p>
 
         `;
 
         return;
-
     }
 
-
     youtubeFrame.src =
-        "https://www.youtube.com/embed/"
-        +
-        encodeURIComponent(videoId)
-        +
+        "https://www.youtube.com/embed/" +
+        encodeURIComponent(videoId) +
         "?rel=0";
-
 
     youtubeFrame.style.display =
         "block";
 
-
     videoPlaceholder.style.display =
         "none";
-
 }
 
 
-/* ================= LOAD LESSON ================= */
+/* =========================================
+   PROGRESS
+========================================= */
 
-async function loadLesson() {
-
-    loading.style.display =
-        "flex";
-
-
-    try {
-
-
-        /*
-        ========================================================
-            SUPABASE
-
-            بعد إضافة Supabase:
-
-            const { data, error } =
-                await supabase
-                    .from("lessons")
-                    .select(`
-                        id,
-                        title,
-                        description,
-                        youtube_url,
-                        lesson_order,
-                        course_id,
-                        courses (
-                            title,
-                            grade,
-                            image_url
-                        )
-                    `)
-                    .eq("id", lessonId)
-                    .single();
-
-        ========================================================
-        */
-
-
-        /*
-            حاليًا نستخدم البيانات التجريبية
-            فقط حتى تعمل الواجهة.
-        */
-
-        if (!lessonId) {
-
-            throw new Error(
-                "Missing lesson ID"
-            );
-
-        }
-
-
-        await new Promise(
-            resolve =>
-                setTimeout(
-                    resolve,
-                    500
-                )
-        );
-
-
-        const data =
-            demoLesson;
-
-
-        /* ================= DATA ================= */
-
-        lessonTitle.textContent =
-            data.title;
-
-
-        lessonDescription.textContent =
-            data.description ||
-            "لا يوجد وصف لهذا الدرس.";
-
-
-        lessonNumber.textContent =
-            "الدرس " +
-            data.lesson_order;
-
-
-        courseName.textContent =
-            data.course.title;
-
-
-        courseGrade.textContent =
-            data.course.grade;
-
-
-        breadcrumbCourse.textContent =
-            data.course.title;
-
-
-        courseImage.src =
-            data.course.image_url;
-
-
-        /* ================= VIDEO ================= */
-
-        showYouTubeVideo(
-            data.youtube_url
-        );
-
-
-        /* ================= PROGRESS ================= */
-
-        const savedProgress =
-            localStorage.getItem(
-                "lesson_progress_" +
-                data.id
-            );
-
-
-        const progress =
-            Number(
-                savedProgress || 0
-            );
-
-
-        setProgress(progress);
-
-
-    }
-
-    catch (error) {
-
-        console.error(error);
-
-        videoCard.style.display =
-            "none";
-
-        errorBox.style.display =
-            "block";
-
-    }
-
-    finally {
-
-        loading.style.display =
-            "none";
-
-    }
-
-}
-
-
-/* ================= PROGRESS ================= */
-
-function setProgress(value) {
+function setProgress(value){
 
     const progress =
         Math.max(
@@ -1410,100 +1039,356 @@ function setProgress(value) {
             )
         );
 
-
     progressPercent.textContent =
         progress + "%";
 
-
     progressFill.style.width =
         progress + "%";
-
 }
 
 
-/* ================= COMPLETE ================= */
+/* =========================================
+   LOAD LESSON FROM SUPABASE
+========================================= */
 
-completeBtn.addEventListener(
-    "click",
-    function () {
+async function loadLesson(){
 
-        if (!lessonId) {
-            return;
+    loading.style.display =
+        "flex";
+
+    try{
+
+        if(!lessonId){
+
+            throw new Error(
+                "لم يتم إرسال ID الدرس."
+            );
+        }
+
+        if(
+            typeof supabaseClient ===
+            "undefined"
+        ){
+
+            throw new Error(
+                "supabaseClient غير موجود."
+            );
         }
 
 
         /*
-            لاحقًا:
+        ========================================
+        LESSON
 
-            Supabase
+        lessons
+        ↓
+        courses
 
-            student_progress
-
-            سيتم حفظ:
-
-            student_id
-            lesson_id
-            completed
-            progress
+        ========================================
         */
 
+        const {
+            data,
+            error
+        } = await supabaseClient
 
-        localStorage.setItem(
-            "lesson_progress_" +
-            lessonId,
-            "100"
+            .from("lessons")
+
+            .select(`
+                id,
+                title,
+                description,
+                youtube_url,
+                lesson_order,
+                course_id,
+                courses (
+                    id,
+                    title,
+                    grade,
+                    image_url
+                )
+            `)
+
+            .eq(
+                "id",
+                lessonId
+            )
+
+            .single();
+
+
+        if(error){
+            throw error;
+        }
+
+        if(!data){
+            throw new Error(
+                "الدرس غير موجود."
+            );
+        }
+
+
+        /* =====================================
+           LESSON DATA
+        ===================================== */
+
+        lessonTitle.textContent =
+            data.title || "بدون عنوان";
+
+        lessonDescription.textContent =
+            data.description ||
+            "لا يوجد وصف لهذا الدرس.";
+
+        lessonNumber.textContent =
+            "الدرس " +
+            (
+                data.lesson_order || "—"
+            );
+
+
+        /* =====================================
+           COURSE DATA
+        ===================================== */
+
+        if(data.courses){
+
+            courseName.textContent =
+                data.courses.title ||
+                "بدون اسم";
+
+            courseGrade.textContent =
+                data.courses.grade ||
+                "رياضيات";
+
+            breadcrumbCourse.textContent =
+                data.courses.title ||
+                "الكورس";
+
+            if(data.courses.image_url){
+
+                courseImage.src =
+                    data.courses.image_url;
+            }
+
+        }
+
+
+        /* =====================================
+           VIDEO
+        ===================================== */
+
+        showYouTubeVideo(
+            data.youtube_url
         );
 
 
-        setProgress(100);
+        /* =====================================
+           PROGRESS
+        ===================================== */
+
+        const savedProgress =
+            localStorage.getItem(
+                "lesson_progress_" +
+                data.id
+            );
+
+        setProgress(
+            savedProgress || 0
+        );
 
 
-        this.textContent =
-            "✓ تم إكمال الدرس";
+        /* =====================================
+           NEXT LESSON
+        ===================================== */
+
+        await loadNextLesson(
+            data.course_id,
+            data.lesson_order
+        );
 
 
-        this.style.opacity =
-            ".7";
+    }catch(error){
+
+        console.error(
+            "Lesson Error:",
+            error
+        );
+
+        videoCard.style.display =
+            "none";
+
+        errorBox.style.display =
+            "block";
+
+        errorMessage.textContent =
+            error.message ||
+            "حدث خطأ أثناء تحميل الدرس.";
+
+    }finally{
+
+        loading.style.display =
+            "none";
+    }
+}
+
+
+/* =========================================
+   LOAD NEXT LESSON
+========================================= */
+
+async function loadNextLesson(
+    courseId,
+    currentOrder
+){
+
+    if(!courseId){
+        return;
+    }
+
+    try{
+
+        const {
+            data,
+            error
+        } = await supabaseClient
+
+            .from("lessons")
+
+            .select(`
+                id,
+                title,
+                lesson_order
+            `)
+
+            .eq(
+                "course_id",
+                courseId
+            )
+
+            .gt(
+                "lesson_order",
+                currentOrder || 0
+            )
+
+            .order(
+                "lesson_order",
+                {
+                    ascending:true
+                }
+            )
+
+            .limit(1)
+            .maybeSingle();
+
+
+        if(error){
+            console.error(
+                "Next Lesson Error:",
+                error
+            );
+            return;
+        }
+
+
+        if(data){
+
+            nextBtn.disabled =
+                false;
+
+            nextBtn.textContent =
+                "الدرس التالي: " +
+                data.title;
+
+            nextBtn.onclick =
+                function(){
+
+                    window.location.href =
+                        "lesson.html?id=" +
+                        encodeURIComponent(
+                            data.id
+                        );
+                };
+
+        }else{
+
+            nextBtn.disabled =
+                true;
+
+            nextBtn.textContent =
+                "لا يوجد درس تالي";
+        }
+
+    }catch(error){
+
+        console.error(error);
 
     }
-);
+}
 
 
-/* ================= NEXT LESSON ================= */
+/* =========================================
+   COMPLETE LESSON
+========================================= */
 
-nextBtn.addEventListener(
+completeBtn.addEventListener(
     "click",
-    function () {
+    async function(){
 
-        /*
-            لاحقًا سيأتي هنا:
+        if(!lessonId){
+            return;
+        }
 
-            البحث عن الدرس التالي
-            في نفس الكورس من Supabase.
-        */
+        try{
+
+            localStorage.setItem(
+                "lesson_progress_" +
+                lessonId,
+                "100"
+            );
+
+            setProgress(100);
+
+            this.textContent =
+                "✓ تم إكمال الدرس";
+
+            this.style.opacity =
+                ".7";
+
+
+            /*
+            ====================================
+            لاحقًا يمكن حفظ التقدم في Supabase
+            لكل طالب بشكل دائم.
+            ====================================
+            */
+
+        }catch(error){
+
+            console.error(error);
+        }
 
     }
 );
 
 
-/* ================= BACK ================= */
+/* =========================================
+   BACK
+========================================= */
 
-function goBack() {
+function goBack(){
 
     history.back();
 
 }
 
 
-/* ================= START ================= */
+/* =========================================
+   START
+========================================= */
 
 loadLesson();
 
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase.js"></script>
-
 </body>
-
 </html>
