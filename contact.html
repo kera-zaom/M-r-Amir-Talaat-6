@@ -2,17 +2,38 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>تواصل مع المستر | الخوارزمي</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+>
+
 
 <style>
+
+/* =========================
+   RESET
+========================= */
 
 *{
     margin:0;
@@ -21,6 +42,11 @@
     font-family:"Cairo",Arial,sans-serif;
 }
 
+
+/* =========================
+   BODY
+========================= */
+
 body{
 
     min-height:100vh;
@@ -28,23 +54,28 @@ body{
     color:#fff;
 
     background:
+
         radial-gradient(
             circle at 20% 0%,
             rgba(118,87,255,.20),
             transparent 35%
         ),
+
         radial-gradient(
             circle at 90% 80%,
             rgba(74,44,200,.15),
             transparent 35%
         ),
+
         #050507;
 
     padding-bottom:50px;
 }
 
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 header{
 
@@ -64,13 +95,19 @@ header{
 
     z-index:100;
 
-    background:rgba(5,5,7,.85);
+    background:
+        rgba(5,5,7,.85);
 
-    backdrop-filter:blur(18px);
+    backdrop-filter:
+        blur(18px);
 
-    border-bottom:1px solid rgba(255,255,255,.08);
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
 }
 
+
+/* LOGO */
 
 .logo{
 
@@ -85,7 +122,6 @@ header{
 .logo-icon{
 
     width:42px;
-
     height:42px;
 
     display:grid;
@@ -119,15 +155,21 @@ header{
 }
 
 
+/* BACK BUTTON */
+
 .back{
 
-    border:1px solid rgba(255,255,255,.08);
+    border:
+        1px solid
+        rgba(255,255,255,.08);
 
-    background:rgba(255,255,255,.04);
+    background:
+        rgba(255,255,255,.04);
 
     color:#fff;
 
-    padding:9px 14px;
+    padding:
+        9px 14px;
 
     border-radius:10px;
 
@@ -141,16 +183,22 @@ header{
 
 .back:hover{
 
-    background:rgba(118,87,255,.12);
+    background:
+        rgba(118,87,255,.12);
 
+    transform:
+        translateY(-1px);
 }
 
 
-/* MAIN */
+/* =========================
+   MAIN
+========================= */
 
 main{
 
-    width:min(700px,94%);
+    width:
+        min(700px,94%);
 
     margin:auto;
 
@@ -158,7 +206,9 @@ main{
 }
 
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
 
@@ -171,7 +221,6 @@ main{
 .hero-icon{
 
     width:75px;
-
     height:75px;
 
     display:grid;
@@ -220,7 +269,9 @@ main{
 }
 
 
-/* CARD */
+/* =========================
+   CARD
+========================= */
 
 .card{
 
@@ -251,7 +302,9 @@ main{
 }
 
 
-/* INPUT */
+/* =========================
+   FORM
+========================= */
 
 .form-group{
 
@@ -315,6 +368,13 @@ textarea{
 }
 
 
+input::placeholder,
+textarea::placeholder{
+
+    color:#666674;
+}
+
+
 input:focus,
 textarea:focus{
 
@@ -330,7 +390,9 @@ textarea:focus{
 }
 
 
-/* BUTTON */
+/* =========================
+   BUTTON
+========================= */
 
 .send-btn{
 
@@ -362,12 +424,15 @@ textarea:focus{
     box-shadow:
         0 10px 30px
         rgba(118,87,255,.18);
+
+    position:relative;
 }
 
 
 .send-btn:hover{
 
-    transform:translateY(-2px);
+    transform:
+        translateY(-2px);
 
     box-shadow:
         0 15px 35px
@@ -377,12 +442,131 @@ textarea:focus{
 
 .send-btn:active{
 
-    transform:scale(.98);
+    transform:
+        scale(.98);
+}
+
+
+.send-btn:disabled{
+
+    opacity:.6;
+
+    cursor:not-allowed;
+
+    transform:none;
+}
+
+
+/* =========================
+   LOADING
+========================= */
+
+.send-btn.loading{
+
+    pointer-events:none;
+
+    opacity:.7;
+}
+
+
+.send-btn.loading::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:18px;
+    height:18px;
+
+    border:
+        2px solid
+        rgba(255,255,255,.3);
+
+    border-top-color:#fff;
+
+    border-radius:50%;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    animation:
+        spin .7s linear infinite;
+}
+
+
+@keyframes spin{
+
+    to{
+
+        transform:
+            translate(-50%,-50%)
+            rotate(360deg);
+
+    }
 
 }
 
 
-/* WHATSAPP INFO */
+/* =========================
+   MESSAGE
+========================= */
+
+.message{
+
+    display:none;
+
+    margin-top:15px;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    font-size:9px;
+
+    line-height:1.8;
+}
+
+
+.message.show{
+
+    display:block;
+}
+
+
+.message.error{
+
+    color:#ff9eaa;
+
+    background:
+        rgba(255,70,90,.08);
+
+    border:
+        1px solid
+        rgba(255,70,90,.13);
+}
+
+
+.message.success{
+
+    color:#9ee8b8;
+
+    background:
+        rgba(37,211,102,.06);
+
+    border:
+        1px solid
+        rgba(37,211,102,.13);
+}
+
+
+/* =========================
+   WHATSAPP INFO
+========================= */
 
 .whatsapp-info{
 
@@ -409,7 +593,9 @@ textarea:focus{
 }
 
 
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media(max-width:600px){
 
@@ -419,11 +605,20 @@ textarea:focus{
 
     }
 
+
+    .logo-text{
+
+        font-size:15px;
+
+    }
+
+
     .card{
 
         padding:19px;
 
     }
+
 
     main{
 
@@ -441,71 +636,118 @@ textarea:focus{
 <body>
 
 
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
+
 
     <div class="logo">
 
+
         <div class="logo-icon">
+
             خ
+
         </div>
 
+
         <div class="logo-text">
+
             الخوارزمي
+
         </div>
+
 
     </div>
 
 
     <button
         class="back"
+        type="button"
         onclick="goHome()"
     >
+
         ← الرئيسية
+
     </button>
+
 
 </header>
 
 
 
+<!-- =========================
+     MAIN
+========================= -->
+
 <main>
 
 
+    <!-- HERO -->
+
     <section class="hero">
 
+
         <div class="hero-icon">
+
             💬
+
         </div>
 
+
         <h1>
-            تواصل مع الخوارزمي 
+
+            تواصل مع الخوارزمي
+
         </h1>
 
+
         <p>
+
             عندك سؤال أو مشكلة؟
-            اكتب رسالتك وسيتم تحويلها مباشرة إلى واتساب المستر.
+
+            <br>
+
+            اكتب رسالتك وسيتم حفظها وإرسالها مباشرة إلى واتساب المستر.
+
         </p>
+
 
     </section>
 
 
 
+    <!-- CARD -->
+
     <section class="card">
 
+
         <div class="card-title">
+
             ✉️ اكتب رسالتك
+
         </div>
 
 
+
         <form
-            onsubmit="sendWhatsApp(event)"
+            id="contactForm"
         >
 
 
+            <!-- NAME -->
+
             <div class="form-group">
 
+
                 <label>
+
                     اسمك
+
                 </label>
+
 
                 <input
                     type="text"
@@ -515,15 +757,22 @@ textarea:focus{
                     required
                 >
 
+
             </div>
 
 
 
+            <!-- MESSAGE -->
+
             <div class="form-group">
 
+
                 <label>
+
                     رسالتك
+
                 </label>
+
 
                 <textarea
                     id="studentMessage"
@@ -532,15 +781,21 @@ textarea:focus{
                     required
                 ></textarea>
 
+
             </div>
 
 
 
+            <!-- SEND -->
+
             <button
                 class="send-btn"
+                id="sendButton"
                 type="submit"
             >
+
                 💬 إرسال عبر واتساب
+
             </button>
 
 
@@ -548,14 +803,32 @@ textarea:focus{
 
 
 
+        <!-- MESSAGE -->
+
+        <div
+            class="message"
+            id="messageBox"
+        ></div>
+
+
+
+        <!-- WHATSAPP -->
+
         <div class="whatsapp-info">
 
-            📱 سيتم فتح واتساب وإرسال الرسالة إلى المستر
+
+            📱 سيتم حفظ الرسالة ثم فتح واتساب لإرسالها للمستر.
+
+
             <br>
 
+
             <strong>
+
                 01212101614
+
             </strong>
+
 
         </div>
 
@@ -567,59 +840,272 @@ textarea:focus{
 
 
 
+<!-- =========================
+     SUPABASE
+========================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<!--
+    مهم جدًا:
+    لازم supabase.js يكون في نفس مجلد الصفحة
+-->
+
+<script src="supabase.js"></script>
+
+
+
 <script>
 
+/* =========================
+   ELEMENTS
+========================= */
 
-function sendWhatsApp(event){
-
-    event.preventDefault();
-
-
-    const name =
-        document
-        .getElementById("studentName")
-        .value
-        .trim();
+const contactForm =
+    document.getElementById(
+        "contactForm"
+    );
 
 
-    const message =
-        document
-        .getElementById("studentMessage")
-        .value
-        .trim();
+const studentName =
+    document.getElementById(
+        "studentName"
+    );
 
 
-    if(!name || !message){
+const studentMessage =
+    document.getElementById(
+        "studentMessage"
+    );
 
-        alert(
-            "من فضلك اكتب اسمك ورسالتك."
+
+const sendButton =
+    document.getElementById(
+        "sendButton"
+    );
+
+
+const messageBox =
+    document.getElementById(
+        "messageBox"
+    );
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+function showMessage(
+    text,
+    type
+){
+
+    messageBox.textContent =
+        text;
+
+    messageBox.className =
+        "message show " + type;
+
+}
+
+
+/* =========================
+   SEND
+========================= */
+
+contactForm.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+
+        const name =
+            studentName.value.trim();
+
+
+        const message =
+            studentMessage.value.trim();
+
+
+        /* =========================
+           VALIDATION
+        ========================= */
+
+        if(!name){
+
+            showMessage(
+                "اكتب اسمك بالكامل.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        if(!message){
+
+            showMessage(
+                "اكتب رسالتك أولاً.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        /* =========================
+           CHECK SUPABASE
+        ========================= */
+
+        if(
+            typeof supabaseClient ===
+            "undefined"
+        ){
+
+            console.error(
+                "supabaseClient غير موجود"
+            );
+
+            showMessage(
+                "Supabase غير متصل. تأكد من ملف supabase.js.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        /* =========================
+           LOADING
+        ========================= */
+
+        sendButton.classList.add(
+            "loading"
         );
 
-        return;
-
-    }
+        sendButton.disabled = true;
 
 
-    /*
-    ==========================================
-        رقم الواتساب
-
-        بدون الصفر في البداية
-        وبكود مصر 20
-    ==========================================
-    */
-
-    const phone =
-        "201212101614";
+        try{
 
 
-    /*
-    ==========================================
-        الرسالة التي ستظهر في واتساب
-    ==========================================
-    */
+            /* =========================
+               GET LOGGED USER
+            ========================= */
 
-    const whatsappMessage =
+            const {
+                data:sessionData,
+                error:sessionError
+            } =
+            await supabaseClient
+            .auth
+            .getUser();
+
+
+            if(sessionError){
+
+                throw sessionError;
+
+            }
+
+
+            const user =
+                sessionData.user;
+
+
+            /* =========================
+               LOGIN REQUIRED
+            ========================= */
+
+            if(!user){
+
+                showMessage(
+                    "لازم تسجل الدخول أولاً لإرسال الرسالة.",
+                    "error"
+                );
+
+
+                setTimeout(
+                    function(){
+
+                        window.location.href =
+                            "auth.html";
+
+                    },
+                    1200
+                );
+
+
+                return;
+
+            }
+
+
+            /* =========================
+               SAVE MESSAGE
+            ========================= */
+
+            const {
+                error:insertError
+            } =
+            await supabaseClient
+            .from(
+                "contact_messages"
+            )
+            .insert({
+
+                student_id:
+                    user.id,
+
+                student_name:
+                    name,
+
+                message:
+                    message
+
+            });
+
+
+            /* =========================
+               DATABASE ERROR
+            ========================= */
+
+            if(insertError){
+
+                console.error(
+                    "CONTACT DATABASE ERROR:",
+                    insertError
+                );
+
+                throw insertError;
+
+            }
+
+
+            /* =========================
+               SUCCESS
+            ========================= */
+
+            showMessage(
+                "تم حفظ رسالتك بنجاح، جاري فتح واتساب...",
+                "success"
+            );
+
+
+            /* =========================
+               WHATSAPP
+            ========================= */
+
+            const phone =
+                "201212101614";
+
+
+            const whatsappMessage =
 `السلام عليكم مستر 👋
 
 👤 اسم الطالب:
@@ -631,31 +1117,98 @@ ${message}
 📚 منصة الخوارزمي`;
 
 
-    /*
-    ==========================================
-        تحويل الرسالة إلى رابط واتساب
-    ==========================================
-    */
-
-    const whatsappURL =
-        "https://wa.me/" +
-        phone +
-        "?text=" +
-        encodeURIComponent(
-            whatsappMessage
-        );
+            const whatsappURL =
+                "https://wa.me/" +
+                phone +
+                "?text=" +
+                encodeURIComponent(
+                    whatsappMessage
+                );
 
 
-    /*
-    فتح واتساب
-    */
+            /* =========================
+               OPEN WHATSAPP
+            ========================= */
 
-    window.location.href =
-        whatsappURL;
+            setTimeout(
+                function(){
 
-}
+                    window.location.href =
+                        whatsappURL;
+
+                },
+                700
+            );
 
 
+        }
+        catch(error){
+
+
+            console.error(
+                "CONTACT ERROR:",
+                error
+            );
+
+
+            let errorText =
+                error.message ||
+                "حدث خطأ أثناء إرسال الرسالة.";
+
+
+            /* RLS */
+
+            if(
+                errorText
+                .toLowerCase()
+                .includes(
+                    "row-level security"
+                )
+            ){
+
+                errorText =
+                    "لا يوجد إذن لحفظ الرسالة في قاعدة البيانات. راجع RLS في Supabase.";
+
+            }
+
+
+            /* TABLE */
+
+            if(
+                errorText
+                .toLowerCase()
+                .includes(
+                    "contact_messages"
+                )
+            ){
+
+                errorText =
+                    "جدول الرسائل غير موجود في Supabase.";
+
+            }
+
+
+            showMessage(
+                errorText,
+                "error"
+            );
+
+
+            sendButton.classList.remove(
+                "loading"
+            );
+
+            sendButton.disabled = false;
+
+        }
+
+    }
+);
+
+
+/* =========================
+   HOME
+========================= */
 
 function goHome(){
 
@@ -664,11 +1217,8 @@ function goHome(){
 
 }
 
-
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase.js"></script>
 
 </body>
 
