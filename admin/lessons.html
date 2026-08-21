@@ -2,16 +2,29 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>إدارة الدروس | الخوارزمي</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
 
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet">
+
+<!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- ملف اتصال Supabase -->
+<script src="../supabase.js"></script>
 
 <style>
 
@@ -25,7 +38,6 @@
 :root{
     --bg:#050507;
     --card:#111118;
-    --card2:#171720;
     --border:rgba(255,255,255,.08);
     --text:#fff;
     --muted:#92929f;
@@ -33,7 +45,6 @@
     --primary2:#5137d9;
     --green:#35d39a;
     --red:#ff6078;
-    --yellow:#f2c94c;
 }
 
 body{
@@ -54,7 +65,8 @@ body{
         var(--bg);
 }
 
-/* SIDEBAR */
+
+/* ================= SIDEBAR ================= */
 
 .sidebar{
     position:fixed;
@@ -183,7 +195,6 @@ body{
 
 .logout{
     position:absolute;
-
     bottom:20px;
     right:15px;
     left:15px;
@@ -209,7 +220,8 @@ body{
     font-weight:800;
 }
 
-/* MAIN */
+
+/* ================= MAIN ================= */
 
 .main{
     margin-right:255px;
@@ -281,7 +293,8 @@ body{
     font-size:8px;
 }
 
-/* HEADER */
+
+/* ================= HEADER ================= */
 
 .page-header{
     display:flex;
@@ -329,13 +342,10 @@ body{
             var(--primary),
             var(--primary2)
         );
-
-    box-shadow:
-        0 10px 25px
-        rgba(118,87,255,.15);
 }
 
-/* STATS */
+
+/* ================= STATS ================= */
 
 .stats{
     display:grid;
@@ -389,7 +399,8 @@ body{
     font-size:8px;
 }
 
-/* FILTER */
+
+/* ================= FILTER ================= */
 
 .filter-card{
     display:grid;
@@ -434,9 +445,7 @@ body{
 }
 
 .search-box input{
-    padding:
-        0 42px
-        0 12px;
+    padding:0 42px 0 12px;
 }
 
 .search-icon{
@@ -461,7 +470,8 @@ body{
     color:#fff;
 }
 
-/* TABLE */
+
+/* ================= TABLE ================= */
 
 .table-card{
     overflow:hidden;
@@ -498,9 +508,7 @@ body{
 
 table{
     width:100%;
-
     min-width:850px;
-
     border-collapse:collapse;
 }
 
@@ -531,10 +539,6 @@ td{
     font-size:8px;
 
     vertical-align:middle;
-}
-
-tr{
-    transition:.2s;
 }
 
 tbody tr:hover{
@@ -728,11 +732,11 @@ tbody tr:hover{
         rgba(255,96,120,.05);
 }
 
-/* EMPTY */
+
+/* ================= EMPTY ================= */
 
 .empty{
     padding:65px 20px;
-
     text-align:center;
 }
 
@@ -763,7 +767,8 @@ tbody tr:hover{
     font-size:8px;
 }
 
-/* LOADING */
+
+/* ================= LOADING ================= */
 
 .loading{
     position:fixed;
@@ -802,7 +807,8 @@ tbody tr:hover{
     }
 }
 
-/* TOAST */
+
+/* ================= TOAST ================= */
 
 .toast{
     position:fixed;
@@ -822,10 +828,6 @@ tbody tr:hover{
 
     border:1px solid var(--border);
 
-    box-shadow:
-        0 15px 40px
-        rgba(0,0,0,.4);
-
     font-size:9px;
 
     transform:translateY(30px);
@@ -843,20 +845,15 @@ tbody tr:hover{
 }
 
 .toast.error{
-    border-color:
-        rgba(255,96,120,.25);
-
     color:#ff9aaa;
 }
 
 .toast.success{
-    border-color:
-        rgba(53,211,154,.25);
-
     color:#7be6bd;
 }
 
-/* RESPONSIVE */
+
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:1000px){
 
@@ -910,12 +907,13 @@ tbody tr:hover{
 }
 
 </style>
+
 </head>
 
 <body>
 
 
-<!-- SIDEBAR -->
+<!-- ================= SIDEBAR ================= -->
 
 <aside class="sidebar" id="sidebar">
 
@@ -1006,7 +1004,7 @@ tbody tr:hover{
 </aside>
 
 
-<!-- MAIN -->
+<!-- ================= MAIN ================= -->
 
 <main class="main">
 
@@ -1015,9 +1013,10 @@ tbody tr:hover{
 
         <button
             class="mobile-menu"
-            onclick="toggleSidebar()"
-        >
+            onclick="toggleSidebar()">
+
             ☰
+
         </button>
 
         <div></div>
@@ -1064,9 +1063,10 @@ tbody tr:hover{
 
         <a
             href="add-lesson.html"
-            class="add-btn"
-        >
+            class="add-btn">
+
             ＋ إضافة درس
+
         </a>
 
     </section>
@@ -1088,9 +1088,10 @@ tbody tr:hover{
 
             <div
                 class="stat-number"
-                id="totalLessons"
-            >
+                id="totalLessons">
+
                 0
+
             </div>
 
             <div class="stat-label">
@@ -1112,9 +1113,10 @@ tbody tr:hover{
 
             <div
                 class="stat-number"
-                id="youtubeLessons"
-            >
+                id="youtubeLessons">
+
                 0
+
             </div>
 
             <div class="stat-label">
@@ -1136,9 +1138,10 @@ tbody tr:hover{
 
             <div
                 class="stat-number"
-                id="publishedLessons"
-            >
+                id="publishedLessons">
+
                 0
+
             </div>
 
             <div class="stat-label">
@@ -1160,9 +1163,10 @@ tbody tr:hover{
 
             <div
                 class="stat-number"
-                id="coursesCount"
-            >
+                id="coursesCount">
+
                 0
+
             </div>
 
             <div class="stat-label">
@@ -1187,8 +1191,7 @@ tbody tr:hover{
             <input
                 id="searchInput"
                 type="search"
-                placeholder="ابحث باسم الدرس..."
-            >
+                placeholder="ابحث باسم الدرس...">
 
         </div>
 
@@ -1223,8 +1226,7 @@ tbody tr:hover{
 
         <div
             class="table-wrapper"
-            id="tableWrapper"
-        >
+            id="tableWrapper">
 
             <table>
 
@@ -1261,9 +1263,7 @@ tbody tr:hover{
                 </thead>
 
 
-                <tbody id="lessonsBody">
-
-                </tbody>
+                <tbody id="lessonsBody"></tbody>
 
             </table>
 
@@ -1273,8 +1273,7 @@ tbody tr:hover{
         <div
             class="empty"
             id="emptyState"
-            style="display:none;"
-        >
+            style="display:none;">
 
             <div class="empty-icon">
                 🎥
@@ -1296,72 +1295,58 @@ tbody tr:hover{
 </main>
 
 
-<!-- LOADING -->
+<!-- ================= LOADING ================= -->
 
 <div
     class="loading"
-    id="loading"
->
+    id="loading">
 
     <div class="spinner"></div>
 
 </div>
 
 
-<!-- TOAST -->
+<!-- ================= TOAST ================= -->
 
 <div
     class="toast"
-    id="toast"
-></div>
+    id="toast">
+</div>
 
 
 <script>
 
 /*
 =========================================================
- SUPABASE
+ IMPORTANT
+=========================================================
+
+الاتصال بـ Supabase موجود في:
+
+../supabase.js
+
+ويجب أن يحتوي على:
+
+const SUPABASE_URL = "...";
+const SUPABASE_KEY = "...";
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
 =========================================================
 */
 
-const SUPABASE_URL =
-    "ضع_رابط_مشروعك_هنا";
 
-const SUPABASE_KEY =
-    "ضع_publishable_او_anon_key_هنا";
-
-
-let supabaseClient = null;
-
-if(
-    SUPABASE_URL.startsWith("http") &&
-    !SUPABASE_URL.includes("ضع_")
-){
-
-    supabaseClient =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
-
-}
-
-
-/*
-=========================================================
- DATA
-=========================================================
-*/
+/* ================= VARIABLES ================= */
 
 let allLessons = [];
 let allCourses = [];
 
 
-/*
-=========================================================
- ELEMENTS
-=========================================================
-*/
+/* ================= ELEMENTS ================= */
 
 const loading =
     document.getElementById("loading");
@@ -1382,27 +1367,17 @@ const courseFilter =
     document.getElementById("courseFilter");
 
 
-/*
-=========================================================
- LOADING
-=========================================================
-*/
+/* ================= LOADING ================= */
 
 function setLoading(state){
 
     loading.style.display =
-        state
-        ? "flex"
-        : "none";
+        state ? "flex" : "none";
 
 }
 
 
-/*
-=========================================================
- TOAST
-=========================================================
-*/
+/* ================= TOAST ================= */
 
 function showToast(message,type=""){
 
@@ -1416,20 +1391,14 @@ function showToast(message,type=""){
 
     setTimeout(() => {
 
-        toast.classList.remove(
-            "show"
-        );
+        toast.classList.remove("show");
 
     },3500);
 
 }
 
 
-/*
-=========================================================
- SIDEBAR
-=========================================================
-*/
+/* ================= SIDEBAR ================= */
 
 function toggleSidebar(){
 
@@ -1441,20 +1410,17 @@ function toggleSidebar(){
 }
 
 
-/*
-=========================================================
- ADMIN
-=========================================================
-*/
+/* ================= ADMIN ================= */
 
 async function checkAdmin(){
 
-    if(!supabaseClient){
-
-        setLoading(false);
+    if(
+        typeof supabaseClient === "undefined" ||
+        !supabaseClient
+    ){
 
         showToast(
-            "ضع بيانات Supabase أولًا.",
+            "ملف supabase.js غير متصل.",
             "error"
         );
 
@@ -1472,8 +1438,19 @@ async function checkAdmin(){
             .getSession();
 
 
+    if(error){
+
+        console.error(error);
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
     if(
-        error ||
         !data ||
         !data.session
     ){
@@ -1510,8 +1487,24 @@ async function checkAdmin(){
             .maybeSingle();
 
 
+    if(profileError){
+
+        console.error(
+            "Profile error:",
+            profileError
+        );
+
+        showToast(
+            "تعذر قراءة بيانات الأدمن.",
+            "error"
+        );
+
+        return false;
+
+    }
+
+
     if(
-        profileError ||
         !profile ||
         profile.role !== "admin"
     ){
@@ -1541,11 +1534,7 @@ async function checkAdmin(){
 }
 
 
-/*
-=========================================================
- LOAD COURSES
-=========================================================
-*/
+/* ================= LOAD COURSES ================= */
 
 async function loadCourses(){
 
@@ -1578,40 +1567,38 @@ async function loadCourses(){
 
 
     courseFilter.innerHTML =
-        `<option value="">كل الكورسات</option>`;
+        `
+        <option value="">
+            كل الكورسات
+        </option>
+        `;
 
 
-    allCourses.forEach(course => {
+    allCourses.forEach(
+        course => {
 
-        const option =
-            document.createElement("option");
+            const option =
+                document.createElement(
+                    "option"
+                );
 
-        option.value =
-            course.id;
+            option.value =
+                course.id;
 
-        option.textContent =
-            course.title;
+            option.textContent =
+                course.title;
 
-        courseFilter.appendChild(
-            option
-        );
+            courseFilter.appendChild(
+                option
+            );
 
-    });
-
-
-    document
-        .getElementById("coursesCount")
-        .textContent =
-            allCourses.length;
+        }
+    );
 
 }
 
 
-/*
-=========================================================
- LOAD LESSONS
-=========================================================
-*/
+/* ================= LOAD LESSONS ================= */
 
 async function loadLessons(){
 
@@ -1630,11 +1617,7 @@ async function loadLessons(){
                 description,
                 youtube_url,
                 published,
-                created_at,
-                courses (
-                    id,
-                    title
-                )
+                created_at
             `)
 
             .order(
@@ -1660,11 +1643,7 @@ async function loadLessons(){
 }
 
 
-/*
-=========================================================
- STATS
-=========================================================
-*/
+/* ================= STATS ================= */
 
 function updateStats(){
 
@@ -1723,16 +1702,13 @@ function updateStats(){
 }
 
 
-/*
-=========================================================
- FILTER
-=========================================================
-*/
+/* ================= SEARCH ================= */
 
 searchInput.addEventListener(
     "input",
     renderLessons
 );
+
 
 courseFilter.addEventListener(
     "change",
@@ -1740,11 +1716,26 @@ courseFilter.addEventListener(
 );
 
 
-/*
-=========================================================
- RENDER
-=========================================================
-*/
+/* ================= COURSE NAME ================= */
+
+function getCourseName(courseId){
+
+    const course =
+        allCourses.find(
+            item =>
+                String(item.id) ===
+                String(courseId)
+        );
+
+
+    return course
+        ? course.title
+        : "بدون كورس";
+
+}
+
+
+/* ================= RENDER ================= */
 
 function renderLessons(){
 
@@ -1754,7 +1745,7 @@ function renderLessons(){
             .toLowerCase();
 
 
-    const courseId =
+    const selectedCourse =
         courseFilter.value;
 
 
@@ -1763,25 +1754,23 @@ function renderLessons(){
             lesson => {
 
                 const title =
-                    (
+                    String(
                         lesson.title || ""
-                    )
-                    .toLowerCase();
+                    ).toLowerCase();
 
 
                 const matchesSearch =
                     !search ||
-                    title.includes(
-                        search
-                    );
+                    title.includes(search);
 
 
                 const matchesCourse =
-                    !courseId ||
+                    !selectedCourse ||
                     String(
                         lesson.course_id
-                    ) === String(
-                        courseId
+                    ) ===
+                    String(
+                        selectedCourse
                     );
 
 
@@ -1801,19 +1790,22 @@ function renderLessons(){
             " درس";
 
 
-    lessonsBody.innerHTML =
-        "";
+    lessonsBody.innerHTML = "";
 
 
     if(!filtered.length){
 
         document
-            .getElementById("tableWrapper")
+            .getElementById(
+                "tableWrapper"
+            )
             .style.display =
                 "none";
 
+
         emptyState.style.display =
             "block";
+
 
         return;
 
@@ -1821,9 +1813,12 @@ function renderLessons(){
 
 
     document
-        .getElementById("tableWrapper")
+        .getElementById(
+            "tableWrapper"
+        )
         .style.display =
             "block";
+
 
     emptyState.style.display =
         "none";
@@ -1833,26 +1828,24 @@ function renderLessons(){
         lesson => {
 
             const tr =
-                document.createElement("tr");
-
-
-            const courseName =
-                lesson.courses?.title ||
-                "بدون كورس";
-
-
-            const date =
-                formatDate(
-                    lesson.created_at
+                document.createElement(
+                    "tr"
                 );
 
 
-            const youtube =
-                lesson.youtube_url || "";
+            const courseName =
+                getCourseName(
+                    lesson.course_id
+                );
 
 
             const published =
                 lesson.published === true;
+
+
+            const youtube =
+                lesson.youtube_url ||
+                "";
 
 
             tr.innerHTML = `
@@ -1867,7 +1860,7 @@ function renderLessons(){
 
                         <div class="lesson-info">
 
-                            <strong title="${escapeHTML(lesson.title || "")}">
+                            <strong>
                                 ${escapeHTML(
                                     lesson.title ||
                                     "بدون اسم"
@@ -1875,13 +1868,17 @@ function renderLessons(){
                             </strong>
 
                             <span>
+
                                 ${
                                     lesson.description
-                                    ? escapeHTML(
+                                    ?
+                                    escapeHTML(
                                         lesson.description
                                     ).substring(0,55)
-                                    : "لا يوجد وصف"
+                                    :
+                                    "لا يوجد وصف"
                                 }
+
                             </span>
 
                         </div>
@@ -1894,8 +1891,12 @@ function renderLessons(){
                 <td>
 
                     <span class="course-badge">
+
                         📚
-                        ${escapeHTML(courseName)}
+                        ${escapeHTML(
+                            courseName
+                        )}
+
                     </span>
 
                 </td>
@@ -1905,26 +1906,30 @@ function renderLessons(){
 
                     ${
                         youtube
-
                         ?
-
                         `
                         <a
                             class="youtube-link"
                             href="${escapeAttribute(youtube)}"
                             target="_blank"
-                            rel="noopener noreferrer"
-                            title="فتح الفيديو"
-                        >
+                            rel="noopener noreferrer">
+
                             ▶
+
                         </a>
                         `
-
                         :
+                        `
+                        <span
+                            style="
+                            color:#666;
+                            font-size:8px;
+                            ">
 
-                        `<span style="color:#666;font-size:8px;">
                             لا يوجد
-                        </span>`
+
+                        </span>
+                        `
                     }
 
                 </td>
@@ -1934,25 +1939,35 @@ function renderLessons(){
 
                     ${
                         published
-
                         ?
+                        `
+                        <span
+                            class="status published">
 
-                        `<span class="status published">
                             منشور
-                        </span>`
 
+                        </span>
+                        `
                         :
+                        `
+                        <span
+                            class="status hidden">
 
-                        `<span class="status hidden">
                             مخفي
-                        </span>`
+
+                        </span>
+                        `
                     }
 
                 </td>
 
 
                 <td>
-                    ${date}
+
+                    ${formatDate(
+                        lesson.created_at
+                    )}
+
                 </td>
 
 
@@ -1963,29 +1978,27 @@ function renderLessons(){
                         <button
                             class="action-btn"
                             title="تعديل"
-                            onclick="editLesson('${lesson.id}')"
-                        >
+                            onclick="editLesson('${lesson.id}')">
+
                             ✏️
+
                         </button>
 
 
                         ${
                             youtube
-
                             ?
-
                             `
                             <button
                                 class="action-btn"
-                                title="نسخ رابط الفيديو"
-                                onclick="copyLink('${escapeAttribute(youtube)}')"
-                            >
+                                title="نسخ الرابط"
+                                onclick="copyLink('${escapeAttribute(youtube)}')">
+
                                 🔗
+
                             </button>
                             `
-
                             :
-
                             ""
                         }
 
@@ -1993,9 +2006,10 @@ function renderLessons(){
                         <button
                             class="action-btn delete"
                             title="حذف"
-                            onclick="deleteLesson('${lesson.id}')"
-                        >
+                            onclick="deleteLesson('${lesson.id}')">
+
                             🗑️
+
                         </button>
 
                     </div>
@@ -2005,9 +2019,7 @@ function renderLessons(){
             `;
 
 
-            lessonsBody.appendChild(
-                tr
-            );
+            lessonsBody.appendChild(tr);
 
         }
     );
@@ -2015,11 +2027,7 @@ function renderLessons(){
 }
 
 
-/*
-=========================================================
- DATE
-=========================================================
-*/
+/* ================= DATE ================= */
 
 function formatDate(date){
 
@@ -2027,40 +2035,39 @@ function formatDate(date){
         return "—";
 
 
-    const d =
-        new Date(date);
-
-
-    return d.toLocaleDateString(
-        "ar-EG",
-        {
-            year:"numeric",
-            month:"short",
-            day:"numeric"
-        }
-    );
+    return new Date(date)
+        .toLocaleDateString(
+            "ar-EG",
+            {
+                year:"numeric",
+                month:"short",
+                day:"numeric"
+            }
+        );
 
 }
 
 
-/*
-=========================================================
- ESCAPE
-=========================================================
-*/
+/* ================= ESCAPE ================= */
 
 function escapeHTML(value){
 
     return String(value)
         .replace(
             /[&<>"']/g,
-            char => ({
-                "&":"&amp;",
-                "<":"&lt;",
-                ">":"&gt;",
-                '"':"&quot;",
-                "'":"&#039;"
-            }[char])
+            char => {
+
+                return {
+
+                    "&":"&amp;",
+                    "<":"&lt;",
+                    ">":"&gt;",
+                    '"':"&quot;",
+                    "'":"&#039;"
+
+                }[char];
+
+            }
         );
 
 }
@@ -2070,6 +2077,10 @@ function escapeAttribute(value){
 
     return String(value)
         .replace(
+            /\\/g,
+            "\\\\"
+        )
+        .replace(
             /'/g,
             "\\'"
         );
@@ -2077,11 +2088,7 @@ function escapeAttribute(value){
 }
 
 
-/*
-=========================================================
- EDIT
-=========================================================
-*/
+/* ================= EDIT ================= */
 
 function editLesson(id){
 
@@ -2092,26 +2099,25 @@ function editLesson(id){
 }
 
 
-/*
-=========================================================
- COPY YOUTUBE LINK
-=========================================================
-*/
+/* ================= COPY ================= */
 
 async function copyLink(url){
 
     try{
 
-        await navigator.clipboard.writeText(
-            url
-        );
+        await navigator.clipboard
+            .writeText(url);
+
 
         showToast(
             "تم نسخ رابط الفيديو ✅",
             "success"
         );
 
+
     }catch(error){
+
+        console.error(error);
 
         showToast(
             "تعذر نسخ الرابط.",
@@ -2123,11 +2129,7 @@ async function copyLink(url){
 }
 
 
-/*
-=========================================================
- DELETE
-=========================================================
-*/
+/* ================= DELETE ================= */
 
 async function deleteLesson(id){
 
@@ -2139,13 +2141,21 @@ async function deleteLesson(id){
         );
 
 
-    if(!lesson)
+    if(!lesson){
+
+        showToast(
+            "الدرس غير موجود.",
+            "error"
+        );
+
         return;
+
+    }
 
 
     const confirmed =
         confirm(
-            "هل أنت متأكد من حذف الدرس:\n\n" +
+            "هل أنت متأكد من حذف الدرس؟\n\n" +
             lesson.title +
             "\n\nلا يمكن التراجع عن هذه العملية."
         );
@@ -2217,19 +2227,27 @@ async function deleteLesson(id){
 }
 
 
-/*
-=========================================================
- LOGOUT
-=========================================================
-*/
+/* ================= LOGOUT ================= */
 
 async function logout(){
 
-    if(supabaseClient){
+    try{
 
-        await supabaseClient
-            .auth
-            .signOut();
+        if(
+            typeof supabaseClient !==
+            "undefined" &&
+            supabaseClient
+        ){
+
+            await supabaseClient
+                .auth
+                .signOut();
+
+        }
+
+    }catch(error){
+
+        console.error(error);
 
     }
 
@@ -2240,11 +2258,7 @@ async function logout(){
 }
 
 
-/*
-=========================================================
- INIT
-=========================================================
-*/
+/* ================= INIT ================= */
 
 async function init(){
 
@@ -2268,13 +2282,18 @@ async function init(){
 
     }catch(error){
 
-        console.error(error);
+        console.error(
+            "LESSONS ERROR:",
+            error
+        );
+
 
         showToast(
             error.message ||
             "حدث خطأ أثناء تحميل الدروس.",
             "error"
         );
+
 
     }finally{
 
@@ -2289,8 +2308,6 @@ init();
 
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="../supabase.js"></script>
-
 </body>
-</html>
+
+    </html>
