@@ -2,14 +2,23 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>إضافة درس | الخوارزمي</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -25,7 +34,6 @@
 :root{
     --bg:#050507;
     --card:#111118;
-    --card2:#171720;
     --border:rgba(255,255,255,.08);
     --text:#fff;
     --muted:#92929f;
@@ -53,7 +61,7 @@ body{
         var(--bg);
 }
 
-/* SIDEBAR */
+/* ================= SIDEBAR ================= */
 
 .sidebar{
     position:fixed;
@@ -208,7 +216,7 @@ body{
     font-weight:800;
 }
 
-/* MAIN */
+/* ================= MAIN ================= */
 
 .main{
     margin-right:255px;
@@ -280,7 +288,7 @@ body{
     font-size:8px;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 
 .page-header{
     display:flex;
@@ -325,7 +333,7 @@ body{
     font-weight:800;
 }
 
-/* FORM */
+/* ================= FORM ================= */
 
 .form-layout{
     display:grid;
@@ -367,10 +375,6 @@ body{
 
 .field{
     margin-bottom:16px;
-}
-
-.field:last-child{
-    margin-bottom:0;
 }
 
 .field label{
@@ -452,7 +456,7 @@ body{
     line-height:1.7;
 }
 
-/* YOUTUBE */
+/* ================= YOUTUBE ================= */
 
 .youtube-box{
     padding:15px;
@@ -501,7 +505,7 @@ body{
     font-size:7px;
 }
 
-/* PREVIEW */
+/* ================= PREVIEW ================= */
 
 .preview{
     overflow:hidden;
@@ -555,7 +559,7 @@ body{
     font-size:8px;
 }
 
-/* PUBLISH */
+/* ================= PUBLISH ================= */
 
 .publish-box{
     display:flex;
@@ -586,7 +590,7 @@ body{
     margin-top:3px;
 }
 
-/* SWITCH */
+/* ================= SWITCH ================= */
 
 .switch{
     position:relative;
@@ -645,7 +649,7 @@ body{
     background:var(--green);
 }
 
-/* BUTTONS */
+/* ================= BUTTONS ================= */
 
 .form-actions{
     display:flex;
@@ -682,6 +686,11 @@ body{
         );
 }
 
+.save-btn:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+}
+
 .cancel-btn{
     padding:0 20px;
 
@@ -693,7 +702,7 @@ body{
         rgba(255,255,255,.035);
 }
 
-/* INFO */
+/* ================= INFO ================= */
 
 .info-list{
     display:flex;
@@ -742,7 +751,7 @@ body{
     margin-top:2px;
 }
 
-/* LOADING */
+/* ================= LOADING ================= */
 
 .loading{
     position:fixed;
@@ -781,7 +790,7 @@ body{
     }
 }
 
-/* TOAST */
+/* ================= TOAST ================= */
 
 .toast{
     position:fixed;
@@ -835,7 +844,7 @@ body{
         rgba(53,211,154,.25);
 }
 
-/* RESPONSIVE */
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:950px){
 
@@ -889,12 +898,13 @@ body{
 }
 
 </style>
+
 </head>
 
 <body>
 
 
-<!-- SIDEBAR -->
+<!-- ================= SIDEBAR ================= -->
 
 <aside class="sidebar" id="sidebar">
 
@@ -941,7 +951,8 @@ body{
             الكورسات
         </a>
 
-        <a href="lessons.html" class="active">
+        <a href="lessons.html"
+           class="active">
             <div class="menu-icon">🎥</div>
             الدروس والفيديوهات
         </a>
@@ -985,7 +996,7 @@ body{
 </aside>
 
 
-<!-- MAIN -->
+<!-- ================= MAIN ================= -->
 
 <main class="main">
 
@@ -1024,7 +1035,7 @@ body{
     </div>
 
 
-    <!-- HEADER -->
+    <!-- ================= HEADER ================= -->
 
     <section class="page-header">
 
@@ -1051,14 +1062,12 @@ body{
     </section>
 
 
-    <!-- FORM -->
+    <!-- ================= FORM ================= -->
 
     <form id="lessonForm">
 
         <div class="form-layout">
 
-
-            <!-- RIGHT / MAIN -->
 
             <div>
 
@@ -1083,8 +1092,13 @@ body{
                     <div class="field">
 
                         <label>
+
                             اسم الدرس
-                            <span class="required">*</span>
+
+                            <span class="required">
+                                *
+                            </span>
+
                         </label>
 
                         <input
@@ -1104,8 +1118,13 @@ body{
                     <div class="field">
 
                         <label>
+
                             الكورس
-                            <span class="required">*</span>
+
+                            <span class="required">
+                                *
+                            </span>
+
                         </label>
 
                         <select
@@ -1164,7 +1183,7 @@ body{
                                     </strong>
 
                                     <span>
-                                        لن يتم تخزين الفيديو داخل قاعدة البيانات.
+                                        يتم حفظ الرابط فقط.
                                     </span>
 
                                 </div>
@@ -1182,7 +1201,7 @@ body{
 
 
                             <div class="help">
-                                ضع رابط فيديو YouTube فقط. سيتم حفظ الرابط في قاعدة البيانات، والفيديو نفسه سيبقى على YouTube.
+                                ضع رابط فيديو YouTube صحيح.
                             </div>
 
                         </div>
@@ -1256,7 +1275,7 @@ body{
                 </section>
 
 
-                <!-- VIDEO PREVIEW -->
+                <!-- ================= VIDEO ================= -->
 
                 <section
                     class="card"
@@ -1270,7 +1289,7 @@ body{
                         </h2>
 
                         <p>
-                            تأكد من أن رابط YouTube صحيح قبل الحفظ.
+                            المعاينة تظهر تلقائيًا عند وضع الرابط.
                         </p>
 
                     </div>
@@ -1297,7 +1316,7 @@ body{
                                 </div>
 
                                 <p>
-                                    ضع رابط YouTube لمشاهدة المعاينة هنا
+                                    ضع رابط YouTube لمشاهدة المعاينة
                                 </p>
 
                             </div>
@@ -1311,10 +1330,9 @@ body{
             </div>
 
 
-            <!-- LEFT / INFO -->
+            <!-- ================= INFO ================= -->
 
             <aside>
-
 
                 <section class="card">
 
@@ -1347,7 +1365,7 @@ body{
                                 </strong>
 
                                 <p>
-                                    مثال: شرح المعادلات الخطية.
+                                    اكتب الاسم الذي سيظهر للطلاب.
                                 </p>
 
                             </div>
@@ -1368,7 +1386,7 @@ body{
                                 </strong>
 
                                 <p>
-                                    الفيديو سيظهر تلقائيًا داخل هذا الكورس.
+                                    الكورسات يتم تحميلها مباشرة من Supabase.
                                 </p>
 
                             </div>
@@ -1389,7 +1407,7 @@ body{
                                 </strong>
 
                                 <p>
-                                    الفيديو نفسه لن يتم تخزينه في Supabase.
+                                    سيتم حفظ الرابط فقط داخل جدول lessons.
                                 </p>
 
                             </div>
@@ -1410,7 +1428,7 @@ body{
                                 </strong>
 
                                 <p>
-                                    سيظهر الدرس للطلاب إذا كان منشورًا.
+                                    سيتم إنشاء الدرس داخل قاعدة البيانات.
                                 </p>
 
                             </div>
@@ -1443,11 +1461,11 @@ body{
                             line-height:2;
                         "
                     >
-                        استخدام YouTube يوفر مساحة كبيرة في قاعدة البيانات والتخزين، لأننا نحفظ رابط الفيديو فقط بدل رفع ملف الفيديو نفسه.
+                        الفيديو لا يتم رفعه إلى Supabase.
+                        يتم تخزين رابط YouTube فقط.
                     </p>
 
                 </section>
-
 
             </aside>
 
@@ -1460,7 +1478,7 @@ body{
 </main>
 
 
-<!-- LOADING -->
+<!-- ================= LOADING ================= -->
 
 <div
     class="loading"
@@ -1472,7 +1490,7 @@ body{
 </div>
 
 
-<!-- TOAST -->
+<!-- ================= TOAST ================= -->
 
 <div
     class="toast"
@@ -1480,51 +1498,25 @@ body{
 ></div>
 
 
+<!-- ================= SUPABASE ================= -->
+
+<script src="../supabase.js"></script>
+
+
 <script>
 
 /*
 =========================================================
- SUPABASE
+  ADD / EDIT LESSON
+  الخوارزمي
 =========================================================
 */
 
-const SUPABASE_URL =
-    "ضع_رابط_مشروعك_هنا";
-
-const SUPABASE_KEY =
-    "ضع_publishable_او_anon_key_هنا";
-
-
-let supabaseClient = null;
-
-if(
-    SUPABASE_URL.startsWith("http") &&
-    !SUPABASE_URL.includes("ضع_")
-){
-
-    supabaseClient =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
-
-}
-
-
-/*
-=========================================================
- VARIABLES
-=========================================================
-*/
 
 let editId = null;
 
 
-/*
-=========================================================
- ELEMENTS
-=========================================================
-*/
+/* ================= ELEMENTS ================= */
 
 const loading =
     document.getElementById("loading");
@@ -1562,28 +1554,21 @@ const publishText =
 const saveBtn =
     document.getElementById("saveBtn");
 
+const adminName =
+    document.getElementById("adminName");
 
-/*
-=========================================================
- LOADING
-=========================================================
-*/
+
+/* ================= LOADING ================= */
 
 function setLoading(state){
 
     loading.style.display =
-        state
-        ? "flex"
-        : "none";
+        state ? "flex" : "none";
 
 }
 
 
-/*
-=========================================================
- TOAST
-=========================================================
-*/
+/* ================= TOAST ================= */
 
 function showToast(message,type=""){
 
@@ -1597,20 +1582,14 @@ function showToast(message,type=""){
 
     setTimeout(() => {
 
-        toast.classList.remove(
-            "show"
-        );
+        toast.classList.remove("show");
 
     },3500);
 
 }
 
 
-/*
-=========================================================
- SIDEBAR
-=========================================================
-*/
+/* ================= SIDEBAR ================= */
 
 function toggleSidebar(){
 
@@ -1622,20 +1601,111 @@ function toggleSidebar(){
 }
 
 
-/*
-=========================================================
- CHECK ADMIN
-=========================================================
-*/
+/* ================= GET EDIT ID ================= */
+
+function getEditId(){
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    return params.get("id");
+
+}
+
+
+/* ================= CHECK ADMIN ================= */
 
 async function checkAdmin(){
 
-    if(!supabaseClient){
+    try{
 
-        setLoading(false);
+        const {
+            data,
+            error
+        } =
+            await supabaseClient.auth.getSession();
+
+
+        if(error)
+            throw error;
+
+
+        if(
+            !data ||
+            !data.session
+        ){
+
+            window.location.href =
+                "login.html";
+
+            return false;
+
+        }
+
+
+        const user =
+            data.session.user;
+
+
+        const {
+            data:profile,
+            error:profileError
+        } =
+            await supabaseClient
+
+                .from("profiles")
+
+                .select(
+                    "id,full_name,role"
+                )
+
+                .eq(
+                    "id",
+                    user.id
+                )
+
+                .maybeSingle();
+
+
+        if(profileError)
+            throw profileError;
+
+
+        if(
+            !profile ||
+            profile.role !== "admin"
+        ){
+
+            await supabaseClient.auth.signOut();
+
+            window.location.href =
+                "login.html";
+
+            return false;
+
+        }
+
+
+        adminName.textContent =
+            profile.full_name ||
+            user.email ||
+            "الأدمن";
+
+
+        return true;
+
+
+    }catch(error){
+
+        console.error(
+            "CHECK ADMIN ERROR:",
+            error
+        );
 
         showToast(
-            "ضع بيانات Supabase أولًا.",
+            "تعذر التحقق من صلاحيات الحساب.",
             "error"
         );
 
@@ -1643,92 +1713,19 @@ async function checkAdmin(){
 
     }
 
-
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .auth
-            .getSession();
-
-
-    if(
-        error ||
-        !data ||
-        !data.session
-    ){
-
-        window.location.href =
-            "login.html";
-
-        return false;
-
-    }
-
-
-    const user =
-        data.session.user;
-
-
-    const {
-        data:profile,
-        error:profileError
-    } =
-        await supabaseClient
-
-            .from("profiles")
-
-            .select(
-                "id,full_name,role"
-            )
-
-            .eq(
-                "id",
-                user.id
-            )
-
-            .maybeSingle();
-
-
-    if(
-        profileError ||
-        !profile ||
-        profile.role !== "admin"
-    ){
-
-        await supabaseClient
-            .auth
-            .signOut();
-
-        window.location.href =
-            "login.html";
-
-        return false;
-
-    }
-
-
-    document
-        .getElementById("adminName")
-        .textContent =
-            profile.full_name ||
-            user.email ||
-            "الأدمن";
-
-
-    return true;
-
 }
 
 
-/*
-=========================================================
- LOAD COURSES
-=========================================================
-*/
+/* ================= LOAD COURSES ================= */
 
 async function loadCourses(){
+
+    courseSelect.innerHTML = `
+        <option value="">
+            جاري تحميل الكورسات...
+        </option>
+    `;
+
 
     const {
         data,
@@ -1754,22 +1751,20 @@ async function loadCourses(){
         throw error;
 
 
-    courseSelect.innerHTML =
-        `
+    courseSelect.innerHTML = `
         <option value="">
             اختر الكورس
         </option>
-        `;
+    `;
 
 
-    if(!data || !data.length){
+    if(!data || data.length === 0){
 
-        courseSelect.innerHTML =
-            `
+        courseSelect.innerHTML = `
             <option value="">
                 لا توجد كورسات
             </option>
-            `;
+        `;
 
         return;
 
@@ -1796,29 +1791,155 @@ async function loadCourses(){
 }
 
 
-/*
-=========================================================
- GET EDIT ID
-=========================================================
-*/
+/* ================= YOUTUBE ID ================= */
 
-function getEditId(){
+function getYouTubeId(url){
 
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
+    if(!url)
+        return null;
 
-    return params.get("id");
+
+    try{
+
+        const parsed =
+            new URL(url);
+
+
+        const host =
+            parsed.hostname
+                .toLowerCase()
+                .replace("www.","");
+
+
+        /* youtube.com/watch?v= */
+
+        if(
+            host === "youtube.com" ||
+            host === "m.youtube.com"
+        ){
+
+            const videoId =
+                parsed.searchParams.get("v");
+
+            if(videoId)
+                return videoId;
+
+
+            /* /shorts/ID */
+
+            if(
+                parsed.pathname
+                    .startsWith("/shorts/")
+            ){
+
+                return parsed.pathname
+                    .split("/")[2];
+
+            }
+
+
+            /* /embed/ID */
+
+            if(
+                parsed.pathname
+                    .startsWith("/embed/")
+            ){
+
+                return parsed.pathname
+                    .split("/")[2];
+
+            }
+
+        }
+
+
+        /* youtu.be/ID */
+
+        if(host === "youtu.be"){
+
+            return parsed.pathname
+                .split("/")
+                .filter(Boolean)[0] || null;
+
+        }
+
+
+    }catch(error){
+
+        return null;
+
+    }
+
+
+    return null;
 
 }
 
 
-/*
-=========================================================
- LOAD LESSON FOR EDIT
-=========================================================
-*/
+/* ================= VIDEO PREVIEW ================= */
+
+function updatePreview(){
+
+    const url =
+        youtubeInput.value.trim();
+
+
+    const videoId =
+        getYouTubeId(url);
+
+
+    if(videoId){
+
+        preview.src =
+            "https://www.youtube.com/embed/" +
+            encodeURIComponent(videoId);
+
+
+        preview.style.display =
+            "block";
+
+
+        placeholder.style.display =
+            "none";
+
+    }else{
+
+        preview.src =
+            "";
+
+
+        preview.style.display =
+            "none";
+
+
+        placeholder.style.display =
+            "block";
+
+    }
+
+}
+
+
+/* ================= PUBLISH ================= */
+
+function updatePublishText(){
+
+    if(publishedInput.checked){
+
+        publishText.textContent =
+            "الدرس سيظهر للطلاب.";
+
+    }else{
+
+        publishText.textContent =
+            "الدرس محفوظ لكنه مخفي عن الطلاب.";
+
+    }
+
+}
+
+
+/* ================= LOAD EDIT ================= */
 
 async function loadLesson(){
 
@@ -1921,172 +2042,7 @@ async function loadLesson(){
 }
 
 
-/*
-=========================================================
- YOUTUBE ID
-=========================================================
-*/
-
-function getYouTubeId(url){
-
-    if(!url)
-        return null;
-
-
-    try{
-
-        const parsed =
-            new URL(url);
-
-
-        /*
-        youtube.com/watch?v=ID
-        */
-
-        if(
-            parsed.hostname.includes(
-                "youtube.com"
-            ) &&
-            parsed.searchParams.get("v")
-        ){
-
-            return parsed.searchParams.get(
-                "v"
-            );
-
-        }
-
-
-        /*
-        youtu.be/ID
-        */
-
-        if(
-            parsed.hostname.includes(
-                "youtu.be"
-            )
-        ){
-
-            return parsed.pathname
-                .replace("/","")
-                .split("/")[0];
-
-        }
-
-
-        /*
-        youtube.com/shorts/ID
-        */
-
-        if(
-            parsed.pathname.startsWith(
-                "/shorts/"
-            )
-        ){
-
-            return parsed.pathname
-                .split("/")[2];
-
-        }
-
-
-        /*
-        youtube.com/embed/ID
-        */
-
-        if(
-            parsed.pathname.startsWith(
-                "/embed/"
-            )
-        ){
-
-            return parsed.pathname
-                .split("/")[2];
-
-        }
-
-
-    }catch(error){
-
-        return null;
-
-    }
-
-
-    return null;
-
-}
-
-
-/*
-=========================================================
- PREVIEW
-=========================================================
-*/
-
-function updatePreview(){
-
-    const url =
-        youtubeInput.value.trim();
-
-
-    const videoId =
-        getYouTubeId(url);
-
-
-    if(videoId){
-
-        preview.src =
-            "https://www.youtube.com/embed/" +
-            encodeURIComponent(videoId);
-
-
-        preview.style.display =
-            "block";
-
-
-        placeholder.style.display =
-            "none";
-
-    }else{
-
-        preview.src =
-            "";
-
-
-        preview.style.display =
-            "none";
-
-
-        placeholder.style.display =
-            "block";
-
-    }
-
-}
-
-
-/*
-=========================================================
- PUBLISH TEXT
-=========================================================
-*/
-
-function updatePublishText(){
-
-    publishText.textContent =
-        publishedInput.checked
-        ? "الدرس سيظهر للطلاب."
-        : "الدرس محفوظ لكنه مخفي عن الطلاب.";
-
-}
-
-
-/*
-=========================================================
- YOUTUBE INPUT
-=========================================================
-*/
+/* ================= INPUT EVENTS ================= */
 
 youtubeInput.addEventListener(
     "input",
@@ -2100,11 +2056,7 @@ publishedInput.addEventListener(
 );
 
 
-/*
-=========================================================
- SUBMIT
-=========================================================
-*/
+/* ================= SUBMIT ================= */
 
 form.addEventListener(
     "submit",
@@ -2132,6 +2084,8 @@ form.addEventListener(
         const published =
             publishedInput.checked;
 
+
+        /* VALIDATION */
 
         if(!title){
 
@@ -2197,8 +2151,7 @@ form.addEventListener(
 
         setLoading(true);
 
-        saveBtn.disabled =
-            true;
+        saveBtn.disabled = true;
 
 
         try{
@@ -2226,6 +2179,8 @@ form.addEventListener(
             let result;
 
 
+            /* UPDATE */
+
             if(editId){
 
                 result =
@@ -2245,7 +2200,12 @@ form.addEventListener(
                         .select()
                         .single();
 
-            }else{
+            }
+
+
+            /* INSERT */
+
+            else{
 
                 result =
                     await supabaseClient
@@ -2268,8 +2228,8 @@ form.addEventListener(
 
             showToast(
                 editId
-                ? "تم تحديث الدرس بنجاح ✅"
-                : "تم إضافة الدرس بنجاح ✅",
+                    ? "تم تحديث الدرس بنجاح ✅"
+                    : "تم إضافة الدرس بنجاح ✅",
                 "success"
             );
 
@@ -2284,13 +2244,29 @@ form.addEventListener(
 
         }catch(error){
 
-            console.error(error);
+            console.error(
+                "SAVE LESSON ERROR:",
+                error
+            );
+
+
+            let message =
+                "حدث خطأ أثناء حفظ الدرس.";
+
+
+            if(error.message){
+
+                message =
+                    error.message;
+
+            }
+
 
             showToast(
-                error.message ||
-                "حدث خطأ أثناء حفظ الدرس.",
+                message,
                 "error"
             );
+
 
         }finally{
 
@@ -2305,19 +2281,19 @@ form.addEventListener(
 );
 
 
-/*
-=========================================================
- LOGOUT
-=========================================================
-*/
+/* ================= LOGOUT ================= */
 
 async function logout(){
 
-    if(supabaseClient){
+    try{
 
         await supabaseClient
             .auth
             .signOut();
+
+    }catch(error){
+
+        console.error(error);
 
     }
 
@@ -2328,11 +2304,7 @@ async function logout(){
 }
 
 
-/*
-=========================================================
- INIT
-=========================================================
-*/
+/* ================= INIT ================= */
 
 async function init(){
 
@@ -2340,6 +2312,23 @@ async function init(){
 
 
     try{
+
+        /* التأكد من وجود Supabase */
+
+        if(
+            typeof supabaseClient ===
+            "undefined" ||
+            !supabaseClient
+        ){
+
+            throw new Error(
+                "Supabase غير متصل. تأكد من ملف supabase.js"
+            );
+
+        }
+
+
+        /* التحقق من الأدمن */
 
         const isAdmin =
             await checkAdmin();
@@ -2349,9 +2338,15 @@ async function init(){
             return;
 
 
+        /* تحميل الكورسات */
+
         await loadCourses();
 
+
+        /* لو تعديل */
+
         await loadLesson();
+
 
         updatePublishText();
 
@@ -2360,13 +2355,18 @@ async function init(){
 
     }catch(error){
 
-        console.error(error);
+        console.error(
+            "INIT ERROR:",
+            error
+        );
+
 
         showToast(
             error.message ||
             "حدث خطأ أثناء تحميل الصفحة.",
             "error"
         );
+
 
     }finally{
 
@@ -2381,8 +2381,6 @@ init();
 
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="../supabase.js"></script>
-
 </body>
-</html>
+
+    </html>
