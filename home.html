@@ -10,22 +10,9 @@
     content="width=device-width, initial-scale=1.0"
 >
 
-<title>الخوارزمي | الرئيسية</title>
-
-<!-- =====================================================
-     SUPABASE LIBRARY
-===================================================== -->
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script src="./supabase.js"></script>
-
+<title>الخوارزمي | لوحة الطالب</title>
 
 <style>
-
-/* =====================================================
-   RESET
-===================================================== */
 
 *{
     margin:0;
@@ -52,79 +39,78 @@ body{
     background:
         radial-gradient(
             circle at 80% 10%,
-            rgba(116,72,232,.18),
+            rgba(113,73,245,.18),
             transparent 30%
         ),
         radial-gradient(
-            circle at 10% 80%,
-            rgba(49,84,223,.13),
+            circle at 10% 90%,
+            rgba(44,82,225,.12),
             transparent 30%
         ),
-        #080711;
+        #07070d;
 
     overflow-x:hidden;
+
 }
 
 
 /* =====================================================
-   BACKGROUND
+   LOADING
 ===================================================== */
 
-body::before{
-
-    content:"";
+#pageLoading{
 
     position:fixed;
 
-    width:500px;
-    height:500px;
+    inset:0;
 
-    top:-250px;
-    right:-200px;
+    z-index:99999;
 
-    border-radius:50%;
+    display:flex;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(124,82,245,.25),
-            transparent 68%
-        );
+    align-items:center;
 
-    filter:blur(35px);
+    justify-content:center;
 
-    pointer-events:none;
+    flex-direction:column;
 
-    z-index:0;
+    gap:15px;
+
+    background:#07070d;
+
 }
 
+.loader{
 
-body::after{
+    width:45px;
 
-    content:"";
-
-    position:fixed;
-
-    width:450px;
-    height:450px;
-
-    bottom:-250px;
-    left:-200px;
+    height:45px;
 
     border-radius:50%;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(49,84,223,.18),
-            transparent 68%
-        );
+    border:3px solid rgba(255,255,255,.1);
 
-    filter:blur(35px);
+    border-top-color:#8558f6;
 
-    pointer-events:none;
+    animation:
+        spin .7s linear infinite;
 
-    z-index:0;
+}
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+#pageLoading p{
+
+    color:#888;
+
+    font-size:12px;
+
 }
 
 
@@ -134,13 +120,37 @@ body::after{
 
 .header{
 
-    position:relative;
+    position:sticky;
 
-    z-index:10;
+    top:0;
+
+    z-index:1000;
 
     width:100%;
 
-    min-height:75px;
+    padding:15px 20px;
+
+    background:
+        rgba(7,7,13,.85);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.07);
+
+    backdrop-filter:
+        blur(18px);
+
+}
+
+.header-inner{
+
+    width:
+        min(
+            1150px,
+            calc(100% - 10px)
+        );
+
+    margin:auto;
 
     display:flex;
 
@@ -148,23 +158,74 @@ body::after{
 
     justify-content:space-between;
 
-    padding:
-        12px
-        clamp(15px,4vw,50px);
-
-    background:
-        rgba(8,7,17,.88);
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.06);
-
-    backdrop-filter:blur(18px);
+    gap:15px;
 
 }
 
 
-.brand{
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.logo-icon{
+
+    width:43px;
+
+    height:43px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:13px;
+
+    font-size:22px;
+
+    font-weight:900;
+
+    background:
+        linear-gradient(
+            135deg,
+            #895aff,
+            #3159e8
+        );
+
+    box-shadow:
+        0 10px 35px
+        rgba(92,65,230,.3);
+
+}
+
+.logo-text{
+
+    font-size:17px;
+
+    font-weight:900;
+
+}
+
+.logo-text span{
+
+    color:#a58aff;
+
+}
+
+
+/* =====================================================
+   USER
+===================================================== */
+
+.user-area{
 
     display:flex;
 
@@ -174,74 +235,105 @@ body::after{
 
 }
 
+.user-info{
 
-.logo{
+    text-align:right;
 
-    width:48px;
-    height:48px;
+}
+
+.user-name{
+
+    font-size:12px;
+
+    font-weight:800;
+
+}
+
+.user-grade{
+
+    margin-top:3px;
+
+    color:#777783;
+
+    font-size:9px;
+
+}
+
+
+/* =====================================================
+   AVATAR
+===================================================== */
+
+.avatar{
+
+    width:43px;
+
+    height:43px;
+
+    border-radius:50%;
 
     display:grid;
 
     place-items:center;
 
-    border-radius:15px;
-
-    font-size:27px;
-
-    font-weight:900;
+    overflow:hidden;
 
     background:
         linear-gradient(
             135deg,
-            #8b5cf6,
+            #8558f6,
             #315be9
         );
 
-    box-shadow:
-        0 10px 30px
-        rgba(99,70,230,.35);
+    border:
+        2px solid
+        rgba(255,255,255,.1);
+
+}
+
+.avatar img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:none;
+
+}
+
+.avatar span{
+
+    font-size:17px;
 
 }
 
 
-.brand-text h1{
-
-    font-size:18px;
-
-    line-height:1.2;
-
-}
-
-
-.brand-text p{
-
-    color:#77758a;
-
-    font-size:9px;
-
-    margin-top:3px;
-
-}
-
+/* =====================================================
+   LOGOUT
+===================================================== */
 
 .logout{
 
-    border:1px solid
-        rgba(255,255,255,.08);
+    border:0;
+
+    padding:10px 14px;
+
+    border-radius:10px;
+
+    color:#ff9ca8;
 
     background:
-        rgba(255,255,255,.04);
+        rgba(255,70,90,.08);
 
-    color:#fff;
-
-    padding:
-        10px 18px;
-
-    border-radius:12px;
+    border:
+        1px solid
+        rgba(255,70,90,.12);
 
     font-family:inherit;
 
-    font-size:10px;
+    font-size:9px;
 
     cursor:pointer;
 
@@ -249,21 +341,19 @@ body::after{
 
 }
 
-
 .logout:hover{
 
     background:
-        rgba(255,70,90,.12);
+        rgba(255,70,90,.16);
 
-    border-color:
-        rgba(255,100,120,.25);
+    transform:
+        translateY(-2px);
 
 }
 
-
 .logout:disabled{
 
-    opacity:.55;
+    opacity:.6;
 
     cursor:not-allowed;
 
@@ -274,20 +364,15 @@ body::after{
    MAIN
 ===================================================== */
 
-.container{
-
-    position:relative;
-
-    z-index:2;
+.main{
 
     width:
         min(
-            1100px,
-            calc(100% - 28px)
+            1150px,
+            calc(100% - 30px)
         );
 
-    margin:
-        35px auto 60px;
+    margin:35px auto 70px;
 
 }
 
@@ -302,28 +387,26 @@ body::after{
 
     overflow:hidden;
 
-    padding:
-        clamp(28px,5vw,55px);
+    padding:40px;
 
     border-radius:28px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(44,30,92,.88),
-            rgba(22,20,53,.90)
+            rgba(32,25,65,.9),
+            rgba(13,18,38,.9)
         );
 
     border:
         1px solid
-        rgba(145,112,255,.15);
+        rgba(255,255,255,.07);
 
     box-shadow:
-        0 30px 80px
+        0 30px 90px
         rgba(0,0,0,.35);
 
 }
-
 
 .hero::before{
 
@@ -331,385 +414,218 @@ body::after{
 
     position:absolute;
 
-    width:300px;
-    height:300px;
+    width:350px;
 
-    top:-160px;
-    left:-100px;
+    height:350px;
+
+    left:-130px;
+
+    bottom:-180px;
 
     border-radius:50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(135,93,255,.20),
-            transparent 70%
+            rgba(73,79,240,.2),
+            transparent 68%
         );
 
     pointer-events:none;
 
 }
 
+.hero-content{
 
-.hero-small{
+    position:relative;
 
-    color:#9d83ff;
+    z-index:2;
+
+}
+
+.hero small{
+
+    color:#9170ff;
 
     font-size:10px;
 
-    margin-bottom:10px;
-
 }
 
+.hero h1{
 
-.hero h2{
+    margin-top:10px;
 
     font-size:
-        clamp(30px,5vw,45px);
+        clamp(
+            25px,
+            5vw,
+            40px
+        );
 
-    line-height:1.3;
-
-    margin-bottom:12px;
-
-}
-
-
-.hero h2 span{
-
-    color:#a98dff;
+    line-height:1.4;
 
 }
 
+.hero h1 span{
 
-.hero-description{
+    color:#a58aff;
 
-    color:#8c899c;
+}
+
+.hero p{
+
+    max-width:600px;
+
+    margin-top:10px;
+
+    color:#858592;
 
     font-size:11px;
 
     line-height:2;
 
-    max-width:650px;
-
 }
 
 
 /* =====================================================
-   PROFILE INFO
-===================================================== */
-
-.profile-card{
-
-    margin-top:22px;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:14px;
-
-}
-
-
-.info-box{
-
-    min-height:90px;
-
-    padding:18px;
-
-    border-radius:18px;
-
-    background:
-        rgba(255,255,255,.035);
-
-    border:
-        1px solid
-        rgba(255,255,255,.06);
-
-}
-
-
-.info-label{
-
-    display:block;
-
-    color:#686579;
-
-    font-size:9px;
-
-    margin-bottom:8px;
-
-}
-
-
-.info-value{
-
-    display:block;
-
-    color:#eee;
-
-    font-size:12px;
-
-    font-weight:700;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-
-    white-space:nowrap;
-
-}
-
-
-/* =====================================================
-   TESTS SECTION
+   SECTION
 ===================================================== */
 
 .section{
 
-    margin-top:45px;
+    margin-top:30px;
 
 }
-
-
-.section-head{
-
-    margin-bottom:20px;
-
-}
-
-
-.section-small{
-
-    color:#8e6cff;
-
-    font-size:9px;
-
-    margin-bottom:5px;
-
-}
-
 
 .section-title{
 
-    font-size:
-        clamp(24px,4vw,32px);
-
-}
-
-
-/* =====================================================
-   LOADING
-===================================================== */
-
-.loading{
-
-    min-height:230px;
-
     display:flex;
-
-    flex-direction:column;
 
     align-items:center;
 
-    justify-content:center;
+    justify-content:space-between;
 
-    color:#777489;
-
-    font-size:11px;
+    margin-bottom:15px;
 
 }
 
+.section-title h2{
 
-.spinner{
-
-    width:42px;
-    height:42px;
-
-    border-radius:50%;
-
-    border:
-        3px solid
-        rgba(255,255,255,.07);
-
-    border-top-color:#8558f6;
-
-    animation:
-        spin .8s linear infinite;
-
-    margin-bottom:18px;
+    font-size:19px;
 
 }
 
+.section-title span{
 
-@keyframes spin{
+    color:#777783;
 
-    to{
-        transform:rotate(360deg);
-    }
+    font-size:9px;
 
 }
 
 
 /* =====================================================
-   TEST GRID
+   TESTS
 ===================================================== */
 
-.tests-grid{
+.tests{
 
     display:grid;
 
     grid-template-columns:
         repeat(
             auto-fit,
-            minmax(250px,1fr)
+            minmax(
+                250px,
+                1fr
+            )
         );
 
-    gap:18px;
+    gap:17px;
 
 }
 
-
 .test-card{
-
-    position:relative;
-
-    overflow:hidden;
 
     padding:22px;
 
-    min-height:235px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    border-radius:22px;
+    border-radius:20px;
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(35,28,73,.90),
-            rgba(18,17,35,.94)
-        );
+        rgba(255,255,255,.035);
 
     border:
         1px solid
         rgba(255,255,255,.07);
 
-    transition:
-        transform .25s,
-        border-color .25s,
-        box-shadow .25s;
+    transition:.3s;
 
 }
-
 
 .test-card:hover{
 
-    transform:translateY(-4px);
+    transform:
+        translateY(-5px);
 
     border-color:
-        rgba(139,92,246,.30);
-
-    box-shadow:
-        0 20px 45px
-        rgba(0,0,0,.25);
+        rgba(133,88,246,.35);
 
 }
-
 
 .test-icon{
 
     width:48px;
+
     height:48px;
 
     display:grid;
 
     place-items:center;
 
-    border-radius:15px;
+    border-radius:14px;
+
+    margin-bottom:17px;
+
+    font-size:21px;
 
     background:
         linear-gradient(
             135deg,
-            #8558f6,
-            #315be9
+            rgba(133,88,246,.3),
+            rgba(49,91,233,.3)
         );
 
-    font-size:22px;
+}
 
-    margin-bottom:18px;
+.test-card h3{
+
+    font-size:14px;
 
 }
 
+.test-card p{
 
-.test-name{
+    margin-top:8px;
 
-    font-size:17px;
+    color:#777783;
 
-    margin-bottom:9px;
+    font-size:9px;
 
-}
-
-
-.test-description{
-
-    color:#797587;
-
-    font-size:10px;
-
-    line-height:1.9;
-
-    min-height:38px;
+    line-height:1.8;
 
 }
 
-
-.test-meta{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:8px;
-
-    margin-top:16px;
-
-}
-
-
-.meta{
-
-    padding:
-        6px 9px;
-
-    border-radius:8px;
-
-    background:
-        rgba(255,255,255,.045);
-
-    color:#8d899d;
-
-    font-size:8px;
-
-}
-
-
-.start-test{
+.test-button{
 
     width:100%;
 
-    height:44px;
+    height:43px;
 
-    margin-top:auto;
-
-    padding-top:12px;
+    margin-top:17px;
 
     border:0;
 
-    border-radius:12px;
+    border-radius:11px;
 
     color:#fff;
 
@@ -728,15 +644,6 @@ body::after{
             #315be9
         );
 
-    transition:.25s;
-
-}
-
-
-.start-test:hover{
-
-    transform:translateY(-2px);
-
 }
 
 
@@ -746,94 +653,42 @@ body::after{
 
 .empty{
 
-    min-height:240px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
+    padding:45px 20px;
 
     text-align:center;
 
-    border-radius:22px;
+    border-radius:20px;
 
     background:
         rgba(255,255,255,.025);
 
     border:
         1px dashed
-        rgba(255,255,255,.08);
-
-    padding:30px;
+        rgba(255,255,255,.09);
 
 }
-
 
 .empty-icon{
 
-    font-size:40px;
+    font-size:38px;
 
     margin-bottom:12px;
 
-    opacity:.75;
-
 }
-
 
 .empty h3{
 
-    font-size:17px;
-
-    margin-bottom:8px;
+    font-size:15px;
 
 }
-
 
 .empty p{
 
-    color:#6f6b7d;
+    margin-top:7px;
 
-    font-size:10px;
+    color:#777783;
 
-    line-height:1.8;
-
-}
-
-
-/* =====================================================
-   ERROR
-===================================================== */
-
-.error-box{
-
-    display:none;
-
-    padding:18px;
-
-    border-radius:16px;
-
-    background:
-        rgba(255,70,90,.07);
-
-    border:
-        1px solid
-        rgba(255,70,90,.15);
-
-    color:#ff9faa;
-
-    font-size:10px;
-
-    line-height:1.8;
-
-}
-
-
-.error-box.show{
-
-    display:block;
+    font-size:9px;
 
 }
 
@@ -844,22 +699,108 @@ body::after{
 
 .footer{
 
-    position:relative;
-
-    z-index:2;
-
-    padding:
-        30px 20px;
-
     text-align:center;
 
-    color:#454252;
+    padding:25px 15px;
+
+    color:#555561;
+
+    font-size:8px;
 
     border-top:
         1px solid
         rgba(255,255,255,.05);
 
-    font-size:8px;
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+#errorBox{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:99998;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    background:#07070d;
+
+}
+
+.error-card{
+
+    width:
+        min(
+            430px,
+            100%
+        );
+
+    padding:30px;
+
+    text-align:center;
+
+    border-radius:22px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+}
+
+.error-card h2{
+
+    font-size:20px;
+
+}
+
+.error-card p{
+
+    margin-top:10px;
+
+    color:#888;
+
+    font-size:10px;
+
+    line-height:2;
+
+}
+
+.error-card button{
+
+    margin-top:20px;
+
+    padding:12px 25px;
+
+    border:0;
+
+    border-radius:10px;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8558f6,
+            #315be9
+        );
+
+    font-family:inherit;
+
+    cursor:pointer;
 
 }
 
@@ -868,46 +809,28 @@ body::after{
    MOBILE
 ===================================================== */
 
-@media(max-width:700px){
+@media(max-width:650px){
 
     .header{
 
-        min-height:68px;
-
         padding:
-            10px 14px;
+            12px;
 
     }
 
+    .header-inner{
 
-    .logo{
-
-        width:43px;
-        height:43px;
-
-        font-size:24px;
+        flex-wrap:wrap;
 
     }
 
+    .user-info{
 
-    .brand-text h1{
-
-        font-size:15px;
-
-    }
-
-
-    .logout{
-
-        padding:
-            9px 13px;
-
-        font-size:9px;
+        display:none;
 
     }
 
-
-    .container{
+    .main{
 
         width:
             calc(100% - 20px);
@@ -916,33 +839,23 @@ body::after{
 
     }
 
-
     .hero{
 
-        padding:25px 18px;
+        padding:25px 20px;
 
         border-radius:22px;
 
     }
 
+    .hero h1{
 
-    .profile-card{
-
-        grid-template-columns:1fr;
-
-    }
-
-
-    .info-box{
-
-        min-height:75px;
+        font-size:25px;
 
     }
 
+    .logout{
 
-    .tests-grid{
-
-        grid-template-columns:1fr;
+        padding:9px 11px;
 
     }
 
@@ -950,22 +863,12 @@ body::after{
 
 
 /* =====================================================
-   SMALL MOBILE
+   HIDE CONTENT UNTIL READY
 ===================================================== */
 
-@media(max-width:380px){
+#app{
 
-    .brand-text{
-
-        display:none;
-
-    }
-
-    .logout{
-
-        font-size:8px;
-
-    }
+    display:none;
 
 }
 
@@ -978,191 +881,191 @@ body::after{
 
 
 <!-- =====================================================
+     LOADING
+===================================================== -->
+
+<div id="pageLoading">
+
+    <div class="loader"></div>
+
+    <p>جاري تحميل المنصة...</p>
+
+</div>
+
+
+<!-- =====================================================
+     ERROR
+===================================================== -->
+
+<div id="errorBox">
+
+    <div class="error-card">
+
+        <h2>
+            لم يتم العثور على الجلسة
+        </h2>
+
+        <p>
+            انتهت جلسة تسجيل الدخول أو لم يتم تسجيل الدخول.
+            سيتم إعادتك إلى صفحة الدخول.
+        </p>
+
+        <button
+            type="button"
+            id="errorLoginButton"
+        >
+            العودة لتسجيل الدخول
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     APP
+===================================================== -->
+
+<div id="app">
+
+
+<!-- =====================================================
      HEADER
 ===================================================== -->
 
 <header class="header">
 
-    <div class="brand">
+    <div class="header-inner">
+
 
         <div class="logo">
-            ∑
+
+            <div class="logo-icon">
+                ∑
+            </div>
+
+            <div class="logo-text">
+
+                الخوارزمي
+                <span>معاك</span>
+
+            </div>
+
         </div>
 
-        <div class="brand-text">
 
-            <h1>
-                الخوارزمي
-            </h1>
+        <div class="user-area">
 
-            <p>
-                منصة المستر أمير
-            </p>
+
+            <div class="user-info">
+
+                <div
+                    class="user-name"
+                    id="studentName"
+                >
+                    الطالب
+                </div>
+
+                <div
+                    class="user-grade"
+                    id="studentGrade"
+                >
+                    طالب
+                </div>
+
+            </div>
+
+
+            <div class="avatar">
+
+                <img
+                    id="studentAvatar"
+                    alt="صورة الطالب"
+                >
+
+                <span
+                    id="avatarEmoji"
+                >
+                    👤
+                </span>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="logout"
+                id="logoutButton"
+            >
+                تسجيل الخروج
+            </button>
+
 
         </div>
 
     </div>
 
-
-    <button
-        type="button"
-        class="logout"
-        id="logoutButton"
-    >
-        تسجيل الخروج
-    </button>
-
 </header>
-
 
 
 <!-- =====================================================
      MAIN
 ===================================================== -->
 
-<main class="container">
+<main class="main">
 
-
-    <!-- =================================================
-         HERO
-    ================================================== -->
 
     <section class="hero">
 
-        <div class="hero-small">
-            👋 أهلاً بيك في منصة الخوارزمي
-        </div>
+        <div class="hero-content">
 
+            <small>
+                منصة المستر أمير
+            </small>
 
-        <h2>
-            أهلاً يا
-            <span id="studentName">
-                الطالب
-            </span>
-        </h2>
+            <h1>
 
-
-        <p class="hero-description">
-            من هنا تقدر تشوف الاختبارات المتاحة ليك،
-            وتبدأ التحدي وتطور مستواك في الرياضيات.
-        </p>
-
-
-        <!-- =============================================
-             PROFILE
-        ============================================== -->
-
-        <div class="profile-card">
-
-
-            <div class="info-box">
-
-                <span class="info-label">
-                    الاسم
+                أهلاً بيك
+                <span id="heroName">
+                    👋
                 </span>
 
-                <span
-                    class="info-value"
-                    id="profileName"
-                >
-                    جاري التحميل...
-                </span>
+            </h1>
 
-            </div>
-
-
-            <div class="info-box">
-
-                <span class="info-label">
-                    البريد الإلكتروني
-                </span>
-
-                <span
-                    class="info-value"
-                    id="profileEmail"
-                >
-                    جاري التحميل...
-                </span>
-
-            </div>
-
-
-            <div class="info-box">
-
-                <span class="info-label">
-                    رقم الموبايل
-                </span>
-
-                <span
-                    class="info-value"
-                    id="profilePhone"
-                >
-                    جاري التحميل...
-                </span>
-
-            </div>
-
+            <p>
+                من هنا تقدر تشوف الاختبارات المتاحة ليك،
+                وتبدأ اختبارك وتتابع مستواك في الرياضيات.
+            </p>
 
         </div>
 
     </section>
 
 
-
     <!-- =================================================
          TESTS
-    ================================================== -->
+    ================================================= -->
 
     <section class="section">
 
+        <div class="section-title">
 
-        <div class="section-head">
-
-            <div class="section-small">
-                الاختبارات
-            </div>
-
-            <h2 class="section-title">
+            <h2>
                 الاختبارات المتاحة
             </h2>
 
-        </div>
-
-
-        <!-- ERROR -->
-
-        <div
-            class="error-box"
-            id="errorBox"
-        ></div>
-
-
-        <!-- LOADING -->
-
-        <div
-            class="loading"
-            id="testsLoading"
-        >
-
-            <div class="spinner"></div>
-
-            <div>
-                جاري تحميل الاختبارات...
-            </div>
+            <span id="testsCount">
+                جاري التحميل...
+            </span>
 
         </div>
 
 
-        <!-- TESTS -->
-
         <div
-            class="tests-grid"
-            id="testsGrid"
-            style="display:none;"
+            class="tests"
+            id="testsContainer"
         ></div>
 
-
-        <!-- EMPTY -->
 
         <div
             class="empty"
@@ -1175,12 +1078,12 @@ body::after{
             </div>
 
             <h3>
-                لا توجد اختبارات حالياً
+                لا توجد اختبارات متاحة حاليًا
             </h3>
 
             <p>
-                عندما يقوم الأدمن بإضافة اختبار مناسب
-                ليك، هيظهر هنا تلقائياً.
+                عندما يضيف المدرس اختبارًا جديدًا
+                سيظهر هنا تلقائيًا.
             </p>
 
         </div>
@@ -1192,20 +1095,25 @@ body::after{
 </main>
 
 
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
 <footer class="footer">
 
     ©
     <span id="year"></span>
-    الخوارزمي —
-    جميع الحقوق محفوظة
+    الخوارزمي — منصة الاختبارات
 
 </footer>
 
+
+</div>
+
+
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="./supabase.js"></script>
 
 
 <script>
@@ -1214,87 +1122,112 @@ body::after{
 
 
 /* =====================================================
-   GLOBALS
+   VARIABLES
 ===================================================== */
 
 let currentUser = null;
 
 let currentProfile = null;
 
+let isLoggingOut = false;
+
 
 /* =====================================================
    ELEMENTS
 ===================================================== */
 
-const studentName =
-    document.getElementById("studentName");
+const pageLoading =
+    document.getElementById(
+        "pageLoading"
+    );
 
-const profileName =
-    document.getElementById("profileName");
-
-const profileEmail =
-    document.getElementById("profileEmail");
-
-const profilePhone =
-    document.getElementById("profilePhone");
-
-const testsLoading =
-    document.getElementById("testsLoading");
-
-const testsGrid =
-    document.getElementById("testsGrid");
-
-const emptyTests =
-    document.getElementById("emptyTests");
+const app =
+    document.getElementById(
+        "app"
+    );
 
 const errorBox =
-    document.getElementById("errorBox");
+    document.getElementById(
+        "errorBox"
+    );
 
 const logoutButton =
-    document.getElementById("logoutButton");
+    document.getElementById(
+        "logoutButton"
+    );
+
+const errorLoginButton =
+    document.getElementById(
+        "errorLoginButton"
+    );
+
+const testsContainer =
+    document.getElementById(
+        "testsContainer"
+    );
+
+const emptyTests =
+    document.getElementById(
+        "emptyTests"
+    );
+
+const testsCount =
+    document.getElementById(
+        "testsCount"
+    );
 
 
 /* =====================================================
-   YEAR
+   REDIRECT LOGIN
 ===================================================== */
 
-document.getElementById("year").textContent =
-    new Date().getFullYear();
+function goToLogin(){
 
+    if(isLoggingOut){
+        return;
+    }
 
-/* =====================================================
-   ERROR
-===================================================== */
+    isLoggingOut = true;
 
-function showError(text){
-
-    errorBox.textContent = text;
-
-    errorBox.classList.add("show");
+    window.location.replace(
+        "auth.html"
+    );
 
 }
 
 
 /* =====================================================
-   HIDE ERROR
+   SHOW APP
 ===================================================== */
 
-function hideError(){
+function showApp(){
 
-    errorBox.textContent = "";
+    pageLoading.style.display =
+        "none";
 
-    errorBox.classList.remove("show");
+    errorBox.style.display =
+        "none";
+
+    app.style.display =
+        "block";
 
 }
 
 
 /* =====================================================
-   FINISH LOADING
+   SHOW ERROR
 ===================================================== */
 
-function finishTestsLoading(){
+function showError(){
 
-    testsLoading.style.display = "none";
+    pageLoading.style.display =
+        "none";
+
+    app.style.display =
+        "none";
+
+    errorBox.style.display =
+        "flex";
 
 }
 
@@ -1303,12 +1236,14 @@ function finishTestsLoading(){
    GET SUPABASE
 ===================================================== */
 
-function getClient(){
+function getSupabase(){
 
-    if(!window.supabaseClient){
+    if(
+        !window.supabaseClient
+    ){
 
         throw new Error(
-            "Supabase غير متصل. تأكد من تحميل supabase.js."
+            "Supabase غير متصل."
         );
 
     }
@@ -1319,139 +1254,40 @@ function getClient(){
 
 
 /* =====================================================
-   LOAD USER
+   LOAD PROFILE
 ===================================================== */
 
-async function loadUser(){
+async function loadProfile(){
 
     const supabase =
-        getClient();
+        getSupabase();
 
 
-    /*
-     * نستخدم getSession أولاً.
-     * لا نعتمد على user_id مكتوب يدويًا.
-     */
-
-    const sessionResult =
-        await supabase.auth.getSession();
-
-
-    if(sessionResult.error){
-
-        throw sessionResult.error;
-
-    }
-
-
-    const session =
-        sessionResult.data?.session;
-
-
-    if(!session || !session.user){
-
-        window.location.replace(
-            "auth.html"
-        );
+    if(!currentUser){
 
         return null;
 
     }
 
 
-    currentUser =
-        session.user;
-
-
-    return currentUser;
-
-}
-
-
-/* =====================================================
-   LOAD PROFILE
-===================================================== */
-
-async function loadProfile(user){
-
-    const supabase =
-        getClient();
-
-
-    /*
-     * profiles.id يجب أن يكون نفس
-     * auth.users.id
-     */
-
     const result =
         await supabase
-            .from("profiles")
-            .select(
-                "id,full_name,email,phone,grade,role"
-            )
-            .eq(
-                "id",
-                user.id
-            )
-            .maybeSingle();
+        .from("profiles")
+        .select(
+            "id,full_name,email,phone,role,avatar_url,grade"
+        )
+        .eq(
+            "id",
+            currentUser.id
+        )
+        .maybeSingle();
 
 
     if(result.error){
 
-        throw result.error;
-
-    }
-
-
-    /*
-     * لو الـ profile غير موجود
-     * نعرض بيانات Auth بدون إنشاء
-     * user_id وهمي.
-     */
-
-    if(!result.data){
-
-        currentProfile = {
-
-            id:user.id,
-
-            full_name:
-                user.user_metadata?.full_name ||
-                "الطالب",
-
-            email:
-                user.email || "",
-
-            phone:
-                user.user_metadata?.phone ||
-                "",
-
-            grade:
-                user.user_metadata?.grade ||
-                "",
-
-            role:"student"
-
-        };
-
-    }else{
-
-        currentProfile =
-            result.data;
-
-    }
-
-
-    /*
-     * منع حساب الأدمن من دخول صفحة الطالب
-     */
-
-    if(
-        currentProfile.role === "admin"
-    ){
-
-        window.location.replace(
-            "admin/index.html"
+        console.error(
+            "PROFILE ERROR:",
+            result.error
         );
 
         return null;
@@ -1459,42 +1295,70 @@ async function loadProfile(user){
     }
 
 
-    updateProfileUI();
-
-    return currentProfile;
+    return result.data || null;
 
 }
 
 
 /* =====================================================
-   UPDATE PROFILE UI
+   DISPLAY PROFILE
 ===================================================== */
 
-function updateProfileUI(){
+function displayProfile(){
 
     const name =
         currentProfile?.full_name ||
+        currentUser?.user_metadata?.full_name ||
         "الطالب";
 
 
-    studentName.textContent =
+    const grade =
+        currentProfile?.grade ||
+        currentUser?.user_metadata?.grade ||
+        "طالب";
+
+
+    document.getElementById(
+        "studentName"
+    ).textContent =
         name;
 
 
-    profileName.textContent =
-        name;
+    document.getElementById(
+        "heroName"
+    ).textContent =
+        name + " 👋";
 
 
-    profileEmail.textContent =
-        currentProfile?.email ||
-        currentUser?.email ||
-        "غير متوفر";
+    document.getElementById(
+        "studentGrade"
+    ).textContent =
+        grade;
 
 
-    profilePhone.textContent =
-        currentProfile?.phone ||
-        currentUser?.user_metadata?.phone ||
-        "غير متوفر";
+    const avatar =
+        currentProfile?.avatar_url;
+
+
+    if(avatar){
+
+        const image =
+            document.getElementById(
+                "studentAvatar"
+            );
+
+        image.src =
+            avatar;
+
+        image.style.display =
+            "block";
+
+        document.getElementById(
+            "avatarEmoji"
+        ).style.display =
+            "none";
+
+    }
 
 }
 
@@ -1505,493 +1369,227 @@ function updateProfileUI(){
 
 async function loadTests(){
 
-    hideError();
-
-    testsGrid.innerHTML = "";
-
-    testsGrid.style.display = "none";
-
-    emptyTests.style.display = "none";
-
-    testsLoading.style.display = "flex";
+    const supabase =
+        getSupabase();
 
 
-    try{
-
-        const supabase =
-            getClient();
+    testsContainer.innerHTML = "";
 
 
-        /*
-         * الجدول الأساسي المتوقع:
-         *
-         * exams
-         *
-         * ونستخدم الأعمدة الشائعة:
-         * id
-         * title / name
-         * description
-         * duration
-         * grade
-         * status
-         *
-         * لو جدولك يستخدم status = published
-         * سيتم عرض الاختبارات المنشورة.
-         */
+    /*
+     * بنجيب الاختبارات فقط لو جدول exams موجود.
+     * لو الجدول غير موجود، لا نخلي الصفحة تعلق.
+     */
 
-
-        let result =
-            await supabase
-                .from("exams")
-                .select("*")
-                .order(
-                    "created_at",
-                    {
-                        ascending:false
-                    }
-                );
-
-
-        /*
-         * لو جدول exams غير موجود
-         * نعرض رسالة واضحة بدل التعليق.
-         */
-
-        if(result.error){
-
-            throw result.error;
-
-        }
-
-
-        const exams =
-            Array.isArray(result.data)
-                ? result.data
-                : [];
-
-
-        /*
-         * فلترة الاختبارات حسب الصف
-         */
-
-        const studentGrade =
-            currentProfile?.grade;
-
-
-        const availableExams =
-            exams.filter(function(exam){
-
-                /*
-                 * الاختبار غير المنشور
-                 * لا يظهر.
-                 */
-
-                if(
-                    exam.status &&
-                    ![
-                        "active",
-                        "published",
-                        "available"
-                    ].includes(
-                        String(
-                            exam.status
-                        ).toLowerCase()
-                    )
-                ){
-
-                    return false;
-
-                }
-
-
-                /*
-                 * لو الاختبار بدون grade
-                 * نسمح بعرضه.
-                 */
-
-                if(
-                    !exam.grade ||
-                    !studentGrade
-                ){
-
-                    return true;
-
-                }
-
-
-                return String(
-                    exam.grade
-                ) === String(
-                    studentGrade
-                );
-
-            });
-
-
-        finishTestsLoading();
-
-
-        if(
-            availableExams.length === 0
-        ){
-
-            emptyTests.style.display =
-                "flex";
-
-            return;
-
-        }
-
-
-        availableExams.forEach(
-            function(exam){
-
-                testsGrid.appendChild(
-                    createExamCard(exam)
-                );
-
+    const result =
+        await supabase
+        .from("exams")
+        .select("*")
+        .order(
+            "created_at",
+            {
+                ascending:false
             }
         );
 
 
-        testsGrid.style.display =
-            "grid";
+    if(result.error){
 
-
-    }catch(error){
-
-        console.error(
-            "LOAD TESTS ERROR:",
-            error
+        console.warn(
+            "EXAMS ERROR:",
+            result.error
         );
 
-
-        finishTestsLoading();
-
-
-        /*
-         * لا نخلي الصفحة معلقة.
-         */
-
-        showError(
-            "تعذر تحميل الاختبارات. تأكد أن جدول exams موجود وأن صلاحيات القراءة في Supabase مفعلة."
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   CREATE EXAM CARD
-===================================================== */
-
-function createExamCard(exam){
-
-    const card =
-        document.createElement("article");
-
-    card.className =
-        "test-card";
-
-
-    const icon =
-        document.createElement("div");
-
-    icon.className =
-        "test-icon";
-
-    icon.textContent =
-        "📝";
-
-
-    const title =
-        document.createElement("h3");
-
-    title.className =
-        "test-name";
-
-
-    /*
-     * دعم أكثر من اسم للعنوان.
-     */
-
-    title.textContent =
-        exam.title ||
-        exam.name ||
-        exam.exam_name ||
-        "اختبار رياضيات";
-
-
-    const description =
-        document.createElement("p");
-
-    description.className =
-        "test-description";
-
-    description.textContent =
-        exam.description ||
-        "اختبار متاح لك على منصة الخوارزمي.";
-
-
-    const meta =
-        document.createElement("div");
-
-    meta.className =
-        "test-meta";
-
-
-    /*
-     * المدة
-     */
-
-    if(
-        exam.duration !== undefined &&
-        exam.duration !== null
-    ){
-
-        const duration =
-            document.createElement("span");
-
-        duration.className =
-            "meta";
-
-        duration.textContent =
-            "⏱ " +
-            exam.duration +
-            " دقيقة";
-
-        meta.appendChild(
-            duration
-        );
-
-    }
-
-
-    /*
-     * الصف
-     */
-
-    if(exam.grade){
-
-        const grade =
-            document.createElement("span");
-
-        grade.className =
-            "meta";
-
-        grade.textContent =
-            "🎓 " +
-            exam.grade;
-
-        meta.appendChild(
-            grade
-        );
-
-    }
-
-
-    const button =
-        document.createElement("button");
-
-    button.type =
-        "button";
-
-    button.className =
-        "start-test";
-
-    button.textContent =
-        "ابدأ الاختبار";
-
-
-    button.addEventListener(
-        "click",
-        function(){
-
-            startExam(exam);
-
-        }
-    );
-
-
-    card.appendChild(icon);
-
-    card.appendChild(title);
-
-    card.appendChild(description);
-
-    card.appendChild(meta);
-
-    card.appendChild(button);
-
-
-    return card;
-
-}
-
-
-/* =====================================================
-   START EXAM
-===================================================== */
-
-function startExam(exam){
-
-    if(!exam || !exam.id){
-
-        showError(
-            "هذا الاختبار لا يحتوي على رقم تعريف صحيح."
-        );
+        testsCount.textContent =
+            "0 اختبار";
+
+        emptyTests.style.display =
+            "block";
 
         return;
 
     }
 
 
+    const exams =
+        result.data || [];
+
+
     /*
-     * نرسل id فقط.
-     * exam.html يقرأه من الرابط.
+     * عرض الاختبارات
      */
 
-    const examId =
-        encodeURIComponent(
-            String(exam.id)
-        );
+    if(exams.length === 0){
 
+        testsCount.textContent =
+            "0 اختبار";
 
-    window.location.href =
-        "exam.html?id=" +
-        examId;
+        emptyTests.style.display =
+            "block";
 
-}
-
-
-/* =====================================================
-   LOGOUT
-===================================================== */
-
-async function logoutStudent(){
-
-    if(logoutButton){
-
-        logoutButton.disabled =
-            true;
-
-        logoutButton.textContent =
-            "جاري الخروج...";
+        return;
 
     }
 
 
-    /*
-     * التحويل مضمون حتى لو Supabase
-     * اتأخر أو حصل خطأ بالشبكة.
-     */
-
-    let redirected = false;
+    emptyTests.style.display =
+        "none";
 
 
-    function redirectToAuth(){
-
-        if(redirected){
-
-            return;
-
-        }
-
-        redirected = true;
+    testsCount.textContent =
+        exams.length +
+        " اختبار";
 
 
-        try{
+    exams.forEach(
+        function(exam){
 
-            localStorage.removeItem(
-                "al-khwarizmi-auth"
-            );
+            const card =
+                document.createElement(
+                    "div"
+                );
 
-        }catch(error){
-
-            console.warn(error);
-
-        }
-
-
-        window.location.replace(
-            "auth.html"
-        );
-
-    }
+            card.className =
+                "test-card";
 
 
-    try{
+            const name =
+                exam.name ||
+                exam.title ||
+                "اختبار رياضيات";
 
-        const supabase =
-            window.supabaseClient;
+
+            const description =
+                exam.description ||
+                "اختبار جديد من منصة الخوارزمي.";
 
 
-        if(supabase){
+            const duration =
+                exam.duration ||
+                exam.duration_minutes;
 
-            /*
-             * تسجيل خروج محلي.
-             * لا ننتظر السيرفر وقت طويل.
-             */
 
-            await Promise.race([
+            card.innerHTML = `
 
-                supabase.auth.signOut({
-                    scope:"local"
-                }),
+                <div class="test-icon">
+                    📝
+                </div>
 
-                new Promise(
-                    function(resolve){
+                <h3>
+                    ${escapeHtml(name)}
+                </h3>
 
-                        setTimeout(
-                            resolve,
-                            1200
-                        );
+                <p>
+                    ${escapeHtml(description)}
+                </p>
+
+                ${
+                    duration
+                    ?
+                    `
+                    <p>
+                        ⏱ مدة الاختبار:
+                        ${escapeHtml(String(duration))}
+                        دقيقة
+                    </p>
+                    `
+                    :
+                    ""
+                }
+
+                <button
+                    type="button"
+                    class="test-button"
+                    data-id="${escapeHtml(String(exam.id || ""))}"
+                >
+                    بدء الاختبار
+                </button>
+
+            `;
+
+
+            const button =
+                card.querySelector(
+                    ".test-button"
+                );
+
+
+            button.addEventListener(
+                "click",
+                function(){
+
+                    const id =
+                        exam.id;
+
+
+                    if(!id){
+
+                        return;
 
                     }
-                )
 
-            ]);
+
+                    /*
+                     * لو عندك exam.html
+                     * هيتحول ليه مع id الاختبار.
+                     */
+
+                    window.location.href =
+                        "exam.html?id=" +
+                        encodeURIComponent(id);
+
+                }
+            );
+
+
+            testsContainer.appendChild(
+                card
+            );
 
         }
-
-    }catch(error){
-
-        console.warn(
-            "Logout warning:",
-            error
-        );
-
-    }
-
-
-    /*
-     * التحويل فورًا.
-     */
-
-    redirectToAuth();
+    );
 
 }
 
 
 /* =====================================================
-   LOGOUT BUTTON
+   ESCAPE HTML
 ===================================================== */
 
-logoutButton.addEventListener(
-    "click",
-    function(event){
+function escapeHtml(value){
 
-        event.preventDefault();
+    return String(value)
 
-        logoutStudent();
+        .replace(
+            /&/g,
+            "&amp;"
+        )
 
-    }
-);
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
 
 
 /* =====================================================
-   AUTH CHECK
+   INITIALIZE
 ===================================================== */
 
 async function initializeHome(){
@@ -1999,29 +1597,18 @@ async function initializeHome(){
     try{
 
         /*
-         * نوقف أي تحميل قديم.
+         * التأكد من تحميل Supabase
          */
 
-        testsLoading.style.display =
-            "flex";
+        if(
+            !window.supabaseClient
+        ){
 
+            console.error(
+                "Supabase غير متصل."
+            );
 
-        const user =
-            await loadUser();
-
-
-        if(!user){
-
-            return;
-
-        }
-
-
-        const profile =
-            await loadProfile(user);
-
-
-        if(!profile){
+            showError();
 
             return;
 
@@ -2029,7 +1616,108 @@ async function initializeHome(){
 
 
         /*
-         * تحميل الاختبارات.
+         * الحصول على Session
+         */
+
+        const sessionResult =
+            await window.supabaseClient
+            .auth
+            .getSession();
+
+
+        if(
+            sessionResult.error
+        ){
+
+            console.error(
+                sessionResult.error
+            );
+
+            showError();
+
+            return;
+
+        }
+
+
+        const session =
+            sessionResult
+            .data
+            ?.session;
+
+
+        /*
+         * لا يوجد تسجيل دخول
+         */
+
+        if(!session){
+
+            showError();
+
+            setTimeout(
+                goToLogin,
+                500
+            );
+
+            return;
+
+        }
+
+
+        /*
+         * المستخدم الحالي
+         */
+
+        currentUser =
+            session.user;
+
+
+        /*
+         * جلب Profile
+         */
+
+        currentProfile =
+            await loadProfile();
+
+
+        /*
+         * لو الحساب Admin
+         * ممنوع يدخل صفحة الطالب
+         */
+
+        if(
+            currentProfile &&
+            currentProfile.role === "admin"
+        ){
+
+            window.location.replace(
+                "admin/index.html"
+            );
+
+            return;
+
+        }
+
+
+        /*
+         * عرض بيانات الطالب
+         */
+
+        displayProfile();
+
+
+        /*
+         * إظهار الصفحة
+         * قبل تحميل الاختبارات
+         * حتى لا يحصل تعليق
+         */
+
+        showApp();
+
+
+        /*
+         * تحميل الاختبارات
+         * بدون تعطيل الصفحة
          */
 
         await loadTests();
@@ -2042,62 +1730,12 @@ async function initializeHome(){
             error
         );
 
+        showError();
 
-        /*
-         * مهم:
-         * الصفحة لا تظل معلقة.
-         */
-
-        finishTestsLoading();
-
-
-        showError(
-            "حدث خطأ أثناء تحميل بيانات الحساب. حاول تسجيل الدخول مرة أخرى."
-        );
-
-
-        /*
-         * لو الجلسة غير موجودة
-         * نرجع لتسجيل الدخول.
-         */
 
         setTimeout(
-            async function(){
-
-                try{
-
-                    const supabase =
-                        window.supabaseClient;
-
-                    if(!supabase){
-
-                        return;
-
-                    }
-
-
-                    const result =
-                        await supabase.auth.getSession();
-
-
-                    if(
-                        !result.data?.session
-                    ){
-
-                        window.location.replace(
-                            "auth.html"
-                        );
-
-                    }
-
-                }catch(e){
-
-                    console.warn(e);
-
-                }
-
-            },
-            1000
+            goToLogin,
+            1200
         );
 
     }
@@ -2106,55 +1744,176 @@ async function initializeHome(){
 
 
 /* =====================================================
-   START
+   LOGOUT
 ===================================================== */
 
-if(
-    document.readyState ===
-    "loading"
-){
+logoutButton.addEventListener(
+    "click",
+    function(){
 
-    document.addEventListener(
-        "DOMContentLoaded",
-        initializeHome
-    );
+        if(isLoggingOut){
+            return;
+        }
 
-}else{
 
-    initializeHome();
+        isLoggingOut = true;
 
-}
+
+        /*
+         * تعطيل الزر فورًا
+         */
+
+        logoutButton.disabled =
+            true;
+
+
+        logoutButton.textContent =
+            "جاري الخروج...";
+
+
+        /*
+         * تنظيف محلي فوري
+         */
+
+        try{
+
+            localStorage.removeItem(
+                "al-khwarizmi-auth"
+            );
+
+        }catch(error){
+
+            console.warn(
+                error
+            );
+
+        }
+
+
+        try{
+
+            sessionStorage.clear();
+
+        }catch(error){
+
+            console.warn(
+                error
+            );
+
+        }
+
+
+        /*
+         * التحويل فورًا
+         *
+         * لا ننتظر Supabase
+         */
+
+        window.location.replace(
+            "auth.html"
+        );
+
+
+        /*
+         * محاولة إنهاء جلسة Supabase
+         * في الخلفية بدون انتظارها
+         */
+
+        try{
+
+            if(
+                window.supabaseClient
+            ){
+
+                window.supabaseClient
+                .auth
+                .signOut({
+                    scope:"local"
+                })
+                .catch(
+                    function(error){
+
+                        console.warn(
+                            "Logout background error:",
+                            error
+                        );
+
+                    }
+                );
+
+            }
+
+        }catch(error){
+
+            console.warn(
+                "Logout error:",
+                error
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   ERROR LOGIN BUTTON
+===================================================== */
+
+errorLoginButton.addEventListener(
+    "click",
+    function(){
+
+        window.location.replace(
+            "auth.html"
+        );
+
+    }
+);
 
 
 /* =====================================================
    AUTH STATE
 ===================================================== */
 
-if(window.supabaseClient){
+if(
+    window.supabaseClient
+){
 
-    window.supabaseClient.auth.onAuthStateChange(
-        function(event, session){
+    window.supabaseClient
+    .auth
+    .onAuthStateChange(
+        function(
+            event,
+            session
+        ){
+
+            console.log(
+                "AUTH EVENT:",
+                event
+            );
+
 
             /*
-             * لو المستخدم خرج من مكان آخر
-             * نرجعه لتسجيل الدخول.
+             * لا نعيد التوجيه أثناء الخروج
+             */
+
+            if(isLoggingOut){
+
+                return;
+
+            }
+
+
+            /*
+             * لو انتهت الجلسة
              */
 
             if(
-                event === "SIGNED_OUT" ||
-                !session
+                event === "SIGNED_OUT"
             ){
 
-                if(
-                    !window.location.pathname
-                        .endsWith("auth.html")
-                ){
-
-                    window.location.replace(
-                        "auth.html"
-                    );
-
-                }
+                goToLogin();
 
             }
 
@@ -2162,6 +1921,23 @@ if(window.supabaseClient){
     );
 
 }
+
+
+/* =====================================================
+   YEAR
+===================================================== */
+
+document.getElementById(
+    "year"
+).textContent =
+    new Date().getFullYear();
+
+
+/* =====================================================
+   START
+===================================================== */
+
+initializeHome();
 
 </script>
 
