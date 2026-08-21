@@ -19,7 +19,7 @@
 
 <link
     rel="preconnect"
-    href="https://fonts.googleapis.com"
+    href="https://fonts.gstatic.com"
     crossorigin
 >
 
@@ -27,6 +27,12 @@
     href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet"
 >
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- ملف الاتصال بقاعدة البيانات -->
+<script src="supabase.js"></script>
 
 <style>
 
@@ -615,7 +621,8 @@ main {
             #a796ff
         );
 
-    transition: width .7s ease;
+    transition:
+        width .7s ease;
 }
 
 
@@ -769,8 +776,7 @@ main {
 }
 
 
-.form-group input,
-.form-group select {
+.form-group input {
 
     width: 100%;
 
@@ -794,8 +800,7 @@ main {
 }
 
 
-.form-group input:focus,
-.form-group select:focus {
+.form-group input:focus {
 
     border-color:
         rgba(118,87,255,.45);
@@ -812,6 +817,34 @@ main {
     gap: 9px;
 
     margin-top: 18px;
+}
+
+
+/* ================= MESSAGE ================= */
+
+.message {
+
+    display: none;
+
+    margin-bottom: 18px;
+
+    padding: 16px;
+
+    border-radius: 14px;
+
+    border:
+        1px solid
+        rgba(255,96,120,.18);
+
+    background:
+        rgba(255,96,120,.06);
+
+    color:
+        #ff9aaa;
+
+    text-align: center;
+
+    font-size: 11px;
 }
 
 
@@ -960,6 +993,14 @@ main {
 </div>
 
 
+<!-- ERROR -->
+
+<div
+    class="message"
+    id="message"
+></div>
+
+
 <!-- HEADER -->
 
 <header>
@@ -1014,12 +1055,14 @@ main {
                     👤
                 </div>
 
+
                 <img
                     class="avatar"
                     id="avatar"
                     style="display:none;"
                     alt="صورة الطالب"
                 >
+
 
                 <div class="online-dot"></div>
 
@@ -1048,7 +1091,7 @@ main {
                     class="grade-badge"
                     id="gradeBadge"
                 >
-                    🎓 جاري التحميل
+                    🎓 جاري التحميل...
                 </div>
 
             </div>
@@ -1271,13 +1314,12 @@ main {
                     التقدم في الكورسات
                 </strong>
 
-                <span
-                    id="courseProgressText"
-                >
+                <span id="courseProgressText">
                     0%
                 </span>
 
             </div>
+
 
             <div class="progress-bar">
 
@@ -1299,13 +1341,12 @@ main {
                     متوسط الاختبارات
                 </strong>
 
-                <span
-                    id="examProgressText"
-                >
+                <span id="examProgressText">
                     0%
                 </span>
 
             </div>
+
 
             <div class="progress-bar">
 
@@ -1325,6 +1366,7 @@ main {
     <!-- ACTIONS -->
 
     <section class="actions">
+
 
         <button
             class="btn btn-primary"
@@ -1348,6 +1390,7 @@ main {
         >
             🚪 تسجيل الخروج
         </button>
+
 
     </section>
 
@@ -1394,7 +1437,7 @@ main {
             <input
                 type="tel"
                 id="editPhone"
-                placeholder="رقم الهاتف"
+                placeholder="01000000000"
             >
 
         </div>
@@ -1434,6 +1477,7 @@ main {
 
             <button
                 class="btn btn-primary"
+                id="saveBtn"
                 onclick="saveProfile()"
             >
                 حفظ التغييرات
@@ -1457,155 +1501,169 @@ main {
 
 <script>
 
-/*
-============================================================
-    PROFILE PAGE
-============================================================
+/* =========================================================
+   PROFILE - STUDENT ONLY
+   ========================================================= */
 
-    Supabase لاحقًا:
 
-    profiles
-       ↓
-    بيانات الطالب
+/* ================= VARIABLES ================= */
 
-    ثم:
-
-    enrollments
-       ↓
-    الكورسات
-
-    exam_results
-       ↓
-    النتائج
-
-    Storage
-       ↓
-    صورة الطالب
-
-============================================================
-*/
+let currentUser = null;
+let currentProfile = null;
 
 
 /* ================= ELEMENTS ================= */
 
 const loading =
-    document.getElementById(
-        "loading"
-    );
+    document.getElementById("loading");
 
+const message =
+    document.getElementById("message");
 
 const editModal =
-    document.getElementById(
-        "editModal"
-    );
+    document.getElementById("editModal");
+
+const saveBtn =
+    document.getElementById("saveBtn");
 
 
-/* ================= DEMO PROFILE ================= */
+/* ================= MESSAGE ================= */
 
-/*
-    مؤقت للواجهة فقط.
+function showMessage(text) {
 
-    لن يكون موجودًا بهذا الشكل بعد ربط Supabase.
-*/
+    message.textContent = text;
 
-const demoProfile = {
+    message.style.display = "block";
 
-    id:
-        "student-demo",
-
-    full_name:
-        "اسم الطالب",
-
-    email:
-        "student@example.com",
-
-    phone:
-        "01000000000",
-
-    parent_phone:
-        "01100000000",
-
-    governorate:
-        "الشرقية",
-
-    school:
-        "مدرسة الطالب",
-
-    grade:
-        "الصف الأول الثانوي",
-
-    avatar_url:
-        "",
-
-    courses_count:
-        5,
-
-    average_progress:
-        68,
-
-    exams_count:
-        12,
-
-    average_score:
-        82
-
-};
+}
 
 
-/* ================= LOAD ================= */
+/* ================= LOAD PROFILE ================= */
 
 async function loadProfile() {
 
-    loading.style.display =
-        "flex";
-
+    loading.style.display = "flex";
 
     try {
 
-        /*
-        ========================================================
-            SUPABASE
+        /* التأكد من وجود Supabase */
 
-            لاحقًا:
+        if (
+            typeof supabase === "undefined"
+        ) {
 
-            const {
-                data: userData
-            } =
-                await supabase.auth.getUser();
+            throw new Error(
+                "ملف supabase.js غير متصل."
+            );
 
-            ثم:
-
-            const { data, error } =
-                await supabase
-                    .from("profiles")
-                    .select("*")
-                    .eq("id", userData.user.id)
-                    .single();
-
-        ========================================================
-        */
+        }
 
 
-        await new Promise(
-            resolve =>
-                setTimeout(
-                    resolve,
-                    500
+        /* ================= USER ================= */
+
+        const {
+            data: {
+                user
+            },
+            error: userError
+        } =
+            await supabase.auth.getUser();
+
+
+        if (userError) {
+
+            throw userError;
+
+        }
+
+
+        if (!user) {
+
+            window.location.href =
+                "auth.html";
+
+            return;
+
+        }
+
+
+        currentUser = user;
+
+
+        /* ================= PROFILE ================= */
+
+        const {
+            data,
+            error
+        } =
+            await supabase
+                .from("profiles")
+                .select("*")
+                .eq(
+                    "id",
+                    user.id
                 )
-        );
+                .single();
 
 
-        renderProfile(
-            demoProfile
-        );
+        if (error) {
+
+            throw error;
+
+        }
+
+
+        if (!data) {
+
+            throw new Error(
+                "لم يتم العثور على بيانات الطالب."
+            );
+
+        }
+
+
+        currentProfile = data;
+
+
+        /* ================= LOAD STATS ================= */
+
+        const stats =
+            await loadStudentStats(
+                user.id
+            );
+
+
+        data.courses_count =
+            stats.coursesCount;
+
+
+        data.exams_count =
+            stats.examsCount;
+
+
+        data.average_score =
+            stats.averageScore;
+
+
+        data.average_progress =
+            stats.averageProgress;
+
+
+        /* ================= RENDER ================= */
+
+        renderProfile(data);
 
     }
 
     catch (error) {
 
-        console.error(error);
+        console.error(
+            "Profile Error:",
+            error
+        );
 
-        alert(
+
+        showMessage(
             "حدث خطأ أثناء تحميل بيانات الحساب."
         );
 
@@ -1621,10 +1679,186 @@ async function loadProfile() {
 }
 
 
+/* ================= STUDENT STATS ================= */
+
+async function loadStudentStats(userId) {
+
+    let coursesCount = 0;
+
+    let examsCount = 0;
+
+    let averageScore = 0;
+
+    let averageProgress = 0;
+
+
+    /* =====================================================
+       الكورسات
+
+       يفترض وجود جدول:
+
+       enrollments
+
+       student_id
+       course_id
+       progress
+       ===================================================== */
+
+    try {
+
+        const {
+            data: enrollments,
+            error
+        } =
+            await supabase
+                .from("enrollments")
+                .select(
+                    "course_id, progress"
+                )
+                .eq(
+                    "student_id",
+                    userId
+                );
+
+
+        if (!error && enrollments) {
+
+            coursesCount =
+                enrollments.length;
+
+
+            if (enrollments.length > 0) {
+
+                const total =
+                    enrollments.reduce(
+                        (
+                            sum,
+                            item
+                        ) =>
+                            sum +
+                            (
+                                Number(
+                                    item.progress
+                                ) || 0
+                            ),
+                        0
+                    );
+
+
+                averageProgress =
+                    Math.round(
+                        total /
+                        enrollments.length
+                    );
+
+            }
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.warn(
+            "Enrollments:",
+            error
+        );
+
+    }
+
+
+    /* =====================================================
+       النتائج
+
+       يفترض وجود جدول:
+
+       exam_results
+
+       student_id
+       score
+       ===================================================== */
+
+    try {
+
+        const {
+            data: results,
+            error
+        } =
+            await supabase
+                .from("exam_results")
+                .select(
+                    "score"
+                )
+                .eq(
+                    "student_id",
+                    userId
+                );
+
+
+        if (!error && results) {
+
+            examsCount =
+                results.length;
+
+
+            if (results.length > 0) {
+
+                const total =
+                    results.reduce(
+                        (
+                            sum,
+                            item
+                        ) =>
+                            sum +
+                            (
+                                Number(
+                                    item.score
+                                ) || 0
+                            ),
+                        0
+                    );
+
+
+                averageScore =
+                    Math.round(
+                        total /
+                        results.length
+                    );
+
+            }
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.warn(
+            "Exam Results:",
+            error
+        );
+
+    }
+
+
+    return {
+
+        coursesCount,
+
+        examsCount,
+
+        averageScore,
+
+        averageProgress
+
+    };
+
+}
+
+
 /* ================= RENDER ================= */
 
 function renderProfile(data) {
-
 
     /* الاسم */
 
@@ -1648,13 +1882,15 @@ function renderProfile(data) {
         "userEmail"
     ).textContent =
         data.email ||
-        "لا يوجد بريد إلكتروني";
+        currentUser?.email ||
+        "لا يوجد بريد";
 
 
     document.getElementById(
         "email"
     ).textContent =
         data.email ||
+        currentUser?.email ||
         "—";
 
 
@@ -1702,64 +1938,78 @@ function renderProfile(data) {
         "🎓 " +
         (
             data.grade ||
+            data.class ||
             "لم يتم تحديد الصف"
         );
 
 
-    /* الإحصائيات */
+    /* الكورسات */
 
     document.getElementById(
         "coursesCount"
     ).textContent =
-        data.courses_count || 0;
+        Number(
+            data.courses_count
+        ) || 0;
 
+
+    /* التقدم */
 
     document.getElementById(
         "progressValue"
     ).textContent =
         (
-            data.average_progress ||
-            0
+            Number(
+                data.average_progress
+            ) || 0
         ) + "%";
 
+
+    /* الاختبارات */
 
     document.getElementById(
         "examsCount"
     ).textContent =
-        data.exams_count || 0;
+        Number(
+            data.exams_count
+        ) || 0;
 
+
+    /* النتائج */
 
     document.getElementById(
         "averageScore"
     ).textContent =
         (
-            data.average_score ||
-            0
+            Number(
+                data.average_score
+            ) || 0
         ) + "%";
 
 
-    /* تقدم الكورسات */
+    /* progress */
 
     setProgress(
         "courseProgress",
         "courseProgressText",
-        data.average_progress || 0
+        data.average_progress
     );
 
-
-    /* تقدم الاختبارات */
 
     setProgress(
         "examProgress",
         "examProgressText",
-        data.average_score || 0
+        data.average_score
     );
 
 
     /* الصورة */
 
     if (
-        data.avatar_url
+        data.avatar_url &&
+        String(
+            data.avatar_url
+        ).trim() !== ""
     ) {
 
         const avatar =
@@ -1777,12 +2027,28 @@ function renderProfile(data) {
             data.avatar_url;
 
 
-        avatar.style.display =
-            "block";
+        avatar.onload =
+            function () {
+
+                avatar.style.display =
+                    "block";
+
+                placeholder.style.display =
+                    "none";
+
+            };
 
 
-        placeholder.style.display =
-            "none";
+        avatar.onerror =
+            function () {
+
+                avatar.style.display =
+                    "none";
+
+                placeholder.style.display =
+                    "grid";
+
+            };
 
     }
 
@@ -1825,36 +2091,39 @@ function setProgress(
 
 function openEdit() {
 
+    if (!currentProfile) {
+
+        return;
+
+    }
+
+
     document.getElementById(
         "editName"
     ).value =
-        document.getElementById(
-            "fullName"
-        ).textContent;
+        currentProfile.full_name ||
+        "";
 
 
     document.getElementById(
         "editPhone"
     ).value =
-        document.getElementById(
-            "phone"
-        ).textContent;
+        currentProfile.phone ||
+        "";
 
 
     document.getElementById(
         "editGovernorate"
     ).value =
-        document.getElementById(
-            "governorate"
-        ).textContent;
+        currentProfile.governorate ||
+        "";
 
 
     document.getElementById(
         "editSchool"
     ).value =
-        document.getElementById(
-            "school"
-        ).textContent;
+        currentProfile.school ||
+        "";
 
 
     editModal.classList.add(
@@ -1863,6 +2132,8 @@ function openEdit() {
 
 }
 
+
+/* ================= CLOSE EDIT ================= */
 
 function closeEdit() {
 
@@ -1873,9 +2144,16 @@ function closeEdit() {
 }
 
 
-/* ================= SAVE ================= */
+/* ================= SAVE PROFILE ================= */
 
 async function saveProfile() {
+
+    if (!currentUser) {
+
+        return;
+
+    }
+
 
     const name =
         document.getElementById(
@@ -1912,62 +2190,124 @@ async function saveProfile() {
     }
 
 
-    /*
-    ========================================================
-        SUPABASE
+    /* منع الضغط أكثر من مرة */
 
-        لاحقًا:
+    saveBtn.disabled = true;
 
-        await supabase
-            .from("profiles")
-            .update({
-                full_name: name,
-                phone: phone,
-                governorate: governorate,
-                school: school
-            })
-            .eq("id", user.id);
-
-    ========================================================
-    */
+    saveBtn.textContent =
+        "جاري الحفظ...";
 
 
-    document.getElementById(
-        "userName"
-    ).textContent =
-        name;
+    try {
+
+        const {
+            data,
+            error
+        } =
+            await supabase
+                .from("profiles")
+                .update({
+
+                    full_name:
+                        name,
+
+                    phone:
+                        phone || null,
+
+                    governorate:
+                        governorate || null,
+
+                    school:
+                        school || null
+
+                })
+                .eq(
+                    "id",
+                    currentUser.id
+                )
+                .select()
+                .single();
 
 
-    document.getElementById(
-        "fullName"
-    ).textContent =
-        name;
+        if (error) {
+
+            throw error;
+
+        }
 
 
-    document.getElementById(
-        "phone"
-    ).textContent =
-        phone || "—";
+        currentProfile =
+            data;
 
 
-    document.getElementById(
-        "governorate"
-    ).textContent =
-        governorate || "—";
+        /* تحديث الصفحة */
+
+        renderProfile({
+
+            ...data,
+
+            courses_count:
+                Number(
+                    document.getElementById(
+                        "coursesCount"
+                    ).textContent
+                ) || 0,
+
+            exams_count:
+                Number(
+                    document.getElementById(
+                        "examsCount"
+                    ).textContent
+                ) || 0,
+
+            average_score:
+                parseInt(
+                    document.getElementById(
+                        "averageScore"
+                    ).textContent
+                ) || 0,
+
+            average_progress:
+                parseInt(
+                    document.getElementById(
+                        "progressValue"
+                    ).textContent
+                ) || 0
+
+        });
 
 
-    document.getElementById(
-        "school"
-    ).textContent =
-        school || "—";
+        closeEdit();
 
 
-    closeEdit();
+        alert(
+            "تم تحديث البيانات بنجاح ✅"
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Update Profile Error:",
+            error
+        );
 
 
-    alert(
-        "تم تحديث البيانات بنجاح."
-    );
+        alert(
+            "لم يتم حفظ البيانات. تأكد من صلاحيات قاعدة البيانات."
+        );
+
+    }
+
+    finally {
+
+        saveBtn.disabled = false;
+
+        saveBtn.textContent =
+            "حفظ التغييرات";
+
+    }
 
 }
 
@@ -1999,22 +2339,59 @@ async function logout() {
     }
 
 
-    /*
-    ========================================================
-        SUPABASE
+    try {
 
-        لاحقًا:
-
-        await supabase.auth.signOut();
-
-    ========================================================
-    */
+        const {
+            error
+        } =
+            await supabase.auth.signOut();
 
 
-    window.location.href =
-        "auth.html";
+        if (error) {
+
+            throw error;
+
+        }
+
+
+        window.location.href =
+            "auth.html";
+
+    }
+
+    catch (error) {
+
+        console.error(
+            error
+        );
+
+
+        alert(
+            "حدث خطأ أثناء تسجيل الخروج."
+        );
+
+    }
 
 }
+
+
+/* ================= MODAL CLICK ================= */
+
+editModal.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target ===
+            editModal
+        ) {
+
+            closeEdit();
+
+        }
+
+    }
+);
 
 
 /* ================= START ================= */
@@ -2023,9 +2400,6 @@ loadProfile();
 
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase.js"></script>
-
 </body>
 
-</html>
+    </html>
