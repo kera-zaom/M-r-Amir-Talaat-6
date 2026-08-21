@@ -10,7 +10,7 @@
     content="width=device-width, initial-scale=1.0"
 >
 
-<title>الخوارزمي | حساب الطالب</title>
+<title>الخوارزمي | المنصة</title>
 
 <style>
 
@@ -47,14 +47,14 @@ body{
 
 .container{
 
-    width:
-        min(
-            1150px,
-            calc(100% - 30px)
-        );
+    width:min(
+        1150px,
+        calc(100% - 30px)
+    );
 
     margin:auto;
 }
+
 
 /* =========================
    HEADER
@@ -69,13 +69,14 @@ header{
     z-index:50;
 
     background:
-        rgba(7,7,13,.82);
+        rgba(7,7,13,.80);
 
     backdrop-filter:
         blur(18px);
 
     border-bottom:
-        1px solid rgba(255,255,255,.06);
+        1px solid
+        rgba(255,255,255,.06);
 }
 
 .nav{
@@ -123,7 +124,8 @@ header{
         );
 
     box-shadow:
-        0 12px 35px rgba(91,66,225,.3);
+        0 12px 35px
+        rgba(91,66,225,.30);
 }
 
 .brand-text h1{
@@ -146,7 +148,8 @@ header{
 
     border:0;
 
-    padding:10px 17px;
+    padding:
+        10px 17px;
 
     border-radius:11px;
 
@@ -156,22 +159,16 @@ header{
         rgba(255,255,255,.06);
 
     border:
-        1px solid rgba(255,255,255,.08);
+        1px solid
+        rgba(255,255,255,.08);
 
     font-family:inherit;
 
     font-size:10px;
 
     cursor:pointer;
-
-    transition:.25s;
 }
 
-.logout:hover{
-
-    background:
-        rgba(255,70,90,.12);
-}
 
 /* =========================
    MAIN
@@ -182,10 +179,6 @@ main{
     padding:
         50px 0 70px;
 }
-
-/* =========================
-   WELCOME
-========================= */
 
 .welcome{
 
@@ -205,41 +198,12 @@ main{
         );
 
     border:
-        1px solid rgba(255,255,255,.08);
+        1px solid
+        rgba(255,255,255,.08);
 
     box-shadow:
-        0 30px 80px rgba(0,0,0,.3);
-}
-
-.welcome::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:300px;
-    height:300px;
-
-    left:-100px;
-    bottom:-180px;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(124,82,245,.25),
-            transparent 70%
-        );
-
-    filter:blur(20px);
-}
-
-.welcome small{
-
-    color:#9b7cff;
-
-    font-size:11px;
+        0 30px 80px
+        rgba(0,0,0,.30);
 }
 
 .welcome h2{
@@ -259,6 +223,13 @@ main{
     color:#a88eff;
 }
 
+.welcome small{
+
+    color:#9b7cff;
+
+    font-size:11px;
+}
+
 .welcome p{
 
     margin-top:10px;
@@ -270,16 +241,20 @@ main{
     line-height:2;
 }
 
+
+/* =========================
+   STUDENT INFO
+========================= */
+
 .student-info{
-
-    position:relative;
-
-    z-index:2;
 
     display:grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(
+            3,
+            1fr
+        );
 
     gap:15px;
 
@@ -296,7 +271,8 @@ main{
         rgba(255,255,255,.035);
 
     border:
-        1px solid rgba(255,255,255,.06);
+        1px solid
+        rgba(255,255,255,.06);
 }
 
 .info-card small{
@@ -316,6 +292,7 @@ main{
 
     color:#ddd;
 }
+
 
 /* =========================
    TESTS
@@ -349,11 +326,15 @@ main{
     grid-template-columns:
         repeat(
             auto-fit,
-            minmax(250px,1fr)
+            minmax(
+                250px,
+                1fr
+            )
         );
 
     gap:17px;
 }
+
 
 /* =========================
    TEST CARD
@@ -369,17 +350,19 @@ main{
         rgba(255,255,255,.035);
 
     border:
-        1px solid rgba(255,255,255,.07);
+        1px solid
+        rgba(255,255,255,.07);
 
     transition:.25s;
 }
 
 .test-card:hover{
 
-    transform:translateY(-4px);
+    transform:
+        translateY(-4px);
 
     border-color:
-        rgba(135,99,255,.3);
+        rgba(135,99,255,.35);
 }
 
 .test-title{
@@ -426,6 +409,7 @@ main{
     cursor:pointer;
 }
 
+
 /* =========================
    EMPTY
 ========================= */
@@ -444,7 +428,8 @@ main{
         rgba(255,255,255,.025);
 
     border:
-        1px solid rgba(255,255,255,.06);
+        1px solid
+        rgba(255,255,255,.06);
 }
 
 .empty-icon{
@@ -465,6 +450,7 @@ main{
 
     font-size:10px;
 }
+
 
 /* =========================
    LOADING
@@ -496,9 +482,11 @@ main{
     border-radius:50%;
 
     border:
-        3px solid rgba(255,255,255,.08);
+        3px solid
+        rgba(255,255,255,.08);
 
-    border-top-color:#8659f5;
+    border-top-color:
+        #8659f5;
 
     animation:
         spin .8s linear infinite;
@@ -511,6 +499,7 @@ main{
     }
 
 }
+
 
 /* =========================
    FOOTER
@@ -527,8 +516,10 @@ footer{
     font-size:8px;
 
     border-top:
-        1px solid rgba(255,255,255,.05);
+        1px solid
+        rgba(255,255,255,.05);
 }
+
 
 /* =========================
    MOBILE
@@ -555,7 +546,6 @@ footer{
     .logo{
 
         width:42px;
-
         height:42px;
     }
 
@@ -583,40 +573,42 @@ footer{
 
 </head>
 
+
 <body>
+
 
 <header>
 
 <div class="container nav">
 
-    <div class="brand">
+<div class="brand">
 
-        <div class="logo">
-            ∑
-        </div>
+<div class="logo">
+    ∑
+</div>
 
-        <div class="brand-text">
+<div class="brand-text">
 
-            <h1>
-                الخوارزمي
-            </h1>
+<h1>
+    الخوارزمي
+</h1>
 
-            <span>
-                منصة الاختبارات
-            </span>
+<span>
+    منصة المستر أمير
+</span>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 
-    <button
-        class="logout"
-        id="logoutButton"
-        type="button"
-    >
-        تسجيل الخروج
-    </button>
+<button
+    class="logout"
+    id="logoutButton"
+    type="button"
+>
+    تسجيل الخروج
+</button>
 
 </div>
 
@@ -630,100 +622,101 @@ footer{
 
 <section class="welcome">
 
-    <small>
-        👋 أهلاً بيك في منصة الخوارزمي
-    </small>
+<small>
+    👋 أهلاً بيك في منصة الخوارزمي
+</small>
 
-    <h2>
-        أهلاً يا
-        <span id="studentName">
-            الطالب
-        </span>
-    </h2>
+<h2>
+    أهلاً يا
+    <span id="studentName">
+        الطالب
+    </span>
+</h2>
 
-    <p>
-        من هنا تقدر تشوف الاختبارات المتاحة ليك
-        وتبدأ التحدي وتطور مستواك في الرياضيات.
-    </p>
-
-
-    <div class="student-info">
+<p>
+    من هنا تقدر تشوف الاختبارات المتاحة ليك
+    وتبدأ التحدي وتطور مستواك في الرياضيات.
+</p>
 
 
-        <div class="info-card">
-
-            <small>
-                الاسم
-            </small>
-
-            <strong id="infoName">
-                جاري التحميل...
-            </strong>
-
-        </div>
+<div class="student-info">
 
 
-        <div class="info-card">
+<div class="info-card">
 
-            <small>
-                الصف الدراسي
-            </small>
+<small>
+    الاسم
+</small>
 
-            <strong id="studentGrade">
-                جاري التحميل...
-            </strong>
+<strong id="infoName">
+    جاري التحميل...
+</strong>
 
-        </div>
+</div>
 
 
-        <div class="info-card">
+<div class="info-card">
 
-            <small>
-                رقم الموبايل
-            </small>
+<small>
+    الصف الدراسي
+</small>
 
-            <strong id="studentPhone">
-                جاري التحميل...
-            </strong>
+<strong id="studentGrade">
+    جاري التحميل...
+</strong>
 
-        </div>
+</div>
 
-    </div>
+
+<div class="info-card">
+
+<small>
+    رقم الموبايل
+</small>
+
+<strong id="studentPhone">
+    جاري التحميل...
+</strong>
+
+</div>
+
+
+</div>
 
 </section>
 
 
 <section>
 
-    <div class="section-title">
+<div class="section-title">
 
-        <small>
-            الاختبارات
-        </small>
+<small>
+    الاختبارات
+</small>
 
-        <h3>
-            الاختبارات المتاحة
-        </h3>
+<h3>
+    الاختبارات المتاحة
+</h3>
 
-    </div>
+</div>
 
 
-    <div
-        id="testsContainer"
-        class="tests"
-    >
+<div
+    id="testsContainer"
+    class="tests"
+>
 
-        <div class="loading">
+<div class="loading">
 
-            <div class="spinner"></div>
+<div class="spinner"></div>
 
-            <span>
-                جاري تحميل الاختبارات...
-            </span>
+<span>
+    جاري تحميل الاختبارات...
+</span>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </section>
 
@@ -737,18 +730,14 @@ footer{
 
 <div class="container">
 
-    ©
-    <span id="year"></span>
-    الخوارزمي — جميع الحقوق محفوظة
+©
+<span id="year"></span>
+الخوارزمي — جميع الحقوق محفوظة
 
 </div>
 
 </footer>
 
-
-<!-- =========================
-     SUPABASE
-========================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -759,10 +748,6 @@ footer{
 
 "use strict";
 
-
-/* =========================
-   ELEMENTS
-========================= */
 
 const studentName =
     document.getElementById(
@@ -795,31 +780,25 @@ const logoutButton =
     );
 
 
-/* =========================
-   YEAR
-========================= */
-
-document.getElementById(
-    "year"
-).textContent =
+document.getElementById("year")
+    .textContent =
     new Date().getFullYear();
 
 
 /* =========================
-   SUPABASE
+   ESCAPE
 ========================= */
 
-function getSupabase(){
+function escapeHTML(value){
 
-    if(!window.supabaseClient){
-
-        throw new Error(
-            "Supabase غير متصل."
-        );
-
-    }
-
-    return window.supabaseClient;
+    return String(
+        value ?? ""
+    )
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
 }
 
@@ -832,19 +811,32 @@ async function loadStudent(){
 
     try{
 
+        if(
+            !window.supabaseClient
+        ){
+
+            throw new Error(
+                "Supabase غير متصل."
+            );
+
+        }
+
+
         const supabase =
-            getSupabase();
+            window.supabaseClient;
 
 
-        /* SESSION */
+        /* =========================
+           SESSION
+        ========================= */
 
         const {
             data,
             error
         } =
             await supabase
-                .auth
-                .getSession();
+            .auth
+            .getSession();
 
 
         if(error){
@@ -854,7 +846,10 @@ async function loadStudent(){
         }
 
 
-        if(!data?.session){
+        if(
+            !data ||
+            !data.session
+        ){
 
             window.location.replace(
                 "./auth.html"
@@ -869,22 +864,26 @@ async function loadStudent(){
             data.session.user;
 
 
-        /* PROFILE */
+        /* =========================
+           PROFILE
+        ========================= */
 
         const profileResult =
             await supabase
-                .from("profiles")
-                .select(
-                    "id,full_name,email,phone,role,grade,avatar_url"
-                )
-                .eq(
-                    "id",
-                    user.id
-                )
-                .maybeSingle();
+            .from("profiles")
+            .select(
+                "id,full_name,email,phone,grade,role"
+            )
+            .eq(
+                "id",
+                user.id
+            )
+            .maybeSingle();
 
 
-        if(profileResult.error){
+        if(
+            profileResult.error
+        ){
 
             throw profileResult.error;
 
@@ -897,50 +896,37 @@ async function loadStudent(){
 
         if(!profile){
 
-            testsContainer.innerHTML = `
-
-                <div class="empty">
-
-                    <div class="empty-icon">
-                        ⚠️
-                    </div>
-
-                    <h4>
-                        بيانات الحساب غير مكتملة
-                    </h4>
-
-                    <p>
-                        لا يوجد ملف شخصي مرتبط بهذا الحساب.
-                    </p>
-
-                </div>
-
-            `;
-
-            return;
+            throw new Error(
+                "بيانات الطالب غير موجودة في profiles."
+            );
 
         }
 
 
-        /* ADMIN */
+        /* =========================
+           ADMIN
+        ========================= */
 
         if(
-            String(
-                profile.role || ""
-            ).toLowerCase()
+            String(profile.role)
+            .toLowerCase()
             === "admin"
         ){
 
-            window.location.replace(
-                "./admin/index.html"
-            );
-
-            return;
+            /*
+             * لو الأدمن دخل من هنا
+             * نتركه في home حسب طلبك.
+             *
+             * ويمكن لاحقًا تغييرها
+             * إلى لوحة الأدمن.
+             */
 
         }
 
 
-        /* STUDENT DATA */
+        /* =========================
+           DATA
+        ========================= */
 
         const name =
             profile.full_name ||
@@ -963,7 +949,9 @@ async function loadStudent(){
             "غير محدد";
 
 
-        /* LOAD EXAMS */
+        /* =========================
+           TESTS
+        ========================= */
 
         await loadTests(
             supabase,
@@ -981,23 +969,26 @@ async function loadStudent(){
 
         testsContainer.innerHTML = `
 
-            <div class="empty">
+<div class="empty">
 
-                <div class="empty-icon">
-                    ⚠️
-                </div>
+<div class="empty-icon">
+    ⚠️
+</div>
 
-                <h4>
-                    حدث خطأ
-                </h4>
+<h4>
+    حدث خطأ
+</h4>
 
-                <p>
-                    تعذر تحميل بيانات الحساب.
-                </p>
+<p>
+    ${escapeHTML(
+        error.message ||
+        "تعذر تحميل البيانات."
+    )}
+</p>
 
-            </div>
+</div>
 
-        `;
+`;
 
     }
 
@@ -1015,24 +1006,11 @@ async function loadTests(
 
     try{
 
-        let query =
-            supabase
-                .from("exams")
-                .select("*");
+        if(!grade){
 
+            showNoTests();
 
-        /*
-         * لو الطالب عنده صف
-         * نجيب الاختبارات الخاصة بالصف
-         */
-
-        if(grade){
-
-            query =
-                query.eq(
-                    "grade",
-                    grade
-                );
+            return;
 
         }
 
@@ -1041,7 +1019,13 @@ async function loadTests(
             data,
             error
         } =
-            await query;
+            await supabase
+            .from("exams")
+            .select("*")
+            .eq(
+                "grade",
+                grade
+            );
 
 
         if(error){
@@ -1062,7 +1046,9 @@ async function loadTests(
             data || [];
 
 
-        if(!exams.length){
+        if(
+            exams.length === 0
+        ){
 
             showNoTests();
 
@@ -1073,110 +1059,64 @@ async function loadTests(
 
         testsContainer.innerHTML =
             exams
-                .map(function(exam){
+            .map(function(exam){
 
-                    const title =
-                        exam.title ||
-                        exam.name ||
-                        "اختبار رياضيات";
-
-
-                    const duration =
-                        exam.duration ||
-                        exam.duration_minutes ||
-                        "غير محدد";
+                const title =
+                    exam.title ||
+                    exam.name ||
+                    "اختبار رياضيات";
 
 
-                    const id =
-                        String(
-                            exam.id || ""
-                        );
+                const duration =
+                    exam.duration ||
+                    exam.duration_minutes ||
+                    null;
 
 
-                    return `
+                return `
 
-                        <div class="test-card">
+<div class="test-card">
 
-                            <div class="test-title">
+<div class="test-title">
 
-                                ${escapeHTML(
-                                    title
-                                )}
+${escapeHTML(title)}
 
-                            </div>
+</div>
 
 
-                            <div class="test-info">
+<div class="test-info">
 
-                                الصف:
-                                ${escapeHTML(
-                                    grade || "الكل"
-                                )}
+اختبار متاح للصف
+${escapeHTML(grade)}
 
-                                <br>
+${duration
+    ? `<br>المدة: ${escapeHTML(duration)} دقيقة`
+    : ""
+}
 
-                                مدة الاختبار:
-                                ${escapeHTML(
-                                    duration
-                                )}
-                                دقيقة
-
-                            </div>
+</div>
 
 
-                            <button
-                                class="start-button"
-                                type="button"
-                                data-id="${escapeHTML(id)}"
-                            >
-                                بدء الاختبار
-                            </button>
+<button
+    class="start-button"
+    type="button"
+    onclick="startExam('${escapeHTML(exam.id)}')"
+>
+    بدء الاختبار
+</button>
 
-                        </div>
+</div>
 
-                    `;
+`;
 
-                })
-                .join("");
-
-
-        /*
-         * أزرار الاختبارات
-         */
-
-        testsContainer
-            .querySelectorAll(
-                ".start-button"
-            )
-            .forEach(function(button){
-
-                button.addEventListener(
-                    "click",
-                    function(){
-
-                        const id =
-                            button.dataset.id;
-
-
-                        if(!id){
-                            return;
-                        }
-
-
-                        window.location.href =
-                            "./exam.html?id=" +
-                            encodeURIComponent(id);
-
-                    }
-                );
-
-            });
+            })
+            .join("");
 
 
     }catch(error){
 
         console.error(
-            "LOAD TESTS ERROR:",
+            "TESTS ERROR:",
             error
         );
 
@@ -1195,57 +1135,42 @@ function showNoTests(){
 
     testsContainer.innerHTML = `
 
-        <div class="empty">
+<div class="empty">
 
-            <div class="empty-icon">
-                📝
-            </div>
+<div class="empty-icon">
+    📝
+</div>
 
-            <h4>
-                لا توجد اختبارات متاحة حاليًا
-            </h4>
+<h4>
+    لا توجد اختبارات متاحة حاليًا
+</h4>
 
-            <p>
-                عندما يضيف المستر اختبارًا للصف الخاص بك
-                سيظهر هنا تلقائيًا.
-            </p>
+<p>
+    عندما يضيف المستر اختبارًا للصف الخاص بك
+    سيظهر هنا تلقائيًا.
+</p>
 
-        </div>
+</div>
 
-    `;
+`;
 
 }
 
 
 /* =========================
-   HTML ESCAPE
+   START EXAM
 ========================= */
 
-function escapeHTML(value){
+function startExam(id){
 
-    return String(
-        value ?? ""
-    )
-    .replace(
-        /&/g,
-        "&amp;"
-    )
-    .replace(
-        /</g,
-        "&lt;"
-    )
-    .replace(
-        />/g,
-        "&gt;"
-    )
-    .replace(
-        /"/g,
-        "&quot;"
-    )
-    .replace(
-        /'/g,
-        "&#039;"
-    );
+    if(!id){
+        return;
+    }
+
+
+    window.location.href =
+        "./exam.html?id=" +
+        encodeURIComponent(id);
 
 }
 
@@ -1264,16 +1189,13 @@ logoutButton.addEventListener(
 
         try{
 
-            const supabase =
-                getSupabase();
-
-
             const {
                 error
             } =
-                await supabase
-                    .auth
-                    .signOut();
+                await window
+                .supabaseClient
+                .auth
+                .signOut();
 
 
             if(error){
@@ -1294,7 +1216,6 @@ logoutButton.addEventListener(
                 "LOGOUT ERROR:",
                 error
             );
-
 
             logoutButton.disabled =
                 false;
