@@ -13,10 +13,8 @@ content="width=device-width, initial-scale=1.0">
 <link rel="preconnect"
 href="https://fonts.googleapis.com">
 
-<link rel="stylesheet"
-href="https://fonts.googleapis.com">
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+<link
+href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
 rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -33,7 +31,6 @@ rel="stylesheet">
 :root{
     --bg:#050507;
     --card:#111118;
-    --card2:#171720;
     --border:rgba(255,255,255,.08);
     --text:#fff;
     --muted:#92929f;
@@ -41,13 +38,10 @@ rel="stylesheet">
     --primary2:#5137d9;
     --green:#35d39a;
     --red:#ff6078;
-    --yellow:#f4c95d;
 }
 
 body{
-
     min-height:100vh;
-
     color:var(--text);
 
     background:
@@ -62,50 +56,36 @@ body{
         transparent 30%
     ),
     var(--bg);
-
 }
 
-
-/* SIDEBAR */
+/* ================= SIDEBAR ================= */
 
 .sidebar{
-
     position:fixed;
-
     right:0;
     top:0;
-
     width:255px;
     height:100vh;
-
     padding:20px 15px;
 
     background:#09090e;
-
     border-left:1px solid var(--border);
 
     z-index:1000;
-
+    transition:.3s;
 }
 
 .brand{
-
     display:flex;
-
     align-items:center;
-
     gap:10px;
 
     padding:8px 10px 25px;
-
     border-bottom:1px solid var(--border);
-
     margin-bottom:18px;
-
 }
 
 .logo{
-
     width:44px;
     height:44px;
 
@@ -122,176 +102,113 @@ body{
     );
 
     font-size:20px;
-
     font-weight:900;
-
 }
 
 .brand strong{
-
     display:block;
-
     font-size:16px;
-
 }
 
 .brand span{
-
     display:block;
-
     color:var(--muted);
-
     font-size:8px;
-
 }
 
 .menu-title{
-
     color:#666675;
-
     font-size:8px;
-
     padding:0 10px 8px;
-
 }
 
 .menu{
-
     display:flex;
-
     flex-direction:column;
-
     gap:5px;
-
 }
 
 .menu a{
-
     display:flex;
-
     align-items:center;
-
     gap:10px;
 
     height:44px;
-
     padding:0 12px;
 
     color:#b7b7c2;
-
     text-decoration:none;
 
     border-radius:11px;
 
     font-size:10px;
-
     font-weight:700;
 
     transition:.2s;
-
 }
 
 .menu a:hover{
-
     color:#fff;
-
-    background:
-    rgba(118,87,255,.08);
-
+    background:rgba(118,87,255,.08);
 }
 
 .menu a.active{
-
     color:#fff;
-
-    background:
-    rgba(118,87,255,.15);
-
-    border:
-    1px solid
-    rgba(118,87,255,.15);
-
+    background:rgba(118,87,255,.15);
+    border:1px solid rgba(118,87,255,.15);
 }
 
 .menu-icon{
-
     width:27px;
     height:27px;
 
     display:grid;
-
     place-items:center;
 
     border-radius:8px;
 
-    background:
-    rgba(255,255,255,.04);
-
+    background:rgba(255,255,255,.04);
 }
 
 .logout{
-
     position:absolute;
-
     bottom:20px;
-
     right:15px;
     left:15px;
-
 }
 
 .logout button{
-
     width:100%;
-
     height:43px;
 
-    border:
-    1px solid
-    rgba(255,96,120,.12);
-
+    border:1px solid rgba(255,96,120,.12);
     border-radius:11px;
 
     color:#ff8496;
-
-    background:
-    rgba(255,96,120,.05);
+    background:rgba(255,96,120,.05);
 
     cursor:pointer;
 
     font-size:10px;
-
     font-weight:800;
-
 }
 
-
-/* MAIN */
+/* ================= MAIN ================= */
 
 .main{
-
     margin-right:255px;
-
     min-height:100vh;
-
     padding:25px 30px 60px;
-
 }
 
 .topbar{
-
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
     margin-bottom:25px;
-
 }
 
 .mobile-menu{
-
     display:none;
 
     width:42px;
@@ -299,29 +216,20 @@ body{
 
     border:1px solid var(--border);
 
-    background:
-    rgba(255,255,255,.04);
-
+    background:rgba(255,255,255,.04);
     color:#fff;
 
     border-radius:10px;
-
     cursor:pointer;
-
 }
 
 .admin-box{
-
     display:flex;
-
     align-items:center;
-
     gap:10px;
-
 }
 
 .admin-avatar{
-
     width:42px;
     height:42px;
 
@@ -338,96 +246,93 @@ body{
     );
 
     font-weight:900;
-
 }
 
 .admin-info strong{
-
     display:block;
-
     font-size:10px;
-
 }
 
 .admin-info span{
-
     display:block;
-
     color:var(--muted);
-
     font-size:8px;
-
 }
 
-
-/* HEADER */
+/* ================= HEADER ================= */
 
 .page-header{
-
     display:flex;
-
     align-items:flex-start;
-
     justify-content:space-between;
 
     gap:15px;
-
     margin-bottom:20px;
-
 }
 
 .page-header h1{
-
     font-size:27px;
-
     font-weight:900;
-
 }
 
 .page-header p{
-
     color:var(--muted);
+    font-size:9px;
+    margin-top:4px;
+}
+
+.header-actions{
+    display:flex;
+    gap:8px;
+}
+
+.add-btn,
+.back-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    height:43px;
+    padding:0 16px;
+
+    border-radius:10px;
+
+    text-decoration:none;
 
     font-size:9px;
+    font-weight:900;
+}
 
-    margin-top:4px;
+.add-btn{
+    color:#fff;
 
+    background:
+    linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary2)
+    );
+
+    border:0;
+    cursor:pointer;
+
+    box-shadow:
+    0 10px 30px
+    rgba(118,87,255,.15);
 }
 
 .back-btn{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    height:42px;
-
-    padding:0 15px;
-
     color:#ddd;
-
-    text-decoration:none;
 
     border:1px solid var(--border);
 
     background:
     rgba(255,255,255,.035);
-
-    border-radius:10px;
-
-    font-size:9px;
-
-    font-weight:800;
-
 }
 
-
-/* FILTER */
+/* ================= FILTER ================= */
 
 .filter-box{
-
     display:grid;
 
     grid-template-columns:
@@ -436,7 +341,6 @@ body{
     gap:10px;
 
     padding:16px;
-
     margin-bottom:18px;
 
     border-radius:15px;
@@ -445,20 +349,16 @@ body{
     rgba(17,17,24,.9);
 
     border:1px solid var(--border);
-
 }
 
 .input,
 .select{
-
     width:100%;
-
     height:44px;
 
     padding:0 12px;
 
     color:#fff;
-
     outline:none;
 
     background:
@@ -469,31 +369,29 @@ body{
     border-radius:10px;
 
     font-size:9px;
-
 }
 
 .input:focus,
 .select:focus{
-
     border-color:
     rgba(118,87,255,.5);
 
+    box-shadow:
+    0 0 0 3px
+    rgba(118,87,255,.06);
 }
 
 .select option{
-
     background:#15151e;
-
+    color:#fff;
 }
 
 .search-btn{
-
     height:44px;
 
     padding:0 18px;
 
     border:0;
-
     border-radius:10px;
 
     color:#fff;
@@ -508,27 +406,21 @@ body{
     cursor:pointer;
 
     font-size:9px;
-
     font-weight:900;
-
 }
 
-
-/* FILES */
+/* ================= FILES ================= */
 
 .files{
-
     display:grid;
 
     grid-template-columns:
     repeat(3,1fr);
 
     gap:13px;
-
 }
 
 .file-card{
-
     padding:16px;
 
     border-radius:16px;
@@ -539,25 +431,20 @@ body{
     border:1px solid var(--border);
 
     transition:.2s;
-
 }
 
 .file-card:hover{
-
     transform:translateY(-2px);
 
     border-color:
     rgba(118,87,255,.25);
-
 }
 
 .file-icon{
-
     width:55px;
     height:55px;
 
     display:grid;
-
     place-items:center;
 
     border-radius:14px;
@@ -568,41 +455,31 @@ body{
     font-size:25px;
 
     margin-bottom:13px;
-
 }
 
 .file-card h3{
-
     font-size:11px;
-
     margin-bottom:5px;
-
 }
 
 .file-card p{
-
     color:var(--muted);
 
     font-size:8px;
-
     line-height:1.7;
 
+    word-break:break-word;
 }
 
 .file-meta{
-
     display:flex;
-
     gap:6px;
-
     flex-wrap:wrap;
 
     margin-top:12px;
-
 }
 
 .badge{
-
     padding:5px 8px;
 
     border-radius:20px;
@@ -613,36 +490,29 @@ body{
     color:#aaa;
 
     font-size:7px;
-
 }
 
 .badge.green{
-
     color:#6ee4b3;
 
     background:
     rgba(53,211,154,.07);
-
 }
 
 .actions{
-
     display:flex;
 
     gap:6px;
 
     margin-top:14px;
-
     padding-top:12px;
 
     border-top:
     1px solid
     rgba(255,255,255,.05);
-
 }
 
 .action{
-
     flex:1;
 
     height:34px;
@@ -659,34 +529,26 @@ body{
     cursor:pointer;
 
     font-size:8px;
-
     font-weight:700;
-
 }
 
 .action:hover{
-
     color:#fff;
 
     border-color:
     rgba(118,87,255,.35);
-
 }
 
 .action.delete:hover{
-
     color:#ff7287;
 
     border-color:
     rgba(255,96,120,.3);
-
 }
 
-
-/* EMPTY */
+/* ================= EMPTY ================= */
 
 .empty{
-
     text-align:center;
 
     padding:70px 20px;
@@ -697,40 +559,27 @@ body{
     rgba(17,17,24,.9);
 
     border:1px solid var(--border);
-
 }
 
 .empty-icon{
-
     font-size:45px;
-
     margin-bottom:10px;
-
 }
 
 .empty h3{
-
     font-size:13px;
-
     margin-bottom:5px;
-
 }
 
 .empty p{
-
     color:var(--muted);
-
     font-size:8px;
-
 }
 
-
-/* MODAL */
+/* ================= MODAL ================= */
 
 .modal{
-
     position:fixed;
-
     inset:0;
 
     z-index:3000;
@@ -738,7 +587,6 @@ body{
     display:none;
 
     align-items:center;
-
     justify-content:center;
 
     padding:15px;
@@ -747,23 +595,17 @@ body{
     rgba(0,0,0,.75);
 
     backdrop-filter:blur(8px);
-
 }
 
 .modal.show{
-
     display:flex;
-
 }
 
 .modal-box{
-
     width:100%;
-
     max-width:620px;
 
     max-height:92vh;
-
     overflow-y:auto;
 
     padding:22px;
@@ -773,29 +615,22 @@ body{
     background:#101017;
 
     border:1px solid var(--border);
-
 }
 
 .modal-head{
-
     display:flex;
 
     align-items:center;
-
     justify-content:space-between;
 
     margin-bottom:20px;
-
 }
 
 .modal-head h2{
-
     font-size:15px;
-
 }
 
 .close{
-
     width:35px;
     height:35px;
 
@@ -809,20 +644,15 @@ body{
     border-radius:9px;
 
     cursor:pointer;
-
 }
 
-
-/* FORM */
+/* ================= FORM ================= */
 
 .form-group{
-
     margin-bottom:14px;
-
 }
 
 .form-group label{
-
     display:block;
 
     margin-bottom:6px;
@@ -830,13 +660,10 @@ body{
     color:#aaa;
 
     font-size:8px;
-
     font-weight:700;
-
 }
 
 .file-input{
-
     width:100%;
 
     padding:15px;
@@ -852,31 +679,23 @@ body{
     color:#aaa;
 
     font-size:8px;
-
 }
 
 .file-input input{
-
     width:100%;
-
     margin-top:8px;
-
     color:#aaa;
-
 }
 
 .modal-footer{
-
     display:flex;
 
     gap:8px;
 
     margin-top:20px;
-
 }
 
 .save-btn{
-
     flex:1;
 
     height:44px;
@@ -897,13 +716,10 @@ body{
     cursor:pointer;
 
     font-size:9px;
-
     font-weight:900;
-
 }
 
 .cancel-btn{
-
     width:120px;
 
     height:44px;
@@ -920,14 +736,11 @@ body{
     cursor:pointer;
 
     font-size:9px;
-
 }
 
-
-/* LOADING */
+/* ================= LOADING ================= */
 
 .loading{
-
     position:fixed;
 
     inset:0;
@@ -937,15 +750,12 @@ body{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     background:#050507;
-
 }
 
 .spinner{
-
     width:45px;
     height:45px;
 
@@ -959,7 +769,6 @@ body{
 
     animation:
     spin .8s linear infinite;
-
 }
 
 @keyframes spin{
@@ -970,15 +779,12 @@ body{
 
 }
 
-
-/* TOAST */
+/* ================= TOAST ================= */
 
 .toast{
-
     position:fixed;
 
     left:20px;
-
     bottom:20px;
 
     z-index:6000;
@@ -1002,46 +808,39 @@ body{
     pointer-events:none;
 
     transition:.3s;
-
 }
 
 .toast.show{
-
     transform:translateY(0);
-
     opacity:1;
-
 }
 
 .toast.error{
-
     color:#ff9aaa;
 
+    border-color:
+    rgba(255,96,120,.25);
 }
 
 .toast.success{
-
     color:#7be6bd;
 
+    border-color:
+    rgba(53,211,154,.25);
 }
 
-
-/* RESPONSIVE */
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:1000px){
 
     .files{
-
         grid-template-columns:
         repeat(2,1fr);
-
     }
 
     .filter-box{
-
         grid-template-columns:
         1fr 1fr;
-
     }
 
 }
@@ -1049,31 +848,24 @@ body{
 @media(max-width:800px){
 
     .sidebar{
-
-        transform:translateX(100%);
-
-        transition:.3s;
-
+        transform:
+        translateX(100%);
     }
 
     .sidebar.open{
-
-        transform:translateX(0);
-
+        transform:
+        translateX(0);
     }
 
     .main{
-
         margin-right:0;
 
-        padding:18px 15px 40px;
-
+        padding:
+        18px 15px 40px;
     }
 
     .mobile-menu{
-
         display:block;
-
     }
 
 }
@@ -1081,27 +873,25 @@ body{
 @media(max-width:650px){
 
     .page-header{
-
         flex-direction:column;
-
     }
 
-    .back-btn{
-
+    .header-actions{
         width:100%;
+        flex-direction:column;
+    }
 
+    .add-btn,
+    .back-btn{
+        width:100%;
     }
 
     .filter-box{
-
         grid-template-columns:1fr;
-
     }
 
     .files{
-
         grid-template-columns:1fr;
-
     }
 
 }
@@ -1110,401 +900,405 @@ body{
 
 </head>
 
-
 <body>
 
-
-<!-- SIDEBAR -->
+<!-- ================= SIDEBAR ================= -->
 
 <aside class="sidebar" id="sidebar">
 
-<div class="brand">
+    <div class="brand">
 
-<div class="logo">
-خ
-</div>
+        <div class="logo">
+            خ
+        </div>
 
-<div>
+        <div>
 
-<strong>
-الخوارزمي
-</strong>
+            <strong>
+                الخوارزمي
+            </strong>
 
-<span>
-لوحة الإدارة
-</span>
+            <span>
+                لوحة الإدارة
+            </span>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
+    <div class="menu-title">
+        الإدارة
+    </div>
 
-<div class="menu-title">
-الإدارة
-</div>
+    <nav class="menu">
 
+        <a href="index.html">
+            <div class="menu-icon">🏠</div>
+            الرئيسية
+        </a>
 
-<nav class="menu">
+        <a href="students.html">
+            <div class="menu-icon">👨‍🎓</div>
+            الطلاب
+        </a>
 
-<a href="index.html">
-<div class="menu-icon">🏠</div>
-الرئيسية
-</a>
+        <a href="courses.html">
+            <div class="menu-icon">📚</div>
+            الكورسات
+        </a>
 
-<a href="students.html">
-<div class="menu-icon">👨‍🎓</div>
-الطلاب
-</a>
+        <a href="lessons.html">
+            <div class="menu-icon">🎥</div>
+            الدروس والفيديوهات
+        </a>
 
-<a href="courses.html">
-<div class="menu-icon">📚</div>
-الكورسات
-</a>
+        <a href="exams.html">
+            <div class="menu-icon">📝</div>
+            الاختبارات
+        </a>
 
-<a href="lessons.html">
-<div class="menu-icon">🎥</div>
-الدروس والفيديوهات
-</a>
+        <a href="questions.html">
+            <div class="menu-icon">❓</div>
+            الأسئلة
+        </a>
 
-<a href="exams.html">
-<div class="menu-icon">📝</div>
-الاختبارات
-</a>
+        <a href="results.html">
+            <div class="menu-icon">📊</div>
+            النتائج
+        </a>
 
-<a href="questions.html">
-<div class="menu-icon">❓</div>
-الأسئلة
-</a>
+        <a href="files.html" class="active">
+            <div class="menu-icon">📁</div>
+            الملفات و PDF
+        </a>
 
-<a href="results.html">
-<div class="menu-icon">📊</div>
-النتائج
-</a>
+        <a href="payments.html">
+            <div class="menu-icon">💳</div>
+            المدفوعات
+        </a>
 
-<a href="files.html" class="active">
-<div class="menu-icon">📁</div>
-الملفات و PDF
-</a>
+        <a href="settings.html">
+            <div class="menu-icon">⚙️</div>
+            الإعدادات
+        </a>
 
-<a href="payments.html">
-<div class="menu-icon">💳</div>
-المدفوعات
-</a>
+    </nav>
 
-<a href="settings.html">
-<div class="menu-icon">⚙️</div>
-الإعدادات
-</a>
+    <div class="logout">
 
-</nav>
+        <button onclick="logout()">
+            🚪 تسجيل الخروج
+        </button>
 
-
-<div class="logout">
-
-<button onclick="logout()">
-🚪 تسجيل الخروج
-</button>
-
-</div>
+    </div>
 
 </aside>
 
 
-<!-- MAIN -->
+<!-- ================= MAIN ================= -->
 
 <main class="main">
 
+    <div class="topbar">
 
-<div class="topbar">
+        <button
+            class="mobile-menu"
+            onclick="toggleSidebar()">
 
-<button
-class="mobile-menu"
-onclick="toggleSidebar()">
-☰
-</button>
+            ☰
 
-<div></div>
+        </button>
 
-<div class="admin-box">
+        <div></div>
 
-<div class="admin-avatar">
-أ
-</div>
+        <div class="admin-box">
 
-<div class="admin-info">
+            <div class="admin-avatar">
+                أ
+            </div>
 
-<strong id="adminName">
-الأدمن
-</strong>
+            <div class="admin-info">
 
-<span>
-مدير المنصة
-</span>
+                <strong id="adminName">
+                    الأدمن
+                </strong>
 
-</div>
+                <span>
+                    مدير المنصة
+                </span>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-
-<section class="page-header">
-
-<div>
-
-<h1>
-الملفات و PDF
-</h1>
-
-<p>
-إدارة ملفات الكورسات والدروس من لوحة التحكم.
-</p>
-
-</div>
+    </div>
 
 
-<a
-href="index.html"
-class="back-btn">
+    <!-- HEADER -->
 
-← لوحة التحكم
+    <section class="page-header">
 
-</a>
+        <div>
 
-</section>
+            <h1>
+                الملفات و PDF
+            </h1>
 
+            <p>
+                إدارة ملفات الكورسات والدروس من لوحة التحكم.
+            </p>
 
-<!-- FILTER -->
+        </div>
 
-<section class="filter-box">
+        <div class="header-actions">
 
-<input
-class="input"
-id="searchInput"
-placeholder="🔎 ابحث عن ملف..."
->
+            <button
+                class="add-btn"
+                onclick="openModal()">
 
-<select
-class="select"
-id="courseFilter">
+                ＋ إضافة ملف
 
-<option value="">
-كل الكورسات
-</option>
+            </button>
 
-</select>
+            <a
+                href="index.html"
+                class="back-btn">
 
+                ← لوحة التحكم
 
-<select
-class="select"
-id="typeFilter">
+            </a>
 
-<option value="">
-كل الملفات
-</option>
+        </div>
 
-<option value="pdf">
-PDF
-</option>
-
-<option value="file">
-ملفات أخرى
-</option>
-
-</select>
+    </section>
 
 
-<button
-class="search-btn"
-onclick="renderFiles()">
+    <!-- FILTER -->
 
-بحث
+    <section class="filter-box">
 
-</button>
+        <input
+            class="input"
+            id="searchInput"
+            placeholder="🔎 ابحث عن ملف..."
+        >
 
-</section>
+        <select
+            class="select"
+            id="courseFilter">
+
+            <option value="">
+                كل الكورسات
+            </option>
+
+        </select>
+
+        <select
+            class="select"
+            id="typeFilter">
+
+            <option value="">
+                كل الملفات
+            </option>
+
+            <option value="pdf">
+                PDF
+            </option>
+
+            <option value="file">
+                ملفات أخرى
+            </option>
+
+        </select>
+
+        <button
+            class="search-btn"
+            onclick="renderFiles()">
+
+            بحث
+
+        </button>
+
+    </section>
 
 
-<!-- FILES -->
+    <!-- FILES -->
 
-<section
-class="files"
-id="filesContainer">
-</section>
+    <section
+        class="files"
+        id="filesContainer">
+    </section>
 
 
-<section
-class="empty"
-id="emptyState"
-style="display:none;">
+    <section
+        class="empty"
+        id="emptyState"
+        style="display:none;">
 
-<div class="empty-icon">
-📭
-</div>
+        <div class="empty-icon">
+            📭
+        </div>
 
-<h3>
-لا توجد ملفات
-</h3>
+        <h3>
+            لا توجد ملفات
+        </h3>
 
-<p>
-لم يتم رفع أي ملفات حتى الآن.
-</p>
+        <p>
+            لم يتم رفع أي ملفات حتى الآن.
+        </p>
 
-</section>
-
+    </section>
 
 </main>
 
 
-<!-- MODAL -->
+<!-- ================= MODAL ================= -->
 
 <div
-class="modal"
-id="fileModal">
+    class="modal"
+    id="fileModal">
 
-<div class="modal-box">
+    <div class="modal-box">
 
+        <div class="modal-head">
 
-<div class="modal-head">
+            <h2>
+                إضافة ملف جديد
+            </h2>
 
-<h2>
-إضافة ملف
-</h2>
+            <button
+                class="close"
+                onclick="closeModal()">
 
-<button
-class="close"
-onclick="closeModal()">
-✕
-</button>
+                ✕
 
-</div>
+            </button>
 
-
-<form id="fileForm">
+        </div>
 
 
-<div class="form-group">
+        <form id="fileForm">
 
-<label>
-اسم الملف *
-</label>
+            <div class="form-group">
 
-<input
-class="input"
-id="fileTitle"
-required
-placeholder="مثال: مراجعة الوحدة الأولى"
->
+                <label>
+                    اسم الملف *
+                </label>
 
-</div>
+                <input
+                    class="input"
+                    id="fileTitle"
+                    required
+                    placeholder="مثال: مراجعة الوحدة الأولى"
+                >
 
-
-<div class="form-group">
-
-<label>
-الكورس *
-</label>
-
-<select
-class="select"
-id="courseId"
-required>
-
-<option value="">
-اختر الكورس
-</option>
-
-</select>
-
-</div>
+            </div>
 
 
-<div class="form-group">
+            <div class="form-group">
 
-<label>
-الدرس — اختياري
-</label>
+                <label>
+                    الكورس *
+                </label>
 
-<select
-class="select"
-id="lessonId">
+                <select
+                    class="select"
+                    id="courseId"
+                    required>
 
-<option value="">
-بدون ربط بدرس
-</option>
+                    <option value="">
+                        اختر الكورس
+                    </option>
 
-</select>
+                </select>
 
-</div>
-
-
-<div class="form-group">
-
-<label>
-نوع الملف
-</label>
-
-<select
-class="select"
-id="fileType">
-
-<option value="pdf">
-PDF
-</option>
-
-<option value="file">
-ملف آخر
-</option>
-
-</select>
-
-</div>
+            </div>
 
 
-<div class="form-group">
+            <div class="form-group">
 
-<div class="file-input">
+                <label>
+                    الدرس — اختياري
+                </label>
 
-📁 اختر الملف من جهازك
+                <select
+                    class="select"
+                    id="lessonId">
 
-<input
-type="file"
-id="fileUpload"
-accept=".pdf,.doc,.docx,.ppt,.pptx,.zip"
-required
->
+                    <option value="">
+                        بدون ربط بدرس
+                    </option>
 
-</div>
+                </select>
 
-</div>
-
-
-<div class="modal-footer">
-
-<button
-type="button"
-class="cancel-btn"
-onclick="closeModal()">
-
-إلغاء
-
-</button>
+            </div>
 
 
-<button
-type="submit"
-class="save-btn">
+            <div class="form-group">
 
-💾 رفع وحفظ الملف
+                <label>
+                    نوع الملف
+                </label>
 
-</button>
+                <select
+                    class="select"
+                    id="fileType">
 
-</div>
+                    <option value="pdf">
+                        PDF
+                    </option>
+
+                    <option value="file">
+                        ملف آخر
+                    </option>
+
+                </select>
+
+            </div>
 
 
-</form>
+            <div class="form-group">
 
-</div>
+                <div class="file-input">
+
+                    📁 اختر الملف من جهازك
+
+                    <input
+                        type="file"
+                        id="fileUpload"
+                        accept=".pdf,.doc,.docx,.ppt,.pptx,.zip"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    onclick="closeModal()">
+
+                    إلغاء
+
+                </button>
+
+                <button
+                    type="submit"
+                    class="save-btn">
+
+                    💾 رفع وحفظ الملف
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
 
 </div>
 
@@ -1512,17 +1306,19 @@ class="save-btn">
 <!-- LOADING -->
 
 <div
-class="loading"
-id="loading">
+    class="loading"
+    id="loading">
 
-<div class="spinner"></div>
+    <div class="spinner"></div>
 
 </div>
 
 
+<!-- TOAST -->
+
 <div
-class="toast"
-id="toast">
+    class="toast"
+    id="toast">
 </div>
 
 
@@ -1530,26 +1326,61 @@ id="toast">
 
 /* =====================================================
    SUPABASE
+   البيانات موجودة في:
+   ../supabase.js
 ===================================================== */
 
-const SUPABASE_URL =
-"ضع_رابط_مشروعك_هنا";
+if(
+    typeof window.supabase === "undefined"
+){
 
-const SUPABASE_KEY =
-"ضع_publishable_او_anon_key_هنا";
+    console.error(
+        "Supabase library لم يتم تحميلها."
+    );
+
+}
+
+
+/* =====================================================
+   SUPABASE CLIENT
+===================================================== */
 
 let supabaseClient = null;
 
+
+/*
+   لو supabase.js عندك ينشئ متغير باسم supabaseClient
+   هنستخدمه مباشرة.
+
+   ولو عندك فقط SUPABASE_URL و SUPABASE_KEY
+   هننشئ Client هنا.
+*/
+
 if(
-SUPABASE_URL.startsWith("http") &&
-!SUPABASE_URL.includes("ضع_")
+    typeof window.supabaseClient !== "undefined"
 ){
 
-supabaseClient =
-window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
-);
+    supabaseClient =
+        window.supabaseClient;
+
+}
+
+
+/*
+   دعم أسماء مختلفة لملف supabase.js
+*/
+
+if(
+    !supabaseClient &&
+    typeof window.SUPABASE_URL !== "undefined" &&
+    typeof window.SUPABASE_KEY !== "undefined"
+){
+
+    supabaseClient =
+        window.supabase.createClient(
+            window.SUPABASE_URL,
+            window.SUPABASE_KEY
+        );
 
 }
 
@@ -1570,13 +1401,19 @@ let lessons = [];
 ===================================================== */
 
 const loading =
-document.getElementById("loading");
+    document.getElementById("loading");
 
 const toast =
-document.getElementById("toast");
+    document.getElementById("toast");
 
 const modal =
-document.getElementById("fileModal");
+    document.getElementById("fileModal");
+
+const filesContainer =
+    document.getElementById("filesContainer");
+
+const emptyState =
+    document.getElementById("emptyState");
 
 
 /* =====================================================
@@ -1585,8 +1422,10 @@ document.getElementById("fileModal");
 
 function setLoading(state){
 
-loading.style.display =
-state ? "flex" : "none";
+    loading.style.display =
+        state
+        ? "flex"
+        : "none";
 
 }
 
@@ -1596,24 +1435,28 @@ state ? "flex" : "none";
 ===================================================== */
 
 function showToast(
-message,
-type=""
+    message,
+    type=""
 ){
 
-toast.textContent =
-message;
+    toast.textContent =
+        message;
 
-toast.className =
-"toast " +
-type +
-" show";
+    toast.className =
+        "toast " +
+        type +
+        " show";
 
-setTimeout(
-()=>{
-toast.classList.remove("show");
-},
-3500
-);
+    setTimeout(
+        () => {
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },
+        3500
+    );
 
 }
 
@@ -1624,103 +1467,106 @@ toast.classList.remove("show");
 
 function toggleSidebar(){
 
-document
-.getElementById("sidebar")
-.classList
-.toggle("open");
+    document
+        .getElementById("sidebar")
+        .classList
+        .toggle("open");
 
 }
 
 
 /* =====================================================
-   ADMIN
+   ADMIN CHECK
 ===================================================== */
 
 async function checkAdmin(){
 
-if(!supabaseClient){
+    if(!supabaseClient){
 
-showToast(
-"ضع بيانات Supabase أولاً.",
-"error"
-);
+        showToast(
+            "لم يتم العثور على اتصال Supabase. تأكد من ملف supabase.js.",
+            "error"
+        );
 
-return false;
+        return false;
 
-}
-
-
-const {
-data,
-error
-} =
-await supabaseClient
-.auth
-.getSession();
+    }
 
 
-if(
-error ||
-!data.session
-){
-
-window.location.href =
-"login.html";
-
-return false;
-
-}
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .auth
+            .getSession();
 
 
-const user =
-data.session.user;
+    if(
+        error ||
+        !data ||
+        !data.session
+    ){
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
 
 
-const {
-data:profile
-} =
-await supabaseClient
-
-.from("profiles")
-
-.select(
-"id,full_name,role"
-)
-
-.eq(
-"id",
-user.id
-)
-
-.maybeSingle();
+    const user =
+        data.session.user;
 
 
-if(
-!profile ||
-profile.role !== "admin"
-){
+    const {
+        data:profile,
+        error:profileError
+    } =
+        await supabaseClient
 
-await supabaseClient
-.auth
-.signOut();
+            .from("profiles")
 
-window.location.href =
-"login.html";
+            .select(
+                "id,full_name,role"
+            )
 
-return false;
+            .eq(
+                "id",
+                user.id
+            )
 
-}
-
-
-document
-.getElementById("adminName")
-.textContent =
-profile.full_name ||
-user.email ||
-"الأدمن";
+            .maybeSingle();
 
 
-return true;
+    if(
+        profileError ||
+        !profile ||
+        profile.role !== "admin"
+    ){
+
+        await supabaseClient
+            .auth
+            .signOut();
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
+    document
+        .getElementById("adminName")
+        .textContent =
+            profile.full_name ||
+            user.email ||
+            "الأدمن";
+
+
+    return true;
 
 }
 
@@ -1731,75 +1577,95 @@ return true;
 
 async function loadCourses(){
 
-const {
-data,
-error
-} =
-await supabaseClient
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
 
-.from("courses")
+            .from("courses")
 
-.select(`
-id,
-title
-`)
+            .select(
+                "id,title"
+            )
 
-.order(
-"created_at",
-{
-ascending:false
-}
-);
-
-
-if(error)
-throw error;
+            .order(
+                "created_at",
+                {
+                    ascending:false
+                }
+            );
 
 
-courses =
-data || [];
+    if(error)
+        throw error;
 
 
-const selects = [
-
-document.getElementById("courseFilter"),
-
-document.getElementById("courseId")
-
-];
+    courses =
+        data || [];
 
 
-selects.forEach(
-select => {
+    const filter =
+        document.getElementById(
+            "courseFilter"
+        );
 
-const first =
-select.innerHTML;
+    const courseSelect =
+        document.getElementById(
+            "courseId"
+        );
 
-select.innerHTML =
-first;
+
+    filter.innerHTML = `
+        <option value="">
+            كل الكورسات
+        </option>
+    `;
 
 
-courses.forEach(
-course => {
+    courseSelect.innerHTML = `
+        <option value="">
+            اختر الكورس
+        </option>
+    `;
 
-const option =
-document.createElement(
-"option"
-);
 
-option.value =
-course.id;
+    courses.forEach(
+        course => {
 
-option.textContent =
-course.title;
+            const option1 =
+                document.createElement(
+                    "option"
+                );
 
-select.appendChild(
-option
-);
+            option1.value =
+                course.id;
 
-});
+            option1.textContent =
+                course.title;
 
-});
+            filter.appendChild(
+                option1
+            );
+
+
+            const option2 =
+                document.createElement(
+                    "option"
+                );
+
+            option2.value =
+                course.id;
+
+            option2.textContent =
+                course.title;
+
+            courseSelect.appendChild(
+                option2
+            );
+
+        }
+    );
 
 }
 
@@ -1810,100 +1676,100 @@ option
 
 async function loadLessons(){
 
-const {
-data,
-error
-} =
-await supabaseClient
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
 
-.from("lessons")
+            .from("lessons")
 
-.select(`
-id,
-title,
-course_id
-`)
+            .select(
+                "id,title,course_id"
+            )
 
-.order(
-"created_at",
-{
-ascending:false
-}
-);
+            .order(
+                "created_at",
+                {
+                    ascending:false
+                }
+            );
 
 
-if(error)
-throw error;
+    if(error)
+        throw error;
 
 
-lessons =
-data || [];
-
-
-updateLessonSelect();
+    lessons =
+        data || [];
 
 }
 
 
 /* =====================================================
-   UPDATE LESSONS
+   UPDATE LESSON SELECT
 ===================================================== */
 
 function updateLessonSelect(){
 
-const courseId =
-document
-.getElementById("courseId")
-.value;
+    const courseId =
+        document
+            .getElementById(
+                "courseId"
+            )
+            .value;
 
 
-const select =
-document
-.getElementById("lessonId");
+    const select =
+        document
+            .getElementById(
+                "lessonId"
+            );
 
 
-select.innerHTML = `
-
-<option value="">
-بدون ربط بدرس
-</option>
-
-`;
+    select.innerHTML = `
+        <option value="">
+            بدون ربط بدرس
+        </option>
+    `;
 
 
-if(!courseId)
-return;
+    if(!courseId)
+        return;
 
 
-lessons
+    lessons
 
-.filter(
-lesson =>
-String(
-lesson.course_id
-) ===
-String(courseId)
-)
+        .filter(
+            lesson =>
+                String(
+                    lesson.course_id
+                ) ===
+                String(
+                    courseId
+                )
+        )
 
-.forEach(
-lesson => {
+        .forEach(
+            lesson => {
 
-const option =
-document.createElement(
-"option"
-);
+                const option =
+                    document.createElement(
+                        "option"
+                    );
 
-option.value =
-lesson.id;
+                option.value =
+                    lesson.id;
 
-option.textContent =
-lesson.title;
+                option.textContent =
+                    lesson.title;
 
-select.appendChild(
-option
-);
+                select.appendChild(
+                    option
+                );
 
-});
+            }
+        );
 
 }
 
@@ -1914,254 +1780,314 @@ option
 
 async function loadFiles(){
 
-const {
-data,
-error
-} =
-await supabaseClient
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
 
-.from("course_files")
+            .from("course_files")
 
-.select(`
-id,
-title,
-file_type,
-file_url,
-course_id,
-lesson_id,
-file_name,
-file_size,
-created_at
-`)
+            .select(`
+                id,
+                title,
+                file_type,
+                file_url,
+                course_id,
+                lesson_id,
+                file_name,
+                file_size,
+                storage_path,
+                created_at
+            `)
 
-.order(
-"created_at",
-{
-ascending:false
-}
-);
-
-
-if(error)
-throw error;
+            .order(
+                "created_at",
+                {
+                    ascending:false
+                }
+            );
 
 
-allFiles =
-data || [];
+    if(error)
+        throw error;
 
 
-renderFiles();
+    allFiles =
+        data || [];
+
+
+    renderFiles();
 
 }
 
 
 /* =====================================================
-   RENDER
+   RENDER FILES
 ===================================================== */
 
 function renderFiles(){
 
-const container =
-document
-.getElementById(
-"filesContainer"
-);
-
-const empty =
-document
-.getElementById(
-"emptyState"
-);
+    const search =
+        document
+            .getElementById(
+                "searchInput"
+            )
+            .value
+            .trim()
+            .toLowerCase();
 
 
-const search =
-document
-.getElementById(
-"searchInput"
-)
-.value
-.trim()
-.toLowerCase();
+    const course =
+        document
+            .getElementById(
+                "courseFilter"
+            )
+            .value;
 
 
-const course =
-document
-.getElementById(
-"courseFilter"
-)
-.value;
+    const type =
+        document
+            .getElementById(
+                "typeFilter"
+            )
+            .value;
 
 
-const type =
-document
-.getElementById(
-"typeFilter"
-)
-.value;
+    const filtered =
+        allFiles.filter(
+            file => {
+
+                const title =
+                    (
+                        file.title ||
+                        ""
+                    ).toLowerCase();
 
 
-const filtered =
-allFiles.filter(
-file => {
-
-const title =
-(file.title || "")
-.toLowerCase();
-
-const matchesSearch =
-!search ||
-title.includes(search);
+                const fileName =
+                    (
+                        file.file_name ||
+                        ""
+                    ).toLowerCase();
 
 
-const matchesCourse =
-!course ||
-String(
-file.course_id
-) ===
-String(course);
+                const matchesSearch =
+                    !search ||
+                    title.includes(search) ||
+                    fileName.includes(search);
 
 
-const matchesType =
-!type ||
-file.file_type === type;
+                const matchesCourse =
+                    !course ||
+                    String(
+                        file.course_id
+                    ) ===
+                    String(
+                        course
+                    );
 
 
-return (
-matchesSearch &&
-matchesCourse &&
-matchesType
-);
-
-});
+                const matchesType =
+                    !type ||
+                    file.file_type === type;
 
 
-container.innerHTML =
-"";
+                return (
+                    matchesSearch &&
+                    matchesCourse &&
+                    matchesType
+                );
+
+            }
+        );
 
 
-if(!filtered.length){
-
-container.style.display =
-"none";
-
-empty.style.display =
-"block";
-
-return;
-
-}
+    filesContainer.innerHTML =
+        "";
 
 
-container.style.display =
-"grid";
+    if(!filtered.length){
 
-empty.style.display =
-"none";
+        filesContainer.style.display =
+            "none";
 
+        emptyState.style.display =
+            "block";
 
-filtered.forEach(
-file => {
+        return;
 
-const courseName =
-getCourseName(
-file.course_id
-);
+    }
 
 
-const lessonName =
-getLessonName(
-file.lesson_id
-);
+    filesContainer.style.display =
+        "grid";
+
+    emptyState.style.display =
+        "none";
 
 
-const icon =
-file.file_type === "pdf"
-? "📕"
-: "📄";
+    filtered.forEach(
+        file => {
+
+            const courseName =
+                getCourseName(
+                    file.course_id
+                );
 
 
-const card =
-document.createElement(
-"article"
-);
-
-card.className =
-"file-card";
+            const lessonName =
+                getLessonName(
+                    file.lesson_id
+                );
 
 
-card.innerHTML = `
-
-<div class="file-icon">
-${icon}
-</div>
-
-<h3>
-${escapeHTML(
-file.title || "ملف بدون اسم"
-)}
-</h3>
-
-<p>
-${escapeHTML(
-file.file_name || ""
-)}
-</p>
-
-<div class="file-meta">
-
-<span class="badge">
-📚 ${escapeHTML(courseName)}
-</span>
-
-${
-lessonName
-?
-`
-<span class="badge">
-🎥 ${escapeHTML(lessonName)}
-</span>
-`
-:
-""
-}
-
-<span class="badge green">
-${file.file_type === "pdf"
-? "PDF"
-: "ملف"}
-</span>
-
-</div>
+            const icon =
+                file.file_type === "pdf"
+                ? "📕"
+                : "📄";
 
 
-<div class="actions">
-
-<button
-class="action"
-onclick="openFile('${file.file_url}')">
-
-👁️ فتح
-
-</button>
-
-<button
-class="action delete"
-onclick="deleteFile('${file.id}')">
-
-🗑️ حذف
-
-</button>
-
-</div>
-
-`;
+            const size =
+                formatFileSize(
+                    file.file_size
+                );
 
 
-container.appendChild(
-card
-);
+            const date =
+                formatDate(
+                    file.created_at
+                );
 
-});
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+
+            card.className =
+                "file-card";
+
+
+            card.innerHTML = `
+
+                <div class="file-icon">
+                    ${icon}
+                </div>
+
+
+                <h3>
+                    ${escapeHTML(
+                        file.title ||
+                        "ملف بدون اسم"
+                    )}
+                </h3>
+
+
+                <p>
+                    ${escapeHTML(
+                        file.file_name ||
+                        "بدون اسم ملف"
+                    )}
+                </p>
+
+
+                <div class="file-meta">
+
+                    <span class="badge">
+                        📚
+                        ${escapeHTML(
+                            courseName
+                        )}
+                    </span>
+
+
+                    ${
+                        lessonName
+                        ?
+                        `
+                        <span class="badge">
+                            🎥
+                            ${escapeHTML(
+                                lessonName
+                            )}
+                        </span>
+                        `
+                        :
+                        ""
+                    }
+
+
+                    <span class="badge green">
+                        ${
+                            file.file_type === "pdf"
+                            ? "PDF"
+                            : "ملف"
+                        }
+                    </span>
+
+
+                    ${
+                        size
+                        ?
+                        `
+                        <span class="badge">
+                            ${size}
+                        </span>
+                        `
+                        :
+                        ""
+                    }
+
+                </div>
+
+
+                <div class="actions">
+
+                    <button
+                        class="action"
+                        onclick="openFile('${escapeJS(
+                            file.file_url
+                        )}')">
+
+                        👁️ فتح
+
+                    </button>
+
+
+                    <button
+                        class="action delete"
+                        onclick="deleteFile('${escapeJS(
+                            file.id
+                        )}')">
+
+                        🗑️ حذف
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    style="
+                        margin-top:10px;
+                        color:#666675;
+                        font-size:7px;
+                    "
+                >
+                    📅 ${date}
+                </div>
+
+            `;
+
+
+            filesContainer.appendChild(
+                card
+            );
+
+        }
+    );
 
 }
 
@@ -2172,16 +2098,17 @@ card
 
 function getCourseName(id){
 
-const course =
-courses.find(
-item =>
-String(item.id) ===
-String(id)
-);
+    const course =
+        courses.find(
+            item =>
+                String(item.id) ===
+                String(id)
+        );
 
-return course
-? course.title
-: "غير محدد";
+
+    return course
+        ? course.title
+        : "غير محدد";
 
 }
 
@@ -2192,16 +2119,106 @@ return course
 
 function getLessonName(id){
 
-const lesson =
-lessons.find(
-item =>
-String(item.id) ===
-String(id)
-);
+    if(!id)
+        return "";
 
-return lesson
-? lesson.title
-: "";
+
+    const lesson =
+        lessons.find(
+            item =>
+                String(item.id) ===
+                String(id)
+        );
+
+
+    return lesson
+        ? lesson.title
+        : "";
+
+}
+
+
+/* =====================================================
+   FILE SIZE
+===================================================== */
+
+function formatFileSize(bytes){
+
+    if(
+        bytes === null ||
+        bytes === undefined ||
+        bytes === 0
+    ){
+
+        return "";
+
+    }
+
+
+    const units = [
+        "B",
+        "KB",
+        "MB",
+        "GB"
+    ];
+
+
+    let size =
+        Number(bytes);
+
+    let index = 0;
+
+
+    while(
+        size >= 1024 &&
+        index < units.length - 1
+    ){
+
+        size /= 1024;
+        index++;
+
+    }
+
+
+    return (
+        Math.round(
+            size * 10
+        ) / 10
+    ) +
+    " " +
+    units[index];
+
+}
+
+
+/* =====================================================
+   DATE
+===================================================== */
+
+function formatDate(date){
+
+    if(!date)
+        return "—";
+
+
+    try{
+
+        return new Intl.DateTimeFormat(
+            "ar-EG",
+            {
+                year:"numeric",
+                month:"short",
+                day:"numeric"
+            }
+        ).format(
+            new Date(date)
+        );
+
+    }catch(error){
+
+        return "—";
+
+    }
 
 }
 
@@ -2212,22 +2229,23 @@ return lesson
 
 function openFile(url){
 
-if(!url){
+    if(!url){
 
-showToast(
-"رابط الملف غير موجود.",
-"error"
-);
+        showToast(
+            "رابط الملف غير موجود.",
+            "error"
+        );
 
-return;
+        return;
 
-}
+    }
 
 
-window.open(
-url,
-"_blank"
-);
+    window.open(
+        url,
+        "_blank",
+        "noopener,noreferrer"
+    );
 
 }
 
@@ -2238,34 +2256,38 @@ url,
 
 function openModal(){
 
-document
-.getElementById("fileForm")
-.reset();
+    document
+        .getElementById(
+            "fileForm"
+        )
+        .reset();
 
 
-document
-.getElementById("lessonId")
-.innerHTML = `
+    document
+        .getElementById(
+            "lessonId"
+        )
+        .innerHTML = `
 
-<option value="">
-بدون ربط بدرس
-</option>
+            <option value="">
+                بدون ربط بدرس
+            </option>
 
-`;
+        `;
 
 
-modal.classList.add(
-"show"
-);
+    modal.classList.add(
+        "show"
+    );
 
 }
 
 
 function closeModal(){
 
-modal.classList.remove(
-"show"
-);
+    modal.classList.remove(
+        "show"
+    );
 
 }
 
@@ -2275,401 +2297,561 @@ modal.classList.remove(
 ===================================================== */
 
 document
-.getElementById("courseId")
-.addEventListener(
-"change",
-updateLessonSelect
-);
+    .getElementById(
+        "courseId"
+    )
+    .addEventListener(
+        "change",
+        updateLessonSelect
+    );
 
 
 /* =====================================================
-   UPLOAD
+   UPLOAD FILE
 ===================================================== */
 
 document
-.getElementById("fileForm")
-.addEventListener(
-"submit",
-async function(event){
+    .getElementById(
+        "fileForm"
+    )
+    .addEventListener(
+        "submit",
+        async function(event){
 
-event.preventDefault();
+            event.preventDefault();
 
 
-const title =
-document
-.getElementById("fileTitle")
-.value
-.trim();
+            if(!supabaseClient){
 
+                showToast(
+                    "Supabase غير متصل.",
+                    "error"
+                );
 
-const courseId =
-document
-.getElementById("courseId")
-.value;
+                return;
 
+            }
 
-const lessonId =
-document
-.getElementById("lessonId")
-.value ||
-null;
 
+            const title =
+                document
+                    .getElementById(
+                        "fileTitle"
+                    )
+                    .value
+                    .trim();
 
-const fileType =
-document
-.getElementById("fileType")
-.value;
 
+            const courseId =
+                document
+                    .getElementById(
+                        "courseId"
+                    )
+                    .value;
 
-const file =
-document
-.getElementById("fileUpload")
-.files[0];
 
+            const lessonId =
+                document
+                    .getElementById(
+                        "lessonId"
+                    )
+                    .value ||
+                    null;
 
-if(!title){
 
-showToast(
-"اكتب اسم الملف.",
-"error"
-);
+            const fileType =
+                document
+                    .getElementById(
+                        "fileType"
+                    )
+                    .value;
 
-return;
 
-}
+            const file =
+                document
+                    .getElementById(
+                        "fileUpload"
+                    )
+                    .files[0];
 
 
-if(!courseId){
+            if(!title){
 
-showToast(
-"اختر الكورس.",
-"error"
-);
+                showToast(
+                    "اكتب اسم الملف.",
+                    "error"
+                );
 
-return;
+                return;
 
-}
+            }
 
 
-if(!file){
+            if(!courseId){
 
-showToast(
-"اختر الملف.",
-"error"
-);
+                showToast(
+                    "اختر الكورس.",
+                    "error"
+                );
 
-return;
+                return;
 
-}
+            }
 
 
-/*
-   مهم:
-   bucket اسمه:
-   course-files
-*/
+            if(!file){
 
-try{
+                showToast(
+                    "اختر الملف.",
+                    "error"
+                );
 
-setLoading(true);
+                return;
 
+            }
 
-/* FILE SIZE */
 
-const maxSize =
-50 * 1024 * 1024;
+            try{
 
+                setLoading(true);
 
-if(file.size > maxSize){
 
-throw new Error(
-"حجم الملف أكبر من 50MB."
-);
+                /*
+                    الحد الأقصى:
+                    50 MB
+                */
 
-}
+                const maxSize =
+                    50 * 1024 * 1024;
 
 
-/* FILE NAME */
+                if(
+                    file.size >
+                    maxSize
+                ){
 
-const safeName =
-file.name
-.replace(
-/[^a-zA-Z0-9._-]/g,
-"_"
-);
+                    throw new Error(
+                        "حجم الملف أكبر من 50MB."
+                    );
 
+                }
 
-const uniqueName =
-`${crypto.randomUUID()}_${safeName}`;
 
+                /*
+                    تنظيف اسم الملف
+                */
 
-const storagePath =
-`${courseId}/${uniqueName}`;
+                const safeName =
+                    file.name
+                        .replace(
+                            /[^a-zA-Z0-9._-]/g,
+                            "_"
+                        );
 
 
-/* UPLOAD */
+                /*
+                    اسم فريد
+                */
 
-const {
-error:uploadError
-} =
-await supabaseClient
+                const uniqueId =
+                    (
+                        window.crypto &&
+                        crypto.randomUUID
+                    )
+                    ?
+                    crypto.randomUUID()
+                    :
+                    Date.now();
 
-.storage
 
-.from(
-"course-files"
-)
+                const uniqueName =
+                    `${uniqueId}_${safeName}`;
 
-.upload(
-storagePath,
-file,
-{
-upsert:false,
-contentType:
-file.type ||
-"application/octet-stream"
-}
-);
 
+                /*
+                    مسار التخزين
+                */
 
-if(uploadError)
-throw uploadError;
+                const storagePath =
+                    `${courseId}/${uniqueName}`;
 
 
-/* PUBLIC URL */
+                /* =========================
+                   STORAGE UPLOAD
+                ========================= */
 
-const {
-data:urlData
-} =
-supabaseClient
+                const {
+                    error:uploadError
+                } =
+                    await supabaseClient
 
-.storage
+                        .storage
 
-.from(
-"course-files"
-)
+                        .from(
+                            "course-files"
+                        )
 
-.getPublicUrl(
-storagePath
-);
+                        .upload(
+                            storagePath,
+                            file,
+                            {
+                                upsert:false,
 
+                                contentType:
+                                    file.type ||
+                                    "application/octet-stream"
+                            }
+                        );
 
-const fileUrl =
-urlData.publicUrl;
 
+                if(uploadError)
+                    throw uploadError;
 
-/* DATABASE */
 
-const {
-error:dbError
-} =
-await supabaseClient
+                /* =========================
+                   PUBLIC URL
+                ========================= */
 
-.from("course_files")
+                const {
+                    data:urlData
+                } =
+                    supabaseClient
 
-.insert({
+                        .storage
 
-title:title,
+                        .from(
+                            "course-files"
+                        )
 
-course_id:courseId,
+                        .getPublicUrl(
+                            storagePath
+                        );
 
-lesson_id:lessonId,
 
-file_type:fileType,
+                const fileUrl =
+                    urlData &&
+                    urlData.publicUrl
+                    ?
+                    urlData.publicUrl
+                    :
+                    "";
 
-file_url:fileUrl,
 
-file_name:file.name,
+                if(!fileUrl){
 
-file_size:file.size,
+                    /*
+                        لو فشل حفظ الرابط،
+                        نحذف الملف من Storage
+                    */
 
-storage_path:storagePath
+                    await supabaseClient
+                        .storage
+                        .from(
+                            "course-files"
+                        )
+                        .remove([
+                            storagePath
+                        ]);
 
-});
 
+                    throw new Error(
+                        "تعذر إنشاء رابط الملف."
+                    );
 
-if(dbError){
+                }
 
-/*
-   لو حفظ قاعدة البيانات فشل،
-   نحاول حذف الملف من Storage
-*/
 
-await supabaseClient
-.storage
-.from("course-files")
-.remove([
-storagePath
-]);
+                /* =========================
+                   DATABASE INSERT
+                ========================= */
 
-throw dbError;
+                const {
+                    error:dbError
+                } =
+                    await supabaseClient
 
-}
+                        .from(
+                            "course_files"
+                        )
 
+                        .insert({
 
-showToast(
-"تم رفع الملف وحفظه بنجاح.",
-"success"
-);
+                            title:title,
 
+                            course_id:courseId,
 
-closeModal();
+                            lesson_id:lessonId,
 
-await loadFiles();
+                            file_type:fileType,
 
+                            file_url:fileUrl,
 
-}catch(error){
+                            file_name:file.name,
 
-console.error(error);
+                            file_size:file.size,
 
-showToast(
-error.message ||
-"حدث خطأ أثناء رفع الملف.",
-"error"
-);
+                            storage_path:storagePath
 
-}finally{
+                        });
 
-setLoading(false);
 
-}
+                if(dbError){
 
-});
+                    /*
+                        قاعدة البيانات فشلت،
+                        نحذف الملف من Storage
+                    */
+
+                    await supabaseClient
+                        .storage
+                        .from(
+                            "course-files"
+                        )
+                        .remove([
+                            storagePath
+                        ]);
+
+                    throw dbError;
+
+                }
+
+
+                showToast(
+                    "تم رفع الملف وحفظه بنجاح.",
+                    "success"
+                );
+
+
+                closeModal();
+
+
+                await loadFiles();
+
+
+            }catch(error){
+
+                console.error(
+                    "UPLOAD ERROR:",
+                    error
+                );
+
+
+                showToast(
+                    error.message ||
+                    "حدث خطأ أثناء رفع الملف.",
+                    "error"
+                );
+
+
+            }finally{
+
+                setLoading(false);
+
+            }
+
+        }
+    );
 
 
 /* =====================================================
-   DELETE
+   DELETE FILE
 ===================================================== */
 
 async function deleteFile(id){
 
-const confirmed =
-confirm(
-"هل تريد حذف هذا الملف نهائيًا؟"
-);
+    const confirmed =
+        confirm(
+            "⚠️ هل تريد حذف هذا الملف نهائيًا؟\n\nسيتم حذفه من قاعدة البيانات وStorage."
+        );
 
 
-if(!confirmed)
-return;
+    if(!confirmed)
+        return;
 
 
-try{
+    try{
 
-setLoading(true);
-
-
-const file =
-allFiles.find(
-item =>
-String(item.id) ===
-String(id)
-);
+        setLoading(true);
 
 
-if(!file)
-throw new Error(
-"الملف غير موجود."
-);
+        const file =
+            allFiles.find(
+                item =>
+                    String(
+                        item.id
+                    ) ===
+                    String(
+                        id
+                    )
+            );
 
 
-/* DELETE STORAGE */
+        if(!file){
 
-if(file.storage_path){
+            throw new Error(
+                "الملف غير موجود."
+            );
 
-await supabaseClient
-
-.storage
-
-.from("course-files")
-
-.remove([
-file.storage_path
-]);
-
-}
+        }
 
 
-/* DELETE DB */
+        /* =========================
+           DELETE STORAGE
+        ========================= */
 
-const {
-error
-} =
-await supabaseClient
+        if(
+            file.storage_path
+        ){
 
-.from("course_files")
+            const {
+                error:storageError
+            } =
+                await supabaseClient
 
-.delete()
+                    .storage
 
-.eq(
-"id",
-id
-);
+                    .from(
+                        "course-files"
+                    )
 
-
-if(error)
-throw error;
-
-
-showToast(
-"تم حذف الملف.",
-"success"
-);
+                    .remove([
+                        file.storage_path
+                    ]);
 
 
-await loadFiles();
+            if(storageError){
+
+                console.warn(
+                    "Storage delete warning:",
+                    storageError
+                );
+
+            }
+
+        }
 
 
-}catch(error){
+        /* =========================
+           DELETE DATABASE
+        ========================= */
 
-console.error(error);
+        const {
+            error
+        } =
+            await supabaseClient
 
-showToast(
-error.message ||
-"تعذر حذف الملف.",
-"error"
-);
+                .from(
+                    "course_files"
+                )
 
-}finally{
+                .delete()
 
-setLoading(false);
+                .eq(
+                    "id",
+                    id
+                );
 
-}
+
+        if(error)
+            throw error;
+
+
+        showToast(
+            "تم حذف الملف بنجاح.",
+            "success"
+        );
+
+
+        await loadFiles();
+
+
+    }catch(error){
+
+        console.error(
+            "DELETE ERROR:",
+            error
+        );
+
+
+        showToast(
+            error.message ||
+            "تعذر حذف الملف.",
+            "error"
+        );
+
+
+    }finally{
+
+        setLoading(false);
+
+    }
 
 }
 
 
 /* =====================================================
-   ESCAPE
+   ESCAPE HTML
 ===================================================== */
 
 function escapeHTML(value){
 
-return String(value)
+    return String(value)
 
-.replace(
-/&/g,
-"&amp;"
-)
+        .replace(
+            /&/g,
+            "&amp;"
+        )
 
-.replace(
-/</g,
-"&lt;"
-)
+        .replace(
+            /</g,
+            "&lt;"
+        )
 
-.replace(
-/>/g,
-"&gt;"
-)
+        .replace(
+            />/g,
+            "&gt;"
+        )
 
-.replace(
-/"/g,
-"&quot;"
-)
+        .replace(
+            /"/g,
+            "&quot;"
+        )
 
-.replace(
-/'/g,
-"&#039;"
-);
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =====================================================
+   ESCAPE JS
+===================================================== */
+
+function escapeJS(value){
+
+    return String(value)
+
+        .replace(
+            /\\/g,
+            "\\\\"
+        )
+
+        .replace(
+            /'/g,
+            "\\'"
+        )
+
+        .replace(
+            /\n/g,
+            "\\n"
+        )
+
+        .replace(
+            /\r/g,
+            "\\r"
+        );
 
 }
 
@@ -2680,16 +2862,22 @@ return String(value)
 
 async function logout(){
 
-if(supabaseClient){
+    try{
 
-await supabaseClient
-.auth
-.signOut();
+        if(supabaseClient){
 
-}
+            await supabaseClient
+                .auth
+                .signOut();
 
-window.location.href =
-"login.html";
+        }
+
+    }finally{
+
+        window.location.href =
+            "login.html";
+
+    }
 
 }
 
@@ -2699,24 +2887,53 @@ window.location.href =
 ===================================================== */
 
 document
-.getElementById("searchInput")
-.addEventListener(
-"input",
-renderFiles
-);
+    .getElementById(
+        "searchInput"
+    )
+    .addEventListener(
+        "input",
+        renderFiles
+    );
+
 
 document
-.getElementById("courseFilter")
-.addEventListener(
-"change",
-renderFiles
-);
+    .getElementById(
+        "courseFilter"
+    )
+    .addEventListener(
+        "change",
+        renderFiles
+    );
+
 
 document
-.getElementById("typeFilter")
-.addEventListener(
-"change",
-renderFiles
+    .getElementById(
+        "typeFilter"
+    )
+    .addEventListener(
+        "change",
+        renderFiles
+    );
+
+
+/* =====================================================
+   CLOSE MODAL OUTSIDE
+===================================================== */
+
+modal.addEventListener(
+    "click",
+    function(event){
+
+        if(
+            event.target ===
+            modal
+        ){
+
+            closeModal();
+
+        }
+
+    }
 );
 
 
@@ -2726,39 +2943,46 @@ renderFiles
 
 async function init(){
 
-setLoading(true);
-
-try{
-
-const admin =
-await checkAdmin();
-
-if(!admin)
-return;
+    setLoading(true);
 
 
-await loadCourses();
+    try{
 
-await loadLessons();
+        const admin =
+            await checkAdmin();
 
-await loadFiles();
+
+        if(!admin)
+            return;
 
 
-}catch(error){
+        await loadCourses();
 
-console.error(error);
+        await loadLessons();
 
-showToast(
-error.message ||
-"حدث خطأ أثناء تحميل الملفات.",
-"error"
-);
+        await loadFiles();
 
-}finally{
 
-setLoading(false);
+    }catch(error){
 
-}
+        console.error(
+            "INIT ERROR:",
+            error
+        );
+
+
+        showToast(
+            error.message ||
+            "حدث خطأ أثناء تحميل الملفات.",
+            "error"
+        );
+
+
+    }finally{
+
+        setLoading(false);
+
+    }
 
 }
 
@@ -2767,9 +2991,16 @@ init();
 
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- مهم:
+     supabase.js يجب أن يكون داخل مجلد المشروع الرئيسي
+     إذا كان files.html داخل admin/
+     فالمسار الصحيح:
+     ../supabase.js
+-->
+
 <script src="../supabase.js"></script>
 
 </body>
 
-</html>
+    </html>
