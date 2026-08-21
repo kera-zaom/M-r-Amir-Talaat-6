@@ -3,487 +3,445 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <title>دخول الإدارة | الخوارزمي</title>
+<title>دخول الإدارة | الخوارزمي</title>
 
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
 
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet"
-    >
+<link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+>
 
-    <!-- Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<style>
 
-    <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Cairo",Arial,sans-serif;
+}
 
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:"Cairo",Arial,sans-serif;
-        }
+:root{
 
+    --bg:#050507;
+    --card:rgba(18,18,27,.90);
+    --border:rgba(255,255,255,.08);
+    --text:#fff;
+    --muted:#9999a8;
+    --primary:#7657ff;
+    --primary-dark:#4d35d9;
+    --danger:#ff6078;
+    --success:#35d39a;
 
-        :root{
+}
 
-            --bg:#050507;
+body{
 
-            --card:rgba(18,18,27,.90);
+    min-height:100vh;
 
-            --border:rgba(255,255,255,.08);
+    display:flex;
 
-            --text:#ffffff;
+    align-items:center;
 
-            --muted:#9999a8;
+    justify-content:center;
 
-            --primary:#7657ff;
+    padding:25px;
 
-            --primary-dark:#4d35d9;
+    color:var(--text);
 
-            --danger:#ff6078;
+    background:
 
-        }
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(118,87,255,.20),
+            transparent 32%
+        ),
 
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(70,45,190,.15),
+            transparent 32%
+        ),
 
-        body{
+        #050507;
 
-            min-height:100vh;
+}
 
-            display:flex;
+.container{
 
-            align-items:center;
+    width:min(430px,100%);
 
-            justify-content:center;
+}
 
-            padding:25px;
+.brand{
 
-            color:var(--text);
+    text-align:center;
 
-            background:
+    margin-bottom:20px;
 
-                radial-gradient(
-                    circle at 20% 10%,
-                    rgba(118,87,255,.20),
-                    transparent 32%
-                ),
+}
 
-                radial-gradient(
-                    circle at 90% 90%,
-                    rgba(70,45,190,.15),
-                    transparent 32%
-                ),
+.logo{
 
-                #050507;
+    width:70px;
+    height:70px;
 
-        }
+    margin:0 auto 12px;
 
+    display:grid;
 
-        .container{
+    place-items:center;
 
-            width:min(430px,100%);
+    border-radius:22px;
 
-        }
+    background:
 
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-dark)
+        );
 
-        .brand{
+    font-size:32px;
 
-            text-align:center;
+    font-weight:900;
 
-            margin-bottom:20px;
+    box-shadow:
 
-        }
+        0 0 40px
+        rgba(118,87,255,.25);
 
+}
 
-        .logo{
+.brand h1{
 
-            width:70px;
+    font-size:25px;
 
-            height:70px;
+    font-weight:900;
 
-            margin:0 auto 12px;
+}
 
-            display:grid;
+.brand p{
 
-            place-items:center;
+    color:var(--muted);
 
-            border-radius:22px;
+    font-size:10px;
 
-            background:
+    margin-top:4px;
 
-                linear-gradient(
-                    135deg,
-                    var(--primary),
-                    var(--primary-dark)
-                );
+}
 
-            font-size:32px;
+.card{
 
-            font-weight:900;
+    padding:27px;
 
-            box-shadow:
+    border-radius:23px;
 
-                0 0 40px
-                rgba(118,87,255,.25);
+    border:
+        1px solid var(--border);
 
-        }
+    background:var(--card);
 
+    box-shadow:
 
-        .brand h1{
+        0 30px 100px
+        rgba(0,0,0,.35);
 
-            font-size:25px;
+    backdrop-filter:blur(18px);
 
-            font-weight:900;
+}
 
-        }
+.card-title{
 
+    font-size:17px;
 
-        .brand p{
+    font-weight:900;
 
-            color:var(--muted);
+    margin-bottom:18px;
 
-            font-size:10px;
+}
 
-            margin-top:4px;
+.form-group{
 
-        }
+    margin-bottom:15px;
 
+}
 
-        .card{
+label{
 
-            padding:27px;
+    display:block;
 
-            border-radius:23px;
+    color:#c4c4ce;
 
-            border:
-                1px solid var(--border);
+    font-size:10px;
 
-            background:var(--card);
+    font-weight:700;
 
-            box-shadow:
+    margin-bottom:7px;
 
-                0 30px 100px
-                rgba(0,0,0,.35);
+}
 
-            backdrop-filter:blur(18px);
+.input-wrap{
 
-        }
+    position:relative;
 
+}
 
-        .card-title{
+input{
 
-            font-size:17px;
+    width:100%;
 
-            font-weight:900;
+    height:50px;
 
-            margin-bottom:18px;
+    padding:0 13px;
 
-        }
+    color:#fff;
 
+    outline:none;
 
-        .form-group{
+    border:
+        1px solid var(--border);
 
-            margin-bottom:15px;
+    border-radius:12px;
 
-        }
+    background:
+        rgba(255,255,255,.035);
 
+    font-size:11px;
 
-        label{
+    transition:.25s;
 
-            display:block;
+}
 
-            color:#c4c4ce;
+input:focus{
 
-            font-size:10px;
+    border-color:
+        rgba(118,87,255,.50);
 
-            font-weight:700;
+    background:
+        rgba(118,87,255,.05);
 
-            margin-bottom:7px;
+    box-shadow:
 
-        }
+        0 0 0 3px
+        rgba(118,87,255,.06);
 
+}
 
-        .input-wrap{
+.password-toggle{
 
-            position:relative;
+    position:absolute;
 
-        }
+    left:10px;
 
+    top:50%;
 
-        input{
+    transform:translateY(-50%);
 
-            width:100%;
+    border:0;
 
-            height:50px;
+    background:transparent;
 
-            padding:
-                0 13px;
+    color:#999;
 
-            color:#fff;
+    cursor:pointer;
 
-            outline:none;
+    font-size:16px;
 
-            border:
-                1px solid var(--border);
+}
 
-            border-radius:12px;
+.login-btn{
 
-            background:
-                rgba(255,255,255,.035);
+    width:100%;
 
-            font-size:11px;
+    height:51px;
 
-            transition:.25s;
+    border:0;
 
-        }
+    border-radius:13px;
 
+    color:#fff;
 
-        input:focus{
+    cursor:pointer;
 
-            border-color:
-                rgba(118,87,255,.50);
+    font-size:11px;
 
-            background:
-                rgba(118,87,255,.05);
+    font-weight:900;
 
-            box-shadow:
+    background:
 
-                0 0 0 3px
-                rgba(118,87,255,.06);
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-dark)
+        );
 
-        }
+    transition:.25s;
 
+    box-shadow:
 
-        .password-toggle{
+        0 12px 30px
+        rgba(118,87,255,.18);
 
-            position:absolute;
+}
 
-            left:10px;
+.login-btn:hover{
 
-            top:50%;
+    transform:translateY(-2px);
 
-            transform:translateY(-50%);
+    box-shadow:
 
-            border:0;
+        0 16px 38px
+        rgba(118,87,255,.28);
 
-            background:transparent;
+}
 
-            color:#999;
+.login-btn:disabled{
 
-            cursor:pointer;
+    opacity:.55;
 
-            font-size:16px;
+    cursor:not-allowed;
 
-        }
+    transform:none;
 
+}
 
-        .login-btn{
+.message{
 
-            width:100%;
+    display:none;
 
-            height:51px;
+    margin-bottom:14px;
 
-            border:0;
+    padding:11px;
 
-            border-radius:13px;
+    border-radius:10px;
 
-            color:#fff;
+    font-size:9px;
 
-            cursor:pointer;
+    line-height:1.8;
 
-            font-size:11px;
+    text-align:center;
 
-            font-weight:900;
+}
 
-            background:
+.message.error{
 
-                linear-gradient(
-                    135deg,
-                    var(--primary),
-                    var(--primary-dark)
-                );
+    display:block;
 
-            transition:.25s;
+    color:#ff9aaa;
 
-            box-shadow:
+    background:
+        rgba(255,96,120,.07);
 
-                0 12px 30px
-                rgba(118,87,255,.18);
+    border:
+        1px solid
+        rgba(255,96,120,.15);
 
-        }
+}
 
+.message.success{
 
-        .login-btn:hover{
+    display:block;
 
-            transform:translateY(-2px);
+    color:#8ce6bf;
 
-            box-shadow:
+    background:
+        rgba(53,211,154,.07);
 
-                0 16px 38px
-                rgba(118,87,255,.28);
+    border:
+        1px solid
+        rgba(53,211,154,.15);
 
-        }
+}
 
+.footer{
 
-        .login-btn:disabled{
+    text-align:center;
 
-            opacity:.55;
+    margin-top:18px;
 
-            cursor:not-allowed;
+    color:#666673;
 
-            transform:none;
+    font-size:8px;
 
-        }
+}
 
+.loading{
 
-        .message{
+    position:fixed;
 
-            display:none;
+    inset:0;
 
-            margin-bottom:14px;
+    z-index:999;
 
-            padding:11px;
+    display:none;
 
-            border-radius:10px;
+    align-items:center;
 
-            font-size:9px;
+    justify-content:center;
 
-            line-height:1.8;
+    background:#050507;
 
-            text-align:center;
+}
 
-        }
+.spinner{
 
+    width:42px;
 
-        .message.error{
+    height:42px;
 
-            display:block;
+    border-radius:50%;
 
-            color:#ff9aaa;
+    border:
+        3px solid
+        rgba(118,87,255,.15);
 
-            background:
-                rgba(255,96,120,.07);
+    border-top-color:
+        var(--primary);
 
-            border:
-                1px solid
-                rgba(255,96,120,.15);
+    animation:
+        spin .8s linear infinite;
 
-        }
+}
 
+@keyframes spin{
 
-        .message.success{
+    to{
+        transform:rotate(360deg);
+    }
 
-            display:block;
+}
 
-            color:#8ce6bf;
+@media(max-width:500px){
 
-            background:
-                rgba(53,211,154,.07);
+    body{
+        padding:15px;
+    }
 
-            border:
-                1px solid
-                rgba(53,211,154,.15);
+    .card{
+        padding:21px;
+    }
 
-        }
+}
 
-
-        .footer{
-
-            text-align:center;
-
-            margin-top:18px;
-
-            color:#666673;
-
-            font-size:8px;
-
-        }
-
-
-        .loading{
-
-            position:fixed;
-
-            inset:0;
-
-            z-index:999;
-
-            display:none;
-
-            align-items:center;
-
-            justify-content:center;
-
-            background:#050507;
-
-        }
-
-
-        .spinner{
-
-            width:42px;
-
-            height:42px;
-
-            border-radius:50%;
-
-            border:
-
-                3px solid
-                rgba(118,87,255,.15);
-
-            border-top-color:
-                var(--primary);
-
-            animation:
-                spin .8s linear infinite;
-
-        }
-
-
-        @keyframes spin{
-
-            to{
-                transform:rotate(360deg);
-            }
-
-        }
-
-
-        @media(max-width:500px){
-
-            body{
-
-                padding:15px;
-
-            }
-
-            .card{
-
-                padding:21px;
-
-            }
-
-        }
-
-    </style>
+</style>
 
 </head>
 
@@ -534,9 +492,7 @@
         ></div>
 
 
-        <form
-            id="loginForm"
-        >
+        <form id="loginForm">
 
 
             <div class="form-group">
@@ -575,7 +531,7 @@
                     <button
                         type="button"
                         class="password-toggle"
-                        onclick="togglePassword()"
+                        id="passwordToggle"
                     >
                         👁
                     </button>
@@ -607,112 +563,101 @@
 </div>
 
 
-
 <script>
 
+/* =========================================================
+   SUPABASE
+   ========================================================= */
+
 /*
-===========================================================
-    🔥 SUPABASE CONFIGURATION
-===========================================================
+   ضع هنا بيانات مشروعك من Supabase
 
-    هنا تحط بيانات مشروع Supabase الخاص بك.
+   Project URL
+   + 
+   Publishable Key
 
-    من:
+   أو anon key في المشاريع القديمة.
 
-    Supabase Dashboard
-        ↓
-    Project Settings
-        ↓
-    API
-
-    هات:
-
-    1. Project URL
-    2. Publishable key
-       أو anon key في المشاريع القديمة.
-
-===========================================================
+   ممنوع وضع service_role key هنا.
 */
 
-
 const SUPABASE_URL =
-    "ضع_رابط_مشروعك_هنا";
+    "https://fdqolsygigqukejlwcon.supabase.co";
 
 
 const SUPABASE_KEY =
-    "ضع_publishable_او_anon_key_هنا";
+    "ضع_publishable_key_هنا";
 
 
-/*
-===========================================================
-    إنشاء اتصال Supabase
-===========================================================
-*/
+/* =========================================================
+   CREATE CLIENT
+   ========================================================= */
 
 let supabaseClient = null;
 
+try{
 
-if(
-    SUPABASE_URL.startsWith("http") &&
-    !SUPABASE_URL.includes("ضع_")
-){
+    if(
+        SUPABASE_URL &&
+        SUPABASE_URL.startsWith("https://") &&
+        SUPABASE_KEY &&
+        !SUPABASE_KEY.includes("ضع_")
+    ){
 
-    supabaseClient =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
+        supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY,
+                {
+                    auth:{
+                        persistSession:true,
+                        autoRefreshToken:true,
+                        detectSessionInUrl:true
+                    }
+                }
+            );
+
+    }
+
+}catch(error){
+
+    console.error(
+        "Supabase initialization error:",
+        error
+    );
 
 }
 
 
-/*
-===========================================================
-    ELEMENTS
-===========================================================
-*/
+/* =========================================================
+   ELEMENTS
+   ========================================================= */
 
 const loginForm =
-    document.getElementById(
-        "loginForm"
-    );
-
+    document.getElementById("loginForm");
 
 const emailInput =
-    document.getElementById(
-        "email"
-    );
-
+    document.getElementById("email");
 
 const passwordInput =
-    document.getElementById(
-        "password"
-    );
+    document.getElementById("password");
 
+const passwordToggle =
+    document.getElementById("passwordToggle");
 
 const loginBtn =
-    document.getElementById(
-        "loginBtn"
-    );
-
+    document.getElementById("loginBtn");
 
 const message =
-    document.getElementById(
-        "message"
-    );
-
+    document.getElementById("message");
 
 const loading =
-    document.getElementById(
-        "loading"
-    );
+    document.getElementById("loading");
 
 
-/*
-===========================================================
-    MESSAGE
-===========================================================
-*/
+/* =========================================================
+   MESSAGE
+   ========================================================= */
 
 function showMessage(
     text,
@@ -723,26 +668,34 @@ function showMessage(
         text;
 
     message.className =
-        "message " +
-        type;
+        "message " + type;
 
 }
 
 
-/*
-===========================================================
-    LOADING
-===========================================================
-*/
+/* =========================================================
+   CLEAR MESSAGE
+   ========================================================= */
 
-function setLoading(
-    state
-){
+function clearMessage(){
+
+    message.textContent =
+        "";
+
+    message.className =
+        "message";
+
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+function setLoading(state){
 
     loading.style.display =
-        state
-        ? "flex"
-        : "none";
+        state ? "flex" : "none";
 
     loginBtn.disabled =
         state;
@@ -755,37 +708,163 @@ function setLoading(
 }
 
 
-/*
-===========================================================
-    PASSWORD
-===========================================================
-*/
+/* =========================================================
+   PASSWORD TOGGLE
+   ========================================================= */
 
-function togglePassword(){
+passwordToggle.addEventListener(
+    "click",
+    function(){
 
-    if(
-        passwordInput.type ===
-        "password"
-    ){
+        if(
+            passwordInput.type ===
+            "password"
+        ){
 
-        passwordInput.type =
-            "text";
+            passwordInput.type =
+                "text";
 
-    }else{
+            passwordToggle.textContent =
+                "🙈";
 
-        passwordInput.type =
-            "password";
+        }else{
+
+            passwordInput.type =
+                "password";
+
+            passwordToggle.textContent =
+                "👁";
+
+        }
 
     }
+);
+
+
+/* =========================================================
+   GET ADMIN PROFILE
+   ========================================================= */
+
+async function getAdminProfile(userId){
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+
+            .from("profiles")
+
+            .select(
+                "id, full_name, role"
+            )
+
+            .eq(
+                "id",
+                userId
+            )
+
+            .maybeSingle();
+
+
+    if(error){
+
+        console.error(
+            "PROFILE ERROR:",
+            error
+        );
+
+        throw new Error(
+            "تعذر قراءة صلاحيات الحساب من قاعدة البيانات."
+        );
+
+    }
+
+
+    return data;
 
 }
 
 
-/*
-===========================================================
-    ADMIN LOGIN
-===========================================================
-*/
+/* =========================================================
+   CHECK ADMIN
+   ========================================================= */
+
+async function checkAdmin(){
+
+    if(!supabaseClient){
+
+        return false;
+
+    }
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .auth
+            .getSession();
+
+
+    if(error){
+
+        console.error(error);
+
+        return false;
+
+    }
+
+
+    const session =
+        data?.session;
+
+
+    if(
+        !session ||
+        !session.user
+    ){
+
+        return false;
+
+    }
+
+
+    const profile =
+        await getAdminProfile(
+            session.user.id
+        );
+
+
+    if(
+        profile &&
+        profile.role === "admin"
+    ){
+
+        return true;
+
+    }
+
+
+    /*
+       المستخدم مسجل دخول
+       ولكنه ليس Admin.
+    */
+
+    await supabaseClient
+        .auth
+        .signOut();
+
+
+    return false;
+
+}
+
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
 
 loginForm.addEventListener(
     "submit",
@@ -794,30 +873,23 @@ loginForm.addEventListener(
         event.preventDefault();
 
 
-        showMessage(
-            "",
-            "error"
-        );
-
-        message.className =
-            "message";
+        clearMessage();
 
 
         const email =
-            emailInput.value.trim();
+            emailInput.value
+                .trim()
+                .toLowerCase();
 
 
         const password =
             passwordInput.value;
 
 
-        if(
-            !email ||
-            !password
-        ){
+        if(!email){
 
             showMessage(
-                "من فضلك اكتب البريد الإلكتروني وكلمة المرور."
+                "اكتب البريد الإلكتروني."
             );
 
             return;
@@ -825,18 +897,21 @@ loginForm.addEventListener(
         }
 
 
-        /*
-        ====================================================
-            تأكد إن Supabase متوصل
-        ====================================================
-        */
-
-        if(
-            !supabaseClient
-        ){
+        if(!password){
 
             showMessage(
-                "لم يتم وضع بيانات Supabase بعد. ضع Project URL و Publishable/Anon Key في الكود."
+                "اكتب كلمة المرور."
+            );
+
+            return;
+
+        }
+
+
+        if(!supabaseClient){
+
+            showMessage(
+                "Supabase غير متصل. تأكد من وضع Project URL و Publishable Key."
             );
 
             return;
@@ -849,26 +924,25 @@ loginForm.addEventListener(
 
         try{
 
-
             /*
-            =================================================
-                تسجيل الدخول باستخدام Supabase Auth
-            =================================================
-            */
+             * تسجيل الدخول من Supabase Auth
+             */
 
             const {
                 data,
                 error
             } =
-                await supabaseClient.auth.signInWithPassword({
+                await supabaseClient
+                    .auth
+                    .signInWithPassword({
 
-                    email:
-                        email,
+                        email:
+                            email,
 
-                    password:
-                        password
+                        password:
+                            password
 
-                });
+                    });
 
 
             if(error){
@@ -884,74 +958,35 @@ loginForm.addEventListener(
             ){
 
                 throw new Error(
-                    "تعذر الحصول على بيانات المستخدم."
+                    "لم يتم العثور على بيانات المستخدم."
                 );
 
             }
 
 
             /*
-            =================================================
-                🔐 التحقق من أن الحساب Admin
-            =================================================
+             * قراءة profile
+             */
 
-                مهم جدًا:
-
-                مجرد نجاح تسجيل الدخول لا يعني
-                أن المستخدم أدمن.
-
-                لازم يكون عندنا جدول profiles
-                فيه role.
-
-            =================================================
-            */
-
-
-            const {
-                data: profile,
-                error: profileError
-            } =
-                await supabaseClient
-
-                    .from("profiles")
-
-                    .select("id, role, full_name")
-
-                    .eq(
-                        "id",
-                        data.user.id
-                    )
-
-                    .maybeSingle();
-
-
-            if(profileError){
-
-                console.error(
-                    profileError
+            const profile =
+                await getAdminProfile(
+                    data.user.id
                 );
 
-                /*
-                    تسجيل الخروج لأننا
-                    لم نستطع التحقق من الصلاحية.
-                */
 
-                await supabaseClient.auth.signOut();
-
-                throw new Error(
-                    "تعذر التحقق من صلاحيات الحساب."
-                );
-
-            }
-
+            /*
+             * التحقق من role
+             */
 
             if(
                 !profile ||
-                profile.role !==
-                "admin"
+                profile.role !== "admin"
             ){
 
-                await supabaseClient.auth.signOut();
+                await supabaseClient
+                    .auth
+                    .signOut();
+
 
                 throw new Error(
                     "هذا الحساب ليس لديه صلاحية دخول لوحة الإدارة."
@@ -961,13 +996,11 @@ loginForm.addEventListener(
 
 
             /*
-            =================================================
-                تم تسجيل الدخول بنجاح
-            =================================================
-            */
+             * نجاح
+             */
 
             showMessage(
-                "تم تسجيل الدخول بنجاح، جاري فتح لوحة التحكم...",
+                "تم تسجيل الدخول بنجاح ✅ جاري فتح لوحة التحكم...",
                 "success"
             );
 
@@ -991,74 +1024,76 @@ loginForm.addEventListener(
             );
 
 
-            let errorMessage =
+            let text =
                 "حدث خطأ أثناء تسجيل الدخول.";
 
 
+            const errorMessage =
+                error?.message || "";
+
+
             if(
-                error.message
-                ===
-                "Invalid login credentials"
+                errorMessage
+                    .toLowerCase()
+                    .includes(
+                        "invalid login credentials"
+                    )
             ){
 
-                errorMessage =
+                text =
                     "البريد الإلكتروني أو كلمة المرور غير صحيحة.";
 
             }
 
-
-            if(
-                error.message &&
-                error.message.includes(
-                    "Email not confirmed"
-                )
+            else if(
+                errorMessage
+                    .toLowerCase()
+                    .includes(
+                        "email not confirmed"
+                    )
             ){
 
-                errorMessage =
+                text =
                     "يجب تأكيد البريد الإلكتروني أولًا.";
 
             }
 
-
-            if(
-                error.message &&
-                error.message.includes(
-                    "rate limit"
-                )
-            ){
-
-                errorMessage =
-                    "تم تجاوز عدد محاولات الدخول مؤقتًا. حاول مرة أخرى لاحقًا.";
-
-            }
-
-
-            if(
-                error.message &&
-                error.message !==
-                "Invalid login credentials"
-            ){
-
-                /*
-                    نستخدم رسالة Supabase
-                    في الحالات الأخرى.
-                */
-
-                if(
-                    error.message.length < 180
-                ){
-
-                    errorMessage =
-                        error.message;
-
-                }
-
-            }
-
-
-            showMessage(
+            else if(
                 errorMessage
-            );
+                    .toLowerCase()
+                    .includes(
+                        "rate limit"
+                    )
+            ){
+
+                text =
+                    "تم تجاوز عدد المحاولات مؤقتًا. انتظر قليلًا ثم حاول مرة أخرى.";
+
+            }
+
+            else if(
+                errorMessage
+                    .includes(
+                        "ليس لديه صلاحية"
+                    )
+            ){
+
+                text =
+                    errorMessage;
+
+            }
+
+            else if(
+                errorMessage
+            ){
+
+                text =
+                    errorMessage;
+
+            }
+
+
+            showMessage(text);
 
 
         }finally{
@@ -1071,21 +1106,13 @@ loginForm.addEventListener(
 );
 
 
-/*
-===========================================================
-    CHECK EXISTING SESSION
-===========================================================
-
-    لو الأدمن مسجل دخول بالفعل،
-    لا داعي لإظهار صفحة تسجيل الدخول.
-===========================================================
-*/
+/* =========================================================
+   CHECK EXISTING SESSION
+   ========================================================= */
 
 async function checkExistingSession(){
 
-    if(
-        !supabaseClient
-    ){
+    if(!supabaseClient){
 
         return;
 
@@ -1095,56 +1122,75 @@ async function checkExistingSession(){
     try{
 
         const {
-            data
+            data,
+            error
         } =
             await supabaseClient
                 .auth
                 .getSession();
 
 
-        if(
-            data &&
-            data.session &&
-            data.session.user
-        ){
+        if(error){
 
-            /*
-                نتحقق من role مرة أخرى.
-            */
+            console.error(error);
 
-            const {
-                data: profile
-            } =
-                await supabaseClient
-
-                    .from("profiles")
-
-                    .select("role")
-
-                    .eq(
-                        "id",
-                        data.session.user.id
-                    )
-
-                    .maybeSingle();
-
-
-            if(
-                profile &&
-                profile.role ===
-                "admin"
-            ){
-
-                window.location.href =
-                    "index.html";
-
-            }
+            return;
 
         }
+
+
+        const session =
+            data?.session;
+
+
+        if(
+            !session ||
+            !session.user
+        ){
+
+            return;
+
+        }
+
+
+        /*
+         * لدينا جلسة بالفعل.
+         * نتأكد أنها Admin.
+         */
+
+        const profile =
+            await getAdminProfile(
+                session.user.id
+            );
+
+
+        if(
+            profile &&
+            profile.role === "admin"
+        ){
+
+            window.location.replace(
+                "index.html"
+            );
+
+            return;
+
+        }
+
+
+        /*
+         * لو ليس Admin
+         */
+
+        await supabaseClient
+            .auth
+            .signOut();
+
 
     }catch(error){
 
         console.error(
+            "SESSION CHECK ERROR:",
             error
         );
 
@@ -1153,18 +1199,35 @@ async function checkExistingSession(){
 }
 
 
-/*
-===========================================================
-    START
-===========================================================
-*/
+/* =========================================================
+   AUTH STATE
+   ========================================================= */
+
+if(supabaseClient){
+
+    supabaseClient
+        .auth
+        .onAuthStateChange(
+            function(event, session){
+
+                console.log(
+                    "AUTH EVENT:",
+                    event
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   START
+   ========================================================= */
 
 checkExistingSession();
 
 </script>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="../supabase.js"></script>
 
 </body>
 
