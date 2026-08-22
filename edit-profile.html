@@ -2,383 +2,476 @@
 <html lang="ar" dir="rtl">
 
 <head>
-    <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta charset="UTF-8">
 
-    <title>الخوارزمي | تعديل بياناتي</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-    <style>
+<title>الخوارزمي | تعديل بياناتي</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Tahoma, sans-serif;
-        }
+<style>
 
-        body {
-            min-height: 100vh;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Tahoma,sans-serif;
+}
 
-            background:
-                radial-gradient(
-                    circle at 20% 20%,
-                    rgba(116, 72, 232, .20),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 80% 80%,
-                    rgba(49, 84, 223, .16),
-                    transparent 30%
-                ),
-                #07070b;
+body{
 
-            color: #fff;
-        }
+    min-height:100vh;
 
-        .container {
-            width: min(720px, 94%);
-            margin: auto;
-        }
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(116,72,232,.22),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(49,84,223,.18),
+            transparent 32%
+        ),
+        #07070b;
 
-        header {
-            height: 75px;
+    color:#fff;
+}
 
-            background: rgba(7, 7, 11, .90);
 
-            backdrop-filter: blur(15px);
+.container{
 
-            border-bottom:
-                1px solid rgba(255, 255, 255, .08);
-        }
+    width:min(700px,94%);
 
-        .nav {
-            height: 100%;
+    margin:auto;
+}
 
-            display: flex;
 
-            align-items: center;
+/* =========================
+   HEADER
+========================= */
 
-            justify-content: space-between;
-        }
+header{
 
-        .logo {
-            font-size: 25px;
+    height:72px;
 
-            font-weight: 900;
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
 
-            background:
-                linear-gradient(
-                    90deg,
-                    #fff,
-                    #9b7cff
-                );
+    background:
+        rgba(7,7,11,.90);
 
-            -webkit-background-clip: text;
+    backdrop-filter:blur(15px);
+}
 
-            color: transparent;
-        }
 
-        .back {
-            color: #fff;
+.nav{
 
-            text-decoration: none;
+    height:100%;
 
-            background: #111119;
+    display:flex;
 
-            border:
-                1px solid rgba(255, 255, 255, .10);
+    align-items:center;
 
-            padding: 10px 16px;
+    justify-content:space-between;
+}
 
-            border-radius: 12px;
-        }
 
-        main {
-            padding: 35px 0 60px;
-        }
+.logo{
 
-        .card {
-            background:
-                rgba(255, 255, 255, .045);
+    font-size:25px;
 
-            border:
-                1px solid rgba(255, 255, 255, .08);
+    font-weight:900;
 
-            border-radius: 25px;
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #9b7cff
+        );
 
-            padding: 25px;
+    -webkit-background-clip:text;
 
-            box-shadow:
-                0 20px 70px rgba(0, 0, 0, .25);
-        }
+    color:transparent;
+}
 
-        h1 {
-            font-size: 27px;
 
-            margin-bottom: 8px;
-        }
+.back{
 
-        .subtitle {
-            color: #888;
+    text-decoration:none;
 
-            margin-bottom: 25px;
-        }
+    color:#fff;
 
-        /* =========================
-           PHOTO
-        ========================= */
+    background:#111119;
 
-        .photo-box {
-            text-align: center;
+    padding:10px 16px;
 
-            margin-bottom: 28px;
-        }
+    border-radius:12px;
 
-        .avatar-wrapper {
-            position: relative;
+    border:
+        1px solid rgba(255,255,255,.10);
+}
 
-            width: 130px;
-            height: 130px;
 
-            margin: auto;
-        }
+/* =========================
+   MAIN
+========================= */
 
-        .avatar {
-            width: 130px;
-            height: 130px;
+main{
 
-            object-fit: cover;
+    padding:35px 0 60px;
+}
 
-            border-radius: 50%;
 
-            border:
-                3px solid #7d52ff;
+.card{
 
-            background: #15151e;
+    background:
+        rgba(255,255,255,.045);
 
-            display: block;
-        }
+    border:
+        1px solid rgba(255,255,255,.08);
 
-        .photo-button {
-            position: absolute;
+    border-radius:25px;
 
-            right: 0;
-            bottom: 0;
+    padding:25px;
 
-            width: 42px;
-            height: 42px;
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.30);
+}
 
-            border-radius: 50%;
 
-            border: 3px solid #07070b;
+h1{
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #7448e8,
-                    #3154df
-                );
+    font-size:27px;
 
-            color: #fff;
+    margin-bottom:8px;
+}
 
-            display: flex;
 
-            align-items: center;
+.subtitle{
 
-            justify-content: center;
+    color:#8d8d96;
 
-            cursor: pointer;
+    margin-bottom:28px;
+}
 
-            font-size: 19px;
-        }
 
-        #photoInput {
-            display: none;
-        }
+/* =========================
+   MESSAGES
+========================= */
 
-        .photo-text {
-            margin-top: 12px;
+.message{
 
-            color: #999;
+    display:none;
 
-            font-size: 13px;
-        }
+    padding:14px;
 
-        /* =========================
-           FORM
-        ========================= */
+    border-radius:12px;
 
-        .form-grid {
-            display: grid;
+    margin-bottom:18px;
 
-            grid-template-columns:
-                1fr 1fr;
+    line-height:1.7;
+}
 
-            gap: 15px;
-        }
 
-        .field {
-            display: flex;
+.success{
 
-            flex-direction: column;
+    background:#092719;
 
-            gap: 8px;
-        }
+    border:
+        1px solid #1d7348;
 
-        .field.full {
-            grid-column: 1 / -1;
-        }
+    color:#75e9a9;
+}
 
-        label {
-            color: #aaa;
 
-            font-size: 14px;
-        }
+.error{
 
-        input {
-            width: 100%;
+    background:#280f15;
 
-            padding: 14px;
+    border:
+        1px solid #6d2635;
 
-            border-radius: 12px;
+    color:#ff9aaa;
+}
 
-            border:
-                1px solid rgba(255, 255, 255, .10);
 
-            background: #0c0c12;
+/* =========================
+   PHOTO
+========================= */
 
-            color: #fff;
+.photo-section{
 
-            outline: none;
+    text-align:center;
 
-            font-size: 15px;
-        }
+    margin-bottom:30px;
+}
 
-        input:focus {
-            border-color: #7650ee;
 
-            box-shadow:
-                0 0 0 3px
-                rgba(118, 80, 238, .10);
-        }
+.avatar-box{
 
-        input[readonly] {
-            opacity: .55;
+    position:relative;
 
-            cursor: not-allowed;
-        }
+    width:145px;
 
-        .save {
-            width: 100%;
+    height:145px;
 
-            margin-top: 22px;
+    margin:auto;
+}
 
-            padding: 15px;
 
-            border: 0;
+#studentAvatar{
 
-            border-radius: 13px;
+    width:145px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #7448e8,
-                    #3154df
-                );
+    height:145px;
 
-            color: #fff;
+    border-radius:50%;
 
-            font-size: 16px;
+    object-fit:cover;
 
-            font-weight: bold;
+    background:#111119;
 
-            cursor: pointer;
+    border:
+        3px solid #7952ed;
 
-            transition: .2s;
-        }
+    box-shadow:
+        0 0 35px rgba(121,82,237,.28);
+}
 
-        .save:hover {
-            transform: translateY(-2px);
-        }
 
-        .save:disabled {
-            opacity: .6;
+.camera{
 
-            cursor: not-allowed;
+    position:absolute;
 
-            transform: none;
-        }
+    right:2px;
 
-        /* =========================
-           MESSAGES
-        ========================= */
+    bottom:2px;
 
-        .message {
-            display: none;
+    width:45px;
 
-            padding: 14px;
+    height:45px;
 
-            border-radius: 12px;
+    border-radius:50%;
 
-            margin-bottom: 18px;
+    background:
+        linear-gradient(
+            135deg,
+            #7448e8,
+            #3154df
+        );
 
-            line-height: 1.7;
-        }
+    border:
+        3px solid #07070b;
 
-        .success {
-            background: #092719;
+    color:#fff;
 
-            border:
-                1px solid #1d7348;
+    display:flex;
 
-            color: #75e9a9;
-        }
+    align-items:center;
 
-        .error {
-            background: #280f15;
+    justify-content:center;
 
-            border:
-                1px solid #6d2635;
+    cursor:pointer;
 
-            color: #ff9aaa;
-        }
+    font-size:19px;
+}
 
-        .upload-info {
-            display: none;
 
-            text-align: center;
+#photoInput{
 
-            color: #aaa;
+    display:none;
+}
 
-            margin-top: 10px;
 
-            font-size: 13px;
-        }
+.photo-title{
 
-        @media(max-width: 600px) {
+    margin-top:14px;
 
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
+    font-weight:bold;
+}
 
-            .field.full {
-                grid-column: auto;
-            }
 
-            .card {
-                padding: 18px;
-            }
+.photo-info{
 
-            h1 {
-                font-size: 23px;
-            }
-        }
+    margin-top:7px;
 
-    </style>
+    color:#888;
+
+    font-size:13px;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:15px;
+}
+
+
+.field{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+}
+
+
+.full{
+
+    grid-column:1 / -1;
+}
+
+
+label{
+
+    color:#aaa;
+
+    font-size:14px;
+}
+
+
+input{
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    border:
+        1px solid rgba(255,255,255,.10);
+
+    background:#0c0c12;
+
+    color:#fff;
+
+    outline:none;
+
+    font-size:15px;
+}
+
+
+input:focus{
+
+    border-color:#7650ee;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(118,80,238,.10);
+}
+
+
+input[readonly]{
+
+    opacity:.55;
+
+    cursor:not-allowed;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.save{
+
+    width:100%;
+
+    margin-top:23px;
+
+    padding:15px;
+
+    border:0;
+
+    border-radius:13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7448e8,
+            #3154df
+        );
+
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+
+.save:hover{
+
+    transform:translateY(-2px);
+}
+
+
+.save:disabled{
+
+    opacity:.6;
+
+    cursor:not-allowed;
+
+    transform:none;
+}
+
+
+.loading{
+
+    text-align:center;
+
+    color:#999;
+
+    padding:25px;
+}
+
+
+@media(max-width:600px){
+
+    .form-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .full{
+
+        grid-column:auto;
+
+    }
+
+    .card{
+
+        padding:18px;
+
+    }
+
+    h1{
+
+        font-size:23px;
+
+    }
+
+}
+
+</style>
+
 </head>
 
 
@@ -408,244 +501,237 @@
 
 <main class="container">
 
+<div class="card">
 
-    <div class="card">
 
+<h1>
+    تعديل بياناتي
+</h1>
 
-        <h1>
-            تعديل بياناتي
-        </h1>
 
+<p class="subtitle">
+    عدّل بياناتك الشخصية وصورتك الشخصية.
+</p>
 
-        <p class="subtitle">
-            عدّل بياناتك الشخصية وصورتك الشخصية.
-        </p>
 
 
+<div
+    id="successBox"
+    class="message success"
+></div>
 
-        <div
-            id="success"
-            class="message success"
-        ></div>
 
+<div
+    id="errorBox"
+    class="message error"
+></div>
 
-        <div
-            id="error"
-            class="message error"
-        ></div>
 
 
+<!-- =========================
+     PHOTO
+========================= -->
 
-        <!-- =========================
-             PHOTO
-        ========================= -->
+<div class="photo-section">
 
-        <div class="photo-box">
 
+    <div class="avatar-box">
 
-            <div class="avatar-wrapper">
 
+        <img
+            id="studentAvatar"
+            src="teacher.png"
+            alt="صورة الطالب"
+        >
 
-                <img
-                    id="avatar"
-                    class="avatar"
-                    src="teacher.png"
-                    alt="صورة الطالب"
-                >
 
+        <label
+            class="camera"
+            for="photoInput"
+        >
+            📷
+        </label>
 
-                <label
-                    for="photoInput"
-                    class="photo-button"
-                    title="تغيير الصورة"
-                >
-                    📷
-                </label>
 
-
-                <input
-                    id="photoInput"
-                    type="file"
-                    accept="image/jpeg,image/png,image/webp"
-                >
-
-
-            </div>
-
-
-            <div class="photo-text">
-                اضغط على 📷 لاختيار صورتك الشخصية
-            </div>
-
-
-            <div
-                id="uploadInfo"
-                class="upload-info"
-            >
-                جاري تجهيز الصورة...
-            </div>
-
-
-        </div>
-
-
-
-        <!-- =========================
-             FORM
-        ========================= -->
-
-        <form id="profileForm">
-
-
-            <div class="form-grid">
-
-
-                <div class="field full">
-
-                    <label>
-                        الاسم بالكامل
-                    </label>
-
-                    <input
-                        id="name"
-                        type="text"
-                        placeholder="اكتب اسمك بالكامل"
-                        required
-                    >
-
-                </div>
-
-
-
-                <div class="field">
-
-                    <label>
-                        البريد الإلكتروني
-                    </label>
-
-                    <input
-                        id="email"
-                        type="email"
-                        readonly
-                    >
-
-                </div>
-
-
-
-                <div class="field">
-
-                    <label>
-                        رقم الهاتف
-                    </label>
-
-                    <input
-                        id="phone"
-                        type="tel"
-                        placeholder="01xxxxxxxxx"
-                    >
-
-                </div>
-
-
-
-                <div class="field">
-
-                    <label>
-                        رقم ولي الأمر
-                    </label>
-
-                    <input
-                        id="parentPhone"
-                        type="tel"
-                        placeholder="01xxxxxxxxx"
-                    >
-
-                </div>
-
-
-
-                <div class="field">
-
-                    <label>
-                        الصف الدراسي
-                    </label>
-
-                    <input
-                        id="grade"
-                        type="text"
-                        placeholder="مثال: ثالثة ثانوي"
-                    >
-
-                </div>
-
-
-
-                <div class="field">
-
-                    <label>
-                        المحافظة
-                    </label>
-
-                    <input
-                        id="governorate"
-                        type="text"
-                        placeholder="المحافظة"
-                    >
-
-                </div>
-
-
-
-                <div class="field">
-
-                    <label>
-                        المدينة
-                    </label>
-
-                    <input
-                        id="city"
-                        type="text"
-                        placeholder="المدينة"
-                    >
-
-                </div>
-
-
-
-                <div class="field full">
-
-                    <label>
-                        المدرسة
-                    </label>
-
-                    <input
-                        id="school"
-                        type="text"
-                        placeholder="اسم المدرسة"
-                    >
-
-                </div>
-
-
-            </div>
-
-
-
-            <button
-                type="submit"
-                class="save"
-                id="saveBtn"
-            >
-                حفظ البيانات
-            </button>
-
-
-        </form>
+        <input
+            id="photoInput"
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+        >
 
 
     </div>
 
+
+    <div class="photo-title">
+        صورتك الشخصية
+    </div>
+
+
+    <div class="photo-info">
+        JPG / PNG / WEBP — الحد الأقصى 5MB
+    </div>
+
+
+</div>
+
+
+
+<!-- =========================
+     FORM
+========================= -->
+
+<form id="profileForm">
+
+
+<div class="form-grid">
+
+
+<div class="field full">
+
+<label>
+    الاسم بالكامل
+</label>
+
+<input
+    id="fullName"
+    type="text"
+    placeholder="اكتب اسمك بالكامل"
+    required
+>
+
+</div>
+
+
+
+<div class="field">
+
+<label>
+    البريد الإلكتروني
+</label>
+
+<input
+    id="email"
+    type="email"
+    readonly
+>
+
+</div>
+
+
+
+<div class="field">
+
+<label>
+    رقم الهاتف
+</label>
+
+<input
+    id="phone"
+    type="tel"
+    placeholder="01xxxxxxxxx"
+>
+
+</div>
+
+
+
+<div class="field">
+
+<label>
+    رقم ولي الأمر
+</label>
+
+<input
+    id="parentPhone"
+    type="tel"
+    placeholder="01xxxxxxxxx"
+>
+
+</div>
+
+
+
+<div class="field">
+
+<label>
+    الصف الدراسي
+</label>
+
+<input
+    id="grade"
+    type="text"
+    placeholder="مثال: ثالثة ثانوي"
+>
+
+</div>
+
+
+
+<div class="field">
+
+<label>
+    المحافظة
+</label>
+
+<input
+    id="governorate"
+    type="text"
+    placeholder="المحافظة"
+>
+
+</div>
+
+
+
+<div class="field">
+
+<label>
+    المدينة
+</label>
+
+<input
+    id="city"
+    type="text"
+    placeholder="المدينة"
+>
+
+</div>
+
+
+
+<div class="field full">
+
+<label>
+    المدرسة
+</label>
+
+<input
+    id="school"
+    type="text"
+    placeholder="اسم المدرسة"
+>
+
+</div>
+
+
+</div>
+
+
+
+<button
+    class="save"
+    id="saveBtn"
+    type="submit"
+>
+    حفظ البيانات
+</button>
+
+
+</form>
+
+
+</div>
 
 </main>
 
@@ -666,169 +752,133 @@
 "use strict";
 
 
-let supabaseClient = null;
+let supabaseClient;
 
-let currentUser = null;
+let currentUser;
 
-let currentTable = null;
-
-let currentRow = null;
+let currentStudent;
 
 let selectedFile = null;
 
 
-
-const form =
-    document.getElementById("profileForm");
-
-
-const saveBtn =
-    document.getElementById("saveBtn");
-
-
-const successBox =
-    document.getElementById("success");
-
-
-const errorBox =
-    document.getElementById("error");
+const avatar =
+    document.getElementById(
+        "studentAvatar"
+    );
 
 
 const photoInput =
-    document.getElementById("photoInput");
+    document.getElementById(
+        "photoInput"
+    );
 
 
-const avatar =
-    document.getElementById("avatar");
+const form =
+    document.getElementById(
+        "profileForm"
+    );
 
 
-const uploadInfo =
-    document.getElementById("uploadInfo");
+const saveBtn =
+    document.getElementById(
+        "saveBtn"
+    );
+
+
+const successBox =
+    document.getElementById(
+        "successBox"
+    );
+
+
+const errorBox =
+    document.getElementById(
+        "errorBox"
+    );
 
 
 
-/* =========================
+/* =====================================================
    MESSAGE
-========================= */
+===================================================== */
+
+function success(message){
+
+    successBox.textContent =
+        message;
+
+    successBox.style.display =
+        "block";
+
+    errorBox.style.display =
+        "none";
+}
 
 
-function showSuccess(message) {
+function error(message){
 
-    successBox.textContent = message;
+    errorBox.textContent =
+        message;
 
-    successBox.style.display = "block";
+    errorBox.style.display =
+        "block";
 
-    errorBox.style.display = "none";
+    successBox.style.display =
+        "none";
 }
 
 
 
-function showError(message) {
+/* =====================================================
+   GET VALUE
+===================================================== */
 
-    errorBox.textContent = message;
+function val(id){
 
-    errorBox.style.display = "block";
+    const element =
+        document.getElementById(id);
 
-    successBox.style.display = "none";
-}
-
-
-
-/* =========================
-   VALUE
-========================= */
-
-
-function value(id) {
-
-    return document
-        .getElementById(id)
-        .value
-        .trim();
-
-}
-
-
-
-function setValue(id, value) {
-
-    document
-        .getElementById(id)
-        .value = value || "";
+    return element
+        ? element.value.trim()
+        : "";
 
 }
 
 
 
-/* =========================
-   GET FIELD
-========================= */
+/* =====================================================
+   SET VALUE
+===================================================== */
 
+function setVal(id,value){
 
-function getField(row, names) {
+    const element =
+        document.getElementById(id);
 
-    if (!row) return "";
+    if(element){
 
-    for (const name of names) {
-
-        if (
-            Object.prototype
-                .hasOwnProperty
-                .call(row, name)
-            &&
-            row[name] !== null
-            &&
-            row[name] !== undefined
-        ) {
-
-            return row[name];
-
-        }
+        element.value =
+            value || "";
 
     }
 
-    return "";
 }
 
 
 
-/* =========================
-   AVATAR
-========================= */
+/* =====================================================
+   LOAD USER
+===================================================== */
+
+async function loadProfile(){
+
+    try{
 
 
-function setAvatar(url) {
-
-    avatar.src =
-        url ||
-        "teacher.png";
-
-
-    avatar.onerror = () => {
-
-        avatar.src =
-            "teacher.png";
-
-    };
-
-}
-
-
-
-/* =========================
-   LOAD PROFILE
-========================= */
-
-
-async function loadProfile() {
-
-    try {
-
-
-        if (!window.supabaseClient) {
+        if(!window.supabaseClient){
 
             throw new Error(
-                "Supabase غير متصل. تأكد من ملف supabase.js."
+                "Supabase غير متصل. تأكد من supabase.js"
             );
 
         }
@@ -841,23 +891,24 @@ async function loadProfile() {
 
         const {
             data,
-            error
+            error:sessionError
         } =
             await supabaseClient
                 .auth
                 .getSession();
 
 
+        if(sessionError){
 
-        if (error) {
-
-            throw error;
+            throw sessionError;
 
         }
 
 
-
-        if (!data.session) {
+        if(
+            !data ||
+            !data.session
+        ){
 
             window.location.href =
                 "auth.html";
@@ -867,17 +918,19 @@ async function loadProfile() {
         }
 
 
-
         currentUser =
             data.session.user;
 
 
 
-        /*
-         * students
-         */
+        /* =========================
+           STUDENT
+        ========================= */
 
-        let response =
+        const {
+            data:student,
+            error:studentError
+        } =
             await supabaseClient
                 .from("students")
                 .select("*")
@@ -889,82 +942,29 @@ async function loadProfile() {
 
 
 
-        if (
-            !response.error
-            &&
-            response.data
-        ) {
+        if(studentError){
 
-            currentTable =
-                "students";
-
-            currentRow =
-                response.data;
-
-        }
-
-        else {
-
-
-            /*
-             * profiles
-             */
-
-            response =
-                await supabaseClient
-                    .from("profiles")
-                    .select("*")
-                    .eq(
-                        "id",
-                        currentUser.id
-                    )
-                    .maybeSingle();
-
-
-
-            if (
-                !response.error
-                &&
-                response.data
-            ) {
-
-                currentTable =
-                    "profiles";
-
-                currentRow =
-                    response.data;
-
-            }
-
-            else {
-
-                currentTable =
-                    "students";
-
-                currentRow = {
-                    id: currentUser.id
-                };
-
-            }
+            throw studentError;
 
         }
 
 
-
-        const row =
-            currentRow;
-
+        currentStudent =
+            student || {};
 
 
-        const name =
-            getField(
-                row,
-                [
-                    "full_name",
-                    "name",
-                    "student_name"
-                ]
-            )
+
+        /* =========================
+           DATA
+        ========================= */
+
+        setVal(
+            "fullName",
+            currentStudent.full_name
+            ||
+            currentStudent.name
+            ||
+            currentStudent.student_name
             ||
             currentUser
                 .user_metadata
@@ -974,160 +974,126 @@ async function loadProfile() {
                 .user_metadata
                 ?.name
             ||
-            "";
-
-
-
-        const phone =
-            getField(
-                row,
-                [
-                    "phone",
-                    "phone_number"
-                ]
-            )
-            ||
-            currentUser
-                .user_metadata
-                ?.phone
-            ||
-            "";
-
-
-
-        const parentPhone =
-            getField(
-                row,
-                [
-                    "parent_phone",
-                    "parentPhone"
-                ]
-            );
-
-
-
-        const grade =
-            getField(
-                row,
-                [
-                    "grade",
-                    "class",
-                    "grade_name"
-                ]
-            );
-
-
-
-        const governorate =
-            getField(
-                row,
-                [
-                    "governorate",
-                    "province"
-                ]
-            );
-
-
-
-        const city =
-            getField(
-                row,
-                [
-                    "city"
-                ]
-            );
-
-
-
-        const school =
-            getField(
-                row,
-                [
-                    "school"
-                ]
-            );
-
-
-
-        const avatarUrl =
-            getField(
-                row,
-                [
-                    "avatar_url",
-                    "photo_url",
-                    "image_url"
-                ]
-            );
-
-
-
-        setValue(
-            "name",
-            name
+            ""
         );
 
 
-        setValue(
+        setVal(
             "email",
-            currentUser.email ||
-            getField(row, ["email"])
+            currentUser.email
+            ||
+            currentStudent.email
+            ||
+            ""
         );
 
 
-        setValue(
+        setVal(
             "phone",
-            phone
+            currentStudent.phone
+            ||
+            currentStudent.phone_number
+            ||
+            ""
         );
 
 
-        setValue(
+        setVal(
             "parentPhone",
-            parentPhone
+            currentStudent.parent_phone
+            ||
+            ""
         );
 
 
-        setValue(
+        setVal(
             "grade",
-            grade
+            currentStudent.grade
+            ||
+            currentStudent.class
+            ||
+            ""
         );
 
 
-        setValue(
+        setVal(
             "governorate",
-            governorate
+            currentStudent.governorate
+            ||
+            currentStudent.province
+            ||
+            ""
         );
 
 
-        setValue(
+        setVal(
             "city",
-            city
+            currentStudent.city
+            ||
+            ""
         );
 
 
-        setValue(
+        setVal(
             "school",
-            school
+            currentStudent.school
+            ||
+            ""
         );
 
 
-        setAvatar(
-            avatarUrl
-        );
+
+        /* =========================
+           IMAGE
+        ========================= */
+
+        const savedAvatar =
+            currentStudent.avatar_url
+            ||
+            currentStudent.photo_url
+            ||
+            currentStudent.image_url
+            ||
+            "";
+
+
+        if(savedAvatar){
+
+            avatar.src =
+                savedAvatar;
+
+        }
+        else{
+
+            avatar.src =
+                "teacher.png";
+
+        }
+
+
+        avatar.onerror =
+            function(){
+
+                avatar.src =
+                    "teacher.png";
+
+            };
 
 
     }
 
-    catch (error) {
+    catch(err){
 
         console.error(
-            "PROFILE ERROR:",
-            error
+            "LOAD PROFILE:",
+            err
         );
 
 
-        showError(
-            error.message ||
-            "حدث خطأ أثناء تحميل البيانات."
+        error(
+            err.message
+            ||
+            "تعذر تحميل بيانات الحساب."
         );
 
     }
@@ -1136,76 +1102,74 @@ async function loadProfile() {
 
 
 
-/* =========================
+/* =====================================================
    SELECT PHOTO
-========================= */
-
+===================================================== */
 
 photoInput.addEventListener(
     "change",
-    event => {
-
+    function(){
 
         const file =
-            event.target.files[0];
+            this.files &&
+            this.files[0];
 
 
-        if (!file) {
+        if(!file){
 
             return;
 
         }
 
 
+        /* =========================
+           SIZE
+        ========================= */
 
-        /*
-         * الحد الأقصى 5MB
-         */
-
-        if (
+        if(
             file.size >
             5 * 1024 * 1024
-        ) {
+        ){
 
-            showError(
-                "حجم الصورة يجب ألا يتجاوز 5 ميجابايت."
+            error(
+                "حجم الصورة أكبر من 5MB."
             );
 
-            photoInput.value = "";
+            this.value = "";
 
             return;
 
         }
 
 
+        /* =========================
+           TYPE
+        ========================= */
 
-        /*
-         * أنواع الصور
-         */
+        const allowed = [
 
-        const allowedTypes = [
             "image/jpeg",
             "image/png",
             "image/webp"
+
         ];
 
 
+        if(
+            !allowed.includes(
+                file.type
+            )
+        ){
 
-        if (
-            !allowedTypes
-                .includes(file.type)
-        ) {
-
-            showError(
-                "اختار صورة JPG أو PNG أو WEBP فقط."
+            error(
+                "اختار JPG أو PNG أو WEBP فقط."
             );
 
-            photoInput.value = "";
+            this.value = "";
 
             return;
 
         }
-
 
 
         selectedFile =
@@ -1213,17 +1177,16 @@ photoInput.addEventListener(
 
 
 
-        /*
-         * معاينة الصورة
-         */
+        /* =========================
+           PREVIEW
+        ========================= */
 
         const reader =
             new FileReader();
 
 
-
         reader.onload =
-            event => {
+            function(event){
 
                 avatar.src =
                     event.target.result;
@@ -1231,17 +1194,9 @@ photoInput.addEventListener(
             };
 
 
-
-        reader.readAsDataURL(file);
-
-
-
-        uploadInfo.textContent =
-            "تم اختيار الصورة ✓";
-
-
-        uploadInfo.style.display =
-            "block";
+        reader.readAsDataURL(
+            file
+        );
 
 
         errorBox.style.display =
@@ -1252,41 +1207,31 @@ photoInput.addEventListener(
 
 
 
-/* =========================
-   UPLOAD PHOTO
-========================= */
+/* =====================================================
+   UPLOAD IMAGE
+===================================================== */
 
+async function uploadStudentImage(){
 
-async function uploadPhoto() {
-
-
-    if (!selectedFile) {
+    if(!selectedFile){
 
         return null;
 
     }
 
 
-
-    uploadInfo.textContent =
-        "جاري رفع الصورة...";
-
-
-    uploadInfo.style.display =
-        "block";
-
-
-
     /*
-     * اسم فريد للصورة
-     */
+       اسم آمن وفريد
+
+       USER_ID/
+       profile-TIMESTAMP.extension
+    */
 
     const extension =
         selectedFile.name
             .split(".")
             .pop()
             .toLowerCase();
-
 
 
     const filePath =
@@ -1302,12 +1247,19 @@ async function uploadPhoto() {
 
 
 
-    /*
-     * رفع الصورة
-     */
+    console.log(
+        "Uploading:",
+        filePath
+    );
+
+
+
+    /* =========================
+       UPLOAD
+    ========================= */
 
     const {
-        error: uploadError
+        error:uploadError
     } =
         await supabaseClient
             .storage
@@ -1316,26 +1268,33 @@ async function uploadPhoto() {
                 filePath,
                 selectedFile,
                 {
-                    cacheControl: "3600",
-                    upsert: true,
+                    cacheControl:"3600",
+                    upsert:false,
                     contentType:
                         selectedFile.type
                 }
             );
 
 
+    if(uploadError){
 
-    if (uploadError) {
+        console.error(
+            "UPLOAD ERROR:",
+            uploadError
+        );
 
-        throw uploadError;
+        throw new Error(
+            "فشل رفع الصورة: " +
+            uploadError.message
+        );
 
     }
 
 
 
-    /*
-     * الحصول على الرابط العام
-     */
+    /* =========================
+       PUBLIC URL
+    ========================= */
 
     const {
         data
@@ -1348,100 +1307,63 @@ async function uploadPhoto() {
             );
 
 
+    const publicUrl =
+        data?.publicUrl;
 
-    if (!data.publicUrl) {
+
+    if(!publicUrl){
 
         throw new Error(
-            "لم يتم الحصول على رابط الصورة."
+            "تم رفع الصورة ولكن لم يتم الحصول على رابطها."
         );
 
     }
 
 
+    console.log(
+        "PUBLIC URL:",
+        publicUrl
+    );
 
-    uploadInfo.textContent =
-        "تم رفع الصورة بنجاح ✓";
 
-
-
-    return data.publicUrl;
+    return publicUrl;
 
 }
 
 
 
-/* =========================
+/* =====================================================
    SAVE PROFILE
-========================= */
-
+===================================================== */
 
 form.addEventListener(
     "submit",
-    async event => {
-
+    async function(event){
 
         event.preventDefault();
 
 
-
-        if (
-            !supabaseClient
-            ||
-            !currentUser
-        ) {
-
-            showError(
-                "لم يتم تحميل الحساب بعد."
-            );
-
-            return;
-
-        }
+        try{
 
 
+            if(
+                !supabaseClient ||
+                !currentUser
+            ){
 
-        saveBtn.disabled =
-            true;
+                throw new Error(
+                    "الحساب لم يتم تحميله بعد."
+                );
 
-
-        saveBtn.textContent =
-            "جاري الحفظ...";
+            }
 
 
 
-        try {
+            const fullName =
+                val("fullName");
 
 
-            const newName =
-                value("name");
-
-
-            const newPhone =
-                value("phone");
-
-
-            const newParentPhone =
-                value("parentPhone");
-
-
-            const newGrade =
-                value("grade");
-
-
-            const newGovernorate =
-                value("governorate");
-
-
-            const newCity =
-                value("city");
-
-
-            const newSchool =
-                value("school");
-
-
-
-            if (!newName) {
+            if(!fullName){
 
                 throw new Error(
                     "اكتب الاسم بالكامل."
@@ -1451,407 +1373,172 @@ form.addEventListener(
 
 
 
-            /*
-             * رفع الصورة أولاً
-             */
+            saveBtn.disabled =
+                true;
 
-            let newAvatarUrl =
+
+            saveBtn.textContent =
+                "جاري الحفظ...";
+
+
+
+            /* =========================
+               UPLOAD IMAGE
+            ========================= */
+
+            let avatarUrl =
+                currentStudent.avatar_url
+                ||
                 null;
 
 
-            if (selectedFile) {
+            if(selectedFile){
 
-                newAvatarUrl =
-                    await uploadPhoto();
+                saveBtn.textContent =
+                    "جاري رفع الصورة...";
+
+
+                avatarUrl =
+                    await uploadStudentImage();
 
             }
 
 
 
-            /*
-             * تجهيز البيانات
-             */
+            /* =========================
+               UPDATE DATA
+            ========================= */
 
-            const updateData = {};
+            const updateData = {
+
+                full_name:
+                    fullName,
+
+                phone:
+                    val("phone"),
+
+                parent_phone:
+                    val("parentPhone"),
+
+                grade:
+                    val("grade"),
+
+                governorate:
+                    val("governorate"),
+
+                city:
+                    val("city"),
+
+                school:
+                    val("school"),
+
+                avatar_url:
+                    avatarUrl
+
+            };
 
 
 
-            /*
-             * الاسم
-             */
+            console.log(
+                "UPDATE DATA:",
+                updateData
+            );
 
-            if (
-                currentRow
-                &&
-                Object.prototype
-                    .hasOwnProperty
-                    .call(
-                        currentRow,
-                        "full_name"
+
+
+            saveBtn.textContent =
+                "جاري حفظ البيانات...";
+
+
+
+            const {
+                error:updateError
+            } =
+                await supabaseClient
+                    .from("students")
+                    .update(
+                        updateData
                     )
-            ) {
+                    .eq(
+                        "id",
+                        currentUser.id
+                    );
 
-                updateData.full_name =
-                    newName;
+
+
+            if(updateError){
+
+                console.error(
+                    "UPDATE ERROR:",
+                    updateError
+                );
+
+                throw new Error(
+                    "فشل حفظ البيانات: " +
+                    updateError.message
+                );
 
             }
 
-            else if (
-                currentRow
-                &&
-                Object.prototype
-                    .hasOwnProperty
-                    .call(
-                        currentRow,
-                        "name"
+
+
+            /* =========================
+               UPDATE LOCAL
+            ========================= */
+
+            currentStudent = {
+
+                ...currentStudent,
+
+                ...updateData
+
+            };
+
+
+            selectedFile =
+                null;
+
+
+            photoInput.value =
+                "";
+
+
+
+            /* =========================
+               SHOW NEW IMAGE
+            ========================= */
+
+            if(avatarUrl){
+
+                avatar.src =
+                    avatarUrl
+                    +
+                    (
+                        avatarUrl.includes("?")
+                            ? "&"
+                            : "?"
                     )
-            ) {
-
-                updateData.name =
-                    newName;
-
-            }
-
-            else {
-
-                updateData.full_name =
-                    newName;
+                    +
+                    "v="
+                    +
+                    Date.now();
 
             }
 
 
 
-            /*
-             * الهاتف
-             */
-
-            if (
-                currentRow
-                &&
-                Object.prototype
-                    .hasOwnProperty
-                    .call(
-                        currentRow,
-                        "phone"
-                    )
-            ) {
-
-                updateData.phone =
-                    newPhone;
-
-            }
-
-            else if (
-                currentRow
-                &&
-                Object.prototype
-                    .hasOwnProperty
-                    .call(
-                        currentRow,
-                        "phone_number"
-                    )
-            ) {
-
-                updateData.phone_number =
-                    newPhone;
-
-            }
-
-
-
-            /*
-             * ولي الأمر
-             */
-
-            if (
-                currentRow
-                &&
-                Object.prototype
-                    .hasOwnProperty
-                    .call(
-                        currentRow,
-                        "parent_phone"
-                    )
-            ) {
-
-                updateData.parent_phone =
-                    newParentPhone;
-
-            }
-
-
-
-            /*
-             * الصف
-             */
-
-            if (
-                currentRow
-                &&
-                Object.prototype
-                    .hasOwnProperty
-                    .call(
-                        currentRow,
-                        "grade"
-                    )
-            ) {
-
-                updateData.grade =
-                    newGrade;
-
-            }
-
-            else if (
-                currentRow
-                &&
-                Object.prototype
-                    .hasOwnProperty
-                    .call(
-                        currentRow,
-                        "class"
-                    )
-            ) {
-
-                updateData.class =
-                    newGrade;
-
-            }
-
-
-
-            /*
-             * المحافظة
-             */
-
-            if (
-                currentRow
-                &&
-                Object.prototype
-                    .hasOwnProperty
-                    .call(
-                        currentRow,
-                        "governorate"
-                    )
-            ) {
-
-                updateData.governorate =
-                    newGovernorate;
-
-            }
-
-            else if (
-                currentRow
-                &&
-                Object.prototype
-                    .hasOwnProperty
-                    .call(
-                        currentRow,
-                        "province"
-                    )
-            ) {
-
-                updateData.province =
-                    newGovernorate;
-
-            }
-
-
-
-            /*
-             * المدينة
-             */
-
-            if (
-                currentRow
-                &&
-                Object.prototype
-                    .hasOwnProperty
-                    .call(
-                        currentRow,
-                        "city"
-                    )
-            ) {
-
-                updateData.city =
-                    newCity;
-
-            }
-
-
-
-            /*
-             * المدرسة
-             */
-
-            if (
-                currentRow
-                &&
-                Object.prototype
-                    .hasOwnProperty
-                    .call(
-                        currentRow,
-                        "school"
-                    )
-            ) {
-
-                updateData.school =
-                    newSchool;
-
-            }
-
-
-
-            /*
-             * رابط الصورة
-             */
-
-            if (
-                newAvatarUrl
-            ) {
-
-                if (
-                    currentRow
-                    &&
-                    Object.prototype
-                        .hasOwnProperty
-                        .call(
-                            currentRow,
-                            "avatar_url"
-                        )
-                ) {
-
-                    updateData.avatar_url =
-                        newAvatarUrl;
-
-                }
-
-                else if (
-                    currentRow
-                    &&
-                    Object.prototype
-                        .hasOwnProperty
-                        .call(
-                            currentRow,
-                            "photo_url"
-                        )
-                ) {
-
-                    updateData.photo_url =
-                        newAvatarUrl;
-
-                }
-
-                else if (
-                    currentRow
-                    &&
-                    Object.prototype
-                        .hasOwnProperty
-                        .call(
-                            currentRow,
-                            "image_url"
-                        )
-                ) {
-
-                    updateData.image_url =
-                        newAvatarUrl;
-
-                }
-
-                else {
-
-                    /*
-                     * الافتراضي
-                     */
-
-                    updateData.avatar_url =
-                        newAvatarUrl;
-
-                }
-
-            }
-
-
-
-            /*
-             * تحديث السجل
-             */
-
-            if (
-                currentRow
-                &&
-                currentRow.id
-            ) {
-
-
-                const {
-                    error
-                } =
-                    await supabaseClient
-                        .from(currentTable)
-                        .update(updateData)
-                        .eq(
-                            "id",
-                            currentUser.id
-                        );
-
-
-                if (error) {
-
-                    throw error;
-
-                }
-
-            }
-
-            else {
-
-
-                /*
-                 * إنشاء سجل
-                 */
-
-                updateData.id =
-                    currentUser.id;
-
-
-                if (
-                    currentUser.email
-                ) {
-
-                    updateData.email =
-                        currentUser.email;
-
-                }
-
-
-                const {
-                    error
-                } =
-                    await supabaseClient
-                        .from(currentTable)
-                        .insert(
-                            updateData
-                        );
-
-
-                if (error) {
-
-                    throw error;
-
-                }
-
-            }
-
-
-
-            showSuccess(
+            success(
                 "تم حفظ بياناتك وصورتك الشخصية بنجاح ✅"
             );
 
 
 
+            /*
+               الانتقال بعد لحظة
+            */
+
             setTimeout(
-                () => {
+                function(){
 
                     window.location.href =
                         "home.html";
@@ -1863,26 +1550,24 @@ form.addEventListener(
 
         }
 
-        catch (error) {
+        catch(err){
 
             console.error(
-                "SAVE ERROR:",
-                error
+                "SAVE PROFILE:",
+                err
             );
 
 
-            showError(
-                error.message ||
-                "حدث خطأ أثناء حفظ البيانات."
+            error(
+                err.message
+                ||
+                "حدث خطأ أثناء الحفظ."
             );
 
-        }
-
-
-        finally {
 
             saveBtn.disabled =
                 false;
+
 
             saveBtn.textContent =
                 "حفظ البيانات";
@@ -1894,13 +1579,14 @@ form.addEventListener(
 
 
 
-/* =========================
+/* =====================================================
    START
-========================= */
+===================================================== */
 
 loadProfile();
 
 </script>
 
 </body>
+
 </html>
