@@ -1,422 +1,2046 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>الخوارزمي | حسابي</title>
+<meta charset="UTF-8">
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial,Tahoma,sans-serif;
-        }
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-        body{
-            min-height:100vh;
-            background:
-                radial-gradient(circle at 20% 20%,rgba(116,72,232,.18),transparent 30%),
-                radial-gradient(circle at 80% 80%,rgba(49,84,223,.15),transparent 30%),
-                #07070b;
-            color:#fff;
-        }
+<title>الخوارزمي | حسابي</title>
 
-        .container{
-            width:min(1200px,94%);
-            margin:auto;
-        }
+<style>
 
-        header{
-            position:sticky;
-            top:0;
-            z-index:20;
-            background:rgba(7,7,11,.88);
-            backdrop-filter:blur(18px);
-            border-bottom:1px solid rgba(255,255,255,.08);
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Tahoma,sans-serif;
+}
 
-        .nav{
-            min-height:75px;
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            gap:15px;
-        }
+body{
 
-        .logo{
-            font-size:25px;
-            font-weight:900;
-            background:linear-gradient(90deg,#fff,#9b7cff);
-            -webkit-background-clip:text;
-            color:transparent;
-        }
+    min-height:100vh;
 
-        .logout{
-            border:1px solid rgba(255,255,255,.12);
-            background:#111119;
-            color:#fff;
-            padding:11px 18px;
-            border-radius:12px;
-            cursor:pointer;
-        }
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(116,72,232,.20),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(49,84,223,.16),
+            transparent 30%
+        ),
+        #07070b;
 
-        main{
-            padding:35px 0 60px;
-        }
+    color:#fff;
+}
 
-        .welcome{
-            display:flex;
-            align-items:center;
-            gap:20px;
-            padding:25px;
-            border:1px solid rgba(255,255,255,.08);
-            background:rgba(255,255,255,.035);
-            border-radius:25px;
-            margin-bottom:25px;
-        }
 
-        .avatar{
-            width:85px;
-            height:85px;
-            border-radius:50%;
-            object-fit:cover;
-            border:3px solid #7d52ff;
-            background:#17131f;
-        }
+/* =========================
+   CONTAINER
+========================= */
 
-        .welcome h1{
-            font-size:28px;
-            margin-bottom:8px;
-        }
+.container{
 
-        .welcome p{
-            color:#aaa;
-        }
+    width:min(1200px,94%);
 
-        .grid{
-            display:grid;
-            grid-template-columns:repeat(4,1fr);
-            gap:16px;
-            margin-bottom:25px;
-        }
+    margin:auto;
+}
 
-        .card{
-            background:rgba(255,255,255,.045);
-            border:1px solid rgba(255,255,255,.08);
-            border-radius:20px;
-            padding:22px;
-            box-shadow:0 15px 50px rgba(0,0,0,.2);
-        }
 
-        .stat-icon{
-            font-size:27px;
-            margin-bottom:12px;
-        }
+/* =========================
+   HEADER
+========================= */
 
-        .stat-title{
-            color:#999;
-            font-size:14px;
-            margin-bottom:8px;
-        }
+header{
 
-        .stat-value{
-            font-size:28px;
-            font-weight:900;
-        }
+    position:sticky;
 
-        .section{
-            margin-bottom:25px;
-        }
+    top:0;
 
-        .section-title{
-            font-size:22px;
-            margin-bottom:15px;
-        }
+    z-index:100;
 
-        .info-grid{
-            display:grid;
-            grid-template-columns:repeat(3,1fr);
-            gap:14px;
-        }
+    height:75px;
 
-        .info{
-            background:#0d0d14;
-            border:1px solid rgba(255,255,255,.07);
-            padding:16px;
-            border-radius:15px;
-        }
+    background:
+        rgba(7,7,11,.90);
 
-        .info span{
-            display:block;
-            color:#888;
-            font-size:13px;
-            margin-bottom:7px;
-        }
+    backdrop-filter:
+        blur(18px);
 
-        .info strong{
-            font-size:16px;
-            word-break:break-word;
-        }
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
+}
 
-        .results{
-            display:flex;
-            flex-direction:column;
-            gap:10px;
-        }
 
-        .result{
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            gap:15px;
-            padding:17px;
-            background:#0d0d14;
-            border:1px solid rgba(255,255,255,.07);
-            border-radius:15px;
-        }
+.nav{
 
-        .result-name{
-            font-weight:bold;
-        }
+    height:100%;
 
-        .result-date{
-            color:#777;
-            font-size:12px;
-            margin-top:5px;
-        }
+    display:flex;
 
-        .score{
-            font-size:19px;
-            font-weight:900;
-            color:#9b7cff;
-        }
+    align-items:center;
 
-        .empty{
-            text-align:center;
-            padding:30px;
-            color:#888;
-            background:#0d0d14;
-            border-radius:16px;
-        }
+    justify-content:space-between;
 
-        .loading{
-            min-height:60vh;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-size:18px;
-            color:#aaa;
-        }
+    gap:15px;
+}
 
-        .error{
-            background:#260f15;
-            border:1px solid #6d2635;
-            padding:18px;
-            border-radius:15px;
-            color:#ff9aaa;
-            margin-bottom:20px;
-            display:none;
-        }
 
-        .edit-btn{
-            margin-top:18px;
-            border:0;
-            background:linear-gradient(135deg,#7448e8,#3154df);
-            color:#fff;
-            padding:12px 20px;
-            border-radius:12px;
-            cursor:pointer;
-        }
+.logo{
 
-        @media(max-width:900px){
-            .grid{
-                grid-template-columns:repeat(2,1fr);
-            }
+    font-size:25px;
 
-            .info-grid{
-                grid-template-columns:repeat(2,1fr);
-            }
-        }
+    font-weight:900;
 
-        @media(max-width:600px){
-            .grid,
-            .info-grid{
-                grid-template-columns:1fr;
-            }
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #9b7cff
+        );
 
-            .welcome{
-                flex-direction:column;
-                text-align:center;
-            }
+    -webkit-background-clip:text;
 
-            .result{
-                align-items:flex-start;
-                flex-direction:column;
-            }
+    color:transparent;
+}
 
-            .welcome h1{
-                font-size:23px;
-            }
-        }
-    </style>
+
+.logout{
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
+    background:#111119;
+
+    color:#fff;
+
+    padding:11px 18px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+
+.logout:hover{
+
+    background:#191923;
+
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+
+    padding:35px 0 70px;
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+.error{
+
+    display:none;
+
+    background:#280f15;
+
+    border:
+        1px solid #6d2635;
+
+    color:#ff9aaa;
+
+    padding:16px;
+
+    border-radius:15px;
+
+    margin-bottom:20px;
+
+    line-height:1.7;
+}
+
+
+/* =========================
+   WELCOME
+========================= */
+
+.welcome{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    padding:25px;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.035);
+
+    border-radius:25px;
+
+    margin-bottom:25px;
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.22);
+}
+
+
+/* =========================
+   AVATAR
+========================= */
+
+.avatar{
+
+    width:95px;
+
+    height:95px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:
+        3px solid #7d52ff;
+
+    background:#17131f;
+
+    flex-shrink:0;
+
+    box-shadow:
+        0 0 30px rgba(125,82,255,.25);
+}
+
+
+.welcome h1{
+
+    font-size:28px;
+
+    margin-bottom:8px;
+}
+
+
+.welcome p{
+
+    color:#aaa;
+
+    word-break:break-word;
+}
+
+
+.edit-btn{
+
+    margin-top:15px;
+
+    border:0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7448e8,
+            #3154df
+        );
+
+    color:#fff;
+
+    padding:11px 18px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:16px;
+
+    margin-bottom:25px;
+}
+
+
+.card{
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    padding:22px;
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.20);
+}
+
+
+.stat-icon{
+
+    font-size:27px;
+
+    margin-bottom:12px;
+}
+
+
+.stat-title{
+
+    color:#999;
+
+    font-size:14px;
+
+    margin-bottom:8px;
+}
+
+
+.stat-value{
+
+    font-size:28px;
+
+    font-weight:900;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+
+    margin-bottom:25px;
+}
+
+
+.section-title{
+
+    font-size:22px;
+
+    margin-bottom:15px;
+}
+
+
+/* =========================
+   INFO
+========================= */
+
+.info-card{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:14px;
+}
+
+
+.info{
+
+    background:#0d0d14;
+
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    padding:16px;
+
+    border-radius:15px;
+
+    min-width:0;
+}
+
+
+.info span{
+
+    display:block;
+
+    color:#888;
+
+    font-size:13px;
+
+    margin-bottom:7px;
+}
+
+
+.info strong{
+
+    display:block;
+
+    font-size:16px;
+
+    word-break:break-word;
+
+    line-height:1.6;
+}
+
+
+/* =========================
+   RESULTS
+========================= */
+
+.results{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+}
+
+
+.result{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:17px;
+
+    background:#0d0d14;
+
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    border-radius:15px;
+}
+
+
+.result-name{
+
+    font-weight:bold;
+
+    margin-bottom:5px;
+}
+
+
+.result-date{
+
+    color:#777;
+
+    font-size:12px;
+}
+
+
+.score{
+
+    font-size:19px;
+
+    font-weight:900;
+
+    color:#9b7cff;
+}
+
+
+.empty{
+
+    text-align:center;
+
+    padding:30px;
+
+    color:#888;
+
+    background:#0d0d14;
+
+    border-radius:16px;
+}
+
+
+/* =========================
+   LOADING
+========================= */
+
+.loading{
+
+    min-height:70vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:18px;
+
+    color:#aaa;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    .stats{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+
+    .info-card{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .stats{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .info-card{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .welcome{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+
+    .welcome h1{
+
+        font-size:23px;
+
+    }
+
+
+    .result{
+
+        align-items:flex-start;
+
+        flex-direction:column;
+
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
+
     <div class="container nav">
-        <div class="logo">الخوارزمي</div>
-        <button class="logout" id="logoutBtn">تسجيل الخروج</button>
+
+        <div class="logo">
+            الخوارزمي
+        </div>
+
+
+        <button
+            class="logout"
+            id="logoutBtn"
+        >
+            تسجيل الخروج
+        </button>
+
     </div>
+
 </header>
 
-<div id="loading" class="loading">
+
+
+<!-- =========================
+     LOADING
+========================= -->
+
+<div
+    id="loading"
+    class="loading"
+>
     جاري تحميل بياناتك...
 </div>
 
-<main id="content" class="container" style="display:none">
 
-    <div id="errorBox" class="error"></div>
+
+<!-- =========================
+     CONTENT
+========================= -->
+
+<main
+    id="content"
+    class="container"
+    style="display:none"
+>
+
+
+    <div
+        id="errorBox"
+        class="error"
+    ></div>
+
+
+
+    <!-- =========================
+         WELCOME
+    ========================= -->
 
     <section class="welcome">
-        <img id="studentAvatar"
-             class="avatar"
-             src="teacher.png"
-             alt="صورة الطالب">
+
+
+        <img
+            id="studentAvatar"
+            class="avatar"
+            src="teacher.png"
+            alt="صورة الطالب"
+        >
+
 
         <div>
+
             <h1>
+
                 أهلاً بك،
-                <span id="studentName">الطالب</span> 👋
+
+                <span id="studentName">
+                    الطالب
+                </span>
+
+                👋
+
             </h1>
+
 
             <p id="studentEmail">
                 جاري تحميل البيانات...
             </p>
 
-            <button class="edit-btn" id="editBtn">
-                تعديل بياناتي
+
+            <button
+                class="edit-btn"
+                id="editBtn"
+            >
+                ✏️ تعديل بياناتي
             </button>
-        </div>
-    </section>
 
-
-    <!-- الإحصائيات -->
-
-    <section class="grid">
-
-        <div class="card">
-            <div class="stat-icon">📝</div>
-            <div class="stat-title">عدد الاختبارات</div>
-            <div class="stat-value" id="testsCount">0</div>
         </div>
 
-        <div class="card">
-            <div class="stat-icon">✅</div>
-            <div class="stat-title">الاختبارات المكتملة</div>
-            <div class="stat-value" id="completedCount">0</div>
-        </div>
-
-        <div class="card">
-            <div class="stat-icon">📊</div>
-            <div class="stat-title">متوسط الدرجات</div>
-            <div class="stat-value" id="averageScore">0%</div>
-        </div>
-
-        <div class="card">
-            <div class="stat-icon">🏆</div>
-            <div class="stat-title">أفضل نتيجة</div>
-            <div class="stat-value" id="bestScore">0%</div>
-        </div>
 
     </section>
 
 
-    <!-- بيانات الطالب -->
+
+    <!-- =========================
+         STATISTICS
+    ========================= -->
+
+    <section class="stats">
+
+
+        <div class="card">
+
+            <div class="stat-icon">
+                📝
+            </div>
+
+            <div class="stat-title">
+                الاختبارات
+            </div>
+
+            <div
+                class="stat-value"
+                id="testsCount"
+            >
+                0
+            </div>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <div class="stat-icon">
+                ✅
+            </div>
+
+            <div class="stat-title">
+                المكتملة
+            </div>
+
+            <div
+                class="stat-value"
+                id="completedCount"
+            >
+                0
+            </div>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <div class="stat-icon">
+                📊
+            </div>
+
+            <div class="stat-title">
+                متوسط الدرجات
+            </div>
+
+            <div
+                class="stat-value"
+                id="averageScore"
+            >
+                0%
+            </div>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <div class="stat-icon">
+                🏆
+            </div>
+
+            <div class="stat-title">
+                أفضل نتيجة
+            </div>
+
+            <div
+                class="stat-value"
+                id="bestScore"
+            >
+                0%
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         STUDENT DATA
+    ========================= -->
 
     <section class="section">
 
-        <h2 class="section-title">👤 بياناتي</h2>
 
-        <div class="card info-grid">
+        <h2 class="section-title">
+            👤 بياناتي
+        </h2>
 
-            <div class="info">
-                <span>الاسم بالكامل</span>
-                <strong id="fullName">—</strong>
-            </div>
 
-            <div class="info">
-                <span>البريد الإلكتروني</span>
-                <strong id="email">—</strong>
-            </div>
+        <div class="card info-card">
+
 
             <div class="info">
-                <span>رقم الهاتف</span>
-                <strong id="phone">—</strong>
+
+                <span>
+                    الاسم بالكامل
+                </span>
+
+                <strong id="fullName">
+                    —
+                </strong>
+
             </div>
 
-            <div class="info">
-                <span>رقم ولي الأمر</span>
-                <strong id="parentPhone">—</strong>
-            </div>
+
 
             <div class="info">
-                <span>المرحلة / الصف</span>
-                <strong id="grade">—</strong>
+
+                <span>
+                    البريد الإلكتروني
+                </span>
+
+                <strong id="email">
+                    —
+                </strong>
+
             </div>
 
-            <div class="info">
-                <span>المحافظة</span>
-                <strong id="governorate">—</strong>
-            </div>
+
 
             <div class="info">
-                <span>المدينة</span>
-                <strong id="city">—</strong>
+
+                <span>
+                    رقم الهاتف
+                </span>
+
+                <strong id="phone">
+                    —
+                </strong>
+
             </div>
 
-            <div class="info">
-                <span>المدرسة</span>
-                <strong id="school">—</strong>
-            </div>
+
 
             <div class="info">
-                <span>تاريخ إنشاء الحساب</span>
-                <strong id="createdAt">—</strong>
+
+                <span>
+                    رقم ولي الأمر
+                </span>
+
+                <strong id="parentPhone">
+                    —
+                </strong>
+
             </div>
+
+
+
+            <div class="info">
+
+                <span>
+                    الصف الدراسي
+                </span>
+
+                <strong id="grade">
+                    —
+                </strong>
+
+            </div>
+
+
+
+            <div class="info">
+
+                <span>
+                    المحافظة
+                </span>
+
+                <strong id="governorate">
+                    —
+                </strong>
+
+            </div>
+
+
+
+            <div class="info">
+
+                <span>
+                    المدينة
+                </span>
+
+                <strong id="city">
+                    —
+                </strong>
+
+            </div>
+
+
+
+            <div class="info">
+
+                <span>
+                    المدرسة
+                </span>
+
+                <strong id="school">
+                    —
+                </strong>
+
+            </div>
+
+
+
+            <div class="info">
+
+                <span>
+                    تاريخ إنشاء الحساب
+                </span>
+
+                <strong id="createdAt">
+                    —
+                </strong>
+
+            </div>
+
 
         </div>
 
     </section>
 
 
-    <!-- النتائج -->
+
+    <!-- =========================
+         RESULTS
+    ========================= -->
 
     <section class="section">
 
-        <h2 class="section-title">📈 نتائجي</h2>
 
-        <div id="results" class="card results">
+        <h2 class="section-title">
+            📈 نتائجي
+        </h2>
+
+
+        <div
+            id="results"
+            class="card results"
+        >
+
             <div class="empty">
-                لا توجد نتائج حتى الآن
+                جاري تحميل النتائج...
             </div>
+
         </div>
 
+
     </section>
+
 
 </main>
 
 
-<!-- مهم جدًا -->
+
+<!-- =========================
+     SUPABASE
+========================= -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<!-- ملف الاتصال الموجود عندك -->
 <script src="supabase.js"></script>
 
-<!-- كود الصفحة -->
-<script src="home.js"></script>
+
+
+<!-- =========================
+     HOME JS
+========================= -->
+
+<script>
+
+"use strict";
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async () => {
+
+
+        const loading =
+            document.getElementById(
+                "loading"
+            );
+
+
+        const content =
+            document.getElementById(
+                "content"
+            );
+
+
+        const errorBox =
+            document.getElementById(
+                "errorBox"
+            );
+
+
+
+        /* =========================
+           ERROR
+        ========================= */
+
+        function showError(message){
+
+            errorBox.textContent =
+                message;
+
+            errorBox.style.display =
+                "block";
+
+        }
+
+
+
+        /* =========================
+           SAFE TEXT
+        ========================= */
+
+        function text(value){
+
+            if(
+                value === null ||
+                value === undefined ||
+                value === ""
+            ){
+
+                return "—";
+
+            }
+
+            return String(value);
+
+        }
+
+
+
+        /* =========================
+           DATE
+        ========================= */
+
+        function formatDate(date){
+
+            if(!date){
+
+                return "—";
+
+            }
+
+
+            try{
+
+                return new Date(date)
+                    .toLocaleDateString(
+                        "ar-EG",
+                        {
+                            year:"numeric",
+                            month:"long",
+                            day:"numeric"
+                        }
+                    );
+
+            }
+
+            catch{
+
+                return "—";
+
+            }
+
+        }
+
+
+
+        try{
+
+
+            /* =========================
+               SUPABASE
+            ========================= */
+
+            if(
+                !window.supabaseClient
+            ){
+
+                throw new Error(
+                    "Supabase غير متصل. تأكد من ملف supabase.js."
+                );
+
+            }
+
+
+            const supabase =
+                window.supabaseClient;
+
+
+
+            /* =========================
+               SESSION
+            ========================= */
+
+            const {
+                data:
+                sessionData,
+
+                error:
+                sessionError
+
+            } =
+                await supabase
+                    .auth
+                    .getSession();
+
+
+
+            if(sessionError){
+
+                throw sessionError;
+
+            }
+
+
+
+            const session =
+                sessionData?.session;
+
+
+
+            if(!session){
+
+                window.location.href =
+                    "auth.html";
+
+                return;
+
+            }
+
+
+
+            const user =
+                session.user;
+
+
+
+            /* =========================
+               GET STUDENT
+            ========================= */
+
+            let student =
+                null;
+
+
+
+            const {
+                data:
+                studentData,
+
+                error:
+                studentError
+
+            } =
+                await supabase
+                    .from("students")
+                    .select("*")
+                    .eq(
+                        "id",
+                        user.id
+                    )
+                    .maybeSingle();
+
+
+
+            if(
+                !studentError &&
+                studentData
+            ){
+
+                student =
+                    studentData;
+
+            }
+
+
+
+            /* =========================
+               PROFILES FALLBACK
+            ========================= */
+
+            if(!student){
+
+                const {
+                    data:
+                    profileData,
+
+                    error:
+                    profileError
+
+                } =
+                    await supabase
+                        .from("profiles")
+                        .select("*")
+                        .eq(
+                            "id",
+                            user.id
+                        )
+                        .maybeSingle();
+
+
+
+                if(
+                    !profileError &&
+                    profileData
+                ){
+
+                    student =
+                        profileData;
+
+                }
+
+            }
+
+
+
+            /* =========================
+               AUTH FALLBACK
+            ========================= */
+
+            if(!student){
+
+                student = {
+
+                    id:user.id,
+
+                    name:
+                        user
+                            .user_metadata
+                            ?.full_name
+                        ||
+                        user
+                            .user_metadata
+                            ?.name
+                        ||
+                        "الطالب",
+
+                    email:user.email,
+
+                    phone:
+                        user
+                            .user_metadata
+                            ?.phone
+                        ||
+                        ""
+
+                };
+
+            }
+
+
+
+            /* =========================
+               NAME
+            ========================= */
+
+            const name =
+                student.full_name
+                ||
+                student.name
+                ||
+                student.student_name
+                ||
+                user
+                    .user_metadata
+                    ?.full_name
+                ||
+                user
+                    .user_metadata
+                    ?.name
+                ||
+                "الطالب";
+
+
+
+            /* =========================
+               EMAIL
+            ========================= */
+
+            const email =
+                student.email
+                ||
+                user.email
+                ||
+                "—";
+
+
+
+            /* =========================
+               PHONE
+            ========================= */
+
+            const phone =
+                student.phone
+                ||
+                student.phone_number
+                ||
+                user
+                    .user_metadata
+                    ?.phone
+                ||
+                "—";
+
+
+
+            /* =========================
+               PARENT PHONE
+            ========================= */
+
+            const parentPhone =
+                student.parent_phone
+                ||
+                student.parentPhone
+                ||
+                "—";
+
+
+
+            /* =========================
+               GRADE
+            ========================= */
+
+            const grade =
+                student.grade
+                ||
+                student.class
+                ||
+                student.grade_name
+                ||
+                "—";
+
+
+
+            /* =========================
+               GOVERNORATE
+            ========================= */
+
+            const governorate =
+                student.governorate
+                ||
+                student.province
+                ||
+                "—";
+
+
+
+            /* =========================
+               CITY
+            ========================= */
+
+            const city =
+                student.city
+                ||
+                "—";
+
+
+
+            /* =========================
+               SCHOOL
+            ========================= */
+
+            const school =
+                student.school
+                ||
+                "—";
+
+
+
+            /* =========================
+               STUDENT IMAGE
+            ========================= */
+
+            const avatarUrl =
+                student.avatar_url
+                ||
+                student.photo_url
+                ||
+                student.image_url
+                ||
+                user
+                    .user_metadata
+                    ?.avatar_url
+                ||
+                "";
+
+
+
+            const avatarElement =
+                document.getElementById(
+                    "studentAvatar"
+                );
+
+
+
+            /*
+             * لو الطالب عنده صورة
+             * اعرض صورته
+             */
+
+            if(avatarUrl){
+
+                avatarElement.src =
+                    avatarUrl;
+
+            }
+
+            else{
+
+                /*
+                 * مفيش صورة
+                 */
+
+                avatarElement.src =
+                    "teacher.png";
+
+            }
+
+
+
+            /*
+             * لو الرابط غلط
+             */
+
+            avatarElement.onerror =
+                () => {
+
+                    /*
+                     * لا نرجع للمستر مباشرة
+                     * إلا لو الصورة غير موجودة
+                     */
+
+                    avatarElement.src =
+                        "teacher.png";
+
+                };
+
+
+
+            /* =========================
+               DISPLAY
+            ========================= */
+
+            document
+                .getElementById(
+                    "studentName"
+                )
+                .textContent =
+                    name;
+
+
+
+            document
+                .getElementById(
+                    "studentEmail"
+                )
+                .textContent =
+                    email;
+
+
+
+            document
+                .getElementById(
+                    "fullName"
+                )
+                .textContent =
+                    name;
+
+
+
+            document
+                .getElementById(
+                    "email"
+                )
+                .textContent =
+                    email;
+
+
+
+            document
+                .getElementById(
+                    "phone"
+                )
+                .textContent =
+                    phone;
+
+
+
+            document
+                .getElementById(
+                    "parentPhone"
+                )
+                .textContent =
+                    parentPhone;
+
+
+
+            document
+                .getElementById(
+                    "grade"
+                )
+                .textContent =
+                    grade;
+
+
+
+            document
+                .getElementById(
+                    "governorate"
+                )
+                .textContent =
+                    governorate;
+
+
+
+            document
+                .getElementById(
+                    "city"
+                )
+                .textContent =
+                    city;
+
+
+
+            document
+                .getElementById(
+                    "school"
+                )
+                .textContent =
+                    school;
+
+
+
+            document
+                .getElementById(
+                    "createdAt"
+                )
+                .textContent =
+                    formatDate(
+                        user.created_at
+                    );
+
+
+
+            /* =========================
+               RESULTS
+            ========================= */
+
+            let results = [];
+
+
+
+            const {
+                data:
+                resultsData,
+
+                error:
+                resultsError
+
+            } =
+                await supabase
+                    .from("results")
+                    .select("*")
+                    .eq(
+                        "student_id",
+                        user.id
+                    )
+                    .order(
+                        "created_at",
+                        {
+                            ascending:false
+                        }
+                    );
+
+
+
+            if(
+                !resultsError &&
+                resultsData
+            ){
+
+                results =
+                    resultsData;
+
+            }
+
+
+
+            /* =========================
+               STATS
+            ========================= */
+
+            const completedCount =
+                results.length;
+
+
+
+            let totalPercentage =
+                0;
+
+
+            let bestPercentage =
+                0;
+
+
+
+            results.forEach(
+                result => {
+
+
+                    let percentage =
+                        0;
+
+
+
+                    if(
+                        result.percentage
+                        !== null
+                        &&
+                        result.percentage
+                        !== undefined
+                    ){
+
+                        percentage =
+                            Number(
+                                result.percentage
+                            )
+                            || 0;
+
+                    }
+
+                    else if(
+                        result.score
+                        !== null
+                        &&
+                        result.total_score
+                    ){
+
+                        percentage =
+                            (
+                                Number(
+                                    result.score
+                                )
+                                /
+                                Number(
+                                    result.total_score
+                                )
+                            )
+                            * 100;
+
+                    }
+
+
+
+                    totalPercentage +=
+                        percentage;
+
+
+
+                    if(
+                        percentage >
+                        bestPercentage
+                    ){
+
+                        bestPercentage =
+                            percentage;
+
+                    }
+
+                }
+            );
+
+
+
+            const average =
+                completedCount > 0
+                ?
+                totalPercentage /
+                completedCount
+                :
+                0;
+
+
+
+            document
+                .getElementById(
+                    "testsCount"
+                )
+                .textContent =
+                    completedCount;
+
+
+
+            document
+                .getElementById(
+                    "completedCount"
+                )
+                .textContent =
+                    completedCount;
+
+
+
+            document
+                .getElementById(
+                    "averageScore"
+                )
+                .textContent =
+                    Math.round(
+                        average
+                    )
+                    +
+                    "%";
+
+
+
+            document
+                .getElementById(
+                    "bestScore"
+                )
+                .textContent =
+                    Math.round(
+                        bestPercentage
+                    )
+                    +
+                    "%";
+
+
+
+            /* =========================
+               RESULTS DISPLAY
+            ========================= */
+
+            const resultsContainer =
+                document.getElementById(
+                    "results"
+                );
+
+
+
+            if(
+                results.length === 0
+            ){
+
+                resultsContainer.innerHTML = `
+
+                    <div class="empty">
+
+                        📝 لم تدخل أي اختبار حتى الآن
+
+                    </div>
+
+                `;
+
+            }
+
+            else{
+
+
+                resultsContainer.innerHTML =
+                    "";
+
+
+
+                results.forEach(
+                    result => {
+
+
+                        const score =
+                            result.score
+                            ??
+                            result.mark
+                            ??
+                            0;
+
+
+
+                        const total =
+                            result.total_score
+                            ??
+                            result.total
+                            ??
+                            0;
+
+
+
+                        let percentage =
+                            0;
+
+
+
+                        if(
+                            result.percentage
+                            !== undefined
+                            &&
+                            result.percentage
+                            !== null
+                        ){
+
+                            percentage =
+                                Number(
+                                    result.percentage
+                                );
+
+                        }
+
+                        else if(
+                            total > 0
+                        ){
+
+                            percentage =
+                                (
+                                    Number(score)
+                                    /
+                                    Number(total)
+                                )
+                                * 100;
+
+                        }
+
+
+
+                        const examName =
+                            result.exam_name
+                            ||
+                            result.test_name
+                            ||
+                            result.title
+                            ||
+                            "اختبار";
+
+
+
+                        const date =
+                            result.created_at
+                            ||
+                            result.submitted_at
+                            ||
+                            result.date;
+
+
+
+                        const row =
+                            document
+                                .createElement(
+                                    "div"
+                                );
+
+
+
+                        row.className =
+                            "result";
+
+
+
+                        row.innerHTML = `
+
+                            <div>
+
+                                <div
+                                    class="result-name"
+                                >
+                                    ${escapeHTML(
+                                        examName
+                                    )}
+                                </div>
+
+                                <div
+                                    class="result-date"
+                                >
+                                    ${escapeHTML(
+                                        formatDate(
+                                            date
+                                        )
+                                    )}
+                                </div>
+
+                            </div>
+
+
+                            <div class="score">
+
+                                ${Math.round(
+                                    percentage
+                                )}%
+
+                            </div>
+
+                        `;
+
+
+
+                        resultsContainer
+                            .appendChild(
+                                row
+                            );
+
+                    }
+                );
+
+            }
+
+
+
+            /* =========================
+               EDIT
+            ========================= */
+
+            document
+                .getElementById(
+                    "editBtn"
+                )
+                .addEventListener(
+                    "click",
+                    () => {
+
+                        window.location.href =
+                            "edit-profile.html";
+
+                    }
+                );
+
+
+
+            /* =========================
+               LOGOUT
+            ========================= */
+
+            document
+                .getElementById(
+                    "logoutBtn"
+                )
+                .addEventListener(
+                    "click",
+                    async () => {
+
+
+                        const {
+                            error
+                        } =
+                            await supabase
+                                .auth
+                                .signOut();
+
+
+
+                        if(error){
+
+                            alert(
+                                "حدث خطأ أثناء تسجيل الخروج."
+                            );
+
+                            return;
+
+                        }
+
+
+
+                        window.location.href =
+                            "auth.html";
+
+                    }
+                );
+
+
+
+            /* =========================
+               SHOW
+            ========================= */
+
+            loading.style.display =
+                "none";
+
+
+            content.style.display =
+                "block";
+
+
+        }
+
+        catch(error){
+
+
+            console.error(
+                "HOME ERROR:",
+                error
+            );
+
+
+            loading.style.display =
+                "none";
+
+
+            content.style.display =
+                "block";
+
+
+            showError(
+                error.message
+                ||
+                "حدث خطأ أثناء تحميل بيانات الطالب."
+            );
+
+        }
+
+    }
+);
+
+
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHTML(value){
+
+    return String(
+        value ?? ""
+    )
+    .replaceAll(
+        "&",
+        "&amp;"
+    )
+    .replaceAll(
+        "<",
+        "&lt;"
+    )
+    .replaceAll(
+        ">",
+        "&gt;"
+    )
+    .replaceAll(
+        '"',
+        "&quot;"
+    )
+    .replaceAll(
+        "'",
+        "&#039;"
+    );
+
+}
+
+</script>
+
 
 </body>
+
 </html>
