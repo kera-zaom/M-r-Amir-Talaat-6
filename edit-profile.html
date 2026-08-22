@@ -2,548 +2,297 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
 
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
 
-<title>الخوارزمي | تعديل بياناتي</title>
+<title>الخوارزمي | تعديل البيانات</title>
 
 <style>
 
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
     font-family:Arial,Tahoma,sans-serif;
 }
 
 body{
-
     min-height:100vh;
-
     background:
         radial-gradient(
             circle at 20% 20%,
             rgba(116,72,232,.22),
-            transparent 32%
+            transparent 35%
         ),
         radial-gradient(
             circle at 80% 80%,
             rgba(49,84,223,.18),
-            transparent 32%
+            transparent 35%
         ),
         #07070b;
-
     color:#fff;
 }
 
-
 .container{
-
     width:min(700px,94%);
-
     margin:auto;
 }
 
-
-/* =========================
-   HEADER
-========================= */
-
 header{
-
-    height:72px;
-
-    border-bottom:
-        1px solid rgba(255,255,255,.08);
-
-    background:
-        rgba(7,7,11,.90);
-
+    height:70px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    background:rgba(7,7,11,.9);
     backdrop-filter:blur(15px);
 }
 
-
 .nav{
-
     height:100%;
-
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 }
 
-
 .logo{
-
     font-size:25px;
-
     font-weight:900;
-
-    background:
-        linear-gradient(
-            90deg,
-            #fff,
-            #9b7cff
-        );
-
+    background:linear-gradient(90deg,#fff,#9b7cff);
     -webkit-background-clip:text;
-
     color:transparent;
 }
 
-
 .back{
-
-    text-decoration:none;
-
     color:#fff;
-
-    background:#111119;
-
+    text-decoration:none;
     padding:10px 16px;
-
     border-radius:12px;
-
-    border:
-        1px solid rgba(255,255,255,.10);
+    background:#111119;
+    border:1px solid rgba(255,255,255,.1);
 }
 
-
-/* =========================
-   MAIN
-========================= */
-
 main{
-
     padding:35px 0 60px;
 }
 
-
 .card{
-
-    background:
-        rgba(255,255,255,.045);
-
-    border:
-        1px solid rgba(255,255,255,.08);
-
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.08);
     border-radius:25px;
-
     padding:25px;
-
-    box-shadow:
-        0 20px 70px rgba(0,0,0,.30);
 }
 
-
 h1{
-
     font-size:27px;
-
     margin-bottom:8px;
 }
 
-
 .subtitle{
-
     color:#8d8d96;
+    margin-bottom:25px;
+}
 
+.message{
+    display:none;
+    padding:13px;
+    border-radius:12px;
+    margin-bottom:18px;
+}
+
+.success{
+    background:#092719;
+    color:#75e9a9;
+    border:1px solid #1d7348;
+}
+
+.error{
+    background:#280f15;
+    color:#ff9aaa;
+    border:1px solid #6d2635;
+}
+
+/* IMAGE */
+
+.photo{
+    text-align:center;
     margin-bottom:28px;
 }
 
-
-/* =========================
-   MESSAGES
-========================= */
-
-.message{
-
-    display:none;
-
-    padding:14px;
-
-    border-radius:12px;
-
-    margin-bottom:18px;
-
-    line-height:1.7;
-}
-
-
-.success{
-
-    background:#092719;
-
-    border:
-        1px solid #1d7348;
-
-    color:#75e9a9;
-}
-
-
-.error{
-
-    background:#280f15;
-
-    border:
-        1px solid #6d2635;
-
-    color:#ff9aaa;
-}
-
-
-/* =========================
-   PHOTO
-========================= */
-
-.photo-section{
-
-    text-align:center;
-
-    margin-bottom:30px;
-}
-
-
-.avatar-box{
-
+.avatar-wrap{
     position:relative;
-
     width:145px;
-
     height:145px;
-
     margin:auto;
 }
 
-
 #studentAvatar{
-
     width:145px;
-
     height:145px;
-
     border-radius:50%;
-
     object-fit:cover;
-
     background:#111119;
-
-    border:
-        3px solid #7952ed;
-
-    box-shadow:
-        0 0 35px rgba(121,82,237,.28);
+    border:3px solid #7952ed;
+    box-shadow:0 0 35px rgba(121,82,237,.3);
 }
 
-
 .camera{
-
     position:absolute;
-
-    right:2px;
-
-    bottom:2px;
-
+    right:0;
+    bottom:0;
     width:45px;
-
     height:45px;
-
     border-radius:50%;
-
-    background:
-        linear-gradient(
-            135deg,
-            #7448e8,
-            #3154df
-        );
-
-    border:
-        3px solid #07070b;
-
-    color:#fff;
-
+    background:linear-gradient(135deg,#7448e8,#3154df);
+    border:3px solid #07070b;
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     cursor:pointer;
-
     font-size:19px;
 }
 
-
 #photoInput{
-
     display:none;
 }
 
-
 .photo-title{
-
-    margin-top:14px;
-
+    margin-top:13px;
     font-weight:bold;
 }
 
-
 .photo-info{
-
-    margin-top:7px;
-
-    color:#888;
-
+    color:#777;
     font-size:13px;
+    margin-top:6px;
 }
 
-
-/* =========================
-   FORM
-========================= */
-
-.form-grid{
-
+.grid{
     display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
+    grid-template-columns:1fr 1fr;
     gap:15px;
 }
 
-
 .field{
-
     display:flex;
-
     flex-direction:column;
-
     gap:8px;
 }
 
-
 .full{
-
-    grid-column:1 / -1;
+    grid-column:1/-1;
 }
 
-
 label{
-
     color:#aaa;
-
     font-size:14px;
 }
 
-
 input{
-
     width:100%;
-
     padding:14px;
-
     border-radius:12px;
-
-    border:
-        1px solid rgba(255,255,255,.10);
-
+    border:1px solid rgba(255,255,255,.1);
     background:#0c0c12;
-
     color:#fff;
-
     outline:none;
-
     font-size:15px;
 }
 
-
 input:focus{
-
     border-color:#7650ee;
-
-    box-shadow:
-        0 0 0 3px
-        rgba(118,80,238,.10);
 }
-
 
 input[readonly]{
-
-    opacity:.55;
-
-    cursor:not-allowed;
+    opacity:.5;
 }
 
-
-/* =========================
-   BUTTON
-========================= */
-
-.save{
-
+button.save{
     width:100%;
-
     margin-top:23px;
-
     padding:15px;
-
     border:0;
-
     border-radius:13px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #7448e8,
-            #3154df
-        );
-
     color:#fff;
-
+    background:linear-gradient(135deg,#7448e8,#3154df);
     font-size:16px;
-
     font-weight:bold;
-
     cursor:pointer;
-
-    transition:.2s;
 }
 
-
-.save:hover{
-
-    transform:translateY(-2px);
-}
-
-
-.save:disabled{
-
+button.save:disabled{
     opacity:.6;
-
     cursor:not-allowed;
-
-    transform:none;
 }
-
-
-.loading{
-
-    text-align:center;
-
-    color:#999;
-
-    padding:25px;
-}
-
 
 @media(max-width:600px){
 
-    .form-grid{
-
+    .grid{
         grid-template-columns:1fr;
-
     }
 
     .full{
-
         grid-column:auto;
-
     }
 
     .card{
-
         padding:18px;
-
-    }
-
-    h1{
-
-        font-size:23px;
-
     }
 
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
 <header>
 
-    <div class="container nav">
+<div class="container nav">
 
-        <div class="logo">
-            الخوارزمي
-        </div>
-
-        <a
-            href="home.html"
-            class="back"
-        >
-            ← رجوع
-        </a>
-
+    <div class="logo">
+        الخوارزمي
     </div>
 
-</header>
+    <a href="home.html" class="back">
+        ← رجوع
+    </a>
 
+</div>
+
+</header>
 
 
 <main class="container">
 
 <div class="card">
 
-
 <h1>
     تعديل بياناتي
 </h1>
 
-
 <p class="subtitle">
-    عدّل بياناتك الشخصية وصورتك الشخصية.
+    يمكنك تعديل بياناتك وتغيير صورتك الشخصية.
 </p>
 
 
+<div id="successBox" class="message success"></div>
 
-<div
-    id="successBox"
-    class="message success"
-></div>
+<div id="errorBox" class="message error"></div>
 
 
-<div
-    id="errorBox"
-    class="message error"
-></div>
-
-
-
-<!-- =========================
+<!-- ==============================
      PHOTO
-========================= -->
+============================== -->
 
-<div class="photo-section">
+<div class="photo">
 
-
-    <div class="avatar-box">
-
+    <div class="avatar-wrap">
 
         <img
             id="studentAvatar"
             src="teacher.png"
             alt="صورة الطالب"
         >
-
 
         <label
             class="camera"
@@ -552,39 +301,32 @@ input[readonly]{
             📷
         </label>
 
-
         <input
             id="photoInput"
             type="file"
             accept="image/jpeg,image/png,image/webp"
         >
 
-
     </div>
-
 
     <div class="photo-title">
         صورتك الشخصية
     </div>
 
-
     <div class="photo-info">
         JPG / PNG / WEBP — الحد الأقصى 5MB
     </div>
 
-
 </div>
 
 
-
-<!-- =========================
+<!-- ==============================
      FORM
-========================= -->
+============================== -->
 
 <form id="profileForm">
 
-
-<div class="form-grid">
+<div class="grid">
 
 
 <div class="field full">
@@ -596,12 +338,10 @@ input[readonly]{
 <input
     id="fullName"
     type="text"
-    placeholder="اكتب اسمك بالكامل"
     required
 >
 
 </div>
-
 
 
 <div class="field">
@@ -619,7 +359,6 @@ input[readonly]{
 </div>
 
 
-
 <div class="field">
 
 <label>
@@ -629,11 +368,9 @@ input[readonly]{
 <input
     id="phone"
     type="tel"
-    placeholder="01xxxxxxxxx"
 >
 
 </div>
-
 
 
 <div class="field">
@@ -645,11 +382,9 @@ input[readonly]{
 <input
     id="parentPhone"
     type="tel"
-    placeholder="01xxxxxxxxx"
 >
 
 </div>
-
 
 
 <div class="field">
@@ -661,11 +396,9 @@ input[readonly]{
 <input
     id="grade"
     type="text"
-    placeholder="مثال: ثالثة ثانوي"
 >
 
 </div>
-
 
 
 <div class="field">
@@ -677,11 +410,9 @@ input[readonly]{
 <input
     id="governorate"
     type="text"
-    placeholder="المحافظة"
 >
 
 </div>
-
 
 
 <div class="field">
@@ -693,11 +424,9 @@ input[readonly]{
 <input
     id="city"
     type="text"
-    placeholder="المدينة"
 >
 
 </div>
-
 
 
 <div class="field full">
@@ -709,7 +438,6 @@ input[readonly]{
 <input
     id="school"
     type="text"
-    placeholder="اسم المدرسة"
 >
 
 </div>
@@ -718,33 +446,26 @@ input[readonly]{
 </div>
 
 
-
 <button
-    class="save"
     id="saveBtn"
+    class="save"
     type="submit"
 >
     حفظ البيانات
 </button>
 
-
 </form>
-
 
 </div>
 
 </main>
 
 
-
-<!-- =========================
-     SUPABASE
-========================= -->
+<!-- Supabase -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script src="supabase.js"></script>
-
 
 
 <script>
@@ -752,44 +473,47 @@ input[readonly]{
 "use strict";
 
 
-let supabaseClient;
+/* =========================================
+   VARIABLES
+========================================= */
 
-let currentUser;
+let supabaseClient = null;
 
-let currentStudent;
+let currentUser = null;
+
+let currentStudent = {};
 
 let selectedFile = null;
 
 
-const avatar =
-    document.getElementById(
-        "studentAvatar"
-    );
-
-
-const photoInput =
-    document.getElementById(
-        "photoInput"
-    );
-
+/* =========================================
+   ELEMENTS
+========================================= */
 
 const form =
     document.getElementById(
         "profileForm"
     );
 
+const photoInput =
+    document.getElementById(
+        "photoInput"
+    );
+
+const avatar =
+    document.getElementById(
+        "studentAvatar"
+    );
 
 const saveBtn =
     document.getElementById(
         "saveBtn"
     );
 
-
 const successBox =
     document.getElementById(
         "successBox"
     );
-
 
 const errorBox =
     document.getElementById(
@@ -797,12 +521,11 @@ const errorBox =
     );
 
 
-
-/* =====================================================
+/* =========================================
    MESSAGE
-===================================================== */
+========================================= */
 
-function success(message){
+function showSuccess(message){
 
     successBox.textContent =
         message;
@@ -815,7 +538,7 @@ function success(message){
 }
 
 
-function error(message){
+function showError(message){
 
     errorBox.textContent =
         message;
@@ -828,29 +551,21 @@ function error(message){
 }
 
 
+/* =========================================
+   INPUT HELPERS
+========================================= */
 
-/* =====================================================
-   GET VALUE
-===================================================== */
+function getValue(id){
 
-function val(id){
-
-    const element =
-        document.getElementById(id);
-
-    return element
-        ? element.value.trim()
-        : "";
+    return document
+        .getElementById(id)
+        .value
+        .trim();
 
 }
 
 
-
-/* =====================================================
-   SET VALUE
-===================================================== */
-
-function setVal(id,value){
+function setValue(id,value){
 
     const element =
         document.getElementById(id);
@@ -865,15 +580,13 @@ function setVal(id,value){
 }
 
 
-
-/* =====================================================
-   LOAD USER
-===================================================== */
+/* =========================================
+   LOAD PROFILE
+========================================= */
 
 async function loadProfile(){
 
     try{
-
 
         if(!window.supabaseClient){
 
@@ -883,32 +596,27 @@ async function loadProfile(){
 
         }
 
-
         supabaseClient =
             window.supabaseClient;
 
 
-
         const {
             data,
-            error:sessionError
+            error
         } =
-            await supabaseClient
-                .auth
-                .getSession();
+        await supabaseClient
+            .auth
+            .getSession();
 
 
-        if(sessionError){
+        if(error){
 
-            throw sessionError;
+            throw error;
 
         }
 
 
-        if(
-            !data ||
-            !data.session
-        ){
+        if(!data?.session){
 
             window.location.href =
                 "auth.html";
@@ -922,24 +630,22 @@ async function loadProfile(){
             data.session.user;
 
 
-
         /* =========================
-           STUDENT
+           GET STUDENT
         ========================= */
 
         const {
             data:student,
             error:studentError
         } =
-            await supabaseClient
-                .from("students")
-                .select("*")
-                .eq(
-                    "id",
-                    currentUser.id
-                )
-                .maybeSingle();
-
+        await supabaseClient
+            .from("students")
+            .select("*")
+            .eq(
+                "id",
+                currentUser.id
+            )
+            .maybeSingle();
 
 
         if(studentError){
@@ -953,147 +659,93 @@ async function loadProfile(){
             student || {};
 
 
-
         /* =========================
-           DATA
+           FIELDS
         ========================= */
 
-        setVal(
+        setValue(
             "fullName",
-            currentStudent.full_name
-            ||
-            currentStudent.name
-            ||
-            currentStudent.student_name
-            ||
-            currentUser
-                .user_metadata
-                ?.full_name
-            ||
-            currentUser
-                .user_metadata
-                ?.name
-            ||
+            currentStudent.full_name ||
+            currentStudent.name ||
+            currentUser.user_metadata?.full_name ||
             ""
         );
 
 
-        setVal(
+        setValue(
             "email",
-            currentUser.email
-            ||
-            currentStudent.email
-            ||
+            currentUser.email ||
+            currentStudent.email ||
             ""
         );
 
 
-        setVal(
+        setValue(
             "phone",
-            currentStudent.phone
-            ||
-            currentStudent.phone_number
-            ||
+            currentStudent.phone ||
             ""
         );
 
 
-        setVal(
+        setValue(
             "parentPhone",
-            currentStudent.parent_phone
-            ||
+            currentStudent.parent_phone ||
             ""
         );
 
 
-        setVal(
+        setValue(
             "grade",
-            currentStudent.grade
-            ||
-            currentStudent.class
-            ||
+            currentStudent.grade ||
+            currentStudent.class ||
             ""
         );
 
 
-        setVal(
+        setValue(
             "governorate",
-            currentStudent.governorate
-            ||
-            currentStudent.province
-            ||
+            currentStudent.governorate ||
+            currentStudent.province ||
             ""
         );
 
 
-        setVal(
+        setValue(
             "city",
-            currentStudent.city
-            ||
+            currentStudent.city ||
             ""
         );
 
 
-        setVal(
+        setValue(
             "school",
-            currentStudent.school
-            ||
+            currentStudent.school ||
             ""
         );
-
 
 
         /* =========================
-           IMAGE
+           CURRENT IMAGE
         ========================= */
 
-        const savedAvatar =
-            currentStudent.avatar_url
-            ||
-            currentStudent.photo_url
-            ||
-            currentStudent.image_url
-            ||
-            "";
-
-
-        if(savedAvatar){
+        if(currentStudent.avatar_url){
 
             avatar.src =
-                savedAvatar;
-
-        }
-        else{
-
-            avatar.src =
-                "teacher.png";
+                currentStudent.avatar_url;
 
         }
 
 
-        avatar.onerror =
-            function(){
-
-                avatar.src =
-                    "teacher.png";
-
-            };
-
-
-    }
-
-    catch(err){
+    }catch(error){
 
         console.error(
-            "LOAD PROFILE:",
-            err
+            "LOAD ERROR:",
+            error
         );
 
-
-        error(
-            err.message
-            ||
-            "تعذر تحميل بيانات الحساب."
+        showError(
+            error.message ||
+            "تعذر تحميل البيانات."
         );
 
     }
@@ -1101,18 +753,16 @@ async function loadProfile(){
 }
 
 
-
-/* =====================================================
-   SELECT PHOTO
-===================================================== */
+/* =========================================
+   SELECT IMAGE
+========================================= */
 
 photoInput.addEventListener(
     "change",
     function(){
 
         const file =
-            this.files &&
-            this.files[0];
+            this.files?.[0];
 
 
         if(!file){
@@ -1122,17 +772,13 @@ photoInput.addEventListener(
         }
 
 
-        /* =========================
-           SIZE
-        ========================= */
-
         if(
             file.size >
             5 * 1024 * 1024
         ){
 
-            error(
-                "حجم الصورة أكبر من 5MB."
+            showError(
+                "حجم الصورة يجب ألا يتجاوز 5MB."
             );
 
             this.value = "";
@@ -1142,11 +788,7 @@ photoInput.addEventListener(
         }
 
 
-        /* =========================
-           TYPE
-        ========================= */
-
-        const allowed = [
+        const allowedTypes = [
 
             "image/jpeg",
             "image/png",
@@ -1156,13 +798,13 @@ photoInput.addEventListener(
 
 
         if(
-            !allowed.includes(
+            !allowedTypes.includes(
                 file.type
             )
         ){
 
-            error(
-                "اختار JPG أو PNG أو WEBP فقط."
+            showError(
+                "اختر صورة JPG أو PNG أو WEBP."
             );
 
             this.value = "";
@@ -1176,10 +818,7 @@ photoInput.addEventListener(
             file;
 
 
-
-        /* =========================
-           PREVIEW
-        ========================= */
+        /* PREVIEW */
 
         const reader =
             new FileReader();
@@ -1206,12 +845,11 @@ photoInput.addEventListener(
 );
 
 
-
-/* =====================================================
+/* =========================================
    UPLOAD IMAGE
-===================================================== */
+========================================= */
 
-async function uploadStudentImage(){
+async function uploadImage(){
 
     if(!selectedFile){
 
@@ -1220,13 +858,6 @@ async function uploadStudentImage(){
     }
 
 
-    /*
-       اسم آمن وفريد
-
-       USER_ID/
-       profile-TIMESTAMP.extension
-    */
-
     const extension =
         selectedFile.name
             .split(".")
@@ -1234,24 +865,24 @@ async function uploadStudentImage(){
             .toLowerCase();
 
 
+    /*
+       مسار الصورة:
+
+       USER_ID/profile-TIME.extension
+    */
+
     const filePath =
-        currentUser.id
-        +
-        "/profile-"
-        +
-        Date.now()
-        +
-        "."
-        +
+        currentUser.id +
+        "/profile-" +
+        Date.now() +
+        "." +
         extension;
 
 
-
     console.log(
-        "Uploading:",
+        "UPLOAD PATH:",
         filePath
     );
-
 
 
     /* =========================
@@ -1259,37 +890,36 @@ async function uploadStudentImage(){
     ========================= */
 
     const {
-        error:uploadError
+        error
     } =
-        await supabaseClient
-            .storage
-            .from("avatars")
-            .upload(
-                filePath,
-                selectedFile,
-                {
-                    cacheControl:"3600",
-                    upsert:false,
-                    contentType:
-                        selectedFile.type
-                }
-            );
+    await supabaseClient
+        .storage
+        .from("avatars")
+        .upload(
+            filePath,
+            selectedFile,
+            {
+                cacheControl:"3600",
+                contentType:
+                    selectedFile.type,
+                upsert:false
+            }
+        );
 
 
-    if(uploadError){
+    if(error){
 
         console.error(
             "UPLOAD ERROR:",
-            uploadError
+            error
         );
 
         throw new Error(
             "فشل رفع الصورة: " +
-            uploadError.message
+            error.message
         );
 
     }
-
 
 
     /* =========================
@@ -1299,12 +929,12 @@ async function uploadStudentImage(){
     const {
         data
     } =
-        supabaseClient
-            .storage
-            .from("avatars")
-            .getPublicUrl(
-                filePath
-            );
+    supabaseClient
+        .storage
+        .from("avatars")
+        .getPublicUrl(
+            filePath
+        );
 
 
     const publicUrl =
@@ -1314,7 +944,7 @@ async function uploadStudentImage(){
     if(!publicUrl){
 
         throw new Error(
-            "تم رفع الصورة ولكن لم يتم الحصول على رابطها."
+            "لم يتم إنشاء رابط للصورة."
         );
 
     }
@@ -1331,10 +961,9 @@ async function uploadStudentImage(){
 }
 
 
-
-/* =====================================================
-   SAVE PROFILE
-===================================================== */
+/* =========================================
+   SAVE
+========================================= */
 
 form.addEventListener(
     "submit",
@@ -1345,22 +974,17 @@ form.addEventListener(
 
         try{
 
-
-            if(
-                !supabaseClient ||
-                !currentUser
-            ){
+            if(!currentUser){
 
                 throw new Error(
-                    "الحساب لم يتم تحميله بعد."
+                    "لم يتم تحميل الحساب."
                 );
 
             }
 
 
-
             const fullName =
-                val("fullName");
+                getValue("fullName");
 
 
             if(!fullName){
@@ -1372,23 +996,19 @@ form.addEventListener(
             }
 
 
-
             saveBtn.disabled =
                 true;
-
 
             saveBtn.textContent =
                 "جاري الحفظ...";
 
 
-
             /* =========================
-               UPLOAD IMAGE
+               IMAGE
             ========================= */
 
             let avatarUrl =
-                currentStudent.avatar_url
-                ||
+                currentStudent.avatar_url ||
                 null;
 
 
@@ -1399,14 +1019,13 @@ form.addEventListener(
 
 
                 avatarUrl =
-                    await uploadStudentImage();
+                    await uploadImage();
 
             }
 
 
-
             /* =========================
-               UPDATE DATA
+               UPDATE
             ========================= */
 
             const updateData = {
@@ -1415,22 +1034,22 @@ form.addEventListener(
                     fullName,
 
                 phone:
-                    val("phone"),
+                    getValue("phone"),
 
                 parent_phone:
-                    val("parentPhone"),
+                    getValue("parentPhone"),
 
                 grade:
-                    val("grade"),
+                    getValue("grade"),
 
                 governorate:
-                    val("governorate"),
+                    getValue("governorate"),
 
                 city:
-                    val("city"),
+                    getValue("city"),
 
                 school:
-                    val("school"),
+                    getValue("school"),
 
                 avatar_url:
                     avatarUrl
@@ -1438,52 +1057,47 @@ form.addEventListener(
             };
 
 
-
             console.log(
-                "UPDATE DATA:",
+                "SAVING:",
                 updateData
             );
-
 
 
             saveBtn.textContent =
                 "جاري حفظ البيانات...";
 
 
-
             const {
-                error:updateError
+                error
             } =
-                await supabaseClient
-                    .from("students")
-                    .update(
-                        updateData
-                    )
-                    .eq(
-                        "id",
-                        currentUser.id
-                    );
+            await supabaseClient
+                .from("students")
+                .update(
+                    updateData
+                )
+                .eq(
+                    "id",
+                    currentUser.id
+                );
 
 
-
-            if(updateError){
+            if(error){
 
                 console.error(
-                    "UPDATE ERROR:",
-                    updateError
+                    "DATABASE ERROR:",
+                    error
                 );
 
                 throw new Error(
                     "فشل حفظ البيانات: " +
-                    updateError.message
+                    error.message
                 );
 
             }
 
 
-
             /* =========================
-               UPDATE LOCAL
+               SUCCESS
             ========================= */
 
             currentStudent = {
@@ -1498,43 +1112,36 @@ form.addEventListener(
             selectedFile =
                 null;
 
-
             photoInput.value =
                 "";
 
 
-
-            /* =========================
-               SHOW NEW IMAGE
-            ========================= */
-
             if(avatarUrl){
 
                 avatar.src =
-                    avatarUrl
-                    +
+                    avatarUrl +
                     (
                         avatarUrl.includes("?")
                             ? "&"
                             : "?"
-                    )
-                    +
-                    "v="
-                    +
+                    ) +
+                    "v=" +
                     Date.now();
 
             }
 
 
-
-            success(
-                "تم حفظ بياناتك وصورتك الشخصية بنجاح ✅"
+            showSuccess(
+                "تم حفظ البيانات والصورة بنجاح ✅"
             );
 
 
+            saveBtn.textContent =
+                "تم الحفظ ✓";
+
 
             /*
-               الانتقال بعد لحظة
+               ارجع للـ Home
             */
 
             setTimeout(
@@ -1548,26 +1155,22 @@ form.addEventListener(
             );
 
 
-        }
-
-        catch(err){
+        }catch(error){
 
             console.error(
-                "SAVE PROFILE:",
-                err
+                "SAVE ERROR:",
+                error
             );
 
 
-            error(
-                err.message
-                ||
+            showError(
+                error.message ||
                 "حدث خطأ أثناء الحفظ."
             );
 
 
             saveBtn.disabled =
                 false;
-
 
             saveBtn.textContent =
                 "حفظ البيانات";
@@ -1578,15 +1181,13 @@ form.addEventListener(
 );
 
 
-
-/* =====================================================
+/* =========================================
    START
-===================================================== */
+========================================= */
 
 loadProfile();
 
 </script>
 
 </body>
-
 </html>
