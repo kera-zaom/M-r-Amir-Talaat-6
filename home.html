@@ -10,7 +10,7 @@
     content="width=device-width, initial-scale=1.0"
 >
 
-<title>الخوارزمي | حسابي</title>
+<title>الخوارزمي | حساب الطالب</title>
 
 <style>
 
@@ -27,12 +27,12 @@ body{
 
     background:
         radial-gradient(
-            circle at 20% 20%,
+            circle at 15% 15%,
             rgba(116,72,232,.20),
             transparent 30%
         ),
         radial-gradient(
-            circle at 80% 80%,
+            circle at 85% 85%,
             rgba(49,84,223,.16),
             transparent 30%
         ),
@@ -42,21 +42,22 @@ body{
 }
 
 
-/* =========================
+/* =========================================
    CONTAINER
-========================= */
+========================================= */
 
 .container{
 
-    width:min(1200px,94%);
+    width:min(1150px,94%);
 
     margin:auto;
+
 }
 
 
-/* =========================
+/* =========================================
    HEADER
-========================= */
+========================================= */
 
 header{
 
@@ -64,9 +65,9 @@ header{
 
     top:0;
 
-    z-index:100;
+    z-index:1000;
 
-    height:75px;
+    height:72px;
 
     background:
         rgba(7,7,11,.90);
@@ -76,6 +77,7 @@ header{
 
     border-bottom:
         1px solid rgba(255,255,255,.08);
+
 }
 
 
@@ -90,6 +92,7 @@ header{
     justify-content:space-between;
 
     gap:15px;
+
 }
 
 
@@ -102,20 +105,21 @@ header{
     background:
         linear-gradient(
             90deg,
-            #fff,
+            #ffffff,
             #9b7cff
         );
 
     -webkit-background-clip:text;
 
     color:transparent;
+
 }
 
 
 .logout{
 
     border:
-        1px solid rgba(255,255,255,.12);
+        1px solid rgba(255,255,255,.10);
 
     background:#111119;
 
@@ -128,29 +132,31 @@ header{
     cursor:pointer;
 
     transition:.2s;
+
 }
 
 
 .logout:hover{
 
-    background:#191923;
+    background:#1a1a24;
 
 }
 
 
-/* =========================
+/* =========================================
    MAIN
-========================= */
+========================================= */
 
 main{
 
     padding:35px 0 70px;
+
 }
 
 
-/* =========================
+/* =========================================
    ERROR
-========================= */
+========================================= */
 
 .error{
 
@@ -163,19 +169,20 @@ main{
 
     color:#ff9aaa;
 
-    padding:16px;
+    padding:15px;
 
     border-radius:15px;
 
     margin-bottom:20px;
 
     line-height:1.7;
+
 }
 
 
-/* =========================
+/* =========================================
    WELCOME
-========================= */
+========================================= */
 
 .welcome{
 
@@ -183,48 +190,60 @@ main{
 
     align-items:center;
 
-    gap:20px;
+    gap:22px;
 
     padding:25px;
+
+    margin-bottom:25px;
 
     border:
         1px solid rgba(255,255,255,.08);
 
     background:
-        rgba(255,255,255,.035);
+        rgba(255,255,255,.04);
 
     border-radius:25px;
 
-    margin-bottom:25px;
-
     box-shadow:
-        0 20px 70px rgba(0,0,0,.22);
+        0 20px 70px rgba(0,0,0,.25);
+
 }
 
 
-/* =========================
-   AVATAR
-========================= */
+/* =========================================
+   STUDENT AVATAR
+========================================= */
 
 .avatar{
 
-    width:95px;
+    width:105px;
 
-    height:95px;
+    height:105px;
+
+    min-width:105px;
 
     border-radius:50%;
 
     object-fit:cover;
 
+    display:block;
+
+    background:#111119;
+
     border:
-        3px solid #7d52ff;
-
-    background:#17131f;
-
-    flex-shrink:0;
+        3px solid #7952ed;
 
     box-shadow:
-        0 0 30px rgba(125,82,255,.25);
+        0 0 35px
+        rgba(121,82,237,.30);
+
+}
+
+
+.welcome-content{
+
+    min-width:0;
+
 }
 
 
@@ -233,14 +252,23 @@ main{
     font-size:28px;
 
     margin-bottom:8px;
+
+}
+
+
+.welcome h1 span{
+
+    color:#9b7cff;
+
 }
 
 
 .welcome p{
 
-    color:#aaa;
+    color:#999;
 
     word-break:break-word;
+
 }
 
 
@@ -248,7 +276,13 @@ main{
 
     margin-top:15px;
 
+    padding:11px 18px;
+
     border:0;
+
+    border-radius:12px;
+
+    color:#fff;
 
     background:
         linear-gradient(
@@ -257,21 +291,16 @@ main{
             #3154df
         );
 
-    color:#fff;
-
-    padding:11px 18px;
-
-    border-radius:12px;
+    font-weight:bold;
 
     cursor:pointer;
 
-    font-weight:bold;
 }
 
 
-/* =========================
+/* =========================================
    STATS
-========================= */
+========================================= */
 
 .stats{
 
@@ -280,9 +309,10 @@ main{
     grid-template-columns:
         repeat(4,1fr);
 
-    gap:16px;
+    gap:15px;
 
     margin-bottom:25px;
+
 }
 
 
@@ -296,10 +326,12 @@ main{
 
     border-radius:20px;
 
-    padding:22px;
+    padding:21px;
 
     box-shadow:
-        0 15px 50px rgba(0,0,0,.20);
+        0 15px 50px
+        rgba(0,0,0,.18);
+
 }
 
 
@@ -307,17 +339,19 @@ main{
 
     font-size:27px;
 
-    margin-bottom:12px;
+    margin-bottom:10px;
+
 }
 
 
 .stat-title{
 
-    color:#999;
+    color:#888;
 
     font-size:14px;
 
     margin-bottom:8px;
+
 }
 
 
@@ -326,16 +360,18 @@ main{
     font-size:28px;
 
     font-weight:900;
+
 }
 
 
-/* =========================
+/* =========================================
    SECTION
-========================= */
+========================================= */
 
 .section{
 
     margin-bottom:25px;
+
 }
 
 
@@ -344,12 +380,13 @@ main{
     font-size:22px;
 
     margin-bottom:15px;
+
 }
 
 
-/* =========================
-   INFO
-========================= */
+/* =========================================
+   STUDENT INFO
+========================================= */
 
 .info-card{
 
@@ -359,21 +396,21 @@ main{
         repeat(3,1fr);
 
     gap:14px;
+
 }
 
 
 .info{
+
+    padding:16px;
+
+    border-radius:15px;
 
     background:#0d0d14;
 
     border:
         1px solid rgba(255,255,255,.07);
 
-    padding:16px;
-
-    border-radius:15px;
-
-    min-width:0;
 }
 
 
@@ -381,11 +418,12 @@ main{
 
     display:block;
 
-    color:#888;
+    color:#777;
 
     font-size:13px;
 
     margin-bottom:7px;
+
 }
 
 
@@ -393,17 +431,20 @@ main{
 
     display:block;
 
-    font-size:16px;
+    color:#fff;
+
+    font-size:15px;
+
+    line-height:1.6;
 
     word-break:break-word;
 
-    line-height:1.6;
 }
 
 
-/* =========================
+/* =========================================
    RESULTS
-========================= */
+========================================= */
 
 .results{
 
@@ -412,6 +453,7 @@ main{
     flex-direction:column;
 
     gap:10px;
+
 }
 
 
@@ -427,12 +469,13 @@ main{
 
     padding:17px;
 
+    border-radius:15px;
+
     background:#0d0d14;
 
     border:
         1px solid rgba(255,255,255,.07);
 
-    border-radius:15px;
 }
 
 
@@ -441,6 +484,7 @@ main{
     font-weight:bold;
 
     margin-bottom:5px;
+
 }
 
 
@@ -449,16 +493,18 @@ main{
     color:#777;
 
     font-size:12px;
+
 }
 
 
 .score{
 
-    font-size:19px;
+    color:#9b7cff;
+
+    font-size:20px;
 
     font-weight:900;
 
-    color:#9b7cff;
 }
 
 
@@ -470,15 +516,12 @@ main{
 
     color:#888;
 
-    background:#0d0d14;
-
-    border-radius:16px;
 }
 
 
-/* =========================
+/* =========================================
    LOADING
-========================= */
+========================================= */
 
 .loading{
 
@@ -490,15 +533,16 @@ main{
 
     justify-content:center;
 
+    color:#aaa;
+
     font-size:18px;
 
-    color:#aaa;
 }
 
 
-/* =========================
+/* =========================================
    MOBILE
-========================= */
+========================================= */
 
 @media(max-width:900px){
 
@@ -522,20 +566,6 @@ main{
 
 @media(max-width:600px){
 
-    .stats{
-
-        grid-template-columns:1fr;
-
-    }
-
-
-    .info-card{
-
-        grid-template-columns:1fr;
-
-    }
-
-
     .welcome{
 
         flex-direction:column;
@@ -548,6 +578,31 @@ main{
     .welcome h1{
 
         font-size:23px;
+
+    }
+
+
+    .avatar{
+
+        width:95px;
+
+        height:95px;
+
+        min-width:95px;
+
+    }
+
+
+    .stats{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .info-card{
+
+        grid-template-columns:1fr;
 
     }
 
@@ -570,9 +625,9 @@ main{
 <body>
 
 
-<!-- =========================
+<!-- =========================================
      HEADER
-========================= -->
+========================================= -->
 
 <header>
 
@@ -584,8 +639,9 @@ main{
 
 
         <button
-            class="logout"
             id="logoutBtn"
+            class="logout"
+            type="button"
         >
             تسجيل الخروج
         </button>
@@ -596,9 +652,9 @@ main{
 
 
 
-<!-- =========================
+<!-- =========================================
      LOADING
-========================= -->
+========================================= -->
 
 <div
     id="loading"
@@ -609,16 +665,18 @@ main{
 
 
 
-<!-- =========================
+<!-- =========================================
      CONTENT
-========================= -->
+========================================= -->
 
 <main
     id="content"
     class="container"
-    style="display:none"
+    style="display:none;"
 >
 
+
+    <!-- ERROR -->
 
     <div
         id="errorBox"
@@ -627,12 +685,18 @@ main{
 
 
 
-    <!-- =========================
+    <!-- =====================================
          WELCOME
-    ========================= -->
+    ====================================== -->
 
     <section class="welcome">
 
+
+        <!--
+            مهم جدًا:
+            home.js سيضع صورة الطالب
+            داخل هذا العنصر
+        -->
 
         <img
             id="studentAvatar"
@@ -642,7 +706,8 @@ main{
         >
 
 
-        <div>
+        <div class="welcome-content">
+
 
             <h1>
 
@@ -663,11 +728,13 @@ main{
 
 
             <button
-                class="edit-btn"
                 id="editBtn"
+                class="edit-btn"
+                type="button"
             >
                 ✏️ تعديل بياناتي
             </button>
+
 
         </div>
 
@@ -676,9 +743,9 @@ main{
 
 
 
-    <!-- =========================
+    <!-- =====================================
          STATISTICS
-    ========================= -->
+    ====================================== -->
 
     <section class="stats">
 
@@ -694,8 +761,8 @@ main{
             </div>
 
             <div
-                class="stat-value"
                 id="testsCount"
+                class="stat-value"
             >
                 0
             </div>
@@ -715,8 +782,8 @@ main{
             </div>
 
             <div
-                class="stat-value"
                 id="completedCount"
+                class="stat-value"
             >
                 0
             </div>
@@ -736,8 +803,8 @@ main{
             </div>
 
             <div
-                class="stat-value"
                 id="averageScore"
+                class="stat-value"
             >
                 0%
             </div>
@@ -757,8 +824,8 @@ main{
             </div>
 
             <div
-                class="stat-value"
                 id="bestScore"
+                class="stat-value"
             >
                 0%
             </div>
@@ -770,9 +837,9 @@ main{
 
 
 
-    <!-- =========================
+    <!-- =====================================
          STUDENT DATA
-    ========================= -->
+    ====================================== -->
 
     <section class="section">
 
@@ -916,9 +983,9 @@ main{
 
 
 
-    <!-- =========================
+    <!-- =====================================
          RESULTS
-    ========================= -->
+    ====================================== -->
 
     <section class="section">
 
@@ -947,1098 +1014,15 @@ main{
 
 
 
-<!-- =========================
-     SUPABASE
-========================= -->
+<!-- =========================================
+     SCRIPTS
+========================================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script src="supabase.js"></script>
 
-
-
-<!-- =========================
-     HOME JS
-========================= -->
-
-<script>
-
-"use strict";
-
-
-document.addEventListener(
-    "DOMContentLoaded",
-    async () => {
-
-
-        const loading =
-            document.getElementById(
-                "loading"
-            );
-
-
-        const content =
-            document.getElementById(
-                "content"
-            );
-
-
-        const errorBox =
-            document.getElementById(
-                "errorBox"
-            );
-
-
-
-        /* =========================
-           ERROR
-        ========================= */
-
-        function showError(message){
-
-            errorBox.textContent =
-                message;
-
-            errorBox.style.display =
-                "block";
-
-        }
-
-
-
-        /* =========================
-           SAFE TEXT
-        ========================= */
-
-        function text(value){
-
-            if(
-                value === null ||
-                value === undefined ||
-                value === ""
-            ){
-
-                return "—";
-
-            }
-
-            return String(value);
-
-        }
-
-
-
-        /* =========================
-           DATE
-        ========================= */
-
-        function formatDate(date){
-
-            if(!date){
-
-                return "—";
-
-            }
-
-
-            try{
-
-                return new Date(date)
-                    .toLocaleDateString(
-                        "ar-EG",
-                        {
-                            year:"numeric",
-                            month:"long",
-                            day:"numeric"
-                        }
-                    );
-
-            }
-
-            catch{
-
-                return "—";
-
-            }
-
-        }
-
-
-
-        try{
-
-
-            /* =========================
-               SUPABASE
-            ========================= */
-
-            if(
-                !window.supabaseClient
-            ){
-
-                throw new Error(
-                    "Supabase غير متصل. تأكد من ملف supabase.js."
-                );
-
-            }
-
-
-            const supabase =
-                window.supabaseClient;
-
-
-
-            /* =========================
-               SESSION
-            ========================= */
-
-            const {
-                data:
-                sessionData,
-
-                error:
-                sessionError
-
-            } =
-                await supabase
-                    .auth
-                    .getSession();
-
-
-
-            if(sessionError){
-
-                throw sessionError;
-
-            }
-
-
-
-            const session =
-                sessionData?.session;
-
-
-
-            if(!session){
-
-                window.location.href =
-                    "auth.html";
-
-                return;
-
-            }
-
-
-
-            const user =
-                session.user;
-
-
-
-            /* =========================
-               GET STUDENT
-            ========================= */
-
-            let student =
-                null;
-
-
-
-            const {
-                data:
-                studentData,
-
-                error:
-                studentError
-
-            } =
-                await supabase
-                    .from("students")
-                    .select("*")
-                    .eq(
-                        "id",
-                        user.id
-                    )
-                    .maybeSingle();
-
-
-
-            if(
-                !studentError &&
-                studentData
-            ){
-
-                student =
-                    studentData;
-
-            }
-
-
-
-            /* =========================
-               PROFILES FALLBACK
-            ========================= */
-
-            if(!student){
-
-                const {
-                    data:
-                    profileData,
-
-                    error:
-                    profileError
-
-                } =
-                    await supabase
-                        .from("profiles")
-                        .select("*")
-                        .eq(
-                            "id",
-                            user.id
-                        )
-                        .maybeSingle();
-
-
-
-                if(
-                    !profileError &&
-                    profileData
-                ){
-
-                    student =
-                        profileData;
-
-                }
-
-            }
-
-
-
-            /* =========================
-               AUTH FALLBACK
-            ========================= */
-
-            if(!student){
-
-                student = {
-
-                    id:user.id,
-
-                    name:
-                        user
-                            .user_metadata
-                            ?.full_name
-                        ||
-                        user
-                            .user_metadata
-                            ?.name
-                        ||
-                        "الطالب",
-
-                    email:user.email,
-
-                    phone:
-                        user
-                            .user_metadata
-                            ?.phone
-                        ||
-                        ""
-
-                };
-
-            }
-
-
-
-            /* =========================
-               NAME
-            ========================= */
-
-            const name =
-                student.full_name
-                ||
-                student.name
-                ||
-                student.student_name
-                ||
-                user
-                    .user_metadata
-                    ?.full_name
-                ||
-                user
-                    .user_metadata
-                    ?.name
-                ||
-                "الطالب";
-
-
-
-            /* =========================
-               EMAIL
-            ========================= */
-
-            const email =
-                student.email
-                ||
-                user.email
-                ||
-                "—";
-
-
-
-            /* =========================
-               PHONE
-            ========================= */
-
-            const phone =
-                student.phone
-                ||
-                student.phone_number
-                ||
-                user
-                    .user_metadata
-                    ?.phone
-                ||
-                "—";
-
-
-
-            /* =========================
-               PARENT PHONE
-            ========================= */
-
-            const parentPhone =
-                student.parent_phone
-                ||
-                student.parentPhone
-                ||
-                "—";
-
-
-
-            /* =========================
-               GRADE
-            ========================= */
-
-            const grade =
-                student.grade
-                ||
-                student.class
-                ||
-                student.grade_name
-                ||
-                "—";
-
-
-
-            /* =========================
-               GOVERNORATE
-            ========================= */
-
-            const governorate =
-                student.governorate
-                ||
-                student.province
-                ||
-                "—";
-
-
-
-            /* =========================
-               CITY
-            ========================= */
-
-            const city =
-                student.city
-                ||
-                "—";
-
-
-
-            /* =========================
-               SCHOOL
-            ========================= */
-
-            const school =
-                student.school
-                ||
-                "—";
-
-
-
-            /* =========================
-               STUDENT IMAGE
-            ========================= */
-
-            const avatarUrl =
-                student.avatar_url
-                ||
-                student.photo_url
-                ||
-                student.image_url
-                ||
-                user
-                    .user_metadata
-                    ?.avatar_url
-                ||
-                "";
-
-
-
-            const avatarElement =
-                document.getElementById(
-                    "studentAvatar"
-                );
-
-
-
-            /*
-             * لو الطالب عنده صورة
-             * اعرض صورته
-             */
-
-            if(avatarUrl){
-
-                avatarElement.src =
-                    avatarUrl;
-
-            }
-
-            else{
-
-                /*
-                 * مفيش صورة
-                 */
-
-                avatarElement.src =
-                    "teacher.png";
-
-            }
-
-
-
-            /*
-             * لو الرابط غلط
-             */
-
-            avatarElement.onerror =
-                () => {
-
-                    /*
-                     * لا نرجع للمستر مباشرة
-                     * إلا لو الصورة غير موجودة
-                     */
-
-                    avatarElement.src =
-                        "teacher.png";
-
-                };
-
-
-
-            /* =========================
-               DISPLAY
-            ========================= */
-
-            document
-                .getElementById(
-                    "studentName"
-                )
-                .textContent =
-                    name;
-
-
-
-            document
-                .getElementById(
-                    "studentEmail"
-                )
-                .textContent =
-                    email;
-
-
-
-            document
-                .getElementById(
-                    "fullName"
-                )
-                .textContent =
-                    name;
-
-
-
-            document
-                .getElementById(
-                    "email"
-                )
-                .textContent =
-                    email;
-
-
-
-            document
-                .getElementById(
-                    "phone"
-                )
-                .textContent =
-                    phone;
-
-
-
-            document
-                .getElementById(
-                    "parentPhone"
-                )
-                .textContent =
-                    parentPhone;
-
-
-
-            document
-                .getElementById(
-                    "grade"
-                )
-                .textContent =
-                    grade;
-
-
-
-            document
-                .getElementById(
-                    "governorate"
-                )
-                .textContent =
-                    governorate;
-
-
-
-            document
-                .getElementById(
-                    "city"
-                )
-                .textContent =
-                    city;
-
-
-
-            document
-                .getElementById(
-                    "school"
-                )
-                .textContent =
-                    school;
-
-
-
-            document
-                .getElementById(
-                    "createdAt"
-                )
-                .textContent =
-                    formatDate(
-                        user.created_at
-                    );
-
-
-
-            /* =========================
-               RESULTS
-            ========================= */
-
-            let results = [];
-
-
-
-            const {
-                data:
-                resultsData,
-
-                error:
-                resultsError
-
-            } =
-                await supabase
-                    .from("results")
-                    .select("*")
-                    .eq(
-                        "student_id",
-                        user.id
-                    )
-                    .order(
-                        "created_at",
-                        {
-                            ascending:false
-                        }
-                    );
-
-
-
-            if(
-                !resultsError &&
-                resultsData
-            ){
-
-                results =
-                    resultsData;
-
-            }
-
-
-
-            /* =========================
-               STATS
-            ========================= */
-
-            const completedCount =
-                results.length;
-
-
-
-            let totalPercentage =
-                0;
-
-
-            let bestPercentage =
-                0;
-
-
-
-            results.forEach(
-                result => {
-
-
-                    let percentage =
-                        0;
-
-
-
-                    if(
-                        result.percentage
-                        !== null
-                        &&
-                        result.percentage
-                        !== undefined
-                    ){
-
-                        percentage =
-                            Number(
-                                result.percentage
-                            )
-                            || 0;
-
-                    }
-
-                    else if(
-                        result.score
-                        !== null
-                        &&
-                        result.total_score
-                    ){
-
-                        percentage =
-                            (
-                                Number(
-                                    result.score
-                                )
-                                /
-                                Number(
-                                    result.total_score
-                                )
-                            )
-                            * 100;
-
-                    }
-
-
-
-                    totalPercentage +=
-                        percentage;
-
-
-
-                    if(
-                        percentage >
-                        bestPercentage
-                    ){
-
-                        bestPercentage =
-                            percentage;
-
-                    }
-
-                }
-            );
-
-
-
-            const average =
-                completedCount > 0
-                ?
-                totalPercentage /
-                completedCount
-                :
-                0;
-
-
-
-            document
-                .getElementById(
-                    "testsCount"
-                )
-                .textContent =
-                    completedCount;
-
-
-
-            document
-                .getElementById(
-                    "completedCount"
-                )
-                .textContent =
-                    completedCount;
-
-
-
-            document
-                .getElementById(
-                    "averageScore"
-                )
-                .textContent =
-                    Math.round(
-                        average
-                    )
-                    +
-                    "%";
-
-
-
-            document
-                .getElementById(
-                    "bestScore"
-                )
-                .textContent =
-                    Math.round(
-                        bestPercentage
-                    )
-                    +
-                    "%";
-
-
-
-            /* =========================
-               RESULTS DISPLAY
-            ========================= */
-
-            const resultsContainer =
-                document.getElementById(
-                    "results"
-                );
-
-
-
-            if(
-                results.length === 0
-            ){
-
-                resultsContainer.innerHTML = `
-
-                    <div class="empty">
-
-                        📝 لم تدخل أي اختبار حتى الآن
-
-                    </div>
-
-                `;
-
-            }
-
-            else{
-
-
-                resultsContainer.innerHTML =
-                    "";
-
-
-
-                results.forEach(
-                    result => {
-
-
-                        const score =
-                            result.score
-                            ??
-                            result.mark
-                            ??
-                            0;
-
-
-
-                        const total =
-                            result.total_score
-                            ??
-                            result.total
-                            ??
-                            0;
-
-
-
-                        let percentage =
-                            0;
-
-
-
-                        if(
-                            result.percentage
-                            !== undefined
-                            &&
-                            result.percentage
-                            !== null
-                        ){
-
-                            percentage =
-                                Number(
-                                    result.percentage
-                                );
-
-                        }
-
-                        else if(
-                            total > 0
-                        ){
-
-                            percentage =
-                                (
-                                    Number(score)
-                                    /
-                                    Number(total)
-                                )
-                                * 100;
-
-                        }
-
-
-
-                        const examName =
-                            result.exam_name
-                            ||
-                            result.test_name
-                            ||
-                            result.title
-                            ||
-                            "اختبار";
-
-
-
-                        const date =
-                            result.created_at
-                            ||
-                            result.submitted_at
-                            ||
-                            result.date;
-
-
-
-                        const row =
-                            document
-                                .createElement(
-                                    "div"
-                                );
-
-
-
-                        row.className =
-                            "result";
-
-
-
-                        row.innerHTML = `
-
-                            <div>
-
-                                <div
-                                    class="result-name"
-                                >
-                                    ${escapeHTML(
-                                        examName
-                                    )}
-                                </div>
-
-                                <div
-                                    class="result-date"
-                                >
-                                    ${escapeHTML(
-                                        formatDate(
-                                            date
-                                        )
-                                    )}
-                                </div>
-
-                            </div>
-
-
-                            <div class="score">
-
-                                ${Math.round(
-                                    percentage
-                                )}%
-
-                            </div>
-
-                        `;
-
-
-
-                        resultsContainer
-                            .appendChild(
-                                row
-                            );
-
-                    }
-                );
-
-            }
-
-
-
-            /* =========================
-               EDIT
-            ========================= */
-
-            document
-                .getElementById(
-                    "editBtn"
-                )
-                .addEventListener(
-                    "click",
-                    () => {
-
-                        window.location.href =
-                            "edit-profile.html";
-
-                    }
-                );
-
-
-
-            /* =========================
-               LOGOUT
-            ========================= */
-
-            document
-                .getElementById(
-                    "logoutBtn"
-                )
-                .addEventListener(
-                    "click",
-                    async () => {
-
-
-                        const {
-                            error
-                        } =
-                            await supabase
-                                .auth
-                                .signOut();
-
-
-
-                        if(error){
-
-                            alert(
-                                "حدث خطأ أثناء تسجيل الخروج."
-                            );
-
-                            return;
-
-                        }
-
-
-
-                        window.location.href =
-                            "auth.html";
-
-                    }
-                );
-
-
-
-            /* =========================
-               SHOW
-            ========================= */
-
-            loading.style.display =
-                "none";
-
-
-            content.style.display =
-                "block";
-
-
-        }
-
-        catch(error){
-
-
-            console.error(
-                "HOME ERROR:",
-                error
-            );
-
-
-            loading.style.display =
-                "none";
-
-
-            content.style.display =
-                "block";
-
-
-            showError(
-                error.message
-                ||
-                "حدث خطأ أثناء تحميل بيانات الطالب."
-            );
-
-        }
-
-    }
-);
-
-
-
-/* =========================
-   ESCAPE HTML
-========================= */
-
-function escapeHTML(value){
-
-    return String(
-        value ?? ""
-    )
-    .replaceAll(
-        "&",
-        "&amp;"
-    )
-    .replaceAll(
-        "<",
-        "&lt;"
-    )
-    .replaceAll(
-        ">",
-        "&gt;"
-    )
-    .replaceAll(
-        '"',
-        "&quot;"
-    )
-    .replaceAll(
-        "'",
-        "&#039;"
-    );
-
-}
-
-</script>
+<script src="home.js"></script>
 
 
 </body>
