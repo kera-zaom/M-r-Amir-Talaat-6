@@ -15,8 +15,7 @@ href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;90
 rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script src="../supabase.js"></script>
+<style>
 
 *{
     margin:0;
@@ -113,6 +112,1882 @@ body{
     display:block;
     color:var(--muted);
     font-size:8px;
+}
+
+.menu-title{
+    color:#666675;
+    font-size:8px;
+    padding:0 10px 8px;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+
+.menu a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    height:44px;
+
+    padding:0 12px;
+
+    color:#b7b7c2;
+
+    text-decoration:none;
+
+    border-radius:11px;
+
+    font-size:10px;
+    font-weight:700;
+
+    transition:.2s;
+}
+
+.menu a:hover,
+.menu a.active{
+    color:#fff;
+    background:rgba(118,87,255,.12);
+}
+
+.menu-icon{
+    width:27px;
+    height:27px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:8px;
+
+    background:rgba(255,255,255,.04);
+}
+
+.logout{
+    position:absolute;
+    bottom:20px;
+    right:15px;
+    left:15px;
+}
+
+.logout button{
+    width:100%;
+    height:43px;
+
+    border:1px solid rgba(255,96,120,.12);
+
+    border-radius:11px;
+
+    color:#ff8496;
+
+    background:rgba(255,96,120,.05);
+
+    cursor:pointer;
+
+    font-size:10px;
+    font-weight:800;
+}
+
+/* MAIN */
+
+.main{
+    margin-right:255px;
+
+    min-height:100vh;
+
+    padding:25px 30px 60px;
+}
+
+.topbar{
+    display:flex;
+    justify-content:flex-end;
+
+    margin-bottom:25px;
+}
+
+.admin-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.admin-avatar{
+    width:42px;
+    height:42px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--primary),
+        #a18fff
+    );
+
+    font-weight:900;
+}
+
+.admin-info strong{
+    display:block;
+    font-size:10px;
+}
+
+.admin-info span{
+    display:block;
+    color:var(--muted);
+    font-size:8px;
+}
+
+/* HEADER */
+
+.page-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:15px;
+
+    margin-bottom:22px;
+}
+
+.page-header h1{
+    font-size:29px;
+    font-weight:900;
+}
+
+.page-header p{
+    color:var(--muted);
+    font-size:9px;
+    margin-top:3px;
+}
+
+.add-btn{
+    height:45px;
+
+    padding:0 18px;
+
+    border:0;
+
+    border-radius:11px;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary2)
+    );
+
+    color:white;
+
+    font-size:9px;
+    font-weight:900;
+
+    cursor:pointer;
+}
+
+/* CARD */
+
+.card{
+    padding:20px;
+
+    border-radius:17px;
+
+    background:rgba(17,17,24,.92);
+
+    border:1px solid var(--border);
+
+    margin-bottom:18px;
+}
+
+.card-title{
+    font-size:13px;
+    margin-bottom:15px;
+}
+
+/* FORM */
+
+.form-grid{
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:12px;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+.input-group{
+    display:flex;
+    flex-direction:column;
+
+    gap:6px;
+}
+
+.input-group label{
+    color:#aaaab5;
+    font-size:9px;
+}
+
+.input,
+.select,
+.file{
+    width:100%;
+
+    min-height:45px;
+
+    padding:10px 12px;
+
+    color:#fff;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    outline:none;
+
+    font-size:9px;
+}
+
+.input:focus,
+.select:focus,
+.file:focus{
+    border-color:
+        rgba(118,87,255,.5);
+}
+
+.select option{
+    background:#15151e;
+    color:white;
+}
+
+.file{
+    padding:12px;
+}
+
+.save-btn{
+    width:100%;
+
+    min-height:48px;
+
+    margin-top:15px;
+
+    border:0;
+
+    border-radius:11px;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary2)
+    );
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:10px;
+
+    font-weight:900;
+}
+
+/* FILES */
+
+.files-header{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:15px;
+}
+
+.files-header h2{
+    font-size:13px;
+}
+
+.files-count{
+    color:var(--muted);
+    font-size:8px;
+}
+
+.files{
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(230px,1fr)
+        );
+
+    gap:12px;
+}
+
+.file-card{
+    padding:15px;
+
+    border-radius:14px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    border:1px solid var(--border);
+
+    transition:.2s;
+}
+
+.file-card:hover{
+    border-color:
+        rgba(118,87,255,.3);
+
+    transform:translateY(-2px);
+}
+
+.file-icon{
+    width:45px;
+    height:45px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:12px;
+
+    background:
+        rgba(118,87,255,.1);
+
+    font-size:20px;
+
+    margin-bottom:10px;
+}
+
+.file-card h3{
+    font-size:11px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    margin-bottom:5px;
+}
+
+.file-card p{
+    color:var(--muted);
+
+    font-size:8px;
+
+    margin-bottom:12px;
+}
+
+.file-actions{
+    display:flex;
+    gap:6px;
+}
+
+.file-actions a,
+.file-actions button{
+    flex:1;
+
+    height:34px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:8px;
+
+    border:1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.035);
+
+    color:white;
+
+    text-decoration:none;
+
+    cursor:pointer;
+
+    font-size:8px;
+}
+
+.file-actions a:hover{
+    background:
+        rgba(118,87,255,.1);
+}
+
+.file-actions button:hover{
+    color:#ff8295;
+}
+
+/* EMPTY */
+
+.empty{
+    text-align:center;
+
+    padding:60px 20px;
+
+    color:var(--muted);
+}
+
+.empty-icon{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.empty h3{
+    color:white;
+    font-size:13px;
+    margin-bottom:5px;
+}
+
+.empty p{
+    font-size:8px;
+}
+
+/* LOADING */
+
+.loading{
+    position:fixed;
+
+    inset:0;
+
+    z-index:5000;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#050507;
+}
+
+.spinner{
+    width:45px;
+    height:45px;
+
+    border:3px solid
+        rgba(118,87,255,.15);
+
+    border-top-color:
+        var(--primary);
+
+    border-radius:50%;
+
+    animation:
+        spin .8s linear infinite;
+}
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+
+    left:20px;
+    bottom:20px;
+
+    z-index:6000;
+
+    max-width:360px;
+
+    padding:12px 16px;
+
+    border-radius:11px;
+
+    background:#191922;
+
+    border:1px solid var(--border);
+
+    font-size:9px;
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+    pointer-events:none;
+
+    transition:.3s;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.toast.error{
+    color:#ff9aaa;
+}
+
+.toast.success{
+    color:#7be6bd;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .sidebar{
+        display:none;
+    }
+
+    .main{
+        margin-right:0;
+        padding:18px 15px 40px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .page-header{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .add-btn{
+        width:100%;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .full{
+        grid-column:auto;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="brand">
+
+        <div class="logo">
+            خ
+        </div>
+
+        <div>
+
+            <strong>
+                الخوارزمي
+            </strong>
+
+            <span>
+                لوحة الإدارة
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="menu-title">
+        الإدارة
+    </div>
+
+
+    <nav class="menu">
+
+        <a href="index.html">
+            <div class="menu-icon">🏠</div>
+            الرئيسية
+        </a>
+
+        <a href="students.html">
+            <div class="menu-icon">👨‍🎓</div>
+            الطلاب
+        </a>
+
+        <a href="courses.html">
+            <div class="menu-icon">📚</div>
+            الكورسات
+        </a>
+
+        <a href="lessons.html">
+            <div class="menu-icon">🎥</div>
+            الدروس والفيديوهات
+        </a>
+
+        <a href="exams.html">
+            <div class="menu-icon">📝</div>
+            الاختبارات
+        </a>
+
+        <a href="results.html">
+            <div class="menu-icon">📊</div>
+            النتائج
+        </a>
+
+        <a href="files.html" class="active">
+            <div class="menu-icon">📁</div>
+            الملفات و PDF
+        </a>
+
+        <a href="payments.html">
+            <div class="menu-icon">💳</div>
+            المدفوعات
+        </a>
+
+        <a href="settings.html">
+            <div class="menu-icon">⚙️</div>
+            الإعدادات
+        </a>
+
+    </nav>
+
+
+    <div class="logout">
+
+        <button onclick="logout()">
+            🚪 تسجيل الخروج
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+
+    <div class="topbar">
+
+        <div class="admin-box">
+
+            <div class="admin-avatar">
+                أ
+            </div>
+
+            <div class="admin-info">
+
+                <strong id="adminName">
+                    جاري التحميل...
+                </strong>
+
+                <span>
+                    مدير المنصة
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <section class="page-header">
+
+        <div>
+
+            <h1>
+                📁 الملفات و PDF
+            </h1>
+
+            <p>
+                ارفع الملفات والملفات التعليمية للطلاب.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ADD FILE -->
+
+    <section class="card">
+
+        <div class="card-title">
+            ➕ إضافة ملف جديد
+        </div>
+
+
+        <form id="fileForm">
+
+            <div class="form-grid">
+
+
+                <div class="input-group">
+
+                    <label>
+                        اسم الملف
+                    </label>
+
+                    <input
+                        id="fileTitle"
+                        class="input"
+                        type="text"
+                        placeholder="مثال: مراجعة الوحدة الأولى"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        الكورس
+                    </label>
+
+                    <select
+                        id="courseId"
+                        class="select"
+                    >
+
+                        <option value="">
+                            بدون كورس
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="input-group full">
+
+                    <label>
+                        اختر الملف
+                    </label>
+
+                    <input
+                        id="fileInput"
+                        class="file"
+                        type="file"
+                        accept=".pdf,.doc,.docx,.ppt,.pptx,.zip,.rar,image/*"
+                        required
+                    >
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                class="save-btn"
+                type="submit"
+                id="saveBtn"
+            >
+                📤 رفع الملف وحفظه
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- FILE LIST -->
+
+    <section class="card">
+
+        <div class="files-header">
+
+            <h2>
+                📂 الملفات الموجودة
+            </h2>
+
+            <span
+                class="files-count"
+                id="filesCount"
+            >
+                0 ملف
+            </span>
+
+        </div>
+
+
+        <div
+            class="files"
+            id="filesContainer"
+        ></div>
+
+
+        <div
+            class="empty"
+            id="empty"
+            style="display:none;"
+        >
+
+            <div class="empty-icon">
+                📂
+            </div>
+
+            <h3>
+                لا توجد ملفات
+            </h3>
+
+            <p>
+                لم يتم رفع أي ملفات حتى الآن.
+            </p>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- LOADING -->
+
+<div
+    class="loading"
+    id="loading"
+>
+
+    <div class="spinner"></div>
+
+</div>
+
+
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
+<script>
+
+/* =====================================================
+   SUPABASE CONNECTION
+===================================================== */
+
+const SUPABASE_URL = "https://fdqolsygigqukejlwcon.supabase.co";
+const SUPABASE_KEY = "sb_publishable_f01Xb-dtqq8rnGuvXcPahg_zz9WeW9x";
+
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+let currentUser = null;
+
+let allFiles = [];
+
+
+/*
+   غيّر اسم الـ bucket فقط إذا كان
+   عندك اسم مختلف في Storage.
+*/
+
+const BUCKET =
+    "files";
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const loading =
+    document.getElementById("loading");
+
+const toast =
+    document.getElementById("toast");
+
+const fileForm =
+    document.getElementById("fileForm");
+
+const fileInput =
+    document.getElementById("fileInput");
+
+const fileTitle =
+    document.getElementById("fileTitle");
+
+const courseId =
+    document.getElementById("courseId");
+
+const saveBtn =
+    document.getElementById("saveBtn");
+
+const filesContainer =
+    document.getElementById("filesContainer");
+
+const empty =
+    document.getElementById("empty");
+
+const filesCount =
+    document.getElementById("filesCount");
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+function setLoading(value){
+
+    loading.style.display =
+        value ? "flex" : "none";
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(
+    message,
+    type=""
+){
+
+    toast.textContent =
+        message;
+
+    toast.className =
+        "toast " +
+        type +
+        " show";
+
+    setTimeout(
+        function(){
+
+            toast.classList.remove("show");
+
+        },
+        3500
+    );
+
+}
+
+
+/* =====================================================
+   ESCAPE
+===================================================== */
+
+function escapeHTML(value){
+
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================================
+   ADMIN CHECK
+===================================================== */
+
+async function checkAdmin(){
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient.auth.getSession();
+
+
+    if(error){
+
+        console.error(error);
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
+    const session =
+        data?.session;
+
+
+    if(!session){
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
+    currentUser =
+        session.user;
+
+
+    const {
+        data:profile,
+        error:profileError
+    } =
+        await supabaseClient
+
+            .from("profiles")
+
+            .select(
+                "id,full_name,role"
+            )
+
+            .eq(
+                "id",
+                currentUser.id
+            )
+
+            .maybeSingle();
+
+
+    if(profileError){
+
+        console.error(
+            profileError
+        );
+
+        showToast(
+            profileError.message,
+            "error"
+        );
+
+        return false;
+
+    }
+
+
+    if(
+        !profile ||
+        profile.role !== "admin"
+    ){
+
+        await supabaseClient
+            .auth
+            .signOut();
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
+    document
+        .getElementById("adminName")
+        .textContent =
+            profile.full_name ||
+            currentUser.email ||
+            "الأدمن";
+
+
+    return true;
+
+}
+
+
+/* =====================================================
+   LOAD COURSES
+===================================================== */
+
+async function loadCourses(){
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+
+            .from("courses")
+
+            .select("id,title")
+
+            .order(
+                "title",
+                {
+                    ascending:true
+                }
+            );
+
+
+    if(error)
+        throw error;
+
+
+    courseId.innerHTML = `
+        <option value="">
+            بدون كورس
+        </option>
+    `;
+
+
+    (data || []).forEach(
+        function(course){
+
+            const option =
+                document.createElement("option");
+
+            option.value =
+                course.id;
+
+            option.textContent =
+                course.title ||
+                "بدون اسم";
+
+            courseId.appendChild(
+                option
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   CREATE BUCKET IF NEEDED
+===================================================== */
+
+async function ensureBucket(){
+
+    /*
+       هذا يحاول إنشاء bucket.
+       لو كان موجودًا بالفعل لن نعتبر
+       ذلك خطأ.
+    */
+
+    const {
+        error
+    } =
+        await supabaseClient
+            .storage
+            .createBucket(
+                BUCKET,
+                {
+                    public:true
+                }
+            );
+
+
+    if(
+        error &&
+        !String(error.message || "")
+            .toLowerCase()
+            .includes("already")
+    ){
+
+        console.warn(
+            "Bucket:",
+            error.message
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   UPLOAD
+===================================================== */
+
+fileForm.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+
+        const file =
+            fileInput.files[0];
+
+
+        if(!file){
+
+            showToast(
+                "اختر ملفًا أولًا.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        if(
+            file.size >
+            50 * 1024 * 1024
+        ){
+
+            showToast(
+                "حجم الملف أكبر من 50MB.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        try{
+
+            saveBtn.disabled =
+                true;
+
+            saveBtn.textContent =
+                "جاري الرفع...";
+
+
+            setLoading(true);
+
+
+            /*
+             -------------------------------------
+             التأكد من وجود bucket
+             -------------------------------------
+            */
+
+            await ensureBucket();
+
+
+            /*
+             -------------------------------------
+             إنشاء مسار فريد للملف
+             -------------------------------------
+            */
+
+            const extension =
+                file.name.includes(".")
+                ? file.name
+                    .split(".")
+                    .pop()
+                    .toLowerCase()
+                : "";
+
+
+            const safeName =
+                file.name
+                    .replace(
+                        /[^a-zA-Z0-9._-]/g,
+                        "_"
+                    );
+
+
+            const path =
+                currentUser.id +
+                "/" +
+                Date.now() +
+                "_" +
+                safeName;
+
+
+            /*
+             -------------------------------------
+             رفع الملف إلى Storage
+             -------------------------------------
+            */
+
+            const {
+                data:uploadData,
+                error:uploadError
+            } =
+                await supabaseClient
+
+                    .storage
+
+                    .from(BUCKET)
+
+                    .upload(
+                        path,
+                        file,
+                        {
+                            contentType:
+                                file.type ||
+                                "application/octet-stream",
+
+                            upsert:false
+                        }
+                    );
+
+
+            if(uploadError){
+
+                console.error(
+                    uploadError
+                );
+
+                throw new Error(
+                    "فشل رفع الملف: " +
+                    uploadError.message
+                );
+
+            }
+
+
+            /*
+             -------------------------------------
+             الحصول على الرابط
+             -------------------------------------
+            */
+
+            const {
+                data:publicData
+            } =
+                supabaseClient
+
+                    .storage
+
+                    .from(BUCKET)
+
+                    .getPublicUrl(
+                        uploadData.path
+                    );
+
+
+            const fileUrl =
+                publicData.publicUrl;
+
+
+            /*
+             -------------------------------------
+             حفظ بيانات الملف
+             -------------------------------------
+
+             نحاول استخدام جدول files.
+
+             الأعمدة المستخدمة:
+
+             title
+             file_name
+             file_url
+             storage_path
+             course_id
+             uploaded_by
+             mime_type
+             file_size
+
+             -------------------------------------
+            */
+
+            const insertData = {
+
+                title:
+                    fileTitle.value.trim(),
+
+                file_name:
+                    file.name,
+
+                file_url:
+                    fileUrl,
+
+                storage_path:
+                    uploadData.path,
+
+                course_id:
+                    courseId.value ||
+                    null,
+
+                uploaded_by:
+                    currentUser.id,
+
+                mime_type:
+                    file.type ||
+                    null,
+
+                file_size:
+                    file.size
+
+            };
+
+
+            const {
+                error:dbError
+            } =
+                await supabaseClient
+
+                    .from("files")
+
+                    .insert(
+                        insertData
+                    );
+
+
+            if(dbError){
+
+                console.error(
+                    dbError
+                );
+
+                /*
+                  إذا فشل حفظ قاعدة البيانات
+                  نحذف الملف الذي تم رفعه
+                  حتى لا يظل ملفًا بدون سجل.
+                */
+
+                await supabaseClient
+
+                    .storage
+
+                    .from(BUCKET)
+
+                    .remove([
+                        uploadData.path
+                    ]);
+
+
+                throw new Error(
+                    "تم رفع الملف لكن فشل حفظه في قاعدة البيانات: " +
+                    dbError.message
+                );
+
+            }
+
+
+            showToast(
+                "تم رفع الملف وحفظه بنجاح.",
+                "success"
+            );
+
+
+            fileForm.reset();
+
+
+            await loadFiles();
+
+
+        }
+
+        catch(error){
+
+            console.error(
+                "Upload error:",
+                error
+            );
+
+
+            showToast(
+                error.message ||
+                "حدث خطأ أثناء رفع الملف.",
+                "error"
+            );
+
+        }
+
+        finally{
+
+            setLoading(false);
+
+            saveBtn.disabled =
+                false;
+
+            saveBtn.textContent =
+                "📤 رفع الملف وحفظه";
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   LOAD FILES
+===================================================== */
+
+async function loadFiles(){
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+
+            .from("files")
+
+            .select("*")
+
+            .order(
+                "created_at",
+                {
+                    ascending:false
+                }
+            );
+
+
+    if(error)
+        throw error;
+
+
+    allFiles =
+        data || [];
+
+
+    renderFiles();
+
+}
+
+
+/* =====================================================
+   RENDER
+===================================================== */
+
+function renderFiles(){
+
+    filesContainer.innerHTML =
+        "";
+
+
+    filesCount.textContent =
+        allFiles.length +
+        " ملف";
+
+
+    if(
+        allFiles.length === 0
+    ){
+
+        empty.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    empty.style.display =
+        "none";
+
+
+    allFiles.forEach(
+        function(file){
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "file-card";
+
+
+            const title =
+                file.title ||
+                file.file_name ||
+                "ملف";
+
+
+            const url =
+                file.file_url ||
+                "#";
+
+
+            const extension =
+                (
+                    file.file_name ||
+                    ""
+                )
+                .split(".")
+                .pop()
+                .toLowerCase();
+
+
+            let icon =
+                "📄";
+
+
+            if(extension === "pdf")
+                icon = "📕";
+
+            else if(
+                ["jpg","jpeg","png","webp","gif"]
+                    .includes(extension)
+            )
+                icon = "🖼️";
+
+            else if(
+                ["doc","docx"]
+                    .includes(extension)
+            )
+                icon = "📝";
+
+            else if(
+                ["zip","rar"]
+                    .includes(extension)
+            )
+                icon = "🗜️";
+
+
+            card.innerHTML = `
+
+                <div class="file-icon">
+                    ${icon}
+                </div>
+
+                <h3>
+                    ${escapeHTML(title)}
+                </h3>
+
+                <p>
+                    ${escapeHTML(
+                        file.file_name ||
+                        ""
+                    )}
+                </p>
+
+                <div class="file-actions">
+
+                    <a
+                        href="${escapeHTML(url)}"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        👁️ فتح
+                    </a>
+
+                    <button
+                        onclick="deleteFile('${encodeURIComponent(
+                            file.id
+                        )}')"
+                    >
+                        🗑️ حذف
+                    </button>
+
+                </div>
+
+            `;
+
+
+            filesContainer.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   DELETE
+===================================================== */
+
+async function deleteFile(
+    encodedId
+){
+
+    const id =
+        decodeURIComponent(
+            encodedId
+        );
+
+
+    const file =
+        allFiles.find(
+            function(item){
+
+                return String(item.id) ===
+                    String(id);
+
+            }
+        );
+
+
+    if(!file)
+        return;
+
+
+    const confirmed =
+        confirm(
+            "هل أنت متأكد من حذف هذا الملف؟"
+        );
+
+
+    if(!confirmed)
+        return;
+
+
+    try{
+
+        setLoading(true);
+
+
+        /*
+         حذف Storage
+        */
+
+        if(
+            file.storage_path
+        ){
+
+            const {
+                error:storageError
+            } =
+                await supabaseClient
+
+                    .storage
+
+                    .from(BUCKET)
+
+                    .remove([
+                        file.storage_path
+                    ]);
+
+
+            if(storageError){
+
+                console.warn(
+                    storageError
+                );
+
+            }
+
+        }
+
+
+        /*
+         حذف سجل قاعدة البيانات
+        */
+
+        const {
+            error
+        } =
+            await supabaseClient
+
+                .from("files")
+
+                .delete()
+
+                .eq(
+                    "id",
+                    id
+                );
+
+
+        if(error)
+            throw error;
+
+
+        showToast(
+            "تم حذف الملف.",
+            "success"
+        );
+
+
+        await loadFiles();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        showToast(
+            error.message ||
+            "فشل حذف الملف.",
+            "error"
+        );
+
+    }
+
+    finally{
+
+        setLoading(false);
+
+    }
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+async function logout(){
+
+    await supabaseClient
+        .auth
+        .signOut();
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+/* =====================================================
+   INIT
+===================================================== */
+
+async function init(){
+
+    try{
+
+        setLoading(true);
+
+
+        const isAdmin =
+            await checkAdmin();
+
+
+        if(!isAdmin)
+            return;
+
+
+        await loadCourses();
+
+        await loadFiles();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        showToast(
+            error.message ||
+            "حدث خطأ أثناء تحميل الصفحة.",
+            "error"
+        );
+
+    }
+
+    finally{
+
+        setLoading(false);
+
+    }
+
+}
+
+
+init();
+
+</script>
+
+</body>
+</html>
 }
 
 .menu-title{
