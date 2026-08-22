@@ -6,19 +6,17 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+      content="width=device-width, initial-scale=1.0">
 
-<title>إدارة الملفات | الخوارزمي</title>
-
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
+<title>الملفات و PDF | الخوارزمي</title>
 
 <link
 href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
 rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="../supabase.js"></script>
+
+<style>
 
 *{
     margin:0;
@@ -57,7 +55,7 @@ body{
     var(--bg);
 }
 
-/* ================= SIDEBAR ================= */
+/* SIDEBAR */
 
 .sidebar{
     position:fixed;
@@ -67,11 +65,11 @@ body{
     height:100vh;
     padding:20px 15px;
 
-    background:#09090e;
+    background:rgba(9,9,14,.98);
+
     border-left:1px solid var(--border);
 
     z-index:1000;
-    transition:.3s;
 }
 
 .brand{
@@ -80,7 +78,9 @@ body{
     gap:10px;
 
     padding:8px 10px 25px;
+
     border-bottom:1px solid var(--border);
+
     margin-bottom:18px;
 }
 
@@ -133,9 +133,11 @@ body{
     gap:10px;
 
     height:44px;
+
     padding:0 12px;
 
     color:#b7b7c2;
+
     text-decoration:none;
 
     border-radius:11px;
@@ -146,15 +148,10 @@ body{
     transition:.2s;
 }
 
-.menu a:hover{
-    color:#fff;
-    background:rgba(118,87,255,.08);
-}
-
+.menu a:hover,
 .menu a.active{
     color:#fff;
-    background:rgba(118,87,255,.15);
-    border:1px solid rgba(118,87,255,.15);
+    background:rgba(118,87,255,.12);
 }
 
 .menu-icon{
@@ -181,9 +178,11 @@ body{
     height:43px;
 
     border:1px solid rgba(255,96,120,.12);
+
     border-radius:11px;
 
     color:#ff8496;
+
     background:rgba(255,96,120,.05);
 
     cursor:pointer;
@@ -192,34 +191,21 @@ body{
     font-weight:800;
 }
 
-/* ================= MAIN ================= */
+/* MAIN */
 
 .main{
     margin-right:255px;
+
     min-height:100vh;
+
     padding:25px 30px 60px;
 }
 
 .topbar{
     display:flex;
-    align-items:center;
-    justify-content:space-between;
+    justify-content:flex-end;
+
     margin-bottom:25px;
-}
-
-.mobile-menu{
-    display:none;
-
-    width:42px;
-    height:42px;
-
-    border:1px solid var(--border);
-
-    background:rgba(255,255,255,.04);
-    color:#fff;
-
-    border-radius:10px;
-    cursor:pointer;
 }
 
 .admin-box{
@@ -258,52 +244,37 @@ body{
     font-size:8px;
 }
 
-/* ================= HEADER ================= */
+/* HEADER */
 
 .page-header{
     display:flex;
-    align-items:flex-start;
+    align-items:center;
     justify-content:space-between;
 
     gap:15px;
-    margin-bottom:20px;
+
+    margin-bottom:22px;
 }
 
 .page-header h1{
-    font-size:27px;
+    font-size:29px;
     font-weight:900;
 }
 
 .page-header p{
     color:var(--muted);
     font-size:9px;
-    margin-top:4px;
-}
-
-.header-actions{
-    display:flex;
-    gap:8px;
-}
-
-.add-btn,
-.back-btn{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    height:43px;
-    padding:0 16px;
-
-    border-radius:10px;
-
-    text-decoration:none;
-
-    font-size:9px;
-    font-weight:900;
+    margin-top:3px;
 }
 
 .add-btn{
-    color:#fff;
+    height:45px;
+
+    padding:0 18px;
+
+    border:0;
+
+    border-radius:11px;
 
     background:
     linear-gradient(
@@ -312,88 +283,109 @@ body{
         var(--primary2)
     );
 
-    border:0;
-    cursor:pointer;
+    color:white;
 
-    box-shadow:
-    0 10px 30px
-    rgba(118,87,255,.15);
+    font-size:9px;
+    font-weight:900;
+
+    cursor:pointer;
 }
 
-.back-btn{
-    color:#ddd;
+/* CARD */
+
+.card{
+    padding:20px;
+
+    border-radius:17px;
+
+    background:rgba(17,17,24,.92);
 
     border:1px solid var(--border);
 
-    background:
-    rgba(255,255,255,.035);
+    margin-bottom:18px;
 }
 
-/* ================= FILTER ================= */
+.card-title{
+    font-size:13px;
+    margin-bottom:15px;
+}
 
-.filter-box{
+/* FORM */
+
+.form-grid{
     display:grid;
 
     grid-template-columns:
-    1fr 1fr 1fr auto;
+        1fr 1fr;
 
-    gap:10px;
+    gap:12px;
+}
 
-    padding:16px;
-    margin-bottom:18px;
+.full{
+    grid-column:1/-1;
+}
 
-    border-radius:15px;
+.input-group{
+    display:flex;
+    flex-direction:column;
 
-    background:
-    rgba(17,17,24,.9);
+    gap:6px;
+}
 
-    border:1px solid var(--border);
+.input-group label{
+    color:#aaaab5;
+    font-size:9px;
 }
 
 .input,
-.select{
+.select,
+.file{
     width:100%;
-    height:44px;
 
-    padding:0 12px;
+    min-height:45px;
+
+    padding:10px 12px;
 
     color:#fff;
-    outline:none;
 
     background:
-    rgba(255,255,255,.035);
+        rgba(255,255,255,.035);
 
     border:1px solid var(--border);
 
     border-radius:10px;
+
+    outline:none;
 
     font-size:9px;
 }
 
 .input:focus,
-.select:focus{
+.select:focus,
+.file:focus{
     border-color:
-    rgba(118,87,255,.5);
-
-    box-shadow:
-    0 0 0 3px
-    rgba(118,87,255,.06);
+        rgba(118,87,255,.5);
 }
 
 .select option{
     background:#15151e;
-    color:#fff;
+    color:white;
 }
 
-.search-btn{
-    height:44px;
+.file{
+    padding:12px;
+}
 
-    padding:0 18px;
+.save-btn{
+    width:100%;
+
+    min-height:48px;
+
+    margin-top:15px;
 
     border:0;
-    border-radius:10px;
 
-    color:#fff;
+    border-radius:11px;
 
     background:
     linear-gradient(
@@ -402,30 +394,55 @@ body{
         var(--primary2)
     );
 
+    color:white;
+
     cursor:pointer;
 
-    font-size:9px;
+    font-size:10px;
+
     font-weight:900;
 }
 
-/* ================= FILES ================= */
+/* FILES */
+
+.files-header{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:15px;
+}
+
+.files-header h2{
+    font-size:13px;
+}
+
+.files-count{
+    color:var(--muted);
+    font-size:8px;
+}
 
 .files{
     display:grid;
 
     grid-template-columns:
-    repeat(3,1fr);
+        repeat(
+            auto-fill,
+            minmax(230px,1fr)
+        );
 
-    gap:13px;
+    gap:12px;
 }
 
 .file-card{
-    padding:16px;
+    padding:15px;
 
-    border-radius:16px;
+    border-radius:14px;
 
     background:
-    rgba(17,17,24,.92);
+        rgba(255,255,255,.025);
 
     border:1px solid var(--border);
 
@@ -433,31 +450,38 @@ body{
 }
 
 .file-card:hover{
-    transform:translateY(-2px);
-
     border-color:
-    rgba(118,87,255,.25);
+        rgba(118,87,255,.3);
+
+    transform:translateY(-2px);
 }
 
 .file-icon{
-    width:55px;
-    height:55px;
+    width:45px;
+    height:45px;
 
     display:grid;
     place-items:center;
 
-    border-radius:14px;
+    border-radius:12px;
 
     background:
-    rgba(118,87,255,.10);
+        rgba(118,87,255,.1);
 
-    font-size:25px;
+    font-size:20px;
 
-    margin-bottom:13px;
+    margin-bottom:10px;
 }
 
 .file-card h3{
     font-size:11px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
     margin-bottom:5px;
 }
 
@@ -465,279 +489,78 @@ body{
     color:var(--muted);
 
     font-size:8px;
-    line-height:1.7;
 
-    word-break:break-word;
+    margin-bottom:12px;
 }
 
-.file-meta{
+.file-actions{
     display:flex;
     gap:6px;
-    flex-wrap:wrap;
-
-    margin-top:12px;
 }
 
-.badge{
-    padding:5px 8px;
-
-    border-radius:20px;
-
-    background:
-    rgba(255,255,255,.04);
-
-    color:#aaa;
-
-    font-size:7px;
-}
-
-.badge.green{
-    color:#6ee4b3;
-
-    background:
-    rgba(53,211,154,.07);
-}
-
-.actions{
-    display:flex;
-
-    gap:6px;
-
-    margin-top:14px;
-    padding-top:12px;
-
-    border-top:
-    1px solid
-    rgba(255,255,255,.05);
-}
-
-.action{
+.file-actions a,
+.file-actions button{
     flex:1;
 
     height:34px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
 
     border-radius:8px;
 
     border:1px solid var(--border);
 
     background:
-    rgba(255,255,255,.035);
+        rgba(255,255,255,.035);
 
-    color:#bbb;
+    color:white;
+
+    text-decoration:none;
 
     cursor:pointer;
 
     font-size:8px;
-    font-weight:700;
 }
 
-.action:hover{
-    color:#fff;
-
-    border-color:
-    rgba(118,87,255,.35);
+.file-actions a:hover{
+    background:
+        rgba(118,87,255,.1);
 }
 
-.action.delete:hover{
-    color:#ff7287;
-
-    border-color:
-    rgba(255,96,120,.3);
+.file-actions button:hover{
+    color:#ff8295;
 }
 
-/* ================= EMPTY ================= */
+/* EMPTY */
 
 .empty{
     text-align:center;
 
-    padding:70px 20px;
+    padding:60px 20px;
 
-    border-radius:17px;
-
-    background:
-    rgba(17,17,24,.9);
-
-    border:1px solid var(--border);
+    color:var(--muted);
 }
 
 .empty-icon{
-    font-size:45px;
+    font-size:42px;
     margin-bottom:10px;
 }
 
 .empty h3{
+    color:white;
     font-size:13px;
     margin-bottom:5px;
 }
 
 .empty p{
-    color:var(--muted);
     font-size:8px;
 }
 
-/* ================= MODAL ================= */
-
-.modal{
-    position:fixed;
-    inset:0;
-
-    z-index:3000;
-
-    display:none;
-
-    align-items:center;
-    justify-content:center;
-
-    padding:15px;
-
-    background:
-    rgba(0,0,0,.75);
-
-    backdrop-filter:blur(8px);
-}
-
-.modal.show{
-    display:flex;
-}
-
-.modal-box{
-    width:100%;
-    max-width:620px;
-
-    max-height:92vh;
-    overflow-y:auto;
-
-    padding:22px;
-
-    border-radius:18px;
-
-    background:#101017;
-
-    border:1px solid var(--border);
-}
-
-.modal-head{
-    display:flex;
-
-    align-items:center;
-    justify-content:space-between;
-
-    margin-bottom:20px;
-}
-
-.modal-head h2{
-    font-size:15px;
-}
-
-.close{
-    width:35px;
-    height:35px;
-
-    border:1px solid var(--border);
-
-    background:
-    rgba(255,255,255,.04);
-
-    color:#aaa;
-
-    border-radius:9px;
-
-    cursor:pointer;
-}
-
-/* ================= FORM ================= */
-
-.form-group{
-    margin-bottom:14px;
-}
-
-.form-group label{
-    display:block;
-
-    margin-bottom:6px;
-
-    color:#aaa;
-
-    font-size:8px;
-    font-weight:700;
-}
-
-.file-input{
-    width:100%;
-
-    padding:15px;
-
-    border-radius:11px;
-
-    border:1px dashed
-    rgba(118,87,255,.35);
-
-    background:
-    rgba(118,87,255,.04);
-
-    color:#aaa;
-
-    font-size:8px;
-}
-
-.file-input input{
-    width:100%;
-    margin-top:8px;
-    color:#aaa;
-}
-
-.modal-footer{
-    display:flex;
-
-    gap:8px;
-
-    margin-top:20px;
-}
-
-.save-btn{
-    flex:1;
-
-    height:44px;
-
-    border:0;
-
-    border-radius:10px;
-
-    color:#fff;
-
-    background:
-    linear-gradient(
-        135deg,
-        var(--primary),
-        var(--primary2)
-    );
-
-    cursor:pointer;
-
-    font-size:9px;
-    font-weight:900;
-}
-
-.cancel-btn{
-    width:120px;
-
-    height:44px;
-
-    border-radius:10px;
-
-    color:#aaa;
-
-    background:
-    rgba(255,255,255,.04);
-
-    border:1px solid var(--border);
-
-    cursor:pointer;
-
-    font-size:9px;
-}
-
-/* ================= LOADING ================= */
+/* LOADING */
 
 .loading{
     position:fixed;
@@ -746,9 +569,10 @@ body{
 
     z-index:5000;
 
-    display:flex;
+    display:none;
 
     align-items:center;
+
     justify-content:center;
 
     background:#050507;
@@ -759,15 +583,15 @@ body{
     height:45px;
 
     border:3px solid
-    rgba(118,87,255,.15);
+        rgba(118,87,255,.15);
 
     border-top-color:
-    var(--primary);
+        var(--primary);
 
     border-radius:50%;
 
     animation:
-    spin .8s linear infinite;
+        spin .8s linear infinite;
 }
 
 @keyframes spin{
@@ -778,7 +602,7 @@ body{
 
 }
 
-/* ================= TOAST ================= */
+/* TOAST */
 
 .toast{
     position:fixed;
@@ -788,7 +612,7 @@ body{
 
     z-index:6000;
 
-    max-width:350px;
+    max-width:360px;
 
     padding:12px 16px;
 
@@ -800,9 +624,9 @@ body{
 
     font-size:9px;
 
-    transform:translateY(30px);
-
     opacity:0;
+
+    transform:translateY(20px);
 
     pointer-events:none;
 
@@ -810,87 +634,50 @@ body{
 }
 
 .toast.show{
-    transform:translateY(0);
     opacity:1;
+    transform:translateY(0);
 }
 
 .toast.error{
     color:#ff9aaa;
-
-    border-color:
-    rgba(255,96,120,.25);
 }
 
 .toast.success{
     color:#7be6bd;
-
-    border-color:
-    rgba(53,211,154,.25);
 }
 
-/* ================= RESPONSIVE ================= */
-
-@media(max-width:1000px){
-
-    .files{
-        grid-template-columns:
-        repeat(2,1fr);
-    }
-
-    .filter-box{
-        grid-template-columns:
-        1fr 1fr;
-    }
-
-}
+/* MOBILE */
 
 @media(max-width:800px){
 
     .sidebar{
-        transform:
-        translateX(100%);
-    }
-
-    .sidebar.open{
-        transform:
-        translateX(0);
+        display:none;
     }
 
     .main{
         margin-right:0;
-
-        padding:
-        18px 15px 40px;
-    }
-
-    .mobile-menu{
-        display:block;
+        padding:18px 15px 40px;
     }
 
 }
 
-@media(max-width:650px){
+@media(max-width:600px){
 
     .page-header{
         flex-direction:column;
+        align-items:stretch;
     }
 
-    .header-actions{
-        width:100%;
-        flex-direction:column;
-    }
-
-    .add-btn,
-    .back-btn{
+    .add-btn{
         width:100%;
     }
 
-    .filter-box{
+    .form-grid{
         grid-template-columns:1fr;
     }
 
-    .files{
-        grid-template-columns:1fr;
+    .full{
+        grid-column:auto;
     }
 
 }
@@ -901,9 +688,10 @@ body{
 
 <body>
 
-<!-- ================= SIDEBAR ================= -->
 
-<aside class="sidebar" id="sidebar">
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
 
     <div class="brand">
 
@@ -925,9 +713,11 @@ body{
 
     </div>
 
+
     <div class="menu-title">
         الإدارة
     </div>
+
 
     <nav class="menu">
 
@@ -956,11 +746,6 @@ body{
             الاختبارات
         </a>
 
-        <a href="questions.html">
-            <div class="menu-icon">❓</div>
-            الأسئلة
-        </a>
-
         <a href="results.html">
             <div class="menu-icon">📊</div>
             النتائج
@@ -983,6 +768,7 @@ body{
 
     </nav>
 
+
     <div class="logout">
 
         <button onclick="logout()">
@@ -994,21 +780,12 @@ body{
 </aside>
 
 
-<!-- ================= MAIN ================= -->
+<!-- MAIN -->
 
 <main class="main">
 
+
     <div class="topbar">
-
-        <button
-            class="mobile-menu"
-            onclick="toggleSidebar()">
-
-            ☰
-
-        </button>
-
-        <div></div>
 
         <div class="admin-box">
 
@@ -1019,7 +796,7 @@ body{
             <div class="admin-info">
 
                 <strong id="adminName">
-                    الأدمن
+                    جاري التحميل...
                 </strong>
 
                 <span>
@@ -1033,366 +810,212 @@ body{
     </div>
 
 
-    <!-- HEADER -->
-
     <section class="page-header">
 
         <div>
 
             <h1>
-                الملفات و PDF
+                📁 الملفات و PDF
             </h1>
 
             <p>
-                إدارة ملفات الكورسات والدروس من لوحة التحكم.
+                ارفع الملفات والملفات التعليمية للطلاب.
             </p>
 
         </div>
 
-        <div class="header-actions">
-
-            <button
-                class="add-btn"
-                onclick="openModal()">
-
-                ＋ إضافة ملف
-
-            </button>
-
-            <a
-                href="index.html"
-                class="back-btn">
-
-                ← لوحة التحكم
-
-            </a>
-
-        </div>
-
     </section>
 
 
-    <!-- FILTER -->
+    <!-- ADD FILE -->
 
-    <section class="filter-box">
+    <section class="card">
 
-        <input
-            class="input"
-            id="searchInput"
-            placeholder="🔎 ابحث عن ملف..."
-        >
-
-        <select
-            class="select"
-            id="courseFilter">
-
-            <option value="">
-                كل الكورسات
-            </option>
-
-        </select>
-
-        <select
-            class="select"
-            id="typeFilter">
-
-            <option value="">
-                كل الملفات
-            </option>
-
-            <option value="pdf">
-                PDF
-            </option>
-
-            <option value="file">
-                ملفات أخرى
-            </option>
-
-        </select>
-
-        <button
-            class="search-btn"
-            onclick="renderFiles()">
-
-            بحث
-
-        </button>
-
-    </section>
-
-
-    <!-- FILES -->
-
-    <section
-        class="files"
-        id="filesContainer">
-    </section>
-
-
-    <section
-        class="empty"
-        id="emptyState"
-        style="display:none;">
-
-        <div class="empty-icon">
-            📭
-        </div>
-
-        <h3>
-            لا توجد ملفات
-        </h3>
-
-        <p>
-            لم يتم رفع أي ملفات حتى الآن.
-        </p>
-
-    </section>
-
-</main>
-
-
-<!-- ================= MODAL ================= -->
-
-<div
-    class="modal"
-    id="fileModal">
-
-    <div class="modal-box">
-
-        <div class="modal-head">
-
-            <h2>
-                إضافة ملف جديد
-            </h2>
-
-            <button
-                class="close"
-                onclick="closeModal()">
-
-                ✕
-
-            </button>
-
+        <div class="card-title">
+            ➕ إضافة ملف جديد
         </div>
 
 
         <form id="fileForm">
 
-            <div class="form-group">
-
-                <label>
-                    اسم الملف *
-                </label>
-
-                <input
-                    class="input"
-                    id="fileTitle"
-                    required
-                    placeholder="مثال: مراجعة الوحدة الأولى"
-                >
-
-            </div>
+            <div class="form-grid">
 
 
-            <div class="form-group">
+                <div class="input-group">
 
-                <label>
-                    الكورس *
-                </label>
-
-                <select
-                    class="select"
-                    id="courseId"
-                    required>
-
-                    <option value="">
-                        اختر الكورس
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    الدرس — اختياري
-                </label>
-
-                <select
-                    class="select"
-                    id="lessonId">
-
-                    <option value="">
-                        بدون ربط بدرس
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    نوع الملف
-                </label>
-
-                <select
-                    class="select"
-                    id="fileType">
-
-                    <option value="pdf">
-                        PDF
-                    </option>
-
-                    <option value="file">
-                        ملف آخر
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <div class="file-input">
-
-                    📁 اختر الملف من جهازك
+                    <label>
+                        اسم الملف
+                    </label>
 
                     <input
-                        type="file"
-                        id="fileUpload"
-                        accept=".pdf,.doc,.docx,.ppt,.pptx,.zip"
+                        id="fileTitle"
+                        class="input"
+                        type="text"
+                        placeholder="مثال: مراجعة الوحدة الأولى"
                         required
                     >
 
                 </div>
 
+
+                <div class="input-group">
+
+                    <label>
+                        الكورس
+                    </label>
+
+                    <select
+                        id="courseId"
+                        class="select"
+                    >
+
+                        <option value="">
+                            بدون كورس
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="input-group full">
+
+                    <label>
+                        اختر الملف
+                    </label>
+
+                    <input
+                        id="fileInput"
+                        class="file"
+                        type="file"
+                        accept=".pdf,.doc,.docx,.ppt,.pptx,.zip,.rar,image/*"
+                        required
+                    >
+
+                </div>
+
+
             </div>
 
 
-            <div class="modal-footer">
-
-                <button
-                    type="button"
-                    class="cancel-btn"
-                    onclick="closeModal()">
-
-                    إلغاء
-
-                </button>
-
-                <button
-                    type="submit"
-                    class="save-btn">
-
-                    💾 رفع وحفظ الملف
-
-                </button>
-
-            </div>
+            <button
+                class="save-btn"
+                type="submit"
+                id="saveBtn"
+            >
+                📤 رفع الملف وحفظه
+            </button>
 
         </form>
 
-    </div>
+    </section>
 
-</div>
+
+    <!-- FILE LIST -->
+
+    <section class="card">
+
+        <div class="files-header">
+
+            <h2>
+                📂 الملفات الموجودة
+            </h2>
+
+            <span
+                class="files-count"
+                id="filesCount"
+            >
+                0 ملف
+            </span>
+
+        </div>
+
+
+        <div
+            class="files"
+            id="filesContainer"
+        ></div>
+
+
+        <div
+            class="empty"
+            id="empty"
+            style="display:none;"
+        >
+
+            <div class="empty-icon">
+                📂
+            </div>
+
+            <h3>
+                لا توجد ملفات
+            </h3>
+
+            <p>
+                لم يتم رفع أي ملفات حتى الآن.
+            </p>
+
+        </div>
+
+    </section>
+
+
+</main>
 
 
 <!-- LOADING -->
 
 <div
     class="loading"
-    id="loading">
+    id="loading"
+>
 
     <div class="spinner"></div>
 
 </div>
 
 
-<!-- TOAST -->
-
 <div
     class="toast"
-    id="toast">
-</div>
+    id="toast"
+></div>
 
 
 <script>
 
 /* =====================================================
-   SUPABASE
-   البيانات موجودة في:
-   ../supabase.js
+   SUPABASE CONNECTION
 ===================================================== */
 
-if(
-    typeof window.supabase === "undefined"
-){
+const SUPABASE_URL =
+    "https://fdqolsygigqukejlwcon.supabase.co";
 
-    console.error(
-        "Supabase library لم يتم تحميلها."
+const SUPABASE_KEY =
+    "sb_publishable_fO1Xb-dtqq8rnGuvXcPahg_zz9WeW9x";
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
     );
-
-}
-
-
-/* =====================================================
-   SUPABASE CLIENT
-===================================================== */
-
-let supabaseClient = null;
-
-
-/*
-   لو supabase.js عندك ينشئ متغير باسم supabaseClient
-   هنستخدمه مباشرة.
-
-   ولو عندك فقط SUPABASE_URL و SUPABASE_KEY
-   هننشئ Client هنا.
-*/
-
-if(
-    typeof window.supabaseClient !== "undefined"
-){
-
-    supabaseClient =
-        window.supabaseClient;
-
-}
-
-
-/*
-   دعم أسماء مختلفة لملف supabase.js
-*/
-
-if(
-    !supabaseClient &&
-    typeof window.https://fdqolsygigqukejlwcon.supabase.co !== "undefined" &&
-    typeof window.sb_publishable_fO1Xb-dtqq8rnGuvXcPahg_zz9WeW9x !== "undefined"
-){
-
-    supabaseClient =
-        window.supabase.createClient(
-            window.https://fdqolsygigqukejlwcon.supabase.co,
-            window.sb_publishable_fO1Xb-dtqq8rnGuvXcPahg_zz9WeW9x
-        );
-
-}
 
 
 /* =====================================================
    VARIABLES
 ===================================================== */
 
+let currentUser = null;
+
 let allFiles = [];
 
-let courses = [];
 
-let lessons = [];
+/*
+   غيّر اسم الـ bucket فقط إذا كان
+   عندك اسم مختلف في Storage.
+*/
+
+const BUCKET =
+    "files";
 
 
 /* =====================================================
@@ -1405,26 +1028,39 @@ const loading =
 const toast =
     document.getElementById("toast");
 
-const modal =
-    document.getElementById("fileModal");
+const fileForm =
+    document.getElementById("fileForm");
+
+const fileInput =
+    document.getElementById("fileInput");
+
+const fileTitle =
+    document.getElementById("fileTitle");
+
+const courseId =
+    document.getElementById("courseId");
+
+const saveBtn =
+    document.getElementById("saveBtn");
 
 const filesContainer =
     document.getElementById("filesContainer");
 
-const emptyState =
-    document.getElementById("emptyState");
+const empty =
+    document.getElementById("empty");
+
+const filesCount =
+    document.getElementById("filesCount");
 
 
 /* =====================================================
    LOADING
 ===================================================== */
 
-function setLoading(state){
+function setLoading(value){
 
     loading.style.display =
-        state
-        ? "flex"
-        : "none";
+        value ? "flex" : "none";
 
 }
 
@@ -1447,11 +1083,9 @@ function showToast(
         " show";
 
     setTimeout(
-        () => {
+        function(){
 
-            toast.classList.remove(
-                "show"
-            );
+            toast.classList.remove("show");
 
         },
         3500
@@ -1461,15 +1095,17 @@ function showToast(
 
 
 /* =====================================================
-   SIDEBAR
+   ESCAPE
 ===================================================== */
 
-function toggleSidebar(){
+function escapeHTML(value){
 
-    document
-        .getElementById("sidebar")
-        .classList
-        .toggle("open");
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
 
@@ -1480,32 +1116,16 @@ function toggleSidebar(){
 
 async function checkAdmin(){
 
-    if(!supabaseClient){
-
-        showToast(
-            "لم يتم العثور على اتصال Supabase. تأكد من ملف supabase.js.",
-            "error"
-        );
-
-        return false;
-
-    }
-
-
     const {
         data,
         error
     } =
-        await supabaseClient
-            .auth
-            .getSession();
+        await supabaseClient.auth.getSession();
 
 
-    if(
-        error ||
-        !data ||
-        !data.session
-    ){
+    if(error){
+
+        console.error(error);
 
         window.location.href =
             "login.html";
@@ -1515,8 +1135,22 @@ async function checkAdmin(){
     }
 
 
-    const user =
-        data.session.user;
+    const session =
+        data?.session;
+
+
+    if(!session){
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
+    currentUser =
+        session.user;
 
 
     const {
@@ -1533,14 +1167,29 @@ async function checkAdmin(){
 
             .eq(
                 "id",
-                user.id
+                currentUser.id
             )
 
             .maybeSingle();
 
 
+    if(profileError){
+
+        console.error(
+            profileError
+        );
+
+        showToast(
+            profileError.message,
+            "error"
+        );
+
+        return false;
+
+    }
+
+
     if(
-        profileError ||
         !profile ||
         profile.role !== "admin"
     ){
@@ -1561,7 +1210,7 @@ async function checkAdmin(){
         .getElementById("adminName")
         .textContent =
             profile.full_name ||
-            user.email ||
+            currentUser.email ||
             "الأدمن";
 
 
@@ -1584,14 +1233,12 @@ async function loadCourses(){
 
             .from("courses")
 
-            .select(
-                "id,title"
-            )
+            .select("id,title")
 
             .order(
-                "created_at",
+                "title",
                 {
-                    ascending:false
+                    ascending:true
                 }
             );
 
@@ -1600,67 +1247,28 @@ async function loadCourses(){
         throw error;
 
 
-    courses =
-        data || [];
-
-
-    const filter =
-        document.getElementById(
-            "courseFilter"
-        );
-
-    const courseSelect =
-        document.getElementById(
-            "courseId"
-        );
-
-
-    filter.innerHTML = `
+    courseId.innerHTML = `
         <option value="">
-            كل الكورسات
+            بدون كورس
         </option>
     `;
 
 
-    courseSelect.innerHTML = `
-        <option value="">
-            اختر الكورس
-        </option>
-    `;
+    (data || []).forEach(
+        function(course){
 
+            const option =
+                document.createElement("option");
 
-    courses.forEach(
-        course => {
-
-            const option1 =
-                document.createElement(
-                    "option"
-                );
-
-            option1.value =
+            option.value =
                 course.id;
 
-            option1.textContent =
-                course.title;
+            option.textContent =
+                course.title ||
+                "بدون اسم";
 
-            filter.appendChild(
-                option1
-            );
-
-
-            const option2 =
-                document.createElement(
-                    "option"
-                );
-
-            option2.value =
-                course.id;
-
-            option2.textContent =
-                course.title;
-
-            courseSelect.appendChild(
-                option2
+            courseId.appendChild(
+                option
             );
 
         }
@@ -1670,107 +1278,347 @@ async function loadCourses(){
 
 
 /* =====================================================
-   LOAD LESSONS
+   CREATE BUCKET IF NEEDED
 ===================================================== */
 
-async function loadLessons(){
+async function ensureBucket(){
+
+    /*
+       هذا يحاول إنشاء bucket.
+       لو كان موجودًا بالفعل لن نعتبر
+       ذلك خطأ.
+    */
 
     const {
-        data,
         error
     } =
         await supabaseClient
-
-            .from("lessons")
-
-            .select(
-                "id,title,course_id"
-            )
-
-            .order(
-                "created_at",
+            .storage
+            .createBucket(
+                BUCKET,
                 {
-                    ascending:false
+                    public:true
                 }
             );
 
 
-    if(error)
-        throw error;
+    if(
+        error &&
+        !String(error.message || "")
+            .toLowerCase()
+            .includes("already")
+    ){
 
+        console.warn(
+            "Bucket:",
+            error.message
+        );
 
-    lessons =
-        data || [];
+    }
 
 }
 
 
 /* =====================================================
-   UPDATE LESSON SELECT
+   UPLOAD
 ===================================================== */
 
-function updateLessonSelect(){
+fileForm.addEventListener(
+    "submit",
+    async function(event){
 
-    const courseId =
-        document
-            .getElementById(
-                "courseId"
-            )
-            .value;
+        event.preventDefault();
 
 
-    const select =
-        document
-            .getElementById(
-                "lessonId"
+        const file =
+            fileInput.files[0];
+
+
+        if(!file){
+
+            showToast(
+                "اختر ملفًا أولًا.",
+                "error"
             );
 
+            return;
 
-    select.innerHTML = `
-        <option value="">
-            بدون ربط بدرس
-        </option>
-    `;
+        }
 
 
-    if(!courseId)
-        return;
+        if(
+            file.size >
+            50 * 1024 * 1024
+        ){
+
+            showToast(
+                "حجم الملف أكبر من 50MB.",
+                "error"
+            );
+
+            return;
+
+        }
 
 
-    lessons
+        try{
 
-        .filter(
-            lesson =>
-                String(
-                    lesson.course_id
-                ) ===
-                String(
-                    courseId
-                )
-        )
+            saveBtn.disabled =
+                true;
 
-        .forEach(
-            lesson => {
+            saveBtn.textContent =
+                "جاري الرفع...";
 
-                const option =
-                    document.createElement(
-                        "option"
+
+            setLoading(true);
+
+
+            /*
+             -------------------------------------
+             التأكد من وجود bucket
+             -------------------------------------
+            */
+
+            await ensureBucket();
+
+
+            /*
+             -------------------------------------
+             إنشاء مسار فريد للملف
+             -------------------------------------
+            */
+
+            const extension =
+                file.name.includes(".")
+                ? file.name
+                    .split(".")
+                    .pop()
+                    .toLowerCase()
+                : "";
+
+
+            const safeName =
+                file.name
+                    .replace(
+                        /[^a-zA-Z0-9._-]/g,
+                        "_"
                     );
 
-                option.value =
-                    lesson.id;
 
-                option.textContent =
-                    lesson.title;
+            const path =
+                currentUser.id +
+                "/" +
+                Date.now() +
+                "_" +
+                safeName;
 
-                select.appendChild(
-                    option
+
+            /*
+             -------------------------------------
+             رفع الملف إلى Storage
+             -------------------------------------
+            */
+
+            const {
+                data:uploadData,
+                error:uploadError
+            } =
+                await supabaseClient
+
+                    .storage
+
+                    .from(BUCKET)
+
+                    .upload(
+                        path,
+                        file,
+                        {
+                            contentType:
+                                file.type ||
+                                "application/octet-stream",
+
+                            upsert:false
+                        }
+                    );
+
+
+            if(uploadError){
+
+                console.error(
+                    uploadError
+                );
+
+                throw new Error(
+                    "فشل رفع الملف: " +
+                    uploadError.message
                 );
 
             }
-        );
 
-}
+
+            /*
+             -------------------------------------
+             الحصول على الرابط
+             -------------------------------------
+            */
+
+            const {
+                data:publicData
+            } =
+                supabaseClient
+
+                    .storage
+
+                    .from(BUCKET)
+
+                    .getPublicUrl(
+                        uploadData.path
+                    );
+
+
+            const fileUrl =
+                publicData.publicUrl;
+
+
+            /*
+             -------------------------------------
+             حفظ بيانات الملف
+             -------------------------------------
+
+             نحاول استخدام جدول files.
+
+             الأعمدة المستخدمة:
+
+             title
+             file_name
+             file_url
+             storage_path
+             course_id
+             uploaded_by
+             mime_type
+             file_size
+
+             -------------------------------------
+            */
+
+            const insertData = {
+
+                title:
+                    fileTitle.value.trim(),
+
+                file_name:
+                    file.name,
+
+                file_url:
+                    fileUrl,
+
+                storage_path:
+                    uploadData.path,
+
+                course_id:
+                    courseId.value ||
+                    null,
+
+                uploaded_by:
+                    currentUser.id,
+
+                mime_type:
+                    file.type ||
+                    null,
+
+                file_size:
+                    file.size
+
+            };
+
+
+            const {
+                error:dbError
+            } =
+                await supabaseClient
+
+                    .from("files")
+
+                    .insert(
+                        insertData
+                    );
+
+
+            if(dbError){
+
+                console.error(
+                    dbError
+                );
+
+                /*
+                  إذا فشل حفظ قاعدة البيانات
+                  نحذف الملف الذي تم رفعه
+                  حتى لا يظل ملفًا بدون سجل.
+                */
+
+                await supabaseClient
+
+                    .storage
+
+                    .from(BUCKET)
+
+                    .remove([
+                        uploadData.path
+                    ]);
+
+
+                throw new Error(
+                    "تم رفع الملف لكن فشل حفظه في قاعدة البيانات: " +
+                    dbError.message
+                );
+
+            }
+
+
+            showToast(
+                "تم رفع الملف وحفظه بنجاح.",
+                "success"
+            );
+
+
+            fileForm.reset();
+
+
+            await loadFiles();
+
+
+        }
+
+        catch(error){
+
+            console.error(
+                "Upload error:",
+                error
+            );
+
+
+            showToast(
+                error.message ||
+                "حدث خطأ أثناء رفع الملف.",
+                "error"
+            );
+
+        }
+
+        finally{
+
+            setLoading(false);
+
+            saveBtn.disabled =
+                false;
+
+            saveBtn.textContent =
+                "📤 رفع الملف وحفظه";
+
+        }
+
+    }
+);
 
 
 /* =====================================================
@@ -1785,20 +1633,9 @@ async function loadFiles(){
     } =
         await supabaseClient
 
-            .from("course_files")
+            .from("files")
 
-            .select(`
-                id,
-                title,
-                file_type,
-                file_url,
-                course_id,
-                lesson_id,
-                file_name,
-                file_size,
-                storage_path,
-                created_at
-            `)
+            .select("*")
 
             .order(
                 "created_at",
@@ -1822,96 +1659,25 @@ async function loadFiles(){
 
 
 /* =====================================================
-   RENDER FILES
+   RENDER
 ===================================================== */
 
 function renderFiles(){
-
-    const search =
-        document
-            .getElementById(
-                "searchInput"
-            )
-            .value
-            .trim()
-            .toLowerCase();
-
-
-    const course =
-        document
-            .getElementById(
-                "courseFilter"
-            )
-            .value;
-
-
-    const type =
-        document
-            .getElementById(
-                "typeFilter"
-            )
-            .value;
-
-
-    const filtered =
-        allFiles.filter(
-            file => {
-
-                const title =
-                    (
-                        file.title ||
-                        ""
-                    ).toLowerCase();
-
-
-                const fileName =
-                    (
-                        file.file_name ||
-                        ""
-                    ).toLowerCase();
-
-
-                const matchesSearch =
-                    !search ||
-                    title.includes(search) ||
-                    fileName.includes(search);
-
-
-                const matchesCourse =
-                    !course ||
-                    String(
-                        file.course_id
-                    ) ===
-                    String(
-                        course
-                    );
-
-
-                const matchesType =
-                    !type ||
-                    file.file_type === type;
-
-
-                return (
-                    matchesSearch &&
-                    matchesCourse &&
-                    matchesType
-                );
-
-            }
-        );
-
 
     filesContainer.innerHTML =
         "";
 
 
-    if(!filtered.length){
+    filesCount.textContent =
+        allFiles.length +
+        " ملف";
 
-        filesContainer.style.display =
-            "none";
 
-        emptyState.style.display =
+    if(
+        allFiles.length === 0
+    ){
+
+        empty.style.display =
             "block";
 
         return;
@@ -1919,54 +1685,65 @@ function renderFiles(){
     }
 
 
-    filesContainer.style.display =
-        "grid";
-
-    emptyState.style.display =
+    empty.style.display =
         "none";
 
 
-    filtered.forEach(
-        file => {
-
-            const courseName =
-                getCourseName(
-                    file.course_id
-                );
-
-
-            const lessonName =
-                getLessonName(
-                    file.lesson_id
-                );
-
-
-            const icon =
-                file.file_type === "pdf"
-                ? "📕"
-                : "📄";
-
-
-            const size =
-                formatFileSize(
-                    file.file_size
-                );
-
-
-            const date =
-                formatDate(
-                    file.created_at
-                );
-
+    allFiles.forEach(
+        function(file){
 
             const card =
-                document.createElement(
-                    "article"
-                );
-
+                document.createElement("div");
 
             card.className =
                 "file-card";
+
+
+            const title =
+                file.title ||
+                file.file_name ||
+                "ملف";
+
+
+            const url =
+                file.file_url ||
+                "#";
+
+
+            const extension =
+                (
+                    file.file_name ||
+                    ""
+                )
+                .split(".")
+                .pop()
+                .toLowerCase();
+
+
+            let icon =
+                "📄";
+
+
+            if(extension === "pdf")
+                icon = "📕";
+
+            else if(
+                ["jpg","jpeg","png","webp","gif"]
+                    .includes(extension)
+            )
+                icon = "🖼️";
+
+            else if(
+                ["doc","docx"]
+                    .includes(extension)
+            )
+                icon = "📝";
+
+            else if(
+                ["zip","rar"]
+                    .includes(extension)
+            )
+                icon = "🗜️";
 
 
             card.innerHTML = `
@@ -1975,107 +1752,35 @@ function renderFiles(){
                     ${icon}
                 </div>
 
-
                 <h3>
-                    ${escapeHTML(
-                        file.title ||
-                        "ملف بدون اسم"
-                    )}
+                    ${escapeHTML(title)}
                 </h3>
-
 
                 <p>
                     ${escapeHTML(
                         file.file_name ||
-                        "بدون اسم ملف"
+                        ""
                     )}
                 </p>
 
+                <div class="file-actions">
 
-                <div class="file-meta">
-
-                    <span class="badge">
-                        📚
-                        ${escapeHTML(
-                            courseName
-                        )}
-                    </span>
-
-
-                    ${
-                        lessonName
-                        ?
-                        `
-                        <span class="badge">
-                            🎥
-                            ${escapeHTML(
-                                lessonName
-                            )}
-                        </span>
-                        `
-                        :
-                        ""
-                    }
-
-
-                    <span class="badge green">
-                        ${
-                            file.file_type === "pdf"
-                            ? "PDF"
-                            : "ملف"
-                        }
-                    </span>
-
-
-                    ${
-                        size
-                        ?
-                        `
-                        <span class="badge">
-                            ${size}
-                        </span>
-                        `
-                        :
-                        ""
-                    }
-
-                </div>
-
-
-                <div class="actions">
-
-                    <button
-                        class="action"
-                        onclick="openFile('${escapeJS(
-                            file.file_url
-                        )}')">
-
+                    <a
+                        href="${escapeHTML(url)}"
+                        target="_blank"
+                        rel="noopener"
+                    >
                         👁️ فتح
-
-                    </button>
-
+                    </a>
 
                     <button
-                        class="action delete"
-                        onclick="deleteFile('${escapeJS(
+                        onclick="deleteFile('${encodeURIComponent(
                             file.id
-                        )}')">
-
+                        )}')"
+                    >
                         🗑️ حذف
-
                     </button>
 
-                </div>
-
-
-                <div
-                    style="
-                        margin-top:10px;
-                        color:#666675;
-                        font-size:7px;
-                    "
-                >
-                    📅 ${date}
                 </div>
 
             `;
@@ -2092,575 +1797,37 @@ function renderFiles(){
 
 
 /* =====================================================
-   COURSE NAME
+   DELETE
 ===================================================== */
 
-function getCourseName(id){
+async function deleteFile(
+    encodedId
+){
 
-    const course =
-        courses.find(
-            item =>
-                String(item.id) ===
-                String(id)
+    const id =
+        decodeURIComponent(
+            encodedId
         );
 
 
-    return course
-        ? course.title
-        : "غير محدد";
+    const file =
+        allFiles.find(
+            function(item){
 
-}
+                return String(item.id) ===
+                    String(id);
 
-
-/* =====================================================
-   LESSON NAME
-===================================================== */
-
-function getLessonName(id){
-
-    if(!id)
-        return "";
-
-
-    const lesson =
-        lessons.find(
-            item =>
-                String(item.id) ===
-                String(id)
-        );
-
-
-    return lesson
-        ? lesson.title
-        : "";
-
-}
-
-
-/* =====================================================
-   FILE SIZE
-===================================================== */
-
-function formatFileSize(bytes){
-
-    if(
-        bytes === null ||
-        bytes === undefined ||
-        bytes === 0
-    ){
-
-        return "";
-
-    }
-
-
-    const units = [
-        "B",
-        "KB",
-        "MB",
-        "GB"
-    ];
-
-
-    let size =
-        Number(bytes);
-
-    let index = 0;
-
-
-    while(
-        size >= 1024 &&
-        index < units.length - 1
-    ){
-
-        size /= 1024;
-        index++;
-
-    }
-
-
-    return (
-        Math.round(
-            size * 10
-        ) / 10
-    ) +
-    " " +
-    units[index];
-
-}
-
-
-/* =====================================================
-   DATE
-===================================================== */
-
-function formatDate(date){
-
-    if(!date)
-        return "—";
-
-
-    try{
-
-        return new Intl.DateTimeFormat(
-            "ar-EG",
-            {
-                year:"numeric",
-                month:"short",
-                day:"numeric"
             }
-        ).format(
-            new Date(date)
         );
 
-    }catch(error){
 
-        return "—";
-
-    }
-
-}
-
-
-/* =====================================================
-   OPEN FILE
-===================================================== */
-
-function openFile(url){
-
-    if(!url){
-
-        showToast(
-            "رابط الملف غير موجود.",
-            "error"
-        );
-
+    if(!file)
         return;
 
-    }
-
-
-    window.open(
-        url,
-        "_blank",
-        "noopener,noreferrer"
-    );
-
-}
-
-
-/* =====================================================
-   MODAL
-===================================================== */
-
-function openModal(){
-
-    document
-        .getElementById(
-            "fileForm"
-        )
-        .reset();
-
-
-    document
-        .getElementById(
-            "lessonId"
-        )
-        .innerHTML = `
-
-            <option value="">
-                بدون ربط بدرس
-            </option>
-
-        `;
-
-
-    modal.classList.add(
-        "show"
-    );
-
-}
-
-
-function closeModal(){
-
-    modal.classList.remove(
-        "show"
-    );
-
-}
-
-
-/* =====================================================
-   COURSE CHANGE
-===================================================== */
-
-document
-    .getElementById(
-        "courseId"
-    )
-    .addEventListener(
-        "change",
-        updateLessonSelect
-    );
-
-
-/* =====================================================
-   UPLOAD FILE
-===================================================== */
-
-document
-    .getElementById(
-        "fileForm"
-    )
-    .addEventListener(
-        "submit",
-        async function(event){
-
-            event.preventDefault();
-
-
-            if(!supabaseClient){
-
-                showToast(
-                    "Supabase غير متصل.",
-                    "error"
-                );
-
-                return;
-
-            }
-
-
-            const title =
-                document
-                    .getElementById(
-                        "fileTitle"
-                    )
-                    .value
-                    .trim();
-
-
-            const courseId =
-                document
-                    .getElementById(
-                        "courseId"
-                    )
-                    .value;
-
-
-            const lessonId =
-                document
-                    .getElementById(
-                        "lessonId"
-                    )
-                    .value ||
-                    null;
-
-
-            const fileType =
-                document
-                    .getElementById(
-                        "fileType"
-                    )
-                    .value;
-
-
-            const file =
-                document
-                    .getElementById(
-                        "fileUpload"
-                    )
-                    .files[0];
-
-
-            if(!title){
-
-                showToast(
-                    "اكتب اسم الملف.",
-                    "error"
-                );
-
-                return;
-
-            }
-
-
-            if(!courseId){
-
-                showToast(
-                    "اختر الكورس.",
-                    "error"
-                );
-
-                return;
-
-            }
-
-
-            if(!file){
-
-                showToast(
-                    "اختر الملف.",
-                    "error"
-                );
-
-                return;
-
-            }
-
-
-            try{
-
-                setLoading(true);
-
-
-                /*
-                    الحد الأقصى:
-                    50 MB
-                */
-
-                const maxSize =
-                    50 * 1024 * 1024;
-
-
-                if(
-                    file.size >
-                    maxSize
-                ){
-
-                    throw new Error(
-                        "حجم الملف أكبر من 50MB."
-                    );
-
-                }
-
-
-                /*
-                    تنظيف اسم الملف
-                */
-
-                const safeName =
-                    file.name
-                        .replace(
-                            /[^a-zA-Z0-9._-]/g,
-                            "_"
-                        );
-
-
-                /*
-                    اسم فريد
-                */
-
-                const uniqueId =
-                    (
-                        window.crypto &&
-                        crypto.randomUUID
-                    )
-                    ?
-                    crypto.randomUUID()
-                    :
-                    Date.now();
-
-
-                const uniqueName =
-                    `${uniqueId}_${safeName}`;
-
-
-                /*
-                    مسار التخزين
-                */
-
-                const storagePath =
-                    `${courseId}/${uniqueName}`;
-
-
-                /* =========================
-                   STORAGE UPLOAD
-                ========================= */
-
-                const {
-                    error:uploadError
-                } =
-                    await supabaseClient
-
-                        .storage
-
-                        .from(
-                            "course-files"
-                        )
-
-                        .upload(
-                            storagePath,
-                            file,
-                            {
-                                upsert:false,
-
-                                contentType:
-                                    file.type ||
-                                    "application/octet-stream"
-                            }
-                        );
-
-
-                if(uploadError)
-                    throw uploadError;
-
-
-                /* =========================
-                   PUBLIC URL
-                ========================= */
-
-                const {
-                    data:urlData
-                } =
-                    supabaseClient
-
-                        .storage
-
-                        .from(
-                            "course-files"
-                        )
-
-                        .getPublicUrl(
-                            storagePath
-                        );
-
-
-                const fileUrl =
-                    urlData &&
-                    urlData.publicUrl
-                    ?
-                    urlData.publicUrl
-                    :
-                    "";
-
-
-                if(!fileUrl){
-
-                    /*
-                        لو فشل حفظ الرابط،
-                        نحذف الملف من Storage
-                    */
-
-                    await supabaseClient
-                        .storage
-                        .from(
-                            "course-files"
-                        )
-                        .remove([
-                            storagePath
-                        ]);
-
-
-                    throw new Error(
-                        "تعذر إنشاء رابط الملف."
-                    );
-
-                }
-
-
-                /* =========================
-                   DATABASE INSERT
-                ========================= */
-
-                const {
-                    error:dbError
-                } =
-                    await supabaseClient
-
-                        .from(
-                            "course_files"
-                        )
-
-                        .insert({
-
-                            title:title,
-
-                            course_id:courseId,
-
-                            lesson_id:lessonId,
-
-                            file_type:fileType,
-
-                            file_url:fileUrl,
-
-                            file_name:file.name,
-
-                            file_size:file.size,
-
-                            storage_path:storagePath
-
-                        });
-
-
-                if(dbError){
-
-                    /*
-                        قاعدة البيانات فشلت،
-                        نحذف الملف من Storage
-                    */
-
-                    await supabaseClient
-                        .storage
-                        .from(
-                            "course-files"
-                        )
-                        .remove([
-                            storagePath
-                        ]);
-
-                    throw dbError;
-
-                }
-
-
-                showToast(
-                    "تم رفع الملف وحفظه بنجاح.",
-                    "success"
-                );
-
-
-                closeModal();
-
-
-                await loadFiles();
-
-
-            }catch(error){
-
-                console.error(
-                    "UPLOAD ERROR:",
-                    error
-                );
-
-
-                showToast(
-                    error.message ||
-                    "حدث خطأ أثناء رفع الملف.",
-                    "error"
-                );
-
-
-            }finally{
-
-                setLoading(false);
-
-            }
-
-        }
-    );
-
-
-/* =====================================================
-   DELETE FILE
-===================================================== */
-
-async function deleteFile(id){
 
     const confirmed =
         confirm(
-            "⚠️ هل تريد حذف هذا الملف نهائيًا؟\n\nسيتم حذفه من قاعدة البيانات وStorage."
+            "هل أنت متأكد من حذف هذا الملف؟"
         );
 
 
@@ -2673,30 +1840,9 @@ async function deleteFile(id){
         setLoading(true);
 
 
-        const file =
-            allFiles.find(
-                item =>
-                    String(
-                        item.id
-                    ) ===
-                    String(
-                        id
-                    )
-            );
-
-
-        if(!file){
-
-            throw new Error(
-                "الملف غير موجود."
-            );
-
-        }
-
-
-        /* =========================
-           DELETE STORAGE
-        ========================= */
+        /*
+         حذف Storage
+        */
 
         if(
             file.storage_path
@@ -2709,9 +1855,7 @@ async function deleteFile(id){
 
                     .storage
 
-                    .from(
-                        "course-files"
-                    )
+                    .from(BUCKET)
 
                     .remove([
                         file.storage_path
@@ -2721,7 +1865,6 @@ async function deleteFile(id){
             if(storageError){
 
                 console.warn(
-                    "Storage delete warning:",
                     storageError
                 );
 
@@ -2730,18 +1873,16 @@ async function deleteFile(id){
         }
 
 
-        /* =========================
-           DELETE DATABASE
-        ========================= */
+        /*
+         حذف سجل قاعدة البيانات
+        */
 
         const {
             error
         } =
             await supabaseClient
 
-                .from(
-                    "course_files"
-                )
+                .from("files")
 
                 .delete()
 
@@ -2756,101 +1897,32 @@ async function deleteFile(id){
 
 
         showToast(
-            "تم حذف الملف بنجاح.",
+            "تم حذف الملف.",
             "success"
         );
 
 
         await loadFiles();
 
+    }
 
-    }catch(error){
+    catch(error){
 
-        console.error(
-            "DELETE ERROR:",
-            error
-        );
-
+        console.error(error);
 
         showToast(
             error.message ||
-            "تعذر حذف الملف.",
+            "فشل حذف الملف.",
             "error"
         );
 
+    }
 
-    }finally{
+    finally{
 
         setLoading(false);
 
     }
-
-}
-
-
-/* =====================================================
-   ESCAPE HTML
-===================================================== */
-
-function escapeHTML(value){
-
-    return String(value)
-
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-
-}
-
-
-/* =====================================================
-   ESCAPE JS
-===================================================== */
-
-function escapeJS(value){
-
-    return String(value)
-
-        .replace(
-            /\\/g,
-            "\\\\"
-        )
-
-        .replace(
-            /'/g,
-            "\\'"
-        )
-
-        .replace(
-            /\n/g,
-            "\\n"
-        )
-
-        .replace(
-            /\r/g,
-            "\\r"
-        );
 
 }
 
@@ -2861,79 +1933,14 @@ function escapeJS(value){
 
 async function logout(){
 
-    try{
+    await supabaseClient
+        .auth
+        .signOut();
 
-        if(supabaseClient){
-
-            await supabaseClient
-                .auth
-                .signOut();
-
-        }
-
-    }finally{
-
-        window.location.href =
-            "login.html";
-
-    }
+    window.location.href =
+        "login.html";
 
 }
-
-
-/* =====================================================
-   SEARCH
-===================================================== */
-
-document
-    .getElementById(
-        "searchInput"
-    )
-    .addEventListener(
-        "input",
-        renderFiles
-    );
-
-
-document
-    .getElementById(
-        "courseFilter"
-    )
-    .addEventListener(
-        "change",
-        renderFiles
-    );
-
-
-document
-    .getElementById(
-        "typeFilter"
-    )
-    .addEventListener(
-        "change",
-        renderFiles
-    );
-
-
-/* =====================================================
-   CLOSE MODAL OUTSIDE
-===================================================== */
-
-modal.addEventListener(
-    "click",
-    function(event){
-
-        if(
-            event.target ===
-            modal
-        ){
-
-            closeModal();
-
-        }
-
-    }
-);
 
 
 /* =====================================================
@@ -2942,42 +1949,38 @@ modal.addEventListener(
 
 async function init(){
 
-    setLoading(true);
-
-
     try{
 
-        const admin =
+        setLoading(true);
+
+
+        const isAdmin =
             await checkAdmin();
 
 
-        if(!admin)
+        if(!isAdmin)
             return;
 
 
         await loadCourses();
 
-        await loadLessons();
-
         await loadFiles();
 
+    }
 
-    }catch(error){
+    catch(error){
 
-        console.error(
-            "INIT ERROR:",
-            error
-        );
-
+        console.error(error);
 
         showToast(
             error.message ||
-            "حدث خطأ أثناء تحميل الملفات.",
+            "حدث خطأ أثناء تحميل الصفحة.",
             "error"
         );
 
+    }
 
-    }finally{
+    finally{
 
         setLoading(false);
 
@@ -2990,16 +1993,5 @@ init();
 
 </script>
 
-
-<!-- مهم:
-     supabase.js يجب أن يكون داخل مجلد المشروع الرئيسي
-     إذا كان files.html داخل admin/
-     فالمسار الصحيح:
-     ../supabase.js
--->
-
-<script src="../supabase.js"></script>
-
 </body>
-
-    </html>
+</html>
