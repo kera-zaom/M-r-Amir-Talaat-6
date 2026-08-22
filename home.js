@@ -1,369 +1,183 @@
 "use strict";
 
-/* =====================================================
-   AL-KHAWARIZMI - HOME.JS
-   Student Dashboard + Student Avatar
-===================================================== */
-
 let supabaseClient = null;
 let currentUser = null;
 let currentStudent = null;
 
+document.addEventListener("DOMContentLoaded", initHome);
 
-/* =====================================================
-   START
-===================================================== */
-
-document.addEventListener("DOMContentLoaded", async () => {
-
+async function initHome() {
     try {
 
         if (!window.supabaseClient) {
-            throw new Error(
-                "Supabase غير متصل. تأكد من تحميل supabase.js"
-            );
+            throw new Error("Supabase غير متصل");
         }
 
         supabaseClient = window.supabaseClient;
-
-
-        /* =============================================
-           SESSION
-        ============================================= */
 
         const {
             data: sessionData,
             error: sessionError
         } = await supabaseClient.auth.getSession();
 
-
-        if (sessionError) {
-            throw sessionError;
-        }
-
+        if (sessionError) throw sessionError;
 
         if (!sessionData?.session) {
-
-            window.location.href = "auth.html";
-
+            location.href = "auth.html";
             return;
         }
 
-
         currentUser = sessionData.session.user;
 
-
-        /* =============================================
-           LOAD STUDENT
-        ============================================= */
-
-        const {
-            data: student,
-            error: studentError
-        } = await supabaseClient
-            .from("students")
-            .select("*")
-            .eq("id", currentUser.id)
-            .maybeSingle();
-
-
-        if (studentError) {
-
-            console.error(
-                "STUDENT ERROR:",
-                studentError
-            );
-
-            throw studentError;
-        }
-
-
-        currentStudent = student || {};
-
-
-        /* =============================================
-           DISPLAY STUDENT
-        ============================================= */
-
-        displayStudent(currentStudent);
-
-
-        /* =============================================
-           RESULTS
-        ============================================= */
+        await loadStudent();
 
         await loadResults();
 
-
-        /* =============================================
-           BUTTONS
-        ============================================= */
-
         setupButtons();
 
+        const loading = document.getElementById("loading");
+        const content = document.getElementById("content");
 
-        /* =============================================
-           SHOW PAGE
-        ============================================= */
-
-        const loading =
-            document.getElementById("loading");
-
-        const content =
-            document.getElementById("content");
-
-
-        if (loading) {
-            loading.style.display = "none";
-        }
-
-        if (content) {
-            content.style.display = "block";
-        }
-
+        if (loading) loading.style.display = "none";
+        if (content) content.style.display = "block";
 
     } catch (error) {
 
-        console.error(
-            "HOME ERROR:",
-            error
-        );
+        console.error(error);
 
+        const loading = document.getElementById("loading");
+        const content = document.getElementById("content");
 
-        const loading =
-            document.getElementById("loading");
+        if (loading) loading.style.display = "none";
+        if (content) content.style.display = "block";
 
-        if (loading) {
-            loading.style.display = "none";
-        }
-
-
-        const content =
-            document.getElementById("content");
-
-        if (content) {
-            content.style.display = "block";
-        }
-
-
-        showError(
-            error.message ||
-            "حدث خطأ أثناء تحميل بيانات الطالب."
-        );
-
+        showError(error.message || "حدث خطأ");
     }
-
-});
-
-
-/* =====================================================
-   DISPLAY STUDENT
-===================================================== */
-
-function displayStudent(student) {
-
-
-    /* =============================================
-       NAME
-    ============================================= */
-
-    const name =
-        student.full_name ||
-        student.name ||
-        student.student_name ||
-        currentUser.user_metadata?.full_name ||
-        currentUser.user_metadata?.name ||
-        "الطالب";
-
-
-    /* =============================================
-       EMAIL
-    ============================================= */
-
-    const email =
-        student.email ||
-        currentUser.email ||
-        "—";
-
-
-    /* =============================================
-       PHONE
-    ============================================= */
-
-    const phone =
-        student.phone ||
-        student.phone_number ||
-        currentUser.user_metadata?.phone ||
-        "—";
-
-
-    /* =============================================
-       PARENT PHONE
-    ============================================= */
-
-    const parentPhone =
-        student.parent_phone ||
-        "—";
-
-
-    /* =============================================
-       GRADE
-    ============================================= */
-
-    const grade =
-        student.grade ||
-        student.class ||
-        student.grade_name ||
-        "—";
-
-
-    /* =============================================
-       GOVERNORATE
-    ============================================= */
-
-    const governorate =
-        student.governorate ||
-        student.province ||
-        "—";
-
-
-    /* =============================================
-       CITY
-    ============================================= */
-
-    const city =
-        student.city ||
-        "—";
-
-
-    /* =============================================
-       SCHOOL
-    ============================================= */
-
-    const school =
-        student.school ||
-        "—";
-
-
-    /* =============================================
-       TEXT
-    ============================================= */
-
-    setText(
-        "studentName",
-        name
-    );
-
-    setText(
-        "studentEmail",
-        email
-    );
-
-    setText(
-        "fullName",
-        name
-    );
-
-    setText(
-        "email",
-        email
-    );
-
-    setText(
-        "phone",
-        phone
-    );
-
-    setText(
-        "parentPhone",
-        parentPhone
-    );
-
-    setText(
-        "grade",
-        grade
-    );
-
-    setText(
-        "governorate",
-        governorate
-    );
-
-    setText(
-        "city",
-        city
-    );
-
-    setText(
-        "school",
-        school
-    );
-
-    setText(
-        "createdAt",
-        formatDate(
-            currentUser.created_at
-        )
-    );
-
-
-    /* =============================================
-       STUDENT IMAGE
-    ============================================= */
-
-    loadStudentAvatar(student);
-
 }
 
 
 /* =====================================================
-   LOAD STUDENT AVATAR
+   STUDENT
 ===================================================== */
 
-async function loadStudentAvatar(student) {
+async function loadStudent() {
+
+    const {
+        data,
+        error
+    } = await supabaseClient
+        .from("students")
+        .select("*")
+        .eq("id", currentUser.id)
+        .maybeSingle();
+
+    if (error) throw error;
+
+    currentStudent = data || {};
+
+    console.log("STUDENT DATA:", currentStudent);
+
+    displayStudent(currentStudent);
+}
+
+
+/* =====================================================
+   DISPLAY
+===================================================== */
+
+function displayStudent(student) {
+
+    const name =
+        student.full_name ||
+        student.name ||
+        currentUser.user_metadata?.full_name ||
+        "الطالب";
+
+    const email =
+        currentUser.email ||
+        student.email ||
+        "—";
+
+    setText("studentName", name);
+    setText("studentEmail", email);
+
+    setText("fullName", name);
+    setText("email", email);
+
+    setText(
+        "phone",
+        student.phone || "—"
+    );
+
+    setText(
+        "parentPhone",
+        student.parent_phone || "—"
+    );
+
+    setText(
+        "grade",
+        student.grade ||
+        student.class ||
+        "—"
+    );
+
+    setText(
+        "governorate",
+        student.governorate ||
+        student.province ||
+        "—"
+    );
+
+    setText(
+        "city",
+        student.city || "—"
+    );
+
+    setText(
+        "school",
+        student.school || "—"
+    );
+
+    setText(
+        "createdAt",
+        formatDate(currentUser.created_at)
+    );
+
+    loadAvatar(student);
+}
+
+
+/* =====================================================
+   AVATAR
+===================================================== */
+
+async function loadAvatar(student) {
 
     const image =
-        document.getElementById(
-            "studentAvatar"
-        );
-
+        document.getElementById("studentAvatar");
 
     if (!image) {
-
         console.error(
             "studentAvatar غير موجود في home.html"
         );
-
         return;
     }
 
-
-    /*
-       الصورة الموجودة في قاعدة البيانات
-    */
-
-    let avatarValue =
+    let avatar =
         student.avatar_url ||
-        student.photo_url ||
-        student.image_url ||
-        currentUser.user_metadata?.avatar_url ||
         "";
 
-
     console.log(
-        "DATABASE AVATAR:",
-        avatarValue
+        "avatar_url من قاعدة البيانات:",
+        avatar
     );
 
 
-    /* =============================================
-       NO IMAGE
-    ============================================= */
+    /* -----------------------------------------------
+       لا توجد صورة
+    ------------------------------------------------ */
 
-    if (
-        !avatarValue ||
-        String(avatarValue).trim() === ""
-    ) {
+    if (!avatar || avatar.trim() === "") {
 
         image.src = "teacher.png";
 
@@ -371,161 +185,92 @@ async function loadStudentAvatar(student) {
     }
 
 
-    avatarValue =
-        String(avatarValue).trim();
+    avatar = avatar.trim();
 
 
-    /* =============================================
-       لو محفوظ رابط كامل
-    ============================================= */
+    /* -----------------------------------------------
+       لو الرابط كامل
+    ------------------------------------------------ */
 
     if (
-        avatarValue.startsWith("http://") ||
-        avatarValue.startsWith("https://")
+        avatar.startsWith("http://") ||
+        avatar.startsWith("https://")
     ) {
 
-        setImage(
+        showAvatar(image, avatar);
+
+        return;
+    }
+
+
+    /* -----------------------------------------------
+       لو avatar_url عبارة عن path فقط
+    ------------------------------------------------ */
+
+    const {
+        data
+    } = supabaseClient
+        .storage
+        .from("avatars")
+        .getPublicUrl(avatar);
+
+    if (data?.publicUrl) {
+
+        console.log(
+            "رابط الصورة النهائي:",
+            data.publicUrl
+        );
+
+        showAvatar(
             image,
-            avatarValue
+            data.publicUrl
         );
 
         return;
     }
 
 
-    /* =============================================
-       لو محفوظ Path فقط
-       
-       مثال:
-       USER_ID/profile-123.jpg
-    ============================================= */
-
-    try {
-
-        const {
-            data
-        } =
-            supabaseClient
-                .storage
-                .from("avatars")
-                .getPublicUrl(
-                    avatarValue
-                );
-
-
-        const publicUrl =
-            data?.publicUrl;
-
-
-        console.log(
-            "GENERATED AVATAR URL:",
-            publicUrl
-        );
-
-
-        if (publicUrl) {
-
-            setImage(
-                image,
-                publicUrl
-            );
-
-            return;
-        }
-
-
-    } catch (error) {
-
-        console.error(
-            "PUBLIC URL ERROR:",
-            error
-        );
-
-    }
-
-
-    image.src =
-        "teacher.png";
+    image.src = "teacher.png";
 }
 
 
 /* =====================================================
-   SET IMAGE
+   SHOW AVATAR
 ===================================================== */
 
-function setImage(image, url) {
+function showAvatar(image, url) {
 
-    if (!url) {
+    image.onerror = function () {
 
-        image.src =
-            "teacher.png";
+        console.error(
+            "فشل تحميل الصورة:",
+            url
+        );
 
-        return;
-    }
+        image.src = "teacher.png";
+    };
 
+    image.onload = function () {
 
-    console.log(
-        "LOADING STUDENT IMAGE:",
-        url
-    );
+        console.log(
+            "✅ صورة الطالب ظهرت بنجاح"
+        );
+    };
 
+    /*
+       منع المتصفح من استخدام الصورة القديمة
+    */
 
-    image.onerror =
-        function () {
-
-            console.error(
-                "IMAGE FAILED:",
-                url
-            );
-
-
-            /*
-               نجرب الرابط مرة واحدة
-               بدون Cache
-            */
-
-            if (
-                !image.dataset.retry
-            ) {
-
-                image.dataset.retry = "1";
-
-                image.src =
-                    url +
-                    (
-                        url.includes("?")
-                            ? "&"
-                            : "?"
-                    ) +
-                    "v=" +
-                    Date.now();
-
-                return;
-            }
-
-
-            /*
-               لو فشل نهائيًا
-            */
-
-            image.src =
-                "teacher.png";
-
-        };
-
-
-    image.onload =
-        function () {
-
-            console.log(
-                "✅ STUDENT IMAGE LOADED"
-            );
-
-        };
-
+    const separator =
+        url.includes("?")
+            ? "&"
+            : "?";
 
     image.src =
-        url;
+        url +
+        separator +
+        "v=" +
+        Date.now();
 }
 
 
@@ -535,114 +280,85 @@ function setImage(image, url) {
 
 async function loadResults() {
 
-    const resultsBox =
-        document.getElementById(
-            "results"
-        );
+    const box =
+        document.getElementById("results");
 
-
-    if (!resultsBox) {
-        return;
-    }
-
+    if (!box) return;
 
     const {
         data,
         error
-    } =
-        await supabaseClient
-            .from("results")
-            .select("*")
-            .eq(
-                "student_id",
-                currentUser.id
-            )
-            .order(
-                "created_at",
-                {
-                    ascending: false
-                }
-            );
-
+    } = await supabaseClient
+        .from("results")
+        .select("*")
+        .eq(
+            "student_id",
+            currentUser.id
+        )
+        .order(
+            "created_at",
+            {
+                ascending: false
+            }
+        );
 
     if (error) {
 
         console.warn(
-            "RESULTS ERROR:",
+            "تعذر تحميل النتائج:",
             error.message
         );
 
-
-        resultsBox.innerHTML = `
-
+        box.innerHTML = `
             <div class="empty">
                 لا توجد نتائج حتى الآن.
             </div>
-
         `;
-
 
         updateStats([]);
 
         return;
     }
 
+    const results = data || [];
 
-    const results =
-        data || [];
+    displayResults(results);
 
-
-    displayResults(
-        results
-    );
-
-
-    updateStats(
-        results
-    );
+    updateStats(results);
 }
 
 
 /* =====================================================
-   DISPLAY RESULTS
+   RESULTS DISPLAY
 ===================================================== */
 
 function displayResults(results) {
 
     const box =
-        document.getElementById(
-            "results"
-        );
-
+        document.getElementById("results");
 
     if (!box) return;
-
 
     if (!results.length) {
 
         box.innerHTML = `
-
             <div class="empty">
                 📝 لم تدخل أي اختبار حتى الآن
             </div>
-
         `;
 
         return;
     }
 
-
     box.innerHTML = "";
-
 
     results.forEach(result => {
 
-        const examName =
+        const name =
             result.exam_name ||
             result.test_name ||
             result.title ||
             "اختبار";
-
 
         const score =
             Number(
@@ -650,7 +366,6 @@ function displayResults(results) {
                 result.mark ??
                 0
             );
-
 
         const total =
             Number(
@@ -660,9 +375,7 @@ function displayResults(results) {
                 0
             );
 
-
         let percentage = 0;
-
 
         if (
             result.percentage !== null &&
@@ -670,42 +383,28 @@ function displayResults(results) {
         ) {
 
             percentage =
-                Number(
-                    result.percentage
-                );
+                Number(result.percentage);
 
-        } else if (
-            total > 0
-        ) {
+        } else if (total > 0) {
 
             percentage =
-                (score / total) * 100;
+                score / total * 100;
         }
-
 
         const date =
             result.created_at ||
             result.submitted_at ||
-            result.date ||
             "";
 
-
         const row =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
-
-        row.className =
-            "result";
-
+        row.className = "result";
 
         row.innerHTML = `
-
             <div>
-
                 <div class="result-name">
-                    ${escapeHTML(examName)}
+                    ${escapeHTML(name)}
                 </div>
 
                 <div class="result-date">
@@ -713,33 +412,26 @@ function displayResults(results) {
                         formatDate(date)
                     )}
                 </div>
-
             </div>
 
             <div class="score">
                 ${Math.round(percentage)}%
             </div>
-
         `;
 
-
         box.appendChild(row);
-
     });
-
 }
 
 
 /* =====================================================
-   STATISTICS
+   STATS
 ===================================================== */
 
 function updateStats(results) {
 
     let total = 0;
-
     let best = 0;
-
 
     results.forEach(result => {
 
@@ -750,7 +442,6 @@ function updateStats(results) {
                 0
             );
 
-
         const max =
             Number(
                 result.total_score ??
@@ -759,9 +450,7 @@ function updateStats(results) {
                 0
             );
 
-
         let percentage = 0;
-
 
         if (
             result.percentage !== null &&
@@ -769,67 +458,50 @@ function updateStats(results) {
         ) {
 
             percentage =
-                Number(
-                    result.percentage
-                );
+                Number(result.percentage);
 
         } else if (max > 0) {
 
             percentage =
-                (score / max) * 100;
+                score / max * 100;
         }
 
-
-        if (
-            Number.isFinite(
-                percentage
-            )
-        ) {
+        if (Number.isFinite(percentage)) {
 
             total += percentage;
 
-            if (
-                percentage > best
-            ) {
-
-                best = percentage;
-
-            }
-
+            best =
+                Math.max(
+                    best,
+                    percentage
+                );
         }
-
     });
-
 
     const average =
         results.length
             ? total / results.length
             : 0;
 
-
     setText(
         "testsCount",
         results.length
     );
-
 
     setText(
         "completedCount",
         results.length
     );
 
-
     setText(
         "averageScore",
         Math.round(average) + "%"
     );
 
-
     setText(
         "bestScore",
         Math.round(best) + "%"
     );
-
 }
 
 
@@ -839,98 +511,40 @@ function updateStats(results) {
 
 function setupButtons() {
 
-
-    /* =============================================
-       EDIT
-    ============================================= */
-
     const editBtn =
-        document.getElementById(
-            "editBtn"
-        );
-
+        document.getElementById("editBtn");
 
     if (editBtn) {
 
-        editBtn.onclick =
-            function () {
+        editBtn.onclick = function () {
 
-                window.location.href =
-                    "edit-profile.html";
-
-            };
-
+            location.href =
+                "edit-profile.html";
+        };
     }
 
 
-    /* =============================================
-       LOGOUT
-    ============================================= */
-
     const logoutBtn =
-        document.getElementById(
-            "logoutBtn"
-        );
-
+        document.getElementById("logoutBtn");
 
     if (logoutBtn) {
 
         logoutBtn.onclick =
             async function () {
 
+                logoutBtn.disabled = true;
 
-                logoutBtn.disabled =
-                    true;
+                await supabaseClient.auth.signOut();
 
-
-                logoutBtn.textContent =
-                    "جاري تسجيل الخروج...";
-
-
-                const {
-                    error
-                } =
-                    await supabaseClient
-                        .auth
-                        .signOut();
-
-
-                if (error) {
-
-                    console.error(
-                        error
-                    );
-
-
-                    logoutBtn.disabled =
-                        false;
-
-
-                    logoutBtn.textContent =
-                        "تسجيل الخروج";
-
-
-                    alert(
-                        "حدث خطأ أثناء تسجيل الخروج."
-                    );
-
-
-                    return;
-                }
-
-
-                window.location.href =
+                location.href =
                     "auth.html";
-
             };
-
     }
-
 }
 
 
 /* =====================================================
-   SET TEXT
+   HELPERS
 ===================================================== */
 
 function setText(id, value) {
@@ -938,9 +552,7 @@ function setText(id, value) {
     const element =
         document.getElementById(id);
 
-
     if (!element) return;
-
 
     element.textContent =
         value !== null &&
@@ -951,16 +563,9 @@ function setText(id, value) {
 }
 
 
-/* =====================================================
-   DATE
-===================================================== */
-
 function formatDate(date) {
 
-    if (!date) {
-        return "—";
-    }
-
+    if (!date) return "—";
 
     try {
 
@@ -977,40 +582,29 @@ function formatDate(date) {
     } catch {
 
         return "—";
-
     }
-
 }
 
 
-/* =====================================================
-   ESCAPE HTML
-===================================================== */
-
 function escapeHTML(value) {
 
-    return String(
-        value ?? ""
-    )
-    .replaceAll(
-        "&",
-        "&amp;"
-    )
-    .replaceAll(
-        "<",
-        "&lt;"
-    )
-    .replaceAll(
-        ">",
-        "&gt;"
-    )
-    .replaceAll(
-        '"',
-        "&quot;"
-    )
-    .replaceAll(
-        "'",
-        "&#039;"
-    );
+    return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
 
+
+function showError(message) {
+
+    const box =
+        document.getElementById("errorBox");
+
+    if (!box) return;
+
+    box.textContent = message;
+
+    box.style.display = "block";
 }
