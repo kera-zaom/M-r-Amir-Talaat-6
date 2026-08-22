@@ -3,9 +3,7 @@
 
 <head>
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>الخوارزمي | تعديل البيانات</title>
 
@@ -21,18 +19,10 @@
 body{
     min-height:100vh;
     background:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(116,72,232,.22),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
-            rgba(49,84,223,.18),
-            transparent 35%
-        ),
+        radial-gradient(circle at 20% 20%,rgba(116,72,232,.22),transparent 35%),
+        radial-gradient(circle at 80% 80%,rgba(49,84,223,.18),transparent 35%),
         #07070b;
-    color:#fff;
+    color:white;
 }
 
 .container{
@@ -44,7 +34,6 @@ header{
     height:70px;
     border-bottom:1px solid rgba(255,255,255,.08);
     background:rgba(7,7,11,.9);
-    backdrop-filter:blur(15px);
 }
 
 .nav{
@@ -68,11 +57,10 @@ header{
     padding:10px 16px;
     border-radius:12px;
     background:#111119;
-    border:1px solid rgba(255,255,255,.1);
 }
 
 main{
-    padding:35px 0 60px;
+    padding:35px 0;
 }
 
 .card{
@@ -83,12 +71,11 @@ main{
 }
 
 h1{
-    font-size:27px;
     margin-bottom:8px;
 }
 
 .subtitle{
-    color:#8d8d96;
+    color:#888;
     margin-bottom:25px;
 }
 
@@ -100,25 +87,23 @@ h1{
 }
 
 .success{
-    background:#092719;
     color:#75e9a9;
+    background:#092719;
     border:1px solid #1d7348;
 }
 
 .error{
-    background:#280f15;
     color:#ff9aaa;
+    background:#280f15;
     border:1px solid #6d2635;
 }
-
-/* IMAGE */
 
 .photo{
     text-align:center;
     margin-bottom:28px;
 }
 
-.avatar-wrap{
+.avatar-box{
     position:relative;
     width:145px;
     height:145px;
@@ -128,27 +113,25 @@ h1{
 #studentAvatar{
     width:145px;
     height:145px;
-    border-radius:50%;
     object-fit:cover;
-    background:#111119;
+    border-radius:50%;
     border:3px solid #7952ed;
-    box-shadow:0 0 35px rgba(121,82,237,.3);
+    background:#111119;
 }
 
 .camera{
     position:absolute;
-    right:0;
     bottom:0;
-    width:45px;
-    height:45px;
+    right:0;
+    width:44px;
+    height:44px;
     border-radius:50%;
-    background:linear-gradient(135deg,#7448e8,#3154df);
-    border:3px solid #07070b;
     display:flex;
     align-items:center;
     justify-content:center;
+    background:linear-gradient(135deg,#7448e8,#3154df);
+    border:3px solid #07070b;
     cursor:pointer;
-    font-size:19px;
 }
 
 #photoInput{
@@ -156,7 +139,7 @@ h1{
 }
 
 .photo-title{
-    margin-top:13px;
+    margin-top:12px;
     font-weight:bold;
 }
 
@@ -193,9 +176,8 @@ input{
     border-radius:12px;
     border:1px solid rgba(255,255,255,.1);
     background:#0c0c12;
-    color:#fff;
+    color:white;
     outline:none;
-    font-size:15px;
 }
 
 input:focus{
@@ -206,22 +188,21 @@ input[readonly]{
     opacity:.5;
 }
 
-button.save{
+#saveBtn{
     width:100%;
-    margin-top:23px;
+    margin-top:22px;
     padding:15px;
     border:0;
     border-radius:13px;
-    color:#fff;
+    color:white;
     background:linear-gradient(135deg,#7448e8,#3154df);
     font-size:16px;
     font-weight:bold;
     cursor:pointer;
 }
 
-button.save:disabled{
+#saveBtn:disabled{
     opacity:.6;
-    cursor:not-allowed;
 }
 
 @media(max-width:600px){
@@ -232,10 +213,6 @@ button.save:disabled{
 
     .full{
         grid-column:auto;
-    }
-
-    .card{
-        padding:18px;
     }
 
 }
@@ -266,12 +243,10 @@ button.save:disabled{
 
 <div class="card">
 
-<h1>
-    تعديل بياناتي
-</h1>
+<h1>تعديل بياناتي</h1>
 
 <p class="subtitle">
-    يمكنك تعديل بياناتك وتغيير صورتك الشخصية.
+    عدّل بياناتك الشخصية وصورتك.
 </p>
 
 
@@ -280,13 +255,11 @@ button.save:disabled{
 <div id="errorBox" class="message error"></div>
 
 
-<!-- ==============================
-     PHOTO
-============================== -->
+<!-- الصورة -->
 
 <div class="photo">
 
-    <div class="avatar-wrap">
+    <div class="avatar-box">
 
         <img
             id="studentAvatar"
@@ -295,8 +268,8 @@ button.save:disabled{
         >
 
         <label
-            class="camera"
             for="photoInput"
+            class="camera"
         >
             📷
         </label>
@@ -304,25 +277,21 @@ button.save:disabled{
         <input
             id="photoInput"
             type="file"
-            accept="image/jpeg,image/png,image/webp"
+            accept="image/*"
         >
 
     </div>
 
     <div class="photo-title">
-        صورتك الشخصية
+        الصورة الشخصية
     </div>
 
     <div class="photo-info">
-        JPG / PNG / WEBP — الحد الأقصى 5MB
+        اختر صورة JPG أو PNG أو WEBP بحجم أقل من 5MB
     </div>
 
 </div>
 
-
-<!-- ==============================
-     FORM
-============================== -->
 
 <form id="profileForm">
 
@@ -331,9 +300,7 @@ button.save:disabled{
 
 <div class="field full">
 
-<label>
-    الاسم بالكامل
-</label>
+<label>الاسم بالكامل</label>
 
 <input
     id="fullName"
@@ -346,9 +313,7 @@ button.save:disabled{
 
 <div class="field">
 
-<label>
-    البريد الإلكتروني
-</label>
+<label>البريد الإلكتروني</label>
 
 <input
     id="email"
@@ -361,9 +326,7 @@ button.save:disabled{
 
 <div class="field">
 
-<label>
-    رقم الهاتف
-</label>
+<label>رقم الهاتف</label>
 
 <input
     id="phone"
@@ -375,9 +338,7 @@ button.save:disabled{
 
 <div class="field">
 
-<label>
-    رقم ولي الأمر
-</label>
+<label>رقم ولي الأمر</label>
 
 <input
     id="parentPhone"
@@ -389,9 +350,7 @@ button.save:disabled{
 
 <div class="field">
 
-<label>
-    الصف الدراسي
-</label>
+<label>الصف الدراسي</label>
 
 <input
     id="grade"
@@ -403,9 +362,7 @@ button.save:disabled{
 
 <div class="field">
 
-<label>
-    المحافظة
-</label>
+<label>المحافظة</label>
 
 <input
     id="governorate"
@@ -417,9 +374,7 @@ button.save:disabled{
 
 <div class="field">
 
-<label>
-    المدينة
-</label>
+<label>المدينة</label>
 
 <input
     id="city"
@@ -431,9 +386,7 @@ button.save:disabled{
 
 <div class="field full">
 
-<label>
-    المدرسة
-</label>
+<label>المدرسة</label>
 
 <input
     id="school"
@@ -448,7 +401,6 @@ button.save:disabled{
 
 <button
     id="saveBtn"
-    class="save"
     type="submit"
 >
     حفظ البيانات
@@ -461,8 +413,6 @@ button.save:disabled{
 </main>
 
 
-<!-- Supabase -->
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script src="supabase.js"></script>
@@ -472,119 +422,58 @@ button.save:disabled{
 
 "use strict";
 
-
-/* =========================================
-   VARIABLES
-========================================= */
-
-let supabaseClient = null;
-
-let currentUser = null;
-
-let currentStudent = {};
-
+let client;
+let user;
+let student = {};
 let selectedFile = null;
 
 
-/* =========================================
-   ELEMENTS
-========================================= */
-
 const form =
-    document.getElementById(
-        "profileForm"
-    );
+    document.getElementById("profileForm");
 
-const photoInput =
-    document.getElementById(
-        "photoInput"
-    );
+const input =
+    document.getElementById("photoInput");
 
-const avatar =
-    document.getElementById(
-        "studentAvatar"
-    );
+const image =
+    document.getElementById("studentAvatar");
 
-const saveBtn =
-    document.getElementById(
-        "saveBtn"
-    );
+const save =
+    document.getElementById("saveBtn");
 
-const successBox =
-    document.getElementById(
-        "successBox"
-    );
+const success =
+    document.getElementById("successBox");
 
-const errorBox =
-    document.getElementById(
-        "errorBox"
-    );
+const error =
+    document.getElementById("errorBox");
 
 
-/* =========================================
+/* =====================================
    MESSAGE
-========================================= */
+===================================== */
 
-function showSuccess(message){
+function showSuccess(text){
 
-    successBox.textContent =
-        message;
-
-    successBox.style.display =
-        "block";
-
-    errorBox.style.display =
-        "none";
-}
-
-
-function showError(message){
-
-    errorBox.textContent =
-        message;
-
-    errorBox.style.display =
-        "block";
-
-    successBox.style.display =
-        "none";
-}
-
-
-/* =========================================
-   INPUT HELPERS
-========================================= */
-
-function getValue(id){
-
-    return document
-        .getElementById(id)
-        .value
-        .trim();
+    success.textContent = text;
+    success.style.display = "block";
+    error.style.display = "none";
 
 }
 
 
-function setValue(id,value){
+function showError(text){
 
-    const element =
-        document.getElementById(id);
-
-    if(element){
-
-        element.value =
-            value || "";
-
-    }
+    error.textContent = text;
+    error.style.display = "block";
+    success.style.display = "none";
 
 }
 
 
-/* =========================================
-   LOAD PROFILE
-========================================= */
+/* =====================================
+   START
+===================================== */
 
-async function loadProfile(){
+async function start(){
 
     try{
 
@@ -596,55 +485,47 @@ async function loadProfile(){
 
         }
 
-        supabaseClient =
+
+        client =
             window.supabaseClient;
 
 
         const {
             data,
-            error
+            error:sessionError
         } =
-        await supabaseClient
-            .auth
-            .getSession();
+        await client.auth.getSession();
 
 
-        if(error){
+        if(sessionError){
 
-            throw error;
+            throw sessionError;
 
         }
 
 
-        if(!data?.session){
+        if(!data.session){
 
-            window.location.href =
-                "auth.html";
-
+            location.href = "auth.html";
             return;
 
         }
 
 
-        currentUser =
+        user =
             data.session.user;
 
 
-        /* =========================
-           GET STUDENT
-        ========================= */
+        /* جلب بيانات الطالب */
 
         const {
-            data:student,
+            data:studentData,
             error:studentError
         } =
-        await supabaseClient
+        await client
             .from("students")
             .select("*")
-            .eq(
-                "id",
-                currentUser.id
-            )
+            .eq("id",user.id)
             .maybeSingle();
 
 
@@ -655,97 +536,20 @@ async function loadProfile(){
         }
 
 
-        currentStudent =
-            student || {};
+        student =
+            studentData || {};
 
 
-        /* =========================
-           FIELDS
-        ========================= */
-
-        setValue(
-            "fullName",
-            currentStudent.full_name ||
-            currentStudent.name ||
-            currentUser.user_metadata?.full_name ||
-            ""
-        );
+        fillForm();
 
 
-        setValue(
-            "email",
-            currentUser.email ||
-            currentStudent.email ||
-            ""
-        );
+    }catch(err){
 
-
-        setValue(
-            "phone",
-            currentStudent.phone ||
-            ""
-        );
-
-
-        setValue(
-            "parentPhone",
-            currentStudent.parent_phone ||
-            ""
-        );
-
-
-        setValue(
-            "grade",
-            currentStudent.grade ||
-            currentStudent.class ||
-            ""
-        );
-
-
-        setValue(
-            "governorate",
-            currentStudent.governorate ||
-            currentStudent.province ||
-            ""
-        );
-
-
-        setValue(
-            "city",
-            currentStudent.city ||
-            ""
-        );
-
-
-        setValue(
-            "school",
-            currentStudent.school ||
-            ""
-        );
-
-
-        /* =========================
-           CURRENT IMAGE
-        ========================= */
-
-        if(currentStudent.avatar_url){
-
-            avatar.src =
-                currentStudent.avatar_url;
-
-        }
-
-
-    }catch(error){
-
-        console.error(
-            "LOAD ERROR:",
-            error
-        );
+        console.error(err);
 
         showError(
-            error.message ||
-            "تعذر تحميل البيانات."
+            err.message ||
+            "حدث خطأ أثناء تحميل البيانات"
         );
 
     }
@@ -753,17 +557,68 @@ async function loadProfile(){
 }
 
 
-/* =========================================
-   SELECT IMAGE
-========================================= */
+/* =====================================
+   FILL FORM
+===================================== */
 
-photoInput.addEventListener(
+function fillForm(){
+
+    document.getElementById("fullName").value =
+        student.full_name ||
+        student.name ||
+        user.user_metadata?.full_name ||
+        "";
+
+    document.getElementById("email").value =
+        user.email ||
+        student.email ||
+        "";
+
+    document.getElementById("phone").value =
+        student.phone || "";
+
+    document.getElementById("parentPhone").value =
+        student.parent_phone || "";
+
+    document.getElementById("grade").value =
+        student.grade ||
+        student.class ||
+        "";
+
+    document.getElementById("governorate").value =
+        student.governorate ||
+        student.province ||
+        "";
+
+    document.getElementById("city").value =
+        student.city || "";
+
+    document.getElementById("school").value =
+        student.school || "";
+
+
+    /* الصورة الحالية */
+
+    if(student.avatar_url){
+
+        image.src =
+            student.avatar_url;
+
+    }
+
+}
+
+
+/* =====================================
+   SELECT PHOTO
+===================================== */
+
+input.addEventListener(
     "change",
     function(){
 
         const file =
-            this.files?.[0];
-
+            this.files[0];
 
         if(!file){
 
@@ -778,7 +633,7 @@ photoInput.addEventListener(
         ){
 
             showError(
-                "حجم الصورة يجب ألا يتجاوز 5MB."
+                "الصورة أكبر من 5MB"
             );
 
             this.value = "";
@@ -788,23 +643,12 @@ photoInput.addEventListener(
         }
 
 
-        const allowedTypes = [
-
-            "image/jpeg",
-            "image/png",
-            "image/webp"
-
-        ];
-
-
         if(
-            !allowedTypes.includes(
-                file.type
-            )
+            !file.type.startsWith("image/")
         ){
 
             showError(
-                "اختر صورة JPG أو PNG أو WEBP."
+                "الملف المختار ليس صورة"
             );
 
             this.value = "";
@@ -818,38 +662,30 @@ photoInput.addEventListener(
             file;
 
 
-        /* PREVIEW */
+        /* المعاينة */
 
         const reader =
             new FileReader();
 
-
         reader.onload =
-            function(event){
+            function(e){
 
-                avatar.src =
-                    event.target.result;
+                image.src =
+                    e.target.result;
 
             };
 
-
-        reader.readAsDataURL(
-            file
-        );
-
-
-        errorBox.style.display =
-            "none";
+        reader.readAsDataURL(file);
 
     }
 );
 
 
-/* =========================================
-   UPLOAD IMAGE
-========================================= */
+/* =====================================
+   UPLOAD
+===================================== */
 
-async function uploadImage(){
+async function uploadPhoto(){
 
     if(!selectedFile){
 
@@ -860,19 +696,13 @@ async function uploadImage(){
 
     const extension =
         selectedFile.name
-            .split(".")
-            .pop()
-            .toLowerCase();
+        .split(".")
+        .pop()
+        .toLowerCase();
 
 
-    /*
-       مسار الصورة:
-
-       USER_ID/profile-TIME.extension
-    */
-
-    const filePath =
-        currentUser.id +
+    const path =
+        user.id +
         "/profile-" +
         Date.now() +
         "." +
@@ -880,153 +710,127 @@ async function uploadImage(){
 
 
     console.log(
-        "UPLOAD PATH:",
-        filePath
+        "Uploading:",
+        path
     );
 
 
-    /* =========================
-       UPLOAD
-    ========================= */
-
     const {
-        error
+        error:uploadError
     } =
-    await supabaseClient
+    await client
         .storage
         .from("avatars")
         .upload(
-            filePath,
+            path,
             selectedFile,
             {
-                cacheControl:"3600",
                 contentType:
                     selectedFile.type,
+
+                cacheControl:
+                    "3600",
+
                 upsert:false
             }
         );
 
 
-    if(error){
-
-        console.error(
-            "UPLOAD ERROR:",
-            error
-        );
+    if(uploadError){
 
         throw new Error(
             "فشل رفع الصورة: " +
-            error.message
+            uploadError.message
         );
 
     }
 
 
-    /* =========================
-       PUBLIC URL
-    ========================= */
+    /* الحصول على الرابط */
 
     const {
         data
     } =
-    supabaseClient
+    client
         .storage
         .from("avatars")
-        .getPublicUrl(
-            filePath
-        );
+        .getPublicUrl(path);
 
 
-    const publicUrl =
-        data?.publicUrl;
-
-
-    if(!publicUrl){
+    if(!data?.publicUrl){
 
         throw new Error(
-            "لم يتم إنشاء رابط للصورة."
+            "تم رفع الصورة ولكن لم يتم إنشاء الرابط"
         );
 
     }
 
 
-    console.log(
-        "PUBLIC URL:",
-        publicUrl
-    );
-
-
-    return publicUrl;
+    return data.publicUrl;
 
 }
 
 
-/* =========================================
+/* =====================================
    SAVE
-========================================= */
+===================================== */
 
 form.addEventListener(
     "submit",
-    async function(event){
+    async function(e){
 
-        event.preventDefault();
+        e.preventDefault();
 
 
         try{
 
-            if(!currentUser){
+            save.disabled =
+                true;
 
-                throw new Error(
-                    "لم يتم تحميل الحساب."
-                );
-
-            }
+            save.textContent =
+                "جاري الحفظ...";
 
 
             const fullName =
-                getValue("fullName");
+                document
+                .getElementById("fullName")
+                .value
+                .trim();
 
 
             if(!fullName){
 
                 throw new Error(
-                    "اكتب الاسم بالكامل."
+                    "اكتب الاسم بالكامل"
                 );
 
             }
 
 
-            saveBtn.disabled =
-                true;
-
-            saveBtn.textContent =
-                "جاري الحفظ...";
-
-
-            /* =========================
-               IMAGE
-            ========================= */
+            /* =================================
+               رفع الصورة
+            ================================= */
 
             let avatarUrl =
-                currentStudent.avatar_url ||
+                student.avatar_url ||
                 null;
 
 
             if(selectedFile){
 
-                saveBtn.textContent =
+                save.textContent =
                     "جاري رفع الصورة...";
 
 
                 avatarUrl =
-                    await uploadImage();
+                    await uploadPhoto();
 
             }
 
 
-            /* =========================
-               UPDATE
-            ========================= */
+            /* =================================
+               البيانات
+            ================================= */
 
             const updateData = {
 
@@ -1034,22 +838,40 @@ form.addEventListener(
                     fullName,
 
                 phone:
-                    getValue("phone"),
+                    document
+                    .getElementById("phone")
+                    .value
+                    .trim(),
 
                 parent_phone:
-                    getValue("parentPhone"),
+                    document
+                    .getElementById("parentPhone")
+                    .value
+                    .trim(),
 
                 grade:
-                    getValue("grade"),
+                    document
+                    .getElementById("grade")
+                    .value
+                    .trim(),
 
                 governorate:
-                    getValue("governorate"),
+                    document
+                    .getElementById("governorate")
+                    .value
+                    .trim(),
 
                 city:
-                    getValue("city"),
+                    document
+                    .getElementById("city")
+                    .value
+                    .trim(),
 
                 school:
-                    getValue("school"),
+                    document
+                    .getElementById("school")
+                    .value
+                    .trim(),
 
                 avatar_url:
                     avatarUrl
@@ -1058,74 +880,65 @@ form.addEventListener(
 
 
             console.log(
-                "SAVING:",
+                "UPDATE:",
                 updateData
             );
 
 
-            saveBtn.textContent =
+            save.textContent =
                 "جاري حفظ البيانات...";
 
 
+            /* =================================
+               تحديث الطالب
+            ================================= */
+
             const {
-                error
+                error:updateError
             } =
-            await supabaseClient
+            await client
                 .from("students")
-                .update(
-                    updateData
-                )
+                .update(updateData)
                 .eq(
                     "id",
-                    currentUser.id
+                    user.id
                 );
 
 
-            if(error){
+            if(updateError){
 
                 console.error(
-                    "DATABASE ERROR:",
-                    error
+                    updateError
                 );
 
                 throw new Error(
                     "فشل حفظ البيانات: " +
-                    error.message
+                    updateError.message
                 );
 
             }
 
 
-            /* =========================
-               SUCCESS
-            ========================= */
+            /* =================================
+               تم
+            ================================= */
 
-            currentStudent = {
-
-                ...currentStudent,
-
+            student = {
+                ...student,
                 ...updateData
-
             };
 
 
-            selectedFile =
-                null;
+            selectedFile = null;
 
-            photoInput.value =
-                "";
+            input.value = "";
 
 
             if(avatarUrl){
 
-                avatar.src =
+                image.src =
                     avatarUrl +
-                    (
-                        avatarUrl.includes("?")
-                            ? "&"
-                            : "?"
-                    ) +
-                    "v=" +
+                    "?v=" +
                     Date.now();
 
             }
@@ -1136,43 +949,39 @@ form.addEventListener(
             );
 
 
-            saveBtn.textContent =
+            save.textContent =
                 "تم الحفظ ✓";
 
-
-            /*
-               ارجع للـ Home
-            */
 
             setTimeout(
                 function(){
 
-                    window.location.href =
+                    location.href =
                         "home.html";
 
                 },
-                1200
+                1000
             );
 
 
-        }catch(error){
+        }catch(err){
 
             console.error(
                 "SAVE ERROR:",
-                error
+                err
             );
 
 
             showError(
-                error.message ||
-                "حدث خطأ أثناء الحفظ."
+                err.message ||
+                "حدث خطأ أثناء الحفظ"
             );
 
 
-            saveBtn.disabled =
+            save.disabled =
                 false;
 
-            saveBtn.textContent =
+            save.textContent =
                 "حفظ البيانات";
 
         }
@@ -1181,11 +990,11 @@ form.addEventListener(
 );
 
 
-/* =========================================
-   START
-========================================= */
+/* =====================================
+   RUN
+===================================== */
 
-loadProfile();
+start();
 
 </script>
 
