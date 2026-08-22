@@ -2,33 +2,19 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>إضافة اختبار | الخوارزمي</title>
 
-<link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
->
-
-<link
-    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
->
+href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script src="../supabase.js"></script>
 
 <style>
@@ -41,96 +27,68 @@
 }
 
 :root{
-
     --bg:#050507;
     --card:#111118;
     --card2:#171720;
     --border:rgba(255,255,255,.08);
-
     --text:#fff;
     --muted:#92929f;
-
     --primary:#7657ff;
     --primary2:#5137d9;
-
     --green:#35d39a;
     --red:#ff6078;
-
 }
 
 body{
-
     min-height:100vh;
-
     color:var(--text);
 
     background:
-
         radial-gradient(
             circle at 10% 0%,
             rgba(118,87,255,.14),
             transparent 30%
         ),
-
         radial-gradient(
             circle at 90% 90%,
             rgba(70,45,200,.10),
             transparent 30%
         ),
-
         var(--bg);
-
 }
-
 
 /* ================= SIDEBAR ================= */
 
 .sidebar{
-
     position:fixed;
-
     right:0;
     top:0;
-
     width:255px;
-
     height:100vh;
-
     padding:20px 15px;
 
     background:rgba(9,9,14,.98);
-
     border-left:1px solid var(--border);
 
     z-index:1000;
-
-    transition:.3s;
-
 }
 
 .brand{
-
     display:flex;
-
     align-items:center;
-
     gap:10px;
 
     padding:8px 10px 25px;
 
     border-bottom:1px solid var(--border);
-
     margin-bottom:18px;
-
 }
 
 .logo{
-
     width:44px;
     height:44px;
 
     display:grid;
-
     place-items:center;
 
     border-radius:14px;
@@ -143,218 +101,147 @@ body{
         );
 
     font-size:20px;
-
     font-weight:900;
 
     box-shadow:
         0 0 25px
         rgba(118,87,255,.25);
-
 }
 
 .brand strong{
-
     display:block;
-
     font-size:16px;
-
 }
 
 .brand span{
-
     display:block;
-
     color:var(--muted);
-
     font-size:8px;
-
 }
 
 .menu-title{
-
     color:#666675;
-
     font-size:8px;
-
     padding:0 10px 8px;
-
 }
 
 .menu{
-
     display:flex;
-
     flex-direction:column;
-
     gap:5px;
-
 }
 
 .menu a{
-
     display:flex;
-
     align-items:center;
-
     gap:10px;
 
     height:44px;
-
     padding:0 12px;
 
     color:#b7b7c2;
-
     text-decoration:none;
 
     border-radius:11px;
 
     font-size:10px;
-
     font-weight:700;
 
     transition:.2s;
-
 }
 
 .menu a:hover{
-
     color:#fff;
-
-    background:
-        rgba(118,87,255,.08);
-
+    background:rgba(118,87,255,.08);
 }
 
 .menu a.active{
-
     color:#fff;
-
-    background:
-        rgba(118,87,255,.15);
-
-    border:
-        1px solid
-        rgba(118,87,255,.15);
-
+    background:rgba(118,87,255,.15);
+    border:1px solid rgba(118,87,255,.15);
 }
 
 .menu-icon{
-
     width:27px;
     height:27px;
 
     display:grid;
-
     place-items:center;
 
     border-radius:8px;
-
-    background:
-        rgba(255,255,255,.04);
-
+    background:rgba(255,255,255,.04);
 }
 
 .logout{
-
     position:absolute;
-
     bottom:20px;
-
     right:15px;
-
     left:15px;
-
 }
 
 .logout button{
-
     width:100%;
-
     height:43px;
 
-    border:
-        1px solid
-        rgba(255,96,120,.12);
-
+    border:1px solid rgba(255,96,120,.12);
     border-radius:11px;
 
     color:#ff8496;
-
-    background:
-        rgba(255,96,120,.05);
+    background:rgba(255,96,120,.05);
 
     cursor:pointer;
 
     font-size:10px;
-
     font-weight:800;
-
 }
-
 
 /* ================= MAIN ================= */
 
 .main{
-
     margin-right:255px;
-
     min-height:100vh;
-
     padding:25px 30px 60px;
-
 }
 
 .topbar{
-
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     margin-bottom:25px;
-
 }
 
-.mobile-menu{
+.back-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
 
-    display:none;
-
-    width:42px;
     height:42px;
+    padding:0 15px;
 
-    border:
-        1px solid
-        var(--border);
+    color:#ddd;
+    text-decoration:none;
 
-    background:
-        rgba(255,255,255,.04);
-
-    color:#fff;
-
+    border:1px solid var(--border);
     border-radius:10px;
 
-    cursor:pointer;
+    background:rgba(255,255,255,.04);
 
+    font-size:9px;
+    font-weight:800;
 }
 
 .admin-box{
-
     display:flex;
-
     align-items:center;
-
     gap:10px;
-
 }
 
 .admin-avatar{
-
     width:42px;
     height:42px;
 
     display:grid;
-
     place-items:center;
 
     border-radius:50%;
@@ -367,347 +254,334 @@ body{
         );
 
     font-weight:900;
-
 }
 
 .admin-info strong{
-
     display:block;
-
     font-size:10px;
-
 }
 
 .admin-info span{
-
     display:block;
-
     color:var(--muted);
-
     font-size:8px;
-
 }
 
-
-/* ================= PAGE ================= */
+/* ================= HEADER ================= */
 
 .page-header{
-
     margin-bottom:22px;
-
 }
 
 .page-header h1{
-
     font-size:29px;
-
     font-weight:900;
-
 }
 
 .page-header p{
-
     color:var(--muted);
-
     font-size:9px;
-
-    margin-top:4px;
-
+    margin-top:3px;
 }
 
-
-/* ================= FORM CARD ================= */
-
-.form-card{
-
-    width:min(850px,100%);
-
-    padding:25px;
-
-    border-radius:18px;
-
-    background:
-        rgba(17,17,24,.92);
-
-    border:
-        1px solid
-        var(--border);
-
-}
+/* ================= FORM ================= */
 
 .form-grid{
-
     display:grid;
-
     grid-template-columns:
-        repeat(2,1fr);
+        1fr 1fr;
 
-    gap:17px;
-
+    gap:15px;
 }
 
-.form-group{
+.card{
+    padding:20px;
 
-    display:flex;
+    border-radius:17px;
 
-    flex-direction:column;
+    background:rgba(17,17,24,.92);
 
-    gap:7px;
-
+    border:1px solid var(--border);
 }
 
-.form-group.full{
-
+.full{
     grid-column:1 / -1;
+}
 
+.card h2{
+    font-size:13px;
+    margin-bottom:17px;
+}
+
+.field{
+    margin-bottom:15px;
+}
+
+.field:last-child{
+    margin-bottom:0;
 }
 
 label{
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#c9c9d2;
 
     font-size:9px;
-
     font-weight:800;
-
-    color:#d0d0d8;
-
 }
 
 input,
-select,
-textarea{
-
+textarea,
+select{
     width:100%;
 
     color:#fff;
-
     outline:none;
 
-    border:
-        1px solid
-        var(--border);
+    background:rgba(255,255,255,.035);
+
+    border:1px solid var(--border);
 
     border-radius:11px;
 
-    background:
-        rgba(255,255,255,.035);
-
     font-size:10px;
-
-    transition:.2s;
-
 }
 
 input,
 select{
-
-    height:47px;
-
+    height:46px;
     padding:0 13px;
-
 }
 
 textarea{
-
-    min-height:130px;
-
-    padding:13px;
-
+    min-height:110px;
+    padding:12px 13px;
     resize:vertical;
-
-    line-height:1.8;
-
 }
 
 input:focus,
-select:focus,
-textarea:focus{
-
-    border-color:
-        rgba(118,87,255,.55);
+textarea:focus,
+select:focus{
+    border-color:rgba(118,87,255,.5);
 
     box-shadow:
         0 0 0 3px
         rgba(118,87,255,.07);
-
 }
 
 select option{
-
     background:#15151e;
-
     color:#fff;
-
 }
 
-.hint{
-
-    color:#666675;
-
-    font-size:7px;
-
+.help{
+    color:var(--muted);
+    font-size:8px;
+    margin-top:5px;
 }
 
+/* ================= SWITCH ================= */
 
-/* ================= PUBLISH ================= */
-
-.publish-box{
-
-    margin-top:20px;
-
-    padding:16px;
-
-    border-radius:13px;
-
-    border:
-        1px solid
-        var(--border);
-
-    background:
-        rgba(255,255,255,.025);
-
+.publish-row{
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
-    gap:15px;
+    padding:13px;
 
+    border-radius:11px;
+
+    background:rgba(255,255,255,.025);
+
+    border:1px solid var(--border);
 }
 
-.publish-info strong{
-
+.publish-text strong{
     display:block;
-
     font-size:10px;
-
 }
 
-.publish-info span{
-
+.publish-text span{
     display:block;
-
-    margin-top:3px;
-
     color:var(--muted);
-
     font-size:8px;
-
+    margin-top:2px;
 }
 
 .switch{
-
     position:relative;
-
-    width:48px;
-    height:27px;
-
-    flex-shrink:0;
-
+    width:45px;
+    height:24px;
 }
 
 .switch input{
-
-    opacity:0;
-
-    width:0;
-    height:0;
-
+    display:none;
 }
 
 .slider{
-
     position:absolute;
-
     inset:0;
 
     cursor:pointer;
 
     border-radius:30px;
 
-    background:#292933;
+    background:#30303a;
 
-    transition:.25s;
-
+    transition:.2s;
 }
 
 .slider:before{
-
     content:"";
 
     position:absolute;
 
-    width:21px;
-    height:21px;
+    width:18px;
+    height:18px;
 
     right:3px;
     top:3px;
 
     border-radius:50%;
 
-    background:#aaa;
+    background:#fff;
 
-    transition:.25s;
-
+    transition:.2s;
 }
 
 .switch input:checked + .slider{
-
-    background:
-        var(--primary);
-
+    background:var(--primary);
 }
 
 .switch input:checked + .slider:before{
-
-    transform:
-        translateX(-21px);
-
-    background:#fff;
-
+    transform:translateX(-21px);
 }
 
+/* ================= QUESTIONS ================= */
 
-/* ================= BUTTONS ================= */
-
-.buttons{
-
+.question-list{
     display:flex;
-
-    gap:10px;
-
-    margin-top:25px;
-
+    flex-direction:column;
+    gap:14px;
 }
 
-.btn{
+.question-card{
+    padding:17px;
 
-    height:48px;
+    border-radius:14px;
 
-    padding:0 20px;
+    background:rgba(255,255,255,.025);
+
+    border:1px solid var(--border);
+}
+
+.question-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:13px;
+}
+
+.question-title{
+    font-size:11px;
+    font-weight:900;
+}
+
+.remove-question{
+    width:31px;
+    height:31px;
+
+    border:1px solid rgba(255,96,120,.15);
+
+    border-radius:8px;
+
+    color:#ff8092;
+    background:rgba(255,96,120,.05);
+
+    cursor:pointer;
+}
+
+.options-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.option-wrap{
+    position:relative;
+}
+
+.option-wrap label{
+    padding-right:2px;
+}
+
+.correct-row{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    margin-top:11px;
+}
+
+.correct-row span{
+    color:var(--muted);
+    font-size:8px;
+}
+
+.correct-row select{
+    width:120px;
+    height:36px;
+}
+
+/* ================= ADD QUESTION ================= */
+
+.add-question{
+    width:100%;
+    height:44px;
+
+    margin-top:15px;
+
+    border:1px dashed rgba(118,87,255,.35);
 
     border-radius:11px;
 
-    border:0;
+    color:#b8adff;
+
+    background:rgba(118,87,255,.05);
 
     cursor:pointer;
 
     font-size:9px;
-
     font-weight:900;
+}
 
-    text-decoration:none;
+/* ================= ACTIONS ================= */
 
+.actions{
     display:flex;
+    justify-content:flex-end;
+    gap:10px;
 
-    align-items:center;
+    margin-top:18px;
+}
 
-    justify-content:center;
+.btn{
+    min-width:150px;
+    height:48px;
 
+    border:0;
+    border-radius:11px;
+
+    cursor:pointer;
+
+    font-size:10px;
+    font-weight:900;
 }
 
 .btn-primary{
-
     color:#fff;
 
     background:
@@ -717,131 +591,43 @@ select option{
             var(--primary2)
         );
 
-    min-width:180px;
-
+    box-shadow:
+        0 10px 30px
+        rgba(118,87,255,.15);
 }
 
 .btn-secondary{
+    color:#ccc;
 
-    color:#bbb;
+    background:rgba(255,255,255,.04);
 
-    background:
-        rgba(255,255,255,.04);
-
-    border:
-        1px solid
-        var(--border);
-
-    min-width:120px;
-
+    border:1px solid var(--border);
 }
 
 .btn:disabled{
-
     opacity:.55;
-
     cursor:not-allowed;
-
 }
-
-
-/* ================= ERROR ================= */
-
-.error-box{
-
-    display:none;
-
-    margin-bottom:18px;
-
-    padding:14px 16px;
-
-    border-radius:12px;
-
-    color:#ff9aaa;
-
-    background:
-        rgba(255,96,120,.08);
-
-    border:
-        1px solid
-        rgba(255,96,120,.2);
-
-    font-size:9px;
-
-}
-
-
-/* ================= LOADING ================= */
-
-.loading{
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:5000;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:#050507;
-
-}
-
-.spinner{
-
-    width:45px;
-    height:45px;
-
-    border:
-        3px solid
-        rgba(118,87,255,.15);
-
-    border-top-color:
-        var(--primary);
-
-    border-radius:50%;
-
-    animation:
-        spin .8s linear infinite;
-
-}
-
-@keyframes spin{
-
-    to{
-        transform:rotate(360deg);
-    }
-
-}
-
 
 /* ================= TOAST ================= */
 
 .toast{
-
     position:fixed;
 
     left:20px;
-
     bottom:20px;
 
     z-index:6000;
 
-    max-width:350px;
+    max-width:360px;
 
-    padding:12px 16px;
+    padding:13px 17px;
 
     border-radius:11px;
 
     background:#191922;
 
-    border:
-        1px solid
-        var(--border);
+    border:1px solid var(--border);
 
     box-shadow:
         0 15px 40px
@@ -849,127 +635,122 @@ select option{
 
     font-size:9px;
 
-    transform:
-        translateY(30px);
-
+    transform:translateY(30px);
     opacity:0;
 
     pointer-events:none;
 
     transition:.3s;
-
 }
 
 .toast.show{
-
-    transform:
-        translateY(0);
-
+    transform:translateY(0);
     opacity:1;
-
 }
 
 .toast.error{
-
     color:#ff9aaa;
-
-    border-color:
-        rgba(255,96,120,.25);
-
+    border-color:rgba(255,96,120,.25);
 }
 
 .toast.success{
-
     color:#7be6bd;
-
-    border-color:
-        rgba(53,211,154,.25);
-
+    border-color:rgba(53,211,154,.25);
 }
 
+/* ================= LOADING ================= */
 
-/* ================= RESPONSIVE ================= */
+.loading{
+    position:fixed;
+
+    inset:0;
+
+    z-index:5000;
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    background:#050507;
+}
+
+.spinner{
+    width:45px;
+    height:45px;
+
+    border:3px solid
+        rgba(118,87,255,.15);
+
+    border-top-color:
+        var(--primary);
+
+    border-radius:50%;
+
+    animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* ================= MOBILE ================= */
 
 @media(max-width:800px){
 
     .sidebar{
-
-        transform:
-            translateX(100%);
-
+        transform:translateX(100%);
     }
 
     .sidebar.open{
-
-        transform:
-            translateX(0);
-
+        transform:translateX(0);
     }
 
     .main{
-
         margin-right:0;
-
-        padding:
-            18px 15px 40px;
-
+        padding:18px 15px 40px;
     }
 
-    .mobile-menu{
+    .form-grid{
+        grid-template-columns:1fr;
+    }
 
-        display:block;
-
+    .full{
+        grid-column:auto;
     }
 
 }
 
-@media(max-width:650px){
+@media(max-width:600px){
 
-    .form-grid{
-
+    .options-grid{
         grid-template-columns:1fr;
-
     }
 
-    .form-group.full{
-
-        grid-column:auto;
-
-    }
-
-    .buttons{
-
+    .actions{
         flex-direction:column;
-
     }
 
     .btn{
-
         width:100%;
-
     }
 
-    .publish-box{
-
-        align-items:flex-start;
-
+    .page-header h1{
+        font-size:23px;
     }
 
 }
 
 </style>
-
 </head>
 
 <body>
 
-
 <!-- ================= SIDEBAR ================= -->
 
-<aside
-    class="sidebar"
-    id="sidebar"
->
+<aside class="sidebar" id="sidebar">
 
     <div class="brand">
 
@@ -978,130 +759,49 @@ select option{
         </div>
 
         <div>
-
-            <strong>
-                الخوارزمي
-            </strong>
-
-            <span>
-                لوحة الإدارة
-            </span>
-
+            <strong>الخوارزمي</strong>
+            <span>لوحة الإدارة</span>
         </div>
 
     </div>
-
 
     <div class="menu-title">
         الإدارة
     </div>
 
-
     <nav class="menu">
 
         <a href="index.html">
-
-            <div class="menu-icon">
-                🏠
-            </div>
-
+            <div class="menu-icon">🏠</div>
             الرئيسية
-
         </a>
-
 
         <a href="students.html">
-
-            <div class="menu-icon">
-                👨‍🎓
-            </div>
-
+            <div class="menu-icon">👨‍🎓</div>
             الطلاب
-
         </a>
-
 
         <a href="courses.html">
-
-            <div class="menu-icon">
-                📚
-            </div>
-
+            <div class="menu-icon">📚</div>
             الكورسات
-
         </a>
-
 
         <a href="lessons.html">
-
-            <div class="menu-icon">
-                🎥
-            </div>
-
+            <div class="menu-icon">🎥</div>
             الدروس والفيديوهات
-
         </a>
 
-
-        <a
-            href="exams.html"
-            class="active"
-        >
-
-            <div class="menu-icon">
-                📝
-            </div>
-
+        <a href="exams.html" class="active">
+            <div class="menu-icon">📝</div>
             الاختبارات
-
         </a>
-
 
         <a href="results.html">
-
-            <div class="menu-icon">
-                📊
-            </div>
-
+            <div class="menu-icon">📊</div>
             النتائج
-
-        </a>
-
-
-        <a href="files.html">
-
-            <div class="menu-icon">
-                📁
-            </div>
-
-            الملفات و PDF
-
-        </a>
-
-
-        <a href="payments.html">
-
-            <div class="menu-icon">
-                💳
-            </div>
-
-            المدفوعات
-
-        </a>
-
-
-        <a href="settings.html">
-
-            <div class="menu-icon">
-                ⚙️
-            </div>
-
-            الإعدادات
-
         </a>
 
     </nav>
-
 
     <div class="logout">
 
@@ -1118,17 +818,11 @@ select option{
 
 <main class="main">
 
-
     <div class="topbar">
 
-        <button
-            class="mobile-menu"
-            onclick="toggleSidebar()"
-        >
-            ☰
-        </button>
-
-        <div></div>
+        <a href="exams.html" class="back-btn">
+            ← العودة للاختبارات
+        </a>
 
         <div class="admin-box">
 
@@ -1153,204 +847,205 @@ select option{
     </div>
 
 
-    <!-- ================= HEADER ================= -->
-
     <section class="page-header">
 
         <h1 id="pageTitle">
             📝 إضافة اختبار جديد
         </h1>
 
-        <p id="pageDescription">
-            أنشئ اختبارًا جديدًا وحدد الكورس والمدة وحالة النشر.
+        <p>
+            أنشئ اختبارًا جديدًا وحدد أسئلته ومدة الاختبار.
         </p>
 
     </section>
 
 
-    <!-- ================= ERROR ================= -->
-
-    <div
-        class="error-box"
-        id="errorBox"
-    ></div>
+    <div class="form-grid">
 
 
-    <!-- ================= FORM ================= -->
+        <!-- ================= BASIC ================= -->
 
-    <section class="form-card">
+        <section class="card">
 
-        <form id="examForm">
-
-
-            <div class="form-grid">
-
-
-                <!-- TITLE -->
-
-                <div class="form-group full">
-
-                    <label for="title">
-                        اسم الاختبار *
-                    </label>
-
-                    <input
-                        id="title"
-                        type="text"
-                        placeholder="مثال: اختبار الوحدة الأولى"
-                        maxlength="200"
-                        required
-                    >
-
-                    <span class="hint">
-                        اكتب اسمًا واضحًا يظهر للطلاب.
-                    </span>
-
-                </div>
+            <h2>
+                معلومات الاختبار
+            </h2>
 
 
-                <!-- COURSE -->
+            <div class="field">
 
-                <div class="form-group">
-
-                    <label for="course">
-                        الكورس *
-                    </label>
-
-                    <select
-                        id="course"
-                        required
-                    >
-
-                        <option value="">
-                            جاري تحميل الكورسات...
-                        </option>
-
-                    </select>
-
-                    <span class="hint">
-                        اختر الكورس الذي ينتمي إليه الاختبار.
-                    </span>
-
-                </div>
-
-
-                <!-- DURATION -->
-
-                <div class="form-group">
-
-                    <label for="duration">
-                        مدة الاختبار بالدقائق *
-                    </label>
-
-                    <input
-                        id="duration"
-                        type="number"
-                        min="1"
-                        max="600"
-                        value="30"
-                        required
-                    >
-
-                    <span class="hint">
-                        مثال: 20 أو 30 أو 60 دقيقة.
-                    </span>
-
-                </div>
-
-
-                <!-- DESCRIPTION -->
-
-                <div class="form-group full">
-
-                    <label for="description">
-                        وصف الاختبار
-                    </label>
-
-                    <textarea
-                        id="description"
-                        maxlength="1000"
-                        placeholder="اكتب وصفًا مختصرًا للاختبار..."
-                    ></textarea>
-
-                    <span class="hint">
-                        هذا الوصف يظهر للطالب قبل بدء الاختبار.
-                    </span>
-
-                </div>
-
-
-            </div>
-
-
-            <!-- ================= PUBLISH ================= -->
-
-            <div class="publish-box">
-
-                <div class="publish-info">
-
-                    <strong>
-                        نشر الاختبار
-                    </strong>
-
-                    <span>
-                        إذا فعلت هذا الخيار يستطيع الطلاب رؤية الاختبار وبدءه.
-                    </span>
-
-                </div>
-
-
-                <label class="switch">
-
-                    <input
-                        type="checkbox"
-                        id="published"
-                    >
-
-                    <span class="slider"></span>
-
+                <label>
+                    اسم الاختبار *
                 </label>
 
-            </div>
-
-
-            <!-- ================= BUTTONS ================= -->
-
-            <div class="buttons">
-
-                <button
-                    type="submit"
-                    class="btn btn-primary"
-                    id="saveBtn"
+                <input
+                    type="text"
+                    id="title"
+                    placeholder="مثال: اختبار الوحدة الأولى"
                 >
-                    إنشاء الاختبار
-                </button>
-
-
-                <a
-                    href="exams.html"
-                    class="btn btn-secondary"
-                >
-                    إلغاء
-                </a>
 
             </div>
 
 
-        </form>
+            <div class="field">
 
-    </section>
+                <label>
+                    وصف الاختبار
+                </label>
 
+                <textarea
+                    id="description"
+                    placeholder="اكتب وصفًا مختصرًا للاختبار..."
+                ></textarea>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    الكورس *
+                </label>
+
+                <select id="courseId">
+
+                    <option value="">
+                        جاري تحميل الكورسات...
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SETTINGS ================= -->
+
+        <section class="card">
+
+            <h2>
+                إعدادات الاختبار
+            </h2>
+
+
+            <div class="field">
+
+                <label>
+                    مدة الاختبار بالدقائق *
+                </label>
+
+                <input
+                    type="number"
+                    id="duration"
+                    min="1"
+                    max="600"
+                    value="30"
+                >
+
+                <div class="help">
+                    مثال: 30 دقيقة
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    حالة الاختبار
+                </label>
+
+                <div class="publish-row">
+
+                    <div class="publish-text">
+
+                        <strong>
+                            نشر الاختبار
+                        </strong>
+
+                        <span>
+                            الطلاب سيتمكنون من رؤيته عند النشر.
+                        </span>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="published"
+                            checked
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= QUESTIONS ================= -->
+
+        <section class="card full">
+
+            <h2>
+                أسئلة الاختبار
+            </h2>
+
+            <div
+                class="question-list"
+                id="questionList"
+            ></div>
+
+
+            <button
+                type="button"
+                class="add-question"
+                onclick="addQuestion()"
+            >
+                ＋ إضافة سؤال
+            </button>
+
+        </section>
+
+
+    </div>
+
+
+    <!-- ================= ACTIONS ================= -->
+
+    <div class="actions">
+
+        <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="cancelForm()"
+        >
+            إلغاء
+        </button>
+
+        <button
+            type="button"
+            class="btn btn-primary"
+            id="saveBtn"
+            onclick="saveExam()"
+        >
+            💾 حفظ الاختبار
+        </button>
+
+    </div>
 
 </main>
 
 
 <!-- ================= LOADING ================= -->
 
-<div
-    class="loading"
-    id="loading"
->
+<div class="loading" id="loading">
 
     <div class="spinner"></div>
 
@@ -1359,237 +1054,108 @@ select option{
 
 <!-- ================= TOAST ================= -->
 
-<div
-    class="toast"
-    id="toast"
-></div>
+<div class="toast" id="toast"></div>
 
 
 <script>
 
-/*
-=========================================================
- AL-KHAWARIZMI
- ADD / EDIT EXAM
-=========================================================
-
- الملف:
- admin/add-exam.html
-
- يستخدم:
- ../supabase.js
-
- جدول:
- exams
-
- الأعمدة:
- id
- course_id
- title
- description
- duration_minutes
- published
- created_by
- created_at
- updated_at
-
-=========================================================
-*/
-
-
-/* ======================================================
-   CHECK SUPABASE
-====================================================== */
-
-if(
-    typeof supabaseClient === "undefined"
-){
-
-    console.error(
-        "supabaseClient غير موجود."
-    );
-
-}
-
-
-/* ======================================================
-   ELEMENTS
-====================================================== */
-
-const loading =
-    document.getElementById(
-        "loading"
-    );
-
-const toast =
-    document.getElementById(
-        "toast"
-    );
-
-const errorBox =
-    document.getElementById(
-        "errorBox"
-    );
-
-const examForm =
-    document.getElementById(
-        "examForm"
-    );
-
-const titleInput =
-    document.getElementById(
-        "title"
-    );
-
-const courseInput =
-    document.getElementById(
-        "course"
-    );
-
-const durationInput =
-    document.getElementById(
-        "duration"
-    );
-
-const descriptionInput =
-    document.getElementById(
-        "description"
-    );
-
-const publishedInput =
-    document.getElementById(
-        "published"
-    );
-
-const saveBtn =
-    document.getElementById(
-        "saveBtn"
-    );
-
-
-/* ======================================================
+/* =========================================================
    VARIABLES
-====================================================== */
+========================================================= */
 
 let currentUser = null;
 
 let editingExamId = null;
 
-
-/* ======================================================
-   QUERY PARAM
-====================================================== */
-
-const urlParams =
-    new URLSearchParams(
-        window.location.search
-    );
-
-editingExamId =
-    urlParams.get("id");
+let questionCounter = 0;
 
 
-/* ======================================================
-   LOADING
-====================================================== */
+/* =========================================================
+   ELEMENTS
+========================================================= */
 
-function setLoading(state){
+const loading =
+    document.getElementById("loading");
 
-    loading.style.display =
-        state
-        ? "flex"
-        : "none";
+const toast =
+    document.getElementById("toast");
 
-}
+const questionList =
+    document.getElementById("questionList");
 
+const courseSelect =
+    document.getElementById("courseId");
 
-/* ======================================================
-   ERROR
-====================================================== */
-
-function showError(message){
-
-    errorBox.textContent =
-        message;
-
-    errorBox.style.display =
-        "block";
-
-}
+const saveBtn =
+    document.getElementById("saveBtn");
 
 
-function hideError(){
-
-    errorBox.textContent =
-        "";
-
-    errorBox.style.display =
-        "none";
-
-}
-
-
-/* ======================================================
+/* =========================================================
    TOAST
-====================================================== */
+========================================================= */
 
-function showToast(
-    message,
-    type=""
-){
+function showToast(message,type=""){
 
-    toast.textContent =
-        message;
+    toast.textContent = message;
 
     toast.className =
         "toast " +
         type +
         " show";
 
-    setTimeout(
-        function(){
+    setTimeout(function(){
 
-            toast.classList.remove(
-                "show"
-            );
+        toast.classList.remove("show");
 
-        },
-        3500
-    );
+    },3500);
 
 }
 
 
-/* ======================================================
-   SIDEBAR
-====================================================== */
+/* =========================================================
+   LOADING
+========================================================= */
 
-function toggleSidebar(){
+function setLoading(state){
 
-    document
-        .getElementById("sidebar")
-        .classList
-        .toggle("open");
+    loading.style.display =
+        state ? "flex" : "none";
 
 }
 
 
-/* ======================================================
+/* =========================================================
+   CHECK SUPABASE
+========================================================= */
+
+function checkSupabase(){
+
+    if(
+        typeof supabaseClient === "undefined"
+    ){
+
+        showToast(
+            "ملف supabase.js غير متصل بشكل صحيح.",
+            "error"
+        );
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+
+/* =========================================================
    CHECK ADMIN
-====================================================== */
+========================================================= */
 
 async function checkAdmin(){
 
-    if(
-        typeof supabaseClient ===
-        "undefined"
-    ){
-
-        throw new Error(
-            "ملف Supabase غير موجود أو غير صحيح."
-        );
-
-    }
+    if(!checkSupabase())
+        return false;
 
 
     const {
@@ -1601,14 +1167,23 @@ async function checkAdmin(){
             .getSession();
 
 
-    if(error)
-        throw error;
+    if(error){
+
+        console.error(error);
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
 
 
-    if(
-        !data ||
-        !data.session
-    ){
+    const session =
+        data?.session;
+
+
+    if(!session){
 
         window.location.href =
             "login.html";
@@ -1619,16 +1194,12 @@ async function checkAdmin(){
 
 
     currentUser =
-        data.session.user;
+        session.user;
 
-
-    /* ----------------------------------------------
-       PROFILE
-    ---------------------------------------------- */
 
     const {
-        data: profile,
-        error: profileError
+        data:profile,
+        error:profileError
     } =
         await supabaseClient
 
@@ -1646,8 +1217,20 @@ async function checkAdmin(){
             .maybeSingle();
 
 
-    if(profileError)
-        throw profileError;
+    if(profileError){
+
+        console.error(
+            profileError
+        );
+
+        showToast(
+            "تعذر قراءة بيانات الأدمن.",
+            "error"
+        );
+
+        return false;
+
+    }
 
 
     if(
@@ -1667,14 +1250,12 @@ async function checkAdmin(){
     }
 
 
-    document
-        .getElementById(
-            "adminName"
-        )
-        .textContent =
-            profile.full_name ||
-            currentUser.email ||
-            "الأدمن";
+    document.getElementById(
+        "adminName"
+    ).textContent =
+        profile.full_name ||
+        currentUser.email ||
+        "الأدمن";
 
 
     return true;
@@ -1682,9 +1263,9 @@ async function checkAdmin(){
 }
 
 
-/* ======================================================
+/* =========================================================
    LOAD COURSES
-====================================================== */
+========================================================= */
 
 async function loadCourses(){
 
@@ -1712,356 +1293,773 @@ async function loadCourses(){
         throw error;
 
 
-    const courses =
-        data || [];
-
-
-    courseInput.innerHTML =
-        `
+    courseSelect.innerHTML = `
         <option value="">
             اختر الكورس
         </option>
-        `;
+    `;
 
 
-    courses.forEach(
-        function(course){
+    (data || []).forEach(function(course){
 
-            const option =
-                document.createElement(
-                    "option"
+        const option =
+            document.createElement("option");
+
+        option.value =
+            course.id;
+
+        option.textContent =
+            course.title ||
+            "بدون اسم";
+
+        courseSelect.appendChild(
+            option
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   ADD QUESTION
+========================================================= */
+
+function addQuestion(data=null){
+
+    questionCounter++;
+
+
+    const questionId =
+        "question_" +
+        questionCounter;
+
+
+    const card =
+        document.createElement("div");
+
+    card.className =
+        "question-card";
+
+
+    card.dataset.questionId =
+        questionId;
+
+
+    card.innerHTML = `
+
+        <div class="question-head">
+
+            <div class="question-title">
+                السؤال ${questionCounter}
+            </div>
+
+            <button
+                type="button"
+                class="remove-question"
+                onclick="removeQuestion(this)"
+                title="حذف السؤال"
+            >
+                🗑️
+            </button>
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                نص السؤال *
+            </label>
+
+            <textarea
+                class="question-text-input"
+                placeholder="اكتب نص السؤال..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                نوع السؤال
+            </label>
+
+            <select
+                class="question-type"
+                onchange="changeQuestionType(this)"
+            >
+
+                <option value="mcq">
+                    اختيار من متعدد
+                </option>
+
+                <option value="essay">
+                    سؤال مقالي
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="mcq-area">
+
+            <div class="options-grid">
+
+                <div class="option-wrap">
+
+                    <label>
+                        الاختيار أ
+                    </label>
+
+                    <input
+                        type="text"
+                        class="option-a"
+                        placeholder="الإجابة الأولى"
+                    >
+
+                </div>
+
+
+                <div class="option-wrap">
+
+                    <label>
+                        الاختيار ب
+                    </label>
+
+                    <input
+                        type="text"
+                        class="option-b"
+                        placeholder="الإجابة الثانية"
+                    >
+
+                </div>
+
+
+                <div class="option-wrap">
+
+                    <label>
+                        الاختيار ج
+                    </label>
+
+                    <input
+                        type="text"
+                        class="option-c"
+                        placeholder="الإجابة الثالثة"
+                    >
+
+                </div>
+
+
+                <div class="option-wrap">
+
+                    <label>
+                        الاختيار د
+                    </label>
+
+                    <input
+                        type="text"
+                        class="option-d"
+                        placeholder="الإجابة الرابعة"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="correct-row">
+
+                <span>
+                    الإجابة الصحيحة:
+                </span>
+
+                <select class="correct-answer">
+
+                    <option value="a">
+                        أ
+                    </option>
+
+                    <option value="b">
+                        ب
+                    </option>
+
+                    <option value="c">
+                        ج
+                    </option>
+
+                    <option value="d">
+                        د
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    questionList.appendChild(card);
+
+
+    /* =====================================================
+       FILL EDIT DATA
+    ===================================================== */
+
+    if(data){
+
+        const text =
+            data.question ||
+            data.question_text ||
+            "";
+
+        card.querySelector(
+            ".question-text-input"
+        ).value = text;
+
+
+        const type =
+            data.type ||
+            "mcq";
+
+
+        card.querySelector(
+            ".question-type"
+        ).value = type;
+
+
+        if(type === "essay"){
+
+            changeQuestionType(
+                card.querySelector(
+                    ".question-type"
+                )
+            );
+
+        }
+        else{
+
+            let options =
+                data.options || [];
+
+
+            if(typeof options === "string"){
+
+                try{
+                    options =
+                        JSON.parse(options);
+                }
+                catch{
+                    options = [];
+                }
+
+            }
+
+
+            if(Array.isArray(options)){
+
+                const map = {
+                    a:"",
+                    b:"",
+                    c:"",
+                    d:""
+                };
+
+
+                options.forEach(function(option){
+
+                    if(
+                        option &&
+                        typeof option === "object"
+                    ){
+
+                        const id =
+                            String(
+                                option.id ??
+                                option.value ??
+                                ""
+                            ).toLowerCase();
+
+                        if(
+                            map.hasOwnProperty(id)
+                        ){
+
+                            map[id] =
+                                option.text ??
+                                option.label ??
+                                option.value ??
+                                "";
+
+                        }
+
+                    }
+
+                });
+
+
+                card.querySelector(
+                    ".option-a"
+                ).value = map.a;
+
+                card.querySelector(
+                    ".option-b"
+                ).value = map.b;
+
+                card.querySelector(
+                    ".option-c"
+                ).value = map.c;
+
+                card.querySelector(
+                    ".option-d"
+                ).value = map.d;
+
+            }
+
+
+            const correct =
+                String(
+                    data.correct_answer ??
+                    "a"
+                ).toLowerCase();
+
+
+            if(
+                ["a","b","c","d"].includes(correct)
+            ){
+
+                card.querySelector(
+                    ".correct-answer"
+                ).value =
+                    correct;
+
+            }
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   CHANGE QUESTION TYPE
+========================================================= */
+
+function changeQuestionType(select){
+
+    const card =
+        select.closest(".question-card");
+
+
+    const mcqArea =
+        card.querySelector(".mcq-area");
+
+
+    if(select.value === "essay"){
+
+        mcqArea.style.display =
+            "none";
+
+    }
+    else{
+
+        mcqArea.style.display =
+            "block";
+
+    }
+
+}
+
+
+/* =========================================================
+   REMOVE QUESTION
+========================================================= */
+
+function removeQuestion(button){
+
+    const card =
+        button.closest(".question-card");
+
+
+    if(!card)
+        return;
+
+
+    if(
+        !confirm(
+            "هل تريد حذف هذا السؤال؟"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    card.remove();
+
+
+    renumberQuestions();
+
+}
+
+
+/* =========================================================
+   RENUMBER QUESTIONS
+========================================================= */
+
+function renumberQuestions(){
+
+    const cards =
+        questionList.querySelectorAll(
+            ".question-card"
+        );
+
+
+    cards.forEach(
+        function(card,index){
+
+            const title =
+                card.querySelector(
+                    ".question-title"
                 );
 
 
-            option.value =
-                course.id;
+            if(title){
 
+                title.textContent =
+                    "السؤال " +
+                    (index + 1);
 
-            option.textContent =
-                course.title ||
-                "بدون اسم";
-
-
-            courseInput.appendChild(
-                option
-            );
+            }
 
         }
     );
 
-
-    if(courses.length === 0){
-
-        courseInput.innerHTML =
-            `
-            <option value="">
-                لا توجد كورسات
-            </option>
-            `;
-
-    }
-
 }
 
 
-/* ======================================================
-   LOAD EXAM FOR EDIT
-====================================================== */
+/* =========================================================
+   COLLECT QUESTIONS
+========================================================= */
 
-async function loadExam(){
+function collectQuestions(){
 
-    if(!editingExamId)
-        return;
-
-
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-
-            .from("exams")
-
-            .select(
-                `
-                id,
-                course_id,
-                title,
-                description,
-                duration_minutes,
-                published
-                `
-            )
-
-            .eq(
-                "id",
-                editingExamId
-            )
-
-            .single();
-
-
-    if(error)
-        throw error;
-
-
-    if(!data){
-
-        throw new Error(
-            "الاختبار غير موجود."
+    const cards =
+        questionList.querySelectorAll(
+            ".question-card"
         );
 
-    }
 
+    const questions = [];
 
-    titleInput.value =
-        data.title || "";
 
+    cards.forEach(
+        function(card,index){
 
-    descriptionInput.value =
-        data.description || "";
+            const text =
+                card.querySelector(
+                    ".question-text-input"
+                )
+                .value
+                .trim();
 
 
-    durationInput.value =
-        data.duration_minutes || 30;
+            const type =
+                card.querySelector(
+                    ".question-type"
+                ).value;
 
 
-    publishedInput.checked =
-        data.published === true;
+            if(!text){
 
-
-    if(data.course_id){
-
-        courseInput.value =
-            data.course_id;
-
-    }
-
-
-    document
-        .getElementById(
-            "pageTitle"
-        )
-        .textContent =
-            "✏️ تعديل الاختبار";
-
-
-    document
-        .getElementById(
-            "pageDescription"
-        )
-        .textContent =
-            "قم بتعديل بيانات الاختبار ثم احفظ التغييرات.";
-
-
-    saveBtn.textContent =
-        "حفظ التعديلات";
-
-}
-
-
-/* ======================================================
-   SAVE EXAM
-====================================================== */
-
-examForm.addEventListener(
-    "submit",
-    async function(event){
-
-        event.preventDefault();
-
-        hideError();
-
-
-        if(!currentUser){
-
-            showError(
-                "لم يتم العثور على حساب الأدمن."
-            );
-
-            return;
-
-        }
-
-
-        const title =
-            titleInput.value.trim();
-
-
-        const courseId =
-            courseInput.value;
-
-
-        const duration =
-            Number(
-                durationInput.value
-            );
-
-
-        const description =
-            descriptionInput.value.trim();
-
-
-        const published =
-            publishedInput.checked;
-
-
-        /* ----------------------------------------------
-           VALIDATION
-        ---------------------------------------------- */
-
-        if(!title){
-
-            showError(
-                "اكتب اسم الاختبار."
-            );
-
-            titleInput.focus();
-
-            return;
-
-        }
-
-
-        if(!courseId){
-
-            showError(
-                "اختر الكورس أولًا."
-            );
-
-            courseInput.focus();
-
-            return;
-
-        }
-
-
-        if(
-            !Number.isInteger(duration) ||
-            duration < 1 ||
-            duration > 600
-        ){
-
-            showError(
-                "مدة الاختبار يجب أن تكون بين 1 و600 دقيقة."
-            );
-
-            durationInput.focus();
-
-            return;
-
-        }
-
-
-        try{
-
-            setLoading(true);
-
-            saveBtn.disabled =
-                true;
-
-
-            /* ==========================================
-               DATA
-            ========================================== */
-
-            const examData = {
-
-                course_id:
-                    courseId,
-
-                title:
-                    title,
-
-                description:
-                    description,
-
-                duration_minutes:
-                    duration,
-
-                published:
-                    published,
-
-                created_by:
-                    currentUser.id
-
-            };
-
-
-            /* ==========================================
-               EDIT
-            ========================================== */
-
-            if(editingExamId){
-
-                const {
-                    data,
-                    error
-                } =
-                    await supabaseClient
-
-                        .from("exams")
-
-                        .update({
-
-                            course_id:
-                                examData.course_id,
-
-                            title:
-                                examData.title,
-
-                            description:
-                                examData.description,
-
-                            duration_minutes:
-                                examData.duration_minutes,
-
-                            published:
-                                examData.published
-
-                        })
-
-                        .eq(
-                            "id",
-                            editingExamId
-                        )
-
-                        .select()
-                        .single();
-
-
-                if(error)
-                    throw error;
-
-
-                showToast(
-                    "تم حفظ تعديلات الاختبار بنجاح.",
-                    "success"
+                throw new Error(
+                    "السؤال رقم " +
+                    (index + 1) +
+                    " لا يحتوي على نص."
                 );
 
+            }
 
-                setTimeout(
-                    function(){
 
-                        window.location.href =
-                            "questions.html?exam_id=" +
-                            encodeURIComponent(
-                                editingExamId
-                            );
+            /* =============================================
+               ESSAY
+            ============================================= */
 
-                    },
-                    700
-                );
+            if(type === "essay"){
 
+                questions.push({
+
+                    question:text,
+
+                    type:"essay",
+
+                    options:[],
+
+                    correct_answer:null
+
+                });
 
                 return;
 
             }
 
 
-            /* ==========================================
-               CREATE
-            ========================================== */
+            /* =============================================
+               MCQ
+            ============================================= */
+
+            const a =
+                card.querySelector(
+                    ".option-a"
+                )
+                .value
+                .trim();
+
+
+            const b =
+                card.querySelector(
+                    ".option-b"
+                )
+                .value
+                .trim();
+
+
+            const c =
+                card.querySelector(
+                    ".option-c"
+                )
+                .value
+                .trim();
+
+
+            const d =
+                card.querySelector(
+                    ".option-d"
+                )
+                .value
+                .trim();
+
+
+            if(
+                !a ||
+                !b ||
+                !c ||
+                !d
+            ){
+
+                throw new Error(
+                    "يجب إدخال جميع الاختيارات في السؤال رقم " +
+                    (index + 1)
+                );
+
+            }
+
+
+            const correct =
+                card.querySelector(
+                    ".correct-answer"
+                ).value;
+
+
+            questions.push({
+
+                question:text,
+
+                type:"mcq",
+
+                options:[
+
+                    {
+                        id:"a",
+                        text:a
+                    },
+
+                    {
+                        id:"b",
+                        text:b
+                    },
+
+                    {
+                        id:"c",
+                        text:c
+                    },
+
+                    {
+                        id:"d",
+                        text:d
+                    }
+
+                ],
+
+                correct_answer:correct
+
+            });
+
+        }
+    );
+
+
+    return questions;
+
+}
+
+
+/* =========================================================
+   SAVE EXAM
+========================================================= */
+
+async function saveExam(){
+
+    if(!checkSupabase())
+        return;
+
+
+    try{
+
+        setLoading(true);
+
+        saveBtn.disabled = true;
+
+        saveBtn.textContent =
+            "جاري الحفظ...";
+
+
+        /* =============================================
+           BASIC VALIDATION
+        ============================================= */
+
+        const title =
+            document
+                .getElementById("title")
+                .value
+                .trim();
+
+
+        const description =
+            document
+                .getElementById("description")
+                .value
+                .trim();
+
+
+        const courseId =
+            courseSelect.value;
+
+
+        const duration =
+            Number(
+                document
+                    .getElementById("duration")
+                    .value
+            );
+
+
+        const published =
+            document
+                .getElementById("published")
+                .checked;
+
+
+        if(!title){
+
+            throw new Error(
+                "اكتب اسم الاختبار."
+            );
+
+        }
+
+
+        if(!courseId){
+
+            throw new Error(
+                "اختر الكورس."
+            );
+
+        }
+
+
+        if(
+            !duration ||
+            duration < 1
+        ){
+
+            throw new Error(
+                "مدة الاختبار غير صحيحة."
+            );
+
+        }
+
+
+        const questions =
+            collectQuestions();
+
+
+        if(questions.length === 0){
+
+            throw new Error(
+                "أضف سؤالًا واحدًا على الأقل."
+            );
+
+        }
+
+
+        /* =============================================
+           SAVE EXAM
+        ============================================= */
+
+        const examData = {
+
+            course_id:
+                courseId,
+
+            title:
+                title,
+
+            description:
+                description || null,
+
+            duration_minutes:
+                duration,
+
+            published:
+                published
+
+        };
+
+
+        let examId =
+            editingExamId;
+
+
+        if(editingExamId){
+
+            const {
+                error
+            } =
+                await supabaseClient
+
+                    .from("exams")
+
+                    .update(
+                        examData
+                    )
+
+                    .eq(
+                        "id",
+                        editingExamId
+                    );
+
+
+            if(error)
+                throw error;
+
+        }
+        else{
 
             const {
                 data,
@@ -2075,7 +2073,10 @@ examForm.addEventListener(
                         examData
                     )
 
-                    .select()
+                    .select(
+                        "id"
+                    )
+
                     .single();
 
 
@@ -2083,123 +2084,288 @@ examForm.addEventListener(
                 throw error;
 
 
-            if(!data || !data.id){
+            examId =
+                data.id;
 
-                throw new Error(
-                    "تم إنشاء الاختبار ولكن لم يتم الحصول على رقم الاختبار."
+        }
+
+
+        /* =============================================
+           DELETE OLD QUESTIONS WHEN EDITING
+        ============================================= */
+
+        if(editingExamId){
+
+            const {
+                error
+            } =
+                await supabaseClient
+
+                    .from("questions")
+
+                    .delete()
+
+                    .eq(
+                        "exam_id",
+                        examId
+                    );
+
+
+            if(error)
+                throw error;
+
+        }
+
+
+        /* =============================================
+           PREPARE QUESTIONS
+        ============================================= */
+
+        const rows =
+            questions.map(
+                function(question){
+
+                    return {
+
+                        exam_id:
+                            examId,
+
+                        question:
+                            question.question,
+
+                        type:
+                            question.type,
+
+                        options:
+                            question.options,
+
+                        correct_answer:
+                            question.correct_answer
+
+                    };
+
+                }
+            );
+
+
+        /* =============================================
+           INSERT QUESTIONS
+        ============================================= */
+
+        const {
+            error:questionsError
+        } =
+            await supabaseClient
+
+                .from("questions")
+
+                .insert(
+                    rows
                 );
 
-            }
+
+        if(questionsError)
+            throw questionsError;
 
 
-            showToast(
-                "تم إنشاء الاختبار بنجاح.",
-                "success"
-            );
+        /* =============================================
+           SUCCESS
+        ============================================= */
+
+        showToast(
+            editingExamId
+            ? "تم تعديل الاختبار بنجاح."
+            : "تم إنشاء الاختبار بنجاح.",
+            "success"
+        );
 
 
-            /* ==========================================
-               GO QUESTIONS
-            ========================================== */
+        setTimeout(
+            function(){
 
-            setTimeout(
-                function(){
+                window.location.href =
+                    "exams.html";
 
-                    window.location.href =
-                        "questions.html?exam_id=" +
-                        encodeURIComponent(
-                            data.id
-                        );
+            },
+            800
+        );
 
-                },
-                700
-            );
-
-        }
-
-        catch(error){
-
-            console.error(
-                "Save exam error:",
-                error
-            );
-
-
-            let message =
-                error.message ||
-                "حدث خطأ أثناء حفظ الاختبار.";
-
-
-            if(
-                message.includes(
-                    "row-level security"
-                )
-            ){
-
-                message =
-                    "تم رفض العملية بسبب صلاحيات قاعدة البيانات (RLS). تأكد أن حسابك لديه role = admin.";
-
-            }
-
-
-            if(
-                message.includes(
-                    "created_by"
-                )
-            ){
-
-                message =
-                    "عمود created_by غير موجود في جدول exams.";
-
-            }
-
-
-            if(
-                message.includes(
-                    "duration_minutes"
-                )
-            ){
-
-                message =
-                    "عمود duration_minutes غير موجود في جدول exams.";
-
-            }
-
-
-            if(
-                message.includes(
-                    "course_id"
-                )
-            ){
-
-                message =
-                    "عمود course_id غير موجود في جدول exams.";
-
-            }
-
-
-            showError(
-                message
-            );
-
-        }
-
-        finally{
-
-            setLoading(false);
-
-            saveBtn.disabled =
-                false;
-
-        }
 
     }
-);
+    catch(error){
+
+        console.error(
+            "SAVE EXAM ERROR:",
+            error
+        );
 
 
-/* ======================================================
+        showToast(
+            error.message ||
+            "حدث خطأ أثناء حفظ الاختبار.",
+            "error"
+        );
+
+
+        saveBtn.disabled =
+            false;
+
+        saveBtn.textContent =
+            "💾 حفظ الاختبار";
+
+    }
+    finally{
+
+        setLoading(false);
+
+    }
+
+}
+
+
+/* =========================================================
+   LOAD EDIT EXAM
+========================================================= */
+
+async function loadEditExam(){
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    editingExamId =
+        params.get("id");
+
+
+    if(!editingExamId)
+        return;
+
+
+    document.getElementById(
+        "pageTitle"
+    ).textContent =
+        "✏️ تعديل الاختبار";
+
+
+    saveBtn.textContent =
+        "💾 حفظ التعديلات";
+
+
+    const {
+        data:exam,
+        error:examError
+    } =
+        await supabaseClient
+
+            .from("exams")
+
+            .select(
+                "*"
+            )
+
+            .eq(
+                "id",
+                editingExamId
+            )
+
+            .single();
+
+
+    if(examError)
+        throw examError;
+
+
+    document.getElementById(
+        "title"
+    ).value =
+        exam.title || "";
+
+
+    document.getElementById(
+        "description"
+    ).value =
+        exam.description || "";
+
+
+    document.getElementById(
+        "duration"
+    ).value =
+        exam.duration_minutes || 30;
+
+
+    document.getElementById(
+        "published"
+    ).checked =
+        exam.published !== false;
+
+
+    courseSelect.value =
+        exam.course_id || "";
+
+
+    const {
+        data:questions,
+        error:questionsError
+    } =
+        await supabaseClient
+
+            .from("questions")
+
+            .select("*")
+
+            .eq(
+                "exam_id",
+                editingExamId
+            )
+            .order(
+                "created_at",
+                {
+                    ascending:true
+                }
+            );
+
+
+    if(questionsError)
+        throw questionsError;
+
+
+    questionList.innerHTML =
+        "";
+
+
+    questionCounter = 0;
+
+
+    (questions || []).forEach(
+        function(question){
+
+            addQuestion(
+                question
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   CANCEL
+========================================================= */
+
+function cancelForm(){
+
+    window.location.href =
+        "exams.html";
+
+}
+
+
+/* =========================================================
    LOGOUT
-====================================================== */
+========================================================= */
 
 async function logout(){
 
@@ -2217,7 +2383,6 @@ async function logout(){
         }
 
     }
-
     catch(error){
 
         console.error(error);
@@ -2231,16 +2396,16 @@ async function logout(){
 }
 
 
-/* ======================================================
+/* =========================================================
    INIT
-====================================================== */
+========================================================= */
 
 async function init(){
 
-    setLoading(true);
-
-
     try{
+
+        setLoading(true);
+
 
         const isAdmin =
             await checkAdmin();
@@ -2253,25 +2418,36 @@ async function init(){
         await loadCourses();
 
 
-        await loadExam();
+        await loadEditExam();
+
+
+        /*
+            لو اختبار جديد
+            نضيف سؤالًا أوليًا
+        */
+
+        if(!editingExamId){
+
+            addQuestion();
+
+        }
 
     }
-
     catch(error){
 
         console.error(
-            "Init error:",
+            "INIT ERROR:",
             error
         );
 
 
-        showError(
+        showToast(
             error.message ||
-            "حدث خطأ أثناء تحميل الصفحة."
+            "حدث خطأ أثناء تحميل الصفحة.",
+            "error"
         );
 
     }
-
     finally{
 
         setLoading(false);
@@ -2286,5 +2462,4 @@ init();
 </script>
 
 </body>
-
 </html>
