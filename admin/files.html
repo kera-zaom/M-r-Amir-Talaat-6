@@ -15,7 +15,8 @@ href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;90
 rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<style>
+
+<script src="../supabase.js"></script>
 
 *{
     margin:0;
@@ -986,11 +987,11 @@ body{
    SUPABASE CONNECTION
 ===================================================== */
 
-const SUPABASE_URL = "https://fdqolsygigqukejlwcon.supabase.co";
-const SUPABASE_KEY = "sb_publishable_f01Xb-dtqq8rnGuvXcPahg_zz9WeW9x";
+<!-- استدعاء المكتبة أولاً -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
+<!-- استدعاء ملفك الخاص ثانياً -->
+<script src="../supabase.js"></script>
 
 
 /* =====================================================
